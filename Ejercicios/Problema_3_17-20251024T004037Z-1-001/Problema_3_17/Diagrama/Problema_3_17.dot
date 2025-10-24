@@ -1,0 +1,104 @@
+digraph Problema_3_17 {
+   Inicio [
+    shape=ellipse,
+    label="INICIO", 
+    fillcolor="#40e0d0", 
+    style="filled"];
+   Escribir [
+    shape=box  
+    label=" Definir I = 3 y SP = 0"
+   ];
+   Entrada_datos [
+    shape=parallelogram,
+    label=" Leer M "];
+   Condicion [
+    shape=diamond    
+    label=" M >= 1 "];
+   Opcion [
+    shape= box
+    label="Imprimir SI: SP = SP + 1"];
+   Opcion1 [
+    shape=box    
+    label=" \"Numero Primo:\", 1 "];
+   Condicion1 [
+    shape=diamond    
+    label=" M >= 2 "];
+   True[
+    shape=box
+    label="Imprimir SI: SP = SP + 1"
+   ];
+   False [
+    shape=box
+    label="Imprimir \"Entre 1 y M hay\",SP,
+    \"Numeros Primos\""
+   ];
+   Opcion3[
+    shape=box    
+    label=" \"Numero Primo:\", 2 "];
+   Condicion2[
+    shape=diamond    
+    label=" I <= M "];
+   Afimativo [
+    shape=box
+    label="Imprimir SI: BAND = V 
+              J = 3"
+   ]
+   Condicion3[
+    shape=diamond    
+    label=" J < ( I DIV 2) y
+    BAND = V "];
+   Condicion4 [
+    shape=diamond    
+    label="( I MOD J ) = 0"];
+   Verdad [
+    shape=box
+    label=" BAND = \'F\'"
+   ];
+   Opcion4[
+    shape=box
+    label="J = J + 2"
+   ];
+   Condicion5[
+    shape=diamond    
+    label="BAND = \'V\'"];
+   Leer1 [
+    shape=box    
+    label=" \"Numero Primo:\", 1 "];
+   Opcion5[
+    shape=box
+    label="SP = SP + 1"
+   ];
+   Opcion6[
+    shape=box
+    label="I = I + 2"
+   ]
+   Fin [
+    shape=ellipse
+    label="FIN"];
+
+
+  Inicio -> Escribir;
+  Escribir -> Entrada_datos;
+  Entrada_datos -> Condicion;
+  Condicion -> Condicion2  [label="  No", tailport=e, headport=r];
+  Condicion -> Opcion [label="Si", tailport=w, headport=n];
+  Opcion -> Opcion1;
+  Opcion1 -> Condicion1;
+  Condicion1 -> Condicion2 [label="  No", tailport=e, headport=n];
+  Condicion1 -> True [label="Si", tailport=a, headport=n];
+  Condicion2 -> False[label="No", tailport=e, headport=n];
+  True -> Opcion3;
+  Opcion3 -> Condicion2;
+  Condicion2 ->  Afimativo [label="Si", tailport=w, headport=n];
+  Afimativo -> Condicion3;
+  Condicion3 -> Condicion4 [label="Si", tailport=w, headport=n];
+  Condicion3 ->  Condicion5 [label="No", tailport=e, headport=n];
+  Condicion4 -> Verdad [label="Si", tailport=r, headport=n];
+  Condicion4 -> Opcion4[label="No", tailport=e, headport=n];
+  Verdad -> Opcion4;
+  Condicion5 -> Leer1;
+  Condicion5 -> Opcion6[label="No", tailport=e, headport=n];
+  Leer1 -> Opcion5;
+  Opcion5 -> Opcion6;
+  False -> Fin;
+}

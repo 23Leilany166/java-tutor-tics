@@ -1,0 +1,27 @@
+digraph G {
+    inicio [shape=ellipse,label="Inicio"];
+    leer_x [shape=box,label="Leer x"];
+    definir_termino [shape=box,label="termino = x"];
+    definir_senX [shape=box,label="senX = termino"];
+    definir_numeroTerminos [shape=box,label="numeroTerminos = 1"];
+    condicion [shape=diamond,label="|termino| > 0.01"];
+    calcular_termino [shape=box,label="termino *= -(x * x) / ((2 * numeroTerminos) * (2 * numeroTerminos + 1))"];
+    calcular_senX [shape=box,label="senX += termino"];
+    incrementar_numeroTerminos [shape=box,label="numeroTerminos++"];
+    imprimir_resultado [shape=box,label="Imprimir resultado"];
+    imprimir_numeroTerminos [shape=box,label="Imprimir numeroTerminos"];
+    fin [shape=ellipse,label="Fin"];
+
+    inicio -> leer_x;
+    leer_x -> definir_termino;
+    definir_termino -> definir_senX;
+    definir_senX -> definir_numeroTerminos;
+    definir_numeroTerminos -> condicion;
+    condicion -> calcular_termino [label="Sí"];
+    calcular_termino -> calcular_senX;
+    calcular_senX -> incrementar_numeroTerminos;
+    incrementar_numeroTerminos -> condicion;
+    condicion -> imprimir_resultado [label="No"];
+    imprimir_resultado -> imprimir_numeroTerminos;
+    imprimir_numeroTerminos -> fin;
+}

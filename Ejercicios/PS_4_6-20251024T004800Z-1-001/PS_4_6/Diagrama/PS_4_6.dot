@@ -1,0 +1,26 @@
+digraph fibonacci {
+    // Nodo Inicial
+    Inicio [shape=diamond, label="Inicio"];
+
+    // Nodo de creación del arreglo
+    CrearArreglo [shape=rectangle, label="Crear arreglo Fibonacci"];
+
+    // Nodo de inicialización de los primeros dos números Fibonacci
+    InicializarFibonacci [shape=rectangle, label="Inicializar\nfibonacci[0] = 0\nfibonacci[1] = 1"];
+
+    // Nodo de cálculo de los números Fibonacci
+    CalcularFibonacci [shape=rectangle, label="Calcular\nfibonacci[i] = fibonacci[i-1] + fibonacci[i-2]"];
+
+    // Nodo de impresión del arreglo de Fibonacci
+    ImprimirFibonacci [shape=rectangle, label="Imprimir\nArreglo Fibonacci"];
+
+    // Nodo Final
+    Fin [shape=diamond, label="Fin"];
+
+    // Conexiones
+    Inicio -> CrearArreglo;
+    CrearArreglo -> InicializarFibonacci;
+    InicializarFibonacci -> CalcularFibonacci;
+    CalcularFibonacci -> ImprimirFibonacci;
+    ImprimirFibonacci -> Fin;
+}

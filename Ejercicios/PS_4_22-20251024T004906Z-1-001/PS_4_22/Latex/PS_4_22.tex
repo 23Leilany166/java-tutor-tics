@@ -1,0 +1,44 @@
+\documentclass[11pt]{amsart}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+\title{PS 4.22}
+%\date{}                                           % Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+%\section{}
+%\subsection{}
+ \noindent Los datos reunidos en la Secretaría de Industrias relacionado a la producción de N fábricas en cada uno de los meses del año anterior, se proporcionan de la siguiente manera:  \newline
+Datos: N  \newline
+\begin{center}
+$FAB_1$, $MES_1,_1$, $MES_1,_2$, $MES_1,_{12}$,  \newline
+$FAB_2$, $MES_2,_1$, $MES2,_2$, $MES_2,_{12}$,  \newline
+...  \newline
+... \newline
+ \noindent$FAB_N$, $MES_N,_1$, $MES_N,_2$, $MES_N,_{12}$
+\end{center} 
+
+Donde:  
+
+\setlength{\parindent}{1cm}
+N \hspace{0.1cm} es una variable de tipo entero que representa el número de fábricas,      $1 \leq N \leq 500$ 
+
+\setlength{\parindent}{1cm}
+$FAB_i$ \hspace{0.5cm} es una variable de tipo entero que representa la clave de la fábrica$_i$ 
+
+\setlength{\parindent}{1cm}
+$MES_i,_j$  \hspace{0.5cm} es una variable de tipo real que representa la producción de la fábrica$_j$ en el mes j.  \newline
+
+ \noindent Realice un diagrama de flujo que proporcione la siguiente información:
+\begin{enumerate}
+  \item[a)] La clave de la fábrica que más produjo el año anterior. Imprimir también su producción.
+  \item[b)] Dado un mes como parámetro, imprimir las claves de las fábricas cuyas producciones en dicho mes, fueron superiores a \$150,000.
+\end{enumerate}
+\end{document}  

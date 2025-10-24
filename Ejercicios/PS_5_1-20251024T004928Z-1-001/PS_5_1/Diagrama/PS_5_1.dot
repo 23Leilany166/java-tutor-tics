@@ -1,0 +1,26 @@
+digraph PS_5_1 {
+  node [shape="rectangle"];
+  
+  // Nodos
+  inicio [shape="ellipse", label="Inicio",fillcolor="#40e0d0", style="filled"];
+  definir_productos [shape="parallelogram", label="Definir PRODUCTOS[1..N]"];
+  menu [shape="diamond", label="Menú: ¿Qué operación desea realizar?"];
+  vender_producto [shape=box, label="Venta de un producto (Actualizar existencia)"];
+  reabastecer_producto [shape=box, label="Reabastecimiento de un producto"];
+  actualizar_precio [shape=box, label="Actualizar precio de un producto"];
+  informar_producto [shape=box, label="Informar sobre un producto"];
+  fin [shape="ellipse", label="Fin"];
+  
+  // Aristas
+  inicio -> definir_productos;
+  definir_productos -> menu;
+  menu -> vender_producto [label="Opción 1"];
+  menu -> reabastecer_producto [label="Opción 2"];
+  menu -> actualizar_precio [label="Opción 3"];
+  menu -> informar_producto [label="Opción 4"];
+  vender_producto -> menu;
+  reabastecer_producto -> menu;
+  actualizar_precio -> menu;
+  informar_producto -> menu;
+  menu -> fin [label="Opción 5"];
+}

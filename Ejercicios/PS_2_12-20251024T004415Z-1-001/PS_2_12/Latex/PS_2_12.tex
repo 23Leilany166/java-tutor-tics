@@ -1,0 +1,42 @@
+\documentclass[11pt]{amsart}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+\title{PS 2.12}
+\author{Enrique Zuñiga Zuñiga}
+%\date{}                                           % Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+%\section{}
+\noindent Construya un diagrama de flujo tal que dado como dato una temperatura en grados Fahrenheit, determine el deporte que es apropiado practicar a esa temperatura, teniendo en cuenta la siguiente tabla:\newline
+$$
+\begin{array}{|c|c|}
+\hline
+Tabla 6.1 &\\
+\hline
+DEPORTE & TEMPERATURA\\
+\hline
+Natacion & > 85\\
+\hline
+Tenis &70 < TEMP <= 85\\
+\hline
+Golf &32 < TEMP <= 70\\
+\hline
+Esqui &10 < TEMP <= 32\\
+\hline
+Marcha &<= 10\\
+\hline
+\end{array}
+$$\newline
+
+\noindent Dato: TEMP (variable de tipo real que representa la temperatura).\newline
+
+
+\end{document}  

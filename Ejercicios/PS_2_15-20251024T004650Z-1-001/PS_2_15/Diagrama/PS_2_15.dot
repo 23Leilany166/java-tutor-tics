@@ -1,0 +1,45 @@
+digraph PS_2_15_Diagrama {
+    node [shape=box];
+    start [label="Inicio", shape=ellipse, fillcolor="#40e0d0", style="filled"];
+    input_oper1 [label="Ingrese el primer operando:", shape=diamond];
+    oper1 [label="oper1 = Leer entrada", shape=box];
+    input_oper2 [label="Ingrese el segundo operando:", shape=diamond];
+    oper2 [label="oper2 = Leer entrada", shape=box];
+    input_clave [label="Ingrese la clave de la operación (+, -, *, /):", shape=diamond];
+    clave [label="clave = Leer entrada", shape=box];
+    calc_suma [label="resultado = oper1 + oper2", shape=box];
+    calc_resta [label="resultado = oper1 - oper2", shape=box];
+    calc_multiplicacion [label="resultado = oper1 * oper2", shape=box];
+    calc_division [label="resultado = oper1 / oper2", shape=box];
+    check_clave [label="¿clave == '+'?", shape=diamond];
+    check_clave2 [label="¿clave == '-'?", shape=diamond];
+    check_clave3 [label="¿clave == '*'?", shape=diamond];
+    check_clave4 [label="¿clave == '/'?", shape=diamond];
+    invalid_clave [label="Mostrar clave de operación inválida.", shape=diamond];
+    output_clave [label="Mostrar clave ingresada:", shape=diamond];
+    output_resultado [label="Mostrar resultado:", shape=diamond];
+    end [label="Fin", shape=ellipse, fillcolor="#40e0d0", style="filled"];
+
+    start -> input_oper1;
+    input_oper1 -> oper1;
+    oper1 -> input_oper2;
+    input_oper2 -> oper2;
+    oper2 -> input_clave;
+    input_clave -> clave;
+    clave -> check_clave;
+    check_clave -> calc_suma [label="Sí"];
+    check_clave -> check_clave2 [label="No"];
+    check_clave2 -> calc_resta [label="Sí"];
+    check_clave2 -> check_clave3 [label="No"];
+    check_clave3 -> calc_multiplicacion [label="Sí"];
+    check_clave3 -> check_clave4 [label="No"];
+    check_clave4 -> calc_division [label="Sí"];
+    check_clave4 -> invalid_clave [label="No"];
+    calc_suma -> output_clave;
+    calc_resta -> output_clave;
+    calc_multiplicacion -> output_clave;
+    calc_division -> output_clave;
+    invalid_clave -> end;
+    output_clave -> output_resultado;
+    output_resultado -> end;
+}

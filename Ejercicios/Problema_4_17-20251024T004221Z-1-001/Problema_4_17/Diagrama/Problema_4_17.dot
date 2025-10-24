@@ -1,0 +1,73 @@
+digraph DiagramaFlujo {
+  Inicio [shape=ellipse, label="Inicio", style="filled"];
+  textoIngresar[shape=box, label="'Ingrese numero de filas y columnas'"];
+  N [shape=parallelogram, label="M,N"];
+  condicion [shape=diamond, label="  1 <= M <= 50 
+  y 1 <= N <= 30"];
+  error [shape=box, label="Error en los datos"];
+  A [shape=invhouse, label="A"];
+  B [shape=invhouse, label="B"];
+  J [shape=box, label="J = 1"];
+  J2 [shape=box, label="J = 1"];
+    J3 [shape=box, label="J = 1"];
+  I [shape=box, label="I = 1"];
+  I2 [shape=box, label="I = 1"];
+ array3 [shape=parallelogram, label="A[I,J]"];
+  iAcumulador [shape=box, label="I = I + 1"];
+  condicion2 [shape=diamond, label="  I<=M"];
+  condicion22 [shape=diamond, label="  I<=M"];
+  textoValor [shape=box, label="'Ingresa elemento ',I ,J"];
+  array [shape=box, label="TA[I,J]"];
+  estructuraRep [shape=diamond, label="  I <= N "];
+  
+  jestructuraRep [shape=diamond, label="  J <= N "];
+  jestructuraRep2 [shape=diamond, label="  J <= M "];
+  jestructuraRep3 [shape=diamond, label="  J <= M "];
+  iAcumuladoR3 [shape=box, label="I = I + 1"];
+  JAcumulador [shape=box, label="J = J + 1"];
+  JAcumulador2 [shape=box, label="J = J + 1"];
+  JAcumulador3 [shape=box, label="J = J + 1"];
+  texto2[shape=box, label="Matriz transpuesta"];
+  I3 [shape=box, label="I = 1"];
+array2 [shape=box, label="TA[J,I]=TA[I,J]"];
+  Fin [shape=ellipse, label="Fin"]; 
+ Inicio->textoIngresar;
+ textoIngresar->N;
+ N->condicion;
+ condicion -> I [label="Si", tailport=e, headport=n];
+ condicion -> error [label="No", tailport=w, headport=n];
+ error->B;
+ I->condicion2;
+ condicion2 -> J [label="Si", tailport=e, headport=n];
+ condicion2 -> A [label="No", tailport=w, headport=n];
+ J->jestructuraRep;
+jestructuraRep -> textoValor [label="Si", tailport=e, headport=n];
+jestructuraRep -> iAcumulador [label="No", tailport=w, headport=n];
+iAcumulador->condicion2;
+textoValor->array3;
+array3->JAcumulador;
+JAcumulador->jestructuraRep;
+B->Fin;
+A->I2;
+I2->condicion22;
+condicion22 -> J2 [label="Si", tailport=e, headport=n];
+condicion22 -> texto2 [label="No", tailport=w, headport=n];
+J2->jestructuraRep2;
+jestructuraRep2 -> array2 [label="Si", tailport=e, headport=n];
+jestructuraRep2 -> texto2 [label="No", tailport=w, headport=n];
+array2->JAcumulador2;
+JAcumulador2->jestructuraRep2;
+texto2->I3
+I3->estructuraRep;
+estructuraRep -> J3 [label="Si", tailport=e, headport=n];
+estructuraRep -> Fin [label="No", tailport=w, headport=n];
+J3->jestructuraRep3;
+jestructuraRep3 -> array [label="Si", tailport=e, headport=n];
+jestructuraRep3 -> iAcumuladoR3 [label="No", tailport=w, headport=n];
+array->JAcumulador3
+JAcumulador3->jestructuraRep3
+iAcumuladoR3->jestructuraRep2
+
+
+
+}

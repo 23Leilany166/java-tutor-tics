@@ -1,0 +1,33 @@
+digraph G {
+ 
+  inicio [shape=ellipse, label="Inicio"];
+  input [shape=box, label="Ingrese la temperatura\nen grados Fahrenheit"];
+  temperatura [shape=box, label="temperatura"];
+  condicion1 [shape=diamond, label="temperatura > 85"];
+  condicion2 [shape=diamond, label="temperatura > 70 y temperatura <= 85"];
+  condicion3 [shape=diamond, label="temperatura > 32 y temperatura <= 70"];
+  condicion4 [shape=diamond, label="temperatura > 10 y temperatura <= 32"];
+  natacion [shape=box, label="Deporte apropiado:\nNatación"];
+  tenis [shape=box, label="Deporte apropiado:\nTenis"];
+  golf [shape=box, label="Deporte apropiado:\nGolf"];
+  esqui [shape=box, label="Deporte apropiado:\nEsquí"];
+  marcha [shape=box, label="Deporte apropiado:\nMarcha"];
+  fin [shape=ellipse, label="Fin"];
+  
+  inicio -> input;
+  input -> temperatura;
+  temperatura -> condicion1;
+  condicion1 -> natacion [label="Si", tailport=e, headport=n];
+  natacion -> fin;
+  condicion1 -> condicion2[label="No", tailport=w, headport=n];
+  condicion2 -> tenis [label="Si", tailport=e, headport=n];
+  tenis -> fin;
+  condicion2 -> condicion3 [label="No", tailport=w, headport=n];
+  condicion3 -> golf [label="Si", tailport=e, headport=n];
+  golf -> fin;
+  condicion3 -> condicion4 [label="No", tailport=w, headport=n];
+  condicion4 -> esqui [label="Si", tailport=e, headport=n];
+  esqui -> fin;
+  condicion4 -> marcha[label="No", tailport=w, headport=n];
+  marcha -> fin;
+}

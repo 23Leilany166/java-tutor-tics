@@ -1,0 +1,26 @@
+digraph G {
+  rankdir=TB;
+  inicio [shape=ellipse, label="Inicio"];
+  leerA [shape=parallelogram, label="Leer el numero A"];
+  leerB [shape=parallelogram, label="Leer el numero B"];
+  leerC [shape=parallelogram, label="Leer el numero C"];
+  identificarMayor [shape=diamond, label="A > B y A > C"];
+  mayorA [shape=box, label="mayor = A"];
+  identificarMayorB [shape=diamond, label="B > A y B > C"];
+  mayorB [shape=box, label="mayor = B"];
+  mayorC [shape=box, label="mayor = C"];
+  imprimirResultado [shape=box, label="Imprimir 'El numero mayor es: ', mayor"];
+  fin [shape=ellipse, label="Fin"];
+  inicio -> leerA;
+  leerA -> leerB;
+  leerB -> leerC;
+  leerC -> identificarMayor;
+  identificarMayor -> mayorA [label="si", tailport=e, headport=n];
+  identificarMayor -> identificarMayorB [label="no", tailport=w, headport=n];
+  mayorA -> imprimirResultado;
+  identificarMayorB -> mayorB [label="si", tailport=e, headport=n];
+  identificarMayorB -> mayorC [label="no", tailport=w, headport=n];
+  mayorB -> imprimirResultado;
+  mayorC -> imprimirResultado;
+  imprimirResultado -> fin;
+}

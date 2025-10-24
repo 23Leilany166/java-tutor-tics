@@ -1,0 +1,29 @@
+digraph DiagramaFlujo {
+
+  Inicio [shape=ellipse, label="Inicio"]
+  Ingreso [shape=parallelogram, label="num1,num2"];
+  IngresoNum1 [shape=box, label="Ingrese el primer número"]
+  LeerNum1 [shape=box, label="Leer num1"]
+  IngresoNum2 [shape=box, label="Ingrese el segundo número"]
+  LeerNum2 [shape=box, label="Leer num2"]
+  CalcularSuma [shape=box, label="Calcular suma = num1 + num2"]
+  CalcularResta [shape=box, label="Calcular resta = num1 - num2"]
+  CalcularMultiplicacion [shape=box, label="Calcular multiplicacion = num1 * num2"]
+  ImprimirSuma [shape=box, label="Imprimir 'Suma: ' + suma"]
+  ImprimirResta [shape=box, label="Imprimir 'Resta: ' + resta"]
+  ImprimirMultiplicacion [shape=box, label="Imprimir 'Multiplicación: ' + multiplicacion"]
+  Fin [shape=ellipse, label="Fin"]
+  
+  Inicio -> Ingreso
+  Ingreso->IngresoNum1
+  IngresoNum1 -> LeerNum1
+  LeerNum1 -> IngresoNum2
+  IngresoNum2 -> LeerNum2
+  LeerNum2 -> CalcularSuma
+  CalcularSuma -> CalcularResta
+  CalcularResta -> CalcularMultiplicacion
+  CalcularMultiplicacion -> ImprimirSuma
+  ImprimirSuma -> ImprimirResta
+  ImprimirResta -> ImprimirMultiplicacion
+  ImprimirMultiplicacion -> Fin
+}

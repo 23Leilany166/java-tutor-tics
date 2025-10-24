@@ -1,0 +1,33 @@
+digraph VerificarAprobacion {
+  node [shape=box];
+
+  Inicio [shape=ellipse, label="Inicio", style="filled"];
+  LeerMatricula [label="Leer matrícula"];
+  LeerCal1 [label="Leer primera calificación"];
+  LeerCal2 [label="Leer segunda calificación"];
+  LeerCal3 [label="Leer tercera calificación"];
+  LeerCal4 [label="Leer cuarta calificación"];
+  LeerCal5 [label="Leer quinta calificación"];
+  CalcularPromedio [label="Calcular promedio"];
+  MostrarMatricula [label="Mostrar matrícula"];
+  MostrarPromedio [label="Mostrar promedio"];
+  Condicion [shape=diamond, label="Promedio >= 6"];
+  Aprobado [label="¡Aprobado!"];
+  NoAprobado [label="No aprobado"];
+  Fin [shape=ellipse, label="Fin"];
+
+  Inicio -> LeerMatricula;
+  LeerMatricula -> LeerCal1;
+  LeerCal1 -> LeerCal2;
+  LeerCal2 -> LeerCal3;
+  LeerCal3 -> LeerCal4;
+  LeerCal4 -> LeerCal5;
+  LeerCal5 -> CalcularPromedio;
+  CalcularPromedio -> MostrarMatricula;
+  MostrarMatricula -> MostrarPromedio;
+  MostrarPromedio -> Condicion;
+  Condicion -> Aprobado [label="Sí", tailport=s, headport=n];
+  Condicion -> NoAprobado [label="No", tailport=w, headport=n];
+  Aprobado -> Fin;
+  NoAprobado -> Fin;
+}

@@ -1,0 +1,15 @@
+digraph Ejemplo_2_1 {
+  Inicio [shape=ellipse, label="INICIO ", style="filled"];
+  Ingreso [shape=parallelogram, label="CAL"];
+  Condicion [shape=diamond, label="CAL > 8"];
+  Aprobado [shape=invhouse, label=" Aprobado"];
+  Reprobado [shape=invhouse, label=" Reprobado"];
+  Fin [shape=ellipse, label="FIN"];
+
+  Inicio -> Ingreso;
+  Ingreso -> Condicion;
+  Condicion -> Aprobado  [label="Si", tailport=e, headport=n];
+  Condicion -> Reprobado [label="No", tailport=w, headport=n];
+  Aprobado -> Fin;
+  Reprobado -> Fin;
+}

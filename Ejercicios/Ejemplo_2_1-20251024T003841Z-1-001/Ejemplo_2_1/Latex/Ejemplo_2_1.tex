@@ -1,0 +1,58 @@
+\documentclass[11pt]{amsart}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\usepackage{multirow}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+\title{ Ejemplo 2.1}
+\author{Enrique Zuñiga Zuñiga}
+%\date{}                                           % Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+%\section{}
+Ejemplo 2.1\newline
+Construya un diagrama de flujo tal que dado como dato la calificación de un alumno en un examen, escriba “aprobado” en caso de que esa calificación sea mayor a 8.\newline\newline
+Dato: CAL (variable de tipo real que representa la calificación del alumno).\newline\newline
+En la tabla 2.1, podemos observar el seguimiento del diagrama de flujo para
+diferentes corridas.\newline
+
+
+$$
+\begin{array}{|c|c|c|}
+\hline
+ \multicolumn{3}{|c|}{Tabla 2.1}\\
+\hline
+NUMERO DECORRIDA & DATO & RESULTADO \\
+ & CAL &  \\
+\hline
+1 & 8.75 & \text{``Aprobado''} \\
+\hline
+2 & 7.90 &  \\
+\hline
+3 & 8.00 &  \\
+\hline
+4 & 9.50 & \text{``Aprobado''} \\
+\hline
+5 & 8.35 & \text{``Aprobado''} \\
+\hline
+\end{array}
+$$\newline\newline
+A continuación presentamos el diagrama de flujo en lenguaje algorítmico.\newline\newline
+EXAMEM SELECTIVA SIMPLE\newline
+El programa, dado com o dato la calificación de un alumno en un examen, escribe aprobado si la calificación es superior a 8 CAL es una variable de tipo real\newline
+1. Leer CAL\newline
+2. S1 CAL > 8 entonces\newline
+Escribir "Aprobado"\newline
+3. Fin del condicional d e l paso 2 \newline
+
+%\subsection{}
+
+
+
+\end{document}  

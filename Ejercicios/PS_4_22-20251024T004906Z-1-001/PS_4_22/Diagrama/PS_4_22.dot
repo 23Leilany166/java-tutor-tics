@@ -1,0 +1,41 @@
+digraph PS_4_22_Diagrama {
+    node [shape=box];
+
+    Inicio [label="Inicio"];
+    IngresarN [label="Ingresar N"];
+    DeclararVariables [label="Declarar variables\nclaveMaxProduccion = 0\nmaxProduccion = 0\nmesParametro = 0"];
+    IniciarLoopFabricas [label="Para i desde 0 hasta N-1:"];
+    IngresarClaveFabrica [label="Ingresar clave de fábrica"];
+    IniciarLoopMeses [label="Para j desde 1 hasta 12:"];
+    IngresarProduccion [label="Ingresar producción en el mes j"];
+    CompararProduccion [label="Si produccionMes > produccionMaxMes:"];
+    ActualizarProduccionMax [label="produccionMaxMes = produccionMes"];
+    CondicionMesParametro [label="Si produccionMes > 150000 y j == mesParametro:"];
+    MostrarProduccion [label="Mostrar producción de la fábrica"];
+    FinCondicionMesParametro [label="Fin Si"];
+    FinLoopMeses [label="Fin Para"];
+    CompararMaxProduccion [label="Si produccionMaxMes > maxProduccion:"];
+    ActualizarMaxProduccion [label="maxProduccion = produccionMaxMes"];
+    ActualizarClaveMaxProduccion [label="claveMaxProduccion = fabClave"];
+    FinLoopFabricas [label="Fin Para"];
+    MostrarResultado [label="Mostrar la fábrica con mayor producción"];
+    Fin [label="Fin"];
+
+    Inicio -> IngresarN;
+    IngresarN -> DeclararVariables;
+    DeclararVariables -> IniciarLoopFabricas;
+    IniciarLoopFabricas -> IngresarClaveFabrica;
+    IngresarClaveFabrica -> IniciarLoopMeses;
+    IniciarLoopMeses -> IngresarProduccion;
+    IngresarProduccion -> CompararProduccion;
+    CompararProduccion -> ActualizarProduccionMax;
+    CompararProduccion -> CondicionMesParametro;
+    CondicionMesParametro -> MostrarProduccion;
+    FinCondicionMesParametro -> FinLoopMeses;
+    FinLoopMeses -> CompararMaxProduccion;
+    CompararMaxProduccion -> ActualizarMaxProduccion;
+    ActualizarMaxProduccion -> ActualizarClaveMaxProduccion;
+    CompararMaxProduccion -> FinLoopFabricas;
+    FinLoopFabricas -> MostrarResultado;
+    MostrarResultado -> Fin;
+}
