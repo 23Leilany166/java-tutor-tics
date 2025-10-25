@@ -1,0 +1,33 @@
+digraph Clase_Alumno {
+    node [shape=box];
+
+    Inicio [
+        shape=ellipse,
+        label="Inicio",
+        fillcolor="#FF0000",
+        style="filled"
+    ];
+    Crear_Alumnos [
+        label="Crear objetos de tipo Alumno"
+    ];
+    Acceder_Campos [
+        label="Acceder a los campos de un alumno"
+    ];
+    Modificar_Campos [
+        label="Modificar los campos de un alumno"
+    ];
+    Imprimir_Datos [
+        shape=box,
+        label="Imprimir los datos de los alumnos"
+    ];
+    Fin [
+        shape=ellipse,
+        label="Fin"
+    ];
+
+    Inicio -> Crear_Alumnos;
+    Crear_Alumnos -> Acceder_Campos;
+    Acceder_Campos -> Modificar_Campos;
+    Modificar_Campos -> Imprimir_Datos;
+    Imprimir_Datos -> Fin;
+}

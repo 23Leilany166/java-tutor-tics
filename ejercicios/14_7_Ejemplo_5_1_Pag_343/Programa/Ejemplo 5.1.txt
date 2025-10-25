@@ -1,0 +1,73 @@
+public class Alumno {
+    private String nombre;
+    private String direccion;
+    private int matricula;
+    private String carrera;
+    
+    public Alumno(String nombre, String direccion, int matricula, String carrera) {
+        this.nombre = nombre;
+        this.direccion = direccion;
+        this.matricula = matricula;
+        this.carrera = carrera;
+    }
+    
+    public String getNombre() {
+        return nombre;
+    }
+    
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    
+    public String getDireccion() {
+        return direccion;
+    }
+    
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+    
+    public int getMatricula() {
+        return matricula;
+    }
+    
+    public void setMatricula(int matricula) {
+        this.matricula = matricula;
+    }
+    
+    public String getCarrera() {
+        return carrera;
+    }
+    
+    public void setCarrera(String carrera) {
+        this.carrera = carrera;
+    }
+    
+    public static void main(String[] args) {
+        // Crear objetos de tipo Alumno
+        Alumno alumno1 = new Alumno("Juan Perez", "Calle Principal 123", 123456, "Ingeniería Informática");
+        Alumno alumno2 = new Alumno("Maria Lopez", "Avenida Central 456", 789012, "Administración de Empresas");
+        
+        // Acceder a los campos de un alumno
+        String nombreAlumno1 = alumno1.getNombre();
+        int matriculaAlumno2 = alumno2.getMatricula();
+        
+        // Modificar los campos de un alumno
+        alumno1.setDireccion("Calle Secundaria 789");
+        alumno2.setCarrera("Contabilidad");
+        
+        // Imprimir los datos de los alumnos
+        System.out.println("Alumno 1:");
+        System.out.println("Nombre: " + alumno1.getNombre());
+        System.out.println("Dirección: " + alumno1.getDireccion());
+        System.out.println("Matrícula: " + alumno1.getMatricula());
+        System.out.println("Carrera: " + alumno1.getCarrera());
+        
+        System.out.println("\nAlumno 2:");
+        System.out.println("Nombre: " + alumno2.getNombre());
+        System.out.println("Dirección: " + alumno2.getDireccion());
+        System.out.println("Matrícula: " + alumno2.getMatricula());
+        System.out.println("Carrera: " + alumno2.getCarrera());
+    }
+}
+

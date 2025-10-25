@@ -1,0 +1,36 @@
+digraph G {
+  rankdir=TB;
+  inicio [shape=ellipse, label="Inicio"];
+  leerN [shape=parallelogram, label="Leer el número de empleados"];
+  inicializarTotalNomina [shape=box, label="totalNomina = 0"];
+ i [shape=diamond, label="i <= N?"];
+  leerSueldo [shape=parallelogram, label="Leer el sueldo del empleado i"];
+  calcularAumento [shape=diamond, label="sueldo < 10000?"];
+  aumentoMenor [shape=box, label="aumento = sueldo * 0.1"];
+  calcularAumento2 [shape=diamond, label="sueldo >= 10000 y sueldo <= 25000?"];
+  aumentoMedio [shape=box, label="aumento = sueldo * 0.07"];
+  aumentoMayor [shape=box, label="aumento = sueldo * 0.08"];
+  calcularNuevoSueldo [shape=box, label="nuevoSueldo = sueldo + aumento"];
+  sumarTotalNomina [shape=box, label="totalNomina += nuevoSueldo"];
+  imprimirNuevoSueldo [shape=box, label="Imprimir 'El nuevo sueldo del empleado i es: $', nuevoSueldo"];
+  //simprimirTotalNomina [shape=box, label="Imprimir 'El monto total de la nómina considerando el aumento es: $', totalNomina"];
+  fin [shape=ellipse, label="Fin"];
+
+  inicio -> leerN;
+  leerN -> inicializarTotalNomina;
+  inicializarTotalNomina -> i;
+  i -> leerSueldo [label="si", tailport=e, headport=n];
+  i -> imprimirTotalNomina [label="no", tailport=w, headport=s];
+  leerSueldo -> calcularAumento;
+  calcularAumento -> aumentoMenor [label="si", tailport=e, headport=n];
+  calcularAumento -> calcularAumento2 [label="no", tailport=w, headport=n];
+  aumentoMenor -> calcularNuevoSueldo;
+  calcularAumento2 -> aumentoMedio [label="si", tailport=e, headport=n];
+  calcularAumento2 -> aumentoMayor [label="no", tailport=w, headport=n];
+  aumentoMedio -> calcularNuevoSueldo;
+  aumentoMayor -> calcularNuevoSueldo;
+  calcularNuevoSueldo -> sumarTotalNomina;
+  sumarTotalNomina -> imprimirNuevoSueldo;
+  imprimirNuevoSueldo -> i;
+  imprimirTotalNomina -> fin;
+}

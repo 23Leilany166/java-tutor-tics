@@ -1,0 +1,35 @@
+digraph Problema_4_4_1 {
+   Inicio [
+    shape=ellipse,
+    label="INICIO", 
+    fillcolor="#40e0d0", 
+    style="filled"];
+   Entrada_datos [
+    shape=parallelogram,
+    label=" Leer Y "];
+   Condicion [
+    shape=diamond    
+    label=" N < 100 "];
+   Escribir [
+    shape=box  
+    label=" N = N + 1 
+A[N] = Y"
+   ];
+   Leer [
+    shape=box
+    label="\" No hay espacio 
+    para insertar al
+    Elemento Y \""
+   ]
+   Fin [
+    shape=ellipse
+    label="FIN"];
+
+
+  Inicio -> Condicion;
+  Condicion -> Entrada_datos[label="Si", tailport=w, headport=n];
+  Condicion -> Leer[label="No", tailport=s, headport=r];
+  Entrada_datos -> Escribir;
+  Escribir -> Fin;
+  Leer -> Fin[tailport=r, headport=e];
+}

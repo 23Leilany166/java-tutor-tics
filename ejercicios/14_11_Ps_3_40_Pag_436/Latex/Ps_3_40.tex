@@ -1,0 +1,41 @@
+\documentclass[11pt]{amsart}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+\title{PS 3.40}
+
+%\date{}                                           % Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+%\section{}
+%\subsection{}
+\noindent Se tiene un grupo de registros donde se almacena información relativa a los ele­mentos de la tabla periódica de química. Por cada elemento se ingresa su nom­bre, su conductividad eléctrica y su conductividad térmica. Haga un diagrama de flujo para calcular lo siguiente :
+\newline
+
+\noindent a) Los dos principales elementos conductores de la electricidad y el calor.
+\noindent b) Los dos peores elementos conductores de la electricidad y el calor.
+\newline
+
+\noindent Datos: $NOM_{1}$, $CE_{1}$, $CT_{1}$, $NOM_{2}$, $CE_{2}$,$CT_{2}$,...,"NN",0,0
+\newline
+
+\noindent Donde: 
+\newline
+
+\noindent NOM¡ es una variable de tipo cadena de caracteres que representa el nombre del elemento i.
+
+\noindent CE¡ es una variable de tipo real que representa la conductividad eléc­trica del elemento i. Si no se conoce el valor del elemento i se in­gresa como CE el valor de -1.
+
+\noindent CTi es una variable de tipo real que representa la conductividad térmi­ca del elemento i. Si no se conoce el valor del elemento i se ingresa como CT el valor de -1.
+\newline
+
+\noindent El fin de datos está expresado como : “NN”,0,0.
+
+\end{document}  

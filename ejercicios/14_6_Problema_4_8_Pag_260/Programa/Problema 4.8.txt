@@ -1,0 +1,54 @@
+import java.util.Scanner;
+
+public class CalificacionesGrupo {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Ingrese número de alumnos: ");
+        int N = scanner.nextInt();
+
+        if (N > 1 && N < 100) {
+            int[] ALUMNO = new int[N]; // Arreglo para almacenar las calificaciones de los alumnos
+
+            for (int i = 0; i < N; i++) {
+                System.out.print("Ingrese calificación del alumno " + (i + 1) + ": ");
+                ALUMNO[i] = scanner.nextInt();
+            }
+
+            int TALUMA = 0; // Variable para contar alumnos aprobados
+            int TALUMR = 0; // Variable para contar alumnos reprobados
+            int CAL8 = 0; // Variable para contar alumnos con calificación mayor a 8
+            int I = 0; // Variable de control del ciclo
+            int PROM = 0; // Variable para almacenar el promedio general del grupo
+
+            while (I < N) {
+                if (ALUMNO[I] > 6) {
+                    TALUMA++;
+
+                    if (ALUMNO[I] > 8) {
+                        CAL8++;
+                    }
+                } else {
+                    TALUMR++;
+                }
+
+                PROM += ALUMNO[I];
+                I++;
+            }
+
+            PROM /= N; // Cálculo del promedio general
+
+            double PORCA = (double) TALUMA / N * 100; // Porcentaje de alumnos aprobados
+            double PORCR = (double) TALUMR / N * 100; // Porcentaje de alumnos reprobados
+
+            System.out.println("Promedio del grupo: " + PROM);
+            System.out.println("Total alumnos aprobados: " + TALUMA);
+            System.out.println("Total alumnos reprobados: " + TALUMR);
+            System.out.println("Porcentaje alumnos aprobados: " + PORCA + "%");
+            System.out.println("Porcentaje alumnos reprobados: " + PORCR + "%");
+            System.out.println("Número de alumnos con calificación mayor a 8: " + CAL8);
+        } else {
+            System.out.println("El número de alumnos ingresado es incorrecto.");
+        }
+    }
+}

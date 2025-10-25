@@ -1,0 +1,48 @@
+\documentclass[11pt]{amsart}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+\title{PS 3.7}
+%\date{}                                           % Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+%\section{}
+%\subsection{}
+\noindent Calcule el aumento de sueldos para N empleados de una empresa, bajo el si­guiente criterio:
+\newline
+
+• Si el sueldo es menor a \$10,000 :  Aumento 10\%
+
+• Si el sueldo está comprendido entre \$10,000 y \$25,000 :  Aumento 7\% 
+
+• Si el sueldo es mayor a \$25,000 : Aumento 8\%
+\newline
+
+\noindent Imprima lo siguiente:
+\newline
+
+a) El nuevo sueldo del trabajador
+
+b) El monto total de la nómina considerando el aumento.
+\newline
+
+\noindent Datos: N, $SUE_{1}$, $SUE_{2}$, . . $SUE_{N}$
+\newline
+
+\noindent Donde:
+\newline
+
+N es una variable de tipo entero que representa el número de em­pleados de la empresa.
+\newline
+
+SUE¡. es una variable de tipo real que representa el sueldo del trabajador i (1 $\leq$ i $\leq$ N).
+
+
+\end{document}  

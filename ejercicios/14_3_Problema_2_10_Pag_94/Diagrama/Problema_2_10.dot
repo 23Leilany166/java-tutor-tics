@@ -1,0 +1,80 @@
+digraph MayorDeTresNumeros {
+  Inicio [
+    shape=ellipse,
+    label="Inicio", 
+    fillcolor="#FF0000", 
+    style="filled"
+  ];
+  LeerABC [
+    shape=parallelogram,
+    label="Leer A, B, C"
+  ];
+  Cond_A_B [
+    shape=diamond,
+    label="A > B"
+  ];
+  Cond_A_C [
+    shape=diamond,
+    label="A > C"
+  ];
+  Cond_A_Equals_C [
+    shape=diamond,
+    label="A = C"
+  ];
+  Cond_B_C [
+    shape=diamond,
+    label="B > C"
+  ];
+  EscribirAMayor [
+    shape=box,
+    label="Escribir 'A es el mayor'"
+  ];
+  EscribirACMayores [
+    shape=box,
+    label="Escribir 'A y C son los mayores'"
+  ];
+  EscribirCMayor [
+    shape=box,
+    label="Escribir 'C es el mayor'"
+  ];
+  EscribirABMayores [
+    shape=box,
+    label="Escribir 'A y B son los mayores'"
+  ];
+  EscribirABCMayores [
+    shape=box,
+    label="Escribir 'A, B y C son los mayores'"
+  ];
+  EscribirBMayor [
+    shape=box,
+    label="Escribir 'B es el mayor'"
+  ];
+  EscribirBCMayores [
+    shape=box,
+    label="Escribir 'B y C son los mayores'"
+  ];
+  Fin [
+    shape=ellipse,
+    label="Fin"
+  ];
+
+  Inicio -> LeerABC;
+  LeerABC -> Cond_A_B;
+  Cond_A_B -> Cond_A_C [label="sí"];
+  Cond_A_B -> Cond_A_Equals_C [label="no"];
+  Cond_A_C -> EscribirAMayor [label="sí"];
+  Cond_A_C -> EscribirACMayores [label="no"];
+  Cond_A_Equals_C -> EscribirACMayores [label="sí"];
+  Cond_A_Equals_C -> EscribirCMayor [label="no"];
+  EscribirAMayor -> Fin;
+  EscribirACMayores -> Fin;
+  EscribirCMayor -> Fin;
+  Cond_A_B -> Cond_B_C [label="no"];
+  Cond_B_C -> EscribirABMayores [label="sí"];
+  Cond_B_C -> EscribirABCMayores [label="no"];
+  EscribirABMayores -> Fin;
+  EscribirABCMayores -> Fin;
+  Cond_B_C -> EscribirBMayor [label="no"];
+  EscribirBMayor -> Fin;
+  Cond_A_Equals_C -> Fin;
+}

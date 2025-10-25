@@ -1,0 +1,40 @@
+\documentclass[11pt]{amsart}
+\usepackage{geometry}
+\geometry{letterpaper}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+\title{ Problema 2.10}
+\author{}
+%\date{}
+
+\begin{document}
+\maketitle
+
+Dado como datos tres números reales, identifique cuál es el mayor. Considere que los números pueden ser iguales. Desarrolle el diagrama de flujo correspondiente.\\
+
+\textbf{DATOS:} $A$, $B$, $C$ (variables de tipo real).\\
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\multicolumn{3}{ |c| }{Tabla 2.15} \\ \hline
+  \hline
+  NUMERO DE CORRIDAD & DATO CAL & RESLTADO \\
+  \hline
+  1 & 8.75 & "Aprobado"  \\
+  \hline
+  2 & 7.90 &  "Reprobado"  \\
+  \hline
+  3 & 8.00 &  "Aprobado" \\
+  \hline
+  4 & 9.50 & "aprobado" \\
+  \hline
+  5 & 8.35 & "Aprobado" \\
+  \hline
+\end{tabular}
+\end{center}
+
+\end{document}

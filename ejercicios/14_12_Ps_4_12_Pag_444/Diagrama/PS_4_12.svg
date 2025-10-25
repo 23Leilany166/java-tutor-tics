@@ -1,0 +1,52 @@
+digraph Calcular_Ventas {
+  Inicio [
+    shape=ellipse,
+    label="Inicio", 
+    fillcolor="#FF0000", 
+    style="filled"
+  ];
+  Leer_precios [
+    shape=parallelogram,
+    label="Leer P1, P2, ..., P8"
+  ];
+  Leer_ventas [
+    shape=parallelogram,
+    label="Leer DIA, MODELO, CANT"
+  ];
+  Procesar_ventas [
+    shape=diamond,
+    label="¿Venta válida?"
+  ];
+  Sumar_por_modelo [
+    shape=box,
+    label="Sumar venta a modelo"
+  ];
+  Sumar_por_dia [
+    shape=box,
+    label="Sumar venta a día"
+  ];
+  Encontrar_maximo [
+    shape=box,
+    label="Encontrar modelo más rentable"
+  ];
+  Imprimir_resultados [
+    shape=box,
+    label="Imprimir resultados"
+  ];
+  Fin [
+    shape=ellipse,
+    label="Fin"
+  ];
+
+  Inicio -> Leer_precios;
+  Leer_precios -> Leer_ventas;
+  Leer_ventas -> Procesar_ventas;
+  Procesar_ventas -> Sumar_por_modelo [label="Sí"];
+  Procesar_ventas -> Leer_ventas [label="No"];
+  Sumar_por_modelo -> Sumar_por_dia;
+  Sumar_por_dia -> Leer_ventas;
+  Leer_ventas -> Procesar_ventas;
+  Procesar_ventas -> Encontrar_maximo;
+  Encontrar_maximo -> Imprimir_resultados;
+  Imprimir_resultados -> Fin;
+}

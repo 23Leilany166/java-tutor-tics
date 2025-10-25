@@ -1,0 +1,38 @@
+digraph G {
+  inicio [shape=ellipse, label="Inicio"];
+  input [shape=box, label="Ingrese el número de empleados"];
+  N [shape=box, label="N"];
+  sueldos [shape=box, label="sueldos[ N ]"];
+  bucle[shape=diamond, label="i=1  i < N  i++"];
+
+  i [shape=box, label="i"];
+  inputSueldo [shape=box, label="Ingrese el sueldo del trabajador"];
+  sueldo [shape=box, label="sueldos[i]"];
+  aumento [shape=diamond, label="sueldos[i] < 800"];
+  aumentoSi [shape=box, label="sueldos[i] *= 1.15"];
+  aumentoNo [shape=box, label="No se aplica aumento"];
+  imprimir [shape=box, label="Sueldos con el aumento:"];
+  output [shape=box, label="Trabajador i: sueldos[i]"];
+  fin [shape=ellipse, label="Fin"];
+  
+  inicio -> input;
+  input -> N;
+  N -> sueldos;
+  
+  sueldos -> bucle;
+  bucle->i  ;
+
+  i -> inputSueldo [label="i < N", tailport=e, headport=w];
+  inputSueldo -> sueldo;
+  sueldo -> aumento;
+  aumento -> aumentoSi [label="Si", tailport=e, headport=n];
+  aumento -> aumentoNo [label="No", tailport=w, headport=n];
+  aumentoSi -> imprimir;
+  imprimir -> output [label="i < N", tailport=e, headport=w];
+  output -> i [label="i++", tailport=e, headport=w];
+  aumentoNo -> i [label="i++", tailport=w, headport=w];
+  
+ 
+  i -> fin [label="i >= N", tailport=e, headport=w];
+
+}

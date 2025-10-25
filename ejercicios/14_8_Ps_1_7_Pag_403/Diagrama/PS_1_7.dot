@@ -1,0 +1,25 @@
+digraph G {
+  
+  inicio [shape=ellipse, label="Inicio"];
+  input [shape=box, label="Ingrese el precio\ndel vehículo"];
+  MON [shape=box, label="MON"];
+  enganche [shape=box, label="enganche = MON * 0.35"];
+  saldoRestante [shape=box, label="saldoRestante = MON - enganche"];
+  tasaInteres [shape=box, label="tasaInteres = 0.12"];
+  plazoMeses [shape=box, label="plazoMeses = 36"];
+  mensualidad [shape=box, label="mensualidad = saldoRestante * (tasaInteres / 12) / (1 - ((1 + (tasaInteres / 12)) * (1 + (tasaInteres / 12)) * (1 + (tasaInteres / 12))) / (1 - (1 + (tasaInteres / 12))))"];
+  output1 [shape=box, label="Importe del enganche:\nenganche"];
+  output2 [shape=box, label="Monto de las mensualidades:\nmensualidad"];
+  fin [shape=ellipse, label="Fin"];
+  
+  inicio -> input;
+  input -> MON;
+  MON -> enganche;
+  enganche -> saldoRestante;
+  saldoRestante -> tasaInteres;
+  tasaInteres -> plazoMeses;
+  plazoMeses -> mensualidad;
+  mensualidad -> output1;
+  output1 -> output2;
+  output2 -> fin;
+}

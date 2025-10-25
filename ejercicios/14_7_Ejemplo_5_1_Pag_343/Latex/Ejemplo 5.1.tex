@@ -1,0 +1,56 @@
+\documentclass[11pt]{amsart}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\usepackage{multirow}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+\title{Problema 5.3}
+\author{}
+%\date{}                                           % Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+%\section{}
+%\subsection{}
+En una universidad almacenan información relativa a sus profesores en un arreglo unidimensional. Cada elemento del arreglo es un registro que contiene la siguiente información respecto a cada profesor:
+
+\begin{itemize}
+  \item Número de empleado.
+  \item Nombre del profesor.
+  \item Departamento al que pertenece.
+  \item Grado académico.
+  \item Nacionalidad.
+  \item Salario (Se almacena en forma mensual lo que cobra el profesor en un arreglo unidimensional).
+\end{itemize}
+
+Construya un diagrama de flujo que pueda proporcionar la siguiente información:
+
+\begin{enumerate}
+  \item El número, nombre y nacionalidad del profesor que más ganó el año anterior.
+  \item El monto total pagado en el año a los profesores del departamento X.
+  \item El monto total pagado a los profesores extranjeros (nacionalidad distinta a México).
+  \item El nombre del profesor del departamento Y que más ganó en el año anterior.
+\end{enumerate}
+
+Dato: PROFESORES [1..N] 1 < N < 200
+
+Donde:
+
+PROFESORES es un arreglo unidimensional de registros.
+
+
+\begin{itemize}
+  \item NUM: Variable de tipo entero que representa el número del empleado.
+  \item NOM: Variable de tipo cadena de caracteres que indica el nombre del profesor.
+  \item DEP: Variable de tipo cadena de caracteres que representa el departamento en que está adscrito el profesor.
+  \item GRADO: Variable de tipo cadena de caracteres que expresa el máximo grado académico del profesor.
+  \item NAC: Variable de tipo cadena de caracteres que representa la nacionalidad del profesor.
+  \item SALARIO: Arreglo unidimensional de tipo real que almacena en forma mensual lo que cobró el profesor.
+\end{itemize}
+
+\end{document}

@@ -1,0 +1,52 @@
+\documentclass[11pt]{amsart}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+\title{PS 4.12}
+%\author{The Author}
+%\date{}                                           % Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+%\section{}
+%\subsection{}
+\noindent En una papelería se maneja información sobre los 8 modelos diferentes de cuadernos que venden. Se conocen los precios de cada modelo:\\
+
+\begin{center}
+$P _{l}$, $P_{2}$, $P_{3}$,  • • ,$P_{8}$
+\end{center}
+
+\noindent Donde:
+
+\begin{center}
+$P_{i}$ es una variable de tipo real que representa el precio del modelo i.\\
+
+Por otra parte se tiene información sobre las ventas realizadas durante los últimos 30 días. Los datos se presentan de esta forma:\\
+
+$DIA _{1}$, $MOD_{1}$, $CANT_{1}$\\
+$DIA_{2}$, $MOD_{2}$, $CANT_{2}$\\
+...\\
+—1, —1, —1
+\end{center}
+
+\noindent Donde:
+\begin{quote}
+$DIA_{i}$ es una variable de tipo entero que representa el día en que se efectuó la venta i ($1 \leq DLA \leq 30$).\\
+$MOD_{i}$ es una variable de tipo entero que representa el modelo que se vendió en la venta i ($1 \leq MODELO \leq 8$).\\
+$CANT_{i}$ es una variable de tipo entero que representa el número de cuadernos que se vendió en la venta i.\\
+\end{quote}
+
+
+\noindent Construya un diagrama de flujo que calcule lo siguiente:\\
+
+
+a) El total recaudado por modelo en los 30 días.\\
+b) El total recaudado por día.\\
+c) ¿Cuál fue el modelo que más dinero produjo en los 30 días?
+\end{document}  

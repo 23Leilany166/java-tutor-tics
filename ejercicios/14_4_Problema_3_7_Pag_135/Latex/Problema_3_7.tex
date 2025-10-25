@@ -1,0 +1,57 @@
+\documentclass[11pt]{amsart}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+\title{Problema 3.7}
+%\date{}                                           % Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+%\section{}
+%\subsection{}
+\noindent  Un vendedor ha hecho una serie de ventas y desea conocer aquellas de \$200 o menos, las mayores a \$200 pero inferiores a \$400, y el número de ventas de \$400 o superiores a tal cantidad.Haga un diagrama de flujo que le proporcione al ven­dedor esta información después de haber leído los datos de entrada.  \newline
+Los datos son: $N, V_1, V_2, \ldots, V_N$.   \newline
+
+ \noindent  Donde:  \newline
+ 
+N es una variable de tipo entero que representa el número de ventas del vendedor.
+\[
+\text{$V_i$}: \text{{es una variable de tipo real que indica la venta i del vendedor }} i \quad (1 \leq i \leq N)
+\]
+\noindent  \textbf{Explicación de las variables} \newline
+I: Variable de tipo entero.Representa la variabe de control del ciclo. \newline
+CHI, MED y Variables de tipo entero. Acumulan el número de ventas menores\newline
+GRA:a \$200, a \$400 y mayores a \$400, respectivamente.\newline
+N: Variable de tipo entero. \newline
+V: Variable de tipo real. \newline
+
+A continuación en la tabla 3.9, podemos observar el seguimiento del algoritmo.
+\begin{table}[htbp]
+\centering
+\label{tab:corrida}
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+\multicolumn{6}{ |c| }{\textbf {Tabla 3.9}} \\ \hline
+\textbf{l} & \textbf{M} & \textbf{MED} & \textbf{CHI} & \textbf{GRA} & \textbf{V} \\ \hline
+1 & 12  & 0 &  0 &  0 & \\ \hline
+2 &   & &  1&   & 180.25 \\ \hline
+3 &   & &  &   1& 470.30 \\ \hline
+4 &   & &  2&   & 150.25 \\ \hline
+5 &   & &  3&   & 88.60 \\ \hline
+6 &   & 1&  &   & 230.15 \\ \hline
+7&   & &  4&   & 170.20 \\ \hline
+8&   & &  5&   & 40.30 \\ \hline
+9&   & 2&  &   & 201.90 \\ \hline
+10&   & &  6&   & 60.32 \\ \hline
+11&   &3 &  &   & 280.30 \\ \hline
+12&   & &  7&   & 15.70 \\ \hline
+13&   & &  8&   & 140.20 \\ \hline\end{tabular}
+\end{table}
+
+\end{document}  
