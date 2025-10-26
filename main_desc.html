@@ -16,6 +16,17 @@
     <nav class="exercises-nav" aria-label="Navegación de ejercicios">
       <a href="#EJ_1.14" class="nav-link">Ejemplo 1.14</a>
       <a href="#EJ_2.6" class="nav-link">Ejemplo 2.6</a>
+      <a href="#PROB_2.10" class="nav-link">Problema 2.10</a>
+      <a href="#PROB_3.7" class="nav-link">Problema 3.7</a>
+      <a href="#EJ_4.4" class="nav-link">Ejemplo 4.4</a>
+      <a href="#PROB_4.8" class="nav-link">Problema 4.8</a>
+      <a href="#EJ_5.1" class="nav-link">Ejemplo 5.1</a>
+      <a href="#PS_1.7" class="nav-link">PS 1.7</a>
+      <a href="#PS_3.6" class="nav-link">PS 3.6</a>
+      <a href="#PS_3.7" class="nav-link">PS 3.7</a>
+      <a href="#PS_3.40" class="nav-link">PS 3.40</a>
+      <a href="#PS_4.12" class="nav-link">PS 4.12</a>
+      <a href="#PS_4.28" class="nav-link">PS 4.28</a>
     </nav>
 
     <main class="exercises-main">
@@ -144,6 +155,687 @@ System.out.println("El cubo de " + num + " es: " + cub);
         </div>
       </article>
 
+      <!-- Problema 2.10 -->
+      <article id="PROB_2.10" class="exercise-card" aria-labelledby="PROB_2.10-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Problema 2.10</span>
+          <h2 id="PROB_2.10-title">A continuación presentamos la solución en lenguaje algorítmico del diagrama de flujo 1.4.</h2>
+          
+          <p class="exercise-description">
+            El programa, dado como dato un número entero positivo, calcula el cuadrado y el cubo de dicho número NUM es una variable de tipo entero. CUA y CUB son variables de tipo real
+          </p>
+        </header>
+        
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <ul>
+              <li>Crear la clase <code>CuadradoCubo</code>.</li>
+              <li>Declarar las variables:
+                <ul>
+                  <li><code>num</code>: Tiene que ser de tipo <code>entero</code>.</li>
+                  <li><code>cua</code>, <code>cub</code>: Ambas tienen que ser de tipo <code>double</code>.</li>
+                </ul>
+              </li>
+              <li>Crear un objeto <code>Scanner</code> para leer los datos introducidos.</li>
+              <li>Leer la variable <code>num</code></li>
+              <li>Calcular <code>cua</code> y <code>cub</code>.</li> <!--Nota-->
+              <li>Escribir <code>cua</code> y <code>cub</code></li> <!--Tip-->
+            </ul>
+            
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block"># Leer el número
+System.out.print("Introduce un número entero: ");
+num = teclado.nextInt();
+
+# Calcular valores 
+cua = Math.pow(num, 2); // Eleva num al cuadrado
+cub = Math.pow(num, 3); // Eleva num al cubo
+
+# Visualizar los resultados 
+System.out.println("El cuadrado de " + num + " es: " + cua);
+System.out.println("El cubo de " + num + " es: " + cub); 
+            </code></pre>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <p class="note-text">Asegúrate de:</p>
+            <ul>
+              <li>Tu objeto <code>Scanner</code> sea correcto para que lea los datos itroducidos por el usuario.</li>
+              <li>Utiliza la función <code>Math.Pow()</code> para hacer el calculo de los valores.</li>
+            </ul>
+            
+            <div class="tip-box">
+              <strong>Tip:</strong>
+              <ul>
+                <li>Al momento de introducir el número se recomienda que no sea un número con valor decimal o fracción.</li>
+                <li>O implementa el codigo para que el número ingresado sea de tipo double.</li>
+              </ul> 
+            </div>
+          </aside>
+        </div>
+      </article>
+
+<!-- Problema 3.7 -->
+      <article id="PROB_3.7" class="exercise-card" aria-labelledby="PROB_3.7-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Problema 3.7</span>
+          <h2 id="PROB_3.7-title">A continuación presentamos la solución en lenguaje algorítmico del diagrama de flujo 1.4.</h2>
+          
+          <p class="exercise-description">
+            El programa, dado como dato un número entero positivo, calcula el cuadrado y el cubo de dicho número NUM es una variable de tipo entero. CUA y CUB son variables de tipo real
+          </p>
+        </header>
+        
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <ul>
+              <li>Crear la clase <code>CuadradoCubo</code>.</li>
+              <li>Declarar las variables:
+                <ul>
+                  <li><code>num</code>: Tiene que ser de tipo <code>entero</code>.</li>
+                  <li><code>cua</code>, <code>cub</code>: Ambas tienen que ser de tipo <code>double</code>.</li>
+                </ul>
+              </li>
+              <li>Crear un objeto <code>Scanner</code> para leer los datos introducidos.</li>
+              <li>Leer la variable <code>num</code></li>
+              <li>Calcular <code>cua</code> y <code>cub</code>.</li> <!--Nota-->
+              <li>Escribir <code>cua</code> y <code>cub</code></li> <!--Tip-->
+            </ul>
+            
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block"># Leer el número
+System.out.print("Introduce un número entero: ");
+num = teclado.nextInt();
+
+# Calcular valores 
+cua = Math.pow(num, 2); // Eleva num al cuadrado
+cub = Math.pow(num, 3); // Eleva num al cubo
+
+# Visualizar los resultados 
+System.out.println("El cuadrado de " + num + " es: " + cua);
+System.out.println("El cubo de " + num + " es: " + cub); 
+            </code></pre>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <p class="note-text">Asegúrate de:</p>
+            <ul>
+              <li>Tu objeto <code>Scanner</code> sea correcto para que lea los datos itroducidos por el usuario.</li>
+              <li>Utiliza la función <code>Math.Pow()</code> para hacer el calculo de los valores.</li>
+            </ul>
+            
+            <div class="tip-box">
+              <strong>Tip:</strong>
+              <ul>
+                <li>Al momento de introducir el número se recomienda que no sea un número con valor decimal o fracción.</li>
+                <li>O implementa el codigo para que el número ingresado sea de tipo double.</li>
+              </ul> 
+            </div>
+          </aside>
+        </div>
+      </article>
+
+      <!-- Ejemplo 4.4 -->
+      <article id="EJ_4.4" class="exercise-card" aria-labelledby="Ej_4.4-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Ejemplo 4.4</span>
+          <h2 id="Ej_4.4-title">A continuación presentamos la solución en lenguaje algorítmico del diagrama de flujo 1.4.</h2>
+          
+          <p class="exercise-description">
+            El programa, dado como dato un número entero positivo, calcula el cuadrado y el cubo de dicho número NUM es una variable de tipo entero. CUA y CUB son variables de tipo real
+          </p>
+        </header>
+        
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <ul>
+              <li>Crear la clase <code>CuadradoCubo</code>.</li>
+              <li>Declarar las variables:
+                <ul>
+                  <li><code>num</code>: Tiene que ser de tipo <code>entero</code>.</li>
+                  <li><code>cua</code>, <code>cub</code>: Ambas tienen que ser de tipo <code>double</code>.</li>
+                </ul>
+              </li>
+              <li>Crear un objeto <code>Scanner</code> para leer los datos introducidos.</li>
+              <li>Leer la variable <code>num</code></li>
+              <li>Calcular <code>cua</code> y <code>cub</code>.</li> <!--Nota-->
+              <li>Escribir <code>cua</code> y <code>cub</code></li> <!--Tip-->
+            </ul>
+            
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block"># Leer el número
+System.out.print("Introduce un número entero: ");
+num = teclado.nextInt();
+
+# Calcular valores 
+cua = Math.pow(num, 2); // Eleva num al cuadrado
+cub = Math.pow(num, 3); // Eleva num al cubo
+
+# Visualizar los resultados 
+System.out.println("El cuadrado de " + num + " es: " + cua);
+System.out.println("El cubo de " + num + " es: " + cub); 
+            </code></pre>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <p class="note-text">Asegúrate de:</p>
+            <ul>
+              <li>Tu objeto <code>Scanner</code> sea correcto para que lea los datos itroducidos por el usuario.</li>
+              <li>Utiliza la función <code>Math.Pow()</code> para hacer el calculo de los valores.</li>
+            </ul>
+            
+            <div class="tip-box">
+              <strong>Tip:</strong>
+              <ul>
+                <li>Al momento de introducir el número se recomienda que no sea un número con valor decimal o fracción.</li>
+                <li>O implementa el codigo para que el número ingresado sea de tipo double.</li>
+              </ul> 
+            </div>
+          </aside>
+        </div>
+      </article>
+
+      <!-- Problema 4.8 -->
+      <article id="PROB_4.8" class="exercise-card" aria-labelledby="PROB_4.8-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Problema 4.8</span>
+          <h2 id="PROB_4.8-title">A continuación presentamos la solución en lenguaje algorítmico del diagrama de flujo 1.4.</h2>
+          
+          <p class="exercise-description">
+            El programa, dado como dato un número entero positivo, calcula el cuadrado y el cubo de dicho número NUM es una variable de tipo entero. CUA y CUB son variables de tipo real
+          </p>
+        </header>
+        
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <ul>
+              <li>Crear la clase <code>CuadradoCubo</code>.</li>
+              <li>Declarar las variables:
+                <ul>
+                  <li><code>num</code>: Tiene que ser de tipo <code>entero</code>.</li>
+                  <li><code>cua</code>, <code>cub</code>: Ambas tienen que ser de tipo <code>double</code>.</li>
+                </ul>
+              </li>
+              <li>Crear un objeto <code>Scanner</code> para leer los datos introducidos.</li>
+              <li>Leer la variable <code>num</code></li>
+              <li>Calcular <code>cua</code> y <code>cub</code>.</li> <!--Nota-->
+              <li>Escribir <code>cua</code> y <code>cub</code></li> <!--Tip-->
+            </ul>
+            
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block"># Leer el número
+System.out.print("Introduce un número entero: ");
+num = teclado.nextInt();
+
+# Calcular valores 
+cua = Math.pow(num, 2); // Eleva num al cuadrado
+cub = Math.pow(num, 3); // Eleva num al cubo
+
+# Visualizar los resultados 
+System.out.println("El cuadrado de " + num + " es: " + cua);
+System.out.println("El cubo de " + num + " es: " + cub); 
+            </code></pre>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <p class="note-text">Asegúrate de:</p>
+            <ul>
+              <li>Tu objeto <code>Scanner</code> sea correcto para que lea los datos itroducidos por el usuario.</li>
+              <li>Utiliza la función <code>Math.Pow()</code> para hacer el calculo de los valores.</li>
+            </ul>
+            
+            <div class="tip-box">
+              <strong>Tip:</strong>
+              <ul>
+                <li>Al momento de introducir el número se recomienda que no sea un número con valor decimal o fracción.</li>
+                <li>O implementa el codigo para que el número ingresado sea de tipo double.</li>
+              </ul> 
+            </div>
+          </aside>
+        </div>
+      </article>
+
+      <!-- Ejemplo 5.1 -->
+      <article id="EJ_5.1" class="exercise-card" aria-labelledby="Ej_5.1-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Ejemplo 5.1</span>
+          <h2 id="Ej_5.1-title">A continuación presentamos la solución en lenguaje algorítmico del diagrama de flujo 1.4.</h2>
+          
+          <p class="exercise-description">
+            El programa, dado como dato un número entero positivo, calcula el cuadrado y el cubo de dicho número NUM es una variable de tipo entero. CUA y CUB son variables de tipo real
+          </p>
+        </header>
+        
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <ul>
+              <li>Crear la clase <code>CuadradoCubo</code>.</li>
+              <li>Declarar las variables:
+                <ul>
+                  <li><code>num</code>: Tiene que ser de tipo <code>entero</code>.</li>
+                  <li><code>cua</code>, <code>cub</code>: Ambas tienen que ser de tipo <code>double</code>.</li>
+                </ul>
+              </li>
+              <li>Crear un objeto <code>Scanner</code> para leer los datos introducidos.</li>
+              <li>Leer la variable <code>num</code></li>
+              <li>Calcular <code>cua</code> y <code>cub</code>.</li> <!--Nota-->
+              <li>Escribir <code>cua</code> y <code>cub</code></li> <!--Tip-->
+            </ul>
+            
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block"># Leer el número
+System.out.print("Introduce un número entero: ");
+num = teclado.nextInt();
+
+# Calcular valores 
+cua = Math.pow(num, 2); // Eleva num al cuadrado
+cub = Math.pow(num, 3); // Eleva num al cubo
+
+# Visualizar los resultados 
+System.out.println("El cuadrado de " + num + " es: " + cua);
+System.out.println("El cubo de " + num + " es: " + cub); 
+            </code></pre>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <p class="note-text">Asegúrate de:</p>
+            <ul>
+              <li>Tu objeto <code>Scanner</code> sea correcto para que lea los datos itroducidos por el usuario.</li>
+              <li>Utiliza la función <code>Math.Pow()</code> para hacer el calculo de los valores.</li>
+            </ul>
+            
+            <div class="tip-box">
+              <strong>Tip:</strong>
+              <ul>
+                <li>Al momento de introducir el número se recomienda que no sea un número con valor decimal o fracción.</li>
+                <li>O implementa el codigo para que el número ingresado sea de tipo double.</li>
+              </ul> 
+            </div>
+          </aside>
+        </div>
+      </article>
+
+      <!-- PS 1.7 -->
+      <article id="PS_1.7" class="exercise-card" aria-labelledby="PS_1.7-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Problema suplemenatrio 1.7</span>
+          <h2 id="PS_1.7-title">A continuación presentamos la solución en lenguaje algorítmico del diagrama de flujo 1.4.</h2>
+          
+          <p class="exercise-description">
+            El programa, dado como dato un número entero positivo, calcula el cuadrado y el cubo de dicho número NUM es una variable de tipo entero. CUA y CUB son variables de tipo real
+          </p>
+        </header>
+        
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <ul>
+              <li>Crear la clase <code>CuadradoCubo</code>.</li>
+              <li>Declarar las variables:
+                <ul>
+                  <li><code>num</code>: Tiene que ser de tipo <code>entero</code>.</li>
+                  <li><code>cua</code>, <code>cub</code>: Ambas tienen que ser de tipo <code>double</code>.</li>
+                </ul>
+              </li>
+              <li>Crear un objeto <code>Scanner</code> para leer los datos introducidos.</li>
+              <li>Leer la variable <code>num</code></li>
+              <li>Calcular <code>cua</code> y <code>cub</code>.</li> <!--Nota-->
+              <li>Escribir <code>cua</code> y <code>cub</code></li> <!--Tip-->
+            </ul>
+            
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block"># Leer el número
+System.out.print("Introduce un número entero: ");
+num = teclado.nextInt();
+
+# Calcular valores 
+cua = Math.pow(num, 2); // Eleva num al cuadrado
+cub = Math.pow(num, 3); // Eleva num al cubo
+
+# Visualizar los resultados 
+System.out.println("El cuadrado de " + num + " es: " + cua);
+System.out.println("El cubo de " + num + " es: " + cub); 
+            </code></pre>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <p class="note-text">Asegúrate de:</p>
+            <ul>
+              <li>Tu objeto <code>Scanner</code> sea correcto para que lea los datos itroducidos por el usuario.</li>
+              <li>Utiliza la función <code>Math.Pow()</code> para hacer el calculo de los valores.</li>
+            </ul>
+            
+            <div class="tip-box">
+              <strong>Tip:</strong>
+              <ul>
+                <li>Al momento de introducir el número se recomienda que no sea un número con valor decimal o fracción.</li>
+                <li>O implementa el codigo para que el número ingresado sea de tipo double.</li>
+              </ul> 
+            </div>
+          </aside>
+        </div>
+      </article>
+
+      <!-- PS 3.6 -->
+      <article id="PS_3.6" class="exercise-card" aria-labelledby="PS_3.6-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Problema suplemenatrio 3.6</span>
+          <h2 id="PS_3.6-title">A continuación presentamos la solución en lenguaje algorítmico del diagrama de flujo 1.4.</h2>
+          
+          <p class="exercise-description">
+            El programa, dado como dato un número entero positivo, calcula el cuadrado y el cubo de dicho número NUM es una variable de tipo entero. CUA y CUB son variables de tipo real
+          </p>
+        </header>
+        
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <ul>
+              <li>Crear la clase <code>CuadradoCubo</code>.</li>
+              <li>Declarar las variables:
+                <ul>
+                  <li><code>num</code>: Tiene que ser de tipo <code>entero</code>.</li>
+                  <li><code>cua</code>, <code>cub</code>: Ambas tienen que ser de tipo <code>double</code>.</li>
+                </ul>
+              </li>
+              <li>Crear un objeto <code>Scanner</code> para leer los datos introducidos.</li>
+              <li>Leer la variable <code>num</code></li>
+              <li>Calcular <code>cua</code> y <code>cub</code>.</li> <!--Nota-->
+              <li>Escribir <code>cua</code> y <code>cub</code></li> <!--Tip-->
+            </ul>
+            
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block"># Leer el número
+System.out.print("Introduce un número entero: ");
+num = teclado.nextInt();
+
+# Calcular valores 
+cua = Math.pow(num, 2); // Eleva num al cuadrado
+cub = Math.pow(num, 3); // Eleva num al cubo
+
+# Visualizar los resultados 
+System.out.println("El cuadrado de " + num + " es: " + cua);
+System.out.println("El cubo de " + num + " es: " + cub); 
+            </code></pre>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <p class="note-text">Asegúrate de:</p>
+            <ul>
+              <li>Tu objeto <code>Scanner</code> sea correcto para que lea los datos itroducidos por el usuario.</li>
+              <li>Utiliza la función <code>Math.Pow()</code> para hacer el calculo de los valores.</li>
+            </ul>
+            
+            <div class="tip-box">
+              <strong>Tip:</strong>
+              <ul>
+                <li>Al momento de introducir el número se recomienda que no sea un número con valor decimal o fracción.</li>
+                <li>O implementa el codigo para que el número ingresado sea de tipo double.</li>
+              </ul> 
+            </div>
+          </aside>
+        </div>
+      </article>
+
+      <!-- PS 3.7 -->
+      <article id="PS_3.7" class="exercise-card" aria-labelledby="PS_3.7-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Problema suplemenatrio 3.7</span>
+          <h2 id="PS_3.7-title">A continuación presentamos la solución en lenguaje algorítmico del diagrama de flujo 1.4.</h2>
+          
+          <p class="exercise-description">
+            El programa, dado como dato un número entero positivo, calcula el cuadrado y el cubo de dicho número NUM es una variable de tipo entero. CUA y CUB son variables de tipo real
+          </p>
+        </header>
+        
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <ul>
+              <li>Crear la clase <code>CuadradoCubo</code>.</li>
+              <li>Declarar las variables:
+                <ul>
+                  <li><code>num</code>: Tiene que ser de tipo <code>entero</code>.</li>
+                  <li><code>cua</code>, <code>cub</code>: Ambas tienen que ser de tipo <code>double</code>.</li>
+                </ul>
+              </li>
+              <li>Crear un objeto <code>Scanner</code> para leer los datos introducidos.</li>
+              <li>Leer la variable <code>num</code></li>
+              <li>Calcular <code>cua</code> y <code>cub</code>.</li> <!--Nota-->
+              <li>Escribir <code>cua</code> y <code>cub</code></li> <!--Tip-->
+            </ul>
+            
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block"># Leer el número
+System.out.print("Introduce un número entero: ");
+num = teclado.nextInt();
+
+# Calcular valores 
+cua = Math.pow(num, 2); // Eleva num al cuadrado
+cub = Math.pow(num, 3); // Eleva num al cubo
+
+# Visualizar los resultados 
+System.out.println("El cuadrado de " + num + " es: " + cua);
+System.out.println("El cubo de " + num + " es: " + cub); 
+            </code></pre>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <p class="note-text">Asegúrate de:</p>
+            <ul>
+              <li>Tu objeto <code>Scanner</code> sea correcto para que lea los datos itroducidos por el usuario.</li>
+              <li>Utiliza la función <code>Math.Pow()</code> para hacer el calculo de los valores.</li>
+            </ul>
+            
+            <div class="tip-box">
+              <strong>Tip:</strong>
+              <ul>
+                <li>Al momento de introducir el número se recomienda que no sea un número con valor decimal o fracción.</li>
+                <li>O implementa el codigo para que el número ingresado sea de tipo double.</li>
+              </ul> 
+            </div>
+          </aside>
+        </div>
+      </article>
+
+      <!-- PS 3.40 -->
+      <article id="PS_3.40" class="exercise-card" aria-labelledby="PS_3.40-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Problema suplemenatrio 3.40</span>
+          <h2 id="PS_3.40-title">A continuación presentamos la solución en lenguaje algorítmico del diagrama de flujo 1.4.</h2>
+          
+          <p class="exercise-description">
+            El programa, dado como dato un número entero positivo, calcula el cuadrado y el cubo de dicho número NUM es una variable de tipo entero. CUA y CUB son variables de tipo real
+          </p>
+        </header>
+        
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <ul>
+              <li>Crear la clase <code>CuadradoCubo</code>.</li>
+              <li>Declarar las variables:
+                <ul>
+                  <li><code>num</code>: Tiene que ser de tipo <code>entero</code>.</li>
+                  <li><code>cua</code>, <code>cub</code>: Ambas tienen que ser de tipo <code>double</code>.</li>
+                </ul>
+              </li>
+              <li>Crear un objeto <code>Scanner</code> para leer los datos introducidos.</li>
+              <li>Leer la variable <code>num</code></li>
+              <li>Calcular <code>cua</code> y <code>cub</code>.</li> <!--Nota-->
+              <li>Escribir <code>cua</code> y <code>cub</code></li> <!--Tip-->
+            </ul>
+            
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block"># Leer el número
+System.out.print("Introduce un número entero: ");
+num = teclado.nextInt();
+
+# Calcular valores 
+cua = Math.pow(num, 2); // Eleva num al cuadrado
+cub = Math.pow(num, 3); // Eleva num al cubo
+
+# Visualizar los resultados 
+System.out.println("El cuadrado de " + num + " es: " + cua);
+System.out.println("El cubo de " + num + " es: " + cub); 
+            </code></pre>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <p class="note-text">Asegúrate de:</p>
+            <ul>
+              <li>Tu objeto <code>Scanner</code> sea correcto para que lea los datos itroducidos por el usuario.</li>
+              <li>Utiliza la función <code>Math.Pow()</code> para hacer el calculo de los valores.</li>
+            </ul>
+            
+            <div class="tip-box">
+              <strong>Tip:</strong>
+              <ul>
+                <li>Al momento de introducir el número se recomienda que no sea un número con valor decimal o fracción.</li>
+                <li>O implementa el codigo para que el número ingresado sea de tipo double.</li>
+              </ul> 
+            </div>
+          </aside>
+        </div>
+      </article>
+
+      <!-- PS 4.12 -->
+      <article id="PS_4.12" class="exercise-card" aria-labelledby="PS_4.12-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Problema suplemenatrio 4.12</span>
+          <h2 id="PS_4.12-title">A continuación presentamos la solución en lenguaje algorítmico del diagrama de flujo 1.4.</h2>
+          
+          <p class="exercise-description">
+            El programa, dado como dato un número entero positivo, calcula el cuadrado y el cubo de dicho número NUM es una variable de tipo entero. CUA y CUB son variables de tipo real
+          </p>
+        </header>
+        
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <ul>
+              <li>Crear la clase <code>CuadradoCubo</code>.</li>
+              <li>Declarar las variables:
+                <ul>
+                  <li><code>num</code>: Tiene que ser de tipo <code>entero</code>.</li>
+                  <li><code>cua</code>, <code>cub</code>: Ambas tienen que ser de tipo <code>double</code>.</li>
+                </ul>
+              </li>
+              <li>Crear un objeto <code>Scanner</code> para leer los datos introducidos.</li>
+              <li>Leer la variable <code>num</code></li>
+              <li>Calcular <code>cua</code> y <code>cub</code>.</li> <!--Nota-->
+              <li>Escribir <code>cua</code> y <code>cub</code></li> <!--Tip-->
+            </ul>
+            
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block"># Leer el número
+System.out.print("Introduce un número entero: ");
+num = teclado.nextInt();
+
+# Calcular valores 
+cua = Math.pow(num, 2); // Eleva num al cuadrado
+cub = Math.pow(num, 3); // Eleva num al cubo
+
+# Visualizar los resultados 
+System.out.println("El cuadrado de " + num + " es: " + cua);
+System.out.println("El cubo de " + num + " es: " + cub); 
+            </code></pre>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <p class="note-text">Asegúrate de:</p>
+            <ul>
+              <li>Tu objeto <code>Scanner</code> sea correcto para que lea los datos itroducidos por el usuario.</li>
+              <li>Utiliza la función <code>Math.Pow()</code> para hacer el calculo de los valores.</li>
+            </ul>
+            
+            <div class="tip-box">
+              <strong>Tip:</strong>
+              <ul>
+                <li>Al momento de introducir el número se recomienda que no sea un número con valor decimal o fracción.</li>
+                <li>O implementa el codigo para que el número ingresado sea de tipo double.</li>
+              </ul> 
+            </div>
+          </aside>
+        </div>
+      </article>
+
+      <!-- PS 4.28 -->
+      <article id="PS_4.28" class="exercise-card" aria-labelledby="PS_4.28-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Problema suplemenatrio 4.28</span>
+          <h2 id="PS_4.28-title">A continuación presentamos la solución en lenguaje algorítmico del diagrama de flujo 1.4.</h2>
+          
+          <p class="exercise-description">
+            El programa, dado como dato un número entero positivo, calcula el cuadrado y el cubo de dicho número NUM es una variable de tipo entero. CUA y CUB son variables de tipo real
+          </p>
+        </header>
+        
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <ul>
+              <li>Crear la clase <code>CuadradoCubo</code>.</li>
+              <li>Declarar las variables:
+                <ul>
+                  <li><code>num</code>: Tiene que ser de tipo <code>entero</code>.</li>
+                  <li><code>cua</code>, <code>cub</code>: Ambas tienen que ser de tipo <code>double</code>.</li>
+                </ul>
+              </li>
+              <li>Crear un objeto <code>Scanner</code> para leer los datos introducidos.</li>
+              <li>Leer la variable <code>num</code></li>
+              <li>Calcular <code>cua</code> y <code>cub</code>.</li> <!--Nota-->
+              <li>Escribir <code>cua</code> y <code>cub</code></li> <!--Tip-->
+            </ul>
+            
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block"># Leer el número
+System.out.print("Introduce un número entero: ");
+num = teclado.nextInt();
+
+# Calcular valores 
+cua = Math.pow(num, 2); // Eleva num al cuadrado
+cub = Math.pow(num, 3); // Eleva num al cubo
+
+# Visualizar los resultados 
+System.out.println("El cuadrado de " + num + " es: " + cua);
+System.out.println("El cubo de " + num + " es: " + cub); 
+            </code></pre>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <p class="note-text">Asegúrate de:</p>
+            <ul>
+              <li>Tu objeto <code>Scanner</code> sea correcto para que lea los datos itroducidos por el usuario.</li>
+              <li>Utiliza la función <code>Math.Pow()</code> para hacer el calculo de los valores.</li>
+            </ul>
+            
+            <div class="tip-box">
+              <strong>Tip:</strong>
+              <ul>
+                <li>Al momento de introducir el número se recomienda que no sea un número con valor decimal o fracción.</li>
+                <li>O implementa el codigo para que el número ingresado sea de tipo double.</li>
+              </ul> 
+            </div>
+          </aside>
+        </div>
+      </article>
 
     <footer class="page-footer">
       <p class="note-text">Regresa al <a href="#top">menú</a> para elegir otro ejercicio.</p>
