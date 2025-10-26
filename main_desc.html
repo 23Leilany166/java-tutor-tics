@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ejercicios de OOP en Java</title>
+  <link rel="stylesheet" href="./styles/styles_desc.css">
+</head>
+<body>
+  <div class="container">
+    <header class="page-header">
+      <h1>Ejercicios de Programación Orientada a Objetos en Java</h1>
+      <p class="subtitle">Selecciona un ejercicio del menú para ver los detalles.</p>
+    </header>
+
+    <nav class="exercises-nav" aria-label="Navegación de ejercicios">
+      <a href="#EJ_1.14" class="nav-link">Ejemplo 1.14</a>
+      <a href="#EJ_2.6" class="nav-link">Ejemplo 2.6</a>
+    </nav>
+
+    <main class="exercises-main">
+      <!-- Ejemplo 1.14 -->
+      <article id="EJ_1.14" class="exercise-card" aria-labelledby="Ej_1.14-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Ejemplo 1.14</span>
+          <h2 id="Ej_1.14-title">A continuación presentamos la solución en lenguaje algorítmico del diagrama de flujo 1.4.</h2>
+          
+          <p class="exercise-description">
+            El programa, dado como dato un número entero positivo, calcula el cuadrado y el cubo de dicho número NUM es una variable de tipo entero. CUA y CUB son variables de tipo real
+          </p>
+        </header>
+        
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <ul>
+              <li>Crear la clase <code>CuadradoCubo</code>.</li>
+              <li>Declarar las variables:
+                <ul>
+                  <li><code>num</code>: Tiene que ser de tipo <code>entero</code>.</li>
+                  <li><code>cua</code>, <code>cub</code>: Ambas tienen que ser de tipo <code>double</code>.</li>
+                </ul>
+              </li>
+              <li>Crear un objeto <code>Scanner</code> para leer los datos introducidos.</li>
+              <li>Leer la variable <code>num</code></li>
+              <li>Calcular <code>cua</code> y <code>cub</code>.</li> <!--Nota-->
+              <li>Escribir <code>cua</code> y <code>cub</code></li> <!--Tip-->
+            </ul>
+            
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block"># Leer el número
+System.out.print("Introduce un número entero: ");
+num = teclado.nextInt();
+
+# Calcular valores 
+cua = Math.pow(num, 2); // Eleva num al cuadrado
+cub = Math.pow(num, 3); // Eleva num al cubo
+
+# Visualizar los resultados 
+System.out.println("El cuadrado de " + num + " es: " + cua);
+System.out.println("El cubo de " + num + " es: " + cub); 
+            </code></pre>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <p class="note-text">Asegúrate de:</p>
+            <ul>
+              <li>Tu objeto <code>Scanner</code> sea correcto para que lea los datos itroducidos por el usuario.</li>
+              <li>Utiliza la función <code>Math.Pow()</code> para hacer el calculo de los valores.</li>
+            </ul>
+            
+            <div class="tip-box">
+              <strong>Tip:</strong>
+              <ul>
+                <li>Al momento de introducir el número se recomienda que no sea un número con valor decimal o fracción.</li>
+                <li>O implementa el codigo para que el número ingresado sea de tipo double.</li>
+              </ul> 
+            </div>
+          </aside>
+        </div>
+      </article>
+
+      <!--Ejemplo 2.6-->
+
+      <article id="EJ_2.6" class="exercise-card" aria-labelledby="Ej_2.6-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Ejemplo 2.6</span>
+          <h2 id="Ej_2.6-title">Diagrama de Flujo y Codigo</h2>
+          
+          <p class="exercise-description">
+            Analicemos el siguiente caso. 
+          </p>
+        </header>
+        <!--Aquí me quedéeeeeeeeeeeeeeeeeeeeeeeee-->
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <ul>
+              <li>Crear la clase <code>CuadradoCubo</code>.</li>
+              <li>Declarar las variables:
+                <ul>
+                  <li><code>num</code>: Tiene que ser de tipo <code>entero</code>.</li>
+                  <li><code>cua</code>, <code>cub</code>: Ambas tienen que ser de tipo <code>double</code>.</li>
+                </ul>
+              </li>
+              <li>Crear un objeto <code>Scanner</code> para leer los datos introducidos.</li>
+              <li>Leer la variable <code>num</code></li>
+              <li>Calcular <code>cua</code> y <code>cub</code>.</li> <!--Nota-->
+              <li>Escribir <code>cua</code> y <code>cub</code></li> <!--Tip-->
+            </ul>
+            
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block"># Leer el número
+System.out.print("Introduce un número entero: ");
+num = teclado.nextInt();
+
+# Calcular valores 
+cua = Math.pow(num, 2); // Eleva num al cuadrado
+cub = Math.pow(num, 3); // Eleva num al cubo
+
+# Visualizar los resultados 
+System.out.println("El cuadrado de " + num + " es: " + cua);
+System.out.println("El cubo de " + num + " es: " + cub); 
+            </code></pre>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <p class="note-text">Asegúrate de:</p>
+            <ul>
+              <li>Tu objeto <code>Scanner</code> sea correcto para que lea los datos itroducidos por el usuario.</li>
+              <li>Utiliza la función <code>Math.Pow()</code> para hacer el calculo de los valores.</li>
+            </ul>
+            
+            <div class="tip-box">
+              <strong>Tip:</strong>
+              <ul>
+                <li>Al momento de introducir el número se recomienda que no sea un número con valor decimal o fracción.</li>
+                <li>O implementa el codigo para que el número ingresado sea de tipo double.</li>
+              </ul> 
+            </div>
+          </aside>
+        </div>
+      </article>
+
+
+    <footer class="page-footer">
+      <p class="note-text">Regresa al <a href="#top">menú</a> para elegir otro ejercicio.</p>
+    </footer>
+  </div>
+</body>
+</html>
