@@ -1,0 +1,57 @@
+\documentclass[11pt]{amsart}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\usepackage{color}
+\usepackage{colortbl}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+\title{PROBLEMA 4.14}
+%\date{}                                           % Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+%\section{}
+%\subsection{}
+
+\noindent Se tienen los costos de producción de tres departamentos (dulces, bebidas y conservas), correspondientes a los 12 meses del año anterior. Construya un diagrama de flujo que pueda proporcionar la siguiente información:\\
+
+\noindent \quad a) ¿En qué mes se registró el mayor costo de producción de dulces?\\
+
+\noindent \quad b) Promedio anual de los costos de producción de bebidas.\\
+
+\noindent \quad c) ¿En qué mes se registró el mayor costo de producción en bebidas, y en qué mes el menor costo?\\
+
+\noindent \quad d) ¿Cuál fue el rubro que tuvo el menor costo de producción en diciembre?\\
+
+\noindent Dato: PROD [1..12,1..3] (arreglo bidimensional de tipo real que almacena los costos de producción de tres departamentos en los 12 meses del año anterior).\\
+
+\noindent \textbf {Explicación de las variables} \\
+
+\noindent \quad I y J: Variables de tipo entero. Se usan como variables de control de varios ciclos y como índices de los arreglos.\\
+
+\noindent \quad PROD: Arreglo bidimensional de tipo real..\\
+
+\noindent \quad MAYDUL: Variable de tipo real. Se utiliza para almacenar el mayor costo de producción de dulces a lo largo del año.\\
+
+\noindent \quad MES: Variable de tipo entero. Almacena el número de mes en el cual se registró el mayor costo de producción de dulces.\\
+
+\noindent \quad SUM: Variable de tipo real. Se usa para sumar los costos mensuales de producción de bebidas, y para posteriormente calcular el promedio anual.\\
+
+\noindent \quad MESMAY: Variable de tipo entero. Se utiliza para almacenar el mes en el cual se registró el mayor costo de producción de bebidas.\\
+
+\noindent \quad MESMEN: Variable de tipo entero. Guarda el mes en el cual se registró el menor costo de producción de bebidas.\\
+
+\noindent \quad MAYBEB: Variable de tipo real. Almacena el mayor costo mensual de producción de bebidas.\\
+
+\noindent \quad MENBEB: Variable de tipo real. Almacena el menor costo mensual de producción de bebidas.\\
+
+\noindent \quad MENOR: Variable de tipo real. Se usa para almacenar el menor costo de producción en el mes de diciembre.\\
+
+\noindent \quad DEP: Variable de tipo entero. Almacena el número de departamento en el cual se registró el menor costo de producción en el mes de diciembre.\\
+
+\end{document}  

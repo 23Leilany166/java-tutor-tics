@@ -1,0 +1,47 @@
+\documentclass[11pt]{amsart}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+\title{Problema 2.1 }
+%\date{}                                           % Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+%\section{}
+%\subsection{}
+\noindent El número de sonidos emitidos por un grillo en un minuto, es una función de la temperatura. Como resultado de esto, es posible determinar el nivel de la tempe­ ratura haciendo uso de un grillito como termómetro.\newline
+La fórmula para la función es:\newline
+\[
+T = \frac{h}{4} + 40
+\]
+Donde: T representa la temperatura en grados Fahrenheit y N el número de sonidos emitidos por minuto
+Construya un diagrama de flujo que le permita calcular la temperatura, te­ niendo en cuenta el número de sonidos emitidos por el grillo.\newline
+Dato: N\newline
+
+\noindent  \textbf{Explicación de las variables} \newline
+
+\noindent N: Variable de tipo entero.\newline
+T: Variable de tipo real. Almacena la temperatura en grados Fahren- heit.\newline
+A continuación en la tabla 2.8 observamos el seguimiento del algoritmo para diferentes corridas.
+\begin{table}[htbp]
+\centering
+\label{tab:corrida}
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+\multicolumn{3}{ |c| }{\textbf{Tabla 2.8}} \\ \hline
+\textbf{Número de corrida} & \textbf{Dato - N} & \textbf{Resultado - T} \\ \hline
+1 & 8& 42.00 \\ \hline
+2 & 15& 43.75 \\ \hline
+3 & 11& 42.75 \\ \hline
+4 & 25 & 46.25 \\ \hline
+5 & -5&  \\ \hline
+6 & 50 & 52.50\\ \hline
+\end{tabular}
+\end{table}
+\end{document}  

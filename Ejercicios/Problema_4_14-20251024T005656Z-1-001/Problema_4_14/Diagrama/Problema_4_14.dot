@@ -1,0 +1,91 @@
+digraph Problema_4_14 {
+  node [shape="rectangle"];
+  
+  // Nodos
+  inicio [shape="ellipse", label="Inicio",fillcolor="#40e0d0", style="filled"];
+  inicializar_I [shape=box, label="Hacer I = 1"];
+  ciclo_1 [shape= diamond, label="I <= 12"];
+  inicializar_J [shape=box, label="Hacer J = 1"];
+  ciclo_2 [shape=diamond, label="J <= 3"];
+  ingresar_costo [shape=box, label="Escribir \"Ingrese costo de producción en el mes\", I, \"del departamento\", J]"];
+  ingresar_costo1 [shape="parallelogram", label="Leer PROD[I, J]"];
+  incrementar_J [shape=box, label="Hacer J = J + 1"];
+  incrementar_I_1 [shape=box, label="Hacer I = I + 1"];
+  calcular_MAYDUL [shape=box, label="Hacer MAYDUL = PROD[1, 1]\nMES = 1"];
+  calcular_MAYDUL1 [shape=box, label="I = 2"];
+  ciclo_3 [shape=diamond, label="I <= 12"];
+  condicion_MAYDUL [shape="diamond", label="MAYDUL < PROD[I, 1]"];
+  leer_MAYDUL [shape=box, label="I = I + 1 "];
+  actualizar_MAYDUL [shape=box, label="Hacer MAYDUL = PROD[I, 1]\nMES = I"];
+  imprimir_MAYDUL [shape=box label="Escribir \"En el mes\", MES, 
+  \"se registró el mayor costo de producción de dulces\""];
+  inicializar_SUM [shape=box, label="Hacer SUM = 0"];
+  inicializar_SUM1 [shape=box, label="Hacer I = 1"];
+  ciclo_4 [shape=diamond, label="I <= 12"];
+  sumar_COSTOS [shape=box, label="Hacer SUM = SUM + PROD[I, 2]"];
+  sumar_COSTOS1 [shape=box, label="Hacer I = I + 1"];
+  imprimir_PROMEDIO [shape=box, label="Escribir \"Promedio anual de costos
+   de producción de bebidas\", SUM/12"];
+  inicializar_MAYBEB [shape=box, label="Hacer MESMAY = 1\nMESMEN = 1\nMAYBEB = PROD[1, 2]\nMENBEB = PROD[1, 2]"];
+  Ns [shape=box, label="Hacer I = 2"];
+  ciclo_5 [shape=diamond, label="I <= 12"];
+  condicion_MAYBEB_MAY [shape="diamond", label="MAYBEB < PROD[I, 2]"];
+  actualizar_MAYBEB_MAY [shape=box, label="Hacer MAYBEB = PROD[I, 2]\nMESMAY = I"];
+  incrementar_I_3 [shape="parallelogram", label="Hacer I = I + 1"];
+  condicion_MAYBEB_MAY1 [shape="diamond", label="MAYBEB < PROD[I, 2]"];
+  actualizar_MAYBEB_MAY1 [shape=box, label="Hacer MAYBEB = PROD[I, 2]\nMESMAY = I"];
+  imprimir_MAYBEB_MENBEB [shape=box, label="Escribir \"En el mes\", MESMAY, \"se registró el mayor costo de 
+  producción de bebidas, y en el mes\", MESMEN, \"el menor costo\""];
+  inicializar_MENOR [shape=box, label="Hacer MENOR = PROD[12, 1]\nDEP = 1"];
+  inicializar_MENOR1 [shape=box, label="J = 2"];
+  ciclo_6 [shape=diamond, label="J <= 3"];
+  condicion_MENOR [shape="diamond", label="MENOR > PROD[12, J]"];
+  actualizar_MENOR [shape=box, label="Hacer MENOR = PROD[12, J]\nDEP = J"];
+  incrementar_J_2 [shape=box, label="Hacer J = J + 1"];
+  imprimir_MENOR [shape=box, label="Escribir \"El departamento\", DEP, \"tuvo el menor costo en diciembre\""];
+  fin [shape="ellipse", label="Fin"];
+  
+  // Aristas
+  inicio -> inicializar_I;
+  inicializar_I -> ciclo_1;
+  ciclo_1 -> inicializar_J[label="Sí"];
+  inicializar_J -> ciclo_2;
+  ciclo_2 -> ingresar_costo[label="     Si"];
+  ingresar_costo -> ingresar_costo1:
+  ingresar_costo1 ->incrementar_J;
+  incrementar_J -> incrementar_I_1;
+  incrementar_I_1 -> ciclo_1;
+  ciclo_1 -> calcular_MAYDUL[label="No"];
+  calcular_MAYDUL -> calcular_MAYDUL1;
+  calcular_MAYDUL1 -> ciclo_3;
+  ciclo_3 -> condicion_MAYDUL[label="Sí"];
+  ciclo_3 -> imprimir_MAYDUL [label="No"];
+  condicion_MAYDUL -> actualizar_MAYDUL [label="Sí"];
+  actualizar_MAYDUL -> leer_MAYDUL;
+  imprimir_MAYDUL -> inicializar_SUM;
+  inicializar_SUM ->  inicializar_SUM1;
+  inicializar_SUM1 -> ciclo_4;
+  ciclo_4 -> sumar_COSTOS[label="Sí"];
+  ciclo_4 -> imprimir_PROMEDIO[label="No"];
+  sumar_COSTOS -> sumar_COSTOS1;
+  imprimir_PROMEDIO -> inicializar_MAYBEB;
+  inicializar_MAYBEB -> Ns;
+  Ns -> ciclo_5;
+  ciclo_5 -> condicion_MAYBEB_MAY[label="Sí"];
+  condicion_MAYBEB_MAY -> actualizar_MAYBEB_MAY [label="Sí"];
+  actualizar_MAYBEB_MAY-> incrementar_I_3;
+  condicion_MAYBEB_MAY -> condicion_MAYBEB_MAY1 [label="No"];
+  condicion_MAYBEB_MAY1 -> actualizar_MAYBEB_MAY1 [label="Sí"];
+  condicion_MAYBEB_MAY1 -> incrementar_I_3 [label="No"];
+  actualizar_MAYBEB_MAY1 -> incrementar_I_3;
+  ciclo_5 -> imprimir_MAYBEB_MENBEB[label="No"];
+  imprimir_MAYBEB_MENBEB -> inicializar_MENOR;
+  inicializar_MENOR -> inicializar_MENOR1;
+  inicializar_MENOR1 -> ciclo_6;
+  ciclo_6 ->condicion_MENOR [label="Sí"];
+  condicion_MENOR -> incrementar_J_2[label="No"];
+  condicion_MENOR -> actualizar_MENOR [label="Sí"];
+  actualizar_MENOR -> incrementar_J_2 ;
+  ciclo_6 -> imprimir_MENOR [label="No"];
+  imprimir_MENOR -> fin;
+}

@@ -1,0 +1,42 @@
+digraph PS_3_25{
+  node [shape="rectangle"];
+  
+  // Nodos
+  inicio [shape="ellipse", label="Inicio",fillcolor="#40e0d0", style="filled"];
+  leer_N [shape="parallelogram", label="Leer N (Número de alumnos)"];
+  i_1 [shape=box, label="Hacer i = 1"];
+  leer_datos [shape="parallelogram", label="Leer NOMBREi, SEXOi, EDADi, PESOi, ALTi"];
+  verificar_aptitud_alumna [shape="diamond", label="SEXOi == 'F' y ALTi > 1.73 y PESOi > 50 y PESOi < 90"];
+  agregar_alumna [shape=box, label="Agregar NOMBREi a la lista de alumnas con aptitudes"];
+  aumentar_i [shape=box, label="Hacer i = i + 1"];
+  verificar_fin_alumnas [shape="diamond", label="i <= N"];
+  calcular_porcentaje_alumnas [shape=box, label="Porcentaje_alumnas = (Número de alumnas con aptitudes / Número total de alumnas) * 100"];
+  i_2 [shape=box, label="Hacer i = 1"];
+  verificar_aptitud_alumno [shape="diamond", label="SEXOi == 'M' y ALTi > 1.83 y PESOi > 73 y PESOi < 110"];
+  agregar_alumno [shape=box, label="Agregar NOMBREi a la lista de alumnos con aptitudes"];
+  aumentar_i_2 [shape=box, label="Hacer i = i + 1"];
+  verificar_fin_alumnos [shape="diamond", label="i <= N"];
+  calcular_porcentaje_alumnos [shape=box, label="Porcentaje_alumnos = (Número de alumnos con aptitudes / Número total de alumnos) * 100"];
+  mostrar_resultados [shape=box, label="Escribir listas de alumnas y alumnos con aptitudes y porcentajes"];
+  fin [shape="ellipse", label="Fin"];
+  
+  // Aristas
+  inicio -> leer_N;
+  leer_N -> i_1;
+  i_1 -> leer_datos;
+  leer_datos -> verificar_aptitud_alumna;
+  verificar_aptitud_alumna -> agregar_alumna [label="Sí"];
+  verificar_aptitud_alumna -> aumentar_i [label="No"];
+  agregar_alumna -> aumentar_i;
+  aumentar_i -> verificar_fin_alumnas;
+  verificar_fin_alumnas -> calcular_porcentaje_alumnas [label="No"];
+  calcular_porcentaje_alumnas -> i_2;
+  i_2 -> verificar_aptitud_alumno;
+  verificar_aptitud_alumno -> agregar_alumno [label="Sí"];
+  verificar_aptitud_alumno -> aumentar_i_2 [label="No"];
+  agregar_alumno -> aumentar_i_2;
+  aumentar_i_2 -> verificar_fin_alumnos;
+  verificar_fin_alumnos -> calcular_porcentaje_alumnos [label="No"];
+  calcular_porcentaje_alumnos -> mostrar_resultados;
+  mostrar_resultados -> fin;
+}

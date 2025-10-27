@@ -1,0 +1,33 @@
+\documentclass[11pt]{amsart}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+\title{Problema 4.1}
+\author{Enrique Zuñiga Zuñiga}
+%\date{}                                           % Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+%\section{}
+\noindent Escriba un diagrama de flujo que reciba como entrada un arreglo unidimensional ordenado de enteros (posiblemente repetidos) y genere como salida una lista de los números enteros, pero sin repeticiones.  
+Dato: VEC [1..N] 1$ <$ N $< $500  \newline
+Donde:VEC es un arreglo unidimensional de enteros, cuya capacidad máxima es de 500 elementos.  \newline 
+\textbf{Explicación de variables} \newline
+N: Variable de tipo entero. Indica el número de elementos que se recibirán como datos. Su valor debe estar comprendido en el intervalo [1..500]. \newline
+I: Variable de tipo entero. Se usa como índice del arreglo y como variable de control en diferentes ciclos.
+VEC: Arreglo unidimensional de tipo entero. \newline
+REPET: Variable de tipo entero. Se utiliza como auxiliar para almacenar el valor impreso. Con este valor se comparan los siguientes números \newline
+para determinar si hay repetidos. \newline
+A continuación presentamos el programa correspondiente. \newline
+
+%\subsection{}
+
+
+
+\end{document}  

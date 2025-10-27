@@ -1,0 +1,64 @@
+digraph Contar_PosNegNulos {
+  Inicio [
+    shape=ellipse,
+    label="Inicio", 
+    fillcolor="#FF0000", 
+    style="filled"
+  ];
+  Entrada_arreglo [
+    shape=parallelogram,
+    label="Leer ARRE[1..300]"
+  ];
+  Inicializar_contadores [
+    shape=box,
+    label="Inicializar contadores\nPositivos = 0\nNegativos = 0\nNulos = 0"
+  ];
+  Recorrer_arreglo [
+    shape=diamond,
+    label="¿Fin del arreglo?"
+  ];
+  Es_positivo [
+    shape=diamond,
+    label="¿ARRE[i] > 0?"
+  ];
+  Es_negativo [
+    shape=diamond,
+    label="¿ARRE[i] < 0?"
+  ];
+  Incrementar_positivos [
+    shape=box,
+    label="Incrementar contador\nPositivos = Positivos + 1"
+  ];
+  Incrementar_negativos [
+    shape=box,
+    label="Incrementar contador\nNegativos = Negativos + 1"
+  ];
+  Incrementar_nulos [
+    shape=box,
+    label="Incrementar contador\nNulos = Nulos + 1"
+  ];
+  Imprimir_resultados [
+    shape=box,
+    label="Imprimir contadores\nPositivos, Negativos, Nulos"
+  ];
+  Fin [
+    shape=ellipse,
+    label="Fin"
+  ];
+
+  Inicio -> Entrada_arreglo;
+  Entrada_arreglo -> Inicializar_contadores;
+  Inicializar_contadores -> Recorrer_arreglo;
+  Recorrer_arreglo -> Es_positivo [label="si"];
+  Recorrer_arreglo -> Imprimir_resultados [label="no"];
+  Es_positivo -> Es_negativo [label="si"];
+  Es_positivo -> Es_negativo [label="no"];
+  Es_negativo -> Incrementar_negativos [label="si"];
+  Es_negativo -> Incrementar_nulos [label="no"];
+  Es_positivo -> Incrementar_positivos [label="no"];
+  Incrementar_positivos -> Recorrer_arreglo;
+  Incrementar_negativos -> Recorrer_arreglo;
+  Incrementar_nulos -> Recorrer_arreglo;
+  Recorrer_arreglo -> Fin;
+  Imprimir_resultados -> Fin;
+}

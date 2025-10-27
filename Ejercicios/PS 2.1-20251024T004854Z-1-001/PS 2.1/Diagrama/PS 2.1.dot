@@ -1,0 +1,65 @@
+digraph Calificaciones_Grupo {
+    node [shape=box];
+
+    Inicio [
+        shape=ellipse,
+        label="Inicio",
+        fillcolor="#FF0000",
+        style="filled"
+    ];
+    Ingreso_Numero_Alumnos [
+        label="Ingrese número de alumnos"
+    ];
+    Verificar_Numero_Alumnos [
+        shape=diamond,
+        label="¿N > 1 && N < 100?",
+    ];
+    Inicializar_Variables [
+        label="Inicializar variables"
+    ];
+    Ciclo_While [
+        label="Ciclo While (I < N)"
+    ];
+    Verificar_Aprobacion [
+        shape=diamond,
+        label="¿ALUMNO[I] > 6?"
+    ];
+    Contar_Aprobados [
+        label="Contar alumnos aprobados (TALUMA)"
+    ];
+    Contar_Reprobados [
+        label="Contar alumnos reprobados (TALUMR)"
+    ];
+    Contar_Mayor_Ocho [
+        label="Contar alumnos con calificación mayor a 8 (CAL8)"
+    ];
+    Calcular_Promedio [
+        label="Calcular el promedio general del grupo (PROM)"
+    ];
+    Calcular_Porcentajes [
+        label="Calcular porcentajes de alumnos aprobados y reprobados (PORCA, PORCR)"
+    ];
+    Imprimir_Resultados [
+        shape=box,
+        label="Imprimir los resultados"
+    ];
+    Fin [
+        shape=ellipse,
+        label="Fin"
+    ];
+
+    Inicio -> Ingreso_Numero_Alumnos;
+    Ingreso_Numero_Alumnos -> Verificar_Numero_Alumnos;
+    Verificar_Numero_Alumnos -> Inicializar_Variables [label="Sí"];
+    Verificar_Numero_Alumnos -> Fin [label="No"];
+    Inicializar_Variables -> Ciclo_While;
+    Ciclo_While -> Verificar_Aprobacion;
+    Verificar_Aprobacion -> Contar_Aprobados [label="Sí"];
+    Verificar_Aprobacion -> Contar_Reprobados [label="No"];
+    Contar_Aprobados -> Contar_Mayor_Ocho;
+    Contar_Reprobados -> Contar_Mayor_Ocho;
+    Contar_Mayor_Ocho -> Calcular_Promedio;
+    Calcular_Promedio -> Calcular_Porcentajes;
+    Calcular_Porcentajes -> Imprimir_Resultados;
+    Imprimir_Resultados -> Fin;
+}

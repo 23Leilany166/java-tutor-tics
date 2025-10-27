@@ -1,0 +1,19 @@
+digraph G {
+  node [shape=circle];
+
+  Inicio [label="Inicio"];
+  LeerSeno [label="SENO", shape = parallelogram];
+  LeerCoseno [label=" COSENO", shape = parallelogram];
+  VerificarSeno [label="SENO ≠ 0", shape=diamond];
+  CalcularCotangente [label="COSENO / SENO", shape = box];
+  MostrarResultado [label="Mostrar Cotangente", shape = parallelogram];
+  Fin [label="Fin"];
+
+  Inicio -> LeerSeno;
+  LeerSeno -> LeerCoseno;
+  LeerCoseno -> VerificarSeno;
+  VerificarSeno -> CalcularCotangente [label="Sí"];
+  VerificarSeno -> Fin [label="No"];
+  CalcularCotangente -> MostrarResultado;
+  MostrarResultado -> Fin;
+}

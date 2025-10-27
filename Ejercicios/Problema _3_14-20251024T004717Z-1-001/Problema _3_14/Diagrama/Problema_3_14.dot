@@ -1,0 +1,105 @@
+digraph EstadioPrecios {
+  Inicio [
+    shape=ellipse,
+    label="Inicio",
+  ];
+
+  Inicializar_variables [
+    shape=box,
+    label="API ← 0\nAP2 ←	 0\nAP3 ←	 0\nAP4 ←	0\nAP5 ←	 0\nRECAU ←	 0"
+  ];
+
+  Leer_precios [
+    shape=parallelogram,
+    label="P1, P2, P3,
+     P4, P5"
+  ];
+
+  Leer_venta [
+    shape=parallelogram,
+    label="CLAV, CANT"
+  ];
+
+  Loop [
+    shape=diamond,
+    label="CLAVE <> -1
+    y 
+    CANT <> -1"
+  ];
+
+  Condicion_localidad [
+    shape=diamond,
+    label="CLAVE"
+  ];
+
+  Calcular_precio_recaudacion1 [
+    shape=box,
+    label="PRE ← P1 * CANT\n API1 ← API1 + CANT"
+  ];
+
+  Calcular_precio_recaudacion2 [
+    shape=box,
+    label="PRE ← P2 * CANT\n API2 ← API2 + CANT"
+  ];
+
+  Calcular_precio_recaudacion3 [
+    shape=box,
+    label="PRE ← P3 * CANT\n API3 ← API3 + CANT"
+  ];
+
+  Calcular_precio_recaudacion4 [
+    shape=box,
+    label="PRE ← P4 * CANT\n API4 ← API4 + CANT"
+  ];
+
+  Calcular_precio_recaudacion5 [
+    shape=box,
+    label="PRE ← P5 * CANT\n API5 ← API5 + CANT"
+  ];
+
+  Imprimir_venta [
+    shape=box,
+    label="CLAVE, CANT, PRE"
+  ];
+
+  Suma_venta [
+    shape=box,
+    label="RECAU ← RECAU + PRE"
+  ];
+
+  Leer_venta2 [
+    shape=parallelogram,
+    label=" CLAVE, CANT"
+  ];
+
+  Imprimir_cantidades [
+    shape=box,
+    label="CANTIDAD BOLETOS TIPO 1: ', API\n'CANTIDAD BOLETOS TIPO 2: ', AP2\n'CANTIDAD BOLETOS TIPO 3: ', AP3\n'CANTIDAD BOLETOS TIPO 4: ', AP4\n 'CANTIDAD BOLETOS TIPO 5: ', AP5\n 'RECAUDACION DEL ESTADIO: ', RECAU"
+  ];
+
+  Fin [
+    shape=ellipse,
+    label="Fin"
+  ];
+
+  Inicio -> Inicializar_variables;
+  Inicializar_variables -> Leer_precios;
+  Leer_precios -> Leer_venta;
+  Leer_venta -> Loop;
+  Loop -> Condicion_localidad[label="Si"];
+  Condicion_localidad -> Calcular_precio_recaudacion1 [label="1"];
+  Condicion_localidad -> Calcular_precio_recaudacion2 [label="2"];
+  Condicion_localidad -> Calcular_precio_recaudacion3 [label="3"];
+  Condicion_localidad -> Calcular_precio_recaudacion4 [label="4"];
+  Condicion_localidad -> Calcular_precio_recaudacion5 [label="5"];
+  Calcular_precio_recaudacion1 -> Imprimir_venta;
+  Calcular_precio_recaudacion2 -> Imprimir_venta;
+  Calcular_precio_recaudacion3 -> Imprimir_venta;
+  Calcular_precio_recaudacion4 -> Imprimir_venta;
+  Calcular_precio_recaudacion5 -> Imprimir_venta;
+  Imprimir_venta -> Suma_venta;
+  Suma_venta -> Leer_venta2;
+  Leer_venta2 -> Loop;
+  Loop -> Imprimir_cantidades [label="No"];
+  Imprimir_cantidades -> Fin;
+}
