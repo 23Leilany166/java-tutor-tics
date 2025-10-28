@@ -3,293 +3,1216 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Ejercicios de OOP en Python</title>
-  <link rel="stylesheet" href="./styles/styles_desc.css">
+  <title>Ejercicios de Algoritmia en Java</title>
+  <link rel="stylesheet" href="./styles_desc.css">
 </head>
 <body>
   <div class="container">
     <header class="page-header">
-      <h1>Ejercicios de Programación Orientada a Objetos en Python</h1>
+      <h1>Ejercicios de OOP en Java</h1>
       <p class="subtitle">Selecciona un ejercicio del menú para ver los detalles.</p>
     </header>
 
     <nav class="exercises-nav" aria-label="Navegación de ejercicios">
-      <a href="#employee" class="nav-link">Employee & Meeting</a>
-      <a href="#person" class="nav-link">Person</a>
-      <a href="#point2d" class="nav-link">Point2D</a>
-      <a href="#time" class="nav-link">Time</a>
-      <a href="#freqtable" class="nav-link">FreqTable</a>
+      <a href="#promedio-alumno" class="nav-link">Ejemplo 1.8</a>
+      <a href="#aprobado-alumno" class="nav-link">Ejemplo 2.1</a>
+      <a href="#promedio-aprobado" class="nav-link">Problema 2.4</a>
+      <a href="#pares-impares" class="nav-link">Problema 3.1</a>
+      <a href="#contar-primos" class="nav-link">Problema 3.17</a>
+      <a href="#primeros-primos" class="nav-link">Problema 4.4</a>
+      <a href="#matriz-transpuesta" class="nav-link">Problema 4.17</a>
+      <a href="#operaciones-basicas" class="nav-link">PS 1.1</a>
+      <a href="#deporte-temperatura" class="nav-link">PS 2.12</a>
+      <a href="#encontrar-mayor" class="nav-link">PS 2.13</a>
+      <a href="#funcion-fx" class="nav-link">PS 2.14</a>
+      <a href="#calculadora-clave" class="nav-link">PS 2.15</a>
+      <a href="#seno-serie" class="nav-link">PS 3.30</a>
+      <a href="#fibonacci-100" class="nav-link">PS 4.6</a>
+      <a href="#produccion-fabricas" class="nav-link">PS 4.22</a>
+      <a href="#gestion-productos" class="nav-link">PS 5.1</a>
     </nav>
 
     <main class="exercises-main">
-      <!-- Employee & Meeting -->
-      <article id="employee" class="exercise-card" aria-labelledby="employee-title">
+      
+      <article id="promedio-alumno" class="exercise-card" aria-labelledby="promedio-title">
         <header class="exercise-header">
-          <span class="exercise-badge">Ejercicio</span>
-          <h2 id="employee-title">Implementar <code>Employee</code> y <code>Meeting</code> con dunder methods</h2>
+          <span class="exercise-badge">Ejemplo 1.8</span>
+          <h2 id="promedio-title">Promedio de Calificaciones de Alumno (Java)</h2>
           
           <p class="exercise-description">
-            En este ejercicio aprenderás a implementar métodos especiales (dunder methods) que permiten 
-            personalizar el comportamiento de tus objetos. Practicarás la sobrecarga de operadores con 
-            <code>+</code> y <code>+=</code>, además de controlar cómo se representan tus objetos en texto 
-            con <code>__str__</code> y <code>__repr__</code>.
+            Dada la matrícula y 5 calificaciones de un alumno obtenidas a lo largo del semestre, 
+            construya un <strong>programa en Java</strong> que lea los datos desde la consola e imprima 
+            la matrícula del alumno y el promedio de sus calificaciones.
           </p>
         </header>
         
         <div class="exercise-content">
           <section class="exercise-main">
-            <h3>Requisitos</h3>
+            <h3>Datos del Problema</h3>
             <ul>
-              <li>Crear una clase <code>Employee</code> con atributos <code>id</code> y <code>name</code>.</li>
-              <li>Implementar métodos:
+              <li><strong>Datos de Entrada:</strong> MAT, CAL1, CAL2, CAL3, CAL4, CAL5</li>
+              <li><strong>Descripción de Datos (Tipos en Java):</strong>
                 <ul>
-                  <li><code>__str__</code>: representación legible para el usuario, por ejemplo <code>"{self.name} con id = {self.id}"</code>.</li>
-                  <li><code>__repr__</code>: representación técnica para debugging, por ejemplo <code>"&lt;Employee name={self.name} id={self.id}&gt;"</code>.</li>
+                  <li><code>MAT</code>: <code>int</code> (representa la matrícula del alumno).</li>
+                  <li><code>CAL1, CAL2, CAL3, CAL4, CAL5</code>: <code>double</code> (representan las 5 calificaciones del alumno).</li>
                 </ul>
               </li>
-              <li>Crear una clase <code>Meeting</code> con atributo <code>attendees</code> (lista).</li>
-              <li>Implementar métodos:
+              <li><strong>Salida Esperada:</strong>
                 <ul>
-                  <li><code>__add__</code>: operar con <code>+</code> para:
+                  <li>Imprimir la matrícula (MAT).</li>
+                  <li>Imprimir el promedio (<code>double</code>) de las 5 calificaciones.</li>
+                </ul>
+              </li>
+            </ul>
+            
+            <h3>Requisitos de Implementación (Java)</h3>
+            <ul>
+              <li>Crear una clase principal (ej. <code>PromedioAlumno</code>).</li>
+              <li>Usar la clase <code>java.util.Scanner</code> para leer los datos desde la consola.</li>
+              <li>Solicitar al usuario la matrícula (<code>nextInt()</code>).</li>
+              <li>Solicitar al usuario las 5 calificaciones (<code>nextDouble()</code>).</li>
+              <li>Calcular el promedio. La operación debe ser de punto flotante.</li>
+              <li>Imprimir la matrícula y el promedio en la consola usando <code>System.out.println()</code>.</li>
+            </ul>
+
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block">(Al ejecutar el programa en la consola)
+
+Ingrese la matrícula: 12345
+Ingrese calificación 1: 10.0
+Ingrese calificación 2: 9.5
+Ingrese calificación 3: 8.0
+Ingrese calificación 4: 7.5
+Ingrese calificación 5: 9.0
+--- Resultados ---
+Matrícula: 12345
+Promedio: 8.8</code></pre>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas (Java)</h3>
+            <p class="note-text">Recuerda que:</p>
+            <ul>
+              <li>Debes importar <code>java.util.Scanner</code> al inicio de tu archivo.</li>
+              <li>La matrícula (<code>MAT</code>) se lee como <code>int</code>.</li>
+              <li>Las calificaciones (<code>CAL</code>) se leen como <code>double</code> para manejar decimales.</li>
+              <li>El promedio (<code>PROMEDIO</code>) también debe ser <code>double</code>.</li>
+            </ul>
+            
+            <div class="tip-box">
+              <strong>Tip:</strong> Al calcular el promedio, divide entre <code>5.0</code> (un <code>double</code>) en lugar de <code>5</code> (un <code>int</code>). Esto asegura que Java realice una división de punto flotante y no una división entera (que truncaría los decimales).
+            </div>
+          </aside>
+        </div>
+      </article>
+
+      <article id="aprobado-alumno" class="exercise-card" aria-labelledby="aprobado-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Ejemplo 2.1</span>
+          <h2 id="aprobado-title">Verificar Aprobación (Java)</h2>
+          
+          <p class="exercise-description">
+            Construya un <strong>programa en Java</strong> que, dado como dato la calificación de un alumno 
+            en un examen, escriba "Aprobado" en caso de que esa calificación sea 
+            mayor a 8.
+          </p>
+        </header>
+        
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Datos del Problema</h3>
+            <ul>
+              <li><strong>Dato de Entrada:</strong> CAL</li>
+              <li><strong>Descripción de Datos (Tipos en Java):</strong>
+                <ul>
+                  <li><code>CAL</code>: <code>double</code> (representa la calificación del alumno).</li>
+                </ul>
+              </li>
+              <li><strong>Salida Esperada:</strong>
+                <ul>
+                  <li>Imprimir la cadena "Aprobado" <em>solo si</em> la calificación es estrictamente mayor que 8.</li>
+                  <li>Si la calificación es 8 o menor, no se debe imprimir nada.</li>
+                </ul>
+              </li>
+            </ul>
+            
+            <h3>Requisitos de Implementación (Java)</h3>
+            <ul>
+              <li>Crear una clase principal (ej. <code>VerificarAprobacion</code>).</li>
+              <li>Usar la clase <code>java.util.Scanner</code> para leer los datos desde la consola.</li>
+              <li>Solicitar al usuario la calificación (<code>nextDouble()</code>).</li>
+              <li>Utilizar una estructura condicional <code>if</code> para evaluar si <code>CAL > 8</code>.</li>
+              <li>Imprimir "Aprobado" usando <code>System.out.println()</code> solo si la condición es verdadera.</li>
+            </ul>
+
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block">(Ejecución 1: Calificación > 8)
+Ingrese la calificación: 9.5
+Aprobado
+
+(Ejecución 2: Calificación <= 8)
+Ingrese la calificación: 7.0
+(No se imprime nada)</code></pre>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas (Java)</h3>
+            <p class="note-text">Recuerda que:</p>
+            <ul>
+              <li>Debes importar <code>java.util.Scanner</code>.</li>
+              <li>La calificación (<code>CAL</code>) debe leerse como <code>double</code>.</li>
+              <li>Este problema utiliza una "Estructura selectiva simple" (Si-entonces).</li>
+              <li>No se requiere una cláusula <code>else</code>.</li>
+            </ul>
+            
+            <div class="tip-box">
+              <strong>Tip:</strong> Asegúrate de que tu programa no imprima nada si la calificación es 8 o menos, ya que el problema solo pide una acción para el caso "mayor que 8".
+            </div>
+          </aside>
+        </div>
+      </article>
+
+      <article id="promedio-aprobado" class="exercise-card" aria-labelledby="promedio-aprobado-title">
+         <header class="exercise-header">
+          <span class="exercise-badge">Problema 2.4</span>
+          <h2 id="promedio-aprobado-title">Promedio y Estado de Aprobación (Java)</h2>
+          <p class="exercise-description">
+            Construya un <strong>programa en Java</strong> que, dado como datos la matrícula y 5 calificaciones 
+            de un alumno, imprima la matrícula, el promedio y la palabra "Aprobado" 
+            si el alumno tiene un promedio mayor o igual que 6, y la palabra "No Aprobado" 
+            en caso contrario.
+          </p>
+        </header>
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Datos del Problema</h3>
+            <ul>
+              <li><strong>Datos de Entrada:</strong> MAT, CAL1, CAL2, CAL3, CAL4, CAL5</li>
+              <li><strong>Descripción de Datos (Tipos en Java):</strong>
+                <ul>
+                  <li><code>MAT</code>: <code>int</code> (representa la matrícula del alumno).</li>
+                  <li><code>CAL1, CAL2, CAL3, CAL4, CAL5</code>: <code>double</code> (representan las 5 calificaciones del alumno).</li>
+                </ul>
+              </li>
+              <li><strong>Salida Esperada:</strong>
+                <ul>
+                  <li>Imprimir la matrícula (MAT).</li>
+                  <li>Imprimir el promedio (<code>double</code>) de las 5 calificaciones.</li>
+                  <li>Imprimir el estado: "Aprobado" o "No Aprobado".</li>
+                </ul>
+              </li>
+            </ul>
+            
+            <h3>Requisitos de Implementación (Java)</h3>
+            <ul>
+              <li>Usar <code>java.util.Scanner</code> para leer la matrícula (<code>int</code>) y las 5 calificaciones (<code>double</code>).</li>
+              <li>Calcular el promedio (<code>double</code>).</li>
+              <li>Utilizar una estructura condicional <code>if-else</code> para evaluar si <code>PROMEDIO >= 6</code>.</li>
+              <li>Imprimir la matrícula y el promedio.</li>
+              <li>Imprimir "Aprobado" si la condición es verdadera, o "No Aprobado" si es falsa.</li>
+            </ul>
+
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block">(Ejecución 1: Aprobado)
+Ingrese la matrícula: 123
+Ingrese calificación 1: 7.0
+Ingrese calificación 2: 8.0
+Ingrese calificación 3: 5.0
+Ingrese calificación 4: 6.0
+Ingrese calificación 5: 9.0
+--- Resultados ---
+Matrícula: 123
+Promedio: 7.0
+Aprobado
+
+(Ejecución 2: No Aprobado)
+Ingrese la matrícula: 456
+Ingrese calificación 1: 5.0
+Ingrese calificación 2: 4.0
+Ingrese calificación 3: 6.0
+Ingrese calificación 4: 5.5
+Ingrese calificación 5: 6.0
+--- Resultados ---
+Matrícula: 456
+Promedio: 5.3
+No Aprobado</code></pre>
+          </section>
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas (Java)</h3>
+            <p class="note-text">Recuerda que:</p>
+            <ul>
+              <li>Este problema combina el cálculo del Ejemplo 1.8 con una estructura condicional.</li>
+              <li>A diferencia del Ejemplo 2.1, este usa una estructura "Si-Sino" (<code>if-else</code>) porque debe haber una salida para ambos casos.</li>
+              <li>La condición es "mayor o igual que 6" (<code>>= 6</code>).</li>
+            </ul>
+            <div class="tip-box">
+              <strong>Tip:</strong> Puedes declarar una variable <code>String estado;</code> y asignarle el valor "Aprobado" o "No Aprobado" dentro del <code>if-else</code>, para luego imprimirla una sola vez al final.
+            </div>
+          </aside>
+        </div>
+      </article>
+
+      <article id="pares-impares" class="exercise-card" aria-labelledby="pares-impares-title">
+         <header class="exercise-header">
+          <span class="exercise-badge">Problema 3.1</span>
+          <h2 id="pares-impares-title">Suma de Impares y Promedio de Pares (Java)</h2>
+          <p class="exercise-description">
+            Construya un <strong>programa en Java</strong> que, dado como datos 270 números enteros, 
+            obtenga la suma de los números impares y el promedio de los números pares.
+          </p>
+        </header>
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Datos del Problema</h3>
+            <ul>
+              <li><strong>Datos de Entrada:</strong> 270 números enteros (NUM1, NUM2, ..., NUM270).</li>
+              <li><strong>Descripción de Datos (Tipos en Java):</strong>
+                <ul>
+                  <li><code>NUMi</code>: <code>int</code> (cada número ingresado).</li>
+                </ul>
+              </li>
+              <li><strong>Salida Esperada:</strong>
+                <ul>
+                  <li>La suma total de los números impares (<code>long</code> recomendado para evitar desbordamiento).</li>
+                  <li>El promedio de los números pares (<code>double</code>).</li>
+                </ul>
+              </li>
+            </ul>
+            
+            <h3>Requisitos de Implementación (Java)</h3>
+            <ul>
+              <li>Usar <code>java.util.Scanner</code> para leer los números.</li>
+              <li>Usar un bucle <code>for</code> que se repita 270 veces.</li>
+              <li>Declarar e inicializar variables acumuladoras:
+                <ul>
+                  <li><code>long sumaImpares = 0;</code></li>
+                  <li><code>long sumaPares = 0;</code></li>
+                  <li><code>int conteoPares = 0;</code></li>
+                </ul>
+              </li>
+              <li>Dentro del bucle, leer un número (<code>int num = scanner.nextInt();</code>).</li>
+              <li>Usar el operador módulo (<code>%</code>) para verificar si <code>num % 2 == 0</code> (par) o no (impar).</li>
+              <li>Acumular los valores según corresponda.</li>
+              <li>Después del bucle, calcular el promedio de los pares (<code>double promedioPares</code>).</li>
+              <li><strong>Importante:</strong> Manejar el caso de división por cero si <code>conteoPares</code> es 0.</li>
+            </ul>
+
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block">(Simulación con 5 números en lugar de 270 para brevedad)
+
+Ingrese el número 1: 5
+Ingrese el número 2: 10
+Ingrese el número 3: 3
+Ingrese el número 4: 8
+Ingrese el número 5: 2
+--- Resultados ---
+Suma de Impares: 8
+Promedio de Pares: 6.666666666666667
+
+(Simulación donde no se ingresan pares)
+Ingrese el número 1: 1
+Ingrese el número 2: 3
+...
+--- Resultados ---
+Suma de Impares: 4
+Promedio de Pares: No se ingresaron números pares.</code></pre>
+          </section>
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas (Java)</h3>
+            <p class="note-text">Recuerda que:</p>
+            <ul>
+              <li>Este problema requiere una <strong>estructura repetitiva</strong> (bucle <code>for</code>).</li>
+              <li>Usa el operador módulo <code>%</code> para saber si un número es par.</li>
+              <li>Usa <code>long</code> para las sumas (<code>sumaImpares</code>, <code>sumaPares</code>) para evitar un posible desbordamiento de entero (<em>integer overflow</em>).</li>
+            </ul>
+            <div class="tip-box">
+              <strong>¡Cuidado!</strong> Antes de dividir para calcular el promedio (<code>sumaPares / conteoPares</code>), debes verificar que <code>conteoPares</code> no sea 0. Si es 0, podrías imprimir un mensaje indicando que no hubo números pares.
+            </div>
+          </aside>
+        </div>
+      </article>
+
+      <article id="contar-primos" class="exercise-card" aria-labelledby="contar-primos-title">
+         <header class="exercise-header">
+          <span class="exercise-badge">Problema 3.17</span>
+          <h2 id="contar-primos-title">Contar Números Primos (Java)</h2>
+          <p class="exercise-description">
+            Se dice que un entero positivo N es un número primo si los únicos enteros positivos
+            que lo dividen son exactamente 1 y N. Diseñe un <strong>programa en Java</strong> que lea
+            un número M, y obtenga y cuente todos los números primos menores a M.
+          </p>
+        </header>
+        <div class="exercise-content">
+           <section class="exercise-main">
+            <h3>Datos del Problema</h3>
+            <ul>
+              <li><strong>Dato de Entrada:</strong> M</li>
+              <li><strong>Descripción de Datos (Tipos en Java):</strong>
+                <ul>
+                  <li><code>M</code>: <code>int</code> (representa el número límite que se ingresa).</li>
+                </ul>
+              </li>
+              <li><strong>Salida Esperada:</strong>
+                <ul>
+                  <li>Imprimir en la consola cada número primo que sea menor que <code>M</code>.</li>
+                  <li>Imprimir el conteo total de los números primos encontrados.</li>
+                </ul>
+              </li>
+            </ul>
+            
+            <h3>Requisitos de Implementación (Java)</h3>
+            <ul>
+              <li>Usar <code>java.util.Scanner</code> para leer el entero <code>M</code>.</li>
+              <li>Usar un bucle <code>for</code> (externo) para iterar <code>N</code> desde 2 hasta <code>M-1</code>.</li>
+              <li>Para cada <code>N</code>, usar un bucle <code>for</code> (interno) para verificar si es primo.</li>
+              <li>Usar una variable <code>boolean esPrimo = true;</code> como bandera para cada <code>N</code>.</li>
+              <li>El bucle interno debe probar divisores desde 2 hasta la raíz cuadrada de <code>N</code> (<code>Math.sqrt(N)</code>).</li>
+              <li>Si se encuentra un divisor (<code>N % divisor == 0</code>), cambiar <code>esPrimo</code> a <code>false</code> y romper el bucle interno.</li>
+              <li>Después del bucle interno, si <code>esPrimo</code> sigue siendo <code>true</code>, imprimir <code>N</code> e incrementar un contador <code>conteoPrimos</code>.</li>
+              <li>Al final del programa, imprimir el <code>conteoPrimos</code> total.</li>
+            </ul>
+
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block">Ingrese el número límite (M): 20
+Números primos menores que 20:
+2
+3
+5
+7
+11
+13
+17
+19
+--- Resultados ---
+Total de números primos encontrados: 8</code></pre>
+          </section>
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas (Java)</h3>
+            <p class="note-text">Recuerda que:</p>
+            <ul>
+              <li>Este problema requiere <strong>bucles anidados</strong>.</li>
+              <li>El 1 <strong>no</strong> se considera un número primo. Tu bucle externo debe empezar en 2.</li>
+              <li>El 2 es el primer número primo y el único par.</li>
+            </ul>
+            <div class="tip-box">
+              <strong>Optimización:</strong> Para chequear si <code>N</code> es primo, solo necesitas probar divisores desde 2 hasta <code>Math.sqrt(N)</code>. Si no encuentras un divisor en ese rango, <code>N</code> es primo.
+            </div>
+          </aside>
+        </div>
+      </article>
+
+      <article id="primeros-primos" class="exercise-card" aria-labelledby="primeros-primos-title">
+         <header class="exercise-header">
+          <span class="exercise-badge">Problema 4.4</span>
+          <h2 id="primeros-primos-title">Almacenar los Primeros 30 Números Primos (Java)</h2>
+          <p class="exercise-description">
+            Construya un <strong>programa en Java</strong> para almacenar en un arreglo unidimensional 
+            los primeros 30 números primos. Al final imprima el arreglo correspondiente.
+          </p>
+        </header>
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Datos del Problema</h3>
+            <ul>
+              <li><strong>Datos de Entrada:</strong> Ninguno. El número 30 es una constante.</li>
+              <li><strong>Salida Esperada:</strong>
+                <ul>
+                  <li>La impresión en consola del arreglo que contiene los primeros 30 números primos.</li>
+                </ul>
+              </li>
+            </ul>
+            
+            <h3>Requisitos de Implementación (Java)</h3>
+            <ul>
+              <li>Declarar un arreglo de enteros: <code>int[] primos = new int[30];</code>.</li>
+              <li>Declarar un contador para los primos encontrados: <code>int conteoPrimos = 0;</code>.</li>
+              <li>Declarar una variable para el número que se está probando: <code>int num = 2;</code>.</li>
+              <li>Usar un bucle <code>while (conteoPrimos < 30)</code> para buscar hasta llenar el arreglo.</li>
+              <li>Dentro del <code>while</code>, implementar la lógica para verificar si <code>num</code> es primo (usando un bucle <code>for</code> interno y una bandera <code>boolean</code>).</li>
+              <li>Si <code>num</code> es primo, guardarlo en el arreglo (<code>primos[conteoPrimos] = num;</code>) e incrementar <code>conteoPrimos</code>.</li>
+              <li>Incrementar <code>num</code> en cada iteración del <code>while</code> para probar el siguiente número.</li>
+              <li>Al finalizar el bucle <code>while</code>, imprimir el arreglo.</li>
+            </ul>
+
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block">(Al ejecutar el programa, no se pide entrada)
+
+Los primeros 30 números primos son:
+[2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113]</code></pre>
+          </section>
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas (Java)</h3>
+            <p class="note-text">Recuerda que:</p>
+            <ul>
+              <li>Este problema utiliza un arreglo (<code>int[]</code>).</li>
+              <li>El bucle externo debe ser <code>while</code>, ya que no sabes de antemano qué número será el primo número 30.</li>
+              <li>El bucle interno (para chequear primalidad) puede ser un <code>for</code>.</li>
+            </ul>
+            <div class="tip-box">
+              <strong>Tip:</strong> Para imprimir el arreglo de forma sencilla al final, importa <code>java.util.Arrays</code> y usa <code>System.out.println(Arrays.toString(primos));</code>.
+            </div>
+          </aside>
+        </div>
+      </article>
+
+      <article id="matriz-transpuesta" class="exercise-card" aria-labelledby="transpuesta-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Problema 4.17</span>
+          <h2 id="transpuesta-title">Matriz Transpuesta (Java)</h2>
+          <p class="exercise-description">
+            Construya un <strong>programa en Java</strong> que, dada una matriz A(M x N) de tipo entero, 
+            calcule la transpuesta de dicha matriz. La transpuesta se obtiene al escribir 
+            las filas de la matriz A como columnas.
+          </p>
+        </header>
+        <div class="exercise-content">
+           <section class="exercise-main">
+            <h3>Datos del Problema</h3>
+            <ul>
+              <li><strong>Datos de Entrada:</strong> M (filas), N (columnas), y luego M &times; N enteros.</li>
+              <li><strong>Descripción de Datos (Tipos en Java):</strong>
+                <ul>
+                  <li><code>int M</code> (Filas, 1 &le; M &le; 50).</li>
+                  <li><code>int N</code> (Columnas, 1 &le; N &le; 30).</li>
+                  <li><code>int[][] A = new int[M][N];</code> (Matriz Original).</li>
+                </ul>
+              </li>
+              <li><strong>Salida Esperada:</strong>
+                <ul>
+                  <li>Una nueva matriz <code>int[][] T = new int[N][M];</code> (Matriz Transpuesta).</li>
+                </ul>
+              </li>
+            </ul>
+            
+            <h3>Requisitos de Implementación (Java)</h3>
+            <ul>
+              <li>Usar <code>java.util.Scanner</code> para leer M y N.</li>
+              <li>Declarar la matriz original: <code>int[][] A = new int[M][N];</code>.</li>
+              <li>Usar bucles <code>for</code> anidados para leer los M &times; N elementos de A (fila por fila).</li>
+              <li>Declarar la matriz transpuesta: <code>int[][] T = new int[N][M];</code>.</li>
+              <li>Usar bucles <code>for</code> anidados (<code>i</code> para filas de A, <code>j</code> para columnas de A).</li>
+              <li>Asignar el valor transpuesto: <code>T[j][i] = A[i][j];</code>.</li>
+              <li>Usar bucles <code>for</code> anidados para imprimir la matriz transpuesta T.</li>
+            </ul>
+
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block">Ingrese el número de filas (M): 3
+Ingrese el número de columnas (N): 4
+
+Ingrese los elementos de la matriz A:
+Ingrese fila 1 (4 elementos): -5 6 8 4
+Ingrese fila 2 (4 elementos): 2 5 7 9
+Ingrese fila 3 (4 elementos): 1 3 4 6
+
+--- Matriz Transpuesta (4x3) ---
+-5 2 1 
+6 5 3 
+8 7 4 
+4 9 6 </code></pre>
+          </section>
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas (Java)</h3>
+            <p class="note-text">Recuerda que:</p>
+            <ul>
+              <li>Este problema requiere <strong>arreglos bidimensionales</strong> (matrices).</li>
+              <li>Si la matriz original es <code>A[M][N]</code>, la transpuesta <code>T</code> <strong>debe</strong> ser <code>T[N][M]</code>.</li>
+              <li>La lógica clave es invertir los índices: <code>T[j][i] = A[i][j];</code>.</li>
+            </ul>
+            <div class="tip-box">
+              <strong>Tip:</strong> Para imprimir la matriz transpuesta <code>T</code>, necesitarás un bucle <code>for</code> anidado. Usa <code>System.out.print(T[i][j] + " ")</code> para los elementos de una fila y <code>System.out.println()</code> al final del bucle interno para saltar a la siguiente línea.
+            </div>
+          </aside>
+        </div>
+      </article>
+
+      <article id="operaciones-basicas" class="exercise-card" aria-labelledby="basicas-title">
+         <header class="exercise-header">
+          <span class="exercise-badge">PS 1.1</span>
+          <h2 id="basicas-title">Operaciones Básicas (Java)</h2>
+          <p class="exercise-description">
+            Construya un <strong>programa en Java</strong> que, dado como datos dos números reales, 
+            calcule e imprima la suma, resta y multiplicación de dichos números.
+          </p>
+        </header>
+        <div class="exercise-content">
+           <section class="exercise-main">
+            <h3>Datos del Problema</h3>
+            <ul>
+              <li><strong>Datos de Entrada:</strong> N1, N2</li>
+              <li><strong>Descripción de Datos (Tipos en Java):</strong>
+                <ul>
+                  <li><code>double N1</code> (Primer número real).</li>
+                  <li><code>double N2</code> (Segundo número real).</li>
+                </ul>
+              </li>
+              <li><strong>Salida Esperada:</strong>
+                <ul>
+                  <li>Imprimir la Suma (<code>double</code>).</li>
+                  <li>Imprimir la Resta (<code>double</code>).</li>
+                  <li>Imprimir la Multiplicación (<code>double</code>).</li>
+                </ul>
+              </li>
+            </ul>
+            
+            <h3>Requisitos de Implementación (Java)</h3>
+            <ul>
+              <li>Usar la clase <code>java.util.Scanner</code> para leer los datos.</li>
+              <li>Solicitar al usuario el primer número (<code>nextDouble()</code>).</li>
+              <li>Solicitar al usuario el segundo número (<code>nextDouble()</code>).</li>
+              <li>Calcular <code>double suma = N1 + N2;</code>.</li>
+              <li>Calcular <code>double resta = N1 - N2;</code>.</li>
+              <li>Calcular <code>double multiplicacion = N1 * N2;</code>.</li>
+              <li>Imprimir los tres resultados por separado.</li>
+            </ul>
+
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block">Ingrese el primer número real: 10.5
+Ingrese el segundo número real: 5.0
+--- Resultados ---
+Suma: 15.5
+Resta: 5.5
+Multiplicación: 52.5</code></pre>
+          </section>
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas (Java)</h3>
+            <p class="note-text">Recuerda que:</p>
+            <ul>
+              <li>Debes importar Asegúrate de importar <code>java.util.Scanner</code>.</li>
+              <li>Todos los datos (entrada y salida) son de tipo <code>double</code> para manejar decimales.</li>
+            </ul>
+          </aside>
+        </div>
+      </article>
+
+      <article id="deporte-temperatura" class="exercise-card" aria-labelledby="deporte-title">
+         <header class="exercise-header">
+          <span class="exercise-badge">PS 2.12</span>
+          <h2 id="deporte-title">Sugerir Deporte según Temperatura (Java)</h2>
+          <p class="exercise-description">
+            Construya un <strong>programa en Java</strong> que dado como dato una temperatura en grados Fahrenheit, 
+            determine el deporte que es apropiado practicar a esa temperatura, 
+            teniendo en cuenta una tabla de rangos.
+          </p>
+        </header>
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Datos del Problema</h3>
+            <ul>
+              <li><strong>Dato de Entrada:</strong> TEMP</li>
+              <li><strong>Descripción de Datos (Tipos en Java):</strong>
+                <ul>
+                  <li><code>double TEMP</code> (Variable de tipo real que representa la temperatura).</li>
+                </ul>
+              </li>
+              <li><strong>Salida Esperada:</strong>
+                <ul>
+                  <li>Un <code>String</code> con el deporte apropiado.</li>
+                </ul>
+              </li>
+            </ul>
+            
+            <h3>Requisitos de Implementación (Java)</h3>
+            <ul>
+              <li>Usar la clase <code>java.util.Scanner</code> para leer la temperatura.</li>
+              <li>Solicitar al usuario la temperatura (<code>nextDouble()</code>).</li>
+              <li>Usar una cadena de <code>if-else if-else</code> para determinar el deporte:
+                <ul>
+                  <li><code>> 85</code>: Natación</li>
+                  <li><code>> 70</code> y <code>&le; 85</code>: Tenis</li>
+                  <li><code>> 32</code> y <code>&le; 70</code>: Golf</li>
+                  <li><code>> 10</code> y <code>&le; 32</code>: Esquí</li>
+                  <li><code>&le; 10</code>: Marcha</li>
+                </ul>
+              </li>
+              <li>Imprimir el deporte recomendado.</li>
+            </ul>
+
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block">(Ejecución 1)
+Ingrese la temperatura: 90
+Deporte recomendado: Natación
+
+(Ejecución 2)
+Ingrese la temperatura: 85
+Deporte recomendado: Tenis
+
+(Ejecución 3)
+Ingrese la temperatura: 32
+Deporte recomendado: Esquí
+
+(Ejecución 4)
+Ingrese la temperatura: 5
+Deporte recomendado: Marcha</code></pre>
+          </section>
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas (Java)</h3>
+            <p class="note-text">Recuerda que:</p>
+            <ul>
+              <li>El orden de la cadena <code>if-else if</code> es importante.</li>
+              <li>Puedes simplificar las condiciones. Si ya comprobaste <code>TEMP > 85</code>, en el <code>else if</code> solo necesitas chequear <code>TEMP > 70</code> (porque ya sabes que es &le; 85).</li>
+              <li>Asegúrate de incluir correctamente los límites (<code>></code> vs <code>&le;</code>).</li>
+            </ul>
+          </aside>
+        </div>
+      </article>
+
+      <article id="encontrar-mayor" class="exercise-card" aria-labelledby="mayor-title">
+         <header class="exercise-header">
+          <span class="exercise-badge">PS 2.13</span>
+          <h2 id="mayor-title">Encontrar el Mayor de Tres Números (Java)</h2>
+          <p class="exercise-description">
+            Construya un <strong>programa en Java</strong> que, dados tres números reales A, B y C, 
+            identifique cuál es el mayor. Considere a fin de simplificar 
+            el problema que los números son diferentes.
+          </p>
+        </header>
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Datos del Problema</h3>
+            <ul>
+              <li><strong>Datos de Entrada:</strong> A, B, C</li>
+              <li><strong>Descripción de Datos (Tipos en Java):</strong>
+                <ul>
+                  <li><code>double A</code>, <code>double B</code>, <code>double C</code> (Variables de tipo real).</li>
+                </ul>
+              </li>
+              <li><strong>Salida Esperada:</strong>
+                <ul>
+                  <li>Imprimir el número que sea mayor.</li>
+                </ul>
+              </li>
+            </ul>
+            
+            <h3>Requisitos de Implementación (Java)</h3>
+            <ul>
+              <li>Usar la clase <code>java.util.Scanner</code> para leer los tres números.</li>
+              <li>Solicitar al usuario el número A (<code>nextDouble()</code>).</li>
+              <li>Solicitar al usuario el número B (<code>nextDouble()</code>).</li>
+              <li>Solicitar al usuario el número C (<code>nextDouble()</code>).</li>
+              <li>Usar lógica condicional (<code>if-else if</code>) para comparar los números.</li>
+              <li>Imprimir el valor del número mayor.</li>
+            </ul>
+
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block">Ingrese el número A: 15.5
+Ingrese el número B: 30.2
+Ingrese el número C: 10.0
+--- Resultados ---
+El mayor es: 30.2</code></pre>
+          </section>
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas (Java)</h3>
+            <p class="note-text">Recuerda que:</p>
+            <ul>
+              <li>El problema asume que los tres números son <strong>diferentes</strong>, lo que simplifica la lógica (no hay empates).</li>
+              <li>Puedes usar el operador lógico "Y" (<code>&&</code>). Por ejemplo: <code>if (A > B && A > C)</code>.</li>
+              <li>Una estructura <code>if-else if-else</code> también es una solución válida.</li>
+            </ul>
+          </aside>
+        </div>
+      </article>
+
+      <article id="funcion-fx" class="exercise-card" aria-labelledby="fx-title">
+         <header class="exercise-header">
+          <span class="exercise-badge">PS 2.14</span>
+          <h2 id="fx-title">Calcular f(x) según x mod 4 (Java)</h2>
+          <p class="exercise-description">
+            Haga un <strong>programa en Java</strong> que permita calcular el valor de f(x), 
+            según la expresión:
+          </p>
+          <ul>
+            <li>f(x) = x<sup>2</sup>, si (x mod 4) = 0</li>
+            <li>f(x) = x / 6, si (x mod 4) = 1</li>
+            <li>f(x) = &radic;x, si (x mod 4) = 2</li>
+            <li>f(x) = x<sup>3</sup> + 5, si (x mod 4) = 3</li>
+          </ul>
+        </header>
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Datos del Problema</h3>
+            <ul>
+              <li><strong>Dato de Entrada:</strong> X</li>
+              <li><strong>Descripción de Datos (Tipos en Java):</strong>
+                <ul>
+                  <li><code>int X</code> (Variable de tipo entero).</li>
+                </ul>
+              </li>
+              <li><strong>Salida Esperada:</strong>
+                <ul>
+                  <li>El valor de f(x), que debe ser <code>double</code>.</li>
+                </ul>
+              </li>
+            </ul>
+            
+            <h3>Requisitos de Implementación (Java)</h3>
+            <ul>
+              <li>Usar <code>java.util.Scanner</code> para leer el entero <code>X</code>.</li>
+              <li>Calcular el residuo: <code>int mod = X % 4;</code>.</li>
+              <li>Usar una estructura <code>switch</code> (recomendado) o <code>if-else if</code> basada en <code>mod</code>.</li>
+              <li>Declarar una variable <code>double resultado</code>.</li>
+              <li>Usar <code>Math.pow(X, 2)</code> para x<sup>2</sup>, <code>(double)X / 6.0</code> para x/6, <code>Math.sqrt(X)</code> para &radic;x, y <code>Math.pow(X, 3) + 5</code> para x<sup>3</sup> + 5.</li>
+              <li>Imprimir el <code>resultado</code>.</li>
+            </ul>
+
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block">(Ejecución 1: mod 0)
+Ingrese X: 4
+f(x) = 16.0
+
+(Ejecución 2: mod 1)
+Ingrese X: 5
+f(x) = 0.8333333333333334
+
+(Ejecución 3: mod 2)
+Ingrese X: 6
+f(x) = 2.449489742783178
+
+(Ejecución 4: mod 3)
+Ingrese X: 7
+f(x) = 348.0</code></pre>
+          </section>
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas (Java)</h3>
+            <p class="note-text">Recuerda que:</p>
+            <ul>
+              <li>El operador "mod" en Java es <code>%</code>.</li>
+              <li>La variable <code>resultado</code> debe ser <code>double</code> porque x/6 y &radic;x producen decimales.</li>
+              <li>Asegúrate de hacer una división de punto flotante: <code>(double)X / 6.0</code>.</li>
+              <li>Necesitarás <code>import java.lang.Math;</code> (aunque a menudo es implícito).</li>
+            </ul>
+          </aside>
+        </div>
+      </article>
+
+      <article id="calculadora-clave" class="exercise-card" aria-labelledby="calculadora-title">
+         <header class="exercise-header">
+          <span class="exercise-badge">PS 2.15</span>
+          <h2 id="calculadora-title">Calculadora con Clave (Java)</h2>
+          <p class="exercise-description">
+            Construya un <strong>programa en Java</strong> que permita realizar operaciones aritméticas 
+            elementales, según la clave ingresada (ver Tabla 6.2). Imprima la clave 
+            ingresada y el resultado de la operación.
+          </p>
+        </header>
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Datos del Problema</h3>
+            <ul>
+              <li><strong>Datos de Entrada:</strong> CLAVE, N1, N2 (N1 y N2 no se mencionan pero son necesarios)</li>
+              <li><strong>Descripción de Datos (Tipos en Java):</strong>
+                <ul>
+                  <li><code>String CLAVE</code> (ej. "+", "-", "*", "/").</li>
+                  <li><code>double N1</code> (Primer operando).</li>
+                  <li><code>double N2</code> (Segundo operando).</li>
+                </ul>
+              </li>
+              <li><strong>Salida Esperada:</strong>
+                <ul>
+                  <li>Imprimir la CLAVE.</li>
+                  <li>Imprimir el resultado de la operación.</li>
+                </ul>
+              </li>
+            </ul>
+            
+            <h3>Requisitos de Implementación (Java)</h3>
+            <ul>
+              <li>Usar <code>java.util.Scanner</code> para leer los datos.</li>
+              <li>Solicitar la clave (<code>scanner.next()</code>).</li>
+              <li>Solicitar los dos números reales (<code>nextDouble()</code>).</li>
+              <li>Usar una estructura <code>switch</code> basada en la <code>CLAVE</code>.</li>
+              <li>Manejar el caso de división por cero (si <code>CLAVE</code> es "/" y <code>N2</code> es 0).</li>
+              <li>Imprimir la clave y el resultado.</li>
+              <li>Incluir un caso <code>default</code> para claves no válidas.</li>
+            </ul>
+
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block">(Ejecución 1)
+Ingrese la clave (+, -, *, /): *
+Ingrese el primer número: 10
+Ingrese el segundo número: 5.5
+--- Resultados ---
+Operación: *
+Resultado: 55.0
+
+(Ejecución 2: División por cero)
+Ingrese la clave (+, -, *, /): /
+Ingrese el primer número: 10
+Ingrese el segundo número: 0
+--- Resultados ---
+Operación: /
+Error: División por cero no permitida.</code></pre>
+          </section>
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas (Java)</h3>
+            <p class="note-text">Recuerda que:</p>
+            <ul>
+              <li>Leer la clave como <code>String</code> con <code>scanner.next()</code> es más fácil que leer un <code>char</code>.</li>
+              <li>Java permite hacer <code>switch</code> con <code>String</code>s.</li>
+              <li><strong>¡Importante!</strong> Siempre valida la división por cero antes de realizar la operación.</li>
+            </ul>
+          </aside>
+        </div>
+      </article>
+
+      <article id="seno-serie" class="exercise-card" aria-labelledby="seno-title">
+         <header class="exercise-header">
+          <span class="exercise-badge">PS 3.30</span>
+          <h2 id="seno-title">Calcular Sen(X) con Serie de Taylor (Java)</h2>
+          <p class="exercise-description">
+            Construya un <strong>programa en Java</strong> que, dada una X cualquiera (entero), 
+            calcule el SEN(X) utilizando la serie:
+            <br>
+            X - X<sup>3</sup>/3! + X<sup>5</sup>/5! - X<sup>7</sup>/7! &hellip;
+            <br>
+            El cálculo debe detenerse cuando el valor absoluto del nuevo término a sumar 
+            sea menor o igual a 0.01. Imprima el número de términos requeridos y el resultado.
+          </p>
+        </header>
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Datos del Problema</h3>
+            <ul>
+              <li><strong>Dato de Entrada:</strong> X</li>
+              <li><strong>Descripción de Datos (Tipos en Java):</strong>
+                <ul>
+                  <li><code>int X</code> (Variable de tipo entero, representa X en radianes).</li>
+                </ul>
+              </li>
+              <li><strong>Salida Esperada:</strong>
+                <ul>
+                  <li>El valor calculado de SEN(X) (<code>double</code>).</li>
+                  <li>El número de términos utilizados (<code>int</code>).</li>
+                </ul>
+              </li>
+            </ul>
+            
+            <h3>Requisitos de Implementación (Java)</h3>
+            <ul>
+              <li>Usar <code>java.util.Scanner</code> para leer el entero <code>X</code>.</li>
+              <li>Convertir <code>X</code> a <code>double</code> para los cálculos: <code>double x_rad = X;</code>.</li>
+              <li>Inicializar variables:
+                <ul>
+                  <li><code>double suma = 0.0;</code></li>
+                  <li><code>double termino = x_rad;</code> (El primer término es X).</li>
+                  <li><code>int conteoTerminos = 0;</code></li>
+                  <li><code>int k = 1;</code> (Representa la potencia y el factorial actual).</li>
+                </ul>
+              </li>
+              <li>Usar un bucle <code>while (Math.abs(termino) > 0.01)</code> o <code>do-while</code>.</li>
+              <li>Dentro del bucle:
+                <ol>
+                  <li>Añadir el término a la suma: <code>suma += termino;</code>.</li>
+                  <li>Incrementar el contador: <code>conteoTerminos++;</code>.</li>
+                  <li>Preparar el *siguiente* término:</li>
+                  <li>Incrementar k: <code>k += 2;</code> (pasa de 1 a 3, 3 a 5, etc.).</li>
+                  <li>Calcular el siguiente término eficientemente: 
+                      <code>termino = termino * (-1) * (x_rad * x_rad) / ((k-1) * k);</code></li>
+                </ol>
+              </li>
+              <li>Al salir del bucle, imprimir <code>conteoTerminos</code> y <code>suma</code>.</li>
+            </ul>
+
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block">(Ejecución 1)
+Ingrese X (entero en radianes): 1
+--- Resultados ---
+SEN(1) = 0.8333333333333334
+Términos requeridos: 2
+
+(Ejecución 2)
+Ingrese X (entero en radianes): 2
+--- Resultados ---
+SEN(2) = 0.9079365079365079
+Términos requeridos: 4</code></pre>
+          </section>
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas (Java)</h3>
+            <p class="note-text">Recuerda que:</p>
+            <ul>
+              <li>La X de entrada debe interpretarse como <strong>radianes</strong>.</li>
+              <li>Usar <code>Math.abs()</code> es crucial para la condición del bucle.</li>
+              <li>Calcular el siguiente término a partir del anterior (como se muestra en los requisitos) evita calcular factoriales y potencias enormes, previniendo desbordamientos (<em>overflow</em>).</li>
+            </ul>
+          </aside>
+        </div>
+      </article>
+
+      <article id="fibonacci-100" class="exercise-card" aria-labelledby="fibonacci-title">
+         <header class="exercise-header">
+          <span class="exercise-badge">PS 4.6</span>
+          <h2 id="fibonacci-title">Almacenar los 100 Primeros Números Fibonacci (Java)</h2>
+          <p class="exercise-description">
+            Construya un <strong>programa en Java</strong> para almacenar en un arreglo unidimensional 
+            los 100 primeros números Fibonacci. Imprima al final el arreglo correspondiente.
+          </p>
+        </header>
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Datos del Problema</h3>
+            <ul>
+              <li><strong>Datos de Entrada:</strong> Ninguno. El número 100 es una constante.</li>
+              <li><strong>Salida Esperada:</strong>
+                <ul>
+                  <li>La impresión en consola del arreglo que contiene los primeros 100 números Fibonacci.</li>
+                </ul>
+              </li>
+            </ul>
+            
+            <h3>Requisitos de Implementación (Java)</h3>
+            <ul>
+              <li>Importar <code>java.math.BigInteger</code> y <code>java.util.Arrays</code>.</li>
+              <li>Declarar un arreglo de 100: <code>BigInteger[] fibonacci = new BigInteger[100];</code>.</li>
+              <li>Asignar los casos base:
+                <ul>
+                  <li><code>fibonacci[0] = BigInteger.ZERO;</code></li>
+                  <li><code>fibonacci[1] = BigInteger.ONE;</code></li>
+                </ul>
+              </li>
+              <li>Usar un bucle <code>for</code> que itere desde <code>i = 2</code> hasta <code>99</code>.</li>
+              <li>Dentro del bucle, calcular el término actual: <code>fibonacci[i] = fibonacci[i-1].add(fibonacci[i-2]);</code>.</li>
+              <li>Al finalizar el bucle, imprimir el arreglo usando <code>Arrays.toString(fibonacci)</code>.</li>
+            </ul>
+
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block">(Al ejecutar el programa, no se pide entrada)
+
+Los primeros 100 números Fibonacci son:
+[0, 1, 1, 2, 3, 5, 8, ..., 218922995834555169026, 354224848179261915075]</code></pre>
+          </section>
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas (Java)</h3>
+            <p class="note-text">Recuerda que:</p>
+            <ul>
+              <li>El 100º número Fibonacci es gigantesco. Los tipos <code>int</code> y <code>long</code> <strong>no</strong> son suficientes y causarán un desbordamiento (<em>overflow</em>).</li>
+              <li>Debes usar obligatoriamente la clase <code>java.math.BigInteger</code>.</li>
+              <li>Usa <code>BigInteger.ZERO</code>, <code>BigInteger.ONE</code> y el método <code>.add()</code>.</li>
+            </ul>
+            <div class="tip-box">
+              <strong>Tip:</strong> Para imprimir el arreglo de forma sencilla al final, importa <code>java.util.Arrays</code> y usa <code>System.out.println(Arrays.toString(fibonacci));</code>.
+            </div>
+          </aside>
+        </div>
+      </article>
+
+       <article id="produccion-fabricas" class="exercise-card" aria-labelledby="produccion-title">
+          <header class="exercise-header">
+            <span class="exercise-badge">PS 4.22</span>
+            <h2 id="produccion-title">Análisis de Producción de Fábricas (Java)</h2>
+            <p class="exercise-description">
+              Construya un <strong>programa en Java</strong> que procese los datos de producción de N fábricas 
+              durante los 12 meses del año anterior y proporcione la siguiente información:
+              <br>a) La clave de la fábrica que más produjo el año anterior y su producción total.
+              <br>b) Dado un mes, las claves de las fábricas cuya producción en dicho mes fue superior a $150,000.
+            </p>
+          </header>
+          <div class="exercise-content">
+            <section class="exercise-main">
+              <h3>Datos del Problema</h3>
+              <ul>
+                <li><strong>Datos de Entrada:</strong> N, seguido de N líneas, cada una con FAB<sub>i</sub> y MES<sub>i,1</sub> a MES<sub>i,12</sub>. Finalmente, un mes para la consulta b).</li>
+                <li><strong>Descripción de Datos (Tipos en Java):</strong>
+                  <ul>
+                    <li><code>int N</code> (Número de fábricas, 1 &le; N &le; 500).</li>
+                    <li><code>int[] fabricas = new int[N];</code> (Claves de las fábricas).</li>
+                    <li><code>double[][] produccion = new double[N][12];</code> (Producción [fábrica][mes]).</li>
+                    <li><code>int mesConsulta</code> (Mes para el inciso b, 1 a 12).</li>
+                  </ul>
+                </li>
+                <li><strong>Salida Esperada:</strong>
+                  <ul>
+                    <li>a) Imprimir clave (<code>int</code>) y producción total (<code>double</code>) de la fábrica con mayor producción anual.</li>
+                    <li>b) Imprimir las claves (<code>int</code>) de las fábricas que cumplen la condición en el <code>mesConsulta</code>.</li>
+                  </ul>
+                </li>
+              </ul>
+              
+              <h3>Requisitos de Implementación (Java)</h3>
+              <ul>
+                <li>Usar <code>java.util.Scanner</code> para leer los datos.</li>
+                <li>Leer N.</li>
+                <li>Declarar los arreglos <code>fabricas</code> y <code>produccion</code>.</li>
+                <li>Usar un bucle <code>for</code> (de 0 a N-1) para leer los datos de cada fábrica:
+                  <ul>
+                    <li>Leer la clave <code>fabricas[i]</code>.</li>
+                    <li>Usar un bucle <code>for</code> anidado (de 0 a 11) para leer <code>produccion[i][j]</code>.</li>
+                  </ul>
+                </li>
+                <li><strong>Inciso a):</strong>
+                  <ul>
+                    <li>Inicializar <code>double maxProduccion = -1.0;</code> y <code>int fabricaMax = -1;</code>.</li>
+                    <li>Usar un bucle <code>for</code> (de 0 a N-1) para cada fábrica:
+                      <ul>
+                        <li>Calcular <code>double totalAnual = 0;</code> sumando <code>produccion[i][j]</code> para j de 0 a 11.</li>
+                        <li>Si <code>totalAnual > maxProduccion</code>, actualizar <code>maxProduccion = totalAnual;</code> y <code>fabricaMax = fabricas[i];</code>.</li>
+                      </ul>
+                    </li>
+                    <li>Imprimir <code>fabricaMax</code> y <code>maxProduccion</code>.</li>
+                  </ul>
+                </li>
+                <li><strong>Inciso b):</strong>
+                  <ul>
+                    <li>Leer <code>mesConsulta</code> (validar que esté entre 1 y 12).</li>
+                    <li>Ajustar al índice del arreglo: <code>int indiceMes = mesConsulta - 1;</code>.</li>
+                    <li>Imprimir un encabezado para la salida del inciso b).</li>
+                    <li>Usar un bucle <code>for</code> (de 0 a N-1) para cada fábrica:
+                      <ul>
+                        <li>Si <code>produccion[i][indiceMes] > 150000</code>, imprimir <code>fabricas[i]</code>.</li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+
+              <h3>Ejemplo de uso esperado</h3>
+              <pre><code class="code-block">Ingrese el número de fábricas (N): 3
+
+Ingrese clave y producción mensual (12 valores) para fábrica 1:
+101 10000 20000 ... 15000
+Ingrese clave y producción mensual (12 valores) para fábrica 2:
+102 160000 50000 ... 60000
+Ingrese clave y producción mensual (12 valores) para fábrica 3:
+103 40000 170000 ... 90000
+
+Ingrese el mes para la consulta (1-12): 2
+
+--- Resultados ---
+Inciso a):
+Fábrica con mayor producción anual: 102
+Producción total: 1250000.0 (valor ejemplo)
+
+Inciso b):
+Fábricas con producción > 150000 en el mes 2:
+103
+</code></pre>
+            </section>
+            <aside class="exercise-sidebar">
+              <h3>Notas rápidas (Java)</h3>
+              <p class="note-text">Recuerda que:</p>
+              <ul>
+                <li>Necesitas <strong>arreglos paralelos</strong> (<code>fabricas</code> y <code>produccion</code>) o una estructura más compleja si prefieres.</li>
+                <li>Los meses van de 1 a 12, pero los índices del arreglo van de <strong>0 a 11</strong>. Ajusta al leer/consultar.</li>
+                <li>Valida la entrada del mes de consulta.</li>
+                <li>Inicializa correctamente las variables para encontrar el máximo.</li>
+              </ul>
+            </aside>
+          </div>
+      </article>
+
+      <article id="gestion-productos" class="exercise-card" aria-labelledby="productos-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">PS 5.1</span>
+          <h2 id="productos-title">Gestión de Productos en Almacén (Java)</h2>
+          
+          <p class="exercise-description">
+            Una compañía distribuye N productos (1 &le; N &le; 150) a distintos comercios. 
+            Se almacena en un arreglo toda la información relacionada a su mercancía. 
+            Construya un <strong>programa en Java</strong> que pueda llevar a cabo las 
+            siguientes operaciones: venta, reabastecimiento, actualización de precio e 
+            informe sobre un producto.
+          </p>
+        </header>
+        
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Estructura de Datos</h3>
+            <ul>
+              <li>Se recomienda definir una clase <code>Producto</code> con los siguientes atributos:
+                <ul>
+                  <li><code>int clave</code> (CLA)</li>
+                  <li><code>String descripcion</code> (DES)</li>
+                  <li><code>int existencia</code> (EXI)</li>
+                  <li><code>int minimo</code> (MIN) - Mínimo a mantener en existencia.</li>
+                  <li><code>double precioUnitario</code> (PU)</li>
+                </ul>
+              </li>
+              <li>El programa principal manejará un arreglo de objetos: <code>Producto[] productos = new Producto[N];</code></li>
+              <li>Alternativamente, se podrían usar arreglos paralelos (uno para cada campo), aunque es menos práctico.</li>
+            </ul>
+            
+            <h3>Operaciones Requeridas</h3>
+            <ol type="a">
+              <li><strong>Venta de un producto:</strong>
+                <ul>
+                  <li>Datos: clave del producto, cantidad vendida.</li>
+                  <li>Buscar el producto por su clave en el arreglo.</li>
+                  <li>Si se encuentra y hay existencia suficiente:
                     <ul>
-                      <li><em>Meeting + Employee</em>: devolver un <strong>nuevo</strong> Meeting con los asistentes combinados (NO mutar el original).</li>
-                      <li><em>Meeting + Meeting</em>: devolver un <strong>nuevo</strong> Meeting con la unión de asistentes sin duplicados.</li>
-                      <li>Lanzar <code>raise TypeError("Solo se pueden agregar objetos de la clase Employee o Meeting")</code> si el objeto no es <code>Employee</code> ni <code>Meeting</code>.</li>
+                      <li>Actualizar la existencia (restar la cantidad vendida).</li>
+                      <li>Verificar si la nueva existencia está por debajo del mínimo. Si es así, mostrar una advertencia.</li>
                     </ul>
                   </li>
-                  <li><code>__iadd__</code> (<code>+=</code>): agregar in-place un <code>Employee</code> o un <code>Meeting</code> (sin duplicar asistentes).</li>
-                  <li><code>__len__</code>: devolver el número de asistentes.</li>
-                  <li><code>__str__</code>: representación legible para el usuario con nombres separados por espacios. <code>Asistentes: Hugo, Paco, Luis</code></li>
-                  <li><code>__repr__</code>: representación técnica (por ejemplo <code>"0x7f3f4c5d6f70"</code>).</li>
+                  <li>Si no se encuentra o no hay existencia suficiente, informar del error.</li>
                 </ul>
               </li>
-            </ul>
-            
-            <h3>Ejemplo de uso esperado</h3>
-            <pre><code class="code-block"># Crear empleados
-e1 = Employee("Hugo")
-e2 = Employee("Paco")
-e3 = Employee("Luis")
+              <li><strong>Reabastecimiento de un producto:</strong>
+                <ul>
+                  <li>Datos: clave del producto, cantidad comprada.</li>
+                  <li>Buscar el producto por su clave.</li>
+                  <li>Si se encuentra, actualizar la existencia (sumar la cantidad comprada).</li>
+                  <li>Si no se encuentra, informar del error.</li>
+                </ul>
+              </li>
+              <li><strong>Actualizar el precio de un producto:</strong>
+                <ul>
+                  <li>Datos: clave del producto, porcentaje de aumento (ej. 10 para 10%).</li>
+                  <li>Buscar el producto por su clave.</li>
+                  <li>Si se encuentra, calcular el nuevo precio (<code>precioActual * (1 + porcentaje / 100.0)</code>) y actualizar el campo <code>precioUnitario</code>.</li>
+                  <li>Si no se encuentra, informar del error.</li>
+                </ul>
+              </li>
+              <li><strong>Informar sobre un producto:</strong>
+                <ul>
+                  <li>Dato: clave del producto.</li>
+                  <li>Buscar el producto por su clave.</li>
+                  <li>Si se encuentra, imprimir todos sus datos (clave, descripción, existencia, mínimo, precio).</li>
+                  <li>Si no se encuentra, informar del error.</li>
+                </ul>
+              </li>
+            </ol>
 
-# Crear meetings
-m1 = Meeting()
-m2 = Meeting()
+            <h3>Ejemplo de uso esperado (Conceptual)</h3>
+            <pre><code class="code-block">(El programa podría tener un menú principal)
 
-# Meeting + Employee -> nuevo meeting
-m3 = m1 + e1      # m1 no cambia, m3 contiene a Hugo
+Seleccione una operación:
+1. Venta
+2. Reabastecimiento
+3. Actualizar Precio
+4. Consultar Producto
+5. Salir
+Opción: 1
 
-# In-place +=
-m3 += e2          # m3 ahora: Hugo, Paco
+Ingrese clave del producto: 101
+Ingrese cantidad vendida: 5
+Venta realizada. Existencia actual: 15
+**Advertencia: Existencia por debajo del mínimo (20)**
 
-# Fusionar meetings sin mutar los originales
-m2 += e3
-m4 = m3 + m2      # m4: Hugo, Paco, Luis
-
-print(m4)         # Asistentes: Hugo Paco Luis
-print(len(m4))    # 3</code></pre>
+Opción: 4
+Ingrese clave del producto: 101
+--- Datos del Producto ---
+Clave: 101
+Descripción: Martillo
+Existencia: 15
+Mínimo: 20
+Precio: 150.75
+</code></pre>
           </section>
           
           <aside class="exercise-sidebar">
-            <h3>Notas rápidas</h3>
-            <p class="note-text">Asegúrate de:</p>
+            <h3>Notas rápidas (Java)</h3>
+            <p class="note-text">Recuerda que:</p>
             <ul>
-              <li>Usar <code>list.copy()</code> para evitar compartir referencias.</li>
-              <li>No duplicar asistentes al fusionar meetings.</li>
-              <li>Que <code>__str__</code> y <code>__repr__</code> devuelvan exactamente el formato solicitado.</li>
+              <li>La implementación central es la <strong>búsqueda</strong> del producto por clave en el arreglo.</li>
+              <li>Es fundamental manejar el caso en que un producto buscado <strong>no se encuentre</strong>.</li>
+              <li>Considera cómo cargar los datos iniciales de los N productos (podría ser desde el teclado, un archivo, o datos fijos para prueba).</li>
+              <li>Usar una clase <code>Producto</code> hace el código más organizado y legible.</li>
             </ul>
-            
             <div class="tip-box">
-              <strong>Tip:</strong> para comprobar los objetos en memoria usa <code>id(obj)</code> y para convertir la referencia a memoria en hexadecimal usa <code>hex(id(obj))</code>.
+              <strong>Tip:</strong> Puedes crear un método auxiliar `buscarProducto(int clave)` que devuelva el índice del producto en el arreglo o -1 si no se encuentra. Esto simplificará el código de cada operación.
             </div>
           </aside>
         </div>
       </article>
 
-      <!-- Person -->
-      <article id="person" class="exercise-card" aria-labelledby="person-title">
-        <header class="exercise-header">
-          <span class="exercise-badge">Ejercicio</span>
-          <h2 id="person-title">Implementar <code>Person</code> con <code>__str__</code></h2>
-
-          <p class="exercise-description">
-            En este ejercicio reforzarás la comprensión del método especial <code>__str__</code>, que define cómo se 
-            muestran tus objetos al convertirlos en texto. Practicarás la manipulación de cadenas y el formateo de 
-            nombres propios, asegurando una salida legible y coherente para el usuario.
-          </p>
-          
-        </header>
-        
-        <div class="exercise-content">
-          <section class="exercise-main">
-            <h3>Requisitos</h3>
-            <ul>
-              <li>Crear una clase <code>Person</code> con atributos:
-                <ul>
-                  <li><code>first_name</code> (nombre)</li>
-                  <li><code>last_name</code> (apellido)</li>
-                </ul>
-              </li>
-              <li>Implementar el método:
-                <ul>
-                  <li><code>__str__</code>: debe devolver el nombre completo en formato capitalizado (primera letra mayúscula). Ejemplo: <code>"Juan Pérez"</code>.</li>
-                </ul>
-              </li>
-            </ul>
-            
-            <h3>Ejemplo de uso esperado</h3>
-            <pre><code class="code-block"># Crear personas
-p1 = Person("juan", "perez")
-p2 = Person("maria", "lopez")
-
-print(p1)   # Juan Perez
-print(p2)   # Maria Lopez</code></pre>
-          </section>
-          
-          <aside class="exercise-sidebar">
-            <h3>Notas rápidas</h3>
-            <ul>
-              <li>Recuerda que <code>str.title()</code> convierte la primera letra de cada palabra a mayúscula.</li>
-              <li>El método <code>__str__</code> debe devolver exactamente el formato pedido.</li>
-              <li>Este método se ejecuta automáticamente al usar <code>print(objeto)</code>.</li>
-            </ul>
-            
-            <div class="tip-box">
-              <strong>Tip:</strong> prueba crear varias personas con nombres en minúscula y verifica que al imprimirlos aparezcan correctamente capitalizados.
-            </div>
-          </aside>
-        </div>
-      </article>
-
-      <!-- Point2D -->
-      <article id="point2d" class="exercise-card" aria-labelledby="point2d-title">
-        <header class="exercise-header">
-          <span class="exercise-badge">Ejercicio</span>
-          <h2 id="point2d-title">Clase <code>Point2D</code> con cálculo de distancias</h2>
-
-          <p class="exercise-description">
-            En este ejercicio aplicarás conceptos de programación orientada a objetos y matemáticas básicas para 
-            modelar puntos en un plano cartesiano. Implementarás un método que calcule la distancia entre dos puntos 
-            usando la fórmula euclidiana, reforzando el uso de métodos con parámetros y del módulo <code>math</code>.
-          </p>
-          
-        </header>
-        
-        <div class="exercise-content">
-          <section class="exercise-main">
-            <h3>Requisitos</h3>
-            <ul>
-              <li>Crear una clase <code>Point2D</code> con atributos:
-                <ul>
-                  <li><code>x</code> (coordenada en el eje X)</li>
-                  <li><code>y</code> (coordenada en el eje Y)</li>
-                </ul>
-              </li>
-              <li>Implementar el método:
-                <ul>
-                  <li><code>calculate_distance(self, other)</code>: debe devolver la distancia euclidiana entre el punto actual y otro punto.</li>
-                </ul>
-              </li>
-              <li>Usar el módulo <code>math</code> para calcular la raíz cuadrada.</li>
-            </ul>
-            
-            <h3>Ejemplo de uso esperado</h3>
-            <pre><code class="code-block">p1 = Point2D(0, 0)
-p2 = Point2D(3, 4)
-print(p1.calculate_distance(p2))   # 5.0</code></pre>
-          </section>
-          
-          <aside class="exercise-sidebar">
-            <h3>Notas rápidas</h3>
-            <ul>
-              <li>La fórmula es: √((x1-x2)² + (y1-y2)²).</li>
-              <li>Usa <code>math.sqrt()</code> para la raíz cuadrada.</li>
-            </ul>
-          </aside>
-        </div>
-      </article>
-
-      <!-- Time -->
-      <article id="time" class="exercise-card" aria-labelledby="time-title">
-        <header class="exercise-header">
-          <span class="exercise-badge">Ejercicio</span>
-          <h2 id="time-title">Clase <code>Time</code> con <code>__str__</code> y total en segundos</h2>
-
-          <p class="exercise-description">
-            En este ejercicio aprenderás a representar objetos que modelan el tiempo y a convertirlos en diferentes 
-            formatos. Implementarás un método para mostrar la hora en formato <code>hh:mm:ss</code> y otro para calcular 
-            el total de segundos, combinando aritmética básica con formateo de cadenas en Python.
-          </p>
-          
-        </header>
-        
-        <div class="exercise-content">
-          <section class="exercise-main">
-            <h3>Requisitos</h3>
-            <ul>
-              <li>Clase <code>Time</code> con atributos <code>hour</code>, <code>minute</code>, <code>second</code>.</li>
-              <li>Método <code>total_seconds()</code>: convierte a segundos totales.</li>
-              <li>Método <code>__str__</code>: devuelve formato <code>hh:mm:ss</code> con ceros a la izquierda.</li>
-            </ul>
-            
-            <h3>Ejemplo de uso esperado</h3>
-            <pre><code class="code-block">t = Time(1, 5, 9)
-print(t)             # 01:05:09
-print(t.total_seconds())  # 3909</code></pre>
-          </section>
-          
-          <aside class="exercise-sidebar">
-            <h3>Notas rápidas</h3>
-            <ul>
-              <li>Usa <code>str.zfill(2)</code> o condiciones para ceros.</li>
-              <li><code>__str__</code> recorre <code>self.__dict__</code> para armar la cadena.</li>
-            </ul>
-          </aside>
-        </div>
-      </article>
-
-      <!-- FreqTable -->
-      <article id="freqtable" class="exercise-card" aria-labelledby="freqtable-title">
-        <header class="exercise-header">
-          <span class="exercise-badge">Ejercicio</span>
-          <h2 id="freqtable-title">Clase <code>FreqTable</code> para contar elementos</h2>
-
-          <p class="exercise-description">
-            En este ejercicio practicarás el uso de diccionarios para contar ocurrencias de elementos. Crearás una clase 
-            que funcione como una tabla de frecuencias, capaz de registrar, incrementar y consultar valores de manera 
-            eficiente, reforzando el manejo de estructuras de datos mutables.
-          </p>
-          
-        </header>
-        
-        <div class="exercise-content">
-          <section class="exercise-main">
-            <h3>Requisitos</h3>
-            <ul>
-              <li>Crear clase <code>FreqTable</code> con atributo <code>count</code> (diccionario vacío).</li>
-              <li>Método <code>add(element)</code>: incrementa la frecuencia de un elemento.</li>
-              <li>Método <code>get_count(element)</code>: devuelve la frecuencia (o 0 si no existe).</li>
-            </ul>
-            
-            <h3>Ejemplo de uso esperado</h3>
-            <pre><code class="code-block">f = FreqTable()
-f.add("apple")
-f.add("apple")
-f.add("banana")
-
-print(f.get_count("apple"))   # 2
-print(f.get_count("banana"))  # 1
-print(f.get_count("pear"))    # 0</code></pre>
-          </section>
-          
-          <aside class="exercise-sidebar">
-            <h3>Notas rápidas</h3>
-            <ul>
-              <li>El atributo <code>count</code> debe ser un diccionario.</li>
-              <li>El método <code>get_count</code> debe devolver 0 si el elemento no existe.</li>
-            </ul>
-          </aside>
-        </div>
-      </article>
     </main>
 
     <footer class="page-footer">
