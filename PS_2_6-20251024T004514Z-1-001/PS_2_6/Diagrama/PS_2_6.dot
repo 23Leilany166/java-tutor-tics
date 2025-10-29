@@ -1,0 +1,30 @@
+digraph PS_2_6_Diagrama {
+    node [shape=box];
+    start [label="Inicio", shape=ellipse, fillcolor="#40e0d0", style="filled"];
+    input_dist_ida [label="Ingrese la distancia del viaje de ida (en km):", shape=diamond];
+    distancia_ida [label="distanciaIda = Leer entrada", shape=box];
+    input_tiempo_estancia [label="Ingrese el tiempo de estancia (en días):", shape=diamond];
+    tiempo_estancia [label="tiempoEstancia = Leer entrada", shape=box];
+    calc_dist_vuelta [label="distanciaVuelta = distanciaIda", shape=box];
+    calc_dist_total [label="distanciaTotal = distanciaIda + distanciaVuelta", shape=box];
+    calc_precio_billete [label="precioBillete = distanciaTotal * 0.23", shape=box];
+    check_descuento [label="¿tiempoEstancia > 7 y distanciaTotal > 800?", shape=diamond];
+    calc_descuento [label="descuento = precioBillete * 0.3", shape=box];
+    apply_descuento [label="precioBillete -= descuento", shape=box];
+    output_precio [label="Mostrar precio del billete:", shape=diamond];
+    end [label="Fin", shape=ellipse, fillcolor="#40e0d0", style="filled"];
+
+    start -> input_dist_ida;
+    input_dist_ida -> distancia_ida;
+    distancia_ida -> input_tiempo_estancia;
+    input_tiempo_estancia -> tiempo_estancia;
+    tiempo_estancia -> calc_dist_vuelta;
+    calc_dist_vuelta -> calc_dist_total;
+    calc_dist_total -> calc_precio_billete;
+    calc_precio_billete -> check_descuento;
+    check_descuento -> calc_descuento [label="Sí"];
+    check_descuento -> output_precio [label="No"];
+    calc_descuento -> apply_descuento;
+    apply_descuento -> output_precio;
+    output_precio -> end;
+}

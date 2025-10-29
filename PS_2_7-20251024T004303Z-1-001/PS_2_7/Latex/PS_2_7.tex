@@ -1,0 +1,31 @@
+\documentclass[11pt]{amsart}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\usepackage{color}
+\usepackage{colortbl}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+\title{PS 2.7}
+%\date{}                                           % Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+%\section{}
+%\subsection{}
+
+\noindent Haga un diagrama de flujo para calcular el precio del billete ida y vuelta en ferrocarril, conociendo la distancia del viaje de ida y el tiempo de estancia. Se sabe además que si el número de días de estancia es superior a 7 y la distancia total(ida y vuelta) a recorrer es superior a 800 km, el billete tiene una reducción del 30\%. El precio por km es de \$0.23.\\
+
+\noindent \quad Datos: DIST, TIEM.\\
+
+\noindent  Donde:\\
+
+\noindent \quad \quad DIST es una variable de tipo entero que representa la distancia del viaje de ida.\\
+
+\noindent \quad \quad TIEM es una variable de tipo entero que representa el tiempo de estancia.\\
+
+\end{document}   

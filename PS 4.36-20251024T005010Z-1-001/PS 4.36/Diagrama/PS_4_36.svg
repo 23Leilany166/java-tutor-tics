@@ -1,0 +1,26 @@
+digraph Tienda {
+  node [shape=box];
+  Inicio [label="Inicio", fillcolor="#FF0000", style="filled"];
+  LeerN [label="Leer N"];
+  LeerArrays [label="Leer Arreglos"];
+  LeerTransaccion [label="Leer Transacción"];
+  Procesar [label="Procesar Transacción"];
+  Compra [label="Compra"];
+  Venta [label="Venta"];
+  VerificarExistencia [label="Verificar Existencia"];
+  MensajeNoExistencia [label="Mostrar Mensaje: No hay suficiente existencia"];
+  Fin [label="Fin"];
+  
+  Inicio -> LeerN;
+  LeerN -> LeerArrays;
+  LeerArrays -> LeerTransaccion;
+  LeerTransaccion -> Procesar;
+  Procesar -> Compra [label="CLAOP = C"];
+  Procesar -> Venta [label="CLAOP = V"];
+  Compra -> Fin;
+  Venta -> VerificarExistencia;
+  VerificarExistencia -> MensajeNoExistencia [label="No hay suficiente existencia"];
+  VerificarExistencia -> Fin [label="Suficiente existencia"];
+  MensajeNoExistencia -> Fin;
+  Fin [shape=ellipse];
+}

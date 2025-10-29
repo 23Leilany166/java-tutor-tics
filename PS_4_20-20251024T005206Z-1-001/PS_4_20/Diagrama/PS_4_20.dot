@@ -1,0 +1,35 @@
+digraph G {
+  rankdir=TB;
+  inicio [shape=ellipse, label="Inicio"];
+  leerM [shape=parallelogram, label="Leer el numero de renglones (M) del arreglo A"];
+  leerN [shape=parallelogram, label="Leer el numero de columnas (N) del arreglo A"];
+  declararA [shape=box, label="Declarar el arreglo A"];
+  declararB [shape=box, label="Declarar el arreglo B"];
+  leerB [shape=parallelogram, label="Leer los valores del arreglo B"];
+  asignarValoresA [shape=box, label="Asignar valores a A segun los criterios"];
+
+  asignacion [shape=diamond, label="i <= j", tailport=e, headport=n];
+  asignarB [shape=box, label="A[i][j] = B[i]"];
+  asignarCero [shape=box, label="A[i][j] = 0"];
+  incrementarJ [shape=box, label="j++"];
+  incrementarI [shape=box, label="i++"];
+  imprimirA [shape=box, label="Imprimir el arreglo A"];
+
+  fin [shape=ellipse, label="Fin"];
+  inicio -> leerM;
+  leerM -> leerN;
+  leerN -> declararA;
+  declararA -> declararB;
+  declararB -> leerB;
+  leerB -> asignarValoresA;
+  asignarValoresA -> asignacion;
+  asignacion -> asignarB [label="si", tailport=e, headport=n];
+  asignacion -> incrementarJ [label="no", tailport=w, headport=n];
+  asignarB -> incrementarJ;
+  incrementarJ -> asignacion;
+  asignarCero -> incrementarJ;
+  asignacion -> incrementarI [label="si", tailport=s, headport=w];
+  incrementarI -> asignacion;
+  asignacion -> imprimirA [label="no", tailport=e, headport=n];
+  imprimirA -> fin;
+}

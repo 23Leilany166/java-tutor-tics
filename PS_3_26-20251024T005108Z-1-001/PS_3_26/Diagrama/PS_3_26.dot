@@ -1,0 +1,58 @@
+digraph estadisticas_universidad {
+    // Nodo Inicial
+    Inicio [shape=diamond, label="Inicio"];
+
+    // Nodos para la entrada de datos
+    LeerNumeroAlumnos [shape=rectangle, label="Leer el número de alumnos"];
+    AlumnoCount [shape=diamond, label="AlumnoCount = 1"];
+
+    // Nodos para el bucle "for"
+    ForInit [shape=diamond, label="i = 1"];
+    ForCondition [shape=diamond, label="i <= N"];
+    ForBody [shape=rectangle, label="Cuerpo del bucle for"];
+    ForIncrement [shape=diamond, label="i++"];
+
+    // Nodos para el conteo y suma de datos
+    SumarFemenino [shape=rectangle, label="Sumar promedio a sumaFemenino"];
+    SumarMasculino [shape=rectangle, label="Sumar promedio a sumaMasculino"];
+    SumarTotal [shape=rectangle, label="Sumar promedio a sumaTotal"];
+    ContarFemenino [shape=rectangle, label="Incrementar contadorFemenino"];
+    ContarMasculino [shape=rectangle, label="Incrementar contadorMasculino"];
+
+    // Nodos para el cálculo de promedios y porcentajes
+    CalcularPromedioFemenino [shape=rectangle, label="Calcular promedioFemenino"];
+    CalcularPromedioMasculino [shape=rectangle, label="Calcular promedioMasculino"];
+    CalcularPromedioGeneral [shape=rectangle, label="Calcular promedioGeneral"];
+    CalcularPorcentajeFemenino [shape=rectangle, label="Calcular porcentajeFemenino"];
+    CalcularPorcentajeMasculino [shape=rectangle, label="Calcular porcentajeMasculino"];
+
+    // Nodo Final
+    Fin [shape=diamond, label="Fin"];
+
+    // Conexiones
+    Inicio -> LeerNumeroAlumnos;
+    LeerNumeroAlumnos -> AlumnoCount;
+    AlumnoCount -> ForInit;
+    ForInit -> ForCondition;
+    ForCondition -> ForBody [label="Sí"];
+    ForCondition -> Fin [label="No"];
+    ForBody -> SumarFemenino;
+    ForBody -> SumarMasculino;
+    ForBody -> SumarTotal;
+    ForBody -> ContarFemenino;
+    ForBody -> ContarMasculino;
+    ForBody -> ForIncrement;
+    ForIncrement -> ForCondition;
+    SumarFemenino -> ForBody;
+    SumarMasculino -> ForBody;
+    SumarTotal -> ForBody;
+    ContarFemenino -> ForBody;
+    ContarMasculino -> ForBody;
+    ForCondition -> CalcularPromedioFemenino [label="No"];
+    CalcularPromedioFemenino -> CalcularPromedioMasculino;
+    CalcularPromedioMasculino -> CalcularPromedioGeneral;
+    CalcularPromedioGeneral -> CalcularPorcentajeFemenino;
+    CalcularPorcentajeFemenino -> CalcularPorcentajeMasculino;
+    CalcularPorcentajeMasculino -> Fin;
+    CalcularPorcentajeFemenino -> Fin;
+}

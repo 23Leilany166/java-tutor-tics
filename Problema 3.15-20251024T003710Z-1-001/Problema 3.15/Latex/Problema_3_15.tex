@@ -1,0 +1,78 @@
+\documentclass[11pt]{amsart}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+\title{Problema 3.15}
+\author{}
+%\date{}                                           % Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+%\section{}
+%\subsection{}
+Haga un diagrama de flujo para calcular lo que hay que pagar por un conjunto de llamadas telefónicas. Por cada llamada se ingresa el tipo (Internacional, Nacional, Local) y la duración en minutos. El criterio que se sigue para calcular el costo de cada llamada es el siguiente: \\
+
+\indent Internacional: 3 primeros minutos \$7.59 Cada minuto adicional \$3.03 \\
+
+\indent Nacional: 3 primeros minutos \$1.20 Cada minuto adicional \$0.48 \\
+
+\indent Local: Las primeras 50 llamadas no se cobran. Luego, cada llamada cuesta \$0.60 \\
+
+Datos: TIPOi, DURi, TIP02, DUR2,...,X,-1 \\ 
+
+Donde: \\
+	\indent TIPO¡ es una variable de tipo caracter que expresa el tipo de la llamada i. 
+     Toma el valor de ‘I’ si la llamada es internacional, ‘N’ si es nacional y ‘L si es local. \\
+
+	\indent DURi es una variable de tipo entero que indica la duración de la llamada i en minutos.\\
+	
+\textbf{Explicación de las variables}\\
+CL: Variable de tipo entero. Acumula el número de llamadas locales.\\
+CUENTA: Variable de tipo real. Acumula el costo de cada llamada.\\
+TIPO: Variable de tipo caracter.\\
+DUR: Variable de tipo entero.\\
+COSTO: Variable de tipo real. Almacena el costo de cada llamada.\\
+En la siguiente tabla se puede observar el seguimiento del algoritmo para el
+siguiente conjunto de llamadas.\\
+Datos: I, 7, N, 6, N, 12 ,L ,5 ,L ,7 ,L ,15, N, 16, L, 7, L, 6, L, 4 ,1, 11, X, -1\\  
+
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+\multicolumn{5}{ |c| }{Tabla 3.17} \\ \hline
+  TIPO & DUR & CL & COSTO & CUENTA \\ \hline
+  
+  I & 7 & 0 & & 0 \\\hline
+  
+  N & 6 &  & 19.71 & 19.71 \\ \hline
+  
+  N & 12 &  & 2.64 & 022.35 \\ \hline
+  
+  L & 5 &  & 5.52 & 27.87 \\ \hline
+  
+  L & 7 & 1 & 0 & 27.87\\ \hline
+  
+  L & 15 & 2 & 0 & 27.87 \\ \hline
+  
+  N & 16 & 3 & 0 & 27.87 \\ \hline
+  
+  L & 7 &  & 7.44 & 35.31 \\ \hline
+  
+  L & 6 & 4 & 0 & 35.31 \\ \hline
+  
+  L & 4 & 5 & 0 & 35.31 \\ \hline
+  
+  I & 11 & 6 & 0 & 35.31 \\ \hline
+  
+  X & -1 &  & 31.83 & \underline {67.14} \\ \hline
+\end{tabular}
+\end{center}
+
+\end{document}  

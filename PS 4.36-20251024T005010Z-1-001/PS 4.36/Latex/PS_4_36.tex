@@ -1,0 +1,82 @@
+\documentclass[11pt]{amsart}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+\title{PS 4.36}
+%\author{The Author}
+%\date{}                                           % Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+%\section{}
+%\subsection{}
+\noindent  Una tienda vende como máximo 100 productos diferentes. La información sobre los productos se encuentra almacenada en los siguientes arreglos:\\
+
+
+
+\begin{center}
+\begin{tabular}{c|c|c|c|c|c|}
+\hline
+  PRODUCTO &&&& \\
+\hline
+  &1&2&&100
+\end{tabular}
+\end{center}
+
+Donde:\\
+
+\noindent PRODUCTOR] representa la clave del producto i.\\
+PRODUCTOR..N],\\
+$1 \leq N \leq 100$, es un arreglo unidimensional ordenado de tipo entero que almacena las claves de los productos.
+
+\begin{center}
+\begin{tabular}{c|c|c|c|c|c|}
+\hline
+  CANTIDAD &&&& \\
+\hline
+  &1&2&&100
+\end{tabular}
+\end{center}
+
+\noindent Donde:\\
+
+\noindent CANTIDAD[i] representa la cantidad existente del producto i.\\
+
+\noindent CANTIDAD[1..N], con $1 \leq N \leq 100$, es un arreglo unidimensional de tipo entero que almacena la cantidad existente de los productos.\\
+
+
+\noindent Construya un diagrama de flujo que haga lo siguiente:\\
+
+
+\noindent a) Lea el número actual N de productos en existencia.\\
+b) Lea los dos arreglos.\\
+c) Actualice los arreglos de acuerdo a las siguientes transacciones:\\
+
+
+\begin{center}
+$CLAOP_1$, $CLAPR0_1$, $CANT_1$\\
+$CLAOP_2$, $CLAPRO_2$, $CAMT_2$\\
+......\\
+X, 0, 0\\
+\end{center}
+
+\noindent Donde:\\
+
+\begin{quote}
+$CLAOP_i$ es una variable de tipo caracter que expresa el tipo de operación i.\\
+El tipo de operación puede ser:\\
+“C” que expresa compra, en cuyo caso deberá incrementar la existencia del producto si el mismo existe. En caso contrario deberá incorporarlo.\\
+“V”, en cuyo caso deberá verificar si existe la cantidad necesaria para satisfacer el pedido. Si es posible satisfacerlo se decrementará la cantidad en existencia, en caso contrario se debe emitir un mensaje adecuado.\\
+$CLAPRO_j$es una variable de tipo entero que expresa el tipo de producto j involucrado en la operación i.\\
+$CANT_j$ es una variable de tipo entero que representa la cantidad del producto j, involucrado en la operación i.\\
+\end{quote}
+
+El fin de datos de las transacciones está dado por: X, 0, 0.
+
+\end{document}  

@@ -1,0 +1,30 @@
+digraph PS_2_7 {
+  node [shape="rectangle"];
+  
+  // Nodos
+  inicio [shape="ellipse", label="Inicio",fillcolor="#40e0d0", style="filled"];
+  leer_sueldo [shape="parallelogram", label="Leer SUELDO (Sueldo del trabajador)"];
+  condicion_aumento1 [shape="diamond", label="SUELDO < $10,000"];
+  condicion_aumento2 [shape="diamond", label="$10,000 < SUELDO < $15,000"];
+  condicion_aumento3 [shape="diamond", label="SUELDO > $15,000"];
+  calcular_aumento1 [shape=box, label="Hacer AUMENTO = SUELDO * 0.15"];
+  calcular_aumento2 [shape=box, label="Hacer AUMENTO = SUELDO * 0.11"];
+  calcular_aumento3 [shape=box, label="Hacer AUMENTO = SUELDO * 0.08"];
+  calcular_nuevo_sueldo [shape=box, label="Hacer NUEVO_SUELDO = SUELDO + AUMENTO"];
+  mostrar_resultado [shape=box, label="Escribir NUEVO_SUELDO"];
+  fin [shape="ellipse", label="Fin"];
+  
+  // Aristas
+  inicio -> leer_sueldo;
+  leer_sueldo -> condicion_aumento1;
+  condicion_aumento1 -> calcular_aumento1 [label="Sí"];
+  condicion_aumento1 -> condicion_aumento2 [label="No"];
+  condicion_aumento2 -> calcular_aumento2 [label="Sí"];
+  condicion_aumento2 -> condicion_aumento3 [label="No"];
+  condicion_aumento3 -> calcular_aumento3 [label="Sí"];
+  calcular_aumento1 -> calcular_nuevo_sueldo;
+  calcular_aumento2 -> calcular_nuevo_sueldo;
+  calcular_aumento3 -> calcular_nuevo_sueldo;
+  calcular_nuevo_sueldo -> mostrar_resultado;
+  mostrar_resultado -> fin;
+}

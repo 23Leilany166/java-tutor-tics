@@ -1,0 +1,24 @@
+digraph ManejoVentasSucursales {
+  node [shape=box];
+
+  Inicio [shape=ellipse, label="Inicio", style="filled"];
+  LeerM [label="Leer número de años (M)"];
+  LeerN [label="Leer número de sucursales (N)"];
+  CrearArreglo [label="Crear arreglo de montos"];
+  LeerMontos [label="Leer montos de ventas por año y sucursal"];
+  ObtenerSucursalMasVendida [label="Obtener sucursal más vendida"];
+  CalcularPromediosAnuales [label="Calcular promedio de ventas por año"];
+  ObtenerAñoMayorPromedioVentas [label="Obtener año con mayor promedio de ventas"];
+  ImprimirInformacion [label="Imprimir información de ventas"];
+  Fin [shape=ellipse, label="Fin"];
+
+  Inicio -> LeerM;
+  LeerM -> LeerN;
+  LeerN -> CrearArreglo;
+  CrearArreglo -> LeerMontos;
+  LeerMontos -> ObtenerSucursalMasVendida;
+  ObtenerSucursalMasVendida -> CalcularPromediosAnuales;
+  CalcularPromediosAnuales -> ObtenerAñoMayorPromedioVentas;
+  ObtenerAñoMayorPromedioVentas -> ImprimirInformacion;
+  ImprimirInformacion -> Fin;
+}

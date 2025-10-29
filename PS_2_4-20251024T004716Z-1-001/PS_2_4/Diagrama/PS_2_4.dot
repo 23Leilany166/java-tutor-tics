@@ -1,0 +1,23 @@
+digraph G {
+  rankdir=TB;
+  inicio [shape=ellipse, label="Inicio"];
+
+  leerSueldo [shape=parallelogram, label="Leer el sueldo del trabajador"];
+
+  calcularAumento [shape=diamond, label="sueldo < 1000?"];
+  aumentoMenor [shape=box, label="aumento = sueldo * 0.15"];
+  aumentoMayor [shape=box, label="aumento = sueldo * 0.12"];
+  calcularNuevoSueldo [shape=box, label="nuevoSueldo = sueldo + aumento"];
+
+  imprimirResultados [shape=box, label="Imprimir 'El sueldo con el aumento incorporado es: $', nuevoSueldo"];
+
+  fin [shape=ellipse, label="Fin"];
+  inicio -> leerSueldo;
+  leerSueldo -> calcularAumento;
+  calcularAumento -> aumentoMenor [label="si", tailport=e, headport=n];
+  calcularAumento -> aumentoMayor [label="no", tailport=w, headport=n];
+  aumentoMenor -> calcularNuevoSueldo;
+  aumentoMayor -> calcularNuevoSueldo;
+  calcularNuevoSueldo -> imprimirResultados;
+  imprimirResultados -> fin;
+}

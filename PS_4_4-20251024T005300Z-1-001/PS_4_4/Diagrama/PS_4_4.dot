@@ -1,0 +1,26 @@
+digraph PS_4_4_Diagrama {
+    node [shape=box];
+
+    Inicio [label="Inicio"];
+    LeerTamaño [label="Leer el tamaño de los vectores (N)"];
+    DeclararVectores [label="Declarar arreglos A y B de tamaño N"];
+    IngresarElementosA [label="Ingresar los elementos del vector A:"];
+    LeerElementoA [label="Para i desde 1 hasta N:\n  Leer A[i]"];
+    IngresarElementosB [label="Ingresar los elementos del vector B:"];
+    LeerElementoB [label="Para i desde 1 hasta N:\n  Leer B[i]"];
+    InicializarProducto [label="Inicializar producto = 0"];
+    CalcularProducto [label="Para i desde 1 hasta N:\n  producto = producto + (A[i] * B[i])"];
+    MostrarResultado [label="Mostrar \"El producto de los vectores es:\", producto"];
+    Fin [label="Fin"];
+
+    Inicio -> LeerTamaño;
+    LeerTamaño -> DeclararVectores;
+    DeclararVectores -> IngresarElementosA;
+    IngresarElementosA -> LeerElementoA;
+    LeerElementoA -> IngresarElementosB;
+    IngresarElementosB -> LeerElementoB;
+    LeerElementoB -> InicializarProducto;
+    InicializarProducto -> CalcularProducto;
+    CalcularProducto -> MostrarResultado;
+    MostrarResultado -> Fin;
+}

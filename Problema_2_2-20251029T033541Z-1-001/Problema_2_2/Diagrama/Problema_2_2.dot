@@ -1,0 +1,36 @@
+digraph Problema_2_2 {
+   Inicio [
+    shape=ellipse,
+    label="INICIO", 
+    fillcolor="#40e0d0", 
+    style="filled"
+    ];
+   Entrada_datos [
+    shape=parallelogram,
+    label="Leer: P , Q"
+    ];
+   Calcular [
+    shape=box
+    label=" Proceso: EXP = P^3 + Q^4 - 2*P^2"];
+   Condicion [
+    shape=diamond    
+    label=" EXP < 680 Entonces"];
+   Afirmativo [
+    shape=box
+    label="Imprimir: \" Si satisfacen la expresión \" "];
+   Negativo [
+    shape=box
+    label="Imprimir: \"NO satisfacen la expresión \" "];
+  Fin [
+    shape=ellipse
+    label="FIN"];
+
+
+  Inicio -> Entrada_datos;
+  Entrada_datos -> Calcular;
+  Calcular -> Condicion;
+  Condicion -> Afirmativo  [label="Si", tailport=e, headport=n];
+  Condicion -> Negativo [label="No", tailport=w, headport=n];
+  Afirmativo -> Fin;
+  Negativo -> Fin;
+}

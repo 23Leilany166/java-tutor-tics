@@ -1,0 +1,50 @@
+\documentclass[11pt]{amsart}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+\title{EJEMPLO 3.4}
+%\date{}                                           % Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+%\section{}
+%\subsection{}
+\noindent Supongamos que debemos obtener la suma de los gastos que hicimos en nuestro último viaje, pero no sabemos exactamente cuántos fueron. Los datos son expresados en forma:\\
+
+\noindent Datos: GASTO1, GASTO2 ,...., -1\\
+\noindent Donde: \\
+
+\noindent \quad GASTOi \quad  es una variable de tipo real que representa el gasto número i.\\
+
+\noindent \textbf {Explicación de las variables} \\
+
+\noindent SUMGAS: Es una variable de tipo real.
+Es un acumulador.
+Acumula los datos efectuados.\\
+
+\noindent GASTO: Es una variable de tipo real. Su valor en la primera lectura debe ser verdadero, es decir distinto de -1 . Su valor se modifica en cada vuelta del ciclo. Cuando gasto tome el valor de -1 , entonces el ciclo se detendrá.\\
+
+\noindent En la siguiente tabla podemos observar el seguimiento del algoritmo para los siguientes datos (GASTO): \$2,528, \$3,500, \$1,600, \$1,850, \$150, -1\\
+\begin{table}[htbp]
+\centering
+\label{tab:corrida}
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+\multicolumn{3}{ |c| }{\textbf{Tabla 3.3}} \\ \hline
+ & \textbf{SUMGAS} & \textbf{GASTO} \\ \hline
+Inicia el ciclo $ \rightarrow $ & 0 & 2528 \\ \hline
+& 2528 & 3500\\ \hline
+& 6028 & 1600 \\ \hline
+& 7628 & 1850 \\ \hline
+& 9478 & 150\\ \hline
+Finaliza el ciclo $ \rightarrow $ & 9628 & -1\\ \hline
+\end{tabular}
+\end{table}
+
+\end{document}  

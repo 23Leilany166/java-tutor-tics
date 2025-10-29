@@ -1,0 +1,41 @@
+digraph Calculo_Expresiones {
+  Inicio [
+    shape=ellipse,
+    label="Inicio", 
+    fillcolor="#FF0000", 
+    style="filled"
+  ];
+  Leer_datos [
+    shape=parallelogram,
+    label="Leer A, B, C, D"
+  ];
+  Calcular_expresion1 [
+    shape=diamond,
+    label="D < 0"
+  ];
+  Calcular_expresion2 [
+    shape=diamond,
+    label="Entonces"
+  ];
+  Imprimir_resultado1 [
+    shape=box,
+    label="Imprimir (A - C)^2 / D"
+  ];
+  Imprimir_resultado2 [
+    shape=box,
+    label="Imprimir (A - B)^3 / D"
+  ];
+  Fin [
+    shape=ellipse,
+    label="Fin"
+  ];
+
+  Inicio -> Leer_datos;
+  Leer_datos -> Calcular_expresion1;
+  Calcular_expresion1 -> Calcular_expresion2 [label="Sí"];
+  Calcular_expresion2 -> Imprimir_resultado1 ;
+  Calcular_expresion2 -> Imprimir_resultado2 ;
+  Calcular_expresion1 -> Fin [label="No"] ;
+  Imprimir_resultado1 -> Fin;
+  Imprimir_resultado2 -> Fin;
+}

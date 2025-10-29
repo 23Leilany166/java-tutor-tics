@@ -1,0 +1,38 @@
+digraph Problema_2_12 {
+   Inicio [
+    shape=ellipse,
+    label="INICIO", 
+    fillcolor="#40e0d0", 
+    style="filled"];
+   Hacer [
+    shape=box
+    label=" SUMGAS == 0 "];
+   Entrada_datos [
+    shape=parallelogram,
+    label=" Leer: GASTO "];
+   Condicion [
+    shape=diamond    
+    label=" GASTO < > -1 "];
+   Afirmativo [
+    shape=box
+    label="Imprimir NO: Leer SUMGAS"];
+   Leer [
+    shape=parallelogram,
+    label=" Leer: GASTO "];
+   Negativo [
+    shape=box
+    label="Imprimir SI : SUMGAS = SUMGAS + GASTO"];
+  Fin [
+    shape=ellipse
+    label="FIN"];
+
+
+  Inicio -> Hacer;
+  Hacer -> Entrada_datos;
+  Entrada_datos -> Condicion;
+  Condicion -> Afirmativo  [label="No", tailport=a, headport=n];
+  Condicion -> Negativo [label="Si", tailport=r, headport=n];
+  Negativo -> Leer;
+  Afirmativo -> Fin;
+  Leer -> Fin;
+}

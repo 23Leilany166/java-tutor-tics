@@ -1,0 +1,42 @@
+\documentclass[11pt]{amsart}
+\usepackage{geometry} % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper} % ... or a4paper or a5paper or ...
+%\geometry{landscape} % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip} % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\DeclareGraphicsRule{.tif}{png}{.png}{convert #1 dirname #1/basename #1 .tif`.png}
+
+\title{Problema 4.15}
+%\date{}
+% Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+%\section{}
+%\subsection{}
+\noindent Una empresa automotriz necesita un programa para manejar los montos de ventas de sus N sucursales, a lo largo de los últimos M años. Los datos son dados de esta forma:
+
+\begin{center}
+M, M \\
+$MOMTO_{i,i}, MOMTO_{1,2}$, . . .  , $MOMTO_{1,N}$ \\
+$MOMTO2_{2,1}, MOMTO_{2,2}$, . . .  , $MOMTO_{2,N} $\\
+$MOMTO_{M,1} , MOMTO_{2,2}$, . . .  , $MOMTO_{M,N}$\\
+\end{center}
+
+\noindent Donde:
+\begin{itemize}
+    \item M es una variable de tipo entero que representa el número de años, 1 $ \leq $ M $ \leq $ 10.
+     \item N es una variable de tipo entero que expresa el número de sucursales de la empresa, 1 $ \leq $ N $ \leq $ 35.
+    \item \(MONTO_{i, j}\) es una variable de tipo real que representa lo que se vendió en el año i en la sucursal j.\end{itemize}
+
+\noindent La información que necesitan los directores de la empresa para tomar decisiones es la siguiente:
+
+\begin{enumerate}
+    \item[a)] Sucursal que más ha vendido en los M años.
+    \item[b)] Promedio de ventas por año.
+    \item[c)] Año con mayor promedio de ventas.
+\end{enumerate}
+
+\end{document}

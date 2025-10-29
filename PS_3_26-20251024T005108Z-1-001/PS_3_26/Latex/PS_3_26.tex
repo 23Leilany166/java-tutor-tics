@@ -1,0 +1,33 @@
+\documentclass[11pt]{amsart}
+\usepackage{geometry} % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper} % ... or a4paper or a5paper or ...
+%\geometry{landscape} % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip} % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\DeclareGraphicsRule{.tif}{png}{.png}{convert #1 dirname #1/basename #1 .tif`.png}
+
+\title{PS 3.26}
+%\date{}
+% Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+%\section{}
+%\subsection{}
+\noindent En una universidad con un número determinado de alumnos se desea obtener el porcentaje y promedio de la población femenina, el porcentaje y promedio de la población masculina y el promedio general. Por cada alumno se ingresa MATRICULA, SEXO, SEMESTRE y PROMEDIO. Haga un diagrama de flujo para calcular lo solicitado anteriormente.
+
+\noindent Dato:  \hspace{2cm}  N, \(MAT_1\), \(SEX_1\),\(SEM_1\),\(PRO_1\), . . . , \(MAT_N\), \(SEX_N\),\(SEM_N\),\(PRO_N\),
+\noindent Donde:
+
+\begin{itemize}
+  \item N es una variable de tipo entero que representa el número de alumnos.
+  \item \(MAT_i\) es una variable de tipo entero que representa la matrícula del alumno i (1 $ \leq $ i $ \leq $ N).
+  \item \(SEX_i\) es una variable de tipo entero que representa el sexo del alumno i (1 $ \leq $ i $ \leq $ N). Se ingresa 0 si es mujer y 1 si es hombre.
+  \item \(SEM_i\) es una variable de tipo entero que expresa el semestre del alumno i (1 $ \leq $ i $ \leq $ N).
+  \item \(PRO_1\) es una variable de tipo real que representa el promedio del alumno i (1 $ \leq $ i $ \leq $ N).
+\end{itemize}
+
+
+\end{document}
