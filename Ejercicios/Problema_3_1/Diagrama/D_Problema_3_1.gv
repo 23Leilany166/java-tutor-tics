@@ -1,0 +1,38 @@
+digraph G {
+    graph [fontname="Arial"];
+    node [shape=box, style=rounded, fontname="Arial"];
+    edge [fontname="Arial"];
+
+    Inicio [shape=ellipse];
+    Inicializar [label="SumaPares = 0\nSumaImpares = 0\nConteoPares = 0"];
+    
+    // Bucle FOR (I = 1 hasta 270)
+    BucleInicio [shape=plaintext, label="PARA I = 1 HASTA 270"];
+    LeerNum [label="LEER NUM"];
+    DecisionPar [shape=diamond, label="NUM % 2 == 0"];
+    ProcesoPar [label="SumaPares += NUM\nConteoPares++"];
+    ProcesoImpar [label="SumaImpares += NUM"];
+    BucleFin [shape=plaintext, label="FIN PARA"];
+    
+    DecisionPromedio [shape=diamond, label="ConteoPares > 0"];
+    CalcularPromedio [label="PromedioPares = SumaPares / ConteoPares"];
+    PromedioCero [label="PromedioPares = 0"];
+    Imprimir [label="Imprimir SumaImpares, PromedioPares"];
+    Fin [shape=ellipse];
+
+    Inicio -> Inicializar -> BucleInicio -> LeerNum -> DecisionPar;
+    DecisionPar -> ProcesoPar [label=" Sí "];
+    DecisionPar -> ProcesoImpar [label=" No "];
+    ProcesoPar -> BucleFin;
+    ProcesoImpar -> BucleFin;
+    BucleFin -> BucleInicio; // Simulación del bucle
+    
+    // Conexión al salir del bucle
+    BucleInicio -> DecisionPromedio [label=" (Al terminar) "];
+    
+    DecisionPromedio -> CalcularPromedio [label=" Sí "];
+    DecisionPromedio -> PromedioCero [label=" No "];
+    CalcularPromedio -> Imprimir;
+    PromedioCero -> Imprimir;
+    Imprimir -> Fin;
+}

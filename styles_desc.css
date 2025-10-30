@@ -411,3 +411,18 @@
       font-size: 0.8rem;
     }
   }
+
+.imagen-diagrama {
+  display: block;
+  max-width: 100%;   /* Límite de ancho */
+  max-height: 85vh;  /* Límite de alto */
+  width: auto;       /* Tamaño automático */
+  height: auto;      /* Tamaño automático */
+  
+  margin-left: auto; /* Centrado */
+  margin-right: auto;
+  
+  background-color: #f9f9f9;
+  border: 1px solid #eee;
+  border-radius: 8px;
+}
