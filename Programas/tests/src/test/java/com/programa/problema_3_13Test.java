@@ -1,0 +1,32 @@
+package com.programa;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Test;
+
+class problema_3_13Test {
+
+    @Test
+    void testProcesarDatos() {
+        problema_3_13 m = new problema_3_13();
+        
+        // Datos de prueba (12 meses)
+        // Norte: 10 todo el año (Total 120)
+        double[] rno = {10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10};
+        // Centro: 20 todo el año (Total 240, Promedio 20)
+        double[] rce = {20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20};
+        // Sur: 30 todo el año, excepto mes 3 (Marzo) con 5 (Total 335)
+        double[] rsu = {30, 30, 5, 30, 30, 30, 30, 30, 30, 30, 30, 30};
+
+        ReporteClima reporte = m.procesarDatos(rno, rce, rsu);
+
+        // a) Test Promedio Centro
+        assertEquals(20.0, reporte.promedioCentro, 0.001);
+        
+        // b) Test Menor Lluvia Sur
+        assertEquals(5.0, reporte.registroMenorLluviaSur, 0.001);
+        assertEquals(3, reporte.mesMenorLluviaSur); // Mes 3
+
+        // c) Test Región Mayor
+        assertEquals("SUR", reporte.regionMayorLluvia);
+    }
+}

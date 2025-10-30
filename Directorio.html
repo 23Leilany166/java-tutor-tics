@@ -1,0 +1,1069 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ejercicios de Metodología de la Programación</title>
+  <link rel="stylesheet" href="styles_desc.css">
+</head>
+<body>
+  <div class="container">
+    <header class="page-header">
+      <h1>Ejercicios del Libro: Metodología de la Programación (Osvaldo Cairo)</h1>
+      <p class="subtitle">Selecciona un ejercicio del menú para ver los detalles.</p>
+    </header>
+
+    <nav class="exercises-nav" aria-label="Navegación de ejercicios">
+      <a href="#ej1_4" class="nav-link">Ej 1.4</a>
+      <a href="#prob1_5" class="nav-link">Prob 1.5</a>
+      <a href="#ej2_12" class="nav-link">Ej 2.12</a>
+      <a href="#ej3_2" class="nav-link">Ej 3.2</a>
+      <a href="#prob3_13" class="nav-link">Prob 3.13</a>
+      <a href="#ej4_10" class="nav-link">Ej 4.10</a>
+      <a href="#prob4_13" class="nav-link">Prob 4.13</a>
+      <a href="#prob5_1" class="nav-link">Prob 5.1</a>
+      <a href="#ps1_13" class="nav-link">PS 1.13</a>
+      <a href="#ps3_22" class="nav-link">PS 3.22</a>
+      <a href="#ps4_2" class="nav-link">PS 4.2</a>
+      <a href="#ps4_18" class="nav-link">PS 4.18</a>
+      <a href="#ps4_34" class="nav-link">PS 4.34</a>
+    </nav>
+
+    <main class="exercises-main">
+
+      <article id="ej1_4" class="exercise-card" aria-labelledby="ej1_4-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Ejemplo 1.4 (pág. 31)</span>
+          <h2 id="ej1_4-title">Evaluación de Expresiones Lógicas (Operadores)</h2>
+          
+          <p class="exercise-description">
+            Este ejemplo demuestra la jerarquía de operadores y la evaluación paso a paso de expresiones lógicas (booleanas) complejas, combinando operadores aritméticos, relacionales y lógicos (Y, O, NO).
+          </p>
+        </header>
+        
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <ul>
+              <li>Evaluar el resultado de tres expresiones lógicas complejas.</li>
+              <li>Aplicar correctamente la jerarquía de operadores (aritméticos, relacionales y lógicos)</li>
+              <li><strong>Caso a:</strong> `NO(15 >= 7**2) O (43 - 8 * 2 div 4 <> 3 * 2 div 2).</li>
+              <li><strong>Caso b:</strong> `(15 >= 7*3**2 Y 8 > 3 Y 15 > 6) O NO(7*3 < 5 + 12*2 div 3**2).</li>
+              <li><strong>Caso c:</strong> Demostrar un error de tipo al comparar un valor lógico con uno numérico.</li>
+            </ul>
+
+            <h3>Ejemplo de uso esperado (Java)</h3>
+            <pre><code class="code-block">public class EvaluacionExpresiones {
+    public static void main(String[] args) {
+
+        // --- Caso a) ---
+        // Pseudocódigo: NO(15 >= 7**2) O (43 - 8 * 2 div 4 <> 3 * 2 div 2) 
+        // 'div' es división entera
+        boolean casoA = !(15 >= Math.pow(7, 2)) || (43 - (8 * 2 / 4) != (3 * 2 / 2));
+        System.out.println("Caso a) Resultado: " + casoA); // Esperado: true 
+
+        // --- Caso b) ---
+        // Pseudocódigo: (15 >= 7*3**2 Y 8 > 3 Y 15 > 6) O NO(7*3 < 5 + 12*2 div 3**2) 
+        // 12*2 div 3**2 = 24 div 9 = 2
+        boolean parteB1 = (15 >= (7 * Math.pow(3, 2))) && (8 > 3) && (15 > 6);
+        boolean parteB2 = !( (7 * 3) < (5 + (12 * 2 / (int)Math.pow(3, 2))) );
+        boolean casoB = parteB1 || parteB2;
+        System.out.println("Caso b) Resultado: " + casoB); // Esperado: true 
+        
+        // --- Caso c) ---
+        // Pseudocódigo: NO( (7*3 div 2 * 4) > (15/2 * 6 >= 15*2 / 17 = 15) ) 
+        // El libro identifica esto como un error.
+        // La expresión (15/2 * 6 >= 15*2 / 17) da VERDADERO.
+        // La expresión (VERDADERO = 15) es un error de tipos.
+        
+        // En Java, esto ni siquiera compila, demostrando el error de tipos:
+        // boolean error = (true == 15); // <-- Error: incomparable types: boolean and int
+        System.out.println("Caso c) Produce un error de tipos al comparar VERDADERO con 15, como se indica en el libro.");
+    }
+}</code></pre>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <p class="note-text">Conversión de pseudocódigo a Java:</p>
+            <ul>
+              <li><code>**</code> (potencia) es <code>Math.pow()</code></li>
+              <li><code>div</code> (div. entera) es <code>/</code> (con operandos int)</li>
+              <li><code>O</code> (OR) es <code>||</code></li>
+              <li><code>Y</code> (AND) es <code>&&</code></li>
+              <li><code>NO</code> (NOT) es <code>!</code></li>
+              <li><code><></code> (diferente) es <code>!=</code></li>
+            </ul>
+          </aside>
+        </div>
+      </article>
+
+      <article id="prob1_5" class="exercise-card" aria-labelledby="prob1_5-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Problema 1.5 (pág. 44)</span>
+          <h2 id="prob1_5-title">Calcular Área y Volumen de un Cilindro</h2>
+          
+          <p class="exercise-description">
+            Construya un diagrama de flujo tal que dado como datos el radio y la altura de un
+            cilindro, calcule e imprima el área y su volumen.
+          </p>
+        </header>
+        
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <ul>
+              <li><strong>Datos:</strong> RADIO, ALTU (variables de tipo real).</li>
+              <li>Calcular el volumen con la fórmula: $Volumen = \pi \cdot radio^2 \cdot altura$.</li>
+              <li>Calcular el área (lateral) con la fórmula: $Area = 2 \cdot \pi \cdot radio \cdot altura$.</li>
+              <li>Imprimir ambos resultados.</li>
+            </ul>
+
+            <h3>Diagrama de Flujo</h3>
+            <img src="./Diagramas/imagen_diagrama_1_5.svg" alt="Diagrama">
+
+            <h3>Ejemplo de uso esperado (Java)</h3>
+            <pre><code class="code-block">import java.util.Scanner;
+
+public class Cilindro {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Ingrese el radio del cilindro: ");
+        double radio = scanner.nextDouble();
+
+        System.out.print("Ingrese la altura del cilindro: ");
+        double altura = scanner.nextDouble();
+
+        // Usar Math.PI para precisión
+        double volumen = Math.PI * Math.pow(radio, 2) * altura;
+        double area = 2 * Math.PI * radio * altura;
+
+        System.out.println("--- Resultados ---");
+        System.out.printf("Volumen: %.4f\n", volumen);
+        System.out.printf("Área: %.4f\n", area);
+        
+        scanner.close();
+    }
+}</code></pre>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <p class="note-text">Este problema introduce:</p>
+            <ul>
+              <li>Lectura de datos (entrada).</li>
+              <li>Procesamiento (cálculos matemáticos).</li>
+              <li>Escritura de datos (salida).</li>
+              <li>Uso de constantes como $\pi$.</li>
+            </ul>
+          </aside>
+        </div>
+      </article>
+
+      <article id="ej2_12" class="exercise-card" aria-labelledby="ej2_12-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Ejemplo 2.12 (pág. 74)</span>
+          <h2 id="ej2_12-title">Ordenar Tres Números en Forma Descendente</h2>
+          
+          <p class="exercise-description">
+            Dados los datos A, B y C que representan números enteros diferentes, construya
+            un diagrama de flujo para escribir estos números en forma descendente.
+          </p>
+        </header>
+        
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <ul>
+              <li><strong>Datos:</strong> A, B, C (variables de tipo entero).</li>
+              <li>Se asume que los números son diferentes.</li>
+              <li>Imprimir los tres números ordenados del mayor al menor.</li>
+              <li>Utilizar estructuras selectivas en cascada (anidadas).</li>
+            </ul>
+
+            <h3>Diagrama de Flujo</h3>
+            <img src="./Diagramas/imagen_diagrama_2_12.svg" alt="Diagrama">
+            <h3>Ejemplo de uso esperado (Java)</h3>
+            <pre><code class="code-block">import java.util.Scanner;
+
+public class OrdenarNumeros {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Ingrese el número A: ");
+        int a = scanner.nextInt();
+        System.out.print("Ingrese el número B: ");
+        int b = scanner.nextInt();
+        System.out.print("Ingrese el número C: ");
+        int c = scanner.nextInt();
+
+        System.out.print("Orden descendente: ");
+
+        // Lógica del Diagrama de Flujo 2.15
+        if (a > b) {
+            if (a > c) {
+                if (b > c) {
+                    System.out.println(a + ", " + b + ", " + c); // A, B, C
+                } else {
+                    System.out.println(a + ", " + c + ", " + b); // A, C, B
+                }
+            } else {
+                System.out.println(c + ", " + a + ", " + b); // C, A, B
+            }
+        } else { // B >= A
+            if (b > c) {
+                if (a > c) {
+                    System.out.println(b + ", " + a + ", " + c); // B, A, C
+                } else {
+                    System.out.println(b + ", " + c + ", " + a); // B, C, A
+                }
+            } else {
+                System.out.println(c + ", " + b + ", " + a); // C, B, A
+            }
+        }
+        
+        scanner.close();
+    }
+}</code></pre>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <ul>
+              <li>Este ejercicio es clave para entender las <strong>estructuras selectivas anidadas</strong> (if-else dentro de if-else).</li>
+              <li>La lógica de árbol de decisión cubre todas las permutaciones posibles de orden.</li>
+            </ul>
+          </aside>
+        </div>
+      </article>
+
+      <article id="ej3_2" class="exercise-card" aria-labelledby="ej3_2-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Ejemplo 3.2 (pág. 110)</span>
+          <h2 id="ej3_2-title">Calcular Nómina con Estructura Repetitiva</h2>
+          
+          <p class="exercise-description">
+            Solución al problema de calcular la nómina total de 10 trabajadores de una empresa, 
+            utilizando una estructura algorítmica repetitiva (<code>repetir</code> o <code>FOR</code>).
+          </p>
+        </header>
+        
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <ul>
+              <li><strong>Datos:</strong> SUEi (variable de tipo real que representa el sueldo del trabajador i, con $1 \le i \le 10$).</li>
+              <li>Utilizar una variable <strong>acumuladora</strong> (NOMINA) para sumar los sueldos.</li>
+              <li>Utilizar una variable <strong>contadora</strong> (I) para controlar el ciclo.</li>
+              <li>El ciclo debe ejecutarse 10 veces.</li>
+              <li>Imprimir el total de la nómina.</li>
+            </ul>
+
+            <h3>Diagrama de Flujo</h3>
+            <img src="./Diagramas/imagen_diagrama_3_2.svg" alt="Diagrama">
+
+            <h3>Ejemplo de uso esperado (Java)</h3>
+            <pre><code class="code-block">import java.util.Scanner;
+
+public class NominaRepetitiva {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        double nomina = 0; // Acumulador
+        double sueldo;
+
+        System.out.println("Ingrese los 10 sueldos:");
+
+        // Estructura Repetir (FOR)
+        for (int i = 1; i <= 10; i++) {
+            System.out.print("Sueldo del trabajador " + i + ": ");
+            sueldo = scanner.nextDouble();
+            nomina = nomina + sueldo; // Acumular
+        }
+
+        System.out.printf("\nEl total de la nómina es: %.2f\n", nomina);
+        
+        scanner.close();
+    }
+}</code></pre>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <ul>
+              <li>Este ejemplo introduce el concepto de <strong>acumulador</strong> (una variable que suma valores en cada iteración).</li>
+              <li>También muestra un <strong>ciclo definido</strong> (<code>FOR</code>), donde se sabe de antemano el número de repeticiones.</li>
+            </ul>
+          </aside>
+        </div>
+      </article>
+
+      <article id="prob3_13" class="exercise-card" aria-labelledby="prob3_13-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Problema 3.13 (pág. 150)</span>
+          <h2 id="prob3_13-title">Promedios Lluvias Regiones Cerealeras</h2>
+          
+          <p class="exercise-description">
+            En el centro meteorológico de Argentina se llevan los promedios mensuales de las lluvias caídas en las regiones NORTE, CENTRO y SUR. 
+            Se necesita calcular: a) El promedio anual de la región centro, b) El mes y registro con menor lluvia en la región sur, c) La región con mayor lluvia anual.
+          </p>
+        </header>
+        
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <ul>
+              <li><strong>Datos:</strong> RNO, RCE, RSU (lluvia de las 3 regiones) por cada mes (12 veces).</li>
+              <li>a) Calcular $PRORCE = (\sum RCE) / 12$.</li>
+              <li>b) Encontrar el valor $MERSU$ (menor lluvia en SUR) y $MES$ (el mes en que ocurrió).</li>
+              <li>c) Comparar los totales $ARNO$, $ARCE$ y $ARSU$ para determinar la región con mayor lluvia.</li>
+            </ul>
+
+            <h3>Diagrama de Flujo</h3>
+            <img src="./Diagramas/imagen_diagrama_3_13.svg" alt="Diagrama" style="width: 100%; height: auto;">
+
+            <h3>Ejemplo de uso esperado (Java)</h3>
+            <pre><code class="code-block">import java.util.Scanner;
+
+public class Meteorologico {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        double arno = 0, arce = 0, arsu = 0;
+        double mersu = 500000; // Valor inicial alto para buscar el mínimo
+        int mesMersu = 0;
+
+        for (int i = 1; i <= 12; i++) {
+            System.out.println("--- Mes " + i + " ---");
+            System.out.print("Lluvia Región Norte: ");
+            double rno = scanner.nextDouble();
+            System.out.print("Lluvia Región Centro: ");
+            double rce = scanner.nextDouble();
+            System.out.print("Lluvia Región Sur: ");
+            double rsu = scanner.nextDouble();
+
+            arno += rno;
+            arce += rce;
+            arsu += rsu;
+
+            if (rsu < mersu) {
+                mersu = rsu;
+                mesMersu = i;
+            }
+        }
+
+        // a) Promedio Región Centro
+        double prorce = arce / 12;
+        System.out.printf("\na) Promedio anual Región Centro: %.2f\n", prorce);
+
+        // b) Menor lluvia Región Sur
+        System.out.printf("b) Menor lluvia Región Sur fue en el mes %d (Registro: %.2f)\n", mesMersu, mersu);
+
+        // c) Región con mayor lluvia anual
+        System.out.print("c) Región con mayor lluvia anual: ");
+        if (arno > arce && arno > arsu) {
+            System.out.println("NORTE");
+        } else if (arce > arno && arce > arsu) {
+            System.out.println("CENTRO");
+        } else {
+            System.out.println("SUR");
+        }
+        
+        scanner.close();
+    }
+}</code></pre>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <ul>
+              <li>Este problema combina múltiples cálculos dentro de un solo ciclo <code>FOR</code>.</li>
+              <li>Introduce la técnica de <strong>búsqueda de mínimo</strong>, inicializando una variable con un valor muy alto.</li>
+            </ul>
+          </aside>
+        </div>
+      </article>
+
+      <article id="ej4_10" class="exercise-card" aria-labelledby="ej4_10-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Ejemplo 4.10 (pág. 223)</span>
+          <h2 id="ej4_10-title">Control Meteorológico con Arreglos Tridimensionales</h2>
+          
+          <p class="exercise-description">
+            El Centro Meteorológico de México lleva el control de las lluvias caídas mensualmente en los 32 estados de la república, 
+            a lo largo de los últimos 5 años. Se utiliza un arreglo tridimensional <code>MET[32, 12, 5]</code>.
+          </p>
+        </header>
+        
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <p>Dado el arreglo tridimensional <code>MET[estado][mes][año]</code>, calcular:</p>
+            <ul>
+              <li>a) Las lluvias mensuales caídas en cada estado, durante el 3er año.</li>
+              <li>b) El total de lluvias caídas en el país durante el 4to año.</li>
+              <li>c) El total de lluvias caídas durante el último año del estado 17.</li>
+              <li>d) El total de lluvias en México en los últimos 5 años.</li>
+            </ul>
+
+            <h3>Diagrama de Flujo </h3>
+            <img src="./Diagramas/imagen_diagrama_4_10.svg" alt="Diagrama">
+
+            <h3>Ejemplo de uso esperado (Java)</h3>
+            <pre><code class="code-block">import java.util.Random;
+
+public class Meteorologico3D {
+    public static void main(String[] args) {
+        // [32 estados][12 meses][5 años]
+        double[][][] met = new double[32][12][5];
+        Random rand = new Random();
+
+        // Simular llenado de datos
+        for (int e = 0; e < 32; e++) { // Estado
+            for (int m = 0; m < 12; m++) { // Mes
+                for (int a = 0; a < 5; a++) { // Año
+                    met[e][m][a] = rand.nextDouble() * 100; // Lluvia 0-100
+                }
+            }
+        }
+
+        // a) Lluvias mensuales de cada estado, 3er año (índice 2)
+        System.out.println("--- a) Lluvias del 3er año ---");
+        for (int e = 0; e < 32; e++) {
+            for (int m = 0; m < 12; m++) {
+                // System.out.printf("Estado %d, Mes %d: %.2f\n", e + 1, m + 1, met[e][m][2]);
+            }
+        }
+        System.out.println("(Salida 'a' omitida por brevedad...)\n");
+
+
+        // b) Total lluvias en el país, 4to año (índice 3)
+        double totalAnio4 = 0;
+        for (int e = 0; e < 32; e++) {
+            for (int m = 0; m < 12; m++) {
+                totalAnio4 += met[e][m][3];
+            }
+        }
+        System.out.printf("--- b) Total Lluvias 4to año: %.2f\n", totalAnio4);
+
+        // c) Total lluvias último año (índice 4) del estado 17 (índice 16)
+        double totalEst17Anio5 = 0;
+        for (int m = 0; m < 12; m++) {
+            totalEst17Anio5 += met[16][m][4];
+        }
+        System.out.printf("--- c) Total Lluvias Est. 17 (Último año): %.2f\n", totalEst17Anio5);
+
+        // d) Total de lluvias en México en 5 años
+        double granTotal = 0;
+        for (int e = 0; e < 32; e++) {
+            for (int m = 0; m < 12; m++) {
+                for (int a = 0; a < 5; a++) {
+                    granTotal += met[e][m][a];
+                }
+            }
+        }
+        System.out.printf("--- d) Gran Total 5 años: %.2f\n", granTotal);
+    }
+}</code></pre>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <ul>
+              <li>Este ejercicio demuestra cómo "fijar" uno o más índices de un arreglo multidimensional para consultar "rebanadas" (slices) de los datos.</li>
+              <li>Índice de Año 3 = 2</li>
+              <li>Índice de Año 4 = 3</li>
+              <li>Índice de Estado 17 = 16</li>
+            </ul>
+          </aside>
+        </div>
+      </article>
+      
+      <article id="prob4_13" class="exercise-card" aria-labelledby="prob4_13-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Problema 4.13 (pág. 287)</span>
+          <h2 id="prob4_13-title">Intercambiar Renglones de una Matriz Cuadrada</h2>
+          
+          <p class="exercise-description">
+            Construya un diagrama de flujo que intercambie los renglones de un arreglo bidimensional cuadrado (A[N x N]). 
+            El renglón 1 debe intercambiarse con el N, el 2 con el N-1, y así sucesivamente.
+          </p>
+        </header>
+        
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <ul>
+              <li><strong>Datos:</strong> Matriz A[N, N] (tipo entero, $1 < N < 50$).</li>
+              <li>El intercambio es simétrico: Renglón $i$ se intercambia con $N - 1 - i$ (en base 0) o $N - i + 1$ (en base 1).</li>
+              <li>El ciclo principal debe iterar solo hasta la mitad de los renglones ($N / 2$).</li>
+              <li>Se debe usar una variable $AUX$ para el intercambio.</li>
+            </ul>
+
+            <h3>Diagrama de Flujo</h3>
+            <img src="./Diagramas/imagen_diagrama_4_13.svg" alt="Diagrama" style="width: 100%; height: auto;">
+
+            <h3>Ejemplo de uso esperado (Java)</h3>
+            <pre><code class="code-block">import java.util.Arrays;
+
+public class IntercambiarRenglones {
+
+    // Método para imprimir la matriz
+    public static void printMatrix(int[][] matrix) {
+        for (int[] row : matrix) {
+            System.out.println(Arrays.toString(row));
+        }
+    }
+
+    public static void main(String[] args) {
+        // Ejemplo N=4
+        int n = 4;
+        int[][] a = {
+            {10, 15, 28, 49},
+            {68, 115, 36, 15},
+            {90, 0, 7, 28},
+            {87, 5, 13, 56}
+        };
+
+        System.out.println("--- Matriz Original ---");
+        printMatrix(a);
+
+        // Lógica de intercambio (índices base 0)
+        // El ciclo va hasta N / 2
+        for (int i = 0; i < n / 2; i++) {
+            // Iterar por todas las columnas (J)
+            for (int j = 0; j < n; j++) {
+                int aux = a[i][j];
+                a[i][j] = a[n - 1 - i][j]; // Fila opuesta
+                a[n - 1 - i][j] = aux;
+            }
+        }
+
+        System.out.println("\n--- Matriz Modificada ---");
+        printMatrix(a);
+    }
+}</code></pre>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <ul>
+              <li>El bucle exterior (<code>i</code>) solo necesita llegar a <code>N / 2</code>. Si llega hasta <code>N</code>, volvería a intercambiar los renglones, revirtiendo la operación.</li>
+              <li>El bucle interior (<code>j</code>) debe recorrer todas las columnas.</li>
+            </ul>
+          </aside>
+        </div>
+      </article>
+
+      <article id="prob5_1" class="exercise-card" aria-labelledby="prob5_1-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Problema 5.1 (pág. 354)</span>
+          <h2 id="prob5_1-title">Suma de Matrices Esparcidas</h2>
+          
+          <p class="exercise-description">
+            Una matriz esparcida (mayoría de ceros) no se almacena completa. Solo se guardan los valores distintos de cero, junto con su renglón y columna. 
+            El programa debe: a) Leer matrices A y B, y guardarlas en arreglos de registros (A1, B1). b) Obtener la matriz C = A + B, usando solo A1 y B1. c) Imprimir C.
+          </p>
+        </header>
+        
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <ul>
+              <li><strong>Datos:</strong> Dos matrices A(M x N) y B(M x N), 1 < M < 50, 1 < N < 30.</li>
+              <li>Definir una estructura (Registro) para almacenar: <code>REN</code>, <code>COL</code>, <code>VAL</code>.</li>
+              <li>a) Llenar los arreglos A1 y B1 (Arreglos de Registros) solo con los valores distintos de 0.</li>
+              <li>b) Calcular C(M x N) = A + B. La suma debe hacerse "mezclando" (merge) los arreglos A1 y B1, similar a un <em>merge sort</em>.</li>
+              <li>c) Imprimir la matriz C resultante.</li>
+            </ul>
+
+            <h3>Diagrama de Flujo</h3>
+            <img src="./Diagramas/imagen_diagrama_5_1.svg" alt="Diagrama" style="width: 100%; height: auto;">
+
+
+            <h3>Ejemplo de uso esperado (Java)</h3>
+            <pre><code class="code-block">import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+// (Clase MatrizElemento va primero)
+
+public class SumaMatricesEsparcidas {
+    
+    // (Clase interna MatrizElemento)
+    static class MatrizElemento {
+        int ren, col, val;
+        MatrizElemento(int ren, int col, int val) {
+            this.ren = ren; this.col = col; this.val = val;
+        }
+    }
+
+    public static void main(String[] args) {
+        // Asumimos M=3, N=4 para el ejemplo
+        int M = 3, N = 4;
+        // Simulación de lectura
+        List<MatrizElemento> A1 = new ArrayList<>();
+        List<MatrizElemento> B1 = new ArrayList<>();
+
+        // Matriz A: [5,0,0,8], [0,0,7,0], [0,3,0,0]
+        A1.add(new MatrizElemento(0, 0, 5));
+        A1.add(new MatrizElemento(0, 3, 8));
+        A1.add(new MatrizElemento(1, 2, 7));
+        A1.add(new MatrizElemento(2, 1, 3));
+        
+        // Matriz B: [0,0,0,8], [0,6,0,0], [0,3,4,0]
+        B1.add(new MatrizElemento(0, 3, 8));
+        B1.add(new MatrizElemento(1, 1, 6));
+        B1.add(new MatrizElemento(2, 1, 3));
+        B1.add(new MatrizElemento(2, 2, 4));
+
+        int[][] C = new int[M][N]; // Inicializada en 0 por defecto
+
+        // b) Lógica de suma (Merge)
+        int i = 0, j = 0;
+        while (i < A1.size() && j < B1.size()) {
+            MatrizElemento elA = A1.get(i);
+            MatrizElemento elB = B1.get(j);
+
+            if (elA.ren < elB.ren) { // Renglón A es menor
+                C[elA.ren][elA.col] = elA.val;
+                i++;
+            } else if (elB.ren < elA.ren) { // Renglón B es menor
+                C[elB.ren][elB.col] = elB.val;
+                j++;
+            } else { // Renglones iguales, comparar columnas
+                if (elA.col < elB.col) {
+                    C[elA.ren][elA.col] = elA.val;
+                    i++;
+                } else if (elB.col < elA.col) {
+                    C[elB.ren][elB.col] = elB.val;
+                    j++;
+                } else { // Misma posición: sumar
+                    C[elA.ren][elA.col] = elA.val + elB.val;
+                    i++;
+                    j++;
+                }
+            }
+        }
+        // Añadir restantes de A1
+        while (i < A1.size()) { C[A1.get(i).ren][A1.get(i).col] = A1.get(i).val; i++; }
+        // Añadir restantes de B1
+        while (j < B1.size()) { C[B1.get(j).ren][B1.get(j).col] = B1.get(j).val; j++; }
+
+        // c) Imprimir C
+        System.out.println("--- Matriz Resultante C ---");
+        for (int r = 0; r < M; r++) {
+            System.out.println(java.util.Arrays.toString(C[r]));
+        }
+        // Resultado esperado: [5,0,0,16], [0,6,7,0], [0,6,4,0]
+    }
+}</code></pre>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <ul>
+              <li>Este problema introduce <strong>Arreglos de Registros</strong> (en Java, `ArrayList` de una clase personalizada).</li>
+              <li>La lógica de suma (inciso b) es el algoritmo de "merge" (fusión) más complejo de este conjunto de problemas.</li>
+            </ul>
+          </aside>
+        </div>
+      </article>
+
+      <article id="ps1_13" class="exercise-card" aria-labelledby="ps1_13-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Problema PS 1.13 (pág. 408)</span>
+          <h2 id="ps1_13-title">Calcular Áreas y Volumen de un Prisma Pentagonal</h2>
+          
+          <p class="exercise-description">
+            Construya un diagrama de flujo tal que dado el perímetro de la base, el apotema
+            y la altura de un prisma pentagonal; calcule el área de la base, el área lateral, el
+            área total y el volumen.
+          </p>
+        </header>
+        
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <ul>
+              <li><strong>Datos:</strong> PER, APO, ALT (variables de tipo real).</li>
+              <li>Calcular Área Base: $AB = (PER \cdot APO) / 2$.</li>
+              <li>Calcular Área Lateral: $AL = PER \cdot ALT$.</li>
+              <li>Calcular Área Total: $AT = 2 \cdot AB + AL$.</li>
+              <li>Calcular Volumen: $VOL = AB \cdot ALT$.</li>
+            </ul>
+            
+            <h3>Ejemplo de uso esperado (Java)</h3>
+            <pre><code class="code-block">import java.util.Scanner;
+
+public class PrismaPentagonal {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Ingrese el perímetro de la base (PER): ");
+        double per = scanner.nextDouble();
+        System.out.print("Ingrese el apotema (APO): ");
+        double apo = scanner.nextDouble();
+        System.out.print("Ingrese la altura (ALT): ");
+        double alt = scanner.nextDouble();
+
+        // Cálculos
+        double areaBase = (per * apo) / 2.0;
+        double areaLateral = per * alt;
+        double areaTotal = (2 * areaBase) + areaLateral;
+        double volumen = areaBase * alt;
+
+        // Resultados
+        System.out.println("\n--- Resultados del Prisma ---");
+        System.out.printf("Área de la Base: %.2f\n", areaBase);
+        System.out.printf("Área Lateral: %.2f\n", areaLateral);
+        System.out.printf("Área Total: %.2f\n", areaTotal);
+        System.out.printf("Volumen: %.2f\n", volumen);
+        
+        scanner.close();
+    }
+}</code></pre>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <ul>
+              <li>Este es un problema secuencial simple.</li>
+              <li>Se enfoca en la correcta aplicación de fórmulas matemáticas.</li>
+              <li>No hay diagrama de flujo en el libro para este problema.</li>
+            </ul>
+          </aside>
+        </div>
+      </article>
+
+      <article id="ps3_22" class="exercise-card" aria-labelledby="ps3_22-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Problema PS 3.22 (pág. 426)</span>
+          <h2 id="ps3_22-title">Promedio de 35 Alumnos (Lectura Plana)</h2>
+          
+          <p class="exercise-description">
+            En una clase de una universidad se tienen 35 alumnos. Haga un diagrama de flu
+            jo que calcule e imprima la matrícula y el promedio de calificaciones de cada
+            alumno. Cada alumno de la clase tiene 5 calificaciones.
+          </p>
+        </header>
+        
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <ul>
+              <li><strong>Datos:</strong> Un total de 35 alumnos.</li>
+              <li>Para cada alumno, se leen 6 datos: $MAT, CAL1, CAL2, CAL3, CAL4, CAL5$.</li>
+              <li>Se debe usar un ciclo <code>FOR</code> (Repetir) que se ejecute 35 veces.</li>
+              <li>Dentro del ciclo, leer los 6 datos, calcular el promedio de las 5 calificaciones.</li>
+              <li>Imprimir la matrícula y el promedio de ese alumno.</li>
+            </ul>
+            
+            <h3>Ejemplo de uso esperado (Java)</h3>
+            <pre><code class="code-block">import java.util.Scanner;
+
+public class PromedioAlumnosV1 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        final int TOTAL_ALUMNOS = 35;
+
+        // Ciclo externo para los 35 alumnos
+        for (int i = 1; i <= TOTAL_ALUMNOS; i++) {
+            System.out.println("\n--- Alumno " + i + " ---");
+            System.out.print("Ingrese Matrícula: ");
+            int matricula = scanner.nextInt();
+
+            // Lectura "plana" de las 5 calificaciones
+            System.out.print("Ingrese Calificación 1: ");
+            double cal1 = scanner.nextDouble();
+            System.out.print("Ingrese Calificación 2: ");
+            double cal2 = scanner.nextDouble();
+            System.out.print("Ingrese Calificación 3: ");
+            double cal3 = scanner.nextDouble();
+            System.out.print("Ingrese Calificación 4: ");
+            double cal4 = scanner.nextDouble();
+            System.out.print("Ingrese Calificación 5: ");
+            double cal5 = scanner.nextDouble();
+
+            double promedio = (cal1 + cal2 + cal3 + cal4 + cal5) / 5.0;
+
+            System.out.printf("-> Matrícula: %d, Promedio: %.2f\n", matricula, promedio);
+        }
+
+        System.out.println("\nProceso completado.");
+        scanner.close();
+    }
+}</code></pre>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <ul>
+              <li>Este problema (y el PS 3.23) ilustra la necesidad de <strong>ciclos anidados</strong>.</li>
+              <li>Esta versión (PS 3.22) resuelve el problema sin un ciclo interno, leyendo 5 variables separadas.</li>
+              <li>No hay diagrama de flujo en el libro para este problema.</li>
+            </ul>
+          </aside>
+        </div>
+      </article>
+
+      <article id="ps4_2" class="exercise-card" aria-labelledby="ps4_2-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Problema PS 4.2 (pág. 441)</span>
+          <h2 id="ps4_2-title">Contar Ocurrencias en Arreglo Unidimensional</h2>
+          
+          <p class="exercise-description">
+            Construya un programa tal que dado como entrada un arreglo unidimensional de
+            enteros y un número entero, determine cuántas veces se encuentra el número
+            dentro del arreglo.
+          </p>
+        </header>
+        
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <ul>
+              <li><strong>Datos:</strong> VEC (arreglo de 100 enteros), NUM (entero a buscar).</li>
+              <li>Recorrer el arreglo $VEC$ completo.</li>
+              <li>Usar un <strong>contador</strong> para registrar las veces que $NUM$ aparece en $VEC$.</li>
+              <li>Imprimir el contador final.</li>
+            </ul>
+            
+            <h3>Ejemplo de uso esperado (Java)</h3>
+            <pre><code class="code-block">import java.util.Scanner;
+
+public class ContarEnArreglo {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Simulación del arreglo VEC[100]
+        int[] vec = {5, 10, 15, 5, 20, 25, 5, 30}; // Ejemplo corto
+        // int[] vec = new int[100];
+        // ... (Aquí iría la lógica para llenar el arreglo)
+
+        System.out.print("Ingrese el número a buscar: ");
+        int num = scanner.nextInt();
+
+        int contador = 0;
+        
+        // Recorrer el arreglo
+        for (int i = 0; i < vec.length; i++) {
+            if (vec[i] == num) {
+                contador++;
+            }
+        }
+
+        System.out.printf("El número %d se encuentra %d veces en el arreglo.\n", num, contador);
+        
+        scanner.close();
+    }
+}</code></pre>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <ul>
+              <li>Este es un ejercicio fundamental de recorrido de arreglos.</li>
+              <li>Aplica el concepto de <strong>contador</strong> simple.</li>
+              <li>No hay diagrama de flujo en el libro para este problema.</li>
+            </ul>
+          </aside>
+        </div>
+      </article>
+
+      <article id="ps4_18" class="exercise-card" aria-labelledby="ps4_18-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Problema PS 4.18 (pág. 446)</span>
+          <h2 id="ps4_18-title">Generar Matriz Identidad</h2>
+          
+          <p class="exercise-description">
+            Construya un diagrama de flujo que llene de ceros una matriz cuadrada A [N x N], 
+            excepto en la diagonal principal donde debe asignar 1.
+          </p>
+        </header>
+        
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <ul>
+              <li><strong>Datos:</strong> N (dimensión de la matriz, $1 < N < 50$).</li>
+              <li>Crear una matriz A[N][N].</li>
+              <li>Usar ciclos anidados (para $i$ y $j$).</li>
+              <li>Si $i == j$ (diagonal principal), asignar 1.</li>
+              <li>Si $i != j$, asignar 0.</li>
+              <li>Imprimir la matriz resultante.</li>
+            </ul>
+            
+            <h3>Ejemplo de uso esperado (Java)</h3>
+            <pre><code class="code-block">import java.util.Arrays;
+import java.util.Scanner;
+
+public class MatrizIdentidad {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Ingrese la dimensión N de la matriz: ");
+        int n = scanner.nextInt();
+
+        if (n < 1 || n > 50) {
+            System.out.println("Dimensión fuera de rango.");
+        } else {
+            int[][] a = new int[n][n];
+
+            // Llenar la matriz
+            for (int i = 0; i < n; i++) {
+                for (int j = 0; j < n; j++) {
+                    if (i == j) {
+                        a[i][j] = 1; // Diagonal principal
+                    } else {
+                        a[i][j] = 0; // Fuera de la diagonal
+                    }
+                }
+            }
+
+            // Imprimir la matriz
+            System.out.println("--- Matriz Identidad Generada ---");
+            for (int[] row : a) {
+                System.out.println(Arrays.toString(row));
+            }
+        }
+        scanner.close();
+    }
+}</code></pre>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <ul>
+              <li>Este ejercicio es clave para entender el manejo de índices (<code>i</code>, <code>j</code>) en matrices.</li>
+              <li>La condición <code>i == j</code> es la definición de la <strong>diagonal principal</strong>.</li>
+              <li>No hay diagrama de flujo en el libro para este problema.</li>
+            </ul>
+          </aside>
+        </div>
+      </article>
+      
+      <article id="ps4_34" class="exercise-card" aria-labelledby="ps4_34-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Problema PS 4.34 (pág. 453)</span>
+          <h2 id="ps4_34-title">Producción de Fábrica (Arreglo Tridimensional)</h2>
+          
+          <p class="exercise-description">
+            Se tiene un arreglo tridimensional (FABRICA[12, 4, 3]) con la producción de 12 meses, 4 años y 3 departamentos (dulces, conservas, bebidas). 
+            Se pide calcular: a) Departamento con mayor producción en 4 años. b) Mes del 2do año con mayor producción. c) Año con mayor producción. d) Depto, mes y año de la mayor producción.
+          </p>
+        </header>
+        
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <ul>
+              <li><strong>Datos:</strong> Arreglo <code>FABRICA[12][4][3]</code> (Mes, Año, Depto).</li>
+              <li>a) Acumular por departamento y encontrar el máximo.</li>
+              <li>b) Acumular por mes (solo del 2do año, índice 1) y encontrar el máximo.</li>
+              <li>c) Acumular por año y encontrar el máximo.</li>
+              <li>d) Encontrar el valor máximo individual en la matriz 3D y guardar sus 3 índices.</li>
+            </ul>
+            
+            <h3>Ejemplo de uso esperado (Java)</h3>
+            <pre><code class="code-block">import java.util.Random;
+
+public class ProduccionFabrica {
+    public static void main(String[] args) {
+        // [12 Meses][4 Años][3 Departamentos]
+        double[][][] fabrica = new double[12][4][3];
+        Random rand = new Random();
+        String[] deptos = {"Dulces", "Conservas", "Bebidas"};
+
+        // Simular llenado de datos
+        for (int m = 0; m < 12; m++) {
+            for (int a = 0; a < 4; a++) {
+                for (int d = 0; d < 3; d++) {
+                    fabrica[m][a][d] = rand.nextDouble() * 1000;
+                }
+            }
+        }
+
+        // a) Departamento con mayor producción en 4 años
+        double[] totalDepto = new double[3];
+        for (int d = 0; d < 3; d++) {
+            for (int m = 0; m < 12; m++) {
+                for (int a = 0; a < 4; a++) {
+                    totalDepto[d] += fabrica[m][a][d];
+                }
+            }
+        }
+        int maxDeptoIdx = (totalDepto[0] > totalDepto[1] && totalDepto[0] > totalDepto[2]) ? 0 : (totalDepto[1] > totalDepto[2] ? 1 : 2);
+        System.out.printf("a) Depto. con mayor producción: %s (%.2f)\n", deptos[maxDeptoIdx], totalDepto[maxDeptoIdx]);
+
+        // b) Mes del 2do año (índice 1) con mayor producción
+        double maxProdMes = -1;
+        int mesMax = 0;
+        for (int m = 0; m < 12; m++) {
+            double sumaMes = 0;
+            for (int d = 0; d < 3; d++) {
+                sumaMes += fabrica[m][1][d]; // Año índice 1 (2do año)
+            }
+            if (sumaMes > maxProdMes) {
+                maxProdMes = sumaMes;
+                mesMax = m + 1;
+            }
+        }
+        System.out.printf("b) Mes de mayor producción (2do año): Mes %d (%.2f)\n", mesMax, maxProdMes);
+
+        // c) Año con mayor producción
+        double[] totalAnio = new double[4];
+        for (int a = 0; a < 4; a++) {
+            for (int m = 0; m < 12; m++) {
+                for (int d = 0; d < 3; d++) {
+                    totalAnio[a] += fabrica[m][a][d];
+                }
+            }
+        }
+        int maxAnioIdx = 0;
+        for (int a = 1; a < 4; a++) {
+            if (totalAnio[a] > totalAnio[maxAnioIdx]) maxAnioIdx = a;
+        }
+        System.out.printf("c) Año con mayor producción: %d (%.2f)\n", maxAnioIdx + 1, totalAnio[maxAnioIdx]);
+
+        // d) Depto, mes y año de la mayor producción individual
+        double maxIndividual = -1;
+        int mesM = 0, anioM = 0, deptoM = 0;
+        for (int m = 0; m < 12; m++) {
+            for (int a = 0; a < 4; a++) {
+                for (int d = 0; d < 3; d++) {
+                    if (fabrica[m][a][d] > maxIndividual) {
+                        maxIndividual = fabrica[m][a][d];
+                        mesM = m + 1;
+                        anioM = a + 1;
+                        deptoM = d;
+                    }
+                }
+            }
+        }
+        System.out.printf("d) Mayor producción: %.2f (Mes: %d, Año: %d, Depto: %s)\n", 
+            maxIndividual, mesM, anioM, deptos[deptoM]);
+    }
+}</code></pre>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <ul>
+              <li>Este problema requiere múltiples recorridos del arreglo 3D, acumulando los totales de diferentes maneras (por depto, por año, por mes).</li>
+              <li>Es un ejercicio avanzado sobre manipulación de arreglos multidimensionales.</li>
+              <li>No hay diagrama de flujo en el libro para este problema.</li>
+            </ul>
+          </aside>
+        </div>
+      </article>
+
+    </main>
+
+    <footer class="page-footer">
+      <p class="note-text">Regresa al <a href="#top">menú</a> para elegir otro ejercicio.</p>
+    </footer>
+  </div>
+</body>
+</html>
