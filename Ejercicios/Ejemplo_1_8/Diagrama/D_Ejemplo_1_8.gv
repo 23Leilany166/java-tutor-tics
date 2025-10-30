@@ -1,0 +1,13 @@
+digraph G {
+    graph [fontname="Arial"];
+    node [shape=box, style=rounded, fontname="Arial"];
+    edge [fontname="Arial"];
+
+    Inicio [shape=ellipse];
+    LeerDatos [label="Leer MAT, CAL1, CAL2, CAL3, CAL4, CAL5"];
+    Proceso [label="PROMEDIO = (CAL1 + ... + CAL5) / 5.0"];
+    Imprimir [label="Imprimir MAT, PROMEDIO"];
+    Fin [shape=ellipse];
+
+    Inicio -> LeerDatos -> Proceso -> Imprimir -> Fin;
+}
