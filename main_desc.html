@@ -1,0 +1,1560 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale-1">
+  <title>Ejercicios de Programación en Java</title>
+  <link rel="stylesheet" href="./styles_desc.css">
+  
+  <style>
+    .exercises-nav {
+      position: static; /* Evita el comportamiento "sticky" o "fixed" */
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="page-header">
+      <h1>Ejercicios de Programación en Java</h1>
+      <p class="subtitle">Selecciona un ejercicio del menú para ver los detalles.</p>
+    </header>
+
+    <nav class="exercises-nav" aria-label="Navegación de ejercicios">
+      <a href="#problema_1_6" class="nav-link">Problema 1.6</a>
+      <a href="#problema_1_7" class="nav-link">Problema 1.7</a>
+      <a href="#problema_2_2" class="nav-link">Problema 2.2</a>
+      <a href="#ejemplo_3_4" class="nav-link">Ejemplo 3.4</a>
+      <a href="#problema_3_15" class="nav-link">Problema 3.15</a>
+      <a href="#problema_4_2" class="nav-link">Problema 4.2</a>
+      <a href="#problema_4_15" class="nav-link">Problema 4.15</a>
+      <a href="#problema_5_3" class="nav-link">Problema 5.3</a>
+      <a href="#ps_2_4" class="nav-link">PS 2.4</a>
+      <a href="#ps_2_5" class="nav-link">PS 2.5</a>
+      <a href="#ps_2_6" class="nav-link">PS 2.6</a>
+      <a href="#ps_2_7" class="nav-link">PS 2.7</a>
+      <a href="#ps_3_26" class="nav-link">PS 3.26</a>
+      <a href="#ps_4_4" class="nav-link">PS 4.4</a>
+      <a href="#ps_4_20" class="nav-link">PS 4.20</a>
+      <a href="#ps_4_36" class="nav-link">PS 4.36</a>
+    </nav>
+
+    <main class="exercises-main">
+      
+      <article id="ejemplo_1_6" class="exercise-card" aria-labelledby="ejemplo_1_6-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Ejemplo 1.6</span>
+          <h2 id="ejemplo_1_6-title">Escribir números en orden inverso</h2>
+          
+          <p class="exercise-description">
+            Este programa lee cuatro números enteros (A, B, C y D) y los escribe
+            en la consola en orden inverso (D, C, B, A).
+          </p>
+        </header>
+        
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <ul>
+              <li>Leer cuatro variables de tipo entero: <code>A</code>, <code>B</code>, <code>C</code>, y <code>D</code>.</li>
+              <li>Usar la clase <code>Scanner</code> para la entrada de datos.</li>
+              <li>Imprimir los valores en la consola en el orden: D, C, B, A.</li>
+            </ul>
+            
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block">import java.util.Scanner;
+
+public class Ejemplo_1_6 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("--- Lectura de 4 números enteros ---");
+        
+        System.out.print("Ingrese el valor A: ");
+        int A = sc.nextInt();
+        
+        System.out.print("Ingrese el valor B: ");
+        int B = sc.nextInt();
+        
+        System.out.print("Ingrese el valor C: ");
+        int C = sc.nextInt();
+        
+        System.out.print("Ingrese el valor D: ");
+        int D = sc.nextInt();
+
+        System.out.println("\n--- Números en orden inverso ---");
+        System.out.println("Valor D: " + D);
+        System.out.println("Valor C: " + C);
+        System.out.println("Valor B: " + B);
+        System.out.println("Valor A: " + A);
+    }
+}</code></pre>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas de Diagrama de Flujo</h3>
+            <p class="note-text">Este problema introduce los símbolos básicos del diagrama de flujo:</p>
+            <ul>
+              <li><strong>Inicio / Fin:</strong> Se usa un óvalo o cápsula.</li>
+              <li><strong>Lectura (Entrada):</strong> Se usa un paralelogramo (para leer A, B, C, D).</li>
+              <li><strong>Escritura (Salida):</strong> Se usa un símbolo de documento (para escribir D, C, B, A).</li>
+            </ul>
+            
+            <div class="tip-box">
+              <strong>Tip:</strong> Este es un algoritmo puramente secuencial. No requiere decisiones (<code>if</code>) ni bucles (<code>while</code>/<code>for</code>).
+            </div>
+          </aside>
+        </div>
+      </article>
+
+
+     <article id="problema_1_7" class="exercise-card" aria-labelledby="problema_1_7-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Problema 1.7</span>
+          <h2 id="problema_1_7-title">Calcular el área de un triángulo (Fórmula de Herón)</h2>
+          
+          <p class="exercise-description">
+            Este programa calcula el área de un triángulo dados sus tres lados (L1, L2, L3),
+            aplicando la fórmula de Herón.
+          </p>
+        </header>
+        
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Fórmulas a utilizar</h3>
+            <ol>
+              <li>Calcular el semiperímetro (S): <br> <code>S = (L1 + L2 + L3) / 2</code></li>
+              <li>Calcular el Área: <br> <code>Area = √(S * (S - L1) * (S - L2) * (S - L3))</code></li>
+            </ol>
+            
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block">import java.util.Scanner;
+import java.util.Locale;
+import java.lang.Math; // Para usar Math.sqrt()
+
+public class Problema_1_7 {
+    public static void main(String[] args) {
+        // Usar Locale.US para asegurar que el Scanner lea decimales con '.'
+        Scanner sc = new Scanner(System.in).useLocale(Locale.US);
+
+        System.out.println("--- Calculadora de Área de Triángulo (Fórmula de Herón) ---");
+        
+        System.out.print("Ingrese la longitud del Lado 1 (L1): ");
+        double L1 = sc.nextDouble();
+        
+        System.out.print("Ingrese la longitud del Lado 2 (L2): ");
+        double L2 = sc.nextDouble();
+        
+        System.out.print("Ingrese la longitud del Lado 3 (L3): ");
+        double L3 = sc.nextDouble();
+
+        // 1. Calcular el semiperímetro (S)
+        double S = (L1 + L2 + L3) / 2.0;
+
+        // 2. Calcular el Área
+        // (Validación opcional: asegurarse de que el radicando no sea negativo)
+        double radicando = S * (S - L1) * (S - L2) * (S - L3);
+        
+        if (radicando < 0) {
+            System.out.println("\nError: Los lados ingresados no forman un triángulo válido.");
+        } else {
+            double AREA = Math.sqrt(radicando);
+
+            System.out.println("\n--- Resultados ---");
+            System.out.printf("Lados: L1=%.2f, L2=%.2f, L3=%.2f%n", L1, L2, L3);
+            System.out.printf("Semiperímetro (S): %.4f%n", S);
+            System.out.printf("Área del triángulo: %.4f%n", AREA);
+        }
+    }
+}</code></pre>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <p class="note-text">Puntos clave:</p>
+            <ul>
+              <li>Los datos L1, L2, L3 deben ser de tipo <code>double</code> (real).</li>
+              <li>El semiperímetro <code>S</code> y el <code>AREA</code> también deben ser <code>double</code>.</li>
+              <li>Para calcular la raíz cuadrada, se utiliza el método <code>Math.sqrt(valor)</code>.</li>
+              <li>Asegúrate de que la división para <code>S</code> sea una división de punto flotante (ej. <code>/ 2.0</code>).</li>
+            </ul>
+            
+            <div class="tip-box">
+              <strong>Tip:</strong> Un triángulo es válido solo si la suma de dos de sus lados es siempre mayor que el tercero. La fórmula de Herón fallará (raíz negativa) si los lados no forman un triángulo.
+            </div>
+          </aside>
+        </div>
+      </article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+      <article id="problema_2_2" class="exercise-card" aria-labelledby="problema_2_2-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Problema 2.2</span>
+          <h2 id="problema_2_2-title">Evaluar la expresión P³ + Q⁴ - 2*P² &lt; 680</h2>
+          
+          <p class="exercise-description">
+            Este programa solicita dos valores enteros, P y Q, y determina si satisfacen la expresión
+            <code>P³ + Q⁴ - 2*P² < 680</code>. Si la cumplen, imprime los valores de P y Q.
+          </p>
+        </header>
+        
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <ul>
+              <li>Usar la clase <code>Scanner</code> para leer los enteros P y Q.</li>
+              <li>Calcular el resultado de la expresión: <code>P³ + Q⁴ - 2*P²</code>.</li>
+              <li>Usar una estructura condicional <code>if</code> para verificar si el resultado es menor que 680.</li>
+              <li>Si la condición se cumple, imprimir un mensaje afirmativo junto con los valores de P y Q.</li>
+              <li>Si no se cumple, indicar que no se satisface.</li>
+            </ul>
+            
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block">import java.util.Scanner;
+import java.lang.Math; // Para usar Math.pow
+
+public class Problema_2_2 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        System.out.println("Ingrese el valor entero P:");
+        int P = sc.nextInt();
+        
+        System.out.println("Ingrese el valor entero Q:");
+        int Q = sc.nextInt();
+        
+        // Calcular la expresión. Usamos double porque Math.pow retorna double.
+        double resultado = Math.pow(P, 3) + Math.pow(Q, 4) - 2 * Math.pow(P, 2);
+        
+        System.out.println("Resultado de la expresión: " + resultado);
+
+        // Evaluar la condición
+        if (resultado < 680) {
+            System.out.println("La expresión P³ + Q⁴ - 2*P² < 680 SÍ se cumple.");
+            System.out.println("Valor de P: " + P);
+            System.out.println("Valor de Q: " + Q);
+        } else {
+            System.out.println("La expresión P³ + Q⁴ - 2*P² < 680 NO se cumple.");
+        }
+    }
+}</code></pre>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <p class="note-text">Asegúrate de:</p>
+            <ul>
+              <li>Importar <code>java.util.Scanner</code> para la entrada de datos.</li>
+              <li>Usar <code>Math.pow(base, exponente)</code> para calcular las potencias.</li>
+              <li>Almacenar el resultado en una variable <code>double</code>, ya que <code>Math.pow</code> devuelve ese tipo.</li>
+              <li>Probar con valores que cumplan (ej. P=5, Q=3) y que no cumplan (ej. P=10, Q=10).</li>
+            </ul>
+            
+            <div class="tip-box">
+              <strong>Tip:</strong> El problema pide imprimir P y Q solo "en caso afirmativo", por lo que el bloque <code>else</code> es opcional, pero útil para la depuración.
+            </div>
+          </aside>
+        </div>
+      </article>
+
+      <article id="ejemplo_3_4" class="exercise-card" aria-labelledby="ejemplo_3_4-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Ejemplo 3.4</span>
+          <h2 id="ejemplo_3_4-title">Programa para obtener el total de gastos de un viaje</h2>
+          
+          <p class="exercise-description">
+            Este programa permite al usuario ingresar los gastos de un viaje (tipo real) y calcula el total, 
+            finalizando la entrada cuando el usuario ingresa -1.
+          </p>
+        </header>
+        
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <ul>
+              <li>Usar la clase <code>Scanner</code> para la entrada de datos.</li>
+              <li>Implementar un bucle <code>while</code> que permita ingresar múltiples gastos.</li>
+              <li>Calcular la suma total de los gastos ingresados.</li>
+              <li>Finalizar la entrada de datos cuando el usuario ingresa <code>-1</code>.</li>
+            </ul>
+            
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block">import java.util.Scanner;
+
+public class Ejemplo_3_4 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        double totalGastos = 0;
+
+        System.out.println("Ingrese los gastos (ingrese -1 para finalizar):");
+        double gasto = sc.nextDouble();
+
+        while (gasto != -1) {
+            totalGastos += gasto;
+            System.out.println("Ingrese el siguiente gasto (ingrese -1 para finalizar):");
+            gasto = sc.nextDouble();
+        }
+
+        System.out.println("El total de gastos del viaje es: " + totalGastos);
+    }
+}</code></pre>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <p class="note-text">Asegúrate de:</p>
+            <ul>
+              <li>Probar el programa con diferentes entradas de gastos.</li>
+              <li>Verificar que el total se calcule correctamente.</li>
+              <li>El bucle <code>while</code> es ideal aquí porque no sabemos cuántos gastos se ingresarán.</li>
+            </ul>
+            
+            <div class="tip-box">
+              <strong>Tip:</strong> Esta estructura de bucle con un valor centinela (<code>-1</code>) es muy común para terminar la entrada de datos.
+            </div>
+          </aside>
+        </div>
+      </article>
+
+      <article id="problema_3_15" class="exercise-card" aria-labelledby="problema_3_15-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Problema 3.15</span>
+          <h2 id="problema_3_15-title">Calcular costo de llamadas telefónicas</h2>
+          
+          <p class="exercise-description">
+            Este programa calcula el costo total de un conjunto de llamadas telefónicas. Por cada llamada,
+            se ingresa el tipo ('I', 'N', 'L') y la duración en minutos. La entrada de datos termina
+            cuando se ingresa '-1' como tipo.
+          </p>
+        </header>
+        
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Criterios de Costo</h3>
+            <ul>
+              <li><strong>Internacional ('I'):</strong> 3 primeros minutos $7.59. Cada minuto adicional $3.03.</li>
+              <li><strong>Nacional ('N'):</strong> 3 primeros minutos $1.20. Cada minuto adicional $0.48.</li>
+              <li><strong>Local ('L'):</strong> Las primeras 50 llamadas locales no se cobran. A partir de la 51, cada llamada cuesta $0.60 (la duración no importa).</li>
+            </ul>
+            
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block">import java.util.Scanner;
+import java.util.Locale;
+
+public class Problema_3_15 {
+    public static void main(String[] args) {
+        // Usar Locale.US para asegurar que el Scanner lea decimales con '.'
+        Scanner sc = new Scanner(System.in).useLocale(Locale.US);
+        
+        double costoTotal = 0;
+        int contadorLocales = 0;
+
+        System.out.println("Ingrese tipo de llamada ('I', 'N', 'L') o '-1' para terminar:");
+        String tipoStr = sc.next();
+
+        while (!tipoStr.equals("-1")) {
+            char tipo = tipoStr.toUpperCase().charAt(0);
+            
+            System.out.println("Ingrese duración en minutos:");
+            int dur = sc.nextInt();
+            
+            double costoLlamada = 0;
+
+            switch (tipo) {
+                case 'I':
+                    if (dur > 3) {
+                        costoLlamada = 7.59 + (dur - 3) * 3.03;
+                    } else {
+                        costoLlamada = 7.59;
+                    }
+                    break;
+                case 'N':
+                    if (dur > 3) {
+                        costoLlamada = 1.20 + (dur - 3) * 0.48;
+                    } else {
+                        costoLlamada = 1.20;
+                    }
+                    break;
+                case 'L':
+                    contadorLocales++;
+                    if (contadorLocales > 50) {
+                        costoLlamada = 0.60;
+                    }
+                    // Si es 50 o menos, costoLlamada permanece 0
+                    break;
+                default:
+                    System.out.println("Tipo no válido. No se cobra.");
+            }
+            
+            costoTotal += costoLlamada;
+            System.out.printf("Costo de esta llamada: $%.2f%n", costoLlamada);
+            
+            // Leer el siguiente tipo para la próxima iteración
+            System.out.println("\nIngrese tipo de llamada ('I', 'N', 'L') o '-1' para terminar:");
+            tipoStr = sc.next();
+        }
+
+        System.out.println("\n---------------------------------");
+        System.out.println("Cálculo finalizado.");
+        System.out.printf("El costo total de todas las llamadas es: $%.2f%n", costoTotal);
+        System.out.println("Total de llamadas locales realizadas: " + contadorLocales);
+    }
+}</code></pre>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <p class="note-text">Puntos clave:</p>
+            <ul>
+              <li>Se necesita un <strong>acumulador</strong> (<code>costoTotal</code>) para la suma total.</li>
+              <li>Se necesita un <strong>contador</strong> (<code>contadorLocales</code>) específico para las llamadas locales.</li>
+              <li>La duración (<code>DUR</code>) es irrelevante para el costo de las llamadas locales.</li>
+              <li>Usar <code>toUpperCase()</code> hace la entrada de tipo más robusta (acepta 'i' o 'I').</li>
+              <li>El bucle se controla con un valor centinela (<code>"-1"</code>), leído como <code>String</code>.</li>
+            </ul>
+            
+            <div class="tip-box">
+              <strong>Tip:</strong> Usa <code>System.out.printf("El costo es: $%.2f%n", variable)</code> para formatear la salida de dinero a dos decimales.
+            </div>
+          </aside>
+        </div>
+      </article>
+
+      <article id="problema_4_2" class="exercise-card" aria-labelledby="problema_4_2-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Problema 4.2</span>
+          <h2 id="problema_4_2-title">Eliminar elementos repetidos de un arreglo</h2>
+          
+          <p class="exercise-description">
+            Este programa recibe un arreglo unidimensional (vector) de enteros desordenado, 
+            que puede contener valores repetidos (<code>VEC[1..N]</code>, con <code>N <= 500</code>). 
+            El objetivo es procesar este arreglo y obtener como salida el mismo vector, pero sin repeticiones.
+          </p>
+        </header>
+        
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <ul>
+              <li>Leer un entero <code>N</code> que representa el tamaño del arreglo (<code>1 <= N <= 500</code>).</li>
+              <li>Leer <code>N</code> enteros en un arreglo o lista (<code>VEC</code>).</li>
+              <li>Implementar una lógica para filtrar los elementos duplicados.</li>
+              <li>Mostrar el arreglo resultante sin los elementos repetidos.</li>
+            </ul>
+            
+            <h3>Ejemplo de uso esperado (Solución con LinkedHashSet)</h3>
+            <pre><code class="code-block">import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.LinkedHashSet; // Importante para mantener el orden
+import java.util.Set;
+
+public class Problema_4_2 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Ingrese el tamaño del vector (N <= 500):");
+        int N = sc.nextInt();
+
+        if (N < 1 || N > 500) {
+            System.out.println("Tamaño fuera de rango (1 <= N <= 500).");
+            return;
+        }
+
+        // Usamos un ArrayList para leer los datos fácilmente
+        ArrayList<Integer> VEC = new ArrayList<>();
+        System.out.println("Ingrese los " + N + " elementos del vector:");
+        
+        for (int i = 0; i < N; i++) {
+            System.out.print("Elemento " + (i + 1) + ": ");
+            VEC.add(sc.nextInt());
+        }
+
+        System.out.println("Vector original: " + VEC);
+
+        // 1. Usar un LinkedHashSet para eliminar duplicados
+        //    LinkedHashSet mantiene el orden de inserción (el orden de la primera aparición)
+        Set<Integer> setSinRepetir = new LinkedHashSet<>(VEC);
+
+        // 2. Convertir el set de vuelta a una lista (opcional, se puede imprimir el set)
+        ArrayList<Integer> vecSinRepetir = new ArrayList<>(setSinRepetir);
+
+        System.out.println("Vector sin repeticiones: " + vecSinRepetir);
+    }
+}</code></pre>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <p class="note-text">Puntos clave:</p>
+            <ul>
+              <li>La forma más simple en Java de eliminar duplicados es usar un <code>Set</code>.</li>
+              <li>Se usa <strong><code>LinkedHashSet</code></strong> porque, a diferencia de <code>HashSet</code>, garantiza que se mantenga el orden de inserción (el orden en que apareció cada elemento por primera vez).</li>
+              <li>El problema no especifica qué "copia" guardar (la primera, la última). Esta solución guarda la primera aparición.</li>
+              <li><strong>Alternativa algorítmica:</strong> Se puede resolver sin <code>Set</code> usando bucles anidados: crear un nuevo <code>ArrayList</code> (<code>vecSinRepetir</code>) e iterar sobre <code>VEC</code>. Por cada elemento, verificar si <code>vecSinRepetir.contains(elemento)</code> es <code>false</code> antes de agregarlo.</li>
+            </ul>
+            
+            <div class="tip-box">
+              <strong>Tip:</strong> Si el orden de los elementos no importara en la salida, se podría usar <code>HashSet</code>, que es ligeramente más rápido en algunas operaciones que <code>LinkedHashSet</code>.
+            </div>
+          </aside>
+        </div>
+      </article>
+
+      <article id="problema_4_15" class="exercise-card" aria-labelledby="problema_4_15-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Problema 4.15</span>
+          <h2 id="problema_4_15-title">Análisis de Ventas Anuales por Sucursal</h2>
+          
+          <p class="exercise-description">
+            Programa para manejar los montos de ventas de <strong>N</strong> sucursales a lo largo de <strong>M</strong> años,
+            almacenados en una matriz (arreglo bidimensional).
+            El programa debe calcular: <br>
+            a) La sucursal con más ventas. <br>
+            b) El promedio de ventas por año. <br>
+            c) El año con el mayor promedio de ventas.
+          </p>
+        </header>
+        
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos y Datos</h3>
+            <ul>
+              <li>Leer <strong>M</strong> (años, $1 \le M \le 10$) y <strong>N</strong> (sucursales, $1 \le N \le 35$).</li>
+              <li>Leer la matriz <code>MONTO[M][N]</code> de tipo <code>double</code> con las ventas.</li>
+              <li><strong>a) Sucursal con más ventas:</strong> Sumar las ventas de cada columna (sucursal) y encontrar la columna con la suma máxima.</li>
+              <li><strong>b) Promedio de ventas por año:</strong> Sumar las ventas de cada fila (año) y dividirlas entre N.</li>
+              <li><strong>c) Año con mayor promedio:</strong> Encontrar la fila (año) con el promedio máximo calculado en el paso anterior.</li>
+            </ul>
+            
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block">import java.util.Scanner;
+import java.util.Locale;
+
+public class Problema_4_15 {
+    public static void main(String[] args) {
+        // Usar Locale.US para asegurar que el Scanner lea decimales con '.'
+        Scanner sc = new Scanner(System.in).useLocale(Locale.US);
+
+        System.out.println("Ingrese el número de años (M, max 10):");
+        int M = sc.nextInt();
+        System.out.println("Ingrese el número de sucursales (N, max 35):");
+        int N = sc.nextInt();
+
+        if (M < 1 || M > 10 || N < 1 || N > 35) {
+            System.out.println("Error: M debe estar entre 1-10 y N entre 1-35.");
+            return;
+        }
+
+        double[][] ventas = new double[M][N];
+        double[] totalPorAnio = new double[M];
+        double[] totalPorSucursal = new double[N];
+
+        // --- Lectura de datos y cálculo de totales ---
+        System.out.println("Ingrese los montos de ventas:");
+        for (int i = 0; i < M; i++) { // i = año
+            System.out.println("--- Año " + (i + 1) + " ---");
+            for (int j = 0; j < N; j++) { // j = sucursal
+                System.out.print("  Sucursal " + (j + 1) + ": ");
+                ventas[i][j] = sc.nextDouble();
+                
+                // Acumulamos en los totales
+                totalPorAnio[i] += ventas[i][j];
+                totalPorSucursal[j] += ventas[i][j];
+            }
+        }
+        
+        System.out.println("\n--- RESULTADOS ---");
+
+        // --- a) Sucursal con más ventas ---
+        double maxVentaSuc = -1.0;
+        int idxMaxSuc = -1;
+        for (int j = 0; j < N; j++) {
+            if (totalPorSucursal[j] > maxVentaSuc) {
+                maxVentaSuc = totalPorSucursal[j];
+                idxMaxSuc = j;
+            }
+        }
+        // Se suma 1 al índice para mostrarlo (Sucursal 1 en lugar de 0)
+        System.out.printf("a) Sucursal con más ventas: %d (Total: $%.2f)%n", (idxMaxSuc + 1), maxVentaSuc);
+
+
+        // --- b) Promedio de ventas por año ---
+        double[] promedioPorAnio = new double[M];
+        double maxPromedioAnio = -1.0;
+        int idxMaxAnio = -1;
+        
+        System.out.println("b) Promedio de ventas por año:");
+        for (int i = 0; i < M; i++) {
+            promedioPorAnio[i] = totalPorAnio[i] / N;
+            System.out.printf("   Año %d: $%.2f%n", (i + 1), promedioPorAnio[i]);
+            
+            // --- c) Año con mayor promedio (se calcula aquí mismo) ---
+            if (promedioPorAnio[i] > maxPromedioAnio) {
+                maxPromedioAnio = promedioPorAnio[i];
+                idxMaxAnio = i;
+            }
+        }
+        
+        System.out.printf("c) Año con mayor promedio de ventas: %d (Promedio: $%.2f)%n", (idxMaxAnio + 1), maxPromedioAnio);
+    }
+}</code></pre>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <p class="note-text">Puntos clave:</p>
+            <ul>
+              <li>Este problema es un ejercicio clásico de procesamiento de <strong>matrices (arreglos 2D)</strong>.</li>
+              <li>La matriz es <code>ventas[M][N]</code>, donde <code>M</code> son las filas (años) y <code>N</code> son las columnas (sucursales).</li>
+              <li>Para el punto (a), se suman las <strong>columnas</strong>.</li>
+              <li>Para el punto (b), se suman las <strong>filas</strong>.</li>
+              <li>Es eficiente calcular los totales por año y por sucursal en el mismo bucle de lectura de datos.</li>
+            </ul>
+            
+            <div class="tip-box">
+              <strong>Tip:</strong> Recuerda que los índices de los arreglos en Java empiezan en 0. Si el problema se refiere al "Año 1" o "Sucursal 1", deberás sumar 1 a tus variables de índice (<code>i</code> o <code>j</code>) al momento de imprimir los resultados.
+            </div>
+          </aside>
+        </div>
+      </article>
+
+      <article id="problema_5_3" class="exercise-card" aria-labelledby="problema_5_3-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Problema 5.3</span>
+          <h2 id="problema_5_3-title">Procesamiento de Información de Profesores</h2>
+          
+          <p class="exercise-description">
+            Programa para almacenar y procesar la información de <strong>N</strong> profesores ($1 \le N \le 200$)
+            guardada en un arreglo de registros (clases en Java). Cada profesor tiene datos personales
+            y un arreglo de 12 salarios mensuales.
+          </p>
+        </header>
+        
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Información Requerida</h3>
+            <ul>
+              <li><strong>a)</strong> Número, nombre y nacionalidad del profesor que más ganó el año anterior.</li>
+              <li><strong>b)</strong> Monto total pagado en el año a los profesores de un departamento "X" (dado por el usuario).</li>
+              <li><strong>c)</strong> Monto total pagado a profesores extranjeros (nacionalidad distinta a "México").</li>
+              <li><strong>d)</strong> Nombre del profesor del departamento "Y" (dado por el usuario) que más ganó en el año.</li>
+            </ul>
+            
+            <h3>Ejemplo de uso esperado (Solución con Clases)</h3>
+            <pre><code class="code-block">import java.util.Scanner;
+import java.util.Locale;
+
+// (Clase interna para simular el registro/struct)
+class Profesor {
+    int num;
+    String nom;
+    String dep;
+    String grado;
+    String nac;
+    double[] salario = new double[12]; // Salario mensual
+
+    // Constructor vacío
+    public Profesor() {}
+
+    // Método para calcular el salario anual total
+    public double getSalarioAnual() {
+        double total = 0;
+        for (double s : salario) {
+            total += s;
+        }
+        return total;
+    }
+}
+
+public class Problema_5_3 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in).useLocale(Locale.US);
+
+        System.out.println("Ingrese el número de profesores (N, max 200):");
+        int N = sc.nextInt();
+        sc.nextLine(); // Consumir el salto de línea
+
+        if (N < 1 || N > 200) {
+            System.out.println("Número fuera de rango.");
+            return;
+        }
+
+        Profesor[] profesores = new Profesor[N];
+
+        // --- Lectura de Datos ---
+        for (int i = 0; i < N; i++) {
+            profesores[i] = new Profesor();
+            System.out.println("\n--- Profesor " + (i + 1) + " ---");
+            System.out.print("Número de empleado: ");
+            profesores[i].num = sc.nextInt();
+            sc.nextLine(); // Consumir salto de línea
+            
+            System.out.print("Nombre: ");
+            profesores[i].nom = sc.nextLine();
+            
+            System.out.print("Departamento: ");
+            profesores[i].dep = sc.nextLine();
+            
+            System.out.print("Grado Académico: ");
+            profesores[i].grado = sc.nextLine();
+            
+            System.out.print("Nacionalidad: ");
+            profesores[i].nac = sc.nextLine();
+            
+            System.out.println("Ingrese los 12 salarios mensuales:");
+            for (int j = 0; j < 12; j++) {
+                System.out.print("  Mes " + (j + 1) + ": ");
+                profesores[i].salario[j] = sc.nextDouble();
+            }
+            sc.nextLine(); // Consumir salto de línea
+        }
+
+        // Leer datos para los incisos b) y d)
+        System.out.print("\nIngrese el departamento 'X' (para inciso b): ");
+        String deptoX = sc.nextLine();
+        System.out.print("Ingrese el departamento 'Y' (para inciso d): ");
+        String deptoY = sc.nextLine();
+
+        // --- Procesamiento de Datos ---
+        double maxSalarioGlobal = -1.0;
+        Profesor profMaxSalario = null;
+        double totalDeptoX = 0.0;
+        double totalExtranjeros = 0.0;
+        double maxSalarioDeptoY = -1.0;
+        String nomProfMaxDeptoY = "No encontrado";
+
+        for (Profesor prof : profesores) {
+            double salarioAnual = prof.getSalarioAnual();
+
+            // a) Profesor con mayor salario anual
+            if (salarioAnual > maxSalarioGlobal) {
+                maxSalarioGlobal = salarioAnual;
+                profMaxSalario = prof;
+            }
+
+            // b) Total pagado a depto X
+            if (prof.dep.equalsIgnoreCase(deptoX)) {
+                totalDeptoX += salarioAnual;
+            }
+
+            // c) Total pagado a extranjeros
+            if (!prof.nac.equalsIgnoreCase("mexico") && !prof.nac.equalsIgnoreCase("mexicana")) {
+                totalExtranjeros += salarioAnual;
+            }
+
+            // d) Profesor con mayor salario en depto Y
+            if (prof.dep.equalsIgnoreCase(deptoY)) {
+                if (salarioAnual > maxSalarioDeptoY) {
+                    maxSalarioDeptoY = salarioAnual;
+                    nomProfMaxDeptoY = prof.nom;
+                }
+            }
+        }
+
+        // --- Impresión de Resultados ---
+        System.out.println("\n--- RESULTADOS DEL ANÁLISIS ---");
+        
+        // a)
+        if (profMaxSalario != null) {
+            System.out.println("a) Profesor con mayor ingreso anual:");
+            System.out.printf("   Num: %d, Nombre: %s, Nac: %s (Total: $%.2f)%n",
+                profMaxSalario.num, profMaxSalario.nom, profMaxSalario.nac, maxSalarioGlobal);
+        }
+        
+        // b)
+        System.out.printf("b) Total pagado a depto '%s': $%.2f%n", deptoX, totalDeptoX);
+        
+        // c)
+        System.out.printf("c) Total pagado a profesores extranjeros: $%.2f%n", totalExtranjeros);
+        
+        // d)
+        System.out.printf("d) Profesor con mayor ingreso en depto '%s': %s (Total: $%.2f)%n",
+            deptoY, nomProfMaxDeptoY, maxSalarioDeptoY);
+    }
+}</code></pre>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <p class="note-text">Puntos clave:</p>
+            <ul>
+              <li>La mejor forma de representar un "registro" en Java es usando una <strong>Clase</strong> (ej. <code>class Profesor</code>).</li>
+              <li>El arreglo <code>PROFESORES[1..N]</code> se traduce en Java como <code>Profesor[] profesores = new Profesor[N];</code>.</li>
+              <li>El arreglo <code>SALARIO</code> es un atributo *dentro* de la clase <code>Profesor</code>.</li>
+              <li>Es útil crear un método (ej. <code>getSalarioAnual()</code>) dentro de la clase <code>Profesor</code> para calcular la suma de los 12 meses.</li>
+              <li>Usa <code>sc.nextLine()</code> para leer cadenas (como nombre, depto) y ten cuidado de consumir los saltos de línea pendientes después de leer números (<code>sc.nextInt()</code>, <code>sc.nextDouble()</code>) si la siguiente lectura es un <code>nextLine()</code>.</li>
+            </ul>
+            
+            <div class="tip-box">
+              <strong>Tip:</strong> Al comparar cadenas (Strings) como el departamento o la nacionalidad, usa <code>.equalsIgnoreCase()</code> en lugar de <code>==</code> para evitar problemas con mayúsculas/minúsculas.
+            </div>
+          </aside>
+        </div>
+      </article>
+
+      <article id="ps_2_4" class="exercise-card" aria-labelledby="ps_2_4-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">PS 2.4</span>
+          <h2 id="ps_2_4-title">Calcular aumento de sueldo (15% o 12%)</h2>
+          
+          <p class="exercise-description">
+            Programa que calcula un aumento de sueldo. Si el sueldo (SUE) es inferior a $1,000, 
+            el aumento es del 15%; si es mayor o igual, es del 12%. Imprime el sueldo con el aumento incorporado.
+          </p>
+        </header>
+        
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <ul>
+              <li>Leer el sueldo del trabajador (<code>SUE</code>) como un número real (<code>double</code>).</li>
+              <li>Usar una estructura condicional <code>if-else</code>.</li>
+              <li>Si <code>SUE < 1000</code>, el aumento es <code>SUE * 0.15</code>.</li>
+              <li>En caso contrario (<code>else</code>), el aumento es <code>SUE * 0.12</code>.</li>
+              <li>Calcular el nuevo sueldo (<code>NSUE = SUE + AUM</code>).</li>
+              <li>Imprimir el nuevo sueldo.</li>
+            </ul>
+            
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block">import java.util.Scanner;
+import java.util.Locale;
+
+public class PS_2_4 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in).useLocale(Locale.US);
+        
+        System.out.println("Ingrese el sueldo del trabajador:");
+        double SUE = sc.nextDouble();
+        
+        double AUM, NSUE;
+
+        if (SUE < 1000.0) {
+            AUM = SUE * 0.15;
+            System.out.println("Aplica aumento del 15%");
+        } else {
+            AUM = SUE * 0.12;
+            System.out.println("Aplica aumento del 12%");
+        }
+        
+        NSUE = SUE + AUM;
+        
+        System.out.printf("Sueldo original: $%.2f%n", SUE);
+        System.out.printf("Aumento: $%.2f%n", AUM);
+        System.out.printf("Nuevo sueldo: $%.2f%n", NSUE);
+    }
+}</code></pre>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <p class="note-text">Puntos clave:</p>
+            <ul>
+              <li>Este es un problema de bifurcación simple <code>if-else</code>.</li>
+              <li>Asegúrate de usar variables <code>double</code> para manejar los decimales del sueldo y el aumento.</li>
+            </ul>
+            
+            <div class="tip-box">
+              <strong>Tip:</strong> Usar <code>System.out.printf()</code> te permite formatear la salida a dos decimales, lo cual es ideal para moneda.
+            </div>
+          </aside>
+        </div>
+      </article>
+
+      <article id="ps_2_5" class="exercise-card" aria-labelledby="ps_2_5-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">PS 2.5</span>
+          <h2 id="ps_2_5-title">Calcular dos expresiones con validación</h2>
+          
+          <p class="exercise-description">
+            Dados cuatro números enteros A, B, C y D, calcula las expresiones 
+            <code>(A-C)² / D</code> y <code>(A-B)³ / D</code>. Se debe validar que D no sea 0.
+          </p>
+        </header>
+        
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <ul>
+              <li>Leer cuatro valores enteros: A, B, C, y D.</li>
+              <li>Verificar si <code>D</code> es igual a 0.</li>
+              <li>Si <code>D == 0</code>, imprimir un mensaje apropiado (ej. "Error: D no puede ser 0").</li>
+              <li>Si <code>D != 0</code>, calcular y mostrar los resultados de ambas expresiones.</li>
+            </ul>
+            
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block">import java.util.Scanner;
+import java.lang.Math;
+
+public class PS_2_5 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        System.out.println("Ingrese el valor entero A:");
+        int A = sc.nextInt();
+        System.out.println("Ingrese el valor entero B:");
+        int B = sc.nextInt();
+        System.out.println("Ingrese el valor entero C:");
+        int C = sc.nextInt();
+        System.out.println("Ingrese el valor entero D:");
+        int D = sc.nextInt();
+
+        if (D == 0) {
+            System.out.println("Error: D no puede ser 0 (división por cero).");
+        } else {
+            // Convertir D a double para asegurar división de punto flotante
+            double D_double = (double)D;
+            
+            double res1 = Math.pow(A - C, 2) / D_double;
+            double res2 = Math.pow(A - B, 3) / D_double;
+
+            System.out.printf("Resultado de (A-C)² / D: %.4f%n", res1);
+            System.out.printf("Resultado de (A-B)³ / D: %.4f%n", res2);
+        }
+    }
+}</code></pre>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <p class="note-text">Puntos clave:</p>
+            <ul>
+              <li>La validación <code>if (D == 0)</code> es el requisito principal.</li>
+              <li>Usa <code>Math.pow(base, exponente)</code> para las potencias.</li>
+              <li>Es crucial forzar la división a <code>double</code> (ej. <code>(double)D</code>), de lo contrario, Java realizará una división entera y truncará los decimales.</li>
+            </ul>
+            
+            <div class="tip-box">
+              <strong>Tip:</strong> Dado que <code>Math.pow</code> devuelve un <code>double</code>, los resultados deben almacenarse en variables <code>double</code>.
+            </div>
+          </aside>
+        </div>
+      </article>
+
+      <article id="ps_2_6" class="exercise-card" aria-labelledby="ps_2_6-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">PS 2.6</span>
+          <h2 id="ps_2_6-title">Calcular precio de billete de ferrocarril</h2>
+          
+          <p class="exercise-description">
+            Calcula el precio de un billete de ida y vuelta. El precio por km es $0.23.
+            Se aplica un descuento del 30% si la estancia es superior a 7 días <strong>y</strong> 
+            la distancia total (ida y vuelta) es superior a 800 km.
+          </p>
+        </header>
+        
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <ul>
+              <li>Leer la distancia de ida (<code>DIST</code>, entero).</li>
+              <li>Leer el tiempo de estancia (<code>TIEM</code>, entero).</li>
+              <li>Calcular la distancia total (<code>DIST * 2</code>).</li>
+              <li>Calcular el precio base (<code>(DIST * 2) * 0.23</code>).</li>
+              <li>Usar <code>if</code> con <code>&&</code> (AND) para la condición de descuento.</li>
+              <li>Condición: <code>TIEM > 7 && (DIST * 2) > 800</code>.</li>
+              <li>Si se cumple, aplicar descuento: <code>precioFinal = precioBase * 0.70</code>.</li>
+              <li>Imprimir el precio final.</li>
+            </ul>
+            
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block">import java.util.Scanner;
+import java.util.Locale;
+
+public class PS_2_6 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in).useLocale(Locale.US);
+
+        System.out.println("Ingrese la distancia del viaje de ida (km):");
+        int DIST = sc.nextInt();
+        
+        System.out.println("Ingrese el tiempo de estancia (días):");
+        int TIEM = sc.nextInt();
+
+        double distTotal = DIST * 2.0;
+        double precioBase = distTotal * 0.23;
+        double precioFinal = precioBase; // Por defecto no hay descuento
+
+        // Condición para el descuento
+        if (TIEM > 7 && distTotal > 800) {
+            System.out.println("Condición cumplida: Estancia > 7 días Y Distancia > 800 km.");
+            System.out.println("Aplica descuento del 30%!");
+            precioFinal = precioBase * 0.70; // 100% - 30% = 70%
+        } else {
+            System.out.println("No aplica descuento.");
+        }
+
+        System.out.printf("Distancia total (ida y vuelta): %.1f km%n", distTotal);
+        System.out.printf("Precio base (sin descuento): $%.2f%n", precioBase);
+        System.out.printf("Precio final a pagar: $%.2f%n", precioFinal);
+    }
+}</code></pre>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <p class="note-text">Puntos clave:</p>
+            <ul>
+              <li>El operador <code>&&</code> (AND lógico) es esencial aquí.</li>
+              <li>La distancia debe duplicarse (ida y vuelta) para calcular el precio y verificar la condición.</li>
+              <li>El descuento (30%) se aplica multiplicando por el restante (70% o 0.70).</li>
+            </ul>
+            
+            <div class="tip-box">
+              <strong>Tip:</strong> Usa <code>double</code> para todos los cálculos de dinero y distancias que puedan no ser enteras (como el precio por km).
+            </div>
+          </aside>
+        </div>
+      </article>
+
+      <article id="ps_2_7" class="exercise-card" aria-labelledby="ps_2_7-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">PS 2.7</span>
+          <h2 id="ps_2_7-title">Calcular aumento de sueldo escalonado</h2>
+          
+          <p class="exercise-description">
+            Calcula un aumento de sueldo basado en rangos:
+            Si <code>SUELDO < $10,000</code>, aumento del 15%.
+            Si <code>$10,000 <= SUELDO <= $15,000</code>, aumento del 11%.
+            Si <code>SUELDO > $15,000</code>, aumento del 8%.
+          </p>
+        </header>
+        
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <ul>
+              <li>Leer el sueldo del trabajador (<code>SUELDO</code>) como <code>double</code>.</li>
+              <li>Usar una estructura condicional <code>if-else if-else</code> para manejar los tres rangos.</li>
+              <li>Calcular el aumento (<code>AUM</code>) basado en el rango.</li>
+              <li>Calcular el nuevo sueldo (<code>NSUE = SUELDO + AUM</code>).</li>
+              <li>Imprimir el nuevo sueldo.</li>
+            </ul>
+            
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block">import java.util.Scanner;
+import java.util.Locale;
+
+public class PS_2_7 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in).useLocale(Locale.US);
+
+        System.out.println("Ingrese el sueldo del trabajador:");
+        double SUELDO = sc.nextDouble();
+        
+        double AUM, NSUE;
+        double porc;
+
+        if (SUELDO < 10000) {
+            AUM = SUELDO * 0.15;
+            porc = 15.0;
+        } else if (SUELDO <= 15000) {
+            // Si llega aquí, SUELDO es >= 10000
+            AUM = SUELDO * 0.11;
+            porc = 11.0;
+        } else {
+            // Si llega aquí, SUELDO es > 15000
+            AUM = SUELDO * 0.08;
+            porc = 8.0;
+        }
+        
+        NSUE = SUELDO + AUM;
+
+        System.out.printf("Sueldo original: $%.2f%n", SUELDO);
+        System.out.printf("Porcentaje de aumento: %.0f%%%n", porc); // %% imprime un '%'
+        System.out.printf("Aumento: $%.2f%n", AUM);
+        System.out.printf("Nuevo sueldo: $%.2f%n", NSUE);
+    }
+}</code></pre>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <p class="note-text">Puntos clave:</p>
+            <ul>
+              <li>Esta es una estructura <code>if-else if-else</code> (condicional anidada).</li>
+              <li>El orden de las comprobaciones importa. Al verificar <code>< 10000</code> primero, el <code>else if</code> solo necesita verificar <code><= 15000</code>.</li>
+              <li>La condición <code>$10,000 <= SUELDO <= $15,000</code> se implementa como <code>else if (SUELDO <= 15000)</code>.</li>
+            </ul>
+            
+            <div class="tip-box">
+              <strong>Tip:</strong> Puedes guardar el porcentaje (15, 11, 8) en una variable para mostrarlo en el resumen final, haciendo la salida más clara para el usuario.
+            </div>
+          </aside>
+        </div>
+      </article>
+
+      <article id="ps_3_26" class="exercise-card" aria-labelledby="ps_3_26-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">PS 3.26</span>
+          <h2 id="ps_3_26-title">Estadísticas de Alumnos por Sexo</h2>
+          
+          <p class="exercise-description">
+            Programa que, para un número <strong>N</strong> de alumnos, procesa la matrícula, sexo, semestre
+            y promedio de cada uno. Calcula el porcentaje y promedio de la población femenina,
+            el porcentaje y promedio de la población masculina, y el promedio general.
+          </p>
+        </header>
+        
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <ul>
+              <li>Leer <code>N</code> (número de alumnos).</li>
+              <li>En un bucle <code>for</code> que se repita <code>N</code> veces, leer:
+                <ul>
+                  <li>Matrícula (<code>MAT</code>, entero).</li>
+                  <li>Sexo (<code>SEX</code>, entero: 0=Mujer, 1=Hombre).</li>
+                  <li>Semestre (<code>SEM</code>, entero).</li>
+                  <li>Promedio (<code>PRO</code>, real/double).</li>
+                </ul>
+              </li>
+              <li>Calcular el número total y la suma de promedios para mujeres y hombres.</li>
+              <li>Calcular el promedio general de todos los alumnos.</li>
+              <li>Calcular el porcentaje de mujeres y hombres.</li>
+              <li>Imprimir todos los resultados.</li>
+            </ul>
+            
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block">import java.util.Scanner;
+import java.util.Locale;
+
+public class PS_3_26 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in).useLocale(Locale.US);
+
+        System.out.println("Ingrese el número total de alumnos (N):");
+        int N = sc.nextInt();
+
+        if (N <= 0) {
+            System.out.println("No hay alumnos para procesar.");
+            return;
+        }
+
+        int totalMujeres = 0;
+        int totalHombres = 0;
+        double sumaPromedioMujeres = 0.0;
+        double sumaPromedioHombres = 0.0;
+        double sumaPromedioGeneral = 0.0;
+
+        for (int i = 1; i <= N; i++) {
+            System.out.println("\n--- Alumno " + i + " ---");
+            System.out.print("Matrícula: ");
+            int MAT = sc.nextInt(); // No se usa en cálculos, solo se lee
+            
+            System.out.print("Sexo (0=Mujer, 1=Hombre): ");
+            int SEX = sc.nextInt();
+            
+            System.out.print("Semestre: ");
+            int SEM = sc.nextInt(); // No se usa en cálculos, solo se lee
+            
+            System.out.print("Promedio: ");
+            double PRO = sc.nextDouble();
+
+            // Acumular promedio general
+            sumaPromedioGeneral += PRO;
+
+            if (SEX == 0) { // Es mujer
+                totalMujeres++;
+                sumaPromedioMujeres += PRO;
+            } else if (SEX == 1) { // Es hombre
+                totalHombres++;
+                sumaPromedioHombres += PRO;
+            } else {
+                System.out.println("Advertencia: Sexo no reconocido (" + SEX + ").");
+            }
+        }
+
+        // --- Impresión de Resultados ---
+        System.out.println("\n--- ESTADÍSTICAS FINALES ---");
+
+        // Calcular promedios (cuidado con división por cero)
+        double promMujeres = (totalMujeres > 0) ? (sumaPromedioMujeres / totalMujeres) : 0.0;
+        double promHombres = (totalHombres > 0) ? (sumaPromedioHombres / totalHombres) : 0.0;
+        double promGeneral = sumaPromedioGeneral / N;
+
+        // Calcular porcentajes
+        double porcMujeres = (double)totalMujeres / N * 100.0;
+        double porcHombres = (double)totalHombres / N * 100.0;
+
+        System.out.printf("Población Femenina: %d alumnas (%.1f%%)%n", totalMujeres, porcMujeres);
+        System.out.printf("  Promedio Femenino: %.2f%n", promMujeres);
+        
+        System.out.printf("Población Masculina: %d alumnos (%.1f%%)%n", totalHombres, porcHombres);
+        System.out.printf("  Promedio Masculino: %.2f%n", promHombres);
+        
+        System.out.printf("Total de Alumnos: %d%n", N);
+        System.out.printf("Promedio General: %.2f%n", promGeneral);
+    }
+}</code></pre>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <p class="note-text">Puntos clave:</p>
+            <ul>
+              <li>Se necesitan <strong>contadores</strong> (<code>totalMujeres</code>, <code>totalHombres</code>) para saber cuántos hay de cada sexo.</li>
+              <li>Se necesitan <strong>acumuladores</strong> (<code>sumaPromedio...</code>) para sumar los promedios de cada grupo.</li>
+              <li>El bucle <code>for</code> es ideal porque sabemos exactamente cuántas veces se repetirá (<code>N</code> veces).</li>
+              <li>Para calcular porcentajes, hay que convertir uno de los enteros a <code>double</code> (ej. <code>(double)totalMujeres</code>) antes de dividir, para evitar la división entera.</li>
+              <li><strong>Importante:</strong> Validar la división por cero al calcular promedios por sexo (si <code>totalMujeres == 0</code>, el promedio es 0).</li>
+            </ul>
+            
+            <div class="tip-box">
+              <strong>Tip:</strong> Puedes usar un operador ternario para calcular el promedio de forma segura: <br>
+              <code>double prom = (total > 0) ? (suma / total) : 0.0;</code>
+            </div>
+          </aside>
+        </div>
+      </article>
+      
+      <article id="ps_4_4" class="exercise-card" aria-labelledby="ps_4_4-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">PS 4.4</span>
+          <h2 id="ps_4_4-title">Calcular el producto de dos vectores</h2>
+          
+          <p class="exercise-description">
+            Programa que, dados dos vectores (arreglos unidimensionales) A y B de tipo entero
+            y de tamaño N (con $1 \le N \le 50$), calcula el producto de dichos vectores.
+            (Se asume que "producto" se refiere al <strong>producto punto</strong> o producto escalar).
+          </p>
+        </header>
+        
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <ul>
+              <li>Leer el tamaño <code>N</code> de los vectores ($1 \le N \le 50$).</li>
+              <li>Leer los <code>N</code> elementos del vector <code>A</code>.</li>
+              <li>Leer los <code>N</code> elementos del vector <code>B</code>.</li>
+              <li>Calcular el producto punto: $PROD = A_0 \times B_0 + A_1 \times B_1 + \dots + A_{N-1} \times B_{N-1}$.</li>
+              <li>Imprimir el resultado del producto punto.</li>
+            </ul>
+            
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block">import java.util.Scanner;
+
+public class PS_4_4 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Ingrese el tamaño N de los vectores (max 50):");
+        int N = sc.nextInt();
+
+        if (N < 1 || N > 50) {
+            System.out.println("Tamaño fuera de rango (1-50).");
+            return;
+        }
+
+        int[] A = new int[N];
+        int[] B = new int[N];
+
+        // Leer Vector A
+        System.out.println("--- Ingrese los elementos del Vector A ---");
+        for (int i = 0; i < N; i++) {
+            System.out.print("A[" + i + "]: ");
+            A[i] = sc.nextInt();
+        }
+
+        // Leer Vector B
+        System.out.println("--- Ingrese los elementos del Vector B ---");
+        for (int i = 0; i < N; i++) {
+            System.out.print("B[" + i + "]: ");
+            B[i] = sc.nextInt();
+        }
+
+        // Calcular el producto punto
+        // (Se usa long para evitar desbordamiento si los números son grandes)
+        long productoPunto = 0; 
+        
+        for (int i = 0; i < N; i++) {
+            productoPunto += (long)A[i] * B[i];
+        }
+
+        // --- Resultado ---
+        System.out.println("\n---------------------------------");
+        System.out.println("Vector A: " + java.util.Arrays.toString(A));
+        System.out.println("Vector B: " + java.util.Arrays.toString(B));
+        System.out.println("El producto punto (A · B) es: " + productoPunto);
+    }
+}</code></pre>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <p class="note-text">Puntos clave:</p>
+            <ul>
+              <li>El "producto de vectores" más común en este contexto es el <strong>producto punto (escalar)</strong>, que resulta en un solo número (un escalar).</li>
+              <li>El producto punto se calcula sumando los productos de los elementos en la misma posición: $A[i] \times B[i]$.</li>
+              <li>Se necesita un <strong>acumulador</strong> (<code>productoPunto</code>) inicializado en 0.</li>
+              <li>Los arreglos en Java tienen índices de <code>0</code> a <code>N-1</code>, a diferencia del pseudocódigo que usa <code>1</code> a <code>N</code>.</li>
+            </ul>
+            
+            <div class="tip-box">
+              <strong>Tip:</strong> Es buena idea usar un tipo <code>long</code> para el acumulador del producto, ya que la suma de los productos (ej. $50 \times 10000 \times 10000$) podría exceder el límite de un <code>int</code>.
+            </div>
+          </aside>
+        </div>
+      </article>
+
+      <article id="ps_4_20" class="exercise-card" aria-labelledby="ps_4_20-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">PS 4.20</span>
+          <h2 id="ps_4_20-title">Asignar valores a Matriz A(MxN) desde Vector B(N)</h2>
+          
+          <p class="exercise-description">
+            Programa que asigna valores a una matriz <strong>A</strong> (de M x N) a partir de un
+            vector <strong>B</strong> (de N elementos), usando los siguientes criterios:
+            <br>
+            a) <code>A[i, j] = B[j]</code> si <code>i <= j</code>
+            <br>
+            b) <code>A[i, j] = 0</code> si <code>i > j</code>
+          </p>
+        </header>
+        
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <ul>
+              <li>Leer <code>M</code> (filas, $1 \le M \le 30$) y <code>N</code> (columnas, $1 \le N \le 20$).</li>
+              <li>Leer el vector <code>B</code> de <code>N</code> elementos de tipo real.</li>
+              <li>Crear la matriz <code>A</code> de <code>M x N</code>.</li>
+              <li>Iterar sobre la matriz <code>A</code> (fila <code>i</code> de 0 a M-1, columna <code>j</code> de 0 a N-1).</li>
+              <li>Aplicar la condición (usando índices 0-based):
+                <ul>
+                  <li>Si <code>i <= j</code>, asignar <code>A[i][j] = B[j]</code>.</li>
+                  <li>Si <code>i > j</code>, asignar <code>A[i][j] = 0</code>.</li>
+                </ul>
+              </li>
+              <li>Imprimir la matriz <code>A</code> resultante.</li>
+            </ul>
+            
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block">import java.util.Scanner;
+import java.util.Locale;
+import java.util.Arrays;
+
+public class PS_4_20 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in).useLocale(Locale.US);
+
+        System.out.println("Ingrese el número de filas M (max 30):");
+        int M = sc.nextInt();
+        System.out.println("Ingrese el número de columnas N (max 20):");
+        int N = sc.nextInt();
+
+        if (M < 1 || M > 30 || N < 1 || N > 20) {
+            System.out.println("Dimensiones fuera de rango.");
+            return;
+        }
+
+        double[] B = new double[N];
+        double[][] A = new double[M][N];
+
+        // Leer Vector B
+        System.out.println("--- Ingrese los " + N + " elementos del Vector B ---");
+        for (int j = 0; j < N; j++) {
+            System.out.print("B[" + j + "]: ");
+            B[j] = sc.nextDouble();
+        }
+
+        System.out.println("\nVector B: " + Arrays.toString(B));
+
+        // Asignar valores a la Matriz A
+        for (int i = 0; i < M; i++) { // i = fila
+            for (int j = 0; j < N; j++) { // j = columna
+                
+                // Aplicar criterios (en índices 0-based de Java)
+                if (i <= j) {
+                    A[i][j] = B[j];
+                } else { // i > j
+                    A[i][j] = 0.0;
+                }
+            }
+        }
+
+        // --- Imprimir Matriz A Resultante ---
+        System.out.println("\n--- Matriz A Resultante ---");
+        for (int i = 0; i < M; i++) {
+            // Imprimir la fila i
+            System.out.println(Arrays.toString(A[i]));
+        }
+    }
+}</code></pre>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <p class="note-text">Puntos clave:</p>
+            <ul>
+              <li>Este problema genera una matriz triangular superior "modificada", donde los valores de la diagonal principal y superiores se toman del vector B.</li>
+              <li>El pseudocódigo (1-based) <code>i <= j</code> se traduce directamente a <code>i <= j</code> en Java (0-based).</li>
+              <li><strong>Nota sobre el problema:</strong> El texto original dice <code>A[i,j] = B[i]</code>. Esto parece un error tipográfico, ya que <code>i</code> (filas) puede llegar hasta <code>M</code> (30) pero <code>B</code> solo tiene <code>N</code> (max 20) elementos. La solución implementa <code>A[i,j] = B[j]</code>, que es lógicamente consistente.</li>
+            </ul>
+            
+            <div class="tip-box">
+              <strong>Tip:</strong> La condición <code>i > j</code> define la parte "triangular inferior" de la matriz (debajo de la diagonal principal), la cual se llena de ceros.
+            </div>
+          </aside>
+        </div>
+      </article>
+
+      <article id="ps_4_36" class="exercise-card" aria-labelledby="ps_4_36-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">PS 4.36</span>
+          <h2 id="ps_4_36-title">Actualización de Inventario de Tienda</h2>
+          
+          <p class="exercise-description">
+            Programa para administrar el inventario de una tienda (N <= 100 productos).
+            Se leen dos arreglos: <code>PRODUCTO[N]</code> (claves de producto, <strong>ordenado</strong>) y
+            <code>CANTIDAD[N]</code> (existencias). Luego, se procesan transacciones de compra ('C')
+            o venta ('V') hasta recibir una entrada 'X', 0, 0.
+          </p>
+        </header>
+        
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <ul>
+              <li>Leer <code>N</code> (número de productos).</li>
+              <li>Leer el arreglo <code>PRODUCTO</code> (claves, N enteros) y <code>CANTIDAD</code> (existencias, N enteros).</li>
+              <li>Implementar un bucle <code>while</code> para leer transacciones (<code>CLAOP</code>, <code>CLAPRO</code>, <code>CANT</code>).</li>
+              <li>El bucle termina si <code>CLAOP</code> es 'X'.</li>
+              <li>Para cada transacción:
+                <ul>
+                  <li>Buscar la clave <code>CLAPRO</code> en el arreglo <code>PRODUCTO</code>. (Se recomienda <strong>búsqueda binaria</strong> ya que está ordenado).</li>
+                  <li>Si <code>CLAOP == 'C'</code> (Compra): Incrementar <code>CANTIDAD[j]</code> en <code>CANT</code>.</li>
+                  <li>Si <code>CLAOP == 'V'</code> (Venta):
+                    <ul>
+                      <li>Verificar si <code>CANTIDAD[j] >= CANT</code>.</li>
+                      <li>Si es verdadero, restar <code>CANT</code> de <code>CANTIDAD[j]</code>.</li>
+                      <li>Si es falso, imprimir un mensaje (ej. "Stock insuficiente").</li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li>Al final, imprimir los arreglos <code>PRODUCTO</code> y <code>CANTIDAD</code> actualizados.</li>
+            </ul>
+            
+            <h3>Ejemplo de uso esperado (con Búsqueda Binaria)</h3>
+            <pre><code class="code-block">import java.util.Scanner;
+import java.util.Arrays; // Para Arrays.binarySearch y Arrays.toString
+
+public class PS_4_36 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Ingrese el número de productos (N <= 100):");
+        int N = sc.nextInt();
+        sc.nextLine(); // Consumir salto
+
+        if (N < 1 || N > 100) {
+            System.out.println("Número fuera de rango.");
+            return;
+        }
+
+        int[] PRODUCTO = new int[N];
+        int[] CANTIDAD = new int[N];
+
+        System.out.println("--- Lectura de Claves de Producto (deben estar ordenadas) ---");
+        for (int i = 0; i < N; i++) {
+            System.out.print("Clave Producto " + (i + 1) + ": ");
+            PRODUCTO[i] = sc.nextInt();
+        }
+
+        System.out.println("--- Lectura de Cantidades en Existencia ---");
+        for (int i = 0; i < N; i++) {
+            System.out.print("Cantidad para " + PRODUCTO[i] + ": ");
+            CANTIDAD[i] = sc.nextInt();
+        }
+        sc.nextLine(); // Consumir salto
+
+        System.out.println("\n--- INICIO DE TRANSACCIONES (Tipo 'X' para terminar) ---");
+
+        System.out.print("Tipo de Operación ('C' Compra, 'V' Venta): ");
+        String CLAOP_str = sc.nextLine().toUpperCase();
+
+        while (!CLAOP_str.equals("X")) {
+            char CLAOP = CLAOP_str.charAt(0);
+            
+            System.out.print("Clave del Producto: ");
+            int CLAPRO = sc.nextInt();
+            
+            System.out.print("Cantidad de la transacción: ");
+            int CANT = sc.nextInt();
+            sc.nextLine(); // Consumir salto
+
+            // Buscar el índice del producto usando Búsqueda Binaria
+            int indice = Arrays.binarySearch(PRODUCTO, CLAPRO);
+
+            if (indice < 0) {
+                System.out.println("ERROR: Clave de producto " + CLAPRO + " no encontrada.");
+            } else {
+                switch (CLAOP) {
+                    case 'C':
+                        CANTIDAD[indice] += CANT;
+                        System.out.println("COMPRA registrada. Nuevo stock " + PRODUCTO[indice] + ": " + CANTIDAD[indice]);
+                        break;
+                    case 'V':
+                        if (CANTIDAD[indice] >= CANT) {
+                            CANTIDAD[indice] -= CANT;
+                            System.out.println("VENTA registrada. Nuevo stock " + PRODUCTO[indice] + ": " + CANTIDAD[indice]);
+                        } else {
+                            System.out.println("ERROR: Stock insuficiente para " + PRODUCTO[indice]);
+                            System.out.println("  (Se requieren " + CANT + ", solo hay " + CANTIDAD[indice] + ")");
+                        }
+                        break;
+                    default:
+                        System.out.println("ERROR: Tipo de operación '" + CLAOP + "' no válido.");
+                }
+            }
+            
+            System.out.print("\nTipo de Operación ('C' Compra, 'V' Venta): ");
+            CLAOP_str = sc.nextLine().toUpperCase();
+        }
+
+        System.out.println("\n--- INVENTARIO FINAL ACTUALIZADO ---");
+        System.out.println("Claves:   " + Arrays.toString(PRODUCTO));
+        System.out.println("Cantidad: " + Arrays.toString(CANTIDAD));
+    }
+}</code></pre>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <p class="note-text">Puntos clave:</p>
+            <ul>
+              <li>El problema PS 4.36 define los arreglos <code>PRODUCTO</code> y <code>CANTIDAD</code> que se usan en el PS 4.57.</li>
+              <li>El hecho de que <code>PRODUCTO</code> esté <strong>ordenado</strong> es la clave. Permite usar <code>Arrays.binarySearch()</code> en Java.</li>
+              <li><code>Arrays.binarySearch()</code> devuelve el índice si lo encuentra, o un número negativo si no.</li>
+              <li>Se necesita un bucle <code>while</code> que se detenga con un valor centinela ('X').</li>
+              <li>Dentro del bucle, se usa <code>switch</code> (o <code>if-else</code>) para manejar los casos 'C' y 'V'.</li>
+              <li>Es crucial validar la existencia (stock) en el caso 'V'.</li>
+            </ul>
+            
+            <div class="tip-box">
+              <strong>Tip:</strong> Si <code>Arrays.binarySearch()</code> no estuviera permitido, tendrías que implementar tu propio algoritmo de búsqueda binaria (o una búsqueda lineal, aunque sería menos eficiente) para encontrar el índice <code>j</code> tal que <code>PRODUCTO[j] == CLAPRO</code>.
+            </div>
+          </aside>
+        </div>
+      </article>
+
+    </main>
+
+    <footer class="page-footer">
+      <p class="note-text">Regresa al <a href="#top">menú</a> para elegir otro ejercicio.</p>
+    </footer>
+  </div>
+</body>
+</html>
