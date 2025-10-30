@@ -1,0 +1,109 @@
+digraph CostoLlamadas {
+    // Configuración general
+    rankdir=TB;
+    node [shape=box, style=rounded, fontname="Arial"];
+    edge [fontname="Arial"];
+
+    // --- Definición de Nodos ---
+
+    Start [label="Inicio", shape=ellipse];
+    End [label="Fin", shape=ellipse];
+
+    // Bloque 1: Inicialización
+    Init [label="Inicializar Scanner\ncl = 0\ncuenta = 0.0\ncosto = 0.0"];
+    InputHeader1 [label="Imprimir 'Ingrese tipo (I, N, L) y duración...'"];
+    ReadInput1 [label="Leer tipo, dur", shape=parallelogram];
+
+    // Bloque 2: Bucle While
+    LoopCheck [label="!tipo.equals(\"X\") && dur != -1", shape=diamond];
+    ResetCosto [label="costo = 0.0"];
+    
+    // Bloque 3: Switch
+    SwitchTipo [label="switch (tipo)", shape=diamond, peripheries=2]; // Usamos un diamante doble para el switch
+    
+    // Caso "I"
+    CheckDurI [label="dur > 3", shape=diamond];
+    CalcCostI_Long [label="costo = 7.59 + (dur - 3) * 3.03"];
+    CalcCostI_Short [label="costo = 7.59"];
+    JoinI [label="", shape=point];
+    
+    // Caso "N"
+    CheckDurN [label="dur > 3", shape=diamond];
+    CalcCostN_Long [label="costo = 1.20 + (dur - 3) * 0.48"];
+    CalcCostN_Short [label="costo = 1.20"];
+    JoinN [label="", shape=point];
+
+    // Caso "L"
+    IncCL [label="cl++"];
+    CheckCL [label="cl > 50", shape=diamond];
+    CalcCostL_Paid [label="costo = 0.60"];
+    CalcCostL_Free [label="costo = 0.0"];
+    JoinL [label="", shape=point];
+
+    // Caso "default"
+    PrintInvalid [label="Imprimir 'Tipo... inválido...'", shape=parallelogram];
+
+    // Bloque 4: Fin del Switch y Bucle
+    SwitchJoin [label="", shape=point]; // Punto de unión de todos los casos del switch
+    AccumulateCuenta [label="cuenta += costo"];
+    InputHeader2 [label="Imprimir 'Siguiente llamada...'"];
+    ReadInput2 [label="Leer tipo, dur", shape=parallelogram];
+
+    // Bloque 5: Salida y Fin
+    PrintResult [label="Imprimir 'Costo total: ' + cuenta", shape=parallelogram];
+    CloseScanner [label="scanner.close()"];
+
+
+    // --- Conexiones (Edges) ---
+
+    Start -> Init;
+    Init -> InputHeader1;
+    InputHeader1 -> ReadInput1;
+    ReadInput1 -> LoopCheck;
+
+    // Conexiones del Bucle
+    LoopCheck -> ResetCosto [label="Sí (Continuar)"];
+    ResetCosto -> SwitchTipo;
+
+    // Conexiones del Switch
+    SwitchTipo -> CheckDurI [label="\"I\""];
+    SwitchTipo -> CheckDurN [label="\"N\""];
+    SwitchTipo -> IncCL [label="\"L\""];
+    SwitchTipo -> PrintInvalid [label="default"];
+
+    // Flujo "I"
+    CheckDurI -> CalcCostI_Long [label="Sí"];
+    CheckDurI -> CalcCostI_Short [label="No"];
+    CalcCostI_Long -> JoinI;
+    CalcCostI_Short -> JoinI;
+    JoinI -> SwitchJoin;
+
+    // Flujo "N"
+    CheckDurN -> CalcCostN_Long [label="Sí"];
+    CheckDurN -> CalcCostN_Short [label="No"];
+    CalcCostN_Long -> JoinN;
+    CalcCostN_Short -> JoinN;
+    JoinN -> SwitchJoin;
+
+    // Flujo "L"
+    IncCL -> CheckCL;
+    CheckCL -> CalcCostL_Paid [label="Sí"];
+    CheckCL -> CalcCostL_Free [label="No"];
+    CalcCostL_Paid -> JoinL;
+    CalcCostL_Free -> JoinL;
+    JoinL -> SwitchJoin;
+
+    // Flujo "default"
+    PrintInvalid -> SwitchJoin;
+
+    // Continuación del Bucle
+    SwitchJoin -> AccumulateCuenta;
+    AccumulateCuenta -> InputHeader2;
+    InputHeader2 -> ReadInput2;
+    ReadInput2 -> LoopCheck; // Regreso al inicio del bucle
+
+    // Salida del Bucle
+    LoopCheck -> PrintResult [label="No (Fin)"];
+    PrintResult -> CloseScanner;
+    CloseScanner -> End;
+}

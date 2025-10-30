@@ -1,0 +1,45 @@
+digraph InvertirDatos {
+    // Configuración general del gráfico
+    rankdir=TB; // Dirección de arriba hacia abajo
+    node [shape=box, style=rounded, fontname="Arial"]; // Estilo de nodos por defecto
+    edge [fontname="Arial"]; // Estilo de flechas
+
+    // --- Definición de Nodos ---
+
+    Start [label="Inicio", shape=ellipse];
+    End [label="Fin", shape=ellipse];
+
+    // Bloque 1: Inicialización y Entradas
+    InitScanner [label="Inicializar Scanner"];
+    InputHeader [label="Imprimir 'Ingrese cuatro números...'"];
+    ReadA [label="Leer a", shape=parallelogram];
+    ReadB [label="Leer b", shape=parallelogram];
+    ReadC [label="Leer c", shape=parallelogram];
+    ReadD [label="Leer d", shape=parallelogram];
+
+    // Bloque 2: Salidas
+    OutputHeader [label="Imprimir 'Los números en orden inverso son:'"];
+    PrintD [label="Imprimir d", shape=parallelogram];
+    PrintC [label="Imprimir c", shape=parallelogram];
+    PrintB [label="Imprimir b", shape=parallelogram];
+    PrintA [label="Imprimir a", shape=parallelogram];
+
+    // Bloque 3: Cierre
+    CloseScanner [label="scanner.close()"];
+
+    // --- Conexiones (Edges) ---
+
+    Start -> InitScanner;
+    InitScanner -> InputHeader;
+    InputHeader -> ReadA;
+    ReadA -> ReadB;
+    ReadB -> ReadC;
+    ReadC -> ReadD;
+    ReadD -> OutputHeader;
+    OutputHeader -> PrintD;
+    PrintD -> PrintC;
+    PrintC -> PrintB;
+    PrintB -> PrintA;
+    PrintA -> CloseScanner;
+    CloseScanner -> End;
+}

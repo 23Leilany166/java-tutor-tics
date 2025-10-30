@@ -1,0 +1,152 @@
+digraph SeleccionBasket {
+    // Configuración general
+    rankdir=TB;
+    node [shape=box, style=rounded, fontname="Arial"];
+    edge [fontname="Arial"];
+
+    // --- Nodos de Inicio y Fin ---
+    Start [label="Inicio", shape=ellipse];
+    End [label="Fin", shape=ellipse];
+
+    // --- Bloque 1: Inicialización ---
+    Init [label="Inicializar Scanner\nListas aptasNombres, aptosNombres\nContadores: totalFemenino=0, aptasFemenino=0\ntotalMasculino=0, aptosMasculino=0"];
+    PrintHeaders [label="Imprimir Encabezados e Instrucciones", shape=parallelogram];
+
+    // --- Bloque 2: Bucle Principal (While True) ---
+    LoopStart [label="", shape=point]; // Punto de entrada del loop
+    
+    // Bloque Try-Catch
+    TryStart [label="TRY BLOCK", shape=box, style="rounded,filled", fillcolor="#CCFFCC"];
+    CatchBlock [label="CATCH (InputMismatchException)", shape=box, style="rounded,filled", fillcolor="#FFCCCC"];
+
+    // 2a. Lectura y Salida
+    ReadNombre [label="Leer nombre", shape=parallelogram];
+    CheckBreak [label="nombre.equalsIgnoreCase(\"X\")", shape=diamond];
+
+    // 2b. Lectura y Validación de Sexo
+    ReadSexo [label="Leer sexoStr"];
+    CheckSexoValid [label="Sexo es 'F' o 'M'", shape=diamond];
+    
+    // 2c. Entrada de Datos Numéricos
+    ReadDatos [label="Leer edad, peso, altura", shape=parallelogram];
+
+    // --- Bloque 3: Lógica de Aptitud ---
+    CheckSexoF [label="sexo == 'F'", shape=diamond];
+    
+    // Lógica Femenina
+    IncTotalF [label="totalFemenino++"];
+    CheckAptaF [label="altura > 1.73 \n Y \n 50 <= peso <= 90", shape=diamond];
+    IncAptaF [label="aptasFemenino++\naptasNombres.add(nombre)"];
+    JoinAptaF [label="", shape=point];
+
+    // Lógica Masculina
+    CheckSexoM [label="sexo == 'M'", shape=diamond];
+    IncTotalM [label="totalMasculino++"];
+    CheckAptoM [label="altura > 1.83 \n Y \n 73 < peso <= 110", shape=diamond];
+    IncAptoM [label="aptosMasculino++\naptosNombres.add(nombre)"];
+    JoinAptoM [label="", shape=point];
+
+    // Fin de Lógica
+    JoinAptitud [label="", shape=point];
+    
+    // Manejo de Errores e Iteración
+    ErrorSexo [label="Imprimir 'Sexo inválido'\ncontinue", shape=parallelogram];
+    ErrorCatch [label="Imprimir 'Error en la entrada...'\nLimpiar buffer\ncontinue", shape=parallelogram];
+
+
+    // --- Bloque 4: Resultados Finales ---
+    PrintResultsHeader [label="Imprimir '--- Resultados Finales ---'", shape=parallelogram];
+    
+    // a) Lista Alumnas Aptas
+    PrintAptasF [label="Imprimir Alumnas Aptas", shape=parallelogram];
+    
+    // b) Porcentaje Femenino
+    CheckTotalF [label="totalFemenino > 0", shape=diamond];
+    CalcPorcF [label="Calcular y Imprimir Porcentaje Femenino", shape=parallelogram];
+    PrintNoF [label="Imprimir 'N/A (No hubo alumnas)'", shape=parallelogram];
+    JoinPorcF [label="", shape=point];
+    
+    // c) Lista Alumnos Aptos
+    PrintAptosM [label="Imprimir Alumnos Aptos", shape=parallelogram];
+    
+    // d) Porcentaje Masculino
+    CheckTotalM [label="totalMasculino > 0", shape=diamond];
+    CalcPorcM [label="Calcular y Imprimir Porcentaje Masculino", shape=parallelogram];
+    PrintNoM [label="Imprimir 'N/A (No hubo alumnos)'", shape=parallelogram];
+    JoinPorcM [label="", shape=point];
+
+
+    // --- Conexiones (Edges) ---
+    Start -> Init;
+    Init -> PrintHeaders;
+    PrintHeaders -> LoopStart;
+    LoopStart -> TryStart; // Entrar al try
+
+    // Flujo dentro del TRY
+    TryStart -> ReadNombre;
+    ReadNombre -> CheckBreak;
+    
+    // Salida del Bucle
+    CheckBreak -> PrintResultsHeader [label="Sí (X)"];
+    
+    // Continuación del Bucle
+    CheckBreak -> ReadSexo [label="No"];
+    ReadSexo -> CheckSexoValid;
+
+    // Validación de Sexo
+    CheckSexoValid -> ReadDatos [label="Sí"];
+    CheckSexoValid -> ErrorSexo [label="No"];
+    ErrorSexo -> LoopStart; // Regresar (continue)
+
+    // Lógica de Aptitud
+    ReadDatos -> CheckSexoF;
+    
+    // Rama Femenina (F)
+    CheckSexoF -> IncTotalF [label="Sí (F)"];
+    IncTotalF -> CheckAptaF;
+    CheckAptaF -> IncAptaF [label="Apta"];
+    IncAptaF -> JoinAptaF;
+    CheckAptaF -> JoinAptaF [label="No Apta"];
+    JoinAptaF -> JoinAptitud;
+    
+    // Rama Masculina (M)
+    CheckSexoF -> CheckSexoM [label="No"]; // El 'else if' se representa chequeando 'M'
+    CheckSexoM -> IncTotalM [label="Sí (M)"];
+    IncTotalM -> CheckAptoM;
+    CheckAptoM -> IncAptoM [label="Apto"];
+    IncAptoM -> JoinAptoM;
+    CheckAptoM -> JoinAptoM [label="No Apto"];
+    JoinAptoM -> JoinAptitud;
+    
+    // Rama Inválida (no F ni M - ya chequeado, pero por si acaso)
+    CheckSexoM -> JoinAptitud [label="No (Otro)"];
+
+    // Fin de Iteración
+    JoinAptitud -> LoopStart; // Regresar al inicio del bucle
+
+    // Flujo CATCH
+    TryStart -> CatchBlock [label="Excepción"];
+    CatchBlock -> ErrorCatch;
+    ErrorCatch -> LoopStart; // Regresar (continue)
+
+    // --- Flujo de Resultados ---
+    PrintResultsHeader -> PrintAptasF;
+    PrintAptasF -> CheckTotalF;
+
+    // Porcentaje Femenino
+    CheckTotalF -> CalcPorcF [label="Sí"];
+    CheckTotalF -> PrintNoF [label="No"];
+    CalcPorcF -> JoinPorcF;
+    PrintNoF -> JoinPorcF;
+    
+    JoinPorcF -> PrintAptosM;
+
+    // Porcentaje Masculino
+    PrintAptosM -> CheckTotalM;
+    CheckTotalM -> CalcPorcM [label="Sí"];
+    CheckTotalM -> PrintNoM [label="No"];
+    CalcPorcM -> JoinPorcM;
+    PrintNoM -> JoinPorcM;
+
+    JoinPorcM -> End;
+}

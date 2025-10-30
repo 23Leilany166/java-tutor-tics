@@ -1,0 +1,255 @@
+digraph GestionEmpleadosTienda {
+    // Configuración general
+    rankdir=TB;
+    node [shape=box, style=rounded, fontname="Arial"];
+    edge [fontname="Arial"];
+    compound=true; // Permite flechas entre clústeres (aunque no se usan aquí)
+
+    // --- Subgrafo: main ---
+    subgraph cluster_main {
+        label = "main()";
+        style=dashed;
+        
+        Main_Start [label="Inicio main", shape=ellipse];
+        Main_End [label="Fin main", shape=ellipse];
+        
+        Main_Init_Scanner [label="Inicializar Scanner"];
+        Main_Call_LeerDatos [label="Call leerDatosIniciales(scanner)", peripheries=2];
+        Main_Check_N [label="N > 0", shape=diamond];
+        
+        // Bucle Do-While
+        Main_Loop_Start [label="Inicio Bucle Menú", shape=point];
+        Main_Call_Menu [label="Call mostrarMenu()", peripheries=2];
+        
+        // Bloque Try-Catch para leer opción
+        Main_Try_Read [label="try {\n opcion = scanner.nextInt()\n}", shape=box, style="rounded,dashed"];
+        Main_Catch [label="catch (InputMismatchException)"];
+        Main_Print_Error_Tipo [label="Imprimir 'Error: Ingrese solo un número.'"];
+        Main_Set_Opcion_0 [label="opcion = 0"];
+        Main_Finally [label="finally {\n scanner.nextLine()\n}"];
+        
+        Main_Switch_Opcion [label="switch (opcion)", shape=diamond, peripheries=2];
+        
+        // Casos del Switch
+        Main_Call_Op1 [label="Call encontrarMayorVentaAnual()", peripheries=2];
+        Main_Call_Op2 [label="Call incrementarSalarios()\nImprimir 'Salarios actualizados'"];
+        Main_Call_Op3 [label="Call listarVentasBajasDiciembre()", peripheries=2];
+        Main_Print_Op4 [label="Imprimir 'Terminando programa.'"];
+        Main_Print_OpDefault [label="Imprimir 'Opción inválida.'"];
+        
+        Main_Loop_Join [label="", shape=point]; // Punto de unión post-switch
+        Main_Loop_Check [label="opcion != 4", shape=diamond];
+        Main_Join_If_N [label="", shape=point]; // Punto de unión del if (N>0)
+
+        // --- Flujo de main ---
+        Main_Start -> Main_Init_Scanner;
+        Main_Init_Scanner -> Main_Call_LeerDatos;
+        Main_Call_LeerDatos -> Main_Check_N;
+        Main_Check_N -> Main_Loop_Start [label="Sí"];
+        
+        // Bucle
+        Main_Loop_Start -> Main_Call_Menu;
+        Main_Call_Menu -> Main_Try_Read;
+        Main_Try_Read -> Main_Finally [label="Éxito"];
+        Main_Try_Read -> Main_Catch [label="Excepción"];
+        Main_Catch -> Main_Print_Error_Tipo -> Main_Set_Opcion_0 -> Main_Finally;
+        Main_Finally -> Main_Switch_Opcion;
+        
+        // Switch
+        Main_Switch_Opcion -> Main_Call_Op1 [label="1"];
+        Main_Switch_Opcion -> Main_Call_Op2 [label="2"];
+        Main_Switch_Opcion -> Main_Call_Op3 [label="3"];
+        Main_Switch_Opcion -> Main_Print_Op4 [label="4"];
+        Main_Switch_Opcion -> Main_Print_OpDefault [label="default"];
+        
+        Main_Call_Op1 -> Main_Loop_Join;
+        Main_Call_Op2 -> Main_Loop_Join;
+        Main_Call_Op3 -> Main_Loop_Join;
+        Main_Print_Op4 -> Main_Loop_Join;
+        Main_Print_OpDefault -> Main_Loop_Join;
+        
+        Main_Loop_Join -> Main_Loop_Check;
+        Main_Loop_Check -> Main_Loop_Start [label="Sí"];
+        Main_Loop_Check -> Main_Join_If_N [label="No"];
+        
+        Main_Check_N -> Main_Join_If_N [label="No"];
+        Main_Join_If_N -> Main_End; // Nota: El scanner.close() está comentado en el código
+    }
+
+    // --- Subgrafo: leerDatosIniciales ---
+    subgraph cluster_leerDatosIniciales {
+        label = "leerDatosIniciales(scanner)";
+        style=dashed;
+        
+        LDI_Start [label="Inicio LDI", shape=ellipse];
+        LDI_End [label="Fin LDI", shape=ellipse];
+        
+        LDI_Try [label="try { ... }", shape=cylinder]; // Representa el bloque try
+        LDI_Catch [label="catch (InputMismatchException)", shape=cylinder];
+        
+        LDI_Read_N [label="Imprimir 'Ingrese N'\nLeer N\nscanner.nextLine()", shape=parallelogram];
+        LDI_Check_N [label="N < 1 || N > 100", shape=diamond];
+        LDI_Invalid_N [label="Imprimir 'Número... inválido.'\nN = 0"];
+        
+        LDI_Init_Array [label="empleados = new Empleado[N]"];
+        LDI_Loop1_Check [label="i = 0\ni < N", shape=diamond];
+        
+        // Dentro Loop 1
+        LDI_Read_Empleado [label="Imprimir 'Datos Empleado...'\nLeer num, nom, sal\nscanner.nextLine()", shape=parallelogram];
+        LDI_Create_Empleado [label="empleados[i] = new Empleado(...)"];
+        LDI_Print_Ventas [label="Imprimir 'Ingrese ventas mensuales...'"];
+        LDI_Loop2_Check [label="j = 0\nj < 12", shape=diamond];
+        
+        // Dentro Loop 2
+        LDI_Read_Venta [label="empleados[i].ventas[j] = scanner.nextDouble()", shape=parallelogram];
+        LDI_Loop2_Inc [label="j++"];
+        
+        LDI_Loop2_End_NextLine [label="scanner.nextLine()"];
+        LDI_Loop1_Inc [label="i++"];
+        
+        // Catch block
+        LDI_Catch_Error [label="Imprimir 'Error de entrada.'\nN = 0\nscanner.nextLine()"];
+
+        // --- Flujo de LDI ---
+        LDI_Start -> LDI_Try;
+        LDI_Try -> LDI_Read_N;
+        LDI_Read_N -> LDI_Check_N;
+        LDI_Check_N -> LDI_Invalid_N [label="Sí (Inválido)"];
+        LDI_Invalid_N -> LDI_End; // return
+        
+        LDI_Check_N -> LDI_Init_Array [label="No (Válido)"];
+        LDI_Init_Array -> LDI_Loop1_Check;
+        
+        // Loop 1
+        LDI_Loop1_Check -> LDI_Read_Empleado [label="Sí (i < N)"];
+        LDI_Read_Empleado -> LDI_Create_Empleado -> LDI_Print_Ventas -> LDI_Loop2_Check;
+        
+        // Loop 2
+        LDI_Loop2_Check -> LDI_Read_Venta [label="Sí (j < 12)"];
+        LDI_Read_Venta -> LDI_Loop2_Inc -> LDI_Loop2_Check;
+        
+        // Fin Loop 2
+        LDI_Loop2_Check -> LDI_Loop2_End_NextLine [label="No (j >= 12)"];
+        LDI_Loop2_End_NextLine -> LDI_Loop1_Inc -> LDI_Loop1_Check;
+        
+        // Fin Loop 1
+        LDI_Loop1_Check -> LDI_End [label="No (i >= N)"];
+        
+        // Flujo Catch
+        LDI_Try -> LDI_Catch [label="Excepción\ndurante lectura"];
+        LDI_Catch -> LDI_Catch_Error -> LDI_End;
+    }
+
+    // --- Subgrafo: mostrarMenu ---
+    subgraph cluster_mostrarMenu {
+        label = "mostrarMenu()";
+        style=dashed;
+        Menu_Start [label="Inicio Menu", shape=ellipse];
+        Menu_Print [label="Imprimir Opciones 1-4", shape=parallelogram];
+        Menu_End [label="Fin Menu", shape=ellipse];
+        Menu_Start -> Menu_Print -> Menu_End;
+    }
+
+    // --- Subgrafo: encontrarMayorVentaAnual ---
+    subgraph cluster_encontrarMayorVentaAnual {
+        label = "encontrarMayorVentaAnual()";
+        style=dashed;
+        FMV_Start [label="Inicio FMV", shape=ellipse];
+        FMV_End [label="Fin FMV", shape=ellipse];
+        
+        FMV_Check_N [label="N == 0", shape=diamond];
+        FMV_Init [label="maxVentas = -1.0\nindiceMax = -1"];
+        FMV_Loop_Check [label="i = 0\ni < N", shape=diamond];
+        FMV_Call_GetVentas [label="ventasAnuales = Call getTotalVentasAnuales()", peripheries=2];
+        FMV_Check_Max [label="ventasAnuales > maxVentas", shape=diamond];
+        FMV_Update_Max [label="maxVentas = ventasAnuales\nindiceMax = i"];
+        FMV_Loop_Inc [label="i++"];
+        FMV_Check_Indice [label="indiceMax != -1", shape=diamond];
+        FMV_Print_Result [label="Imprimir Empleado con mayor venta", shape=parallelogram];
+
+        // --- Flujo de FMV ---
+        FMV_Start -> FMV_Check_N;
+        FMV_Check_N -> FMV_End [label="Sí (N=0)"]; // return
+        FMV_Check_N -> FMV_Init [label="No"];
+        FMV_Init -> FMV_Loop_Check;
+        FMV_Loop_Check -> FMV_Call_GetVentas [label="Sí (i < N)"];
+        FMV_Call_GetVentas -> FMV_Check_Max;
+        FMV_Check_Max -> FMV_Update_Max [label="Sí"];
+        FMV_Update_Max -> FMV_Loop_Inc;
+        FMV_Check_Max -> FMV_Loop_Inc [label="No"];
+        FMV_Loop_Inc -> FMV_Loop_Check;
+        FMV_Loop_Check -> FMV_Check_Indice [label="No (i >= N)"];
+        FMV_Check_Indice -> FMV_Print_Result [label="Sí"];
+        FMV_Print_Result -> FMV_End;
+        FMV_Check_Indice -> FMV_End [label="No"];
+    }
+
+    // --- Subgrafo: incrementarSalarios ---
+    subgraph cluster_incrementarSalarios {
+        label = "incrementarSalarios()";
+        style=dashed;
+        IS_Start [label="Inicio IS", shape=ellipse];
+        IS_End [label="Fin IS", shape=ellipse];
+        
+        IS_Loop_Check [label="i = 0\ni < N", shape=diamond];
+        IS_Call_GetVentas [label="ventasAnuales = Call getTotalVentasAnuales()", peripheries=2];
+        IS_Check_Ventas [label="ventasAnuales > 1000000", shape=diamond];
+        IS_Update_Salario [label="empleados[i].salario *= 1.10\nImprimir actualización"];
+        IS_Loop_Inc [label="i++"];
+        
+        // --- Flujo de IS ---
+        IS_Start -> IS_Loop_Check;
+        IS_Loop_Check -> IS_Call_GetVentas [label="Sí (i < N)"];
+        IS_Call_GetVentas -> IS_Check_Ventas;
+        IS_Check_Ventas -> IS_Update_Salario [label="Sí"];
+        IS_Update_Salario -> IS_Loop_Inc;
+        IS_Check_Ventas -> IS_Loop_Inc [label="No"];
+        IS_Loop_Inc -> IS_Loop_Check;
+        IS_Loop_Check -> IS_End [label="No (i >= N)"];
+    }
+
+    // --- Subgrafo: listarVentasBajasDiciembre ---
+    subgraph cluster_listarVentasBajasDiciembre {
+        label = "listarVentasBajasDiciembre()";
+        style=dashed;
+        LVB_Start [label="Inicio LVB", shape=ellipse];
+        LVB_End [label="Fin LVB", shape=ellipse];
+        
+        LVB_Print_Header [label="Imprimir 'Empleados con ventas < 30k en Dic:'", shape=parallelogram];
+        LVB_Init [label="encontrados = false"];
+        LVB_Loop_Check [label="i = 0\ni < N", shape=diamond];
+        LVB_Check_Venta [label="empleados[i].ventas[11] < 30000", shape=diamond];
+        LVB_Print_Empleado [label="Imprimir Empleado (Num, Nombre)\nencontrados = true", shape=parallelogram];
+        LVB_Loop_Inc [label="i++"];
+        LVB_Check_Encontrados [label="!encontrados", shape=diamond];
+        LVB_Print_Ninguno [label="Imprimir 'Ningún empleado...'", shape=parallelogram];
+
+        // --- Flujo de LVB ---
+        LVB_Start -> LVB_Print_Header -> LVB_Init -> LVB_Loop_Check;
+        LVB_Loop_Check -> LVB_Check_Venta [label="Sí (i < N)"];
+        LVB_Check_Venta -> LVB_Print_Empleado [label="Sí"];
+        LVB_Print_Empleado -> LVB_Loop_Inc;
+        LVB_Check_Venta -> LVB_Loop_Inc [label="No"];
+        LVB_Loop_Inc -> LVB_Loop_Check;
+        LVB_Loop_Check -> LVB_Check_Encontrados [label="No (i >= N)"];
+        LVB_Check_Encontrados -> LVB_Print_Ninguno [label="Sí (No encontrados)"];
+        LVB_Print_Ninguno -> LVB_End;
+        LVB_Check_Encontrados -> LVB_End [label="No (Encontrados)"];
+    }
+
+    // --- Subgrafo: getTotalVentasAnuales (Empleado) ---
+    subgraph cluster_getTotalVentasAnuales {
+        label = "Empleado.getTotalVentasAnuales()";
+        style="dashed";
+        GTV_Start [label="Inicio GTV", shape=ellipse];
+        GTV_Return [label="return suma", shape=ellipse];
+        GTV_Init [label="suma = 0"];
+        GTV_Loop [label="for (double ventaMes : ventas)"];
+        GTV_Add [label="suma += ventaMes"];
+
+        GTV_Start -> GTV_Init -> GTV_Loop;
+        GTV_Loop -> GTV_Add [label="Hay más meses"];
+        GTV_Add -> GTV_Loop;
+        GTV_Loop -> GTV_Return [label="Fin de meses"];
+    }
+}

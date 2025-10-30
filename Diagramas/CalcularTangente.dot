@@ -1,0 +1,53 @@
+digraph CalcularTangente {
+    // Configuración general del gráfico
+    rankdir=TB; // Dirección de arriba hacia abajo
+    node [shape=box, style=rounded, fontname="Arial"]; // Estilo de nodos por defecto
+    edge [fontname="Arial"]; // Estilo de flechas
+
+    // --- Definición de Nodos ---
+
+    Start [label="Inicio", shape=ellipse];
+    End [label="Fin", shape=ellipse];
+
+    // Bloque 1: Inicialización y Entradas
+    InitScanner [label="Inicializar Scanner"];
+    InputSenoHeader [label="Imprimir 'Ingrese el valor del seno:'"];
+    ReadSeno [label="Leer seno", shape=parallelogram];
+    InputCosenoHeader [label="Imprimir 'Ingrese el valor del coseno:'"];
+    ReadCoseno [label="Leer coseno", shape=parallelogram];
+
+    // Bloque 2: Decisión y Cálculo
+    CheckCosenoZero [label="coseno != 0", shape=diamond];
+    
+    // Rama 'Sí' (coseno no es cero)
+    CalculateTan [label="tangente = seno / coseno"];
+    PrintResult [label="Imprimir 'La tangente es: ...'", shape=parallelogram];
+
+    // Rama 'No' (coseno es cero)
+    PrintError [label="Imprimir 'La tangente es indefinida...'", shape=parallelogram];
+
+    // Bloque 3: Cierre
+    Join [label="", shape=point]; // Nodo de unión
+    CloseScanner [label="scanner.close()"];
+
+    // --- Conexiones (Edges) ---
+
+    Start -> InitScanner;
+    InitScanner -> InputSenoHeader;
+    InputSenoHeader -> ReadSeno;
+    ReadSeno -> InputCosenoHeader;
+    InputCosenoHeader -> ReadCoseno;
+    ReadCoseno -> CheckCosenoZero;
+
+    // Conexiones de la decisión
+    CheckCosenoZero -> CalculateTan [label="Sí"];
+    CalculateTan -> PrintResult;
+    PrintResult -> Join;
+
+    CheckCosenoZero -> PrintError [label="No"];
+    PrintError -> Join;
+
+    // Conexión al final
+    Join -> CloseScanner;
+    CloseScanner -> End;
+}

@@ -1,0 +1,99 @@
+digraph ContarPosNegNulos {
+    // Configuración general
+    rankdir=TB;
+    node [shape=box, style=rounded, fontname="Arial"];
+    edge [fontname="Arial"];
+
+    // --- Definición de Nodos ---
+
+    Start [label="Inicio", shape=ellipse];
+    End [label="Fin", shape=ellipse];
+
+    // Bloque 1: Inicialización y Lectura de N
+    Init [label="Inicializar Scanner\nMAX_SIZE = 300"];
+    InputNHeader [label="Imprimir 'Ingrese el tamaño del arreglo...'"];
+    ReadN [label="Leer n", shape=parallelogram];
+    CheckN [label="n < 1 || n > MAX_SIZE", shape=diamond];
+
+    // Bloque 1a: Camino Inválido (Salida Temprana)
+    PrintInvalid [label="Imprimir 'Tamaño inválido.'", shape=parallelogram];
+    CloseScannerInvalid [label="scanner.close()"];
+
+    // Bloque 2: Inicialización del Arreglo (Camino Válido)
+    InitArray [label="Crear arre[n]\npositivos = 0\nnegativos = 0\nnulos = 0"];
+    InputArrayHeader [label="Imprimir 'Ingrese los n elementos:'"];
+
+    // Bloque 3: Loop de Lectura (for i)
+    LoopReadCheck [label="i = 0\ni < n", shape=diamond];
+    ReadElement [label="Leer arre[i]", shape=parallelogram];
+    LoopReadInc [label="i++"];
+
+    // Bloque 4: Loop de Conteo (for-each elemento)
+    // (Representado con un índice 'j' para claridad en el diagrama)
+    LoopCountCheck [label="j = 0\nj < n", shape=diamond];
+    GetElement [label="elemento = arre[j]"];
+    
+    // Bloque 4a: Lógica de Conteo
+    CheckPos [label="elemento > 0", shape=diamond];
+    IncPos [label="positivos++"];
+    CheckNeg [label="elemento < 0", shape=diamond];
+    IncNeg [label="negativos++"];
+    IncNul [label="nulos++"];
+    JoinIf [label="", shape=point]; // Nodo de unión para el if-else
+    LoopCountInc [label="j++"];
+
+    // Bloque 5: Impresión de Resultados
+    PrintHeader [label="Imprimir '--- Conteo ---'", shape=parallelogram];
+    PrintPos [label="Imprimir 'Positivos: ' + positivos", shape=parallelogram];
+    PrintNeg [label="Imprimir 'Negativos: ' + negativos", shape=parallelogram];
+    PrintNul [label="Imprimir 'Nulos: ' + nulos", shape=parallelogram];
+    CloseScannerValid [label="scanner.close()"];
+
+    // --- Conexiones (Edges) ---
+
+    Start -> Init;
+    Init -> InputNHeader;
+    InputNHeader -> ReadN;
+    ReadN -> CheckN;
+
+    // Camino Inválido
+    CheckN -> PrintInvalid [label="Sí (Inválido)"];
+    PrintInvalid -> CloseScannerInvalid;
+    CloseScannerInvalid -> End;
+
+    // Camino Válido
+    CheckN -> InitArray [label="No (Válido)"];
+    InitArray -> InputArrayHeader;
+    InputArrayHeader -> LoopReadCheck;
+
+    // Loop de Lectura (i)
+    LoopReadCheck -> ReadElement [label="Sí (i < n)"];
+    ReadElement -> LoopReadInc;
+    LoopReadInc -> LoopReadCheck;
+    LoopReadCheck -> LoopCountCheck [label="No (i >= n)"]; // Salir de loop lectura, entrar a loop conteo
+
+    // Loop de Conteo (j, representando for-each)
+    LoopCountCheck -> GetElement [label="Sí (j < n)"];
+    GetElement -> CheckPos;
+    
+    // Lógica If-Else
+    CheckPos -> IncPos [label="Sí (Positivo)"];
+    IncPos -> JoinIf;
+    
+    CheckPos -> CheckNeg [label="No"];
+    CheckNeg -> IncNeg [label="Sí (Negativo)"];
+    CheckNeg -> IncNul [label="No (Nulo)"];
+    IncNeg -> JoinIf;
+    IncNul -> JoinIf;
+    
+    JoinIf -> LoopCountInc;
+    LoopCountInc -> LoopCountCheck; // Regresar al inicio del loop de conteo
+
+    // Salida del Loop de Conteo
+    LoopCountCheck -> PrintHeader [label="No (j >= n)"];
+    PrintHeader -> PrintPos;
+    PrintPos -> PrintNeg;
+    PrintNeg -> PrintNul;
+    PrintNul -> CloseScannerValid;
+    CloseScannerValid -> End;
+}

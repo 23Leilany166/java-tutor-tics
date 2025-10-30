@@ -1,0 +1,110 @@
+digraph MejorPeorAlumno {
+    // Configuración general
+    rankdir=TB;
+    node [shape=box, style=rounded, fontname="Arial"];
+    edge [fontname="Arial"];
+
+    // --- Definición de Nodos ---
+
+    Start [label="Inicio", shape=ellipse];
+    End [label="Fin", shape=fellipse];
+
+    // Bloque 1: Inicialización
+    Init [label="Inicializar Scanner\nNUM_ALUMNOS = 3, NUM_CALIFICACIONES = 2\nmatriculaMejor = -1, matriculaPeor = -1\nmejorPromedio = -1.0, peorPromedio = 11.0"];
+    PrintHeader1 [label="Imprimir 'Ingrese los datos...'"];
+
+    // Bloque 2: Bucle Externo (Alumnos)
+    LoopAlumnosCheck [label="i = 1\ni <= NUM_ALUMNOS", shape=diamond];
+    
+    // Dentro del Bucle de Alumnos
+    InputMatricula [label="Imprimir 'Matrícula...' (i)\nLeer matricula", shape=parallelogram];
+    InitSuma [label="sumaCalificaciones = 0.0"];
+
+    // Bloque 3: Bucle Interno (Calificaciones)
+    LoopCalifsCheck [label="j = 1\nj <= NUM_CALIFICACIONES", shape=diamond];
+    
+    // Dentro del Bucle de Calificaciones
+    ReadCalif [label="Leer calificacion", shape=parallelogram];
+    AccumulateSuma [label="sumaCalificaciones += calificacion"];
+    LoopCalifsInc [label="j++"];
+
+    // Después del Bucle Interno
+    CalcPromedio [label="promedio = sumaCalificaciones / NUM_CALIFICACIONES"];
+    
+    // Bloque 4: Decisiones (Mejor/Peor)
+    CheckMejor [label="promedio > mejorPromedio", shape=diamond];
+    UpdateMejor [label="mejorPromedio = promedio\nmatriculaMejor = matricula"];
+    JoinMejor [label="", shape=point]; // Nodo de unión
+    
+    CheckPeor [label="promedio < peorPromedio", shape=diamond];
+    UpdatePeor [label="peorPromedio = promedio\nmatriculaPeor = matricula"];
+    JoinPeor [label="", shape=point]; // Nodo de unión
+
+    LoopAlumnosInc [label="i++"];
+
+    // Bloque 5: Impresión de Resultados
+    PrintHeader2 [label="Imprimir '\n--- Resultados ---'"];
+    
+    CheckPrintMejor [label="matriculaMejor != -1", shape=diamond];
+    PrintMejor [label="Imprimir 'Mejor Alumno...'", shape=parallelogram];
+    JoinPrintMejor [label="", shape=point]; // Nodo de unión
+    
+    CheckPrintPeor [label="matriculaPeor != -1", shape=diamond];
+    PrintPeor [label="Imprimir 'Peor Alumno...'", shape=parallelogram];
+    JoinPrintPeor [label="", shape=point]; // Nodo de unión
+
+    CloseScanner [label="scanner.close()"];
+
+    // --- Conexiones (Edges) ---
+
+    Start -> Init;
+    Init -> PrintHeader1;
+    PrintHeader1 -> LoopAlumnosCheck;
+
+    // Flujo Bucle Externo (Alumnos)
+    LoopAlumnosCheck -> InputMatricula [label="Sí (i <= N)"];
+    InputMatricula -> InitSuma;
+    InitSuma -> LoopCalifsCheck;
+
+    // Flujo Bucle Interno (Calificaciones)
+    LoopCalifsCheck -> ReadCalif [label="Sí (j <= M)"];
+    ReadCalif -> AccumulateSuma;
+    AccumulateSuma -> LoopCalifsInc;
+    LoopCalifsInc -> LoopCalifsCheck; // Regreso bucle interno
+
+    // Salida Bucle Interno
+    LoopCalifsCheck -> CalcPromedio [label="No (j > M)"];
+    CalcPromedio -> CheckMejor;
+
+    // Lógica 'Mejor'
+    CheckMejor -> UpdateMejor [label="Sí"];
+    UpdateMejor -> JoinMejor;
+    CheckMejor -> JoinMejor [label="No"];
+    
+    JoinMejor -> CheckPeor; // Continuar a la siguiente comprobación
+
+    // Lógica 'Peor'
+    CheckPeor -> UpdatePeor [label="Sí"];
+    UpdatePeor -> JoinPeor;
+    CheckPeor -> JoinPeor [label="No"];
+    
+    JoinPeor -> LoopAlumnosInc; // Fin de comprobaciones
+    LoopAlumnosInc -> LoopAlumnosCheck; // Regreso bucle externo
+
+    // Salida Bucle Externo
+    LoopAlumnosCheck -> PrintHeader2 [label="No (i > N)"];
+    PrintHeader2 -> CheckPrintMejor;
+
+    // Lógica de Impresión
+    CheckPrintMejor -> PrintMejor [label="Sí"];
+    PrintMejor -> JoinPrintMejor;
+    CheckPrintMejor -> JoinPrintMejor [label="No"];
+
+    JoinPrintMejor -> CheckPrintPeor;
+    CheckPrintPeor -> PrintPeor [label="Sí"];
+    PrintPeor -> JoinPrintPeor;
+    CheckPrintPeor -> JoinPrintPeor [label="No"];
+
+    JoinPrintPeor -> CloseScanner;
+    CloseScanner -> End;
+}

@@ -1,0 +1,103 @@
+digraph DirectorioTelefonico {
+    // Configuración general
+    rankdir=TB;
+    node [shape=box, style=rounded, fontname="Arial"];
+    edge [fontname="Arial"];
+
+    // --- Definición de Nodos ---
+
+    Start [label="Inicio", shape=ellipse];
+    End [label="Fin", shape=ellipse];
+
+    // Bloque 1: Inicialización
+    Init [label="Inicializar Scanner\nMAX_CONTACTOS = 1000\nnombres[MAX], telefonos[MAX]\ncontador = 0"];
+    PrintHeader [label="Imprimir 'Directorio Telefónico...'"];
+    
+    // Bloque 2: Bucle Principal (While true)
+    LoopStartPoint [label="", shape=point]; // Punto de entrada/retorno del bucle
+    InputHeader [label="Imprimir '\nIngrese nombre...'", shape=parallelogram];
+    ReadNombre [label="Leer nombreBuscado", shape=parallelogram];
+    CheckSalir [label="nombreBuscado.equalsIgnoreCase(\"salir\")", shape=diamond];
+
+    // Bloque 3: Búsqueda y Decisión
+    BinarySearch [label="indice = Arrays.binarySearch(nombres, 0, contador, nombreBuscado)"];
+    CheckFound [label="indice >= 0", shape=diamond];
+
+    // Bloque 3a: Encontrado
+    PrintFound [label="Imprimir 'Teléfono de ' + nombres[indice]...", shape=parallelogram];
+
+    // Bloque 3b: No Encontrado
+    PrintNotFound [label="Imprimir '...no encontrado.'", shape=parallelogram];
+    CheckSpace [label="contador < MAX_CONTACTOS", shape=diamond];
+
+    // Bloque 3b-i: Hay Espacio (Agregar)
+    InputTelefonoHeader [label="Imprimir 'Ingrese el teléfono...'", shape=parallelogram];
+    ReadTelefono [label="Leer nuevoTelefono", shape=parallelogram];
+    CalcPos [label="posInsercion = -(indice + 1)"];
+    
+    // Bucle de Desplazamiento (Shift)
+    ShiftLoopCheck [label="i = contador\ni > posInsercion", shape=diamond];
+    ShiftElements [label="nombres[i] = nombres[i-1]\ntelefonos[i] = telefonos[i-1]"];
+    ShiftLoopDec [label="i--"];
+    
+    // Inserción
+    InsertNew [label="nombres[posInsercion] = nombreBuscado\ntelefonos[posInsercion] = nuevoTelefono"];
+    IncContador [label="contador++"];
+    PrintAdded [label="Imprimir '...agregado al directorio.'", shape=parallelogram];
+
+    // Bloque 3b-ii: No Hay Espacio
+    PrintFull [label="Imprimir 'Directorio lleno...'", shape=parallelogram];
+
+    // Bloque 4: Salida
+    PrintSalir [label="Imprimir 'Saliendo del directorio.'", shape=parallelogram];
+    CloseScanner [label="scanner.close()"];
+
+
+    // --- Conexiones (Edges) ---
+
+    Start -> Init;
+    Init -> PrintHeader;
+    PrintHeader -> LoopStartPoint;
+
+    // Bucle Principal
+    LoopStartPoint -> InputHeader;
+    InputHeader -> ReadNombre;
+    ReadNombre -> CheckSalir;
+
+    CheckSalir -> BinarySearch [label="No (Continuar)"];
+    BinarySearch -> CheckFound;
+
+    // Camino 1: Encontrado
+    CheckFound -> PrintFound [label="Sí (Encontrado)"];
+    PrintFound -> LoopStartPoint; // Volver al inicio del bucle
+
+    // Camino 2: No Encontrado
+    CheckFound -> PrintNotFound [label="No (No Encontrado)"];
+    PrintNotFound -> CheckSpace;
+
+    // Camino 2a: Hay Espacio
+    CheckSpace -> InputTelefonoHeader [label="Sí (Hay espacio)"];
+    InputTelefonoHeader -> ReadTelefono;
+    ReadTelefono -> CalcPos;
+    CalcPos -> ShiftLoopCheck;
+    
+    // Bucle de Desplazamiento
+    ShiftLoopCheck -> ShiftElements [label="Sí (i > pos)"];
+    ShiftElements -> ShiftLoopDec;
+    ShiftLoopDec -> ShiftLoopCheck;
+
+    // Fin de Desplazamiento e Inserción
+    ShiftLoopCheck -> InsertNew [label="No (i <= pos)"];
+    InsertNew -> IncContador;
+    IncContador -> PrintAdded;
+    PrintAdded -> LoopStartPoint; // Volver al inicio del bucle
+
+    // Camino 2b: Lleno
+    CheckSpace -> PrintFull [label="No (Lleno)"];
+    PrintFull -> LoopStartPoint; // Volver al inicio del bucle
+
+    // Camino 3: Salir
+    CheckSalir -> PrintSalir [label="Sí (Salir)"];
+    PrintSalir -> CloseScanner;
+    CloseScanner -> End;
+}
