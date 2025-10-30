@@ -1,0 +1,36 @@
+digraph Calcular_Area_Volumen {
+  Inicio [
+    shape=ellipse,
+    label="Inicio", 
+    fillcolor="#FF0000", 
+    style="filled"
+  ];
+  Leer_radio [
+    shape=parallelogram,
+    label="Leer RADIO"
+  ];
+  Calcular_area [
+    shape=diamond,
+    label="AREA = 4 * π * RADIO^2"
+  ];
+  Calcular_volumen [
+    shape=diamond,
+    label="VOL = 4/3 * π * RADIO^3"
+  ];
+  Imprimir_resultados [
+    shape=box,
+    label="Imprimir AREA, VOL"
+  ];
+  Fin [
+    shape=ellipse,
+    label="Fin"
+  ];
+
+  Inicio -> Leer_radio;
+  Leer_radio -> Calcular_area;
+  Leer_radio -> Calcular_volumen;
+  Calcular_area -> Calcular_volumen [label="No"];
+  Calcular_area -> Imprimir_resultados [label="Sí"];
+  Calcular_volumen -> Imprimir_resultados;
+  Imprimir_resultados -> Fin;
+}

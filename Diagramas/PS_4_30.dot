@@ -1,0 +1,63 @@
+digraph Teatro {
+    node [shape=rectangle];
+    start [label="Inicio"];
+    end [label="Fin"];
+
+    // Creación del teatro
+    subgraph cluster_creacion_teatro {
+        label="Creación del Teatro";
+        node [shape=rectangle];
+        llenado_vacio [label="Inicialización del arreglo con asientos vacíos"];
+    }
+
+    // Mostrar estado actual del teatro
+    subgraph cluster_mostrar_estado {
+        label="Mostrar Estado Actual";
+        node [shape=rectangle];
+        mostrar_estado [label="Mostrar estado actual del teatro"];
+    }
+
+    // Elección de asiento
+    subgraph cluster_eleccion_asiento {
+        label="Elección de Asiento";
+        node [shape=rectangle];
+        input_fila [label="Ingrese la fila (A-Z) del asiento:"];
+        input_numero [label="Ingrese el número (1-10) del asiento:"];
+        validar_rango [label="Validar rango de fila y número de asiento"];
+        validar_disponibilidad [label="Validar disponibilidad del asiento"];
+    }
+
+    // Reserva de asiento
+    subgraph cluster_reserva_asiento {
+        label="Reserva de Asiento";
+        node [shape=rectangle];
+        input_nombre [label="Ingrese el nombre del cliente:"];
+        reserva_asiento [label="Reservar el asiento"];
+        verificar_teatro_lleno [label="Verificar si el teatro está lleno"];
+        preguntar_salir [label="Preguntar si desea salir del programa"];
+    }
+
+    // Teatro lleno
+    subgraph cluster_teatro_lleno {
+        label="Teatro Lleno";
+        node [shape=rectangle];
+        teatro_lleno [label="El teatro está completamente lleno. ¡Gracias por su visita!"];
+    }
+
+    // Conexiones
+    start -> cluster_creacion_teatro;
+    cluster_creacion_teatro -> cluster_mostrar_estado;
+    cluster_mostrar_estado -> cluster_eleccion_asiento;
+    cluster_eleccion_asiento -> input_fila;
+    input_fila -> input_numero;
+    input_numero -> validar_rango;
+    validar_rango -> validar_disponibilidad [label="Asiento válido"];
+    validar_disponibilidad -> input_nombre [label="Asiento disponible"];
+    validar_disponibilidad -> cluster_eleccion_asiento [label="Asiento no disponible"];
+    input_nombre -> reserva_asiento;
+    reserva_asiento -> verificar_teatro_lleno;
+    verificar_teatro_lleno -> preguntar_salir [label="Teatro no lleno"];
+    verificar_teatro_lleno -> teatro_lleno [label="Teatro lleno"];
+    preguntar_salir -> teatro_lleno;
+    teatro_lleno -> end;
+}

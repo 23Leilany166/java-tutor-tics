@@ -1,0 +1,14 @@
+digraph SumaSerie {
+  node [shape=box];
+
+  Inicio [shape=ellipse, label="Inicio", style="filled"];
+  LeerN [label="Leer número de términos (N)"];
+  CalcularSerie [label="Calcular suma de la serie"];
+  MostrarResultado [label="Mostrar resultado"];
+  Fin [shape=ellipse, label="Fin"];
+
+  Inicio -> LeerN;
+  LeerN -> CalcularSerie;
+  CalcularSerie -> MostrarResultado;
+  MostrarResultado -> Fin;
+}

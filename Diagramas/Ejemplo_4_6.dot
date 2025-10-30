@@ -1,0 +1,21 @@
+digraph Fibonacci {
+  node [shape=box];
+
+  Inicio [shape=ellipse, label="Inicio", style="filled"];
+  CrearArreglo [label="Crear arreglo"];
+  InicializarArreglo [label="Inicializar arreglo"];
+  i [label="i = 2"];
+  Condicion [shape=diamond, label="i < 100"];
+  CalcularFibonacci [label="Calcular Fibonacci"];
+  ImprimirArreglo [label="Imprimir arreglo"];
+  Fin [shape=ellipse, label="Fin"];
+
+  Inicio -> CrearArreglo;
+  CrearArreglo -> InicializarArreglo;
+  InicializarArreglo -> i;
+  i -> Condicion;
+  Condicion -> CalcularFibonacci [label="Sí", tailport=s, headport=n];
+  Condicion -> ImprimirArreglo [label="No", tailport=w, headport=n];
+  CalcularFibonacci -> i;
+  ImprimirArreglo -> Fin;
+}

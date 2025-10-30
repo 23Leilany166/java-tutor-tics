@@ -1,0 +1,30 @@
+digraph PS_4_14 {
+  node [shape="rectangle"];
+  
+  // Nodos
+  inicio [shape="ellipse", label="Inicio",fillcolor="#40e0d0", style="filled"];
+  definir_arreglo [shape="parallelogram", label="Definir ARREGLO[1..2020] de enteros"];
+  inicializar_indice [shape=box, label="Hacer i = 1"];
+  inicializar_año [shape=box, label="Hacer año = 1"];
+  verificar_bisiesto [shape="diamond", label="¿Es año bisiesto?"];
+  verificar_perfecto [shape="diamond", label="¿Es año perfecto?"];
+  almacenar_bisiesto [shape=box, label="Hacer ARREGLO[i] = año"];
+  incrementar_i [shape=box, label="Hacer i = i + 1"];
+  incrementar_año [shape=box, label="Hacer año = año + 1"];
+  verificar_año [shape="diamond", label="Año <= 2020"];
+  fin [shape="ellipse", label="Fin"];
+  
+  // Aristas
+  inicio -> definir_arreglo;
+  definir_arreglo -> inicializar_indice;
+  inicializar_indice -> inicializar_año;
+  inicializar_año -> verificar_año;
+  verificar_año -> verificar_bisiesto [label="Sí"];
+  verificar_año -> fin [label="No"];
+  verificar_bisiesto -> verificar_perfecto [label="Sí"];
+  verificar_bisiesto -> incrementar_año [label="No"];
+  verificar_perfecto -> almacenar_bisiesto [label="Sí"];
+  verificar_perfecto -> incrementar_año [label="No"];
+  almacenar_bisiesto -> incrementar_i;
+  incrementar_año -> verificar_año;
+}

@@ -1,0 +1,26 @@
+digraph Ps314 {
+  node [shape="rectangle"];
+  start [label="Inicio", shape="ellipse"];
+  end [label="Fin", shape="ellipse"];
+  input_meses [label="Ingrese MESES", shape="parallelogram"];
+  input_capital [label="Ingrese CAPINI", shape="parallelogram"];
+  loop_init [label="Inicializar i = 1", shape="rectangle"];
+  loop_cond [label="i <= MESES", shape="diamond"];
+  input_tasa [label="Ingrese TASAi", shape="parallelogram"];
+  calculate_interest [label="Calcular interés: INTERESi = CAPINI * TASAi", shape="rectangle"];
+  update_capital [label="Actualizar capital: CAPINI = CAPINI + INTERESi", shape="rectangle"];
+  increment_i [label="Incrementar i", shape="rectangle"];
+  output [label="Imprimir capital final: CAPINI", shape="parallelogram"];
+
+  start -> input_meses;
+  input_meses -> input_capital;
+  input_capital -> loop_init;
+  loop_init -> loop_cond;
+  loop_cond -> input_tasa [label="Si", shape="diamond"];
+  loop_cond -> output [label="No", shape="diamond"];
+  input_tasa -> calculate_interest;
+  calculate_interest -> update_capital;
+  update_capital -> increment_i;
+  increment_i -> loop_cond [label="Repetir"];
+  output -> end;
+}

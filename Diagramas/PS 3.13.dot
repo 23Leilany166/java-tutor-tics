@@ -1,0 +1,47 @@
+digraph Conteo_Calificaciones {
+    node [shape=box];
+
+    Inicio [
+        shape=ellipse,
+        label="Inicio",
+        fillcolor="#FF0000",
+        style="filled"
+    ];
+    Ingreso_Calificacion [
+        label="Ingrese una calificación (-1 para finalizar)"
+    ];
+    Verificar_Calificacion [
+        shape=diamond,
+        label="¿calificacion != -1?",
+    ];
+    Contar_Rango_1 [
+        label="Contar calificaciones en el rango 0...3.99 (conteo1)"
+    ];
+    Contar_Rango_2 [
+        label="Contar calificaciones en el rango 4...5.99 (conteo2)"
+    ];
+    Contar_Rango_3 [
+        label="Contar calificaciones en el rango 6...7.99 (conteo3)"
+    ];
+    Contar_Rango_4 [
+        label="Contar calificaciones en el rango 8...10 (conteo4)"
+    ];
+    Imprimir_Resultados [
+        shape=box,
+        label="Imprimir los resultados"
+    ];
+    Fin [
+        shape=ellipse,
+        label="Fin"
+    ];
+
+    Inicio -> Ingreso_Calificacion;
+    Ingreso_Calificacion -> Verificar_Calificacion;
+    Verificar_Calificacion -> Contar_Rango_1 [label="Sí"];
+    Verificar_Calificacion -> Imprimir_Resultados [label="No"];
+    Contar_Rango_1 -> Contar_Rango_2;
+    Contar_Rango_2 -> Contar_Rango_3;
+    Contar_Rango_3 -> Contar_Rango_4;
+    Contar_Rango_4 -> Ingreso_Calificacion;
+    Imprimir_Resultados -> Fin;
+}
