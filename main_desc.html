@@ -226,6 +226,217 @@ public class TemperaturaGrillo {
         </div>
       </article>
 
+<article id="ejemplo_3_3_java" class="exercise-card" aria-labelledby="ejemplo_3_3_java-title">
+  <header class="exercise-header">
+    <span class="exercise-badge">Ejercicio Java</span>
+    <h2 id="ejemplo_3_3_java-title">Conteo de Ceros en un Grupo (Ejemplo 3.3)</h2>
+    <p class="exercise-description">
+      Escribir un programa que lea primero la cantidad de números a ingresar (`N`) y luego lea `N` números enteros. El programa debe contar cuántos de esos números ingresados son iguales a cero, utilizando una estructura repetitiva de conteo (`for` o `while`) y una estructura condicional (`if`).
+    </p>
+  </header>
+  <div class="exercise-content">
+    <section class="exercise-main">
+      <h3>Requisitos</h3>
+      <ul>
+        <li>Leer un número entero `N` que define la cantidad de datos a procesar.</li>
+        <li>Inicializar un contador de ceros (`CUECER`) a 0.</li>
+        <li>Utilizar un **ciclo `for`** que itere desde `i = 1` hasta `N` (o desde `i = 0` hasta `N - 1`).</li>
+        <li>Dentro del ciclo, leer el número actual (`NUM`) de tipo entero.</li>
+        <li>Usar una estructura condicional **`if`** para verificar si el número leído es igual a cero (`NUM == 0`).</li>
+        <li>Si la condición es verdadera, incrementar el contador de ceros (`CUECER`).</li>
+        <li>Al finalizar el ciclo, imprimir el valor final de `CUECER`.</li>
+      </ul>
+
+      <h3>Variables Clave</h3>
+      | Variable | Tipo | Propósito |
+      | :--- | :--- | :--- |
+      | `N` | `int` | Número de datos a ingresar (límite del ciclo). |
+      | `NUM` | `int` | Número entero leído en la iteración actual. |
+      | `I` | `int` | Contador del ciclo (variable de control). |
+      | `CUECER` | `int` | **Contador** que almacena el total de números cero encontrados. |
+
+      <h3>Ejemplo de uso esperado (Implementación en Java)</h3>
+      <pre><code class="code-block">import java.util.Scanner;
+
+public class ContarCeros {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // 1. Leer N
+        System.out.print("Ingrese el número total de datos (N): ");
+        int N = scanner.nextInt();
+        
+        // 2. Hacer CUECER ← 0
+        int CUECER = 0;
+        
+        // 3. y 4. Repetir con I desde 1 hasta N (Ciclo for)
+        System.out.println("Ingrese los " + N + " números enteros:");
+        for (int i = 1; i <= N; i++) {
+            System.out.print("Número " + i + ": ");
+            
+            // Leer NUM
+            int NUM = scanner.nextInt();
+            
+            // 4.1: Si NUM = 0 entonces (Condicional)
+            if (NUM == 0) {
+                // Hacer CUECER ← CUECER + 1
+                CUECER = CUECER + 1;
+            }
+            
+            // El Hacer I ← I + 1 (paso 4.2 del programa 3.5) se maneja automáticamente por el ciclo 'for'
+        }
+        
+        // 6. Escribir CUECER
+        System.out.println("\n--- Resultado ---");
+        System.out.println("La cantidad de números cero es: " + CUECER);
+
+        scanner.close();
+    }
+}
+// Ejemplo de ejecución (usando los datos de la Tabla 3.2, donde N=13):
+// Entrada: 13, 18, 23, 0, 17, 22, 0, 39, 45, 0, 78, 41, 55
+// Salida esperada: La cantidad de números cero es: 3
+</code></pre>
+
+    </section>
+    <aside class="exercise-sidebar">
+      <h3>Notas rápidas</h3>
+      <ul>
+        <li>El ciclo **`for`** es la traducción más directa de la estructura **"Repetir con I desde 1 hasta N"** (Bucle de conteo) del diagrama de flujo.</li>
+        <li>El contador de ciclo (`i` en Java) y el incremento (`i++`) se gestionan automáticamente en la definición del `for`.</li>
+        <li>El contador de ceros (`CUECER`) debe ser inicializado a **cero** antes del ciclo.</li>
+        <li>Se usa una estructura `if` simple porque solo necesitamos actuar si la condición es verdadera (contar si el número es cero).</li>
+        <li>Recuerda que en Java, el operador de igualdad para tipos primitivos (`int`, `double`) es el doble signo igual: **`==`**.</li>
+      </ul>
+    </aside>
+  </div>
+</article>
+
+      <article id="problema_3_14_java" class="exercise-card" aria-labelledby="problema_3_14_java-title">
+  <header class="exercise-header">
+    <span class="exercise-badge">Ejercicio Java</span>
+    <h2 id="problema_3_14_java-title">Ventas de Boletos de Estadio (Problema 3.14)</h2>
+    <p class="exercise-description">
+      Procesar una serie de ventas de boletos de diferentes tipos de localidades (claves 1 a 5) y sus precios correspondientes, utilizando una estructura de control repetitiva (`while`) y la estructura de decisión múltiple (`switch`) para calcular el total de boletos vendidos por cada tipo, el importe total por cada venta y la recaudación total del estadio.
+    </p>
+  </header>
+  <div class="exercise-content">
+    <section class="exercise-main">
+      <h3>Requisitos</h3>
+      <ul>
+        <li>Implementar un **ciclo `while`** que procese ventas hasta encontrar el dato centinela: `CLAVE = -1` y `CANT = -1`.</li>
+        <li>Usar una estructura **`switch`** para evaluar la clave de localidad (`CLAVE` de 1 a 5).</li>
+        <li>Para cada venta válida:
+          <ul>
+            <li>**a)** Calcular el importe total de la venta actual (`PRE = Pn * CANT`).</li>
+            <li>**b)** Acumular la cantidad de boletos vendidos de ese tipo (`APn = APn + CANT`).</li>
+            <li>**c)** Imprimir la clave, la cantidad y el importe de la venta.</li>
+          </ul>
+        </li>
+        <li>Acumular la **recaudación total** del estadio (`RECAU = RECAU + PRE`).</li>
+        <li>Al finalizar, imprimir los acumulados de boletos vendidos por tipo (`AP1` a `AP5`) y la recaudación total (`RECAU`).</li>
+      </ul>
+
+      <h3>Ejemplo de uso esperado (Implementación en Java)</h3>
+      <pre><code class="code-block">import java.util.Scanner;
+
+public class VentasEstadio {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        // Acumuladores de boletos por tipo (inciso d)
+        int AP1 = 0, AP2 = 0, AP3 = 0, AP4 = 0, AP5 = 0;
+        // Acumulador de recaudación total (inciso e)
+        double RECAU = 0.0;
+        // Variables de proceso y precios
+        double PRE = 0.0;
+        int CLAVE, CANT;
+        
+        // --- a) Leer los precios ---
+        System.out.println("--- Ingreso de Precios (P1 a P5) ---");
+        // En un entorno real se leerían los 5 precios aquí:
+        double P1 = 7.25, P2 = 15.80, P3 = 25.00, P4 = 50.00, P5 = 75.00; 
+        System.out.printf("Precios cargados (P1: %.2f, P5: %.2f, etc.)%n", P1, P5);
+
+        // --- b) Leer la primera venta (inicialización del ciclo) ---
+        System.out.println("\n--- Ingreso de Ventas (Clave y Cantidad) ---");
+        System.out.println("Clave (1-5) - Cantidad. Ingrese -1 -1 para terminar.");
+        System.out.print("Venta 1 (CLAVE CANT): ");
+        CLAVE = scanner.nextInt();
+        CANT = scanner.nextInt();
+
+        // --- Ciclo Repetitivo Mientras (while) ---
+        while (CLAVE != -1 && CANT != -1) {
+            
+            // 4.1: Condicional para calcular importe y acumular cantidad
+            switch (CLAVE) {
+                case 1:
+                    PRE = P1 * CANT;
+                    AP1 += CANT;
+                    break;
+                case 2:
+                    PRE = P2 * CANT;
+                    AP2 += CANT;
+                    break;
+                case 3:
+                    PRE = P3 * CANT;
+                    AP3 += CANT;
+                    break;
+                case 4:
+                    PRE = P4 * CANT;
+                    AP4 += CANT;
+                    break;
+                case 5:
+                    PRE = P5 * CANT;
+                    AP5 += CANT;
+                    break;
+                default:
+                    System.out.println("Clave de Localidad inválida: " + CLAVE);
+                    PRE = 0; // No acumular si la clave es inválida
+                    break;
+            }
+
+            // --- c) Imprimir datos de la venta actual ---
+            if (CLAVE >= 1 && CLAVE <= 5) {
+                System.out.printf("Venta procesada: CLAVE=%d, CANT=%d, Importe=%.2f%n", CLAVE, CANT, PRE);
+            }
+            
+            // 4.2: Acumular recaudación total
+            RECAU += PRE;
+
+            // Leer siguiente venta (Actualización del ciclo)
+            System.out.print("Siguiente venta (CLAVE CANT): ");
+            CLAVE = scanner.nextInt();
+            CANT = scanner.nextInt();
+        }
+
+        // --- 5 y 6: Escribir resultados finales ---
+        System.out.println("\n--- REPORTE FINAL ---");
+        System.out.println("d) Cantidad de Boletos Vendidos por Tipo:");
+        System.out.println("  CANTIDAD BOLETOS TIPO 1: " + AP1);
+        System.out.println("  CANTIDAD BOLETOS TIPO 2: " + AP2);
+        System.out.println("  CANTIDAD BOLETOS TIPO 3: " + AP3);
+        System.out.println("  CANTIDAD BOLETOS TIPO 4: " + AP4);
+        System.out.println("  CANTIDAD BOLETOS TIPO 5: " + AP5);
+        System.out.printf("e) RECAUDACIÓN TOTAL DEL ESTADIO: $%.2f%n", RECAU);
+
+        scanner.close();
+    }
+}</code></pre>
+
+    </section>
+    <aside class="exercise-sidebar">
+      <h3>Notas rápidas</h3>
+      <ul>
+        <li>El **Dato Centinela** es `CLAVE = -1`. El algoritmo requiere que la lectura de datos (`CLAVE` y `CANT`) se realice **antes del ciclo** y **al final de cada iteración**.</li>
+        <li>Se utilizó la estructura **`switch`** para el proceso de decisión múltiple, que es más eficiente y legible que múltiples `if-else if` anidados cuando se compara una sola variable con varios valores discretos.</li>
+        <li>Los acumuladores de cantidad (`APn`) son de tipo `int` (entero), mientras que los precios (`Pn`), el importe de la venta (`PRE`) y la recaudación total (`RECAU`) son de tipo `double` (real).</li>
+        <li>Si quieres ver la estructura del algoritmo, busca el **Diagrama de Flujo 3.21** de este problema. </li>
+      </ul>
+    </aside>
+  </div>
+</article>
+
       <article id="problema_4_1_java" class="exercise-card" aria-labelledby="problema_4_1_java-title">
         <header class="exercise-header">
           <span class="exercise-badge">Ejercicio Java</span>
