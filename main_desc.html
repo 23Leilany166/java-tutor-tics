@@ -103,53 +103,40 @@ System.out.println("El cubo de " + num + " es: " + cub);
             Analicemos el siguiente caso. 
           </p>
         </header>
-        <!--Aquí me quedéeeeeeeeeeeeeeeeeeeeeeeee-->
+        
+        <img src="imagenes/DF_ej_2.6.png" alt="Diagrama de flujo" width="400">
+
         <div class="exercise-content">
           <section class="exercise-main">
             <h3>Requisitos</h3>
             <ul>
-              <li>Crear la clase <code>CuadradoCubo</code>.</li>
-              <li>Declarar las variables:
-                <ul>
-                  <li><code>num</code>: Tiene que ser de tipo <code>entero</code>.</li>
-                  <li><code>cua</code>, <code>cub</code>: Ambas tienen que ser de tipo <code>double</code>.</li>
-                </ul>
-              </li>
-              <li>Crear un objeto <code>Scanner</code> para leer los datos introducidos.</li>
-              <li>Leer la variable <code>num</code></li>
-              <li>Calcular <code>cua</code> y <code>cub</code>.</li> <!--Nota-->
-              <li>Escribir <code>cua</code> y <code>cub</code></li> <!--Tip-->
+              <li>Si ei selector toma el valor <code>1</code> o <code>2</code> se realiza la <code>acción 1</code>.</li>
+              <li>Si el selector toma el valor <code>3</code>, <code>4</code> o <code>5</code> se realiza la <code>acción 2</code>.</li>
+              <li>Si el selector toma cualquier otro valor se realiza la <code>acción 3</code>.</li>
+              <li>cuando se continúa con el flujo normal del diagrama se realiza la acción <code>X</code>.</li>
             </ul>
             
             <h3>Ejemplo de uso esperado</h3>
-            <pre><code class="code-block"># Leer el número
-System.out.print("Introduce un número entero: ");
-num = teclado.nextInt();
-
-# Calcular valores 
-cua = Math.pow(num, 2); // Eleva num al cuadrado
-cub = Math.pow(num, 3); // Eleva num al cubo
-
-# Visualizar los resultados 
-System.out.println("El cuadrado de " + num + " es: " + cua);
-System.out.println("El cubo de " + num + " es: " + cub); 
+            <pre><code class="code-block">lenguaje algoritmico del programa
+.
+.
+Si selector Igual
+Valor 1,2: Hacer acción 1
+Valor 3,4,5: Hacer acción 2
+De otra forma: Hacer acción 3
+{Fin del condicional}
+Hacer acción X
+.
+.
             </code></pre>
           </section>
           
           <aside class="exercise-sidebar">
             <h3>Notas rápidas</h3>
-            <p class="note-text">Asegúrate de:</p>
-            <ul>
-              <li>Tu objeto <code>Scanner</code> sea correcto para que lea los datos itroducidos por el usuario.</li>
-              <li>Utiliza la función <code>Math.Pow()</code> para hacer el calculo de los valores.</li>
-            </ul>
+            <p class="note-text">Observe el lector que si ei selector toma el valor l o 2 se realiza la acción 1, si el selector toma el valor 3, 4 o 5 se realiza la acción 2, y si el selector toma cual quier otro valor se realiza la acción 3. Luego, cuando se continúa con el flujo normal del diagrama se realiza la acción X.</p>
             
             <div class="tip-box">
               <strong>Tip:</strong>
-              <ul>
-                <li>Al momento de introducir el número se recomienda que no sea un número con valor decimal o fracción.</li>
-                <li>O implementa el codigo para que el número ingresado sea de tipo double.</li>
-              </ul> 
             </div>
           </aside>
         </div>
@@ -159,13 +146,15 @@ System.out.println("El cubo de " + num + " es: " + cub);
       <article id="PROB_2.10" class="exercise-card" aria-labelledby="PROB_2.10-title">
         <header class="exercise-header">
           <span class="exercise-badge">Problema 2.10</span>
-          <h2 id="PROB_2.10-title">A continuación presentamos la solución en lenguaje algorítmico del diagrama de flujo 1.4.</h2>
+          <h2 id="PROB_2.10-title">¿Cuál es el mayor?</h2>
           
           <p class="exercise-description">
-            El programa, dado como dato un número entero positivo, calcula el cuadrado y el cubo de dicho número NUM es una variable de tipo entero. CUA y CUB son variables de tipo real
+            Dado como datos tres números reales, identifique cuál es el mayor. Considere que los números pueden ser iguales. Desarrolle el diagrama de flujo correspondiente.
           </p>
         </header>
-        
+
+        <img src="imagenes/DF_Prob_2.10.png" alt="Diagrama de flujo" width="600">
+        <!--aca me quede prri-->
         <div class="exercise-content">
           <section class="exercise-main">
             <h3>Requisitos</h3>
@@ -200,11 +189,7 @@ System.out.println("El cubo de " + num + " es: " + cub);
           
           <aside class="exercise-sidebar">
             <h3>Notas rápidas</h3>
-            <p class="note-text">Asegúrate de:</p>
-            <ul>
-              <li>Tu objeto <code>Scanner</code> sea correcto para que lea los datos itroducidos por el usuario.</li>
-              <li>Utiliza la función <code>Math.Pow()</code> para hacer el calculo de los valores.</li>
-            </ul>
+            <p class="note-text">Todas las estructuras selectivas son del tipo doble: Si entonces /sino.</p>
             
             <div class="tip-box">
               <strong>Tip:</strong>
