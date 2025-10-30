@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Práctica 1.11 - Perímetro de un triángulo</title>
+  <link rel="stylesheet" href="../assets/styles_desc.css">
+</head>
+
+<body>
+  <div class="container">
+    <header class="page-header">
+      <h1>Práctica 1.11</h1>
+      <p class="subtitle">Cálculo del perímetro de un triángulo a partir de sus coordenadas</p>
+    </header>
+
+    <article class="exercise-card">
+      <h2>Descripción</h2>
+      <p>
+        Dadas las coordenadas de tres puntos <code>P1</code>, <code>P2</code> y <code>P3</code>
+        que forman los vértices de un triángulo, el programa calcula su perímetro
+        aplicando la fórmula de la distancia entre dos puntos.
+      </p>
+
+      <h3>Diagrama de flujo</h3>
+      <pre class="diagram-block">
+┌──────────────────────────────┐
+│          INICIO              │
+└──────────────┬───────────────┘
+               │
+│ Ingrese X1, Y1, X2, Y2, X3, Y3 │
+│ Calcule D12, D23, D31          │
+│ PERIMETRO = D12 + D23 + D31    │
+│ Mostrar resultado               │
+└──────────────┬───────────────┘
+               │
+┌──────────────┴──────────────┐
+│            FIN              │
+└─────────────────────────────┘
+      </pre>
+
+      <h3>Código Java</h3>
+      <pre class="code-block">
+double d12 = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+double d23 = Math.sqrt(Math.pow(x3 - x2, 2) + Math.pow(y3 - y2, 2));
+double d31 = Math.sqrt(Math.pow(x3 - x1, 2) + Math.pow(y3 - y1, 2));
+double perimetro = d12 + d23 + d31;
+System.out.printf("El perímetro del triángulo es: %.2f%n", perimetro);
+      </pre>
+
+      <h3>Ejemplo de ejecución</h3>
+      <div class="tip-box">
+        <strong>Entrada:</strong><br>
+        X1=0, Y1=0<br>
+        X2=3, Y2=0<br>
+        X3=0, Y3=4<br><br>
+
+        <strong>Salida:</strong><br>
+        El perímetro del triángulo es: 12.00
+      </div>
+
+      <div class="buttons">
+        <a href="ejemplo5_6.html">⬅ Ejercicio anterior</a>
+        <a href="../main_desc.html">🏠 Volver al índice</a>
+        <a href="ps3_18_3_20.html">➡ Siguiente práctica</a>
+      </div>
+    </article>
+  </div>
+</body>
+</html>

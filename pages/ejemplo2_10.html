@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ejemplo 2.10 - Estructura Selectiva Doble y Anidada</title>
+  <link rel="stylesheet" href="../assets/styles_desc.css">
+</head>
+
+<body>
+  <div class="container">
+    <header class="page-header">
+      <h1>Ejemplo 2.10</h1>
+      <p class="subtitle">Estructura selectiva doble y anidada en Java</p>
+    </header>
+
+    <main class="exercises-main">
+      <article class="exercise-card">
+        <header class="exercise-header">
+          <span class="exercise-badge">Ejemplo</span>
+          <h2>Análisis del caso</h2>
+        </header>
+
+        <section class="exercise-main">
+          <p>Este ejemplo representa una estructura selectiva anidada. 
+             Se utilizan tres condiciones (<code>condicion1</code>, <code>condicion2</code> y <code>condicion3</code>) 
+             para determinar qué operaciones realizar. 
+             Dependiendo del resultado de cada condición, el flujo se bifurca y ejecuta la operación correspondiente.</p>
+
+          <h3>📊 Diagrama de flujo</h3>
+          <img src="../assets/diagramas/diagrama2_10.png" alt="Diagrama de flujo del Ejemplo 2.10" style="max-width:100%; border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.15);">
+
+          <h3>🧩 Código representativo en Java</h3>
+          <pre><code class="code-block">
+public class Ejemplo2_10 {
+    public static void main(String[] args) {
+        boolean condicion1 = true;
+        boolean condicion2 = false;
+        boolean condicion3 = true;
+
+        if (condicion1) {
+            if (condicion2) {
+                System.out.println("Operación 21");
+            } else {
+                System.out.println("Operación 22");
+            }
+        } else {
+            if (condicion3) {
+                System.out.println("Operación 31");
+            }
+        }
+    }
+}
+          </code></pre>
+
+          <p>Este código muestra cómo se implementa la estructura selectiva doble y anidada en Java. 
+             Dependiendo de las condiciones, se ejecutará una de las tres operaciones posibles.</p>
+        </section>
+
+    <div class="buttons">
+  <a href="problema1_3.html">⬅ Ejercicio anterior</a>
+  <a href="../main_desc.html">🏠 Volver al índice</a>
+  <a href="problema2_14.html">➡ Siguiente ejercicio</a>
+</div>
+</article>
+</main>
+</div>
+</body>
+</html>
+

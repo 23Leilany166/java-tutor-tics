@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prácticas 3.18 - 3.20</title>
+  <link rel="stylesheet" href="../assets/styles_desc.css">
+</head>
+<body>
+  <div class="container">
+    <header class="page-header">
+      <h1>Prácticas 3.18 - 3.20</h1>
+      <p class="subtitle">En esta página iremos agregando las prácticas 3.18, 3.19 y 3.20 del libro.</p>
+    </header>
+
+    <main class="exercises-main">
+
+      <!-- ===================== PRÁCTICA 3.18 ===================== -->
+      <article id="ps318" class="exercise-card" aria-labelledby="ps318-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Práctica 3.18</span>
+          <h2 id="ps318-title">Potencia sin usar operador de potencia</h2>
+          <p class="exercise-description">
+            Construir un algoritmo que calcule <code>base^exponente</code> sin utilizar <code>Math.pow</code>.
+            Se asume exponente entero no negativo.
+          </p>
+        </header>
+
+        <section class="exercise-main">
+          <h3>Idea</h3>
+          <ul>
+            <li>Inicializar <code>resultado = 1</code>.</li>
+            <li>Multiplicar <code>resultado</code> por la base, <code>exp</code> veces.</li>
+            <li>Si <code>exp = 0</code>, devolver <code>1</code>.</li>
+          </ul>
+
+          <h3>Código (Java)</h3>
+          <pre><code class="code-block">
+// src/Practica3_18.java
+public class Practica3_18 {
+    public static double powNoPow(double base, int exp) {
+        if (exp == 0) return 1.0;
+        double r = 1.0;
+        for (int i = 1; i <= exp; i++) r *= base;
+        return r;
+    }
+}
+          </code></pre>
+
+          <h3>Pruebas (JUnit)</h3>
+          <pre><code class="code-block">
+// tests/TestPractica3_18.java
+import org.junit.Test;
+import static org.junit.Assert.*;
+
+public class TestPractica3_18 {
+    @Test
+    public void testBasico() {
+        assertEquals(8.0, Practica3_18.powNoPow(2.0, 3), 1e-9);
+        assertEquals(1.0, Practica3_18.powNoPow(5.0, 0), 1e-9);
+    }
+}
+          </code></pre>
+        </section>
+
+        <footer class="page-footer">
+          <div class="buttons">
+            <a href="ps1_11.html">⬅ Ejercicio anterior</a>
+            <a href="../main_desc.html">🏠 Volver al índice</a>
+            <a href="#ps319">➡ Siguiente (3.19)</a>
+          </div>
+        </footer>
+      </article>
+
+      <!-- (Luego agregaremos aquí las secciones de 3.19 y 3.20) -->
+
+    </main>
+  </div>
+</body>
+</html>
+
+<!-- ===================== PRÁCTICA 3.19 ===================== -->
+<article id="ps319" class="exercise-card" aria-labelledby="ps319-title">
+  <header class="exercise-header">
+    <span class="exercise-badge">Práctica 3.19</span>
+    <h2 id="ps319-title">Potencia sin multiplicación ni operador de potencia</h2>
+    <p class="exercise-description">
+      Calcular <code>base^exponente</code> sin utilizar <code>Math.pow</code> ni el operador <code>*</code>,
+      empleando sumas repetidas.
+    </p>
+  </header>
+
+  <section class="exercise-main">
+    <h3>Lógica del algoritmo</h3>
+    <ul>
+      <li>Inicia el resultado en la base.</li>
+      <li>Para cada iteración, suma el valor acumulado tantas veces como indique la base.</li>
+      <li>Evita operaciones de potencia y multiplicación.</li>
+    </ul>
+
+    <h3>Código (Java)</h3>
+    <pre><code class="code-block">
+// src/Practica3_19.java
+public class Practica3_19 {
+    public static int powNoMul(int base, int exp) {
+        if (exp == 0) return 1;
+        int resultado = base;
+        for (int i = 1; i < exp; i++) {
+            int suma = 0;
+            for (int j = 0; j < base; j++) {
+                suma += resultado;
+            }
+            resultado = suma;
+        }
+        return resultado;
+    }
+}
+    </code></pre>
+
+    <h3>Pruebas (JUnit)</h3>
+    <pre><code class="code-block">
+// tests/TestPractica3_19.java
+import org.junit.Test;
+import static org.junit.Assert.*;
+
+public class TestPractica3_19 {
+    @Test
+    public void testBasico() {
+        assertEquals(8, Practica3_19.powNoMul(2, 3));
+    }
+}
+    </code></pre>
+  </section>
+
+  <footer class="page-footer">
+    <div class="buttons">
+      <a href="#ps318">⬅ Anterior (3.18)</a>
+      <a href="../main_desc.html">🏠 Volver al índice</a>
+      <a href="#ps320">➡ Siguiente (3.20)</a>
+    </div>
+  </footer>
+</article>
+
+<!-- ===================== PRÁCTICA 3.20 ===================== -->
+<article id="ps320" class="exercise-card" aria-labelledby="ps320-title">
+  <header class="exercise-header">
+    <span class="exercise-badge">Práctica 3.20</span>
+    <h2 id="ps320-title">Recibos de la Compañía de Luz del Centro</h2>
+    <p class="exercise-description">
+      La empresa desea calcular el costo de electricidad para cada cliente y obtener el total de cobros del periodo.
+    </p>
+  </header>
+
+  <section class="exercise-main">
+    <h3>Lógica del problema</h3>
+    <ul>
+      <li>Leer nombre, dirección y registros inicial y final del cliente.</li>
+      <li>Calcular consumo = registro final - registro inicial.</li>
+      <li>Aplicar las reglas de cobro según el rango de consumo.</li>
+      <li>Imprimir recibo y sumar al total general.</li>
+    </ul>
+
+    <h3>Código (Java)</h3>
+    <pre><code class="code-block">
+// src/Practica3_20.java
+public class Practica3_20 {
+    public static double calcularCosto(double consumo) {
+        double costo;
+        if (consumo <= 140) costo = 35;
+        else if (consumo <= 310) costo = 35 + (consumo - 140) * 0.98;
+        else costo = 35 + 170 * 0.98 + (consumo - 310) * 0.67;
+        return costo;
+    }
+}
+    </code></pre>
+
+    <h3>Pruebas (JUnit)</h3>
+    <pre><code class="code-block">
+// tests/TestPractica3_20.java
+import org.junit.Test;
+import static org.junit.Assert.*;
+
+public class TestPractica3_20 {
+    @Test
+    public void testCostoAlto() {
+        assertEquals(35 + 170 * 0.98 + (400 - 310) * 0.67, Practica3_20.calcularCosto(400), 1e-9);
+    }
+}
+    </code></pre>
+
+    <h3>Ejemplo de salida (recibo)</h3>
+    <img src="../assets/diagramas/recibo_inicial.png" alt="Recibo inicial" class="exercise-image">
+    <img src="../assets/diagramas/recibo_final.png" alt="Recibo final" class="exercise-image">
+  </section>
+
+  <footer class="page-footer">
+    <div class="buttons">
+      <a href="#ps319">⬅ Anterior (3.19)</a>
+      <a href="../main_desc.html">🏠 Volver al índice</a>
+      <a href="ps3_44.html">➡ Siguiente práctica</a>
+    </div>
+  </footer>
+</article>

@@ -1,0 +1,27 @@
+name: Test Xavier (local only)
+
+on:
+  workflow_dispatch:  # se ejecuta manualmente desde la pestaña Actions
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Instalar Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Descargar librerías JUnit
+        run: |
+          mkdir -p lib
+          curl -L -o lib/junit-4.13.2.jar https://repo1.maven.org/maven2/junit/junit/4.13.2/junit-4.13.2.jar
+          curl -L -o lib/hamcrest-core-1.3.jar https://repo1.maven.org/maven2/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar
+
+      - name: Compilar y correr tests
+        run: |
+          javac -cp .:lib/junit-4.13.2.jar:lib/hamcrest-core-1.3.jar src/*.java tests/*.java
+          java -cp .:lib/junit-4.13.2.jar:lib/hamcrest-core-1.3.jar org.junit.runner.JUnitCore TestSumar

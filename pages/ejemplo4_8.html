@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ejemplo 4.8 - Matriz con índices negativos</title>
+  <link rel="stylesheet" href="../assets/styles_desc.css">
+</head>
+
+<body>
+  <div class="container">
+    <header class="page-header">
+      <h1>Ejemplo 4.8</h1>
+      <p class="subtitle">Simulación de una matriz con índices negativos en Java</p>
+    </header>
+
+    <article class="exercise-card">
+      <h2>Descripción</h2>
+      <p>
+        Consideremos un arreglo de números reales con índices negativos. 
+        La matriz se define como: <code>MATRIZ1 = ARREGLO[-11..3, -17..-13]</code>.
+      </p>
+      <p>
+        El número total de elementos se obtiene mediante:
+        <code>NTE = (3 - (-11) + 1) * (-13 - (-17) + 1) = 15 × 5 = 75</code>.
+      </p>
+
+      <h3>Código Java</h3>
+      <pre class="code-block">
+public class Ejemplo4_8 {
+    public static double[][] crearMatriz() {
+        int filas = (3 - (-11)) + 1;
+        int columnas = (-13 - (-17)) + 1;
+        double[][] matriz = new double[filas][columnas];
+        double valor = 1.0;
+        for (int i = 0; i < filas; i++) {
+            for (int j = 0; j < columnas; j++) {
+                matriz[i][j] = valor++;
+            }
+        }
+        return matriz;
+    }
+    public static int contarElementos(double[][] matriz) {
+        int total = 0;
+        for (double[] fila : matriz) total += fila.length;
+        return total;
+    }
+    public static void main(String[] args) {
+        double[][] matriz = crearMatriz();
+        int total = contarElementos(matriz);
+        System.out.println("Número total de elementos (NTE): " + total);
+    }
+}
+      </pre>
+
+      <h3>Resultado esperado</h3>
+      <div class="tip-box">
+        Número total de elementos (NTE): 75<br>
+        Dimensiones: 15 filas x 5 columnas
+      </div>
+
+      <div class="buttons">
+        <a href="problema3_11.html">⬅ Ejercicio anterior</a>
+        <a href="../main_desc.html">🏠 Volver al índice</a>
+        <a href="problema4_11.html">➡ Siguiente ejercicio</a>
+      </div>
+    </article>
+  </div>
+</body>
+</html>

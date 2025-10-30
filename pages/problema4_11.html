@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Problema 4.11 - Mezcla de arreglos de países de América</title>
+  <link rel="stylesheet" href="../assets/styles_desc.css">
+</head>
+
+<body>
+  <div class="container">
+    <header class="page-header">
+      <h1>Problema 4.11</h1>
+      <p class="subtitle">Mezcla alfabética de los países de América</p>
+    </header>
+
+    <article class="exercise-card">
+      <h2>Descripción</h2>
+      <p>
+        Se tienen tres arreglos: <code>SUR</code>, <code>CENTRO</code> y <code>NORTE</code> que almacenan los nombres
+        de los países del Sur, Centro y Norteamérica respectivamente.
+        El programa mezcla los tres arreglos para crear un cuarto arreglo
+        <code>AMERICA</code> con los países ordenados alfabéticamente.
+      </p>
+
+      <h3>Diagramas de flujo</h3>
+      <img src="../assets/diagramas/diagramap4_11_1.png" alt="Parte 1" class="exercise-image">
+      <img src="../assets/diagramas/diagramap4_11_2.png" alt="Parte 2" class="exercise-image">
+      <img src="../assets/diagramas/diagramap4_11_3.png" alt="Parte 3" class="exercise-image">
+      <img src="../assets/diagramas/diagramap4_11_4.png" alt="Parte 4" class="exercise-image">
+      <img src="../assets/diagramas/diagramap4_11_5.png" alt="Parte 5" class="exercise-image">
+      <img src="../assets/diagramas/diagramap4_11_6.png" alt="Parte 6" class="exercise-image">
+
+      <h3>Código Java</h3>
+      <pre class="code-block">
+public class Problema4_11 {
+    public static String[] mezclarArreglos(String[] sur, String[] centro, String[] norte) {
+        int tps = sur.length, tpc = centro.length, tpn = norte.length;
+        String[] america = new String[tps + tpc + tpn];
+        int ps = 0, pc = 0, pn = 0, pa = 0;
+        while (ps < tps && pc < tpc && pn < tpn) {
+            if (sur[ps].compareToIgnoreCase(centro[pc]) <= 0 && sur[ps].compareToIgnoreCase(norte[pn]) <= 0)
+                america[pa++] = sur[ps++];
+            else if (centro[pc].compareToIgnoreCase(sur[ps]) <= 0 && centro[pc].compareToIgnoreCase(norte[pn]) <= 0)
+                america[pa++] = centro[pc++];
+            else america[pa++] = norte[pn++];
+        }
+        return america;
+    }
+}
+      </pre>
+
+      <h3>Resultado esperado</h3>
+      <div class="tip-box">
+        <strong>Salida:</strong><br>
+        Argentina<br>
+        Belice<br>
+        Brasil<br>
+        Canadá<br>
+        Chile<br>
+        Costa Rica<br>
+        Estados Unidos<br>
+        México
+      </div>
+
+      <div class="buttons">
+        <a href="ejemplo4_8.html">⬅ Ejercicio anterior</a>
+        <a href="../main_desc.html">🏠 Volver al índice</a>
+        <a href="ejemplo5_6.html">➡ Siguiente ejercicio</a>
+      </div>
+    </article>
+  </div>
+</body>
+</html>

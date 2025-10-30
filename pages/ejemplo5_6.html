@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ejemplo 5.6 - Registros anidados</title>
+  <link rel="stylesheet" href="../assets/styles_desc.css">
+</head>
+
+<body>
+  <div class="container">
+    <header class="page-header">
+      <h1>Ejemplo 5.6</h1>
+      <p class="subtitle">Registros anidados: estructura EMPLEADO y DOMICILIO</p>
+    </header>
+
+    <article class="exercise-card">
+      <h2>Descripción</h2>
+      <p>
+        Este ejemplo muestra cómo se pueden crear registros anidados en Java.
+        El registro <code>EMPLEADO</code> incluye un campo <code>DIRECCIÓN</code>,
+        que a su vez es un registro del tipo <code>DOMICILIO</code> compuesto por
+        calle, número, ciudad y país.
+      </p>
+
+      <h3>Figura de referencia</h3>
+      <img src="../assets/diagramas/figura5_6.png" alt="Registros anidados" class="exercise-image">
+
+      <h3>Código Java</h3>
+      <pre class="code-block">
+public class Ejemplo5_6 {
+    static class Domicilio {
+        String calle;
+        int numero;
+        String ciudad;
+        String pais;
+    }
+
+    static class Empleado {
+        int numero;
+        String nombre;
+        Domicilio direccion;
+        String departamento;
+        int nivel;
+        double sueldo;
+    }
+}
+      </pre>
+
+      <h3>Resultado esperado</h3>
+      <div class="tip-box">
+        <strong>Salida:</strong><br>
+        Empleado #1<br>
+        Nombre: Xavier Guerrero<br>
+        Dirección: Av. Hidalgo #102, Pachuca, México<br>
+        Departamento: TICs<br>
+        Nivel: 2<br>
+        Sueldo: $18500.75
+      </div>
+
+      <div class="buttons">
+        <a href="problema4_11.html">⬅ Ejercicio anterior</a>
+        <a href="../main_desc.html">🏠 Volver al índice</a>
+      </div>
+    </article>
+  </div>
+</body>
+</html>
