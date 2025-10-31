@@ -154,36 +154,31 @@ Hacer acción X
         </header>
 
         <img src="imagenes/DF_Prob_2.10.png" alt="Diagrama de flujo" width="600">
-        <!--aca me quede prri-->
+        
         <div class="exercise-content">
           <section class="exercise-main">
             <h3>Requisitos</h3>
             <ul>
-              <li>Crear la clase <code>CuadradoCubo</code>.</li>
-              <li>Declarar las variables:
-                <ul>
-                  <li><code>num</code>: Tiene que ser de tipo <code>entero</code>.</li>
-                  <li><code>cua</code>, <code>cub</code>: Ambas tienen que ser de tipo <code>double</code>.</li>
-                </ul>
-              </li>
-              <li>Crear un objeto <code>Scanner</code> para leer los datos introducidos.</li>
-              <li>Leer la variable <code>num</code></li>
-              <li>Calcular <code>cua</code> y <code>cub</code>.</li> <!--Nota-->
-              <li>Escribir <code>cua</code> y <code>cub</code></li> <!--Tip-->
+              <li>Debe leer tres números decimales (<code>double</code>) desde la consola del usuario.</code>.</li>
+              <li>Necesita tres variables para guardar los valores ingresados (<code>A</code>, <code>B</code> y <code>C</code>).</li>
+              <li>Debe comparar los tres valores para identificar el más alto. Es crucial que la lógica contemple todos los escenarios posibles:</li>
+              <ul>
+                <li>Un único número es el mayor.</li>
+                <li>Dos números son iguales y mayores que el tercero.</li>
+                <li>Los tres números son iguales.</li>
+              </ul>
+              <li>Tiene que mostrar un mensaje claro en la consola indicando cuál o cuáles son los números mayores.</li>
             </ul>
             
             <h3>Ejemplo de uso esperado</h3>
-            <pre><code class="code-block"># Leer el número
-System.out.print("Introduce un número entero: ");
-num = teclado.nextInt();
-
-# Calcular valores 
-cua = Math.pow(num, 2); // Eleva num al cuadrado
-cub = Math.pow(num, 3); // Eleva num al cubo
-
-# Visualizar los resultados 
-System.out.println("El cuadrado de " + num + " es: " + cua);
-System.out.println("El cubo de " + num + " es: " + cub); 
+            <pre><code class="code-block">
+NUMERO DE |   DATOS   |
+CORRIDA   |  A  B  C  | RESULTADO
+1         |  6  8  9  |“C es el mayor"
+2         |  7  7  4  |"A y B son los mayores"
+3         |  15 22 15 |"B es el mayor"
+4         |  48 45 45 |"A es el mayor"
+5         |  17 17 17 |”A, B y C son Iguales"
             </code></pre>
           </section>
           
@@ -202,6 +197,7 @@ System.out.println("El cubo de " + num + " es: " + cub);
         </div>
       </article>
 
+      <!--Aqui me quedeeeee-->
 <!-- Problema 3.7 -->
       <article id="PROB_3.7" class="exercise-card" aria-labelledby="PROB_3.7-title">
         <header class="exercise-header">
