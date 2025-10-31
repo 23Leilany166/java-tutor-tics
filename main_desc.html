@@ -54,32 +54,38 @@
 
             <h3>Ejemplo de uso esperado (Java)</h3>
             <pre><code class="code-block">public class EvaluacionExpresiones {
-    public static void main(String[] args) {
+    package com.programa;
 
-        // --- Caso a) ---
-        // Pseudocódigo: NO(15 >= 7**2) O (43 - 8 * 2 div 4 <> 3 * 2 div 2) 
-        // 'div' es división entera
-        boolean casoA = !(15 >= Math.pow(7, 2)) || (43 - (8 * 2 / 4) != (3 * 2 / 2));
-        System.out.println("Caso a) Resultado: " + casoA); // Esperado: true 
+public class ejemplo_1_4 {
 
-        // --- Caso b) ---
-        // Pseudocódigo: (15 >= 7*3**2 Y 8 > 3 Y 15 > 6) O NO(7*3 < 5 + 12*2 div 3**2) 
-        // 12*2 div 3**2 = 24 div 9 = 2
-        boolean parteB1 = (15 >= (7 * Math.pow(3, 2))) && (8 > 3) && (15 > 6);
-        boolean parteB2 = !( (7 * 3) < (5 + (12 * 2 / (int)Math.pow(3, 2))) );
-        boolean casoB = parteB1 || parteB2;
-        System.out.println("Caso b) Resultado: " + casoB); // Esperado: true 
-        
-        // --- Caso c) ---
-        // Pseudocódigo: NO( (7*3 div 2 * 4) > (15/2 * 6 >= 15*2 / 17 = 15) ) 
-        // El libro identifica esto como un error.
-        // La expresión (15/2 * 6 >= 15*2 / 17) da VERDADERO.
-        // La expresión (VERDADERO = 15) es un error de tipos.
-        
-        // En Java, esto ni siquiera compila, demostrando el error de tipos:
-        // boolean error = (true == 15); // <-- Error: incomparable types: boolean and int
-        System.out.println("Caso c) Produce un error de tipos al comparar VERDADERO con 15, como se indica en el libro.");
+    // Lógica separada
+    
+    // a) NO(15 >= 7**2) O (43 - 8 * 2 div 4 <> 3 * 2 div 2)
+    public boolean evaluarCasoA() {
+        // 'div' es división entera (Java lo hace automático con ints)
+        return !(15 >= Math.pow(7, 2)) || (43 - (8 * 2 / 4) != (3 * 2 / 2));
     }
+
+    // b) (15 >= 7*3**2 Y 8 > 3 Y 15 > 6) O NO(7*3 < 5 + 12*2 div 3**2)
+    public boolean evaluarCasoB() {
+        boolean parteB1 = (15 >= (7 * Math.pow(3, 2))) && (8 > 3) && (15 > 6);
+        // (12*2 div 3**2) = (24 div 9) = 2 (división entera)
+        boolean parteB2 = !( (7 * 3) < (5 + (12 * 2 / (int)Math.pow(3, 2))) );
+        return parteB1 || parteB2;
+    }
+    
+    // c) Caso C es un error de tipos (boolean = int), no se puede ejecutar.
+
+    // El main solo llama a la lógica
+    public static void main(String[] args) {
+        ejemplo_1_4 ee = new ejemplo_1_4();
+        
+        System.out.println("--- Evaluación de Expresiones Lógicas (Ejemplo 1.4) ---");
+        System.out.println("Caso a) Resultado: " + ee.evaluarCasoA());
+        System.out.println("Caso b) Resultado: " + ee.evaluarCasoB());
+        System.out.println("Caso c) Produce un error de tipos, como se indica en el libro.");
+    }
+}
 }</code></pre>
           </section>
           
@@ -125,19 +131,35 @@
             <h3>Ejemplo de uso esperado (Java)</h3>
             <pre><code class="code-block">import java.util.Scanner;
 
-public class Cilindro {
+package com.programa;
+
+import java.util.Scanner;
+
+public class problema_1_5 {
+
+    // Lógica separada para ser testeable
+    public double calcularVolumen(double radio, double altura) {
+        if (radio < 0 || altura < 0) return 0;
+        return Math.PI * Math.pow(radio, 2) * altura;
+    }
+
+    public double calcularArea(double radio, double altura) {
+        if (radio < 0 || altura < 0) return 0;
+        return 2 * Math.PI * radio * altura;
+    }
+
+    // El main solo maneja la entrada y salida
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        problema_1_5 c = new problema_1_5(); // Creamos instancia
 
         System.out.print("Ingrese el radio del cilindro: ");
         double radio = scanner.nextDouble();
-
         System.out.print("Ingrese la altura del cilindro: ");
         double altura = scanner.nextDouble();
 
-        // Usar Math.PI para precisión
-        double volumen = Math.PI * Math.pow(radio, 2) * altura;
-        double area = 2 * Math.PI * radio * altura;
+        double volumen = c.calcularVolumen(radio, altura);
+        double area = c.calcularArea(radio, altura);
 
         System.out.println("--- Resultados ---");
         System.out.printf("Volumen: %.4f\n", volumen);
@@ -145,6 +167,7 @@ public class Cilindro {
         
         scanner.close();
     }
+}
 }</code></pre>
           </section>
           
@@ -187,9 +210,42 @@ public class Cilindro {
             <h3>Ejemplo de uso esperado (Java)</h3>
             <pre><code class="code-block">import java.util.Scanner;
 
-public class OrdenarNumeros {
+package com.programa;
+
+import java.util.Scanner;
+
+public class ejemplo_2_12 {
+
+    // Lógica separada
+    public String ordenar(int a, int b, int c) {
+        // Lógica del Diagrama de Flujo 2.15
+        if (a > b) {
+            if (a > c) {
+                if (b > c) {
+                    return a + ", " + b + ", " + c; // A, B, C
+                } else {
+                    return a + ", " + c + ", " + b; // A, C, B
+                }
+            } else {
+                return c + ", " + a + ", " + b; // C, A, B
+            }
+        } else { // B >= A
+            if (b > c) {
+                if (a > c) {
+                    return b + ", " + a + ", " + c; // B, A, C
+                } else {
+                    return b + ", " + c + ", " + a; // B, C, A
+                }
+            } else {
+                return c + ", " + b + ", " + a; // C, B, A
+            }
+        }
+    }
+
+    // El main solo maneja I/O
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        ejemplo_2_12 ordenador = new ejemplo_2_12();
 
         System.out.print("Ingrese el número A: ");
         int a = scanner.nextInt();
@@ -198,33 +254,12 @@ public class OrdenarNumeros {
         System.out.print("Ingrese el número C: ");
         int c = scanner.nextInt();
 
-        System.out.print("Orden descendente: ");
-
-        // Lógica del Diagrama de Flujo 2.15
-        if (a > b) {
-            if (a > c) {
-                if (b > c) {
-                    System.out.println(a + ", " + b + ", " + c); // A, B, C
-                } else {
-                    System.out.println(a + ", " + c + ", " + b); // A, C, B
-                }
-            } else {
-                System.out.println(c + ", " + a + ", " + b); // C, A, B
-            }
-        } else { // B >= A
-            if (b > c) {
-                if (a > c) {
-                    System.out.println(b + ", " + a + ", " + c); // B, A, C
-                } else {
-                    System.out.println(b + ", " + c + ", " + a); // B, C, A
-                }
-            } else {
-                System.out.println(c + ", " + b + ", " + a); // C, B, A
-            }
-        }
+        String resultado = ordenador.ordenar(a, b, c);
+        System.out.println("Orden descendente: " + resultado);
         
         scanner.close();
     }
+}
 }</code></pre>
           </section>
           
@@ -265,27 +300,42 @@ public class OrdenarNumeros {
 
             <h3>Ejemplo de uso esperado (Java)</h3>
             <pre><code class="code-block">import java.util.Scanner;
+package com.programa;
 
-public class NominaRepetitiva {
+import java.util.Scanner;
+
+public class ejemplo_3_2 {
+
+    // Lógica separada
+    public double calcularNomina(double[] sueldos) {
+        double nomina = 0;
+        for (double sueldo : sueldos) {
+            nomina += sueldo;
+        }
+        return nomina;
+    }
+
+    // El main solo maneja I/O
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        ejemplo_3_2 nr = new ejemplo_3_2();
         
-        double nomina = 0; // Acumulador
-        double sueldo;
+        final int TOTAL_TRABAJADORES = 10;
+        double[] sueldos = new double[TOTAL_TRABAJADORES];
 
-        System.out.println("Ingrese los 10 sueldos:");
+        System.out.println("Ingrese los " + TOTAL_TRABAJADORES + " sueldos:");
 
-        // Estructura Repetir (FOR)
-        for (int i = 1; i <= 10; i++) {
-            System.out.print("Sueldo del trabajador " + i + ": ");
-            sueldo = scanner.nextDouble();
-            nomina = nomina + sueldo; // Acumular
+        for (int i = 0; i < TOTAL_TRABAJADORES; i++) {
+            System.out.print("Sueldo del trabajador " + (i + 1) + ": ");
+            sueldos[i] = scanner.nextDouble();
         }
 
-        System.out.printf("\nEl total de la nómina es: %.2f\n", nomina);
+        double nominaTotal = nr.calcularNomina(sueldos);
+        System.out.printf("\nEl total de la nómina es: %.2f\n", nominaTotal);
         
         scanner.close();
     }
+}
 }</code></pre>
           </section>
           
@@ -326,52 +376,74 @@ public class NominaRepetitiva {
             <h3>Ejemplo de uso esperado (Java)</h3>
             <pre><code class="code-block">import java.util.Scanner;
 
-public class Meteorologico {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+package com.programa;
 
+import java.util.Scanner;
+
+public class problema_3_13 {
+
+    // Lógica separada
+    public ReporteClima procesarDatos(double[] rno, double[] rce, double[] rsu) {
+        ReporteClima reporte = new ReporteClima();
         double arno = 0, arce = 0, arsu = 0;
-        double mersu = 500000; // Valor inicial alto para buscar el mínimo
-        int mesMersu = 0;
+        reporte.registroMenorLluviaSur = Double.MAX_VALUE; // Valor inicial muy alto
+        reporte.mesMenorLluviaSur = -1;
 
-        for (int i = 1; i <= 12; i++) {
-            System.out.println("--- Mes " + i + " ---");
-            System.out.print("Lluvia Región Norte: ");
-            double rno = scanner.nextDouble();
-            System.out.print("Lluvia Región Centro: ");
-            double rce = scanner.nextDouble();
-            System.out.print("Lluvia Región Sur: ");
-            double rsu = scanner.nextDouble();
+        // Asumimos que los arreglos tienen 12 elementos
+        for (int i = 0; i < 12; i++) {
+            arno += rno[i];
+            arce += rce[i];
+            arsu += rsu[i];
 
-            arno += rno;
-            arce += rce;
-            arsu += rsu;
-
-            if (rsu < mersu) {
-                mersu = rsu;
-                mesMersu = i;
+            if (rsu[i] < reporte.registroMenorLluviaSur) {
+                reporte.registroMenorLluviaSur = rsu[i];
+                reporte.mesMenorLluviaSur = i + 1; // Mes 1-12
             }
         }
 
         // a) Promedio Región Centro
-        double prorce = arce / 12;
-        System.out.printf("\na) Promedio anual Región Centro: %.2f\n", prorce);
-
-        // b) Menor lluvia Región Sur
-        System.out.printf("b) Menor lluvia Región Sur fue en el mes %d (Registro: %.2f)\n", mesMersu, mersu);
+        reporte.promedioCentro = arce / 12.0;
 
         // c) Región con mayor lluvia anual
-        System.out.print("c) Región con mayor lluvia anual: ");
         if (arno > arce && arno > arsu) {
-            System.out.println("NORTE");
+            reporte.regionMayorLluvia = "NORTE";
         } else if (arce > arno && arce > arsu) {
-            System.out.println("CENTRO");
+            reporte.regionMayorLluvia = "CENTRO";
         } else {
-            System.out.println("SUR");
+            reporte.regionMayorLluvia = "SUR";
         }
+        
+        return reporte;
+    }
+
+    // El main solo maneja I/O
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        problema_3_13 m = new problema_3_13();
+
+        double[] rno = new double[12];
+        double[] rce = new double[12];
+        double[] rsu = new double[12];
+
+        for (int i = 0; i < 12; i++) {
+            System.out.println("--- Mes " + (i + 1) + " ---");
+            System.out.print("Lluvia Región Norte: ");
+            rno[i] = scanner.nextDouble();
+            System.out.print("Lluvia Región Centro: ");
+            rce[i] = scanner.nextDouble();
+            System.out.print("Lluvia Región Sur: ");
+            rsu[i] = scanner.nextDouble();
+        }
+
+        ReporteClima reporte = m.procesarDatos(rno, rce, rsu);
+
+        System.out.printf("\na) Promedio anual Región Centro: %.2f\n", reporte.promedioCentro);
+        System.out.printf("b) Menor lluvia Región Sur fue en el mes %d (Registro: %.2f)\n", reporte.mesMenorLluviaSur, reporte.registroMenorLluviaSur);
+        System.out.println("c) Región con mayor lluvia anual: " + reporte.regionMayorLluvia);
         
         scanner.close();
     }
+}
 }</code></pre>
           </section>
           
@@ -413,48 +485,48 @@ public class Meteorologico {
             <h3>Ejemplo de uso esperado (Java)</h3>
             <pre><code class="code-block">import java.util.Random;
 
-public class Meteorologico3D {
-    public static void main(String[] args) {
-        // [32 estados][12 meses][5 años]
-        double[][][] met = new double[32][12][5];
-        Random rand = new Random();
+package com.programa;
 
-        // Simular llenado de datos
-        for (int e = 0; e < 32; e++) { // Estado
-            for (int m = 0; m < 12; m++) { // Mes
-                for (int a = 0; a < 5; a++) { // Año
-                    met[e][m][a] = rand.nextDouble() * 100; // Lluvia 0-100
-                }
-            }
-        }
+import java.util.Random;
 
-        // a) Lluvias mensuales de cada estado, 3er año (índice 2)
-        System.out.println("--- a) Lluvias del 3er año ---");
+public class ejemplo_4_10 {
+
+    // --- Lógica Separada ---
+
+    // a) Lluvias mensuales de cada estado, 3er año (índice 2)
+    // Devuelve una matriz 32x12
+    public double[][] getLluviasAnio3(double[][][] met) {
+        double[][] lluviasAnio = new double[32][12];
         for (int e = 0; e < 32; e++) {
             for (int m = 0; m < 12; m++) {
-                // System.out.printf("Estado %d, Mes %d: %.2f\n", e + 1, m + 1, met[e][m][2]);
+                lluviasAnio[e][m] = met[e][m][2]; // Año índice 2
             }
         }
-        System.out.println("(Salida 'a' omitida por brevedad...)\n");
+        return lluviasAnio;
+    }
 
-
-        // b) Total lluvias en el país, 4to año (índice 3)
+    // b) Total lluvias en el país, 4to año (índice 3)
+    public double calcTotalAnio4(double[][][] met) {
         double totalAnio4 = 0;
         for (int e = 0; e < 32; e++) {
             for (int m = 0; m < 12; m++) {
-                totalAnio4 += met[e][m][3];
+                totalAnio4 += met[e][m][3]; // Año índice 3
             }
         }
-        System.out.printf("--- b) Total Lluvias 4to año: %.2f\n", totalAnio4);
+        return totalAnio4;
+    }
 
-        // c) Total lluvias último año (índice 4) del estado 17 (índice 16)
+    // c) Total lluvias último año (índice 4) del estado 17 (índice 16)
+    public double calcTotalEst17Anio5(double[][][] met) {
         double totalEst17Anio5 = 0;
         for (int m = 0; m < 12; m++) {
-            totalEst17Anio5 += met[16][m][4];
+            totalEst17Anio5 += met[16][m][4]; // Estado 16, Año 4
         }
-        System.out.printf("--- c) Total Lluvias Est. 17 (Último año): %.2f\n", totalEst17Anio5);
+        return totalEst17Anio5;
+    }
 
-        // d) Total de lluvias en México en 5 años
+    // d) Total de lluvias en México en 5 años
+    public double calcGranTotal(double[][][] met) {
         double granTotal = 0;
         for (int e = 0; e < 32; e++) {
             for (int m = 0; m < 12; m++) {
@@ -463,8 +535,31 @@ public class Meteorologico3D {
                 }
             }
         }
-        System.out.printf("--- d) Gran Total 5 años: %.2f\n", granTotal);
+        return granTotal;
     }
+
+    // El main solo simula datos y llama a la lógica
+    public static void main(String[] args) {
+        ejemplo_4_10 m3d = new ejemplo_4_10();
+        double[][][] met = new double[32][12][5];
+        Random rand = new Random();
+        for (int e = 0; e < 32; e++) {
+            for (int m = 0; m < 12; m++) {
+                for (int a = 0; a < 5; a++) {
+                    met[e][m][a] = rand.nextDouble() * 100;
+                }
+            }
+        }
+        
+        System.out.println("--- a) Lluvias del 3er año ---");
+        System.out.println("(Salida omitida por brevedad...)\n");
+        // m3d.getLluviasAnio3(met); // ... (imprimir si se desea)
+
+        System.out.printf("--- b) Total Lluvias 4to año: %.2f\n", m3d.calcTotalAnio4(met));
+        System.out.printf("--- c) Total Lluvias Est. 17 (Último año): %.2f\n", m3d.calcTotalEst17Anio5(met));
+        System.out.printf("--- d) Gran Total 5 años: %.2f\n", m3d.calcGranTotal(met));
+    }
+}
 }</code></pre>
           </section>
           
@@ -507,18 +602,33 @@ public class Meteorologico3D {
             <h3>Ejemplo de uso esperado (Java)</h3>
             <pre><code class="code-block">import java.util.Arrays;
 
-public class IntercambiarRenglones {
+package com.programa;
 
-    // Método para imprimir la matriz
-    public static void printMatrix(int[][] matrix) {
-        for (int[] row : matrix) {
-            System.out.println(Arrays.toString(row));
+import java.util.Arrays;
+
+public class problema_4_13 {
+
+    // Lógica separada
+    // Modifica la matriz "in-place" (directamente), no devuelve nada (void)
+    public void intercambiar(int[][] matrix) {
+        if (matrix == null || matrix.length == 0) return;
+        
+        int n = matrix.length;
+        
+        // El ciclo va hasta N / 2
+        for (int i = 0; i < n / 2; i++) {
+            // Iterar por todas las columnas (J)
+            for (int j = 0; j < n; j++) {
+                int aux = matrix[i][j];
+                matrix[i][j] = matrix[n - 1 - i][j]; // Fila opuesta (índice base 0)
+                matrix[n - 1 - i][j] = aux;
+            }
         }
     }
-
+    
+    // Método main para demostración
     public static void main(String[] args) {
-        // Ejemplo N=4
-        int n = 4;
+        problema_4_13 ir = new problema_4_13();
         int[][] a = {
             {10, 15, 28, 49},
             {68, 115, 36, 15},
@@ -529,20 +639,19 @@ public class IntercambiarRenglones {
         System.out.println("--- Matriz Original ---");
         printMatrix(a);
 
-        // Lógica de intercambio (índices base 0)
-        // El ciclo va hasta N / 2
-        for (int i = 0; i < n / 2; i++) {
-            // Iterar por todas las columnas (J)
-            for (int j = 0; j < n; j++) {
-                int aux = a[i][j];
-                a[i][j] = a[n - 1 - i][j]; // Fila opuesta
-                a[n - 1 - i][j] = aux;
-            }
-        }
+        ir.intercambiar(a); // Modifica la matriz 'a'
 
         System.out.println("\n--- Matriz Modificada ---");
         printMatrix(a);
     }
+
+    // Método de utilidad para imprimir
+    public static void printMatrix(int[][] matrix) {
+        for (int[] row : matrix) {
+            System.out.println(Arrays.toString(row));
+        }
+    }
+}
 }</code></pre>
           </section>
           
@@ -584,80 +693,70 @@ public class IntercambiarRenglones {
 
             <h3>Ejemplo de uso esperado (Java)</h3>
             <pre><code class="code-block">import java.util.ArrayList;
+package com.programa;
+
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
-// (Clase MatrizElemento va primero)
+public class problema_5_1 {
 
-public class SumaMatricesEsparcidas {
-    
-    // (Clase interna MatrizElemento)
-    static class MatrizElemento {
-        int ren, col, val;
-        MatrizElemento(int ren, int col, int val) {
-            this.ren = ren; this.col = col; this.val = val;
-        }
-    }
-
-    public static void main(String[] args) {
-        // Asumimos M=3, N=4 para el ejemplo
-        int M = 3, N = 4;
-        // Simulación de lectura
-        List<MatrizElemento> A1 = new ArrayList<>();
-        List<MatrizElemento> B1 = new ArrayList<>();
-
-        // Matriz A: [5,0,0,8], [0,0,7,0], [0,3,0,0]
-        A1.add(new MatrizElemento(0, 0, 5));
-        A1.add(new MatrizElemento(0, 3, 8));
-        A1.add(new MatrizElemento(1, 2, 7));
-        A1.add(new MatrizElemento(2, 1, 3));
-        
-        // Matriz B: [0,0,0,8], [0,6,0,0], [0,3,4,0]
-        B1.add(new MatrizElemento(0, 3, 8));
-        B1.add(new MatrizElemento(1, 1, 6));
-        B1.add(new MatrizElemento(2, 1, 3));
-        B1.add(new MatrizElemento(2, 2, 4));
-
+    // Lógica separada
+    public int[][] sumar(List<MatrizElemento> A1, List<MatrizElemento> B1, int M, int N) {
         int[][] C = new int[M][N]; // Inicializada en 0 por defecto
-
-        // b) Lógica de suma (Merge)
         int i = 0, j = 0;
+
         while (i < A1.size() && j < B1.size()) {
             MatrizElemento elA = A1.get(i);
             MatrizElemento elB = B1.get(j);
 
-            if (elA.ren < elB.ren) { // Renglón A es menor
+            if (elA.ren < elB.ren) {
                 C[elA.ren][elA.col] = elA.val;
                 i++;
-            } else if (elB.ren < elA.ren) { // Renglón B es menor
+            } else if (elB.ren < elA.ren) {
                 C[elB.ren][elB.col] = elB.val;
                 j++;
-            } else { // Renglones iguales, comparar columnas
+            } else { // Renglones iguales
                 if (elA.col < elB.col) {
                     C[elA.ren][elA.col] = elA.val;
                     i++;
                 } else if (elB.col < elA.col) {
                     C[elB.ren][elB.col] = elB.val;
                     j++;
-                } else { // Misma posición: sumar
+                } else { // Misma posición
                     C[elA.ren][elA.col] = elA.val + elB.val;
                     i++;
                     j++;
                 }
             }
         }
-        // Añadir restantes de A1
+        
         while (i < A1.size()) { C[A1.get(i).ren][A1.get(i).col] = A1.get(i).val; i++; }
-        // Añadir restantes de B1
         while (j < B1.size()) { C[B1.get(j).ren][B1.get(j).col] = B1.get(j).val; j++; }
+        
+        return C;
+    }
 
-        // c) Imprimir C
-        System.out.println("--- Matriz Resultante C ---");
+    // El main solo maneja I/O (simulado)
+    public static void main(String[] args) {
+        problema_5_1 s = new problema_5_1();
+        int M = 3, N = 4;
+        
+        List<MatrizElemento> A1 = new ArrayList<>();
+        A1.add(new MatrizElemento(0, 0, 5));
+        A1.add(new MatrizElemento(1, 2, 7));
+        
+        List<MatrizElemento> B1 = new ArrayList<>();
+        B1.add(new MatrizElemento(0, 0, 10)); // Suma
+        B1.add(new MatrizElemento(2, 2, 9)); // Nuevo
+        
+        int[][] C = s.sumar(A1, B1, M, N);
+
+        System.out.println("--- Matriz Resultante C (A + B) ---");
         for (int r = 0; r < M; r++) {
             System.out.println(java.util.Arrays.toString(C[r]));
         }
-        // Resultado esperado: [5,0,0,16], [0,6,7,0], [0,6,4,0]
     }
+}
 }</code></pre>
           </section>
           
@@ -697,9 +796,33 @@ public class SumaMatricesEsparcidas {
             <h3>Ejemplo de uso esperado (Java)</h3>
             <pre><code class="code-block">import java.util.Scanner;
 
-public class PrismaPentagonal {
+package com.programa;
+
+import java.util.Scanner;
+
+public class ps_1_13 {
+
+    // Lógica separada
+    public double calcularAreaBase(double per, double apo) {
+        return (per * apo) / 2.0;
+    }
+
+    public double calcularAreaLateral(double per, double alt) {
+        return per * alt;
+    }
+
+    public double calcularAreaTotal(double areaBase, double areaLateral) {
+        return (2 * areaBase) + areaLateral;
+    }
+
+    public double calcularVolumen(double areaBase, double alt) {
+        return areaBase * alt;
+    }
+    
+    // El main solo maneja I/O
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        ps_1_13 p = new ps_1_13();
 
         System.out.print("Ingrese el perímetro de la base (PER): ");
         double per = scanner.nextDouble();
@@ -708,13 +831,11 @@ public class PrismaPentagonal {
         System.out.print("Ingrese la altura (ALT): ");
         double alt = scanner.nextDouble();
 
-        // Cálculos
-        double areaBase = (per * apo) / 2.0;
-        double areaLateral = per * alt;
-        double areaTotal = (2 * areaBase) + areaLateral;
-        double volumen = areaBase * alt;
+        double areaBase = p.calcularAreaBase(per, apo);
+        double areaLateral = p.calcularAreaLateral(per, alt);
+        double areaTotal = p.calcularAreaTotal(areaBase, areaLateral);
+        double volumen = p.calcularVolumen(areaBase, alt);
 
-        // Resultados
         System.out.println("\n--- Resultados del Prisma ---");
         System.out.printf("Área de la Base: %.2f\n", areaBase);
         System.out.printf("Área Lateral: %.2f\n", areaLateral);
@@ -723,6 +844,7 @@ public class PrismaPentagonal {
         
         scanner.close();
     }
+}
 }</code></pre>
           </section>
           
@@ -763,18 +885,28 @@ public class PrismaPentagonal {
             <h3>Ejemplo de uso esperado (Java)</h3>
             <pre><code class="code-block">import java.util.Scanner;
 
-public class PromedioAlumnosV1 {
+package com.programa;
+
+import java.util.Scanner;
+
+public class ps_3_22 {
+
+    // Lógica separada
+    public double calcularPromedio(double c1, double c2, double c3, double c4, double c5) {
+        return (c1 + c2 + c3 + c4 + c5) / 5.0;
+    }
+
+    // El main solo maneja I/O
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        final int TOTAL_ALUMNOS = 35;
+        ps_3_22 pa = new ps_3_22();
+        final int TOTAL_ALUMNOS = 35; // O 3 para probar
 
-        // Ciclo externo para los 35 alumnos
         for (int i = 1; i <= TOTAL_ALUMNOS; i++) {
             System.out.println("\n--- Alumno " + i + " ---");
             System.out.print("Ingrese Matrícula: ");
             int matricula = scanner.nextInt();
 
-            // Lectura "plana" de las 5 calificaciones
             System.out.print("Ingrese Calificación 1: ");
             double cal1 = scanner.nextDouble();
             System.out.print("Ingrese Calificación 2: ");
@@ -786,14 +918,12 @@ public class PromedioAlumnosV1 {
             System.out.print("Ingrese Calificación 5: ");
             double cal5 = scanner.nextDouble();
 
-            double promedio = (cal1 + cal2 + cal3 + cal4 + cal5) / 5.0;
-
+            double promedio = pa.calcularPromedio(cal1, cal2, cal3, cal4, cal5);
             System.out.printf("-> Matrícula: %d, Promedio: %.2f\n", matricula, promedio);
         }
-
-        System.out.println("\nProceso completado.");
         scanner.close();
     }
+}
 }</code></pre>
           </section>
           
@@ -833,31 +963,44 @@ public class PromedioAlumnosV1 {
             <h3>Ejemplo de uso esperado (Java)</h3>
             <pre><code class="code-block">import java.util.Scanner;
 
-public class ContarEnArreglo {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+package com.programa;
 
-        // Simulación del arreglo VEC[100]
-        int[] vec = {5, 10, 15, 5, 20, 25, 5, 30}; // Ejemplo corto
-        // int[] vec = new int[100];
-        // ... (Aquí iría la lógica para llenar el arreglo)
+import java.util.Scanner;
 
-        System.out.print("Ingrese el número a buscar: ");
-        int num = scanner.nextInt();
+public class ps_4_2 {
 
+    // Lógica separada
+    public int contarOcurrencias(int[] vec, int num) {
+        if (vec == null) return 0;
         int contador = 0;
-        
-        // Recorrer el arreglo
         for (int i = 0; i < vec.length; i++) {
             if (vec[i] == num) {
                 contador++;
             }
         }
+        return contador;
+    }
 
-        System.out.printf("El número %d se encuentra %d veces en el arreglo.\n", num, contador);
+    // El main solo maneja I/O
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        ps_4_2 c = new ps_4_2();
+
+        // Llenar el arreglo
+        int[] vec = new int[10]; // O 100
+        System.out.println("Ingrese " + vec.length + " números:");
+        for(int i=0; i < vec.length; i++) {
+            vec[i] = scanner.nextInt();
+        }
+
+        System.out.print("Ingrese el número a buscar: ");
+        int num = scanner.nextInt();
+        int total = c.contarOcurrencias(vec, num);
         
+        System.out.printf("El número %d se encuentra %d veces en el arreglo.\n", num, total);
         scanner.close();
     }
+}
 }</code></pre>
           </section>
           
@@ -897,11 +1040,34 @@ public class ContarEnArreglo {
             
             <h3>Ejemplo de uso esperado (Java)</h3>
             <pre><code class="code-block">import java.util.Arrays;
+package com.programa;
+
+import java.util.Arrays;
 import java.util.Scanner;
 
-public class MatrizIdentidad {
+public class ps_4_18 {
+
+    // Lógica separada
+    public int[][] generarIdentidad(int n) {
+        if (n <= 0) return new int[0][0];
+
+        int[][] a = new int[n][n];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (i == j) {
+                    a[i][j] = 1;
+                } else {
+                    a[i][j] = 0;
+                }
+            }
+        }
+        return a;
+    }
+
+    // El main solo maneja I/O
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        ps_4_18 mi = new ps_4_18();
 
         System.out.print("Ingrese la dimensión N de la matriz: ");
         int n = scanner.nextInt();
@@ -909,27 +1075,16 @@ public class MatrizIdentidad {
         if (n < 1 || n > 50) {
             System.out.println("Dimensión fuera de rango.");
         } else {
-            int[][] a = new int[n][n];
-
-            // Llenar la matriz
-            for (int i = 0; i < n; i++) {
-                for (int j = 0; j < n; j++) {
-                    if (i == j) {
-                        a[i][j] = 1; // Diagonal principal
-                    } else {
-                        a[i][j] = 0; // Fuera de la diagonal
-                    }
-                }
-            }
-
-            // Imprimir la matriz
+            int[][] matriz = mi.generarIdentidad(n);
+            
             System.out.println("--- Matriz Identidad Generada ---");
-            for (int[] row : a) {
+            for (int[] row : matriz) {
                 System.out.println(Arrays.toString(row));
             }
         }
         scanner.close();
     }
+}
 }</code></pre>
           </section>
           
@@ -969,23 +1124,16 @@ public class MatrizIdentidad {
             <h3>Ejemplo de uso esperado (Java)</h3>
             <pre><code class="code-block">import java.util.Random;
 
-public class ProduccionFabrica {
-    public static void main(String[] args) {
-        // [12 Meses][4 Años][3 Departamentos]
-        double[][][] fabrica = new double[12][4][3];
-        Random rand = new Random();
-        String[] deptos = {"Dulces", "Conservas", "Bebidas"};
+package com.programa;
 
-        // Simular llenado de datos
-        for (int m = 0; m < 12; m++) {
-            for (int a = 0; a < 4; a++) {
-                for (int d = 0; d < 3; d++) {
-                    fabrica[m][a][d] = rand.nextDouble() * 1000;
-                }
-            }
-        }
+import java.util.Random;
 
-        // a) Departamento con mayor producción en 4 años
+public class ps_4_34 {
+
+    private String[] deptos = {"Dulces", "Conservas", "Bebidas"};
+
+    // a) Departamento con mayor producción en 4 años
+    public String getDeptoMayorProduccion(double[][][] fabrica) {
         double[] totalDepto = new double[3];
         for (int d = 0; d < 3; d++) {
             for (int m = 0; m < 12; m++) {
@@ -994,25 +1142,33 @@ public class ProduccionFabrica {
                 }
             }
         }
-        int maxDeptoIdx = (totalDepto[0] > totalDepto[1] && totalDepto[0] > totalDepto[2]) ? 0 : (totalDepto[1] > totalDepto[2] ? 1 : 2);
-        System.out.printf("a) Depto. con mayor producción: %s (%.2f)\n", deptos[maxDeptoIdx], totalDepto[maxDeptoIdx]);
+        
+        int maxDeptoIdx = 0;
+        if (totalDepto[1] > totalDepto[0]) maxDeptoIdx = 1;
+        if (totalDepto[2] > totalDepto[maxDeptoIdx]) maxDeptoIdx = 2;
+        
+        return deptos[maxDeptoIdx];
+    }
 
-        // b) Mes del 2do año (índice 1) con mayor producción
+    // b) Mes del 2do año (índice 1) con mayor producción
+    public int getMesMayorProdAnio2(double[][][] fabrica) {
         double maxProdMes = -1;
-        int mesMax = 0;
+        int mesMax = -1;
         for (int m = 0; m < 12; m++) {
             double sumaMes = 0;
             for (int d = 0; d < 3; d++) {
-                sumaMes += fabrica[m][1][d]; // Año índice 1 (2do año)
+                sumaMes += fabrica[m][1][d]; // Año índice 1
             }
             if (sumaMes > maxProdMes) {
                 maxProdMes = sumaMes;
-                mesMax = m + 1;
+                mesMax = m + 1; // Mes 1-12
             }
         }
-        System.out.printf("b) Mes de mayor producción (2do año): Mes %d (%.2f)\n", mesMax, maxProdMes);
+        return mesMax;
+    }
 
-        // c) Año con mayor producción
+    // c) Año con mayor producción
+    public int getAnioMayorProduccion(double[][][] fabrica) {
         double[] totalAnio = new double[4];
         for (int a = 0; a < 4; a++) {
             for (int m = 0; m < 12; m++) {
@@ -1025,9 +1181,12 @@ public class ProduccionFabrica {
         for (int a = 1; a < 4; a++) {
             if (totalAnio[a] > totalAnio[maxAnioIdx]) maxAnioIdx = a;
         }
-        System.out.printf("c) Año con mayor producción: %d (%.2f)\n", maxAnioIdx + 1, totalAnio[maxAnioIdx]);
+        return maxAnioIdx + 1; // Año 1-4
+    }
 
-        // d) Depto, mes y año de la mayor producción individual
+    // d) Depto, mes y año de la mayor producción individual
+    // Devolvemos un string para simplificar
+    public String getDetalleMaxIndividual(double[][][] fabrica) {
         double maxIndividual = -1;
         int mesM = 0, anioM = 0, deptoM = 0;
         for (int m = 0; m < 12; m++) {
@@ -1042,9 +1201,28 @@ public class ProduccionFabrica {
                 }
             }
         }
-        System.out.printf("d) Mayor producción: %.2f (Mes: %d, Año: %d, Depto: %s)\n", 
-            maxIndividual, mesM, anioM, deptos[deptoM]);
+        return String.format("Mes: %d, Año: %d, Depto: %s", mesM, anioM, deptos[deptoM]);
     }
+
+    // Main para simulación
+    public static void main(String[] args) {
+        ps_4_34 pf = new ps_4_34();
+        double[][][] fabrica = new double[12][4][3];
+        Random rand = new Random();
+        for (int m = 0; m < 12; m++) {
+            for (int a = 0; a < 4; a++) {
+                for (int d = 0; d < 3; d++) {
+                    fabrica[m][a][d] = rand.nextDouble() * 1000;
+                }
+            }
+        }
+        
+        System.out.println("a) Depto. con mayor producción: " + pf.getDeptoMayorProduccion(fabrica));
+        System.out.println("b) Mes de mayor producción (2do año): Mes " + pf.getMesMayorProdAnio2(fabrica));
+        System.out.println("c) Año con mayor producción: " + pf.getAnioMayorProduccion(fabrica));
+        System.out.println("d) Mayor producción individual: " + pf.getDetalleMaxIndividual(fabrica));
+    }
+}
 }</code></pre>
           </section>
           

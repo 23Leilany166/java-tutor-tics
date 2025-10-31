@@ -1,53 +1,64 @@
 package com.programa;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import org.junit.jupiter.api.BeforeEach;
+// No necesitamos @BeforeEach
 import org.junit.jupiter.api.Test;
 
 class ps_4_34Test {
 
     private ps_4_34 pf = new ps_4_34();
-    // [12 Mes][4 Año][3 Depto]
-    private double[][][] fabricaTest = new double[12][4][3];
-
-    @BeforeEach
-    void setUp() {
-        // a) Depto 0 (Dulces) = 100. Depto 1 (Conservas) = 50. Depto 2 (Bebidas) = 1000.
-        fabricaTest[0][0][0] = 100;
-        fabricaTest[0][0][1] = 50;
-        fabricaTest[0][0][2] = 1000; // Mayor Depto: Bebidas
-
-        // b) Mes 2do año (idx 1). Mes 1 = 10. Mes 2 = 50.
-        fabricaTest[0][1][0] = 10;
-        fabricaTest[1][1][0] = 50; // Mayor Mes: 2
-        
-        // c) Año 1 = 5. Año 2 = 10. Año 3 = 1000. Año 4 = 1.
-        fabricaTest[0][0][0] = 5;
-        fabricaTest[0][1][0] = 10;
-        fabricaTest[0][2][0] = 1000; // Mayor Año: 3
-        fabricaTest[0][3][0] = 1;
-
-        // d) Max individual
-        fabricaTest[5][2][1] = 9999; // Mes 6, Año 3, Depto 1 (Conservas)
-    }
 
     @Test
     void testGetDeptoMayorProduccion() {
+        // Test para 'a': Depto con mayor producción total
+        double[][][] fabricaTest = new double[12][4][3];
+        
+        // Datos: Depto 2 (Bebidas) debe ganar
+        fabricaTest[0][0][0] = 100; // Dulces
+        fabricaTest[0][0][1] = 50;  // Conservas
+        fabricaTest[0][0][2] = 1000; // Bebidas
+        fabricaTest[1][1][2] = 500; // Bebidas
+
         assertEquals("Bebidas", pf.getDeptoMayorProduccion(fabricaTest));
     }
 
     @Test
     void testGetMesMayorProdAnio2() {
+        // Test para 'b': Mes del 2do año (idx 1) con mayor producción
+        double[][][] fabricaTest = new double[12][4][3];
+
+        // Datos: Mes 2 (índice 1) debe ganar
+        fabricaTest[0][1][0] = 10; // Mes 1, Año 2
+        fabricaTest[1][1][0] = 50; // Mes 2, Año 2
+        fabricaTest[2][1][0] = 20; // Mes 3, Año 2
+
         assertEquals(2, pf.getMesMayorProdAnio2(fabricaTest));
     }
 
     @Test
     void testGetAnioMayorProduccion() {
+        // Test para 'c': Año con mayor producción total
+        double[][][] fabricaTest = new double[12][4][3];
+        
+        // Datos: Año 3 (índice 2) debe ganar
+        fabricaTest[0][0][0] = 5;   // Año 1
+        fabricaTest[0][1][0] = 10;  // Año 2
+        fabricaTest[0][2][0] = 1000; // Año 3
+        fabricaTest[0][3][0] = 1;   // Año 4
+
         assertEquals(3, pf.getAnioMayorProduccion(fabricaTest));
     }
 
     @Test
     void testGetDetalleMaxIndividual() {
+        // Test para 'd': Máximo valor individual
+        double[][][] fabricaTest = new double[12][4][3];
+
+        // Datos: El valor 9999 debe ser el máximo
+        fabricaTest[0][0][0] = 100;
+        fabricaTest[5][2][1] = 9999; // Mes 6, Año 3, Depto 1 (Conservas)
+        fabricaTest[0][0][2] = 1000;
+
         assertEquals("Mes: 6, Año: 3, Depto: Conservas", pf.getDetalleMaxIndividual(fabricaTest));
     }
 }
