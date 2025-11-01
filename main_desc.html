@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ejercicios de Programación — Estructurados en Java</title>
+  <link rel="stylesheet" href="./styles_desc.css">
+</head>
+<body>
+  <div class="container">
+    <header class="page-header">
+      <h1>Ejercicios de Programación Estructurada en Java</h1>
+      <p class="subtitle">Selecciona un ejercicio del menú para ver los detalles.</p>
+    </header>
+
+    <nav class="exercises-nav" aria-label="Navegación de ejercicios">
+      <a href="#calc-112" class="nav-link">Ejemplo 1.12</a>
+      <a href="#prob-24" class="nav-link">Problema 2.4</a>
+      <a href="#prob-28" class="nav-link">Problema 2.8</a>
+      <a href="#prob-35" class="nav-link">Problema 3.5</a>
+      <a href="#ejemplo-42" class="nav-link">Ejemplo 4.2</a>
+      <a href="#ejemplo-412" class="nav-link">Ejemplo 4.12</a>
+      <a href="#ps-15" class="nav-link">PS 1.5</a>
+      <a href="#ps-221" class="nav-link">PS 2.21</a>
+      <a href="#ps-338" class="nav-link">PS 3.38</a>
+      <a href="#ps-410" class="nav-link">PS 4.10</a>
+      <a href="#ps-426" class="nav-link">PS 4.26</a>
+      <a href="#ps-55" class="nav-link">PS 5.5</a>
+    </nav>
+
+    <main class="exercises-main">
+      <!-- Ejemplo 1.12 -->
+      <article id="calc-112" class="exercise-card" aria-labelledby="calc112-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Ejemplo</span>
+          <h2 id="calc112-title">Cálculo de <code>(A + B)^2 / 3</code></h2>
+          <p class="exercise-description">
+            Leer <code>A</code> y <code>B</code>, calcular <code>RES = (A + B)^2 / 3</code> y mostrar el resultado con decimales.
+          </p>
+        </header>
+
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <ul>
+              <li>Entradas: <code>A</code>, <code>B</code> (reales o enteros).</li>
+              <li>Usar <code>double</code> y dividir entre <code>3.0</code>.</li>
+              <li>Imprimir <code>RES</code> con formato.</li>
+            </ul>
+
+    
+
+            <h3>Ejemplo de uso esperado</h3>
+<pre><code class="code-block"># Entrada
+2
+1
+
+# Salida
+3.000000
+</code></pre>
+          </section>
+
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <ul>
+              <li>Evita división entera (usa <code>3.0</code>).</li>
+              <li>Formatea con <code>System.out.printf</code>.</li>
+            </ul>
+          </aside>
+        </div>
+       
+
+      <!-- Problema 2.4 -->
+      <article id="prob-24" class="exercise-card" aria-labelledby="prob24-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Problema</span>
+          <h2 id="prob24-title">Promedio de 5 calificaciones y estado</h2>
+          <p class="exercise-description">
+            Dada la matrícula y cinco calificaciones, calcula el promedio e imprime matrícula, promedio y
+            <code>APROBADO</code> si el promedio &ge; 6; en otro caso <code>NO APROBADO</code>.
+          </p>
+        </header>
+
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <ul>
+              <li>Entradas: <code>MAT</code>, <code>CAL1..CAL5</code> (reales).</li>
+              <li><code>PRO = (CAL1+...+CAL5)/5</code>.</li>
+              <li>Imprimir con dos decimales.</li>
+            </ul>
+
+         
+
+            <h3>Ejemplo de uso esperado</h3>
+<pre><code class="code-block"># Entrada
+16500
+6 7.5 8 9.5 7
+
+# Salida
+Matrícula: 16500  Promedio: 7.60  Resultado: APROBADO
+</code></pre>
+          </section>
+
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <ul>
+              <li>Usa <code>double</code> y <code>5.0</code>.</li>
+              <li>Formatea con <code>%.2f</code>.</li>
+            </ul>
+          </aside>
+        </div>
+      </article>
+
+      <!-- Problema 2.8 -->
+      <article id="prob-28" class="exercise-card" aria-labelledby="prob28-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Problema</span>
+          <h2 id="prob28-title">Descuento por monto de compra</h2>
+          <p class="exercise-description">
+            Dado <code>COMPRA</code>, aplica el descuento por rangos y calcula <code>PAGAR</code>.
+          </p>
+        </header>
+
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <ul>
+              <li>Rangos: &lt;500 → 0%, 500–1000 → 5%, 1000–7000 → 11%, 7000–15000 → 18%, &gt;15000 → 25%.</li>
+              <li><code>PAGAR = COMPRA - COMPRA*descuento</code>.</li>
+            </ul>
+
+         
+
+            <h3>Ejemplo de uso esperado</h3>
+<pre><code class="code-block"># Entrada
+3500.00
+
+# Salida
+Compra: 3500.00  Descuento: 11%  Pagar: 3115.00
+</code></pre>
+          </section>
+
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <ul>
+              <li>Cuida límites (<code>&lt;=</code> en los cierres de tramo).</li>
+              <li>Formatea a dos decimales.</li>
+            </ul>
+          </aside>
+        </div>
+      </article>
+
+      <!-- Problema 3.5 -->
+      <article id="prob-35" class="exercise-card" aria-labelledby="prob35-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Problema</span>
+          <h2 id="prob35-title">Conteo de positivos y promedios</h2>
+          <p class="exercise-description">
+            Dado <code>N</code> y luego <code>N</code> enteros, cuenta los positivos y calcula promedio general y de positivos.
+          </p>
+        </header>
+
+        <div class="exercise-content">
+          <section class="exercise-main">
+           
+
+            <h3>Ejemplo de uso esperado</h3>
+<pre><code class="code-block"># Entrada
+5
+3 -2 0 8 5
+
+# Salida
+Cantidad de positivos: 3
+Promedio de positivos: 5.33
+Promedio general: 2.80
+</code></pre>
+          </section>
+
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <ul>
+              <li>Evita dividir entre cero si no hay positivos.</li>
+              <li>Usa <code>double</code> para sumas y promedios.</li>
+            </ul>
+          </aside>
+        </div>
+      </article>
+
+      <!-- Ejemplo 4.2 -->
+      <article id="ejemplo-42" class="exercise-card" aria-labelledby="ejemplo42-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Ejemplo</span>
+          <h2 id="ejemplo42-title">Sueldos mayores al promedio</h2>
+          <p class="exercise-description">
+            Lee 70 sueldos, calcula el promedio y cuenta cuántos son mayores que el promedio.
+          </p>
+        </header>
+
+        <div class="exercise-content">
+          <section class="exercise-main">
+          
+          </section>
+
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <ul>
+              <li>Usa un arreglo de 70 elementos.</li>
+              <li>Dos pasadas: sumar y luego contar.</li>
+            </ul>
+          </aside>
+        </div>
+      </article>
+
+      <!-- Ejemplo 4.12 -->
+      <article id="ejemplo-412" class="exercise-card" aria-labelledby="ej412-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Ejemplo</span>
+          <h2 id="ej412-title">Ordenamiento por selección (Selection Sort)</h2>
+          <p class="exercise-description">
+            Implementa selección directa para ordenar de menor a mayor un arreglo <code>VECTOR</code> con <code>1 ≤ N ≤ 50</code>.
+          </p>
+        </header>
+
+        <div class="exercise-content">
+          <section class="exercise-main">
+            
+
+            <h3>Ejemplo de uso esperado</h3>
+<pre><code class="code-block"># Entrada
+8
+32 84 25 33 61 44 29 52
+
+# Salida
+Arreglo ordenado: [25, 29, 32, 33, 44, 52, 61, 84]
+</code></pre>
+          </section>
+
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <ul>
+              <li>Usa variables auxiliares <code>menor</code> y <code>k</code>.</li>
+              <li>Intercambia solo si <code>k ≠ i</code>.</li>
+            </ul>
+          </aside>
+        </div>
+      </article>
+
+      <!-- PS 1.5 -->
+      <article id="ps-15" class="exercise-card" aria-labelledby="ps15-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">PS</span>
+          <h2 id="ps15-title">Monto final con interés mensual</h2>
+          <p class="exercise-description">
+            Dado <code>MD</code> y la tasa mensual <code>TASA</code>, calcula interés y monto final al terminar el mes.
+          </p>
+        </header>
+
+        <div class="exercise-content">
+          <section class="exercise-main">
+          
+
+            <h3>Ejemplo de uso esperado</h3>
+<pre><code class="code-block"># Entrada
+10000
+5
+
+# Salida
+Interés del mes: 500.00
+Monto final (MF): 10500.00
+</code></pre>
+          </section>
+
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <ul>
+              <li>Acepta tasa como porcentaje (5) o decimal (0.05).</li>
+              <li>Formatea con dos decimales.</li>
+            </ul>
+          </aside>
+        </div>
+      </article>
+
+      <!-- PS 2.21 -->
+      <article id="ps-221" class="exercise-card" aria-labelledby="ps221-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">PS</span>
+          <h2 id="ps221-title">Descuento por categoría de paciente</h2>
+          <p class="exercise-description">
+            Según <code>CATE</code> (1..4) aplica descuento 35%, 22%, 15%, 5%; categorías &gt; 4 no tienen descuento.
+          </p>
+        </header>
+
+        <div class="exercise-content">
+          <section class="exercise-main">
+           
+          </section>
+
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <ul>
+              <li>Valida que el monto sea positivo.</li>
+              <li>Puedes usar <code>if/else</code> en lugar de <code>switch</code>.</li>
+            </ul>
+          </aside>
+        </div>
+      </article>
+
+      <!-- PS 3.38 -->
+      <article id="ps-338" class="exercise-card" aria-labelledby="ps338-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">PS</span>
+          <h2 id="ps338-title">Facturación diaria de 7 platillos (por clave)</h2>
+          <p class="exercise-description">
+            Lee los precios <code>P1..P7</code>, luego N facturas (cada una con pares <code>CLAVE, CANT</code>),
+            imprime la factura y al final el total vendido en el día.
+          </p>
+        </header>
+
+        <div class="exercise-content">
+          <section class="exercise-main">
+            
+
+            <h3>Ejemplo de uso esperado</h3>
+<pre><code class="code-block"># Entrada (resumen)
+P1..P7
+K (número de partidas)
+CLAVE CANT ... (repetir K)
+...
+-1  (fin del día)
+
+# Salida
+Factura #i con totales por partida y total a pagar
+Total vendido del día
+</code></pre>
+          </section>
+
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <ul>
+              <li>Claves válidas 1..7.</li>
+              <li>Acumula total del día.</li>
+            </ul>
+          </aside>
+        </div>
+      </article>
+
+      <!-- PS 4.10 -->
+      <article id="ps-410" class="exercise-card" aria-labelledby="ps410-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">PS</span>
+          <h2 id="ps410-title">Insertar y eliminar en arreglo ordenado</h2>
+          <p class="exercise-description">
+            Arreglo entero ordenado (capacidad 100): inserta un valor manteniendo el orden o elimina la primera ocurrencia.
+          </p>
+        </header>
+
+        <div class="exercise-content">
+          <section class="exercise-main">
+            
+
+            <h3>Ejemplos</h3>
+<pre><code class="code-block"># Insertar 6
+5
+2 4 4 7 10
+1
+6
+# Salida → [2, 4, 4, 6, 7, 10]
+
+# Eliminar 4
+6
+2 4 4 6 7 10
+2
+4
+# Salida → [2, 4, 6, 7, 10]
+</code></pre>
+          </section>
+
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <ul>
+              <li>Conserva el orden al desplazar.</li>
+              <li>Se elimina la primera coincidencia.</li>
+            </ul>
+          </aside>
+        </div>
+      </article>
+
+      <!-- PS 4.26 -->
+      <article id="ps-426" class="exercise-card" aria-labelledby="ps426-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">PS</span>
+          <h2 id="ps426-title">Generar B(N) desde matriz A(N×N)</h2>
+          <p class="exercise-description">
+            Para cada fila <code>i</code> (1-based): si <code>i mod 4 = 1</code> producto de la fila; <code>=2</code> suma;
+            <code>=3</code> <code>B[i-2]*B[i-1]</code>; <code>=0</code> <code>B[i-2]/N</code>.
+          </p>
+        </header>
+
+        <div class="exercise-content">
+          <section class="exercise-main">
+           
+          </section>
+
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <ul>
+              <li>Ajusta índices a base 0 (Java).</li>
+              <li>Usa <code>double</code> para <code>B</code>.</li>
+            </ul>
+          </aside>
+        </div>
+      </article>
+
+      <!-- PS 5.5 -->
+      <article id="ps-55" class="exercise-card" aria-labelledby="ps55-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">PS</span>
+          <h2 id="ps55-title">Gestión de habitaciones y huéspedes</h2>
+          <p class="exercise-description">
+            Con arreglos de registros <code>HABI</code> y <code>HUES</code>: (a) calcular pago de un huésped, (b) contar disponibles por tipo,
+            (c) eliminar huésped (liberar habitación), (d) dar de alta si está disponible.
+          </p>
+        </header>
+
+        <div class="exercise-content">
+          <section class="exercise-main">
+          
+          </section>
+
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <ul>
+              <li>Arreglos ordenados por número de habitación.</li>
+              <li>Al eliminar, marca la habitación como disponible.</li>
+              <li>Alta solo si <code>DISP = "SI"</code>.</li>
+            </ul>
+          </aside>
+        </div>
+      </article>
+    </main>
+
+    <footer class="page-footer">
+      <p class="note-text">Regresa al <a href="#top">menú</a> para elegir otro ejercicio.</p>
+    </footer>
+  </div>
+</body>
+</html>

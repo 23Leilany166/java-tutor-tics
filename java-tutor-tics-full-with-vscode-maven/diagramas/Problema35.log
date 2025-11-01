@@ -1,0 +1,13 @@
+[INICIO]
+  └── (PROCESO) SUMTOT ← 0, SUMPOS ← 0, CUEPOS ← 0, i ← 1
+        └── (REPETIR) Mientras i ≤ N:
+                └── (E/S) Leer NUM
+                └── (DECISIÓN) ¿NUM > 0?
+                    ├── Sí: SUMPOS ← SUMPOS + NUM; CUEPOS ← CUEPOS + 1
+                    └── No: (ninguna acción con SUMPOS/CUEPOS)
+                └── (PROCESO) SUMTOT ← SUMTOT + NUM
+                └── (PROCESO) i ← i + 1
+        └── (PROCESO) PROPOS ← (CUEPOS > 0) ? (SUMPOS / CUEPOS) : 0
+        └── (PROCESO) PROMGEN ← SUMTOT / N
+        └── (E/S) Escribir CUEPOS, PROPOS, PROMGEN
+              └── [FIN]

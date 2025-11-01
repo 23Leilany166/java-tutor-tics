@@ -1,0 +1,31 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Run Main (pick class)",
+      "request": "launch",
+      "mainClass": "${command:java.resolveMainClass}",
+      "projectName": "java-tutor-tics",
+      "console": "integratedTerminal",
+      "noBuild": true
+    },
+    {
+      "type": "java",
+      "name": "Debug Main (pick class)",
+      "request": "launch",
+      "mainClass": "${command:java.resolveMainClass}",
+      "projectName": "java-tutor-tics",
+      "console": "integratedTerminal",
+      "noBuild": true
+    },
+    {
+      "type": "java",
+      "name": "Run Current File",
+      "request": "launch",
+      "mainClass": "${file}",
+      "console": "integratedTerminal",
+      "noBuild": true
+    }
+  ]
+}

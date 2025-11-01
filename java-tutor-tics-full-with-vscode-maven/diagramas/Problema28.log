@@ -1,0 +1,14 @@
+[INICIO]
+  └── (E/S) Leer COMPRA
+        └── (DECISIÓN) ¿COMPRA < 500?
+            ├── Sí  → tasa = 0%
+            └── No  → (DECISIÓN) ¿COMPRA ≤ 1000?
+                    ├── Sí  → tasa = 5%
+                    └── No  → (DECISIÓN) ¿COMPRA ≤ 7000?
+                            ├── Sí  → tasa = 11%
+                            └── No  → (DECISIÓN) ¿COMPRA ≤ 15000?
+                                    ├── Sí  → tasa = 18%
+                                    └── No  → tasa = 25%
+        └── (PROCESO) PAGAR ← COMPRA − (COMPRA × tasa)
+              └── (E/S) Escribir PAGAR
+                    └── [FIN]

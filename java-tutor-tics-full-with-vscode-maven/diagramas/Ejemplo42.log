@@ -1,0 +1,15 @@
+[INICIO]
+  └── (PROCESO) AC ← 0; i ← 1
+        └── (REPETIR) Mientras i ≤ 70:
+                └── (E/S) Leer S_i
+                └── (PROCESO) AC ← AC + S_i
+                └── (PROCESO) i ← i + 1
+        └── (PROCESO) PROM ← AC / 70
+        └── (PROCESO) CONT ← 0; i ← 1
+        └── (REPETIR) Mientras i ≤ 70:
+                └── (DECISIÓN) ¿S_i > PROM?
+                    ├── Sí: CONT ← CONT + 1
+                    └── No: (sin cambios)
+                └── (PROCESO) i ← i + 1
+        └── (E/S) Escribir PROM, CONT
+              └── [FIN]

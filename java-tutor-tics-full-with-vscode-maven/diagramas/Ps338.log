@@ -1,0 +1,12 @@
+[INICIO]
+  └── (E/S) Leer precios P1..P7
+        └── (PROCESO) totalDia ← 0; folio ← 1
+        └── (REPETIR) 
+              └── (E/S) Leer K  (número de conceptos; -1 termina)
+              └── (DECISIÓN) ¿K = -1?
+                    ├── Sí → (E/S) Escribir "VENTA TOTAL DEL DÍA" = totalDia → [FIN]
+                    └── No → (E/S) Leer K pares (CLAVE, CANT)
+                          └── (PROCESO) total ← Σ (precio[CLAVE] × CANT)
+                          └── (E/S) Imprimir factura #folio con renglones y total
+                          └── (PROCESO) totalDia ← totalDia + total; folio ← folio + 1
+                          └── (VOLVER) leer siguiente K

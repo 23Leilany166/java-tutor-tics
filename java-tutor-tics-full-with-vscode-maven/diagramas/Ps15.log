@@ -1,0 +1,5 @@
+[INICIO]
+  └── (E/S) Leer MD, TASA
+        └── (PROCESO) MF ← MD + (MD × TASA / 100)
+              └── (E/S) Escribir MF
+                    └── [FIN]

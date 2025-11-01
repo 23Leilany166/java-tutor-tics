@@ -1,0 +1,11 @@
+[INICIO]
+  └── (E/S) Leer CATE, MONTO
+        └── (DECISIÓN) Según CATE:
+                1 → DESC = 35
+                2 → DESC = 22
+                3 → DESC = 15
+                4 → DESC = 5
+                Otro → DESC = 0
+                    └── (PROCESO) PAGO ← MONTO − (MONTO × DESC / 100)
+                          └── (E/S) Escribir PAGO
+                                └── [FIN]

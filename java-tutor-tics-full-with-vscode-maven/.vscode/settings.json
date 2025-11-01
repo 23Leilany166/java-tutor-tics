@@ -1,0 +1,18 @@
+{
+  "java.configuration.updateBuildConfiguration": "interactive",
+  "java.test.config": { "workingDirectory": "${workspaceFolder}" },
+  "java.compile.nullAnalysis.mode": "disabled",
+  "java.compile.buildAutomatically": false,
+  "java.debug.settings.forceBuildBeforeLaunch": false,
+  "java.debug.settings.onBuildFailureProceed": true,
+
+  // ⬇️ Ignora TODA la carpeta de primersemestre excepto soluciones
+  "java.configuration.exclude": [
+    "**/src/edu/primersemestre/*.java",
+    "**/src/edu/primersemestre/*/*.java",
+    "!**/src/edu/primersemestre/soluciones/*.java"
+  ],
+
+  "java.project.referencedLibraries": [],
+  "java.server.launchMode": "Standard"
+}

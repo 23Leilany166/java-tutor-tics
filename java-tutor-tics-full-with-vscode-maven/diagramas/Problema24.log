@@ -1,0 +1,7 @@
+[INICIO]
+  └── (E/S) Leer MAT, CAL1, CAL2, CAL3, CAL4, CAL5
+        └── (PROCESO) PRO ← (CAL1 + CAL2 + CAL3 + CAL4 + CAL5) / 5
+              └── (DECISIÓN) ¿PRO ≥ 6?
+                    ├── Sí: (E/S) Escribir MAT, PRO, "aprobado"
+                    └── No: (E/S) Escribir MAT, PRO, "no aprobado"
+                          └── [FIN]

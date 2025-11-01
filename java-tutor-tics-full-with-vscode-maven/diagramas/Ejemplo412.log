@@ -1,0 +1,18 @@
+[INICIO]
+  └── (E/S) Leer N
+        └── (DECISIÓN) ¿1 ≤ N ≤ 50?
+            ├── No: (E/S) "Error en los datos" → [FIN]
+            └── Sí:
+                └── (REPETIR) i=1..N: Leer VECTOR[i]
+                └── (PROCESO) i ← 1
+                └── (REPETIR) Mientras i ≤ N-1:
+                      └── (PROCESO) MENOR ← VECTOR[i]; K ← i; J ← i + 1
+                      └── (REPETIR) Mientras J ≤ N:
+                            └── (DECISIÓN) ¿VECTOR[J] < MENOR?
+                                ├── Sí: MENOR ← VECTOR[J]; K ← J
+                                └── No: (sin cambios)
+                            └── (PROCESO) J ← J + 1
+                      └── (PROCESO) Intercambiar VECTOR[K] y VECTOR[i]
+                      └── (PROCESO) i ← i + 1
+                └── (E/S) Imprimir "Arreglo ordenado" y VECTOR
+                      └── [FIN]
