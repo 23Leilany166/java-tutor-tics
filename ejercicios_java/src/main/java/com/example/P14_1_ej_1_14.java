@@ -4,42 +4,34 @@ import java.util.Scanner;
 /**
  * El programa, dado como dato un número entero positivo,
  * calcula el cuadrado y el cubo de dicho número.
+ * Esta es una versión simplificada para principiantes.
  */
 public class P14_1_ej_1_14 {
 
-    /**
-     * Calcula el cuadrado de un número.
-     * @param num El número entero de entrada.
-     * @return El cuadrado del número.
-     */
-    public double calcularCuadrado(int num) {
-        return Math.pow(num, 2);
-    }
-
-    /**
-     * Calcula el cubo de un número.
-     * @param num El número entero de entrada.
-     * @return El cubo del número.
-     */
-    public double calcularCubo(int num) {
-        return Math.pow(num, 3);
-    }
-
     public static void main(String[] args) {
-        // Se crea una instancia de la clase para usar sus métodos.
-        P14_1_ej_1_14 calculadora = new P14_1_ej_1_14();
+        // 1. Declarar las variables que vamos a necesitar.
+        int num;      // Para guardar el número que introduce el usuario.
+        double cua;   // Para guardar el resultado del cuadrado.
+        double cub;   // Para guardar el resultado del cubo.
+
+        // 2. Crear una herramienta (Scanner) para leer lo que el usuario escribe.
         Scanner teclado = new Scanner(System.in);
 
+        // 3. Pedir al usuario que introduzca un número.
         System.out.print("Introduce un número entero: ");
-        int num = teclado.nextInt();
+        num = teclado.nextInt(); // Leer y guardar el número.
 
-        // Se llaman a los métodos para realizar los cálculos.
-        double cua = calculadora.calcularCuadrado(num);
-        double cub = calculadora.calcularCubo(num);
+        // 4. Calcular el cuadrado y el cubo.
+        // El cuadrado es el número multiplicado por sí mismo.
+        cua = num * num;
+        // El cubo es el número multiplicado por sí mismo dos veces.
+        cub = num * num * num;
 
+        // 5. Mostrar los resultados en la pantalla.
         System.out.println("El cuadrado de " + num + " es: " + cua);
         System.out.println("El cubo de " + num + " es: " + cub);
 
+        // 6. Cerrar la herramienta de lectura para liberar recursos.
         teclado.close();
     }
 }

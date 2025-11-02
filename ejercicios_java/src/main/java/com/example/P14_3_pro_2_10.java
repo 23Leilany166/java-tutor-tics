@@ -2,59 +2,46 @@ package com.example;
 
 import java.util.Scanner;
 
+/**
+ * Pide tres números al usuario e identifica cuál es el mayor o si son iguales.
+ * Esta es una versión simplificada para principiantes.
+ */
 public class P14_3_pro_2_10 {
 
-    /**
-     * Compara tres números y devuelve un mensaje indicando cuál es el mayor.
-     * @param A El primer número.
-     * @param B El segundo número.
-     * @param C El tercer número.
-     * @return Un String con el resultado de la comparación.
-     */
-    public String encontrarMayor(double A, double B, double C) {
-        if (A > B) {
-            if (A > C) {
-                return "A es el mayor.";
-            } else if (A == C) {
-                return "A y C son los mayores.";
-            } else {
-                return "C es el mayor.";
-            }
-        } else if (A == B) {
-            if (A > C) {
-                return "A y B son los mayores.";
-            } else if (A == C) {
-                return "A, B y C son los mayores.";
-            } else {
-                return "C es el mayor.";
-            }
-        } else { // B > A
-            if (B > C) {
-                return "B es el mayor.";
-            } else if (B == C) {
-                return "B y C son los mayores.";
-            } else {
-                return "C es el mayor.";
-            }
-        }
-    }
-
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        P14_3_pro_2_10 comparador = new P14_3_pro_2_10();
+        // 1. Crear una herramienta (Scanner) para leer lo que el usuario escribe.
+        Scanner teclado = new Scanner(System.in);
 
-        System.out.println("Ingrese el valor de A: ");
-        double A = scanner.nextDouble();
+        // 2. Pedir y leer los tres números.
+        System.out.print("Introduce el primer número (A): ");
+        double a = teclado.nextDouble();
+        System.out.print("Introduce el segundo número (B): ");
+        double b = teclado.nextDouble();
+        System.out.print("Introduce el tercer número (C): ");
+        double c = teclado.nextDouble();
 
-        System.out.println("Ingrese el valor de B: ");
-        double B = scanner.nextDouble();
+        // 3. Comparar los números para encontrar el mayor.
+        if (a == b && b == c) {
+            System.out.println("A, B y C son iguales.");
+        } else if (a >= b && a >= c) {
+            if (a == b) {
+                System.out.println("A y B son los mayores.");
+            } else if (a == c) {
+                System.out.println("A y C son los mayores.");
+            } else {
+                System.out.println("A es el mayor.");
+            }
+        } else if (b >= a && b >= c) {
+            if (b == c) {
+                System.out.println("B y C son los mayores.");
+            } else {
+                System.out.println("B es el mayor.");
+            }
+        } else {
+            System.out.println("C es el mayor.");
+        }
 
-        System.out.println("Ingrese el valor de C: ");
-        double C = scanner.nextDouble();
-
-        String resultado = comparador.encontrarMayor(A, B, C);
-        System.out.println(resultado);
-        
-        scanner.close();
+        // 4. Cerrar la herramienta de lectura.
+        teclado.close();
     }
 }

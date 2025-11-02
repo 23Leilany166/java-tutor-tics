@@ -1,45 +1,77 @@
 package com.example;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.io.PrintStream;
+import java.util.Locale;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * Clase de prueba para P14_4_pro_3_7.
+ * Simula la entrada del usuario para una serie de ventas y verifica el resumen final.
  */
 public class P14_4_pro_3_7Test {
 
-    private final P14_4_pro_3_7 clasificador = new P14_4_pro_3_7();
+    private final InputStream originalIn = System.in;
+    private final PrintStream originalOut = System.out;
+    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+
+    @BeforeEach
+    public void setUpStreams() {
+        System.setOut(new PrintStream(outContent));
+        Locale.setDefault(Locale.US);
+    }
+
+    @AfterEach
+    public void restoreStreams() {
+        System.setIn(originalIn);
+        System.setOut(originalOut);
+    }
+
+    private void provideInputAndRun(String input) {
+        InputStream testInput = new ByteArrayInputStream(input.getBytes());
+        System.setIn(testInput);
+        P14_4_pro_3_7.main(new String[0]);
+    }
 
     @Test
     void testMezclaDeVentas() {
-        double[] ventas = {150.0, 200.0, 250.5, 399.99, 400.0, 1000.0, 50.0};
-        // Esperado: 3 chicas (150, 200, 50), 2 medianas (250.5, 399.99), 2 grandes (400, 1000)
-        int[] expected = {3, 2, 2};
-        assertArrayEquals(expected, clasificador.clasificarVentas(ventas), "Debería clasificar correctamente una mezcla de ventas");
+        // 7 ventas: 3 chicas, 2 medianas, 2 grandes
+        String input = "7\n150.0\n200.0\n250.5\n399.99\n400.0\n1000.0\n50.0\n";
+        provideInputAndRun(input);
+        String output = outContent.toString();
+
+        assertTrue(output.contains("Ventas chicas (<= 200): 3"), "Debería haber 3 ventas chicas");
+        assertTrue(output.contains("Ventas medianas (< 400): 2"), "Debería haber 2 ventas medianas");
+        assertTrue(output.contains("Ventas grandes (>= 400): 2"), "Debería haber 2 ventas grandes");
     }
 
     @Test
     void testValoresLimite() {
-        // Límite chica <= 200
-        // Límite mediana < 400
-        // Límite grande >= 400
-        double[] ventas = {200.0, 200.01, 399.99, 400.0};
-        // Esperado: 1 chica (200.0), 2 medianas (200.01, 399.99), 1 grande (400.0)
-        int[] expected = {1, 2, 1};
-        assertArrayEquals(expected, clasificador.clasificarVentas(ventas), "Debería clasificar correctamente los valores límite");
-    }
+        // 4 ventas: 1 chica, 2 medianas, 1 grande
+        String input = "4\n200.0\n200.01\n399.99\n400.0\n";
+        provideInputAndRun(input);
+        String output = outContent.toString();
 
-    @Test
-    void testSoloVentasMedianas() {
-        double[] ventas = {201.0, 350.0, 399.0};
-        int[] expected = {0, 3, 0};
-        assertArrayEquals(expected, clasificador.clasificarVentas(ventas), "Debería manejar correctamente solo ventas medianas");
+        assertTrue(output.contains("Ventas chicas (<= 200): 1"), "Debería haber 1 venta chica en el límite");
+        assertTrue(output.contains("Ventas medianas (< 400): 2"), "Debería haber 2 ventas medianas en el límite");
+        assertTrue(output.contains("Ventas grandes (>= 400): 1"), "Debería haber 1 venta grande en el límite");
     }
 
     @Test
     void testSinVentas() {
-        double[] ventas = {}; // Arreglo vacío
-        int[] expected = {0, 0, 0};
-        assertArrayEquals(expected, clasificador.clasificarVentas(ventas), "Debería devolver [0,0,0] para una lista vacía de ventas");
+        // 0 ventas
+        String input = "0\n";
+        provideInputAndRun(input);
+        String output = outContent.toString();
+
+        assertTrue(output.contains("Ventas chicas (<= 200): 0"), "Debería haber 0 ventas chicas");
+        assertTrue(output.contains("Ventas medianas (< 400): 0"), "Debería haber 0 ventas medianas");
+        assertTrue(output.contains("Ventas grandes (>= 400): 0"), "Debería haber 0 ventas grandes");
     }
 }

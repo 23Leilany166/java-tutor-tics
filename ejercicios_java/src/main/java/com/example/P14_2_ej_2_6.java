@@ -1,40 +1,35 @@
 package com.example;
 
+import java.util.Scanner;
+
+/**
+ * Pide un número al usuario y, dependiendo del número,
+ * realiza una acción diferente.
+ * Esta es una versión simplificada para principiantes.
+ */
 public class P14_2_ej_2_6 {
 
-    /**
-     * Devuelve el nombre de la acción basado en el número selector.
-     * @param selector El número entero de entrada.
-     * @return Un String que describe la acción a realizar.
-     */
-    public String seleccionarAccion(int selector) {
-        String accion;
-        switch (selector) {
-            case 1:
-            case 2:
-                accion = "Realizando acción 1";
-                break;
-            case 3:
-            case 4:
-            case 5:
-                accion = "Realizando acción 2";
-                break;
-            default:
-                accion = "Realizando acción 3";
-                break;
-        }
-        return accion;
-    }
-
     public static void main(String[] args) {
-        P14_2_ej_2_6 programa = new P14_2_ej_2_6();
-        int selector = 3;
+        // 1. Crear una herramienta (Scanner) para leer lo que el usuario escribe.
+        Scanner teclado = new Scanner(System.in);
 
-        // Se llama al método para obtener la acción y se imprime.
-        String accionSeleccionada = programa.seleccionarAccion(selector);
-        System.out.println(accionSeleccionada);
+        // 2. Pedir al usuario que introduzca un número selector.
+        System.out.print("Introduce un número selector (entero): ");
+        int selector = teclado.nextInt();
 
-        // La acción X se mantiene como parte del flujo principal.
+        // 3. Decidir qué acción realizar usando if-else if-else.
+        if (selector == 1 || selector == 2) {
+            System.out.println("Realizando acción 1");
+        } else if (selector >= 3 && selector <= 5) {
+            System.out.println("Realizando acción 2");
+        } else {
+            System.out.println("Realizando acción 3");
+        }
+
+        // 4. Esta acción se realiza siempre, sin importar el selector.
         System.out.println("Realizando acción X");
+
+        // 5. Cerrar la herramienta de lectura.
+        teclado.close();
     }
 }

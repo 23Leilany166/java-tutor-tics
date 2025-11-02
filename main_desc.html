@@ -34,59 +34,54 @@
       <article id="EJ_1.14" class="exercise-card" aria-labelledby="Ej_1.14-title">
         <header class="exercise-header">
           <span class="exercise-badge">Ejemplo 1.14</span>
-          <h2 id="Ej_1.14-title">A continuación presentamos la solución en lenguaje algorítmico del diagrama de flujo 1.4.</h2>
+          <h2 id="Ej_1.14-title">Calculadora de Cuadrado y Cubo</h2>
           
           <p class="exercise-description">
-            El programa, dado como dato un número entero positivo, calcula el cuadrado y el cubo de dicho número NUM es una variable de tipo entero. CUA y CUB son variables de tipo real
+            ¡Tu primer programa interactivo! Escribe un programa que pida al usuario un número entero y luego muestre en pantalla el cuadrado y el cubo de ese número.
           </p>
         </header>
         
         <div class="exercise-content">
           <section class="exercise-main">
             <h3>Requisitos</h3>
+            <p>Todo el código debe estar dentro del método <code>main</code>.</p>
             <ul>
-              <li>Crear la clase <code>CuadradoCubo</code>.</li>
-              <li>Declarar las variables:
-                <ul>
-                  <li><code>num</code>: Tiene que ser de tipo <code>entero</code>.</li>
-                  <li><code>cua</code>, <code>cub</code>: Ambas tienen que ser de tipo <code>double</code>.</li>
-                </ul>
-              </li>
-              <li>Crear un objeto <code>Scanner</code> para leer los datos introducidos.</li>
-              <li>Leer la variable <code>num</code></li>
-              <li>Calcular <code>cua</code> y <code>cub</code>.</li> <!--Nota-->
-              <li>Escribir <code>cua</code> y <code>cub</code></li> <!--Tip-->
+              <li>Pide al usuario que introduzca un número con el texto exacto: <code>Introduce un número entero: </code>.</li>
+              <li>Usa la clase <code>Scanner</code> para leer el número que el usuario escriba.</li>
+              <li>Calcula el cuadrado (<code>num * num</code>) y el cubo (<code>num * num * num</code>).</li>
+              <li>Imprime el resultado del cuadrado con el formato: <code>"El cuadrado de [num] es: [cua]"</code>.</li>
+              <li>Imprime el resultado del cubo con el formato: <code>"El cubo de [num] es: [cub]"</code>.</li>
             </ul>
             
             <h3>Ejemplo de uso esperado</h3>
-            <pre><code class="code-block"># Leer el número
-System.out.print("Introduce un número entero: ");
-num = teclado.nextInt();
+            <pre><code class="code-block">Introduce un número entero: 5
+El cuadrado de 5 es: 25.0
+El cubo de 5 es: 125.0
 
-# Calcular valores 
-cua = Math.pow(num, 2); // Eleva num al cuadrado
-cub = Math.pow(num, 3); // Eleva num al cubo
+Introduce un número entero: 0
+El cuadrado de 0 es: 0.0
+El cubo de 0 es: 0.0
 
-# Visualizar los resultados 
-System.out.println("El cuadrado de " + num + " es: " + cua);
-System.out.println("El cubo de " + num + " es: " + cub); 
+Introduce un número entero: -2
+El cuadrado de -2 es: 4.0
+El cubo de -2 es: -8.0
             </code></pre>
           </section>
           
           <aside class="exercise-sidebar">
-            <h3>Notas rápidas</h3>
-            <p class="note-text">Asegúrate de:</p>
+            <h3>Notas para tus Pruebas</h3>
+            <p class="note-text">
+              Tu código se prueba de forma automática para revisar que la salida sea correcta. Por eso, ¡presta atención a estos detalles!
+            </p>
             <ul>
-              <li>Tu objeto <code>Scanner</code> sea correcto para que lea los datos itroducidos por el usuario.</li>
-              <li>Utiliza la función <code>Math.Pow()</code> para hacer el calculo de los valores.</li>
+              <li>El texto que tu programa imprime debe ser <strong>idéntico</strong> al de los ejemplos de uso, incluyendo mayúsculas, espacios y los dos puntos (<code>:</code>).</li>
+              <li>Los resultados (el cuadrado y el cubo) deben ser números decimales de tipo <code>double</code>.</li>
             </ul>
             
             <div class="tip-box">
-              <strong>Tip:</strong>
-              <ul>
-                <li>Al momento de introducir el número se recomienda que no sea un número con valor decimal o fracción.</li>
-                <li>O implementa el codigo para que el número ingresado sea de tipo double.</li>
-              </ul> 
+              <strong>Tip: El Punto Decimal</strong>
+              <p>En algunos países se usa una coma (,) para los decimales, pero en programación casi siempre se usa un punto (.).</p>
+              <p>Las pruebas automáticas esperan que uses un punto, como en <code>25.0</code>. Usar variables de tipo <code>double</code> te ayudará a lograrlo.</p>
             </div>
           </aside>
         </div>
@@ -97,10 +92,10 @@ System.out.println("El cubo de " + num + " es: " + cub);
       <article id="EJ_2.6" class="exercise-card" aria-labelledby="Ej_2.6-title">
         <header class="exercise-header">
           <span class="exercise-badge">Ejemplo 2.6</span>
-          <h2 id="Ej_2.6-title">Diagrama de Flujo y Codigo</h2>
+          <h2 id="Ej_2.6-title">Selector de Acciones</h2>
           
           <p class="exercise-description">
-            Analicemos el siguiente caso. 
+            Escribe un programa que pida al usuario un número entero y realice una acción diferente dependiendo del número, usando la estructura <code>if-else if-else</code>.
           </p>
         </header>
         
@@ -110,33 +105,37 @@ System.out.println("El cubo de " + num + " es: " + cub);
           <section class="exercise-main">
             <h3>Requisitos</h3>
             <ul>
-              <li>Si ei selector toma el valor <code>1</code> o <code>2</code> se realiza la <code>acción 1</code>.</li>
-              <li>Si el selector toma el valor <code>3</code>, <code>4</code> o <code>5</code> se realiza la <code>acción 2</code>.</li>
-              <li>Si el selector toma cualquier otro valor se realiza la <code>acción 3</code>.</li>
-              <li>cuando se continúa con el flujo normal del diagrama se realiza la acción <code>X</code>.</li>
+              <li>Pide al usuario un número con el texto: <code>"Introduce un número selector (entero): "</code>.</li>
+              <li>Usa <code>Scanner</code> para leer el número.</li>
+              <li>Si el número es 1 o 2, imprime <code>"Realizando acción 1"</code>.</li>
+              <li>Si el número está entre 3 y 5 (ambos incluidos), imprime <code>"Realizando acción 2"</code>.</li>
+              <li>Para cualquier otro número, imprime <code>"Realizando acción 3"</code>.</li>
+              <li>Al final, sin importar la condición, imprime siempre <code>"Realizando acción X"</code>.</li>
             </ul>
             
             <h3>Ejemplo de uso esperado</h3>
-            <pre><code class="code-block">lenguaje algoritmico del programa
-.
-.
-Si selector Igual
-Valor 1,2: Hacer acción 1
-Valor 3,4,5: Hacer acción 2
-De otra forma: Hacer acción 3
-{Fin del condicional}
-Hacer acción X
-.
-.
+            <pre><code class="code-block">Introduce un número selector (entero): 1
+Realizando acción 1
+Realizando acción X
+
+Introduce un número selector (entero): 4
+Realizando acción 2
+Realizando acción X
+
+Introduce un número selector (entero): 8
+Realizando acción 3
+Realizando acción X
             </code></pre>
           </section>
           
           <aside class="exercise-sidebar">
-            <h3>Notas rápidas</h3>
-            <p class="note-text">Observe el lector que si ei selector toma el valor l o 2 se realiza la acción 1, si el selector toma el valor 3, 4 o 5 se realiza la acción 2, y si el selector toma cual quier otro valor se realiza la acción 3. Luego, cuando se continúa con el flujo normal del diagrama se realiza la acción X.</p>
+            <h3>Notas para tus Pruebas</h3>
+            <p class="note-text">Recuerda que las pruebas automáticas revisarán que tu programa imprima los mensajes exactos que se piden en los requisitos.</p>
             
             <div class="tip-box">
-              <strong>Tip:</strong>
+              <strong>Tip: <code>if-else if-else</code> vs <code>switch</code></strong>
+              <p>Para este ejercicio, la estructura <code>if-else if-else</code> es ideal porque te permite comprobar un rango de números (<code>selector >= 3 && selector <= 5</code>) de forma muy clara.</p>
+              <p>La estructura <code>switch</code> es útil cuando tienes muchos casos para valores específicos (ej: 1, 2, 3, 4, 5), pero no es tan directa para manejar rangos.</p>
             </div>
           </aside>
         </div>
@@ -146,10 +145,10 @@ Hacer acción X
       <article id="PROB_2.10" class="exercise-card" aria-labelledby="PROB_2.10-title">
         <header class="exercise-header">
           <span class="exercise-badge">Problema 2.10</span>
-          <h2 id="PROB_2.10-title">¿Cuál es el mayor?</h2>
+          <h2 id="PROB_2.10-title">¿Cuál es el mayor de tres?</h2>
           
           <p class="exercise-description">
-            Dado como datos tres números reales, identifique cuál es el mayor. Considere que los números pueden ser iguales. Desarrolle el diagrama de flujo correspondiente.
+            Escribe un programa que pida tres números decimales (A, B y C) e imprima en pantalla cuál es el mayor o si hay números iguales que sean los mayores.
           </p>
         </header>
 
@@ -159,53 +158,54 @@ Hacer acción X
           <section class="exercise-main">
             <h3>Requisitos</h3>
             <ul>
-              <li>Debe leer tres números decimales (<code>double</code>) desde la consola del usuario.</code>.</li>
-              <li>Necesita tres variables para guardar los valores ingresados (<code>A</code>, <code>B</code> y <code>C</code>).</li>
-              <li>Debe comparar los tres valores para identificar el más alto. Es crucial que la lógica contemple todos los escenarios posibles:</li>
-              <ul>
-                <li>Un único número es el mayor.</li>
-                <li>Dos números son iguales y mayores que el tercero.</li>
-                <li>Los tres números son iguales.</li>
-              </ul>
-              <li>Tiene que mostrar un mensaje claro en la consola indicando cuál o cuáles son los números mayores.</li>
+              <li>Pide al usuario cada uno de los tres números (A, B y C).</li>
+              <li>Usa la clase <code>Scanner</code> para leer los tres números de tipo <code>double</code>.</li>
+              <li>Compara los números para encontrar el mayor o los mayores.</li>
+              <li>Imprime el resultado usando los mensajes exactos que se ven en los ejemplos.</li>
             </ul>
             
             <h3>Ejemplo de uso esperado</h3>
-            <pre><code class="code-block">
-NUMERO DE |   DATOS   |
-CORRIDA   |  A  B  C  | RESULTADO
-1         |  6  8  9  |“C es el mayor"
-2         |  7  7  4  |"A y B son los mayores"
-3         |  15 22 15 |"B es el mayor"
-4         |  48 45 45 |"A es el mayor"
-5         |  17 17 17 |”A, B y C son Iguales"
+            <pre><code class="code-block">Introduce el primer número (A): 10
+Introduce el segundo número (B): 5
+Introduce el tercer número (C): 0
+A es el mayor.
+
+Introduce el primer número (A): 10
+Introduce el segundo número (B): 5
+Introduce el tercer número (C): 10
+A y C son los mayores.
+
+Introduce el primer número (A): 10
+Introduce el segundo número (B): 10
+Introduce el tercer número (C): 10
+A, B y C son iguales.
             </code></pre>
           </section>
           
           <aside class="exercise-sidebar">
-            <h3>Notas rápidas</h3>
-            <p class="note-text">Todas las estructuras selectivas son del tipo doble: Si entonces /sino.</p>
+            <h3>Notas para tus Pruebas</h3>
+            <p class="note-text">
+              La lógica de comparación es la clave aquí. ¡Asegúrate de que tu programa funcione para todos los casos de los ejemplos!
+            </p>
             
             <div class="tip-box">
-              <strong>Tip:</strong>
-              <ul>
-                <li>Al momento de introducir el número se recomienda que no sea un número con valor decimal o fracción.</li>
-                <li>O implementa el codigo para que el número ingresado sea de tipo double.</li>
-              </ul> 
+              <strong>Tip: Orden de las condiciones</strong>
+              <p>Una buena estrategia es comprobar primero el caso más simple: si los tres números son iguales (<code>a == b && b == c</code>).</p>
+              <p>Luego, puedes usar <code>else if</code> para los otros casos. Esto hace que tu código sea más ordenado y fácil de depurar.</p>
             </div>
           </aside>
         </div>
       </article>
 
       <!--Aqui me quedeeeee-->
-<!-- Problema 3.7 -->
+      <!-- Problema 3.7 -->
       <article id="PROB_3.7" class="exercise-card" aria-labelledby="PROB_3.7-title">
         <header class="exercise-header">
           <span class="exercise-badge">Problema 3.7</span>
-          <h2 id="PROB_3.7-title">A continuación presentamos la solución en lenguaje algorítmico del diagrama de flujo 1.4.</h2>
+          <h2 id="PROB_3.7-title">Clasificador de Ventas</h2>
           
           <p class="exercise-description">
-            El programa, dado como dato un número entero positivo, calcula el cuadrado y el cubo de dicho número NUM es una variable de tipo entero. CUA y CUB son variables de tipo real
+            Escribe un programa que procese una serie de ventas. Primero, debe preguntar cuántas ventas se van a introducir. Luego, pedirá el monto de cada una y, al final, mostrará un resumen de cuántas ventas fueron chicas, medianas y grandes.
           </p>
         </header>
         
@@ -213,53 +213,48 @@ CORRIDA   |  A  B  C  | RESULTADO
           <section class="exercise-main">
             <h3>Requisitos</h3>
             <ul>
-              <li>Crear la clase <code>CuadradoCubo</code>.</li>
-              <li>Declarar las variables:
-                <ul>
-                  <li><code>num</code>: Tiene que ser de tipo <code>entero</code>.</li>
-                  <li><code>cua</code>, <code>cub</code>: Ambas tienen que ser de tipo <code>double</code>.</li>
-                </ul>
+              <li>Define tres contadores: <code>ventasChicas</code>, <code>ventasMedianas</code>, <code>ventasGrandes</code>.</li>
+              <li>Pide al usuario la cantidad total de ventas a procesar.</li>
+              <li>Usa un bucle <code>for</code> que se repita esa cantidad de veces.</li>
+              <li>Dentro del bucle, pide el monto de cada venta.</li>
+              <li>Clasifica cada monto y aumenta el contador correspondiente:
+                  <ul>
+                      <li><b>Chicas:</b> si el monto es menor o igual a 200.</li>
+                      <li><b>Medianas:</b> si es mayor a 200 pero menor a 400.</li>
+                      <li><b>Grandes:</b> si es mayor or igual a 400.</li>
+                  </ul>
               </li>
-              <li>Crear un objeto <code>Scanner</code> para leer los datos introducidos.</li>
-              <li>Leer la variable <code>num</code></li>
-              <li>Calcular <code>cua</code> y <code>cub</code>.</li> <!--Nota-->
-              <li>Escribir <code>cua</code> y <code>cub</code></li> <!--Tip-->
+              <li>Al final del bucle, imprime el total de cada categoría.</li>
             </ul>
             
             <h3>Ejemplo de uso esperado</h3>
-            <pre><code class="code-block"># Leer el número
-System.out.print("Introduce un número entero: ");
-num = teclado.nextInt();
-
-# Calcular valores 
-cua = Math.pow(num, 2); // Eleva num al cuadrado
-cub = Math.pow(num, 3); // Eleva num al cubo
-
-# Visualizar los resultados 
-System.out.println("El cuadrado de " + num + " es: " + cua);
-System.out.println("El cubo de " + num + " es: " + cub); 
+            <pre><code class="code-block">Introduce la cantidad de ventas a procesar: 5
+Introduce el monto de la venta #1: 150
+Introduce el monto de la venta #2: 300.50
+Introduce el monto de la venta #3: 400
+Introduce el monto de la venta #4: 199.99
+Introduce el monto de la venta #5: 550
+Resumen de ventas:
+Ventas chicas (<= 200): 2
+Ventas medianas (< 400): 1
+Ventas grandes (>= 400): 2
             </code></pre>
           </section>
           
           <aside class="exercise-sidebar">
-            <h3>Notas rápidas</h3>
-            <p class="note-text">Asegúrate de:</p>
-            <ul>
-              <li>Tu objeto <code>Scanner</code> sea correcto para que lea los datos itroducidos por el usuario.</li>
-              <li>Utiliza la función <code>Math.Pow()</code> para hacer el calculo de los valores.</li>
-            </ul>
+            <h3>Concepto Clave: Bucles</h3>
+            <p class="note-text">
+              Este ejercicio introduce los <strong>bucles</strong> (o ciclos). Un bucle <code>for</code> es perfecto para repetir una acción un número conocido de veces, como pedir el monto de cada venta.
+            </p>
             
             <div class="tip-box">
-              <strong>Tip:</strong>
-              <ul>
-                <li>Al momento de introducir el número se recomienda que no sea un número con valor decimal o fracción.</li>
-                <li>O implementa el codigo para que el número ingresado sea de tipo double.</li>
-              </ul> 
+              <strong>Tip: Operador de Incremento</strong>
+              <p>Dentro del bucle, para aumentar un contador, puedes usar el operador de incremento <code>++</code>.</p>
+              <p>Escribir <code>ventasChicas++;</code> es un atajo muy común para <code>ventasChicas = ventasChicas + 1;</code>. ¡Es más corto y fácil de leer!</p>
             </div>
           </aside>
         </div>
       </article>
-
       <!-- Ejemplo 4.4 -->
       <article id="EJ_4.4" class="exercise-card" aria-labelledby="Ej_4.4-title">
         <header class="exercise-header">

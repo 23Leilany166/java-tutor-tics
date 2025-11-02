@@ -1,37 +1,86 @@
 package com.example;
-// Importaciones necesarias para JUnit 5
+
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.io.PrintStream;
+import java.util.Locale;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * Clase de prueba para P14_1_ej_1_14.
+ *
+ * Probar un método `main` que interactúa con la consola (System.in y System.out)
+ * es más complejo que probar métodos simples.
+ *
+ * Aquí se muestra cómo hacerlo:
+ * 1. Se redirige la entrada estándar (System.in) para simular que un usuario escribe datos.
+ * 2. Se redirige la salida estándar (System.out) para "capturar" lo que el programa imprime.
+ * 3. Se llama al método main.
+ * 4. Se comprueba que la salida capturada sea la esperada.
+ * 5. Se restauran los flujos originales de System.in y System.out.
  */
 public class P14_1_ej_1_14Test {
 
-    // Se crea una instancia de la clase que queremos probar.
-    private final P14_1_ej_1_14 calculadora = new P14_1_ej_1_14();
+    // Guardamos los flujos originales de la consola
+    private final InputStream originalIn = System.in;
+    private final PrintStream originalOut = System.out;
 
-    @Test
-    void testCalcularCuadrado() {
-        // Caso de prueba 1: número positivo
-        assertEquals(25.0, calculadora.calcularCuadrado(5), "El cuadrado de 5 debería ser 25.0");
+    // Usaremos un ByteArrayOutputStream para capturar la salida
+    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 
-        // Caso de prueba 2: número cero
-        assertEquals(0.0, calculadora.calcularCuadrado(0), "El cuadrado de 0 debería ser 0.0");
+    @BeforeEach
+    public void setUpStreams() {
+        // Redirigimos System.out a nuestro stream para capturar la salida
+        System.setOut(new PrintStream(outContent));
+        // Establecemos el Locale para asegurar que el punto decimal es '.'
+        Locale.setDefault(Locale.US);
+    }
 
-        // Caso de prueba 3: número negativo
-        assertEquals(16.0, calculadora.calcularCuadrado(-4), "El cuadrado de -4 debería ser 16.0");
+    @AfterEach
+    public void restoreStreams() {
+        // Restauramos los flujos originales
+        System.setIn(originalIn);
+        System.setOut(originalOut);
+    }
+
+    /**
+     * Simula la entrada del usuario y comprueba la salida del programa.
+     */
+    private void provideInputAndRun(String data) {
+        // Creamos un stream de entrada con los datos proporcionados
+        InputStream testInput = new ByteArrayInputStream(data.getBytes());
+        // Redirigimos System.in a nuestro stream de prueba
+        System.setIn(testInput);
+
+        // Llamamos al método main para que se ejecute con nuestra entrada simulada
+        P14_1_ej_1_14.main(new String[0]);
     }
 
     @Test
-    void testCalcularCubo() {
-        // Caso de prueba 1: número positivo
-        assertEquals(27.0, calculadora.calcularCubo(3), "El cubo de 3 debería ser 27.0");
+    void main_cuandoSeIntroduceUnNumeroPositivo_deberiaImprimirCuadradoYCubo() {
+        // Proporcionamos el número "5" como si el usuario lo escribiera,
+        // seguido de un salto de línea.
+        provideInputAndRun("5\n");
 
-        // Caso de prueba 2: número cero
-        assertEquals(0.0, calculadora.calcularCubo(0), "El cubo de 0 debería ser 0.0");
+        // Capturamos la salida del programa como un String
+        String output = outContent.toString();
 
-        // Caso de prueba 3: número negativo
-        assertEquals(-8.0, calculadora.calcularCubo(-2), "El cubo de -2 debería ser -8.0");
+        // Comprobamos que la salida contiene los resultados esperados.
+        // Usamos assertTrue y contains para ser flexibles con el texto de la pregunta.
+        assertTrue(output.contains("El cuadrado de 5 es: 25.0"), "La salida debería contener el cuadrado de 5.");
+        assertTrue(output.contains("El cubo de 5 es: 125.0"), "La salida debería contener el cubo de 5.");
+    }
+
+    @Test
+    void main_cuandoSeIntroduceCero_deberiaImprimirCero() {
+        provideInputAndRun("0\n");
+        String output = outContent.toString();
+        assertTrue(output.contains("El cuadrado de 0 es: 0.0"), "La salida debería contener el cuadrado de 0.");
+        assertTrue(output.contains("El cubo de 0 es: 0.0"), "La salida debería contener el cubo de 0.");
     }
 }
