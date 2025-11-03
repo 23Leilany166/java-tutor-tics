@@ -1,45 +1,31 @@
 package com.tutor;
 
-import javax.swing.JOptionPane;
+import java.util.Scanner;
 
 public class Ejemplo_2_1 {
 
     /**
      * TAREA DEL ESTUDIANTE:
-     * Completa este método. Debe devolver "Aprobado" si el numero
-     * es mayor que 8, y "Reprobado" en cualquier otro caso.
-     */
-    public String verificarStatus(int numero) {
-        // ----- INICIA EL CÓDIGO DEL ESTUDIANTE -----
-        
-        // El estudiante debe borrar esta línea y poner su lógica
-        return "PENDIENTE"; 
-        
-        // ----- TERMINA EL CÓDIGO DEL ESTUDIANTE -----
-    }
-
-
-    /**
-     * MÉTODO MAIN (SOLO PARA PRUEBAS MANUALES DEL ESTUDIANTE)
-     * El estudiante puede usarlo para probar su lógica manualmente.
+     * Completa el método 'main' para resolver el ejercicio.
+     * El programa debe:
+     * 1. Pedir al usuario una calificación (número con decimales).
+     * 2. Si la calificación es mayor que 8, imprimir la palabra "Aprobado".
+     * 3. Si la calificación es 8 o menor, no debe imprimir nada.
      */
     public static void main(String[] args) {
-        Ejemplo_2_1 ejercicio = new Ejemplo_2_1();
-        
-        try {
-            String input = JOptionPane.showInputDialog("Ingresa un numero:");
-            if (input == null) return; // Salir si presiona cancelar
-            
-            int numero = Integer.parseInt(input);
-            
-            // Llama al método que el estudiante debe rellenar
-            String status = ejercicio.verificarStatus(numero);
-            
-            // Muestra el resultado en un pop-up
-            JOptionPane.showMessageDialog(null, "Resultado: " + status);
+        // 1. Crear un objeto Scanner para leer la entrada del usuario.
+        Scanner scanner = new Scanner(System.in);
 
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "Error: Ingresa un número válido.");
-        }
+        // ----- INICIA CÓDIGO DEL ESTUDIANTE -----
+
+        // 2. Pide y lee la calificación.
+        
+        // 3. Escribe una condición 'if' para verificar si la calificación es mayor que 8.
+        //    Si lo es, imprime "Aprobado".
+
+        // ----- TERMINA CÓDIGO DEL ESTUDIANTE -----
+
+        // 4. Cierra el scanner para liberar recursos.
+        scanner.close();
     }
 }

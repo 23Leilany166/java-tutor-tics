@@ -105,9 +105,9 @@
     display: flex;
     flex-wrap: wrap;
     gap: var(--spacing-sm);
-    margin-bottom: var(--spacing-xl);
-    position: sticky;
-    top: 0;
+    margin-bottom: var(--spacing-xl);    
+    /* position: sticky; */ /* Comentado para desactivar el efecto "pegajoso" */
+    /* top: 0; */
     background: white;
     z-index: 10;
     padding: var(--spacing-md) 0;
@@ -422,7 +422,6 @@
   margin-left: auto; /* Centrado */
   margin-right: auto;
   
-  background-color: #f9f9f9;
   border: 1px solid #eee;
   border-radius: 8px;
 }

@@ -1,57 +1,37 @@
 package com.tutor; // O tu paquete específico
 
 import java.util.Arrays; // Importamos Arrays para imprimir
-
 public class Problema_4_4 { // El nombre del archivo debe ser Problema_4_4.java
 
     /**
-     * Método auxiliar (opcional): El estudiante puede crear su propio
-     * método para verificar si un número es primo si lo desea.
-     * private boolean esPrimo(int num) { ... }
-     */
-    
-
-    /**
      * TAREA DEL ESTUDIANTE:
-     * Completa este método. Debe generar y devolver un arreglo de enteros
-     * que contenga los primeros 'n' números primos.
-     *
-     * @param n La cantidad de números primos a generar.
-     * @return Un arreglo de int[] con los 'n' primeros primos.
-     */
-    public int[] generarPrimerosPrimos(int n) {
-        // ----- INICIA CÓDIGO DEL ESTUDIANTE -----
-
-        if (n <= 0) {
-            return new int[0];
-        }
-
-        int[] primos = new int[n];
-        
-        // Escribe aquí tu lógica:
-        // 1. Añade el 2 como el primer primo.
-        // 2. Escribe un bucle (while) que busque los siguientes n-1 primos.
-        // 3. Dentro del bucle, necesitarás otro bucle o un método para verificar si un número es primo.
-        // 4. Añade los primos encontrados al arreglo.
-        // 5. Continúa hasta que el arreglo esté lleno.
-
-
-        return primos; // Devuelve el arreglo lleno
-
-        // ----- TERMINA CÓDIGO DEL ESTUDIANTE -----
-    }
-
-    /**
-     * MÉTODO MAIN (SOLO PARA PRUEBAS MANUALES DEL ESTUDIANTE)
-     * El test automático IGNORARÁ este método.
+     * Completa el método 'main' para resolver el ejercicio.
+     * El programa debe:
+     * 1. Almacenar los primeros 30 números primos en un arreglo.
+     * 2. Imprimir el arreglo al final.
      */
     public static void main(String[] args) {
-        Problema_4_4 ejercicio = new Problema_4_4();
-        int cantidadPrimos = 30;
+        // ----- INICIA CÓDIGO DEL ESTUDIANTE -----
 
-        int[] primerosPrimos = ejercicio.generarPrimerosPrimos(cantidadPrimos);
+        // 1. Define la cantidad de primos a buscar y crea el arreglo.
+        final int CANTIDAD_PRIMOS = 30;
+        int[] primos = new int[CANTIDAD_PRIMOS];
 
-        System.out.println("Los primeros " + cantidadPrimos + " números primos son:");
-        System.out.println(Arrays.toString(primerosPrimos));
+        // 2. Declara las variables que necesitarás:
+        //    - Un contador para los primos encontrados.
+        //    - Un número para probar si es primo.
+
+        // 3. Maneja el caso especial del primer primo (el 2).
+
+        // 4. Escribe un bucle 'while' que se ejecute hasta que hayas encontrado 30 primos.
+
+        // 5. Dentro del 'while', implementa la lógica para verificar si el número actual es primo.
+        //    (Puedes usar un bucle 'for' interno y una bandera 'boolean').
+
+        // 6. Si el número es primo, añádelo al arreglo 'primos' e incrementa tu contador.
+
+        // 7. Al final, imprime el arreglo usando Arrays.toString().
+
+        // ----- TERMINA CÓDIGO DEL ESTUDIANTE -----
     }
 }

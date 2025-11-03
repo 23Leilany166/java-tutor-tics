@@ -1,96 +1,47 @@
 package com.tutor; // O tu paquete específico
 
 import java.util.Scanner;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Problema_3_17 { // El nombre del archivo debe ser Problema_3_17.java
 
     /**
-     * Clase interna estática para almacenar los resultados.
-     * No modificar esta clase.
-     */
-    public static class ResultadosPrimos {
-        public final List<Integer> primos;
-        public final int conteo;
-
-        public ResultadosPrimos(List<Integer> primos, int conteo) {
-            this.primos = primos;
-            this.conteo = conteo;
-        }
-    }
-
-    /**
-     * MÉTODO AUXILIAR: Puedes usar este método para saber si un número es primo.
-     * No necesitas modificarlo.
-     */
-    public boolean esPrimo(int n) {
-        if (n <= 1) return false;
-        if (n <= 3) return true;
-        if (n % 2 == 0) return false;
-        for (int i = 3; i * i <= n; i += 2) {
-            if (n % i == 0) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    /**
      * TAREA DEL ESTUDIANTE:
-     * Completa este método. Debe encontrar todos los números primos
-     * que sean ESTRICTAMENTE MENORES que 'm'.
-     * Debes devolver un objeto ResultadosPrimos que contenga:
-     * 1. Una List<Integer> con los primos encontrados.
-     * 2. Un int con el conteo total de esos primos.
-     *
-     * @param m El número límite (exclusivo).
-     * @return Un objeto ResultadosPrimos con la lista y el conteo.
-     */
-    public ResultadosPrimos encontrarPrimos(int m) {
-        // ----- INICIA CÓDIGO DEL ESTUDIANTE -----
-        
-        List<Integer> listaPrimos = new ArrayList<>();
-        int conteoPrimos = 0;
-
-        // Escribe aquí tu bucle (de 2 hasta m-1)
-        // Dentro del bucle, usa el método esPrimo(numero)
-        // Si es primo, agrégalo a la listaPrimos e incrementa el conteoPrimos
-        for (int i = 2; i < m; i++) {
-            if (esPrimo(i)) {
-                // Aquí va la lógica
-            }
-        }
-        
-        // Devuelve el objeto con tus resultados
-        return new ResultadosPrimos(listaPrimos, conteoPrimos); 
-
-        // ----- TERMINA CÓDIGO DEL ESTUDIANTE -----
-    }
-
-    /**
-     * MÉTODO MAIN (SOLO PARA PRUEBAS MANUALES DEL ESTUDIANTE)
-     * El test automático IGNORARÁ este método.
+     * Completa el método 'main' para resolver el ejercicio siguiendo el diagrama de flujo.
+     * El programa debe:
+     * 1. Leer un número M.
+     * 2. Contar e imprimir los números primos menores que M.
      */
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        Problema_3_17 ejercicio = new Problema_3_17(); // Llama a la plantilla
 
-        System.out.print("Ingrese un número entero positivo (M): ");
-        int m = sc.nextInt();
+        // ----- INICIA CÓDIGO DEL ESTUDIANTE -----
 
-        ResultadosPrimos resultados = ejercicio.encontrarPrimos(m);
+        // 1. Declara e inicializa tus variables (I, CP).
+        //    I: Variable de tipo entero. Representa la variable de control del ciclo
+        //    externo. Se inicializa en 3 porque sabemos por definición que el
+        //    número 1 y los números pares (con excepción del 2) no son primos,
+        //    y se incrementa de 2 en 2.
 
-        System.out.println("Números primos menores que " + m + ":");
-        if (resultados.primos.isEmpty()) {
-            System.out.println("(Ninguno)");
-        } else {
-            for (int primo : resultados.primos) {
-                System.out.println("Número Primo: " + primo);
-            }
-        }
-        System.out.println("\nTotal de números primos encontrados: " + resultados.conteo);
-        
+        // 2. Lee el número M.
+
+        // 3. Maneja el caso especial para el número 2. Si M > 2, el 2 es el primer primo.
+        //    Imprímelo y actualiza tu contador.
+
+        // 4. Escribe el bucle principal (while) para iterar I mientras sea menor que M.
+
+        // 5. Dentro del bucle principal, implementa el bucle interno para verificar si I es primo.
+        //    - Inicializa la bandera (BAND) y el divisor (J).
+        //    - El bucle interno se repite mientras J <= I/2 y la bandera sea verdadera.
+        //    - Dentro, si I % J == 0, cambia la bandera a falso.
+        //    - Incrementa J en 2.
+
+        // 6. Después del bucle interno, si la bandera sigue siendo verdadera, imprime I e incrementa CP.
+
+        // 7. Incrementa I en 2 para probar el siguiente número impar.
+
+        // 8. Después del bucle principal, imprime el conteo total de primos.
+
+        // ----- TERMINA CÓDIGO DEL ESTUDIANTE -----
         sc.close();
     }
 }

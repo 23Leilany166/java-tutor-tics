@@ -1,15 +1,20 @@
 digraph Ejemplo_2_1 {
-  Inicio [shape=ellipse, label="INICIO ", style="filled"];
-  Ingreso [shape=parallelogram, label="CAL"];
-  Condicion [shape=diamond, label="CAL > 8"];
-  Aprobado [shape=invhouse, label=" Aprobado"];
-  Reprobado [shape=invhouse, label=" Reprobado"];
-  Fin [shape=ellipse, label="FIN"];
+    // Configuración
+    graph [bgcolor="transparent"];
+    node [shape=rect, fontname="Arial", margin="0.1,0.1"];
+    edge [fontname="Arial", fontsize=10];
 
-  Inicio -> Ingreso;
-  Ingreso -> Condicion;
-  Condicion -> Aprobado  [label="Si", tailport=e, headport=n];
-  Condicion -> Reprobado [label="No", tailport=w, headport=n];
-  Aprobado -> Fin;
-  Reprobado -> Fin;
+    // Nodos
+    INICIO [shape=ellipse, label="INICIO"];
+    LEER_CAL [shape=parallelogram, label="Leer CAL"];
+    CONDICION [shape=diamond, label="CAL > 8"];
+    IMPRIMIR_APROBADO [shape=note, label="Escribir 'Aprobado'"];
+    FIN [shape=ellipse, label="FIN"];
+
+    // Conexiones
+    INICIO -> LEER_CAL;
+    LEER_CAL -> CONDICION;
+    CONDICION -> IMPRIMIR_APROBADO [label="Si"];
+    CONDICION -> FIN [label="No"];
+    IMPRIMIR_APROBADO -> FIN;
 }

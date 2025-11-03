@@ -5,48 +5,30 @@ import java.util.Scanner;
 public class PS_2_12 { // El nombre del archivo debe ser PS_2_12.java
 
     /**
-     * TAREA DEL ESTUDIANTE:
-     * Completa este método. Debe devolver el deporte apropiado
-     * basado en la temperatura, según la siguiente tabla:
+     * TAREA DEL ESTUDIANTE: Completa el método 'main' para resolver el ejercicio.
+     * El programa debe:
+     * 1. Leer la temperatura en grados Fahrenheit.
+     * 2. Determinar el deporte apropiado según la tabla:
      * * TEMPERATURA 		DEPORTE
      * > 85 			Natación
      * > 70 y <= 85 	Tenis
      * > 32 y <= 70 	Golf
      * > 10 y <= 32 	Esquí
      * <= 10 			Marcha
-     *
-     * @param temperatura La temperatura en grados Fahrenheit.
-     * @return El nombre del deporte apropiado como un String.
-     */
-    public String determinarDeporte(double temperatura) {
-        // ----- INICIA CÓDIGO DEL ESTUDIANTE -----
-        
-        String deporte = "PENDIENTE"; // Valor provisional
-
-        // Escribe aquí tu estructura if-else if-else
-        
-
-        return deporte; // Devuelve el deporte determinado
-
-        // ----- TERMINA CÓDIGO DEL ESTUDIANTE -----
-    }
-
-    /**
-     * MÉTODO MAIN (SOLO PARA PRUEBAS MANUALES DEL ESTUDIANTE)
-     * El test automático IGNORARÁ este método.
+     * 3. Imprimir el deporte.
      */
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        PS_2_12 ejercicio = new PS_2_12();
 
-        System.out.print("Ingrese la temperatura en grados Fahrenheit: ");
-        double temperatura = scanner.nextDouble();
+        // ----- INICIA CÓDIGO DEL ESTUDIANTE -----
 
-        // Llama al método que el estudiante debe implementar
-        String deporte = ejercicio.determinarDeporte(temperatura);
+        // 1. Pide y lee la temperatura.
 
-        System.out.println("Deporte apropiado: " + deporte);
-        
+        // 2. Usa una estructura if-else if-else para determinar el deporte.
+
+        // 3. Imprime el deporte apropiado.
+
+        // ----- TERMINA CÓDIGO DEL ESTUDIANTE -----
         scanner.close();
     }
 }

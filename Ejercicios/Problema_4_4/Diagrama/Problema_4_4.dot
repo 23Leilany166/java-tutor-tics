@@ -1,0 +1,38 @@
+digraph Problema_4_4 {
+    // Configuración
+    graph [bgcolor="transparent"];
+    node [shape=rect, fontname="Arial", margin="0.1,0.1"];
+    edge [fontname="Arial", fontsize=10];
+
+    // Nodos
+    INICIO [shape=ellipse, label="INICIO"];
+    INIT_VARS [label="CANTIDAD = 30\nprimos = nuevo arreglo[CANTIDAD]\nprimos[0] = 2\nconteo = 1\nnum = 3"];
+    BUCLE_CONTEO [shape=diamond, label="conteo < CANTIDAD"];
+    INIT_BUCLE_PRIMO [label="esPrimo = true\ni = 3"];
+    BUCLE_PRIMO [shape=diamond, label="i <= sqrt(num) Y esPrimo == true"];
+    COND_MOD [shape=diamond, label="num % i == 0"];
+    SET_ESPRIMO_F [label="esPrimo = false"];
+    INC_I_PRIMO [label="i = i + 2"];
+    COND_ESPRIMO_V [shape=diamond, label="esPrimo == true"];
+    GUARDAR_PRIMO [label="primos[conteo] = num\nconteo++"];
+    INC_NUM [label="num = num + 2"];
+    IMPRIMIR [shape=note, label="Escribir arreglo 'primos'"];
+    FIN [shape=ellipse, label="FIN"];
+
+    // Conexiones
+    INICIO -> INIT_VARS -> BUCLE_CONTEO;
+    BUCLE_CONTEO -> INIT_BUCLE_PRIMO [label="Si"]; 
+    INIT_BUCLE_PRIMO -> BUCLE_PRIMO;
+    BUCLE_PRIMO -> COND_MOD [label="Si"]; 
+    COND_MOD -> SET_ESPRIMO_F [label="Si"]; 
+    SET_ESPRIMO_F -> INC_I_PRIMO;
+    COND_MOD -> INC_I_PRIMO [label="No"]; 
+    INC_I_PRIMO -> BUCLE_PRIMO;
+    BUCLE_PRIMO -> COND_ESPRIMO_V [label="No"];
+    COND_ESPRIMO_V -> GUARDAR_PRIMO [label="Si"]; 
+    GUARDAR_PRIMO -> INC_NUM;
+    COND_ESPRIMO_V -> INC_NUM [label="No"]; 
+    INC_NUM -> BUCLE_CONTEO;
+    BUCLE_CONTEO -> IMPRIMIR [label="No"]; 
+    IMPRIMIR -> FIN;
+}

@@ -1,73 +1,34 @@
-digraph Calcular_f_x {
-  Inicio [
-    shape=ellipse,
-    label="Inicio", 
-    fillcolor="#FF0000", 
-    style="filled"
-  ];
-  Leer_X [
-    shape=parallelogram,
-    label="Leer X"
-  ];
-  Condicion_0 [
-    shape=diamond,
-    label="¿X mod 4 = 0?"
-  ];
-  Condicion_1 [
-    shape=diamond,
-    label="¿X mod 4 = 1?"
-  ];
-  Condicion_2 [
-    shape=diamond,
-    label="¿X mod 4 = 2?"
-  ];
-  Condicion_3 [
-    shape=diamond,
-    label="¿X mod 4 = 3?"
-  ];
-  Calcular_0 [
-    shape=box,
-    label="Calcular x^2"
-  ];
-  Calcular_1 [
-    shape=box,
-    label="Calcular x/6"
-  ];
-  Calcular_2 [
-    shape=box,
-    label="Calcular √x"
-  ];
-  Calcular_3 [
-    shape=box,
-    label="Calcular x^3+5"
-  ];
-  Imprimir_Resultado [
-    shape=box,
-    label="Imprimir f(x)"
-  ];
-  Fin [
-    shape=ellipse,
-    label="Fin"
-  ];
+digraph PS_2_14 {
+    // Configuración
+    graph [bgcolor="transparent"];
+    node [shape=rect, fontname="Arial", margin="0.1,0.1"];
+    edge [fontname="Arial", fontsize=10];
 
-  Inicio -> Leer_X;
-  Leer_X -> Condicion_0;
+    // Nodos
+    INICIO [shape=ellipse, label="INICIO"];
+    LEER_X [shape=parallelogram, label="Leer X"];
+    CALC_MOD [label="MOD = X % 4"];
+    COND_0 [shape=diamond, label="MOD == 0"];
+    COND_1 [shape=diamond, label="MOD == 1"];
+    COND_2 [shape=diamond, label="MOD == 2"];
+    PROC_0 [label="RES = X^2"];
+    PROC_1 [label="RES = X / 6.0"];
+    PROC_2 [label="RES = sqrt(X)"];
+    PROC_3 [label="RES = X^3 + 5"];
+    IMPRIMIR [shape=note, label="Escribir RES"];
+    FIN [shape=ellipse, label="FIN"];
 
-  Condicion_0 -> Condicion_1 [label="No"];
-  Condicion_0 -> Calcular_0 [label="Sí"];
-
-  Condicion_1 -> Condicion_2 [label="No"];
-  Condicion_1 -> Calcular_1 [label="Sí"];
-
-  Condicion_2 -> Condicion_3 [label="No"];
-  Condicion_2 -> Calcular_2 [label="Sí"];
-
-  Condicion_3 -> Calcular_3 [label="Sí"];
-  Condicion_3 -> Fin [label="No"];
-
-  Calcular_0 -> Imprimir_Resultado;
-  Calcular_1 -> Imprimir_Resultado;
-  Calcular_2 -> Imprimir_Resultado;
-  Calcular_3 -> Imprimir_Resultado;
-  Imprimir_Resultado -> Fin;
+    // Conexiones
+    INICIO -> LEER_X -> CALC_MOD -> COND_0;
+    COND_0 -> PROC_0 [label="Si"]; 
+    COND_0 -> COND_1 [label="No"];
+    COND_1 -> PROC_1 [label="Si"]; 
+    COND_1 -> COND_2 [label="No"];
+    COND_2 -> PROC_2 [label="Si"]; 
+    COND_2 -> PROC_3 [label="No"];
+    PROC_0 -> IMPRIMIR;
+    PROC_1 -> IMPRIMIR;
+    PROC_2 -> IMPRIMIR;
+    PROC_3 -> IMPRIMIR;
+    IMPRIMIR -> FIN;
 }

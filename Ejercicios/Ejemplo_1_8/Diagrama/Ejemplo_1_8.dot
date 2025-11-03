@@ -1,0 +1,19 @@
+digraph Ejemplo_1_8 {
+    // Configuración
+    graph [bgcolor="transparent"];
+    node [shape=rect, fontname="Arial", margin="0.1,0.1"];
+    edge [fontname="Arial", fontsize=10];
+
+    // Nodos
+    INICIO [shape=ellipse, label="INICIO"];
+    LEER_DATOS [shape=parallelogram, label="Leer MAT, CAL1, CAL2,\nCAL3, CAL4, CAL5"];
+    CALCULAR_PROMEDIO [label="PROMEDIO = (CAL1 + CAL2 + CAL3\n+ CAL4 + CAL5) / 5.0"];
+    IMPRIMIR_RESULTADOS [shape=note, label="Escribir MAT,\nPROMEDIO"];
+    FIN [shape=ellipse, label="FIN"];
+
+    // Conexiones
+    INICIO -> LEER_DATOS;
+    LEER_DATOS -> CALCULAR_PROMEDIO;
+    CALCULAR_PROMEDIO -> IMPRIMIR_RESULTADOS;
+    IMPRIMIR_RESULTADOS -> FIN;
+}

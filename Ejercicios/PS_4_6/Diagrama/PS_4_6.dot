@@ -1,26 +1,22 @@
-digraph fibonacci {
-    // Nodo Inicial
-    Inicio [shape=diamond, label="Inicio"];
+digraph PS_4_6 {
+    // Configuración
+    graph [bgcolor="transparent"];
+    node [shape=rect, fontname="Arial", margin="0.1,0.1"];
+    edge [fontname="Arial", fontsize=10];
 
-    // Nodo de creación del arreglo
-    CrearArreglo [shape=rectangle, label="Crear arreglo Fibonacci"];
-
-    // Nodo de inicialización de los primeros dos números Fibonacci
-    InicializarFibonacci [shape=rectangle, label="Inicializar\nfibonacci[0] = 0\nfibonacci[1] = 1"];
-
-    // Nodo de cálculo de los números Fibonacci
-    CalcularFibonacci [shape=rectangle, label="Calcular\nfibonacci[i] = fibonacci[i-1] + fibonacci[i-2]"];
-
-    // Nodo de impresión del arreglo de Fibonacci
-    ImprimirFibonacci [shape=rectangle, label="Imprimir\nArreglo Fibonacci"];
-
-    // Nodo Final
-    Fin [shape=diamond, label="Fin"];
+    // Nodos
+    INICIO [shape=ellipse, label="INICIO"];
+    INICIALIZAR [label="CANTIDAD = 100\nfib = nuevo arreglo[CANTIDAD]\nfib[0] = 0\nfib[1] = 1"];
+    BUCLE_FOR [shape=diamond, label="Para i desde 2\nhasta CANTIDAD-1"];
+    CALCULAR_FIB [label="fib[i] = fib[i-1] + fib[i-2]"];
+    IMPRIMIR [shape=note, label="Escribir arreglo 'fib'"];
+    FIN [shape=ellipse, label="FIN"];
 
     // Conexiones
-    Inicio -> CrearArreglo;
-    CrearArreglo -> InicializarFibonacci;
-    InicializarFibonacci -> CalcularFibonacci;
-    CalcularFibonacci -> ImprimirFibonacci;
-    ImprimirFibonacci -> Fin;
+    INICIO -> INICIALIZAR;
+    INICIALIZAR -> BUCLE_FOR;
+    BUCLE_FOR -> CALCULAR_FIB [label="Repetir"];
+    CALCULAR_FIB -> BUCLE_FOR;
+    BUCLE_FOR -> IMPRIMIR [label="Fin Bucle"];
+    IMPRIMIR -> FIN;
 }

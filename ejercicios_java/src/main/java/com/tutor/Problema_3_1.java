@@ -1,80 +1,42 @@
 package com.tutor; // O tu paquete específico
 
 import java.util.Scanner;
-
+ 
 public class Problema_3_1 {
-    /**
-     * Clase interna estática para almacenar los resultados.
-     * No modificar esta clase.
-     */
-    public static class ResultadosCalculo {
-        public final long sumaImpares;
-        public final double promedioPares;
-
-        public ResultadosCalculo(long sumaImpares, double promedioPares) {
-            this.sumaImpares = sumaImpares;
-            this.promedioPares = promedioPares;
-        }
-    }
 
     /**
      * TAREA DEL ESTUDIANTE:
-     * Completa este método. Debe procesar el arreglo "numeros" y devolver
-     * un objeto ResultadosCalculo que contenga:
-     * 1. La suma de todos los números impares.
-     * 2. El promedio de todos los números pares.
-     *
-     * @param numeros El arreglo de números a procesar.
-     * @return Un objeto ResultadosCalculo con los resultados.
-     */
-    public ResultadosCalculo procesarNumeros(int[] numeros) {
-        // ----- INICIA CÓDIGO DEL ESTUDIANTE -----
-        
-        // Declara tus variables acumuladoras aquí
-        long sumaImpares = 0;
-        long sumaPares = 0;
-        int conteoPares = 0;
-
-        // Escribe el bucle para iterar sobre el arreglo "numeros"
-
-        // Escribe la lógica para sumar pares e impares
-
-        // Escribe la lógica para calcular el promedio de pares (cuidado con la división por cero)
-        double promedioPares = 0.0;
-
-
-        // Devuelve el objeto con tus resultados
-        return new ResultadosCalculo(sumaImpares, promedioPares); 
-
-        // ----- TERMINA CÓDIGO DEL ESTUDIANTE -----
-    }
-
-    /**
-     * MÉTODO MAIN (SOLO PARA PRUEBAS MANUALES DEL ESTUDIANTE)
-     * El test automático IGNORARÁ este método.
+     * Completa el método 'main' para resolver el ejercicio.
+     * El programa debe:
+     * 1. Leer 270 números enteros.
+     * 2. Calcular la suma de los números impares.
+     * 3. Calcular el promedio de los números pares.
+     * 4. Imprimir ambos resultados.
      */
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        Problema_3_1 ejercicio = new Problema_3_1();
         
-        // NOTA: Para pruebas manuales rápidas, puedes cambiar este número
-        final int CANTIDAD_NUMEROS = 5; // Original: 270
+        // ----- INICIA CÓDIGO DEL ESTUDIANTE -----
         
-        int[] numerosIngresados = new int[CANTIDAD_NUMEROS];
+        // 1. Define la cantidad de números a leer.
+        final int CANTIDAD_NUMEROS = 270;
         
-        System.out.println("Ingrese " + CANTIDAD_NUMEROS + " números enteros:");
+        // 2. Declara e inicializa tus variables para acumular sumas y conteos.
+        //    (sumaImpares, sumaPares, conteoPares)
 
-        for (int i = 0; i < CANTIDAD_NUMEROS; i++) {
-            System.out.print("Ingrese el número " + (i + 1) + ": ");
-            numerosIngresados[i] = scanner.nextInt();
-        }
+        // 3. Escribe un bucle 'for' que se repita CANTIDAD_NUMEROS veces.
+        //    Dentro del bucle:
+        //    a. Lee un número.
+        //    b. Usa 'if (numero % 2 == 0)' para saber si es par o impar.
+        //    c. Actualiza tus acumuladores.
 
-        ResultadosCalculo resultados = ejercicio.procesarNumeros(numerosIngresados);
+        // 4. Después del bucle, calcula el promedio de los pares.
+        //    ¡Cuidado con la división por cero si no hubo números pares!
 
-        System.out.println("\n--- Resultados ---");
-        System.out.println("Suma de los números impares: " + resultados.sumaImpares);
-        System.out.println("Promedio de los números pares: " + resultados.promedioPares);
+        // 5. Imprime la suma de impares y el promedio de pares.
+        //    Pista: Para formatear el promedio a 3 decimales, puedes usar System.out.printf("Promedio de pares: %.3f\n", tuVariableDePromedio);
 
+        // ----- TERMINA CÓDIGO DEL ESTUDIANTE -----
         scanner.close();
     }
 }

@@ -1,123 +1,44 @@
 digraph Problema_3_17 {
-    graph [fontname="Arial"];
-    node [shape=box, style=rounded, fontname="Arial"];
-    edge [fontname="Arial"];
+    // Configuración
+    graph [bgcolor="transparent"];
+    node [shape=rect, fontname="Arial", margin="0.1,0.1"];
+    edge [fontname="Arial", fontsize=10];
 
-    Inicio [
-        shape=ellipse,
-        label="INICIO", 
-        fillcolor="#40e0d0", 
-        style="filled"
-    ];
-    Escribir [
-        shape=box,
-        label=" Definir I = 3 y SP = 0"
-    ];
-    Entrada_datos [
-        shape=parallelogram,
-        label=" Leer M "
-    ];
-    Condicion [
-        shape=diamond,
-        label=" M >= 1 "
-    ];
-    Opcion [
-        shape=box,
-        label="Imprimir SI: SP = SP + 1"
-    ];
-    Opcion1 [
-        shape=box,
-        label=" \"Numero Primo:\", 1 "
-    ];
-    Condicion1 [
-        shape=diamond,
-        label=" M >= 2 "
-    ];
-    True [
-        shape=box,
-        label="Imprimir SI: SP = SP + 1"
-    ];
-    False [
-        shape=box,
-        label="Imprimir \"Entre 1 y M hay\",SP,\n \"Numeros Primos\""
-    ];
-    Opcion3 [
-        shape=box,
-        label=" \"Numero Primo:\", 2 "
-    ];
-    Condicion2 [
-        shape=diamond,
-        label=" I <= M "
-    ];
-    Afimativo [
-        shape=box,
-        label="Imprimir SI: BAND = V \n J = 3"
-    ];
-    Condicion3 [
-        shape=diamond,
-        label=" J < ( I DIV 2) y\n BAND = V "
-    ];
-    Condicion4 [
-        shape=diamond,
-        label="( I MOD J ) = 0"
-    ];
-    Verdad [
-        shape=box,
-        label=" BAND = \'F\'"
-    ];
-    Opcion4 [
-        shape=box,
-        label="J = J + 2"
-    ];
-    Condicion5 [
-        shape=diamond,
-        label="BAND = \'V\'"
-    ];
-    Leer1 [
-        shape=box,
-        label=" \"Numero Primo:\", I " /* Corregido de '1' a 'I' */
-    ];
-    Opcion5 [
-        shape=box,
-        label="SP = SP + 1"
-    ];
-    Opcion6 [
-        shape=box,
-        label="I = I + 2"
-    ];
-    Fin [
-        shape=ellipse,
-        label="FIN"
-    ];
+    // Nodos
+    INICIO [shape=ellipse, label="INICIO"];
+    INIT_VARS [label="I = 3\nCP = 0"];
+    LEER_M [shape=parallelogram, label="Leer M"];
+    COND_M_GT_2 [shape=diamond, label="M > 2"];
+    PROCESO_2 [label="CP = CP + 1\nEscribir 2"];
+    BUCLE_I [shape=diamond, label="I < M"];
+    INIT_BUCLE_J [label="BAND = true\nJ = 3"];
+    BUCLE_J [shape=diamond, label="J <= I/2 Y BAND == true"];
+    COND_MOD [shape=diamond, label="I % J == 0"];
+    SET_BAND_F [label="BAND = false"];
+    INC_J [label="J = J + 2"];
+    COND_BAND_V [shape=diamond, label="BAND == true"];
+    PROCESO_PRIMO [label="Escribir I\nCP = CP + 1"];
+    INC_I [label="I = I + 2"];
+    IMPRIMIR_FINAL [shape=note, label="Escribir 'Total: ', CP"];
+    FIN [shape=ellipse, label="FIN"];
 
-    // --- Definición de Flechas (Edges) ---
-
-    Inicio -> Escribir;
-    Escribir -> Entrada_datos;
-    Entrada_datos -> Condicion;
-    Condicion -> Condicion2 [label=" No"];
-    Condicion -> Opcion [label="Si"];
-    Opcion -> Opcion1;
-    Opcion1 -> Condicion1;
-    Condicion1 -> Condicion2 [label=" No"];
-    Condicion1 -> True [label="Si"];
-    Condicion2 -> False [label="No"];
-    True -> Opcion3;
-    Opcion3 -> Condicion2;
-    Condicion2 -> Afimativo [label="Si"];
-    Afimativo -> Condicion3;
-    Condicion3 -> Condicion4 [label="Si"];
-    Condicion3 -> Condicion5 [label="No"];
-    Condicion4 -> Verdad [label="Si"];
-    Condicion4 -> Opcion4 [label="No"];
-    Verdad -> Opcion4;
-    Condicion5 -> Leer1 [label="Si"];
-    Condicion5 -> Opcion6 [label="No"];
-    Leer1 -> Opcion5;
-    Opcion5 -> Opcion6;
-    False -> Fin;
-    
-    // --- Flechas de Bucle Faltantes ---
-    Opcion4 -> Condicion3; // Bucle interno (J)
-    Opcion6 -> Condicion2; // Bucle externo (I)
+    // Conexiones
+    INICIO -> INIT_VARS -> LEER_M -> COND_M_GT_2;
+    COND_M_GT_2 -> PROCESO_2 [label="Si"]; 
+    PROCESO_2 -> BUCLE_I;
+    COND_M_GT_2 -> BUCLE_I [label="No"];
+    BUCLE_I -> INIT_BUCLE_J [label="Si"]; 
+    INIT_BUCLE_J -> BUCLE_J;
+    BUCLE_J -> COND_MOD [label="Si"]; 
+    COND_MOD -> SET_BAND_F [label="Si"]; 
+    SET_BAND_F -> INC_J;
+    COND_MOD -> INC_J [label="No"]; 
+    INC_J -> BUCLE_J;
+    BUCLE_J -> COND_BAND_V [label="No"];
+    COND_BAND_V -> PROCESO_PRIMO [label="Si"]; 
+    PROCESO_PRIMO -> INC_I;
+    COND_BAND_V -> INC_I [label="No"]; 
+    INC_I -> BUCLE_I;
+    BUCLE_I -> IMPRIMIR_FINAL [label="No"]; 
+    IMPRIMIR_FINAL -> FIN;
 }

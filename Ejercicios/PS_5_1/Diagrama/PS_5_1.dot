@@ -1,26 +1,75 @@
 digraph PS_5_1 {
-  node [shape="rectangle"];
-  
-  // Nodos
-  inicio [shape="ellipse", label="Inicio",fillcolor="#40e0d0", style="filled"];
-  definir_productos [shape="parallelogram", label="Definir PRODUCTOS[1..N]"];
-  menu [shape="diamond", label="Menú: ¿Qué operación desea realizar?"];
-  vender_producto [shape=box, label="Venta de un producto (Actualizar existencia)"];
-  reabastecer_producto [shape=box, label="Reabastecimiento de un producto"];
-  actualizar_precio [shape=box, label="Actualizar precio de un producto"];
-  informar_producto [shape=box, label="Informar sobre un producto"];
-  fin [shape="ellipse", label="Fin"];
-  
-  // Aristas
-  inicio -> definir_productos;
-  definir_productos -> menu;
-  menu -> vender_producto [label="Opción 1"];
-  menu -> reabastecer_producto [label="Opción 2"];
-  menu -> actualizar_precio [label="Opción 3"];
-  menu -> informar_producto [label="Opción 4"];
-  vender_producto -> menu;
-  reabastecer_producto -> menu;
-  actualizar_precio -> menu;
-  informar_producto -> menu;
-  menu -> fin [label="Opción 5"];
+    // Configuración
+    graph [bgcolor="transparent"];
+    node [shape=rect, fontname="Arial", margin="0.1,0.1"];
+    edge [fontname="Arial", fontsize=10];
+
+    // Nodos
+    INICIO [shape=ellipse, label="INICIO"];
+    LEER_N [shape=parallelogram, label="Leer N"];
+    CREAR_PRODS [label="Crear arreglo productos[N]"];
+    BUCLE_LEER [shape=diamond, label="Para i de 0 a N-1"];
+    LEER_PROD [shape=parallelogram, label="Leer datos del producto i"];
+    
+    // Menú
+    BUCLE_MENU [shape=diamond, label="Bucle Infinito"];
+    LEER_OPCION [shape=parallelogram, label="Leer OPCION"];
+    COND_SALIR [shape=diamond, label="OPCION == 'e'"];
+    LEER_CLAVE [shape=parallelogram, label="Leer CLAVE"];
+    BUSCAR_PROD [label="Buscar producto por CLAVE"];
+    COND_ENCONTRADO [shape=diamond, label="Producto encontrado?"];
+    PRINT_NO_ENC [shape=note, label="Escribir 'No encontrado'"];
+    
+    // Operaciones
+    COND_OP_A [shape=diamond, label="OPCION == 'a'"];
+    COND_OP_B [shape=diamond, label="OPCION == 'b'"];
+    COND_OP_C [shape=diamond, label="OPCION == 'c'"];
+    COND_OP_D [shape=diamond, label="OPCION == 'd'"];
+    PRINT_OP_INV [shape=note, label="Escribir 'Opción inválida'"];
+    
+    // Venta (a)
+    LEER_CANT_A [shape=parallelogram, label="Leer CANTIDAD"];
+    COND_EXIST [shape=diamond, label="existencia >= CANTIDAD"];
+    PROC_VENTA [label="existencia -= CANTIDAD"];
+    PRINT_NO_EXIST [shape=note, label="Escribir 'No hay existencia'"];
+    
+    // Reabastecer (b)
+    LEER_CANT_B [shape=parallelogram, label="Leer CANTIDAD"];
+    PROC_REAB [label="existencia += CANTIDAD"];
+    
+    // Actualizar (c)
+    LEER_PORC [shape=parallelogram, label="Leer PORCENTAJE"];
+    PROC_PRECIO [label="precio *= (1 + PORC/100)"];
+    
+    // Informar (d)
+    IMPRIMIR_INFO [shape=note, label="Escribir datos del producto"];
+    FIN [shape=ellipse, label="FIN"];
+
+    // Conexiones
+    INICIO -> LEER_N -> CREAR_PRODS -> BUCLE_LEER -> LEER_PROD -> BUCLE_LEER;
+    BUCLE_LEER -> BUCLE_MENU [label="Fin"];
+    BUCLE_MENU -> LEER_OPCION -> COND_SALIR;
+    COND_SALIR -> FIN [label="Si"]; 
+    COND_SALIR -> LEER_CLAVE [label="No"];
+    LEER_CLAVE -> BUSCAR_PROD -> COND_ENCONTRADO;
+    COND_ENCONTRADO -> PRINT_NO_ENC [label="No"]; 
+    PRINT_NO_ENC -> BUCLE_MENU;
+    COND_ENCONTRADO -> COND_OP_A [label="Si"];
+    COND_OP_A -> LEER_CANT_A [label="Si"]; 
+    LEER_CANT_A -> COND_EXIST; 
+    COND_EXIST -> PROC_VENTA [label="Si"]; 
+    PROC_VENTA -> BUCLE_MENU; 
+    COND_EXIST -> PRINT_NO_EXIST [label="No"]; 
+    PRINT_NO_EXIST -> BUCLE_MENU;
+    COND_OP_A -> COND_OP_B [label="No"];
+    COND_OP_B -> LEER_CANT_B [label="Si"]; 
+    LEER_CANT_B -> PROC_REAB -> BUCLE_MENU;
+    COND_OP_B -> COND_OP_C [label="No"];
+    COND_OP_C -> LEER_PORC [label="Si"]; 
+    LEER_PORC -> PROC_PRECIO -> BUCLE_MENU;
+    COND_OP_C -> COND_OP_D [label="No"];
+    COND_OP_D -> IMPRIMIR_INFO [label="Si"]; 
+    IMPRIMIR_INFO -> BUCLE_MENU;
+    COND_OP_D -> PRINT_OP_INV [label="No"]; 
+    PRINT_OP_INV -> BUCLE_MENU;
 }

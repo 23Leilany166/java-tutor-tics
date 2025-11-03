@@ -1,0 +1,36 @@
+digraph Problema_3_1 {
+    // Configuración
+    graph [bgcolor="transparent"];
+    node [shape=rect, fontname="Arial", margin="0.1,0.1"];
+    edge [fontname="Arial", fontsize=10];
+
+    // Nodos
+    INICIO [shape=ellipse, label="INICIO"];
+    INICIALIZAR [label="SUMA_IMPARES = 0\nSUMA_PARES = 0\nCONTEO_PARES = 0"];
+    LEER_N [shape=parallelogram, label="Leer CANTIDAD_NUMEROS"];
+    BUCLE_FOR [shape=diamond, label="Para I desde 1\nhasta CANTIDAD_NUMEROS"];
+    LEER_NUM [shape=parallelogram, label="Leer NUMERO"];
+    COND_PAR [shape=diamond, label="NUMERO % 2 == 0"];
+    PROCESO_PAR [label="SUMA_PARES += NUMERO\nCONTEO_PARES++"];
+    PROCESO_IMPAR [label="SUMA_IMPARES += NUMERO"];
+    COND_DIV_CERO [shape=diamond, label="CONTEO_PARES > 0"];
+    CALC_PROM [label="PROMEDIO_PARES = SUMA_PARES / CONTEO_PARES"];
+    PROM_CERO [label="PROMEDIO_PARES = 0"];
+    IMPRIMIR [shape=note, label="Escribir SUMA_IMPARES,\nPROMEDIO_PARES"];
+    FIN [shape=ellipse, label="FIN"];
+
+    // Conexiones
+    INICIO -> INICIALIZAR -> LEER_N -> BUCLE_FOR;
+    BUCLE_FOR -> LEER_NUM [label="Repetir"];
+    LEER_NUM -> COND_PAR;
+    COND_PAR -> PROCESO_PAR [label="Si"];
+    COND_PAR -> PROCESO_IMPAR [label="No"];
+    PROCESO_PAR -> BUCLE_FOR; 
+    PROCESO_IMPAR -> BUCLE_FOR;
+    BUCLE_FOR -> COND_DIV_CERO [label="Fin Bucle"];
+    COND_DIV_CERO -> CALC_PROM [label="Si"];
+    COND_DIV_CERO -> PROM_CERO [label="No"];
+    CALC_PROM -> IMPRIMIR; 
+    PROM_CERO -> IMPRIMIR;
+    IMPRIMIR -> FIN;
+}

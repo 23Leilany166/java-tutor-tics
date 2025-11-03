@@ -1,41 +1,44 @@
-digraph PS_4_22_Diagrama {
-    node [shape=box];
+digraph PS_4_22 {
+    // Configuración
+    graph [bgcolor="transparent"];
+    node [shape=rect, fontname="Arial", margin="0.1,0.1"];
+    edge [fontname="Arial", fontsize=10];
 
-    Inicio [label="Inicio"];
-    IngresarN [label="Ingresar N"];
-    DeclararVariables [label="Declarar variables\nclaveMaxProduccion = 0\nmaxProduccion = 0\nmesParametro = 0"];
-    IniciarLoopFabricas [label="Para i desde 0 hasta N-1:"];
-    IngresarClaveFabrica [label="Ingresar clave de fábrica"];
-    IniciarLoopMeses [label="Para j desde 1 hasta 12:"];
-    IngresarProduccion [label="Ingresar producción en el mes j"];
-    CompararProduccion [label="Si produccionMes > produccionMaxMes:"];
-    ActualizarProduccionMax [label="produccionMaxMes = produccionMes"];
-    CondicionMesParametro [label="Si produccionMes > 150000 y j == mesParametro:"];
-    MostrarProduccion [label="Mostrar producción de la fábrica"];
-    FinCondicionMesParametro [label="Fin Si"];
-    FinLoopMeses [label="Fin Para"];
-    CompararMaxProduccion [label="Si produccionMaxMes > maxProduccion:"];
-    ActualizarMaxProduccion [label="maxProduccion = produccionMaxMes"];
-    ActualizarClaveMaxProduccion [label="claveMaxProduccion = fabClave"];
-    FinLoopFabricas [label="Fin Para"];
-    MostrarResultado [label="Mostrar la fábrica con mayor producción"];
-    Fin [label="Fin"];
+    // Nodos
+    INICIO [shape=ellipse, label="INICIO"];
+    LEER_N [shape=parallelogram, label="Leer N"];
+    CREAR_ARREGLOS [label="Crear claves[N]\nCrear produccion[N][12]"];
+    BUCLE_I_LEER [shape=diamond, label="Para i de 0 a N-1"];
+    LEER_CLAVE [shape=parallelogram, label="Leer claves[i]"];
+    BUCLE_J_LEER [shape=diamond, label="Para j de 0 a 11"];
+    LEER_PROD [shape=parallelogram, label="Leer produccion[i][j]"];
+    
+    // Inciso A
+    INIT_A [label="maxProd = -1.0\nclaveMax = -1"];
+    BUCLE_I_A [shape=diamond, label="Para i de 0 a N-1"];
+    INIT_SUMA [label="sumaAnual = 0.0"];
+    BUCLE_J_A [shape=diamond, label="Para j de 0 a 11"];
+    SUMAR_PROD [label="sumaAnual += produccion[i][j]"];
+    COND_MAX [shape=diamond, label="sumaAnual > maxProd"];
+    SET_MAX [label="maxProd = sumaAnual\nclaveMax = claves[i]"];
+    IMPRIMIR_A [shape=note, label="Escribir claveMax,\nmaxProd"];
 
-    Inicio -> IngresarN;
-    IngresarN -> DeclararVariables;
-    DeclararVariables -> IniciarLoopFabricas;
-    IniciarLoopFabricas -> IngresarClaveFabrica;
-    IngresarClaveFabrica -> IniciarLoopMeses;
-    IniciarLoopMeses -> IngresarProduccion;
-    IngresarProduccion -> CompararProduccion;
-    CompararProduccion -> ActualizarProduccionMax;
-    CompararProduccion -> CondicionMesParametro;
-    CondicionMesParametro -> MostrarProduccion;
-    FinCondicionMesParametro -> FinLoopMeses;
-    FinLoopMeses -> CompararMaxProduccion;
-    CompararMaxProduccion -> ActualizarMaxProduccion;
-    ActualizarMaxProduccion -> ActualizarClaveMaxProduccion;
-    CompararMaxProduccion -> FinLoopFabricas;
-    FinLoopFabricas -> MostrarResultado;
-    MostrarResultado -> Fin;
+    // Inciso B
+    LEER_MES [shape=parallelogram, label="Leer mesConsulta"];
+    BUCLE_I_B [shape=diamond, label="Para i de 0 a N-1"];
+    COND_PROD_B [shape=diamond, label="produccion[i][mesConsulta-1] > 150000"];
+    IMPRIMIR_B [shape=note, label="Escribir claves[i]"];
+    FIN [shape=ellipse, label="FIN"];
+
+    // Conexiones
+    INICIO -> LEER_N -> CREAR_ARREGLOS -> BUCLE_I_LEER -> LEER_CLAVE -> BUCLE_J_LEER -> LEER_PROD -> BUCLE_J_LEER -> BUCLE_I_LEER;
+    BUCLE_I_LEER -> INIT_A [label="Fin"];
+    INIT_A -> BUCLE_I_A -> INIT_SUMA -> BUCLE_J_A -> SUMAR_PROD -> BUCLE_J_A -> COND_MAX -> BUCLE_I_A;
+    COND_MAX -> SET_MAX [label="Si"]; 
+    SET_MAX -> BUCLE_I_A;
+    BUCLE_I_A -> IMPRIMIR_A [label="Fin"];
+    IMPRIMIR_A -> LEER_MES -> BUCLE_I_B -> COND_PROD_B -> BUCLE_I_B;
+    COND_PROD_B -> IMPRIMIR_B [label="Si"]; 
+    IMPRIMIR_B -> BUCLE_I_B;
+    BUCLE_I_B -> FIN [label="Fin"];
 }

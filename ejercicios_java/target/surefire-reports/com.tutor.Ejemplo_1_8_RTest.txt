@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: com.tutor.Ejemplo_1_8_RTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.034 s <<< FAILURE! - in com.tutor.Ejemplo_1_8_RTest
+testMainExecution  Time elapsed: 0.024 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
+	at com.tutor.Ejemplo_1_8_RTest.testMainExecution(Ejemplo_1_8_RTest.java:61)
+

@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class PS_5_1 { // El nombre del archivo debe ser PS_5_1.java
 
     // Definición del registro Producto (No modificar)
+    // Es 'static' para que 'main' pueda usarla.
     static class Producto {
         int clave;
         String descripcion;
@@ -14,99 +15,37 @@ public class PS_5_1 { // El nombre del archivo debe ser PS_5_1.java
     }
 
     /**
-     * TAREA: Busca un producto por su clave.
-     * @param productos El arreglo de productos.
-     * @param clave La clave a buscar.
-     * @return El objeto Producto si se encuentra, o null si no.
-     */
-    public Producto buscarProducto(Producto[] productos, int clave) {
-        // ----- INICIA CÓDIGO DEL ESTUDIANTE (Búsqueda) -----
-        
-        // Escribe un bucle 'for' que itere sobre 'productos'
-        // Si 'producto.clave == clave', devuelve 'producto'
-        
-        return null; // Devuelve null si no se encuentra
-        // ----- TERMINA CÓDIGO DEL ESTUDIANTE (Búsqueda) -----
-    }
-
-    /**
-     * TAREA (a): Venta de un producto.
-     * @return Un String con el mensaje de resultado.
-     */
-    public String venderProducto(Producto[] productos, int clave, int cantidad) {
-        // ----- INICIA CÓDIGO DEL ESTUDIANTE (Venta) -----
-        
-        // 1. Usa 'buscarProducto' para encontrar el producto
-        Producto producto = buscarProducto(productos, clave);
-        
-        // 2. Si es null, devuelve "Producto no encontrado."
-        
-        // 3. Si la existencia es menor a la cantidad, devuelve "No hay suficiente..."
-        
-        // 4. Resta la cantidad a la existencia
-        
-        // 5. Comprueba si la nueva existencia está bajo el mínimo
-        //    Si lo está, devuelve "Venta realizada... ¡Atención!..."
-        
-        // 6. Si no, devuelve "Venta realizada correctamente."
-        
-        return "PENDIENTE"; // Valor provisional
-        // ----- TERMINA CÓDIGO DEL ESTUDIANTE (Venta) -----
-    }
-
-    /**
-     * TAREA (b): Reabastecimiento de un producto.
-     * @return Un String con el mensaje de resultado.
-     */
-    public String reabastecerProducto(Producto[] productos, int clave, int cantidad) {
-        // ----- INICIA CÓDIGO DEL ESTUDIANTE (Reabastecer) -----
-        
-        // 1. Busca el producto
-        // 2. Si no se encuentra, devuelve "Producto no encontrado."
-        // 3. Si la cantidad es <= 0, devuelve un mensaje de error
-        // 4. Suma la cantidad a la existencia
-        // 5. Devuelve "Reabastecimiento realizado correctamente."
-        
-        return "PENDIENTE"; // Valor provisional
-        // ----- TERMINA CÓDIGO DEL ESTUDIANTE (Reabastecer) -----
-    }
-
-    /**
-     * TAREA (c): Actualizar el precio de un producto.
-     * @return Un String con el mensaje de resultado.
-     */
-    public String actualizarPrecioProducto(Producto[] productos, int clave, double porcentaje) {
-        // ----- INICIA CÓDIGO DEL ESTUDIANTE (Actualizar Precio) -----
-        
-        // 1. Busca el producto
-        // 2. Si no se encuentra, devuelve "Producto no encontrado."
-        // 3. Calcula el nuevo precio ( precio = precio * (1 + porcentaje / 100.0) )
-        // 4. Asigna el nuevo precio al producto
-        // 5. Devuelve "Precio actualizado correctamente."
-
-        return "PENDIENTE"; // Valor provisional
-        // ----- TERMINA CÓDIGO DEL ESTUDIANTE (Actualizar Precio) -----
-    }
-
-    /**
-     * TAREA (d): Informar sobre un producto.
-     * @return El objeto Producto si se encuentra, o null.
-     */
-    public Producto informarProducto(Producto[] productos, int clave) {
-        // ----- INICIA CÓDIGO DEL ESTUDIANTE (Informar) -----
-        
-        // 1. Llama a 'buscarProducto' y devuelve el resultado
-        
-        return null; // Valor provisional
-        // ----- TERMINA CÓDIGO DEL ESTUDIANTE (Informar) -----
-    }
-
-    /**
-     * MÉTODO MAIN (SOLO PARA PRUEBAS MANUALES DEL ESTUDIANTE)
-     * El test automático IGNORARÁ este método.
+     * TAREA DEL ESTUDIANTE: Completa el método 'main' para resolver el ejercicio.
      */
     public static void main(String[] args) {
-        // (El método main es idéntico al del archivo refactorizado)
-        // (Se omite por brevedad, pero debe incluirse aquí)
+        Scanner sc = new Scanner(System.in);
+
+        // ----- INICIA CÓDIGO DEL ESTUDIANTE -----
+
+        // 1. Pide y lee el número de productos (N).
+
+        // 2. Crea el arreglo de productos: Producto[] productos = new Producto[N];
+
+        // 3. Usa un bucle 'for' para leer los datos de los N productos y guardarlos en el arreglo.
+        //    ¡No olvides crear cada objeto! productos[i] = new Producto();
+
+        // 4. Inicia un bucle infinito: while (true) { ... }
+
+        // 5. Dentro del bucle, muestra el menú de opciones (a, b, c, d, e) y lee la opción del usuario.
+
+        // 6. Si la opción es 'e', sal del bucle con 'break;'.
+
+        // 7. Para las demás opciones, primero pide la clave del producto.
+
+        // 8. Busca el producto en el arreglo. Si no lo encuentras, imprime un error y continúa el bucle.
+
+        // 9. Usa una estructura 'if-else if' para manejar cada opción (a, b, c, d).
+        //    - Para 'a' (Venta): pide cantidad, valida existencia, actualiza y muestra mensajes.
+        //    - Para 'b' (Reabastecer): pide cantidad, actualiza existencia.
+        //    - Para 'c' (Actualizar precio): pide porcentaje, calcula y actualiza el precio.
+        //    - Para 'd' (Informar): imprime todos los datos del producto encontrado.
+
+        // ----- TERMINA CÓDIGO DEL ESTUDIANTE -----
+        sc.close();
     }
 }
