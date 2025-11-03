@@ -1,0 +1,94 @@
+digraph ProduccionDepartamentos {
+    node [shape=box, style=rounded];
+    
+    // Nodos principales
+    start [label="Inicio", shape=oval];
+    declare [label="Declarar variables:\nprod[12][3]: matriz real\nmaydul, sum, maybeb,\nmenbeb, menor: real\nmes, mesmay, mesmen, dep: entero"];
+    
+    // Subgrafo para llenado de matriz
+    subgraph cluster_0 {
+        label = "Llenado de Matriz";
+        style = dotted;
+        
+        initI [label="i = 0"];
+        checkI [label="i < 12?", shape=diamond];
+        initJ [label="j = 0"];
+        checkJ [label="j < 3?", shape=diamond];
+        readProd [label="Leer prod[i][j]"];
+        incJ [label="j++"];
+        incI [label="i++"];
+    }
+    
+    // Subgrafo para análisis de dulces
+    subgraph cluster_1 {
+        label = "Análisis Dulces";
+        style = dotted;
+        
+        initDulces [label="maydul = prod[0][0]\nmes = 1"];
+        forDulces [label="i = 1 a 11"];
+        checkDulces [label="maydul < prod[i][0]?", shape=diamond];
+        updateDulces [label="maydul = prod[i][0]\nmes = i + 1"];
+    }
+    
+    // Subgrafo para promedio de bebidas
+    subgraph cluster_2 {
+        label = "Promedio Bebidas";
+        style = dotted;
+        
+        initSum [label="sum = 0"];
+        forSum [label="i = 0 a 11"];
+        addSum [label="sum += prod[i][1]"];
+        calcProm [label="promedio = sum / 12"];
+    }
+    
+    // Subgrafo para extremos de bebidas
+    subgraph cluster_3 {
+        label = "Extremos Bebidas";
+        style = dotted;
+        
+        initExtremos [label="maybeb = menbeb = prod[0][1]\nmesmay = mesmen = 1"];
+        forExtremos [label="i = 1 a 11"];
+        checkMayor [label="maybeb < prod[i][1]?", shape=diamond];
+        updateMayor [label="maybeb = prod[i][1]\nmesmay = i + 1"];
+        checkMenor [label="menbeb > prod[i][1]?", shape=diamond];
+        updateMenor [label="menbeb = prod[i][1]\nmesmen = i + 1"];
+    }
+    
+    // Subgrafo para menor costo en diciembre
+    subgraph cluster_4 {
+        label = "Menor en Diciembre";
+        style = dotted;
+        
+        initDic [label="menor = prod[11][0]\ndep = 1"];
+        forDic [label="j = 1 a 2"];
+        checkDic [label="menor > prod[11][j]?", shape=diamond];
+        updateDic [label="menor = prod[11][j]\ndep = j + 1"];
+    }
+    
+    // Nodo final
+    end [label="Fin", shape=oval];
+    
+    // Conexiones principales
+    start -> declare;
+    declare -> initI;
+    
+    // Conexiones llenado matriz
+    initI -> checkI;
+    checkI -> initJ [label="Sí"];
+    checkI -> initDulces [label="No"];
+    initJ -> checkJ;
+    checkJ -> readProd [label="Sí"];
+    checkJ -> incI [label="No"];
+    readProd -> incJ;
+    incJ -> checkJ;
+    incI -> checkI;
+    
+    // Resto de conexiones
+    initDulces -> forDulces;
+    forDulces -> initSum;
+    initSum -> forSum;
+    forSum -> initExtremos;
+    initExtremos -> forExtremos;
+    forExtremos -> initDic;
+    initDic -> end;
+}

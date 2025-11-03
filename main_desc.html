@@ -1,3 +1,5 @@
+
+
 <!doctype html>
 <html lang="es">
 <head>
@@ -9,1509 +11,962 @@
 <body>
   <div class="container">
     <header class="page-header" id="top">
-      <h1>Ejercicios de Programación en Java</h1>
-      <p class="subtitle">Selecciona un ejercicio del menú para ver los detalles.</p>
+      <h1>Ejercicios de Programación Estructurada en Java</h1>
+      <p class="subtitle">Conceptos básicos de algoritmos, variables, condicionales y ciclos.</p>
     </header>
 
     <nav class="exercises-nav" aria-label="Navegación de ejercicios">
-      <a href="#ejemplo_1_5_java" class="nav-link">ejemplo_1_5</a>
-      <a href="#problema_1_6_java" class="nav-link">problema_1_6</a>
-      <a href="#problema_2_1_java" class="nav-link">problema_2_1</a>
-      <a href="#ejemplo_3_3_java" class="nav-link">ejemplo_3_3</a>
-      <a href="#problema_3_14_java" class="nav-link">problema_3_14</a>
-      <a href="#problema_4_1_java" class="nav-link">problema_4_1</a>
-      <a href="#problema_4_14_java" class="nav-link">problema_4_14</a>
-      <a href="#problema_5_2_java" class="nav-link">problema_5_2</a>
-      <a href="#ps_2_1_java" class="nav-link">ps_2_1</a>
-      <a href="#ps_2_2_java" class="nav-link">ps_2_2</a>
-      <a href="#ps_3_23_java" class="nav-link">ps_3_23</a>
-      <a href="#ps_3_24_java" class="nav-link">ps_3_24</a>
-      <a href="#ps_3_25_java" class="nav-link">ps_3_25</a>
-      <a href="#ps_4_3_java" class="nav-link">ps_4_3</a>
-      <a href="#ps_4_19_java" class="nav-link">ps_4_19</a>
-      <a href="#ps_4_35_java" class="nav-link">ps_4_35</a>
+      <a href="#traza-memoria" class="nav-link">1.5: Traza de Memoria</a>
+      <a href="#segundos-dias" class="nav-link">1.6: Segundos en Días</a>
+      <a href="#grillo-temperatura" class="nav-link">2.1: Grillo Temperatura</a>
+      <a href="#contar-ceros" class="nav-link">3.3: Contar Ceros</a>
+      <a href="#estadio-precios" class="nav-link">3.14: Taquilla Estadio</a>
+      <a href="#lista-sin-repeticiones" class="nav-link">4.1: Lista Sin Repeticiones</a>
+      <a href="#produccion-deptos" class="nav-link">4.14: Producción Deptos.</a>
+      <a href="#empleados-tienda" class="nav-link">5.2: Empleados Tienda</a>
+      <a href="#calcular-tangente" class="nav-link">PS 2.1: Tangente</a>
+      <a href="#calcular-cotangente" class="nav-link">PS 2.2: Cotangente</a>
+      <a href="#promedios-ciclo" class="nav-link">PS 3.23: Promedios (Ciclo)</a>
+      <a href="#promedio-maxmin" class="nav-link">PS 3.24: Promedio Max/Min</a>
+      <a href="#aptitudes-basquet" class="nav-link">PS 3.25: Aptitudes Básquet</a>
+      <a href="#contar-arreglo" class="nav-link">PS 4.3: Contar en Arreglo</a>
+      <a href="#calificaciones-grupo" class="nav-link">PS 4.19: Calificaciones (Matriz)</a>
+      <a href="#directorio-telefonico" class="nav-link">PS 4.35: Directorio Telefónico</a>
     </nav>
 
     <main class="exercises-main">
-
-      <article id="ejemplo_1_5_java" class="exercise-card" aria-labelledby="ejemplo_1_5_java-title">
+      
+      <article id="traza-memoria" class="exercise-card" aria-labelledby="traza-memoria-title">
         <header class="exercise-header">
-          <span class="exercise-badge">Ejercicio Java</span>
-          <h2 id="ejemplo_1_5_java-title">Variables y Asignación (Ejemplo 1.5)</h2>
+          <span class="exercise-badge">Ejercicio 1.5</span>
+          <h2 id="traza-memoria-title">Prueba de Escritorio (Traza de Memoria)</h2>
           <p class="exercise-description">
-            Practicar la declaración, asignación y seguimiento de variables de diferentes tipos primitivos y objetos simples en Java, observando cómo cambian sus valores y manejando posibles errores de tipo.
+            Este es un ejercicio fundamental de "lápiz y papel". El objetivo es simular
+            lo que hace la computadora paso a paso para entender cómo cambian los valores de las
+            variables en la memoria.
           </p>
         </header>
         <div class="exercise-content">
           <section class="exercise-main">
             <h3>Requisitos</h3>
+            <p>Toma el código del ejercicio 1.5 y realiza lo siguiente (no necesitas programar):</p>
             <ul>
-              <li>Declarar variables de tipo `int`, `double`, `char`, y `boolean`.</li>
-              <li>Realizar una secuencia de asignaciones como las descritas en el ejemplo 1.5.</li>
-              <li>Utilizar operaciones aritméticas (`+`, `*`, `/`, `%` - módulo en Java, `Math.pow()`) y lógicas (`&&`, `||`, `!`, `>`, `<`, `==`, `!=`).</li>
-              <li>Simular el seguimiento de los valores de las variables (como en la Tabla 1.8), imprimiendo sus valores después de ciertas asignaciones.</li>
-              <li>Identificar y comentar las asignaciones que causarían errores de compilación en Java debido a incompatibilidad de tipos (p. ej., asignar `double` a `int` sin casting explícito).</li>
+              <li>Crea una tabla en una hoja de papel con columnas para cada variable: `I`, `J`, `ACUM`, `REA`, `SUM`, `CAR`, `BAND`.</li>
+              <li>Sigue la secuencia de 14 asignaciones, una por una.</li>
+              <li>Para cada paso, calcula el resultado de la derecha y anota el nuevo valor en la celda correspondiente de tu tabla.</li>
+              <li>Presta mucha atención a los tipos de datos: `div` es división entera (sin decimales), mientras que `/` es división real.</li>
+              <li>Evalúa las condiciones lógicas (`y`, `o`) para obtener `VERDADERO` o `FALSO`.</li>
+              <li>Identifica las líneas (13 y 14) que causan un error de tipo.</li>
             </ul>
-            <h3>Ejemplo de uso esperado</h3>
-            <pre><code class="code-block">public class SeguimientoVariables {
-    public static void main(String[] args) {
-        int i = 0, acum = 0, j = 0; // int para enteros
-        double rea = 0.0, sum = 0.0; // double para reales
-        char car = ' '; // char para caracter
-        boolean band = false; // boolean para lógico
+            
+            <h3>Ejemplo de seguimiento</h3>
+            <pre><code class="code-block">Estado Inicial: I=indef, J=indef, ACUM=indef, REA=indef, SUM=indef, CAR=indef, BAND=indef
 
-        // 1. i = 0 (ya inicializado)
-        System.out.println("Paso 1: i = " + i);
+Paso 1. I &lt;-- 0
+   (I se vuelve 0. Valor actual en memoria: I=0)
 
-        // 2. i = i + 1
-        i = i + 1;
-        System.out.println("Paso 2: i = " + i);
+Paso 2. I &lt;-- I + 1
+   (Usa I=0. 0 + 1 = 1. I se vuelve 1. Valor actual: I=1)
 
-        // 3. acum = 0 (ya inicializado)
-        System.out.println("Paso 3: acum = " + acum);
+Paso 3. ACUM &lt;-- 0
+   (ACUM se vuelve 0. Valor actual: ACUM=0)
 
-        // 4. j = 5^2 / 3 (División entera en Java para int)
-        j = (int) Math.pow(5, 2) / 3; // O j = (5 * 5) / 3;
-        System.out.println("Paso 4: j = " + j);
+Paso 4. J &lt;-- 5 ** 2 div 3
+   (5^2 = 25. 25 div 3 = 8 (división entera). J se vuelve 8. Valor actual: J=8)
 
-        // 5. car = 'a'
-        car = 'a';
-        System.out.println("Paso 5: car = " + car);
+Paso 5. CAR &lt;-- 'a'
+   (CAR se vuelve 'a'. Valor actual: CAR='a')
 
-        // 6. acum = j / i
-        if (i != 0) { // Evitar división por cero
-             acum = j / i; // División entera
-             System.out.println("Paso 6: acum = " + acum);
-        } else {
-             System.out.println("Paso 6: Error - División por cero.");
-        }
+Paso 6. ACUM &lt;-- J div I
+   (Usa J=8, I=1. 8 div 1 = 8. ACUM se vuelve 8. Valor actual: ACUM=8)
 
-        // ... continuar con las demás asignaciones ...
+Paso 7. REA &lt;-- ACUM / 3
+   (Usa ACUM=8. 8 / 3 = 2.666... (división real). REA se vuelve 2.66... Valor actual: REA=2.66...)
+   (Nota: La tabla del libro lo trunca a 2.66)
 
-        // 13. i = rea; // Error de tipo: double no puede asignarse a int sin cast
-        System.out.println("Paso 13: Causa error de compilación (asignar double a int).");
-        // Para que funcione: i = (int) rea;
+Paso 8. BAND &lt;-- (8 &gt; 5) y (15 &lt; 2 ** 3)
+   (P1: 8&gt;5 es VERDADERO. P2: 2^3=8. 15&lt;8 es FALSO. VERDADERO y FALSO = FALSO. BAND se vuelve FALSO)
 
-        // 14. car = j; // Error de tipo: int no puede asignarse a char sin cast
-        System.out.println("Paso 14: Causa error de compilación (asignar int a char).");
-        // Para que funcione: car = (char) j; (aunque el resultado numérico puede no ser un caracter imprimible esperado)
-    }
-}</code></pre>
+Paso 9. SUM &lt;-- ACUM * 5 / J ** 2
+   (Usa ACUM=8, J=8. (8 * 5) / (8^2) = 40 / 64 = 0.625. SUM se vuelve 0.625)
+
+Paso 10. I &lt;-- I * 3
+   (Usa I=1. 1 * 3 = 3. I se vuelve 3. Valor actual: I=3)
+
+Paso 11. REA &lt;-- REA / 5
+   (Usa el valor de REA del paso 7. La tabla del libro usa el valor truncado 2.66. 2.66 / 5 = 0.532. REA se vuelve 0.532)
+
+Paso 12. BAND &lt;-- BAND o (I = J)
+   (Usa BAND=FALSO, I=3, J=8. P2: (3=8) es FALSO. FALSO o FALSO = FALSO. BAND se vuelve FALSO)
+
+Paso 13. I &lt;-- REA
+   (Usa REA=0.532. Se intenta asignar un 'real' (0.532) a un 'entero' (I). Esto es un Error de Tipo)
+
+Paso 14. CAR &lt;-- J
+   (Usa J=8. Se intenta asignar un 'entero' (8) a un 'caracter' (CAR). Esto es un Error de Tipo)</code></pre>
           </section>
+          
           <aside class="exercise-sidebar">
             <h3>Notas rápidas</h3>
             <ul>
-              <li>Java es fuertemente tipado. Presta atención a las conversiones entre `int`, `double`, `char`.</li>
-              <li>La división `/` entre enteros (`int`) en Java produce un resultado entero (truncado).</li>
-              <li>Usa `Math.pow(base, exponente)` para la potencia, devuelve `double`.</li>
-              <li>El operador `^` en Java es XOR bit a bit, no potencia.</li>
-              <li>Comenta las líneas que generan error de compilación o usa casting explícito `(tipoDeseado)valor`.</li>
+              <li>El operador `**` significa potencia.</li>
+              <li>`div` es **división entera** (cuántas veces cabe, sin residuo).</li>
+              <li>`/` es **división real** (con decimales).</li>
+              <li>`y` (AND) solo es `VERDADERO` si ambas partes son `VERDADERO`.</li>
+              <li>`o` (OR) es `VERDADERO` si al menos una parte es `VERDADERO`.</li>
             </ul>
-          </aside>
-        </div>
-      </article>
-
-      <article id="problema_1_6_java" class="exercise-card" aria-labelledby="problema_1_6_java-title">
-        <header class="exercise-header">
-          <span class="exercise-badge">Ejercicio Java</span>
-          <h2 id="problema_1_6_java-title">Invertir Orden de Datos (Problema 1.6)</h2>
-          <p class="exercise-description">
-            Leer cuatro números enteros e imprimirlos en orden inverso. Este ejercicio introduce la lectura de datos del usuario y la impresión formateada en Java.
-          </p>
-        </header>
-        <div class="exercise-content">
-          <section class="exercise-main">
-            <h3>Requisitos</h3>
-            <ul>
-              <li>Crear una clase Java con un método `main`.</li>
-              <li>Utilizar la clase `java.util.Scanner` para leer cuatro enteros (`int`) del usuario.</li>
-              <li>Almacenar los enteros en cuatro variables distintas (p. ej., `a`, `b`, `c`, `d`).</li>
-              <li>Imprimir los valores de las variables en orden inverso (d, c, b, a) usando `System.out.println` o `System.out.printf`.</li>
-            </ul>
-            <h3>Ejemplo de uso esperado</h3>
-            <pre><code class="code-block">import java.util.Scanner;
-
-public class InvertirDatos {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("Ingrese cuatro números enteros:");
-        int a = scanner.nextInt(); // Leer A
-        int b = scanner.nextInt(); // Leer B
-        int c = scanner.nextInt(); // Leer C
-        int d = scanner.nextInt(); // Leer D
-
-        System.out.println("Los números en orden inverso son:");
-        System.out.println(d); // Escribir D
-        System.out.println(c); // Escribir C
-        System.out.println(b); // Escribir B
-        System.out.println(a); // Escribir A
-
-        // Opcional: imprimir en una sola línea
-        // System.out.printf("%d, %d, %d, %d%n", d, c, b, a);
-
-        scanner.close();
-    }
-}
-// Si la entrada es: 7 28 150 35
-// La salida será:
-// 35
-// 150
-// 28
-// 7</code></pre>
-          </section>
-          <aside class="exercise-sidebar">
-            <h3>Notas rápidas</h3>
-            <ul>
-              <li>Recuerda importar `java.util.Scanner`.</li>
-              <li>Cierra el `Scanner` al finalizar para liberar recursos (`scanner.close()`).</li>
-              <li>`System.out.println` imprime y añade un salto de línea.</li>
-              <li>`System.out.printf` permite formatear la salida. `%d` es para enteros, `%n` para un salto de línea independiente del sistema operativo.</li>
-            </ul>
-          </aside>
-        </div>
-      </article>
-
-      <article id="problema_2_1_java" class="exercise-card" aria-labelledby="problema_2_1_java-title">
-        <header class="exercise-header">
-          <span class="exercise-badge">Ejercicio Java</span>
-          <h2 id="problema_2_1_java-title">Temperatura según Sonidos de Grillo (Problema 2.1)</h2>
-          <p class="exercise-description">
-            Calcular la temperatura en grados Fahrenheit basada en el número de sonidos de un grillo por minuto, utilizando una fórmula dada. Practicar el uso de estructuras condicionales `if` en Java para validar la entrada.
-          </p>
-        </header>
-        <div class="exercise-content">
-          <section class="exercise-main">
-            <h3>Requisitos</h3>
-            <ul>
-              <li>Leer un número entero `N` que representa los sonidos por minuto.</li>
-              <li>Verificar si `N` es mayor que 0 usando una estructura `if`.</li>
-              <li>Si `N > 0`, calcular la temperatura `T` usando la fórmula `T = N / 4.0 + 40`. (Usar `4.0` para asegurar división de punto flotante).</li>
-              <li>Imprimir la temperatura calculada `T`.</li>
-              <li>Si `N` no es mayor que 0, el programa puede optar por no imprimir nada o mostrar un mensaje indicando que la entrada no es válida.</li>
-            </ul>
-            <h3>Ejemplo de uso esperado</h3>
-            <pre><code class="code-block">import java.util.Scanner;
-
-public class TemperaturaGrillo {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.print("Ingrese el número de sonidos por minuto: ");
-        int n = scanner.nextInt(); // Leer N
-
-        if (n > 0) { // Evaluar si N > 0
-            double t = n / 4.0 + 40; // Calcular T
-            System.out.printf("Temperatura: %.2f°F%n", t); // Imprimir T
-        } else {
-            System.out.println("El número de sonidos debe ser positivo."); // Caso N <= 0
-        }
-
-        scanner.close();
-    }
-}
-// Si la entrada es: 8
-// La salida será: Temperatura: 42.00°F
-// Si la entrada es: -5
-// La salida será: El número de sonidos debe ser positivo.</code></pre>
-          </section>
-          <aside class="exercise-sidebar">
-            <h3>Notas rápidas</h3>
-            <ul>
-              <li>La estructura `if` simple ejecuta un bloque de código solo si la condición es verdadera.</li>
-              <li>Usa `double` para la variable `t` ya que el resultado de la división puede tener decimales.</li>
-              <li>Dividir por `4.0` (un `double`) fuerza que la división sea de punto flotante, incluso si `n` es `int`.</li>
-              <li>`%.2f` en `printf` formatea un número de punto flotante con 2 decimales.</li>
-            </ul>
-          </aside>
-        </div>
-      </article>
-
-<article id="ejemplo_3_3_java" class="exercise-card" aria-labelledby="ejemplo_3_3_java-title">
-  <header class="exercise-header">
-    <span class="exercise-badge">Ejercicio Java</span>
-    <h2 id="ejemplo_3_3_java-title">Conteo de Ceros en un Grupo (Ejemplo 3.3)</h2>
-    <p class="exercise-description">
-      Escribir un programa que lea primero la cantidad de números a ingresar (`N`) y luego lea `N` números enteros. El programa debe contar cuántos de esos números ingresados son iguales a cero, utilizando una estructura repetitiva de conteo (`for` o `while`) y una estructura condicional (`if`).
-    </p>
-  </header>
-  <div class="exercise-content">
-    <section class="exercise-main">
-      <h3>Requisitos</h3>
-      <ul>
-        <li>Leer un número entero `N` que define la cantidad de datos a procesar.</li>
-        <li>Inicializar un contador de ceros (`CUECER`) a 0.</li>
-        <li>Utilizar un **ciclo `for`** que itere desde `i = 1` hasta `N` (o desde `i = 0` hasta `N - 1`).</li>
-        <li>Dentro del ciclo, leer el número actual (`NUM`) de tipo entero.</li>
-        <li>Usar una estructura condicional **`if`** para verificar si el número leído es igual a cero (`NUM == 0`).</li>
-        <li>Si la condición es verdadera, incrementar el contador de ceros (`CUECER`).</li>
-        <li>Al finalizar el ciclo, imprimir el valor final de `CUECER`.</li>
-      </ul>
-
-      <h3>Variables Clave</h3>
-      | Variable | Tipo | Propósito |
-      | :--- | :--- | :--- |
-      | `N` | `int` | Número de datos a ingresar (límite del ciclo). |
-      | `NUM` | `int` | Número entero leído en la iteración actual. |
-      | `I` | `int` | Contador del ciclo (variable de control). |
-      | `CUECER` | `int` | **Contador** que almacena el total de números cero encontrados. |
-
-      <h3>Ejemplo de uso esperado (Implementación en Java)</h3>
-      <pre><code class="code-block">import java.util.Scanner;
-
-public class ContarCeros {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        
-        // 1. Leer N
-        System.out.print("Ingrese el número total de datos (N): ");
-        int N = scanner.nextInt();
-        
-        // 2. Hacer CUECER ← 0
-        int CUECER = 0;
-        
-        // 3. y 4. Repetir con I desde 1 hasta N (Ciclo for)
-        System.out.println("Ingrese los " + N + " números enteros:");
-        for (int i = 1; i <= N; i++) {
-            System.out.print("Número " + i + ": ");
             
-            // Leer NUM
-            int NUM = scanner.nextInt();
-            
-            // 4.1: Si NUM = 0 entonces (Condicional)
-            if (NUM == 0) {
-                // Hacer CUECER ← CUECER + 1
-                CUECER = CUECER + 1;
-            }
-            
-            // El Hacer I ← I + 1 (paso 4.2 del programa 3.5) se maneja automáticamente por el ciclo 'for'
-        }
-        
-        // 6. Escribir CUECER
-        System.out.println("\n--- Resultado ---");
-        System.out.println("La cantidad de números cero es: " + CUECER);
-
-        scanner.close();
-    }
-}
-// Ejemplo de ejecución (usando los datos de la Tabla 3.2, donde N=13):
-// Entrada: 13, 18, 23, 0, 17, 22, 0, 39, 45, 0, 78, 41, 55
-// Salida esperada: La cantidad de números cero es: 3
-</code></pre>
-
-    </section>
-    <aside class="exercise-sidebar">
-      <h3>Notas rápidas</h3>
-      <ul>
-        <li>El ciclo **`for`** es la traducción más directa de la estructura **"Repetir con I desde 1 hasta N"** (Bucle de conteo) del diagrama de flujo.</li>
-        <li>El contador de ciclo (`i` en Java) y el incremento (`i++`) se gestionan automáticamente en la definición del `for`.</li>
-        <li>El contador de ceros (`CUECER`) debe ser inicializado a **cero** antes del ciclo.</li>
-        <li>Se usa una estructura `if` simple porque solo necesitamos actuar si la condición es verdadera (contar si el número es cero).</li>
-        <li>Recuerda que en Java, el operador de igualdad para tipos primitivos (`int`, `double`) es el doble signo igual: **`==`**.</li>
-      </ul>
-    </aside>
-  </div>
-</article>
-
-      <article id="problema_3_14_java" class="exercise-card" aria-labelledby="problema_3_14_java-title">
-  <header class="exercise-header">
-    <span class="exercise-badge">Ejercicio Java</span>
-    <h2 id="problema_3_14_java-title">Ventas de Boletos de Estadio (Problema 3.14)</h2>
-    <p class="exercise-description">
-      Procesar una serie de ventas de boletos de diferentes tipos de localidades (claves 1 a 5) y sus precios correspondientes, utilizando una estructura de control repetitiva (`while`) y la estructura de decisión múltiple (`switch`) para calcular el total de boletos vendidos por cada tipo, el importe total por cada venta y la recaudación total del estadio.
-    </p>
-  </header>
-  <div class="exercise-content">
-    <section class="exercise-main">
-      <h3>Requisitos</h3>
-      <ul>
-        <li>Implementar un **ciclo `while`** que procese ventas hasta encontrar el dato centinela: `CLAVE = -1` y `CANT = -1`.</li>
-        <li>Usar una estructura **`switch`** para evaluar la clave de localidad (`CLAVE` de 1 a 5).</li>
-        <li>Para cada venta válida:
-          <ul>
-            <li>**a)** Calcular el importe total de la venta actual (`PRE = Pn * CANT`).</li>
-            <li>**b)** Acumular la cantidad de boletos vendidos de ese tipo (`APn = APn + CANT`).</li>
-            <li>**c)** Imprimir la clave, la cantidad y el importe de la venta.</li>
-          </ul>
-        </li>
-        <li>Acumular la **recaudación total** del estadio (`RECAU = RECAU + PRE`).</li>
-        <li>Al finalizar, imprimir los acumulados de boletos vendidos por tipo (`AP1` a `AP5`) y la recaudación total (`RECAU`).</li>
-      </ul>
-
-      <h3>Ejemplo de uso esperado (Implementación en Java)</h3>
-      <pre><code class="code-block">import java.util.Scanner;
-
-public class VentasEstadio {
-
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        // Acumuladores de boletos por tipo (inciso d)
-        int AP1 = 0, AP2 = 0, AP3 = 0, AP4 = 0, AP5 = 0;
-        // Acumulador de recaudación total (inciso e)
-        double RECAU = 0.0;
-        // Variables de proceso y precios
-        double PRE = 0.0;
-        int CLAVE, CANT;
-        
-        // --- a) Leer los precios ---
-        System.out.println("--- Ingreso de Precios (P1 a P5) ---");
-        // En un entorno real se leerían los 5 precios aquí:
-        double P1 = 7.25, P2 = 15.80, P3 = 25.00, P4 = 50.00, P5 = 75.00; 
-        System.out.printf("Precios cargados (P1: %.2f, P5: %.2f, etc.)%n", P1, P5);
-
-        // --- b) Leer la primera venta (inicialización del ciclo) ---
-        System.out.println("\n--- Ingreso de Ventas (Clave y Cantidad) ---");
-        System.out.println("Clave (1-5) - Cantidad. Ingrese -1 -1 para terminar.");
-        System.out.print("Venta 1 (CLAVE CANT): ");
-        CLAVE = scanner.nextInt();
-        CANT = scanner.nextInt();
-
-        // --- Ciclo Repetitivo Mientras (while) ---
-        while (CLAVE != -1 && CANT != -1) {
-            
-            // 4.1: Condicional para calcular importe y acumular cantidad
-            switch (CLAVE) {
-                case 1:
-                    PRE = P1 * CANT;
-                    AP1 += CANT;
-                    break;
-                case 2:
-                    PRE = P2 * CANT;
-                    AP2 += CANT;
-                    break;
-                case 3:
-                    PRE = P3 * CANT;
-                    AP3 += CANT;
-                    break;
-                case 4:
-                    PRE = P4 * CANT;
-                    AP4 += CANT;
-                    break;
-                case 5:
-                    PRE = P5 * CANT;
-                    AP5 += CANT;
-                    break;
-                default:
-                    System.out.println("Clave de Localidad inválida: " + CLAVE);
-                    PRE = 0; // No acumular si la clave es inválida
-                    break;
-            }
-
-            // --- c) Imprimir datos de la venta actual ---
-            if (CLAVE >= 1 && CLAVE <= 5) {
-                System.out.printf("Venta procesada: CLAVE=%d, CANT=%d, Importe=%.2f%n", CLAVE, CANT, PRE);
-            }
-            
-            // 4.2: Acumular recaudación total
-            RECAU += PRE;
-
-            // Leer siguiente venta (Actualización del ciclo)
-            System.out.print("Siguiente venta (CLAVE CANT): ");
-            CLAVE = scanner.nextInt();
-            CANT = scanner.nextInt();
-        }
-
-        // --- 5 y 6: Escribir resultados finales ---
-        System.out.println("\n--- REPORTE FINAL ---");
-        System.out.println("d) Cantidad de Boletos Vendidos por Tipo:");
-        System.out.println("  CANTIDAD BOLETOS TIPO 1: " + AP1);
-        System.out.println("  CANTIDAD BOLETOS TIPO 2: " + AP2);
-        System.out.println("  CANTIDAD BOLETOS TIPO 3: " + AP3);
-        System.out.println("  CANTIDAD BOLETOS TIPO 4: " + AP4);
-        System.out.println("  CANTIDAD BOLETOS TIPO 5: " + AP5);
-        System.out.printf("e) RECAUDACIÓN TOTAL DEL ESTADIO: $%.2f%n", RECAU);
-
-        scanner.close();
-    }
-}</code></pre>
-
-    </section>
-    <aside class="exercise-sidebar">
-      <h3>Notas rápidas</h3>
-      <ul>
-        <li>El **Dato Centinela** es `CLAVE = -1`. El algoritmo requiere que la lectura de datos (`CLAVE` y `CANT`) se realice **antes del ciclo** y **al final de cada iteración**.</li>
-        <li>Se utilizó la estructura **`switch`** para el proceso de decisión múltiple, que es más eficiente y legible que múltiples `if-else if` anidados cuando se compara una sola variable con varios valores discretos.</li>
-        <li>Los acumuladores de cantidad (`APn`) son de tipo `int` (entero), mientras que los precios (`Pn`), el importe de la venta (`PRE`) y la recaudación total (`RECAU`) son de tipo `double` (real).</li>
-        <li>Si quieres ver la estructura del algoritmo, busca el **Diagrama de Flujo 3.21** de este problema. </li>
-      </ul>
-    </aside>
-  </div>
-</article>
-
-      <article id="problema_4_1_java" class="exercise-card" aria-labelledby="problema_4_1_java-title">
-        <header class="exercise-header">
-          <span class="exercise-badge">Ejercicio Java</span>
-          <h2 id="problema_4_1_java-title">Suma de Elementos de un Array (Problema 4.1)</h2>
-          <p class="exercise-description">
-            Leer un arreglo unidimensional de números reales y calcular la suma de todos sus elementos. Practicar la declaración, inicialización, llenado y recorrido de arrays en Java.
-          </p>
-        </header>
-        <div class="exercise-content">
-          <section class="exercise-main">
-            <h3>Requisitos</h3>
-            <ul>
-              <li>Definir el tamaño del arreglo (p. ej., N=100 según el problema, o leer N del usuario).</li>
-              <li>Declarar un arreglo de `double` (para números reales) del tamaño definido (p. ej., `double[] vec = new double[N];`).</li>
-              <li>Usar un bucle `for` para leer N valores `double` del usuario y almacenarlos en el arreglo `vec`.</li>
-              <li>Inicializar una variable `suma` (de tipo `double`) a 0.0.</li>
-              <li>Usar otro bucle `for` (o un bucle `for-each`) para recorrer el arreglo.</li>
-              <li>En cada iteración del segundo bucle, sumar el elemento actual del arreglo a la variable `suma`.</li>
-              <li>Después del segundo bucle, imprimir el valor final de `suma`.</li>
-            </ul>
-            <h3>Ejemplo de uso esperado</h3>
-            <pre><code class="code-block">import java.util.Scanner;
-import java.util.Arrays; // Para imprimir el array fácilmente (opcional)
-
-public class SumaArray {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        // Usaremos un tamaño más pequeño para el ejemplo
-        final int N = 5; // Tamaño del arreglo
-        double[] vec = new double[N]; // Declarar arreglo de double
-        double suma = 0.0; // Acumulador
-
-        System.out.println("Ingrese " + N + " números reales:");
-        // Ciclo para leer y llenar el arreglo
-        for (int i = 0; i < vec.length; i++) {
-            System.out.print("Elemento " + (i + 1) + ": ");
-            vec[i] = scanner.nextDouble();
-        }
-
-        // Ciclo para sumar los elementos
-        for (int i = 0; i < vec.length; i++) {
-            suma += vec[i]; // Acumular
-        }
-
-        // Alternativa con for-each:
-        // for (double elemento : vec) {
-        //     suma += elemento;
-        // }
-
-        System.out.println("Arreglo ingresado: " + Arrays.toString(vec)); // Opcional
-        System.out.printf("La suma de los elementos es: %.2f%n", suma); // Imprimir suma
-
-        scanner.close();
-    }
-}
-// Si la entrada es: 1.5 2.0 3.5 4.0 5.5
-// La salida será: La suma de los elementos es: 16.50</code></pre>
-          </section>
-          <aside class="exercise-sidebar">
-            <h3>Notas rápidas</h3>
-            <ul>
-              <li>Los índices de los arrays en Java van de `0` a `N-1`, donde `N` es el tamaño.</li>
-              <li>`vec.length` devuelve el tamaño del arreglo `vec`.</li>
-              <li>Un bucle `for-each` (`for (tipo elemento : coleccion)`) es una forma concisa de iterar sobre los elementos de un array o colección sin usar índices.</li>
-              <li>La clase `java.util.Arrays` ofrece métodos útiles para trabajar con arrays, como `toString()` para obtener una representación textual.</li>
-            </ul>
-          </aside>
-        </div>
-      </article>
-
-      <article id="problema_4_14_java" class="exercise-card" aria-labelledby="problema_4_14_java-title">
-        <header class="exercise-header">
-          <span class="exercise-badge">Ejercicio Java</span>
-          <h2 id="problema_4_14_java-title">Almacenar Años Bisiestos y Perfectos (Prob 4.14)</h2>
-          <p class="exercise-description">
-            Generar y almacenar en un array todos los años que sean simultáneamente bisiestos y perfectos dentro del rango [1, 2020]. Practicar lógica condicional compleja, bucles anidados y manejo dinámico de arrays (usando `ArrayList`).
-          </p>
-        </header>
-        <div class="exercise-content">
-          <section class="exercise-main">
-            <h3>Requisitos</h3>
-            <ul>
-              <li>Usar un `ArrayList<Integer>` para almacenar los años encontrados, ya que no se sabe cuántos serán.</li>
-              <li>Iterar con un bucle `for` desde el año 1 hasta el 2020.</li>
-              <li>Dentro del bucle, para cada año:
-                <ul>
-                  <li>**Verificar si es bisiesto:** Un año es bisiesto si es divisible por 4, excepto si es divisible por 100 a menos que también sea divisible por 400. Usar operadores módulo (`%`) y lógicos (`&&`, `||`, `!`). (`(año % 4 == 0 && año % 100 != 0) || (año % 400 == 0)`).</li>
-                  <li>**Verificar si es perfecto:** Un número es perfecto si la suma de sus divisores propios (incluyendo 1 pero no el número mismo) es igual al número. Calcular la suma de los divisores usando un bucle anidado (desde 1 hasta `año / 2`) y el operador módulo (`%`). (`sumaDivisores == año`).</li>
-                  <li>Si el año cumple **ambas** condiciones (bisiesto Y perfecto), agregarlo al `ArrayList`.</li>
-                </ul>
-              </li>
-              <li>Después del bucle principal, imprimir el contenido del `ArrayList`.</li>
-            </ul>
-            <h3>Ejemplo de uso esperado</h3>
-            <pre><code class="code-block">import java.util.ArrayList;
-import java.util.List;
-
-public class BisiestosPerfectos {
-
-    // Función para verificar si un año es bisiesto
-    public static boolean esBisiesto(int anio) { //
-        return (anio % 4 == 0 && anio % 100 != 0) || (anio % 400 == 0);
-    }
-
-    // Función para verificar si un número es perfecto
-    public static boolean esPerfecto(int numero) { //
-        if (numero <= 1) return false;
-        int sumaDivisores = 1; // 1 siempre es divisor
-        for (int i = 2; i <= numero / 2; i++) {
-            if (numero % i == 0) {
-                sumaDivisores += i;
-            }
-        }
-        return sumaDivisores == numero;
-    }
-
-    public static void main(String[] args) {
-        List<Integer> bisiestosPerfectos = new ArrayList<>(); // Usar ArrayList
-        int limiteSuperior = 2020;
-
-        for (int anio = 1; anio <= limiteSuperior; anio++) {
-            if (esBisiesto(anio) && esPerfecto(anio)) { // Verificar ambas condiciones
-                bisiestosPerfectos.add(anio); // Agregar al ArrayList
-            }
-        }
-
-        System.out.println("Años bisiestos y perfectos entre 1 y " + limiteSuperior + ":");
-        if (bisiestosPerfectos.isEmpty()) {
-            System.out.println("No se encontraron años que cumplan ambas condiciones.");
-        } else {
-            System.out.println(bisiestosPerfectos); // Imprimir lista
-        }
-    }
-}
-// Salida esperada (Nota: No existen números perfectos conocidos que sean bisiestos en ese rango):
-// Años bisiestos y perfectos entre 1 y 2020:
-// No se encontraron años que cumplan ambas condiciones.</code></pre>
-          </section>
-          <aside class="exercise-sidebar">
-            <h3>Notas rápidas</h3>
-            <ul>
-              <li>Los números perfectos conocidos son 6, 28, 496, 8128.... Ninguno de estos coincide con años bisiestos comunes.</li>
-              <li>Es buena práctica crear funciones separadas para `esBisiesto` y `esPerfecto` para mayor claridad.</li>
-              <li>Un `ArrayList` es más flexible que un array (`int[]`) cuando no se conoce el tamaño final.</li>
-              <li>Para la condición de número perfecto, basta comprobar divisores hasta `numero / 2`.</li>
-            </ul>
             <div class="tip-box">
-              <strong>Tip:</strong> Prueba el código con un rango más pequeño y conocido (ej. hasta 30) para verificar la lógica de `esPerfecto` (debería encontrar 6 y 28). Verifica `esBisiesto` con años conocidos (ej. 2000, 2024 son bisiestos; 1900 no lo es).
+              <strong>Tip:</strong> Puedes crear un programa en Java (`TrazaMemoria.java`) e imprimir las variables después de cada paso. ¡Esto te ayudará a verificar tu traza manual!
             </div>
           </aside>
         </div>
       </article>
 
-      <article id="problema_5_2_java" class="exercise-card" aria-labelledby="problema_5_2_java-title">
+      <article id="segundos-dias" class="exercise-card" aria-labelledby="segundos-dias-title">
         <header class="exercise-header">
-          <span class="exercise-badge">Ejercicio Java</span>
-          <h2 id="problema_5_2_java-title">Análisis Ventas Empleados (Problema 5.2)</h2>
+          <span class="exercise-badge">Problema 1.6</span>
+          <h2 id="segundos-dias-title">Segundos en Días</h2>
           <p class="exercise-description">
-            Manejar información de empleados (número, nombre, ventas mensuales, salario) almacenada en un array de objetos. Realizar consultas como encontrar al empleado con mayores ventas anuales, incrementar salarios basados en ventas, y listar empleados con ventas bajas en un mes específico. Practicar la creación de clases, arrays de objetos, y algoritmos de búsqueda y actualización sobre estructuras complejas.
+            Este es tu primer programa completo con la estructura **Entrada-Proceso-Salida**.
+            Aprenderás a pedir un dato al usuario, realizar un cálculo simple y mostrar
+            un resultado formateado.
           </p>
         </header>
         <div class="exercise-content">
           <section class="exercise-main">
             <h3>Requisitos</h3>
+            <p>Crea un programa llamado `SegundosEnDias.java` que haga lo siguiente:</p>
             <ul>
-              <li>Crear una clase `Empleado` con atributos: `numero` (int), `nombre` (String), `ventas` (array de `double` de tamaño 12), `salario` (double).</li>
-              <li>Crear un constructor para la clase `Empleado` que inicialice estos atributos.</li>
-              <li>Crear un array de objetos `Empleado` (`Empleado[] empleados = new Empleado[N];`).</li>
-              <li>Leer los datos de N empleados (hasta 100) y llenar el array.</li>
-              <li>Implementar la lógica para:
+              <li>Importa la herramienta `Scanner` para leer la entrada del teclado: `import java.util.Scanner;`</li>
+              <li>Crea un objeto `Scanner`: `Scanner scanner = new Scanner(System.in);`</li>
+              <li>Pide al usuario que ingrese un número de días (ej. "Introduce el número de días: ").</li>
+              <li>Lee el número y guárdalo en una variable entera: `int dias = scanner.nextInt();`</li>
+              <li>Calcula los segundos en una variable `double` (para números grandes): `double seg = dias * 24 * 60 * 60;`</li>
+              <li>Imprime el resultado de forma clara.</li>
+            </ul>
+            
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block">Introduce el número de días: 3
+En 3 días, hay 259200.0 segundos.</code></pre>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <ul>
+              <li>`Scanner` es la herramienta estándar de Java para leer la entrada de la consola.</li>
+              <li>`System.out.print()` imprime un mensaje sin saltar de línea.</li>
+              <li>`scanner.nextInt()` lee el siguiente número entero que el usuario teclee.</li>
+              <li>Usamos `double` para el resultado porque `int` podría quedarse sin espacio si el número de días es muy grande (esto se llama *overflow*).</li>
+            </ul>
+            
+            <div class="tip-box">
+              <strong>Tip:</strong> Puedes usar `System.out.printf("En %d días, hay %.0f segundos.\n", dias, seg);` para mostrar el resultado sin decimales (`.0f`).
+            </div>
+          </aside>
+        </div>
+      </article>
+
+      <article id="grillo-temperatura" class="exercise-card" aria-labelledby="grillo-temperatura-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Problema 2.1</span>
+          <h2 id="grillo-temperatura-title">El Grillo como Termómetro</h2>
+          <p class="exercise-description">
+            Aquí introduces la estructura de control más importante: la **selección**.
+            Aprenderás a usar la sentencia `if` para tomar decisiones y ejecutar código
+            solo si se cumple una condición específica.
+          </p>
+        </header>
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <p>Crea un programa `GrilloTemperatura.java` que:</p>
+            <ul>
+              <li>Pida al usuario el número de sonidos por minuto (`int N`).</li>
+              <li>Utilice una sentencia `if` para verificar si `N` es mayor que 0: `if (N > 0) { ... }`</li>
+              <li>**Dentro del 'if'**, calcula la temperatura: `double T = (double)N / 4 + 40;`</li>
+              <li>**Dentro del 'if'**, imprime la temperatura calculada.</li>
+              <li>Si el usuario ingresa 0 o un número negativo, el programa no debe imprimir nada y simplemente terminar.</li>
+            </ul>
+            
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block">Introduce el número de sonidos por minuto (N): 15
+La temperatura es: 43.75 grados Fahrenheit.
+
+--- (Si se ejecuta de nuevo) ---
+Introduce el número de sonidos por minuto (N): -5
+(El programa termina sin imprimir nada)</code></pre>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <ul>
+              <li>El rombo (`&lt; &gt;`) en un diagrama de flujo siempre se traduce como un `if` en Java.</li>
+              <li>La condición se escribe entre paréntesis: `if (N > 0)`.</li>
+              <li>El código que depende de la condición va entre llaves `{ ... }`.</li>
+            </ul>
+            
+            <div class="tip-box">
+              <strong>¡Cuidado con la división entera!</strong> Si escribes `N / 4`, Java (siendo `N` un `int`) descartará los decimales. Debes forzar una división real usando `(double)N / 4`.
+            </div>
+          </aside>
+        </div>
+      </article>
+
+      <article id="contar-ceros" class="exercise-card" aria-labelledby="contar-ceros-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Ejemplo 3.3</span>
+          <h2 id="contar-ceros-title">Contar Ceros</h2>
+          <p class="exercise-description">
+            Este ejercicio introduce tu primera **estructura repetitiva** (bucle).
+            Aprenderás a usar el bucle `for` para repetir un bloque de código un
+            número de veces que el usuario decida.
+          </p>
+        </header>
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <p>Crea un programa `ContarCeros.java` que:</p>
+            <ul>
+              <li>Primero, pregunte al usuario cuántos números va a ingresar. Guarda este límite en una variable `int N`.</li>
+              <li>Antes de empezar a contar, inicializa un **contador** en cero: `int CUECER = 0;`</li>
+              <li>Crea un bucle `for` que se ejecute `N` veces. La sintaxis es: `for (int i = 1; i <= N; i++) { ... }`</li>
+              <li>**Dentro del bucle**, pide al usuario que ingrese un número (`int NUM`).</li>
+              <li>**Dentro del bucle**, usa un `if (NUM == 0)` para verificar si el número es cero.</li>
+              <li>Si lo es, incrementa tu contador: `CUECER = CUECER + 1;` (o `CUECER++;`).</li>
+              <li>**Después de que el bucle termine**, imprime el valor final del contador `CUECER`.</li>
+            </ul>
+            
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block">¿Cuántos números enteros vas a ingresar?: 5
+Ingresa el número 1: 28
+Ingresa el número 2: 0
+Ingresa el número 3: -15
+Ingresa el número 4: 0
+Ingresa el número 5: 100
+-------------------------------------------
+El número total de 'ceros' ingresados fue: 2</code></pre>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <ul>
+              <li>Un **contador** es una variable que se usa para llevar la cuenta de algo. Siempre debe inicializarse en 0.</li>
+              <li>Un bucle `for` es perfecto cuando sabes de antemano cuántas veces quieres que se repita el código.</li>
+              <li>`i++` es un atajo para `i = i + 1`.</li>
+            </ul>
+            
+            <div class="tip-box">
+              <strong>Tip:</strong> El `System.out.println(CUECER)` debe ir *fuera* y *después* del bucle `for`. Si lo pones dentro, imprimirás el conteo en cada paso.
+            </div>
+          </aside>
+        </div>
+      </article>
+
+      <article id="estadio-precios" class="exercise-card" aria-labelledby="estadio-precios-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Problema 3.14</span>
+          <h2 id="estadio-precios-title">Taquilla del Estadio</h2>
+          <p class="exercise-description">
+            Este problema combina bucles y condicionales. Aprenderás a usar el bucle `while` para
+            procesar un número *indeterminado* de datos, deteniéndote con un **valor centinela**.
+          </p>
+        </header>
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <p>Crea un programa `EstadioPrecios.java` que:</p>
+            <ul>
+              <li>Declare e inicialice en 0 todos los **acumuladores**: `AP1`...`AP5` (para boletos) y `RECAU` (para el dinero).</li>
+              <li>Pida al usuario que ingrese los 5 precios (`P1`...`P5`).</li>
+              <li>Pida la `CLAVE` y `CANT` de la primera venta. (Esto se llama "lectura cebadora").</li>
+              <li>Inicie un bucle `while` que se repita mientras la `CLAVE` sea diferente de -1: `while (CLAVE != -1) { ... }`</li>
+              <li>**Dentro del bucle**, usa un `switch (CLAVE)` para determinar qué precio usar (`P1`...`P5`) y qué acumulador (`AP1`...`AP5`) incrementar.</li>
+              <li>Calcula el precio de esa venta (`PRE`) e incremente la recaudación total: `RECAU = RECAU + PRE;`.</li>
+              <li>**Al final del bucle**, vuelve a pedir la `CLAVE` y `CANT` para la siguiente venta.</li>
+              <li>**Después del bucle**, imprime el reporte final con los totales de `AP1`...`AP5` y `RECAU`.</li>
+            </ul>
+            
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block">Ingrese los 5 precios...
+P1: 100
+...
+P5: 50
+--- Ingrese la primera venta ---
+Clave del boleto (1-5) o -1 para terminar: 2
+Cantidad de boletos: 3
+Venta procesada: Clave 2, Cant 3, Importe $...
+--- Siguiente Venta ---
+Clave del boleto (1-5) o -1 para terminar: -1
+--- FIN DE VENTAS ---
+--- REPORTE FINAL ---
+CANTIDAD BOLETOS TIPO 1: 0
+CANTIDAD BOLETOS TIPO 2: 3
+...
+RECAUDACION TOTAL DEL ESTADIO: $...</code></pre>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <ul>
+              <li>Un **valor centinela** (como -1) es una señal para que un bucle `while` sepa cuándo detenerse.</li>
+              <li>Un **acumulador** es una variable que "suma" valores, no solo cuenta de 1 en 1.</li>
+              <li>Un `switch` es una forma limpia de manejar múltiples `if` basados en el valor de una sola variable.</li>
+            </ul>
+            
+            <div class="tip-box">
+              <strong>Tip:</strong> El patrón de "leer antes del bucle" y "volver a leer al final del bucle" es fundamental para los bucles `while` controlados por centinela.
+            </div>
+          </aside>
+        </div>
+      </article>
+
+      <article id="lista-sin-repeticiones" class="exercise-card" aria-labelledby="lista-sin-repeticiones-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Problema 4.1</span>
+          <h2 id="lista-sin-repeticiones-title">Lista Sin Repeticiones</h2>
+          <p class="exercise-description">
+            Introduce las **estructuras de datos: arreglos (arrays)**. Aprenderás a
+            declarar un arreglo, llenarlo con datos y procesarlo usando **bucles anidados**
+            (un bucle dentro de otro).
+          </p>
+        </header>
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <p>Crea un programa `ListaSinRepeticiones.java` que:</p>
+            <ul>
+              <li>Pida al usuario el tamaño del arreglo (`int N`).</li>
+              <li>Cree el arreglo: `int[] VEC = new int[N];`</li>
+              <li>Llene el arreglo usando un bucle `for` (de `i = 0` hasta `N-1`).</li>
+              <li>Imprima el encabezado "Lista de números sin repeticiones".</li>
+              <li>Use un bucle `while` para recorrer el arreglo (con un índice `I = 0`).</li>
+              <li>**Dentro del `while`**:
+                <ol>
+                  <li>Imprime el valor actual: `System.out.println(VEC[I]);`</li>
+                  <li>Guarda ese valor: `int REPET = VEC[I];`</li>
+                  <li>Inicia un **bucle anidado**: `while (I < N && REPET == VEC[I]) { ... }`</li>
+                  <li>Lo único dentro del bucle anidado es: `I++;`. Esto "saltará" todos los duplicados.</li>
+                </ol>
+              </li>
+            </ul>
+            
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block">Ingresa número de elementos: 7
+Ingrese valor 1: 5
+Ingrese valor 2: 5
+Ingrese valor 3: 5
+Ingrese valor 4: 8
+Ingrese valor 5: 9
+Ingrese valor 6: 9
+Ingrese valor 7: 10
+
+--- Lista de números sin repeticiones ---
+5
+8
+9
+10</code></pre>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <ul>
+              <li>Los arreglos en Java y muchos lenguajes usan **índice base 0**. El primer elemento está en `VEC[0]`, el segundo en `VEC[1]`, etc.</li>
+              <li>El último elemento está en `VEC[N-1]`.</li>
+              <li>Un bucle anidado es un bucle que se ejecuta completamente dentro de una iteración de otro bucle.</li>
+            </ul>
+            
+            <div class="tip-box">
+              <strong>Tip:</strong> El algoritmo funciona porque el arreglo está ordenado. El bucle externo imprime un número, y el bucle interno avanza el índice `I` hasta que encuentra un número *diferente*.
+            </div>
+          </aside>
+        </div>
+      </article>
+
+      <article id="produccion-deptos" class="exercise-card" aria-labelledby="produccion-deptos-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Problema 4.14</span>
+          <h2 id="produccion-deptos-title">Producción por Departamentos</h2>
+          <p class="exercise-description">
+            Introduce los **arreglos bidimensionales (matrices)**. Aprenderás a
+            almacenar y procesar datos en una cuadrícula (filas y columnas)
+            para responder preguntas analíticas.
+          </p>
+        </header>
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <p>Crea un programa `ProduccionDepartamentos.java` que:</p>
+            <ul>
+              <li>Declare una matriz de 12x3: `double[][] prod = new double[12][3];` (12 meses, 3 deptos).</li>
+              <li>Use bucles anidados (`for i...` y `for j...`) para llenar la matriz con 36 datos.</li>
+              <li>**Inciso a):** Use un bucle `for` (de `i = 0` a 11) para recorrer la **columna 0** (`prod[i][0]`) y encontrar el costo más alto (`MAYDUL`) y el mes (`MES`) en que ocurrió.</li>
+              <li>**Inciso b):** Use un bucle `for` (de `i = 0` a 11) para sumar todos los valores de la **columna 1** (`prod[i][1]`) y calcular el promedio.</li>
+              <li>**Inciso c):** Combine la lógica del inciso 'a' para encontrar el máximo y el mínimo de la **columna 1** (`prod[i][1]`) y sus respectivos meses.</li>
+              <li>**Inciso d):** Use un bucle `for` (de `j = 0` a 2) para recorrer la **fila 11** (`prod[11][j]`) y encontrar el costo más bajo (`MENOR`) y el depto (`DEP`) en que ocurrió.</li>
+            </ul>
+            
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block">--- Ingrese los costos de producción ---
+Mes 1, Depto 1: 100
+Mes 1, Depto 2: 150
+...
+Mes 12, Depto 3: 200
+
+--- Resultados del Análisis ---
+En el mes 5, se registró el mayor costo de producción de dulces.
+Promedio anual de costos de producción de bebidas: 180.50
+En el mes 8, se registró el mayor costo de ... y en el mes 2, el menor costo.
+El departamento 3 tuvo el menor costo en diciembre.</code></pre>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <ul>
+              <li>Una matriz se declara como `tipo[][] nombre;`.</li>
+              <li>Se accede a un elemento con `nombre[fila][columna]`.</li>
+              <li>En Java, las filas y columnas empiezan en el índice 0.</li>
+              <li>Recorrer una **columna** significa mantener la `j` fija y mover la `i`.</li>
+              <li>Recorrer una **fila** significa mantener la `i` fija y mover la `j`.</li>
+            </ul>
+            
+            <div class="tip-box">
+              <strong>Tip:</strong> Ten cuidado con los índices. El mes "Enero" (mes 1) es la fila `[0]`. El "Depto 1" es la columna `[0]`. "Diciembre" (mes 12) es la fila `[11]`.
+            </div>
+          </aside>
+        </div>
+      </article>
+
+      <article id="empleados-tienda" class="exercise-card" aria-labelledby="empleados-tienda-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Problema 5.2</span>
+          <h2 id="empleados-tienda-title">Gestión de Empleados (Registros)</h2>
+          <p class="exercise-description">
+            Este es un ejercicio avanzado que introduce los **Arreglos de Registros**. En Java,
+            esto se implementa creando una **Clase** (un molde) y luego creando un
+            **Arreglo de Objetos** de esa clase.
+          </p>
+        </header>
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <ol>
+              <li>Crea una **clase `Empleado`** (en el mismo archivo o en uno nuevo) que sirva como "registro". Debe tener los atributos: `int numero;`, `String nombre;`, `double salario;`, `double[] ventas;`.</li>
+              <li>En el constructor de la clase `Empleado`, inicializa el arreglo: `ventas = new double[12];`</li>
+              <li>En tu programa principal (`EmpleadosTienda.java`), crea un arreglo de estos objetos: `Empleado[] empleados = new Empleado[N];`</li>
+              <li>Usa un bucle (`for i...`) para llenar el arreglo. ¡Recuerda crear el objeto en cada posición: `empleados[i] = new Empleado();`!</li>
+              <li>Dentro de ese bucle, usa un **bucle anidado** (`for j...`) para leer las 12 ventas de `empleados[i].ventas[j]`.</li>
+              <li>Crea un menú con un bucle `do-while` y un `switch` para las opciones (1, 2, 3, 4).</li>
+              <li>Implementa la lógica para cada inciso (Venta Máxima, Incremento, Ventas Mínimas) recorriendo el arreglo de empleados.</li>
+            </ol>
+            
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block">Ingrese número de empleados: 2
+--- Datos del Empleado 1 ---
+Número: 10
+Nombre: Ana
+...
+--- MENÚ DE OPCIONES ---
+(1) Empleado con mayor venta
+...
+(4) Terminar
+Elija una opción: 1
+
+--- Empleado con Mayores Ventas ---
+Nombre: Ana
+Número de empleado: 10
+...
+Elija una opción: 4</code></pre>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <ul>
+              <li>Un **Registro** (en pseudocódigo) es una **Clase** (en Java).</li>
+              <li>Un **Objeto** es una instancia de una Clase.</li>
+              <li>`empleados[i]` te da el objeto `Empleado` en la posición `i`.</li>
+              <li>`empleados[i].nombre` te da el nombre de ese empleado.</li>
+              <li>`empleados[i].ventas[j]` te da la venta del mes `j` del empleado `i`.</li>
+            </ul>
+            
+            <div class="tip-box">
+              <strong>Tip:</strong> Es una excelente práctica separar la lógica de cada inciso del menú en su propia **función** (método estático). Por ejemplo: `public static void encontrarVentaMaxima(Empleado[] empleados) { ... }`
+            </div>
+          </aside>
+        </div>
+      </article>
+
+      <article id="calcular-tangente" class="exercise-card" aria-labelledby="calcular-tangente-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Problema PS 2.1</span>
+          <h2 id="calcular-tangente-title">Calcular Tangente</h2>
+          <p class="exercise-description">
+            Este ejercicio refuerza el uso de la estructura `if-else` para la
+            **validación de datos**. Aprenderás a prevenir un error matemático común:
+            la división por cero.
+          </p>
+        </header>
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <p>Crea un programa `CalcularTangente.java` que:</p>
+            <ul>
+              <li>Pida al usuario dos valores: `double seno` y `double coseno`.</li>
+              <li>Verifique si el coseno es diferente de cero: `if (coseno != 0) { ... }`</li>
+              <li>**Si es diferente de 0**, calcula la tangente: `double tangente = seno / coseno;` e imprime el resultado.</li>
+              <li>**Si es igual a 0**, usa un bloque `else` para imprimir un mensaje de error: `else { System.out.println("Error: El coseno es 0..."); }`</li>
+            </ul>
+            
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block">Ingrese el valor del Seno: 0.866
+Ingrese el valor del Coseno: 0.5
+La tangente es: 1.7320
+
+--- (Si se ejecuta de nuevo) ---
+Ingrese el valor del Seno: 1.0
+Ingrese el valor del Coseno: 0
+Error: El coseno es 0.
+La tangente no está definida (división por cero).</code></pre>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <ul>
+              <li>`!=` significa "diferente de".</li>
+              <li>`==` significa "igual a".</li>
+              <li>La estructura `if-else` es perfecta para manejar dos caminos mutuamente excluyentes (un cálculo exitoso o un error).</li>
+            </ul>
+            
+            <div class="tip-box">
+              <strong>Tip:</strong> Esto se llama "programación defensiva". Anticipas los errores (como la división por cero) y los manejas antes de que rompan tu programa.
+            </div>
+          </aside>
+        </div>
+      </article>
+
+      <article id="calcular-cotangente" class="exercise-card" aria-labelledby="calcular-cotangente-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Problema PS 2.2</span>
+          <h2 id="calcular-cotangente-title">Calcular Cotangente</h2>
+          <p class="exercise-description">
+            Similar al ejercicio anterior, este problema refuerza la validación de datos
+            con `if-else`, pero esta vez debes validar una variable diferente (el seno)
+            para la fórmula de la cotangente.
+          </p>
+        </header>
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <p>Crea un programa `CalcularCotangente.java` que:</p>
+            <ul>
+              <li>Pida al usuario `double seno` y `double coseno`.</li>
+              <li>Verifique si el **seno** es diferente de cero: `if (seno != 0) { ... }`</li>
+              <li>**Si es diferente de 0**, calcula la cotangente: `double cotangente = coseno / seno;` e imprime el resultado.</li>
+              <li>**Si es igual a 0**, usa un bloque `else` para imprimir un mensaje de error.</li>
+            </ul>
+            
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block">Ingrese el valor del Seno: 0.5
+Ingrese el valor del Coseno: 0.866
+La cotangente es: 1.7320
+
+--- (Si se ejecuta de nuevo) ---
+Ingrese el valor del Seno: 0
+Ingrese el valor del Coseno: 1.0
+Error: El seno es 0.
+La cotangente no está definida (división por cero).</code></pre>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <ul>
+              <li>La lógica es idéntica al ejercicio de la tangente, pero el denominador ha cambiado.</li>
+              <li>El objetivo es que aprendas a identificar qué variable *específica* necesitas validar en una fórmula.</li>
+            </ul>
+            
+            <div class="tip-box">
+              <strong>Tip:</strong> Siempre analiza tus fórmulas. Cualquier variable que esté en un denominador (dividiendo) es un candidato para una validación con `if`.
+            </div>
+          </aside>
+        </div>
+      </article>
+
+      <article id="promedios-ciclo" class="exercise-card" aria-labelledby="promedios-ciclo-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Problema PS 3.23</span>
+          <h2 id="promedios-ciclo-title">Promedio de Alumnos (con Ciclo)</h2>
+          <p class="exercise-description">
+            Este ejercicio te enseña a usar **bucles anidados** (un `for` dentro de otro `for`)
+            para procesar datos de forma estructurada. Calcularás el promedio de 35 alumnos,
+            leyendo sus 5 calificaciones una por una.
+          </p>
+        </header>
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <p>Crea un programa `PromediosAlumnosCiclo.java` que:</p>
+            <ul>
+              <li>Cree un bucle `for` externo que se repita 35 veces (para los alumnos).</li>
+              <li>**Dentro del bucle de alumnos**:
+                <ol>
+                  <li>Pide la matrícula del alumno.</li>
+                  <li>Inicializa un acumulador: `double suma = 0;`</li>
+                  <li>Crea un bucle `for` **interno** que se repita 5 veces (para las calificaciones).</li>
+                  <li>**Dentro del bucle interno**: Pide la calificación y súmala al acumulador: `suma = suma + calificacion;`</li>
+                  <li>**Después del bucle interno**, calcula el promedio: `double promedio = suma / 5;`</li>
+                  <li>Imprime la matrícula y el promedio de *ese* alumno.</li>
+                </ol>
+              </li>
+            </ul>
+            
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block">Ingrese la matrícula del alumno 1: 1001
+Ingrese las 5 calificaciones del alumno 1001:
+  Calificación 1: 80
+  Calificación 2: 90
+  Calificación 3: 100
+  Calificación 4: 70
+  Calificación 5: 80
+-&gt; El promedio del alumno 1001 es: 84.00
+
+Ingrese la matrícula del alumno 2: 1002
+... (y así 35 veces)</code></pre>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <ul>
+              <li>El bucle externo maneja a los "alumnos".</li>
+              <li>El bucle interno maneja las "calificaciones".</li>
+              <li>El acumulador `suma` **debe reiniciarse a 0** por cada nuevo alumno (al inicio del bucle externo).</li>
+            </ul>
+            
+            <div class="tip-box">
+              <strong>Tip:</strong> Usar bucles anidados es mucho más eficiente que declarar 5 variables (`cal1`, `cal2`...). Si te pidieran 100 calificaciones, solo cambiarías el límite del bucle interno.
+            </div>
+          </aside>
+        </div>
+      </article>
+      
+      <article id="promedio-maxmin" class="exercise-card" aria-labelledby="promedio-maxmin-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Problema PS 3.24</span>
+          <h2 id="promedio-maxmin-title">Mejor y Peor Promedio</h2>
+          <p class="exercise-description">
+            Este ejercicio se basa en el anterior (PS 3.23), pero añade el algoritmo de
+            **búsqueda de máximo y mínimo**. Aprenderás a "recordar" el mejor y peor
+            valor mientras recorres una lista de datos.
+          </p>
+        </header>
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <p>Crea un programa `PromedioMaxMin.java` que:</p>
+            <ul>
+              <li>**Antes del bucle** de 35 alumnos, inicializa 4 variables:
                 <ul>
-                  <li>**a) Mayor venta anual:** Iterar sobre los empleados. Para cada uno, sumar las ventas de los 12 meses. Mantener un registro del empleado con la suma máxima encontrada hasta el momento. Imprimir el número y nombre de ese empleado.</li>
-                  <li>**b) Incremento salarial:** Iterar sobre los empleados. Para cada uno, sumar las ventas anuales. Si la suma es > 1,000,000, actualizar su salario multiplicándolo por 1.10 (`empleado.salario *= 1.10;`).</li>
-                  <li>**c) Ventas bajas en diciembre:** Iterar sobre los empleados. Si `empleado.ventas[11]` (índice 11 para diciembre) es < 30,000, imprimir el número y nombre del empleado.</li>
+                  <li>`double mejorProm = -1.0;` (un valor muy bajo)</li>
+                  <li>`int matMejor = 0;`</li>
+                  <li>`double peorProm = 101.0;` (un valor muy alto)</li>
+                  <li>`int matPeor = 0;`</li>
                 </ul>
               </li>
-              <li>Opcional: Implementar un menú para que el usuario elija qué operación realizar, similar al diagrama de flujo.</li>
+              <li>Usa la misma estructura de bucles anidados del PS 3.23 para calcular el `promedio` de cada alumno.</li>
+              <li>**Dentro del bucle de alumnos** (después de calcular el promedio):
+                <ol>
+                  <li>Compara con el máximo: `if (promedio > mejorProm) { ... }`</li>
+                  <li>Si es un nuevo máximo, actualiza `mejorProm = promedio;` y `matMejor = matricula;`.</li>
+                  <li>Compara con el mínimo: `if (promedio < peorProm) { ... }`</li>
+                  <li>Si es un nuevo mínimo, actualiza `peorProm = promedio;` y `matPeor = matricula;`.</li>
+                </ol>
+              </li>
+              <li>**Después de que el bucle de 35 alumnos termine**, imprime los valores finales de `matMejor`, `mejorProm`, `matPeor` y `peorProm`.</li>
             </ul>
+            
             <h3>Ejemplo de uso esperado</h3>
-            <pre><code class="code-block">import java.util.Scanner;
-import java.util.Arrays;
+            <pre><code class="code-block">(El programa pide los datos de los 35 alumnos...)
 
-// Definición de la clase Empleado
-class Empleado { //
-    int numero; //
-    String nombre; //
-    double[] ventas = new double[12]; //
-    double salario; //
+-> Promedio del alumno 1001: 84.00
+...
+-> Promedio del alumno 1035: 91.00
 
-    // Constructor
-    public Empleado(int numero, String nombre, double salario) {
-        this.numero = numero;
-        this.nombre = nombre;
-        this.salario = salario;
-    }
-
-    // Método para calcular ventas anuales
-    public double getTotalVentasAnuales() {
-        double suma = 0;
-        for (double ventaMes : ventas) {
-            suma += ventaMes;
-        }
-        return suma;
-    }
-
-    // Método toString para fácil impresión (opcional)
-    @Override
-    public String toString() {
-        return "Empleado [Numero=" + numero + ", Nombre=" + nombre + ", Salario=" + salario +
-               ", Ventas=" + Arrays.toString(ventas) + "]";
-    }
-}
-
-public class GestionEmpleadosTienda {
-    static Scanner scanner = new Scanner(System.in);
-    static int N = 0; // Número real de empleados
-    static Empleado[] empleados; // Array de empleados
-
-    public static void main(String[] args) {
-        // --- 1. Leer datos iniciales ---
-        leerDatosIniciales();
-
-        // --- 2. Menú de opciones (similar al Diagrama 5.2) ---
-        int opcion;
-        do {
-            mostrarMenu();
-            opcion = scanner.nextInt();
-            scanner.nextLine(); // Consumir newline
-
-            switch (opcion) {
-                case 1: // a) Mayor venta anual
-                    encontrarMayorVentaAnual();
-                    break;
-                case 2: // b) Incrementar salario
-                    incrementarSalarios();
-                    System.out.println("Salarios actualizados (si aplica).");
-                    break;
-                case 3: // c) Ventas bajas en diciembre
-                    listarVentasBajasDiciembre();
-                    break;
-                case 4:
-                    System.out.println("Terminando programa.");
-                    break;
-                default:
-                    System.out.println("Opción inválida.");
-            }
-        } while (opcion != 4);
-
-        scanner.close();
-    }
-
-    // --- Métodos auxiliares ---
-    static void leerDatosIniciales() {
-      // Implementación para leer N y los datos de cada empleado, llenando el array 'empleados'
-      // ... (similar a lo mostrado en el Diagrama 5.2, bucle I de 1 a N) ...
-      System.out.println("Ingrese número de empleados (max 100):");
-      N = scanner.nextInt();
-       if (N < 1 || N > 100) {
-           System.out.println("Número de empleados inválido.");
-           System.exit(1); // Salir si el dato es incorrecto
-       }
-      empleados = new Empleado[N];
-      for (int i = 0; i < N; i++) {
-          System.out.println("Datos Empleado " + (i + 1));
-          System.out.print("Numero: "); int num = scanner.nextInt();
-          System.out.print("Nombre: "); String nom = scanner.next();
-          System.out.print("Salario: "); double sal = scanner.nextDouble();
-          empleados[i] = new Empleado(num, nom, sal);
-          System.out.println("Ingrese ventas mensuales (12 valores):");
-          for (int j = 0; j < 12; j++) { //
-              empleados[i].ventas[j] = scanner.nextDouble();
-          }
-      }
-    }
-
-    static void mostrarMenu() {
-        System.out.println("\n--- MENÚ ---");
-        System.out.println("1. Empleado con mayor venta anual");
-        System.out.println("2. Incrementar salario por ventas altas");
-        System.out.println("3. Empleados con ventas bajas en Diciembre");
-        System.out.println("4. Terminar");
-        System.out.print("Seleccione una opción: ");
-    }
-
-    static void encontrarMayorVentaAnual() { // Inciso a
-        if (N == 0) return;
-        double maxVentas = -1.0;
-        int indiceMax = -1;
-
-        for (int i = 0; i < N; i++) {
-            double ventasAnuales = empleados[i].getTotalVentasAnuales();
-            if (ventasAnuales > maxVentas) {
-                maxVentas = ventasAnuales;
-                indiceMax = i;
-            }
-        }
-        if (indiceMax != -1) {
-             System.out.println("Empleado con mayores ventas anuales:");
-             System.out.println("Número: " + empleados[indiceMax].numero);
-             System.out.println("Nombre: " + empleados[indiceMax].nombre);
-             System.out.printf("Ventas Totales: %.2f%n", maxVentas);
-        }
-    }
-
-    static void incrementarSalarios() { // Inciso b
-         for (int i = 0; i < N; i++) {
-             double ventasAnuales = empleados[i].getTotalVentasAnuales();
-             if (ventasAnuales > 1000000) {
-                 empleados[i].salario *= 1.10;
-                 // Opcional: imprimir qué empleado recibió aumento
-                 // System.out.println("Salario incrementado para: " + empleados[i].nombre);
-             }
-         }
-    }
-
-    static void listarVentasBajasDiciembre() { // Inciso c
-        System.out.println("Empleados con ventas < $30,000 en Diciembre:");
-        boolean encontrados = false;
-        for (int i = 0; i < N; i++) {
-            // Diciembre es el índice 11 (0 a 11)
-            if (empleados[i].ventas[11] < 30000) {
-                System.out.println("Número: " + empleados[i].numero + ", Nombre: " + empleados[i].nombre);
-                encontrados = true;
-            }
-        }
-        if (!encontrados) {
-            System.out.println("Ningún empleado cumple el criterio.");
-        }
-    }
-}</code></pre>
+--- Procesamiento Terminado ---
+--- RESULTADOS FINALES ---
+Mejor Alumno: Matrícula 1035 con Promedio 91.00
+Peor Alumno:  Matrícula 1001 con Promedio 84.00</code></pre>
           </section>
+          
           <aside class="exercise-sidebar">
             <h3>Notas rápidas</h3>
             <ul>
-              <li>Define una clase `Empleado` para encapsular los datos.</li>
-              <li>Usa un array `Empleado[]` para almacenar múltiples objetos `Empleado`.</li>
-              <li>Para acceder a los campos de un objeto en el array, usa `nombreArray[indice].nombreCampo` (p. ej., `empleados[i].salario`).</li>
-              <li>Para acceder a un elemento del array *dentro* del objeto, usa `nombreArray[indice].nombreCampoArray[indiceInterno]` (p. ej., `empleados[i].ventas[j]`).</li>
-              <li>Recuerda que los índices de arrays en Java empiezan en 0. Diciembre corresponde al índice 11.</li>
+              <li>Este algoritmo compara el valor *actual* con el "campeón" guardado.</li>
+              <li>Si el actual es mejor, se convierte en el nuevo "campeón".</li>
+              <li>Inicializar los "campeones" con valores centinela (`-1` y `101`) asegura que el primer alumno real siempre gane.</li>
             </ul>
+            
+            <div class="tip-box">
+              <strong>Tip:</strong> La impresión de los resultados finales debe estar *fuera* del bucle principal. Solo quieres imprimir el resultado una vez al final.
+            </div>
           </aside>
         </div>
       </article>
 
-      <article id="ps_2_1_java" class="exercise-card" aria-labelledby="ps_2_1_java-title">
+      <article id="aptitudes-basquet" class="exercise-card" aria-labelledby="aptitudes-basquet-title">
         <header class="exercise-header">
-          <span class="exercise-badge">Ejercicio Java</span>
-          <h2 id="ps_2_1_java-title">Calcular Tangente (PS 2.1)</h2>
+          <span class="exercise-badge">Problema PS 3.25</span>
+          <h2 id="aptitudes-basquet-title">Aptitudes para Básquetbol</h2>
           <p class="exercise-description">
-            Calcular la tangente de un ángulo dado su seno y coseno, asegurándose de que el coseno no sea cero para evitar la división por cero. Practicar operaciones matemáticas básicas y validación de entradas con `if`.
+            Este problema combina varias habilidades: un bucle `while` controlado por **centinela**,
+            múltiples contadores, y condiciones lógicas complejas usando el operador **Y** (`&&`).
           </p>
         </header>
         <div class="exercise-content">
           <section class="exercise-main">
             <h3>Requisitos</h3>
+            <p>Crea un programa `AptitudesBasquet.java` que:</p>
             <ul>
-              <li>Leer dos valores `double`: `seno` y `coseno`.</li>
-              <li>Verificar si `coseno` es diferente de cero usando `if (coseno != 0)`.</li>
-              <li>Si `coseno` no es cero, calcular `tangente = seno / coseno`.</li>
-              <li>Imprimir el valor de `tangente`.</li>
-              <li>Si `coseno` es cero, imprimir un mensaje indicando que la tangente es indefinida (o un error apropiado).</li>
+              <li>Inicialice 4 contadores en 0: `totalMujeres`, `aptasMujeres`, `totalHombres`, `aptosHombres`.</li>
+              <li>Pida el nombre del primer alumno (lectura cebadora).</li>
+              <li>Inicie un bucle `while (!nombre.equalsIgnoreCase("X")) { ... }` (mientras el nombre no sea "X").</li>
+              <li>**Dentro del bucle**:
+                <ol>
+                  <li>Pide `SEXO`, `EDAD`, `PESO`, `ALTURA`.</li>
+                  <li>Usa un `if (sexo == 'F')`... `else if (sexo == 'M')` para separar la lógica.</li>
+                  <li>**Si es 'F'**: incrementa `totalMujeres`. Luego, con un `if` anidado, revisa la condición (a): `if (altura >= 1.73 && peso <= 90)` e incrementa `aptasMujeres`.</li>
+                  <li>**Si es 'M'**: incrementa `totalHombres`. Luego, con un `if` anidado, revisa la condición (c): `if (altura >= 1.83 && peso <= 110)` e incrementa `aptosHombres`.</li>
+                  <li>**Al final del bucle**, vuelve a pedir el `nombre` para la siguiente iteración.</li>
+                </ol>
+              </li>
+              <li>**Después del bucle**, calcula los porcentajes (b) y (d).</li>
             </ul>
+            
             <h3>Ejemplo de uso esperado</h3>
-            <pre><code class="code-block">import java.util.Scanner;
+            <pre><code class="code-block">Ingrese Nombre (o 'X' para terminar): Ana
+Sexo (F/M): F
+...
+Altura (m): 1.75
+Peso (kg): 60
+   (Apta) -&gt; Ana
 
-public class CalcularTangente {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+Ingrese Nombre (o 'X' para terminar): Luis
+Sexo (F/M): M
+...
+Altura (m): 1.80
+Peso (kg): 90
+(Luis no cumple la condición de altura para hombres)
 
-        System.out.print("Ingrese el valor del seno: ");
-        double seno = scanner.nextDouble(); //
-        System.out.print("Ingrese el valor del coseno: ");
-        double coseno = scanner.nextDouble(); //
-
-        if (coseno != 0) { //
-            double tangente = seno / coseno; //
-            System.out.printf("La tangente es: %.4f%n", tangente);
-        } else {
-            System.out.println("La tangente es indefinida (coseno es cero)."); //
-        }
-
-        scanner.close();
-    }
-}
-// Si la entrada es: seno=0.866, coseno=0.5
-// La salida será: La tangente es: 1.7320
-// Si la entrada es: seno=1.0, coseno=0.0
-// La salida será: La tangente es indefinida (coseno es cero).</code></pre>
+Ingrese Nombre (o 'X' para terminar): X
+--- FIN DEL PROCESAMIENTO ---
+Porcentaje de alumnas aptas: 100.00% (de 1 alumnas totales)
+No se ingresaron alumnos.</code></pre>
           </section>
+          
           <aside class="exercise-sidebar">
             <h3>Notas rápidas</h3>
             <ul>
-              <li>La división por cero en punto flotante (`double` o `float`) en Java no lanza una excepción, sino que resulta en `Infinity`, `-Infinity` o `NaN` (Not a Number). Sin embargo, es buena práctica verificar explícitamente para dar un mensaje más claro al usuario.</li>
-              <li>Usa `double` para todas las variables trigonométricas.</li>
+              <li>El operador "Y" en Java se escribe `&&`.</li>
+              <li>`if (condicion1 && condicion2)`: Ambas deben ser verdaderas.</li>
+              <li>`.equalsIgnoreCase("X")` compara texto ignorando mayúsculas/minúsculas.</li>
             </ul>
+            
+            <div class="tip-box">
+              <strong>¡Cuidado al dividir!</strong> Al calcular el porcentaje, asegúrate de que el divisor (`totalMujeres` o `totalHombres`) no sea 0. Usa un `if (totalMujeres > 0)` antes de dividir.
+            </div>
           </aside>
         </div>
       </article>
 
-      <article id="ps_2_2_java" class="exercise-card" aria-labelledby="ps_2_2_java-title">
+      <article id="contar-arreglo" class="exercise-card" aria-labelledby="contar-arreglo-title">
         <header class="exercise-header">
-          <span class="exercise-badge">Ejercicio Java</span>
-          <h2 id="ps_2_2_java-title">Calcular Cotangente (PS 2.2)</h2>
+          <span class="exercise-badge">Problema PS 4.3</span>
+          <h2 id="contar-arreglo-title">Contar Positivos, Negativos y Nulos</h2>
           <p class="exercise-description">
-            Calcular la cotangente de un ángulo dado su seno y coseno, asegurándose de que el seno no sea cero. Similar al ejercicio anterior, refuerza la validación de divisores.
+            Un ejercicio clásico de procesamiento de arreglos. Aprenderás a "barrer" un
+            arreglo y clasificar cada elemento usando contadores y una estructura
+            `if-else if-else`.
           </p>
         </header>
         <div class="exercise-content">
           <section class="exercise-main">
             <h3>Requisitos</h3>
+            <p>Crea un programa `ContarNumerosArreglo.java` que:</p>
             <ul>
-              <li>Leer dos valores `double`: `seno` y `coseno`.</li>
-              <li>Verificar si `seno` es diferente de cero usando `if (seno != 0)`.</li>
-              <li>Si `seno` no es cero, calcular `cotangente = coseno / seno`.</li>
-              <li>Imprimir el valor de `cotangente`.</li>
-              <li>Si `seno` es cero, imprimir un mensaje indicando que la cotangente es indefinida.</li>
+              <li>Pida al usuario el tamaño del arreglo (`int N`), validando que sea menor o igual a 300.</li>
+              <li>Inicialice 3 contadores en 0: `cpos`, `cneg`, `cnul`.</li>
+              <li>Cree el arreglo: `int[] ARRE = new int[N];`</li>
+              <li>Cree un **único bucle `for`** (de `i = 0` a `N-1`) que haga dos cosas:
+                <ol>
+                  <li>Pida el número y lo guarde en el arreglo: `ARRE[i] = scanner.nextInt();`</li>
+                  <li>Inmediatamente, clasifique ese número:
+                    <ul>
+                      <li>`if (ARRE[i] > 0) { cpos++; }`</li>
+                      <li>`else if (ARRE[i] < 0) { cneg++; }`</li>
+                      <li>`else { cnul++; }`</li>
+                    </ul>
+                  </li>
+                </ol>
+              </li>
+              <li>**Después del bucle**, imprima los 3 contadores.</li>
             </ul>
+            
             <h3>Ejemplo de uso esperado</h3>
-            <pre><code class="code-block">import java.util.Scanner;
+            <pre><code class="code-block">¿Cuántos números va a ingresar? (Máx. 300): 4
+Ingrese los 4 números enteros:
+Número 1: 10
+Número 2: -5
+Número 3: 0
+Número 4: -2
 
-public class CalcularCotangente {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.print("Ingrese el valor del seno: ");
-        double seno = scanner.nextDouble(); //
-        System.out.print("Ingrese el valor del coseno: ");
-        double coseno = scanner.nextDouble(); //
-
-        if (seno != 0) { //
-            double cotangente = coseno / seno; //
-            System.out.printf("La cotangente es: %.4f%n", cotangente);
-        } else {
-            System.out.println("La cotangente es indefinida (seno es cero)."); //
-        }
-
-        scanner.close();
-    }
-}
-// Si la entrada es: seno=0.5, coseno=0.866
-// La salida será: La cotangente es: 1.7320
-// Si la entrada es: seno=0.0, coseno=1.0
-// La salida será: La cotangente es indefinida (seno es cero).</code></pre>
+--- Conteo Final ---
+Números Positivos: 1
+Números Negativos: 2
+Números Nulos (cero): 1</code></pre>
           </section>
+          
           <aside class="exercise-sidebar">
             <h3>Notas rápidas</h3>
             <ul>
-              <li>La lógica es análoga al cálculo de la tangente, solo se invierte el divisor y la variable a comprobar.</li>
-              <li>Nuevamente, la división por cero en `double` da `Infinity`/`NaN`, pero la validación explícita es preferible.</li>
+              <li>La estructura `if-else if-else` es perfecta para clasificar algo en 3 o más categorías mutuamente excluyentes.</li>
+              <li>Es más eficiente llenar y procesar el arreglo en el mismo bucle (si es posible) que recorrerlo dos veces.</li>
             </ul>
+            
+            <div class="tip-box">
+              <strong>Tip:</strong> El bloque `else` final no necesita condición. Si el número no es `> 0` y no es `< 0`, lógicamente la única opción que queda es que sea `== 0`.
+            </div>
           </aside>
         </div>
       </article>
 
-      <article id="ps_3_23_java" class="exercise-card" aria-labelledby="ps_3_23_java-title">
-          <header class="exercise-header">
-              <span class="exercise-badge">Ejercicio Java</span>
-              <h2 id="ps_3_23_java-title">Promedio Calificaciones con Ciclo Anidado (PS 3.23)</h2>
-              <p class="exercise-description">
-                  Calcular e imprimir la matrícula y el promedio de calificaciones para cada uno de los 35 alumnos de una clase. Cada alumno tiene 5 calificaciones que deben leerse dentro de un ciclo interno. Practicar el uso de ciclos anidados (`for` dentro de `for`) y cálculo de promedios.
-              </p>
-          </header>
-          <div class="exercise-content">
-              <section class="exercise-main">
-                  <h3>Requisitos</h3>
-                  <ul>
-                      <li>Definir el número de alumnos (35) y el número de calificaciones por alumno (5) como constantes o variables.</li>
-                      <li>Usar un ciclo `for` externo que itere 35 veces (una por cada alumno).</li>
-                      <li>Dentro del ciclo externo:
-                          <ul>
-                              <li>Leer la matrícula (`int`) del alumno actual.</li>
-                              <li>Inicializar un acumulador de suma de calificaciones (`double`) a 0.0 para este alumno.</li>
-                              <li>Usar un ciclo `for` interno que itere 5 veces (una por cada calificación).</li>
-                              <li>Dentro del ciclo interno, leer la calificación (`double`) actual y sumarla al acumulador del alumno.</li>
-                              <li>Después del ciclo interno, calcular el promedio del alumno dividiendo la suma entre 5.</li>
-                              <li>Imprimir la matrícula y el promedio del alumno actual.</li>
-                          </ul>
-                      </li>
-                  </ul>
-                  <h3>Ejemplo de uso esperado</h3>
-                  <pre><code class="code-block">import java.util.Scanner;
+      <article id="calificaciones-grupo" class="exercise-card" aria-labelledby="calificaciones-grupo-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Problema PS 4.19</span>
+          <h2 id="calificaciones-grupo-title">Análisis de Calificaciones (Matriz)</h2>
+          <p class="exercise-description">
+            Un ejercicio completo de **procesamiento de matrices**. Aprenderás a
+            recorrer una matriz por filas (para promedios de alumnos) y por columnas
+            (para promedios de exámenes).
+          </p>
+        </header>
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <p>Crea un programa `CalificacionesGrupo.java` que:</p>
+            <ul>
+              <li>Declare una matriz de 30x6: `double[][] calificaciones = new double[30][6];`</li>
+              <li>Use bucles anidados (`for i...` y `for j...`) para llenar la matriz.</li>
+              <li>**Inciso (a) y (c):** Promedio por Examen (recorrido por columnas).
+                <ul>
+                  <li>Crea un bucle `for j...` (externo, para columnas/exámenes).</li>
+                  <li>**Dentro**, inicializa `sumaExamen = 0;`.</li>
+                  <li>Crea un bucle `for i...` (interno, para filas/alumnos).</li>
+                  <li>Acumula `sumaExamen += calificaciones[i][j];`</li>
+                  <li>Calcula e imprime el `promedioExamen`.</li>
+                  <li>Compara este promedio con `mejorPromedioExamen` para resolver el inciso (c).</li>
+                </ul>
+              </li>
+              <li>**Inciso (b):** Promedio por Alumno (recorrido por filas).
+                <ul>
+                  <li>Crea un bucle `for i...` (externo, para filas/alumnos).</li>
+                  <li>**Dentro**, inicializa `sumaAlumno = 0;`.</li>
+                  <li>Crea un bucle `for j...` (interno, para columnas/exámenes).</li>
+                  <li>Acumula `sumaAlumno += calificaciones[i][j];`</li>
+                  <li>Calcula e imprime el `promedioAlumno`.</li>
+                </ul>
+              </li>
+            </ul>
+            
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block">(Pide las 180 calificaciones...)
 
-public class PromedioAlumnosAnidado {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        final int NUM_ALUMNOS = 35; //
-        final int NUM_CALIFICACIONES = 5; //
+--- Procesamiento de Datos ---
 
-        System.out.println("Ingrese los datos de los " + NUM_ALUMNOS + " alumnos:");
+a) Promedio de calificaciones por examen:
+   Promedio Examen 1: 85.30
+   ...
+   Promedio Examen 6: 79.50
 
-        for (int i = 1; i <= NUM_ALUMNOS; i++) { // Ciclo externo para alumnos
-            System.out.print("Matrícula del alumno " + i + ": ");
-            int matricula = scanner.nextInt(); // Leer MATi
-            double sumaCalificaciones = 0.0;
+b) Promedio de calificaciones por alumno:
+   Promedio Alumno 1: 82.50
+   ...
+   Promedio Alumno 30: 88.00
 
-            System.out.println("Ingrese las " + NUM_CALIFICACIONES + " calificaciones para " + matricula + ":");
-            for (int j = 1; j <= NUM_CALIFICACIONES; j++) { // Ciclo interno para calificaciones
-                System.out.print("Calificación " + j + ": ");
-                double calificacion = scanner.nextDouble(); // Leer CALi,j
-                sumaCalificaciones += calificacion;
-            }
-
-            double promedio = sumaCalificaciones / NUM_CALIFICACIONES; // Calcular promedio
-
-            System.out.printf("Alumno %d - Matrícula: %d, Promedio: %.2f%n%n", i, matricula, promedio); // Imprimir resultado
-        }
-
-        scanner.close();
-    }
-}
-// Ejemplo de salida para un alumno:
-// Alumno 1 - Matrícula: 12345, Promedio: 8.50</code></pre>
-              </section>
-              <aside class="exercise-sidebar">
-                  <h3>Notas rápidas</h3>
-                  <ul>
-                      <li>Los ciclos anidados son útiles cuando se necesita procesar elementos dentro de otros elementos (calificaciones dentro de alumnos).</li>
-                      <li>Asegúrate de inicializar la `sumaCalificaciones` a cero *dentro* del ciclo externo, para que cada alumno comience con una suma limpia.</li>
-                      <li>Usa `double` para las calificaciones y el promedio para manejar decimales.</li>
-                  </ul>
-              </aside>
-          </div>
+c) Examen con el mayor promedio:
+   El Examen 1 tuvo el mayor promedio: 85.30</code></pre>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <ul>
+              <li>Para recorrer **por columnas** (inciso a), el bucle de las columnas (`j`) va por fuera.</li>
+              <li>Para recorrer **por filas** (inciso b), el bucle de las filas (`i`) va por fuera.</li>
+              <li>`[i][j]` siempre es `[fila][columna]`.</li>
+            </ul>
+            
+            <div class="tip-box">
+              <strong>Tip:</strong> Piensa en los bucles anidados como un reloj. El bucle externo es el horario (avanza lento) y el interno es el minutero (da una vuelta completa por cada hora).
+            </div>
+          </aside>
+        </div>
       </article>
 
-      <article id="ps_3_24_java" class="exercise-card" aria-labelledby="ps_3_24_java-title">
-          <header class="exercise-header">
-              <span class="exercise-badge">Ejercicio Java</span>
-              <h2 id="ps_3_24_java-title">Mejor y Peor Alumno (PS 3.24)</h2>
-              <p class="exercise-description">
-                  [cite_start]Basado en el problema anterior (PS 3.23), modificar el proceso para encontrar e imprimir únicamente la matrícula y promedio del alumno con el promedio más alto y del alumno con el promedio más bajo del grupo[cite: 3589]. Practicar algoritmos de búsqueda de máximos y mínimos.
-              </p>
-          </header>
-          <div class="exercise-content">
-              <section class="exercise-main">
-                  <h3>Requisitos</h3>
-                  <ul>
-                      [cite_start]<li>Seguir la misma lógica de lectura de datos que PS 3.23 (ciclos anidados para leer matrícula y 5 calificaciones por alumno)[cite: 3589].</li>
-                      <li>Inicializar variables para almacenar:
-                          <ul>
-                              <li>Mejor promedio encontrado (`mejorPromedio`, inicializar con un valor muy bajo, ej. -1.0 o `Double.MIN_VALUE`).</li>
-                              <li>Matrícula del mejor alumno (`matriculaMejor`).</li>
-                              <li>Peor promedio encontrado (`peorPromedio`, inicializar con un valor muy alto, ej. 11.0 o `Double.MAX_VALUE`).</li>
-                              <li>Matrícula del peor alumno (`matriculaPeor`).</li>
-                          </ul>
-                      </li>
-                      <li>Dentro del ciclo externo (después de calcular el `promedio` de cada alumno):
-                          <ul>
-                              <li>Comparar el `promedio` actual con `mejorPromedio`. Si es mayor, actualizar `mejorPromedio` con el `promedio` actual y `matriculaMejor` con la `matricula` actual.</li>
-                              <li>Comparar el `promedio` actual con `peorPromedio`. Si es menor, actualizar `peorPromedio` con el `promedio` actual y `matriculaPeor` con la `matricula` actual.</li>
-                          </ul>
-                      </li>
-                      [cite_start]<li>Después de procesar a todos los alumnos (después del ciclo externo), imprimir la matrícula y promedio del mejor y del peor alumno[cite: 3589].</li>
-                  </ul>
-                  <h3>Ejemplo de uso esperado</h3>
-                  <pre><code class="code-block">import java.util.Scanner;
+      <article id="directorio-telefonico" class="exercise-card" aria-labelledby="directorio-telefonico-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Problema PS 4.35</span>
+          <h2 id="directorio-telefonico-title">Directorio Telefónico</h2>
+          <p class="exercise-description">
+            Este problema introduce los **arreglos paralelos** (dos arreglos
+            conectados por el mismo índice) y un **algoritmo de búsqueda secuencial**
+            para encontrar o agregar contactos.
+          </p>
+        </header>
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <p>Crea un programa `DirectorioTelefonico.java` que:</p>
+            <ul>
+              <li>Declare dos arreglos (`String[] nombre`, `String[] telefono`) de tamaño 1000.</li>
+              <li>Declare un contador para los contactos actuales: `int numContactosActuales = 0;`</li>
+              <li>Cree un bucle `while(true)` o `do-while` para el menú principal.</li>
+              <li>Pida al usuario un nombre a buscar (o "SALIR" para terminar).</li>
+              <li>Use una "bandera" `boolean encontrado = false;` y un bucle `for` (de `i = 0` a `numContactosActuales`) para **buscar** el nombre.</li>
+              <li>Si lo encuentra, imprime `telefono[i]` y marca `encontrado = true`.</li>
+              <li>**Si `encontrado` es falso**:
+                <ol>
+                  <li>Verifica si hay espacio: `if (numContactosActuales < N_MAX) { ... }`</li>
+                  <li>Si hay espacio, pide el teléfono y agrégalo: `nombre[numContactosActuales] = nombreBuscado;` y `telefono[numContactosActuales] = nuevoTelefono;`</li>
+                  <li>Incrementa el contador: `numContactosActuales++;`</li>
+                  <li>Si no hay espacio, imprime "Directorio lleno".</li>
+                </ol>
+              </li>
+            </ul>
+            
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block">Ingrese un nombre a buscar (o 'SALIR' para terminar): Ana
+-&gt; Nombre no encontrado.
+Agregando nuevo contacto...
+Ingrese el teléfono para Ana: 55123456
+-&gt; Contacto agregado exitosamente.
 
-public class MejorPeorAlumno {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        final int NUM_ALUMNOS = 35; // O leer N si se generaliza
-        final int NUM_CALIFICACIONES = 5;
+Ingrese un nombre a buscar (o 'SALIR' para terminar): Ana
+-&gt; Teléfono encontrado: 55123456
 
-        int matriculaMejor = -1, matriculaPeor = -1;
-        double mejorPromedio = -1.0; // Inicializar con valor bajo
-        double peorPromedio = 11.0; // Inicializar con valor alto (asumiendo calif 0-10)
-
-        System.out.println("Ingrese los datos de los " + NUM_ALUMNOS + " alumnos:");
-
-        for (int i = 1; i <= NUM_ALUMNOS; i++) {
-            System.out.print("Matrícula del alumno " + i + ": ");
-            int matricula = scanner.nextInt();
-            double sumaCalificaciones = 0.0;
-
-            // System.out.println("Ingrese las " + NUM_CALIFICACIONES + " calificaciones para " + matricula + ":"); // Opcional
-            for (int j = 1; j <= NUM_CALIFICACIONES; j++) {
-                // System.out.print("Calificación " + j + ": "); // Opcional
-                double calificacion = scanner.nextDouble();
-                sumaCalificaciones += calificacion;
-            }
-
-            double promedio = sumaCalificaciones / NUM_CALIFICACIONES;
-
-            // Actualizar mejor alumno
-            [cite_start]if (promedio > mejorPromedio) { // [cite: 3589]
-                mejorPromedio = promedio;
-                matriculaMejor = matricula;
-            }
-
-            // Actualizar peor alumno
-            [cite_start]if (promedio < peorPromedio) { // [cite: 3589]
-                peorPromedio = promedio;
-                matriculaPeor = matricula;
-            }
-             // System.out.printf("Temp: Alumno %d - Mat: %d, Prom: %.2f%n", i, matricula, promedio); // Opcional para debug
-        }
-
-        System.out.println("\n--- Resultados ---");
-        if (matriculaMejor != -1) {
-             System.out.printf("Mejor Alumno - Matrícula: %d, Promedio: %.2f%n", matriculaMejor, mejorPromedio);
-        }
-         if (matriculaPeor != -1) {
-             System.out.printf("Peor Alumno  - Matrícula: %d, Promedio: %.2f%n", matriculaPeor, peorPromedio);
-         }
-
-        scanner.close();
-    }
-}</code></pre>
-              </section>
-              <aside class="exercise-sidebar">
-                  <h3>Notas rápidas</h3>
-                  <ul>
-                      <li>Para encontrar el máximo, inicializa la variable de máximo con el menor valor posible y actualízala cuando encuentres uno mayor.</li>
-                      <li>Para encontrar el mínimo, inicializa la variable de mínimo con el mayor valor posible y actualízala cuando encuentres uno menor.</li>
-                      <li>Asegúrate de guardar también el identificador (matrícula) asociado al máximo/mínimo encontrado.</li>
-                      <li>Considera el caso borde de qué sucede si solo hay un alumno. El código debería funcionar correctamente.</li>
-                  </ul>
-              </aside>
-          </div>
-      </article>
-
-      <article id="ps_3_25_java" class="exercise-card" aria-labelledby="ps_3_25_java-title">
-          <header class="exercise-header">
-              <span class="exercise-badge">Ejercicio Java</span>
-              <h2 id="ps_3_25_java-title">Selección Básquet (PS 3.25)</h2>
-              <p class="exercise-description">
-                  Procesar datos de alumnos (nombre, sexo, edad, peso, altura) para identificar y listar aquellos aptos para jugar básquet según criterios específicos de sexo, altura y peso. [cite_start]Calcular también el porcentaje de aptos dentro de cada población (femenina y masculina)[cite: 3590]. Practicar el manejo de diferentes tipos de datos, condicionales complejos y cálculo de porcentajes usando contadores.
-              </p>
-          </header>
-          <div class="exercise-content">
-              <section class="exercise-main">
-                  <h3>Requisitos</h3>
-                  <ul>
-                      [cite_start]<li>Leer los datos de los alumnos hasta encontrar una señal de fin (p.ej., nombre "X", sexo "X", edad -1, peso -1)[cite: 3598].</li>
-                      <li>Usar un bucle `while` o `do-while` para procesar un número indefinido de alumnos.</li>
-                      <li>Mantener contadores separados para:
-                          <ul>
-                              <li>Total de alumnas (`totalFemenino`).</li>
-                              <li>Alumnas aptas (`aptasFemenino`).</li>
-                              <li>Total de alumnos (`totalMasculino`).</li>
-                              <li>Alumnos aptos (`aptosMasculino`).</li>
-                          </ul>
-                      </li>
-                      <li>Usar `ArrayList<String>` para guardar los nombres de los aptos (uno para mujeres, otro para hombres).</li>
-                      <li>Dentro del bucle, para cada alumno:
-                          <ul>
-                              [cite_start]<li>Leer nombre (`String`), sexo (`char` o `String`), edad (`int`), peso (`int` o `double`), altura (`double`)[cite: 3596].</li>
-                              <li>Verificar el sexo:
-                                  <ul>
-                                      <li>Si es femenino ('F'):
-                                          <ul>
-                                              <li>Incrementar `totalFemenino`.</li>
-                                              [cite_start]<li>Verificar si cumple requisitos: `altura > 1.73` Y `peso >= 50` Y `peso <= 90`[cite: 3591].</li>
-                                              <li>Si cumple, incrementar `aptasFemenino` y agregar `nombre` a la lista de aptas.</li>
-                                          </ul>
-                                      </li>
-                                      <li>Si es masculino ('M'):
-                                          <ul>
-                                              <li>Incrementar `totalMasculino`.</li>
-                                              [cite_start]<li>Verificar si cumple requisitos: `altura > 1.83` Y `peso > 73` Y `peso <= 110`[cite: 3593].</li>
-                                              <li>Si cumple, incrementar `aptosMasculino` y agregar `nombre` a la lista de aptos.</li>
-                                          </ul>
-                                      </li>
-                                  </ul>
-                              </li>
-                          </ul>
-                      </li>
-                      <li>Después del bucle:
-                          <ul>
-                              [cite_start]<li>Imprimir la lista de alumnas aptas[cite: 3590].</li>
-                              [cite_start]<li>Calcular y mostrar el porcentaje de aptas: `(aptasFemenino / totalFemenino) * 100` (cuidado con división entera si usas `int`, y división por cero si `totalFemenino` es 0)[cite: 3592].</li>
-                              [cite_start]<li>Imprimir la lista de alumnos aptos[cite: 3590].</li>
-                              [cite_start]<li>Calcular y mostrar el porcentaje de aptos: `(aptosMasculino / totalMasculino) * 100` (con las mismas precauciones)[cite: 3595].</li>
-                          </ul>
-                      </li>
-                  </ul>
-                  <h3>Ejemplo de uso esperado</h3>
-                  <pre><code class="code-block">import java.util.Scanner;
-import java.util.ArrayList;
-import java.util.List;
-
-public class SeleccionBasket {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        List<String> aptasNombres = new ArrayList<>(); [cite_start]// [cite: 3590]
-        List<String> aptosNombres = new ArrayList<>(); [cite_start]// [cite: 3590]
-        int totalFemenino = 0, aptasFemenino = 0;
-        int totalMasculino = 0, aptosMasculino = 0;
-
-        System.out.println("Ingrese datos (Nombre Sexo(F/M) Edad Peso Altura). ('X X -1 -1 -1' para terminar):");
-
-        String nombre = scanner.next();
-        String sexoStr = scanner.next().toUpperCase();
-        int edad = scanner.nextInt();
-        double peso = scanner.nextDouble(); // Usar double para peso por si acaso
-        double altura = scanner.nextDouble(); [cite_start]// [cite: 3596]
-
-        [cite_start]while (!nombre.equals("X")) { // Condición de fin [cite: 3598]
-            char sexo = sexoStr.charAt(0);
-
-            [cite_start]if (sexo == 'F') { // [cite: 3591]
-                totalFemenino++;
-                [cite_start]if (altura > 1.73 && peso >= 50 && peso <= 90) { // [cite: 3591]
-                    aptasFemenino++;
-                    aptasNombres.add(nombre);
-                }
-            [cite_start]} else if (sexo == 'M') { // [cite: 3593]
-                totalMasculino++;
-                // Corrección: El problema dice > 73, no >= 73
-                [cite_start]if (altura > 1.83 && peso > 73 && peso <= 110) { // [cite: 3593]
-                    aptosMasculino++;
-                    aptosNombres.add(nombre);
-                }
-            } else {
-                 System.out.println("Sexo inválido para: " + nombre);
-            }
-
-            // Leer siguiente alumno
-            nombre = scanner.next();
-             if (nombre.equals("X")) break; // Salir si es la señal de fin
-            sexoStr = scanner.next().toUpperCase();
-            edad = scanner.nextInt();
-            peso = scanner.nextDouble();
-            altura = scanner.nextDouble();
-        }
-
-        System.out.println("\n--- Resultados ---");
-        System.out.println("a) Alumnas Aptas:"); [cite_start]// [cite: 3590]
-        aptasNombres.forEach(System.out::println);
-
-        System.out.println("\nb) Porcentaje de Alumnas Aptas:"); [cite_start]// [cite: 3592]
-        if (totalFemenino > 0) {
-            double porcFAptas = ((double) aptasFemenino / totalFemenino) * 100.0;
-            System.out.printf("%.2f%%%n", porcFAptas);
-        } else {
-            System.out.println("N/A (No hubo alumnas)");
-        }
-
-        System.out.println("\nc) Alumnos Aptos:"); [cite_start]// [cite: 3590]
-        aptosNombres.forEach(System.out::println);
-
-        System.out.println("\nd) Porcentaje de Alumnos Aptos:"); [cite_start]// [cite: 3595]
-         if (totalMasculino > 0) {
-            double porcMAptos = ((double) aptosMasculino / totalMasculino) * 100.0;
-            System.out.printf("%.2f%%%n", porcMAptos);
-        } else {
-            System.out.println("N/A (No hubo alumnos)");
-        }
-
-        scanner.close();
-    }
-}</code></pre>
-              </section>
-              <aside class="exercise-sidebar">
-                  <h3>Notas rápidas</h3>
-                  <ul>
-                      [cite_start]<li>Usa un bucle `while` con una condición de terminación basada en datos centinela[cite: 3598].</li>
-                      <li>Lee los datos *antes* del bucle y *al final* de cada iteración.</li>
-                      <li>Casting a `(double)` es necesario para asegurar división de punto flotante al calcular porcentajes si los contadores son `int`.</li>
-                      <li>Maneja el caso de división por cero si no hubo alumnos/as (`totalFemenino == 0` o `totalMasculino == 0`).</li>
-                      <li>`ArrayList` es útil para almacenar los nombres de los aptos sin saber cuántos serán.</li>
-                  </ul>
-              </aside>
-          </div>
-      </article>
-
-      <article id="ps_4_3_java" class="exercise-card" aria-labelledby="ps_4_3_java-title">
-          <header class="exercise-header">
-              <span class="exercise-badge">Ejercicio Java</span>
-              <h2 id="ps_4_3_java-title">Análisis Array: Positivos, Negativos, Nulos (PS 4.3)</h2>
-              <p class="exercise-description">
-                  [cite_start]Dado un array unidimensional de enteros, contar cuántos elementos son positivos, cuántos negativos y cuántos son nulos[cite: 3733]. Reforzar el recorrido de arrays y el uso de contadores con condicionales `if-else if-else`.
-              </p>
-          </header>
-          <div class="exercise-content">
-              <section class="exercise-main">
-                  <h3>Requisitos</h3>
-                  <ul>
-                      [cite_start]<li>Leer el tamaño del array (`N`, máximo 300) y luego los `N` elementos enteros en un array `int[] arre`[cite: 3734].</li>
-                      <li>Inicializar tres contadores (`int`): `positivos`, `negativos`, `nulos` a 0.</li>
-                      <li>Recorrer el array `arre` usando un bucle `for` o `for-each`.</li>
-                      <li>Dentro del bucle, para cada elemento `elemento`:
-                          <ul>
-                              <li>Si `elemento > 0`, incrementar `positivos`.</li>
-                              <li>Si no (else if) `elemento < 0`, incrementar `negativos`.</li>
-                              <li>Si no (else), incrementar `nulos`.</li>
-                          </ul>
-                      </li>
-                      [cite_start]<li>Después del bucle, imprimir los valores de los tres contadores[cite: 3733].</li>
-                  </ul>
-                  <h3>Ejemplo de uso esperado</h3>
-                  <pre><code class="code-block">import java.util.Scanner;
-import java.util.Arrays;
-
-public class ContarPosNegNulos {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        final int MAX_SIZE = 300; [cite_start]// [cite: 3734]
-        int n;
-
-        System.out.print("Ingrese el tamaño del arreglo (max " + MAX_SIZE + "): ");
-        n = scanner.nextInt();
-
-        if (n < 1 || n > MAX_SIZE) {
-            System.out.println("Tamaño inválido.");
-            scanner.close();
-            return;
-        }
-
-        int[] arre = new int[n]; [cite_start]// [cite: 3734]
-        int positivos = 0;
-        int negativos = 0;
-        int nulos = 0;
-
-        System.out.println("Ingrese los " + n + " elementos:");
-        for (int i = 0; i < n; i++) {
-            arre[i] = scanner.nextInt();
-        }
-
-        // Contar
-        for (int elemento : arre) {
-            [cite_start]if (elemento > 0) { // [cite: 3733]
-                positivos++;
-            [cite_start]} else if (elemento < 0) { // [cite: 3733]
-                negativos++;
-            [cite_start]} else { // [cite: 3733]
-                nulos++;
-            }
-        }
-
-        System.out.println("\n--- Conteo ---");
-        System.out.println("Positivos: " + positivos);
-        System.out.println("Negativos: " + negativos);
-        System.out.println("Nulos: " + nulos);
-
-        scanner.close();
-    }
-}
-// Si la entrada es:
-// 5 (tamaño)
-// 10 -5 0 20 0
-// La salida será:
-// Positivos: 2
-// Negativos: 1
-// Nulos: 2</code></pre>
-              </section>
-              <aside class="exercise-sidebar">
-                  <h3>Notas rápidas</h3>
-                  <ul>
-                      <li>La estructura `if-else if-else` es perfecta para manejar tres casos mutuamente excluyentes (positivo, negativo, cero).</li>
-                      <li>El bucle `for-each` simplifica el recorrido cuando no necesitas el índice.</li>
-                      <li>Valida el tamaño `N` para asegurarte de que está dentro de los límites especificados.</li>
-                  </ul>
-              </aside>
-          </div>
-      </article>
-
-      <article id="ps_4_19_java" class="exercise-card" aria-labelledby="ps_4_19_java-title">
-          <header class="exercise-header">
-              <span class="exercise-badge">Ejercicio Java</span>
-              <h2 id="ps_4_19_java-title">Análisis Calificaciones Grupo (PS 4.19)</h2>
-              <p class="exercise-description">
-                  Procesar una matriz (array 2D) que almacena las calificaciones de 30 alumnos en 6 exámenes. [cite_start]Calcular promedios por examen, promedio por alumno, identificar el examen con mayor promedio, y otras consultas[cite: 3785, 3787]. Practicar el manejo de arrays bidimensionales, ciclos anidados, cálculo de promedios y búsqueda de máximos/mínimos.
-              </p>
-          </header>
-          <div class="exercise-content">
-              <section class="exercise-main">
-                  <h3>Requisitos</h3>
-                  <ul>
-                      [cite_start]<li>Declarar una matriz `double[][] calificaciones` de 30x6[cite: 3785].</li>
-                      [cite_start]<li>Leer las 30x6 calificaciones y llenar la matriz (usar ciclos anidados)[cite: 3787].</li>
-                      <li>**a) Promedio por examen:** Crear un array `double[] promedioExamen` de tamaño 6. Iterar por columnas (examen). [cite_start]Para cada columna `j`, sumar `calificaciones[i][j]` para todas las filas `i` y dividir entre 30. Guardar en `promedioExamen[j]` e imprimir[cite: 3788].</li>
-                      <li>**b) Promedio por alumno:** Crear un array `double[] promedioAlumno` de tamaño 30. Iterar por filas (alumno). [cite_start]Para cada fila `i`, sumar `calificaciones[i][j]` para todas las columnas `j` y dividir entre 6. Guardar en `promedioAlumno[i]` e imprimir[cite: 3789].</li>
-                      <li>**c) Examen con mayor promedio:** Encontrar el índice (y valor) máximo en el array `promedioExamen` calculado en (a). [cite_start]Imprimir el número de examen (índice + 1) y su promedio[cite: 3790].</li>
-                  </ul>
-                  <h3>Ejemplo de uso esperado</h3>
-                  <pre><code class="code-block">import java.util.Scanner;
-import java.util.Arrays;
-
-public class AnalisisCalificaciones2D {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        // Usaremos tamaños más pequeños para el ejemplo
-        final int NUM_ALUMNOS = 5; [cite_start]// En el problema original es 30 [cite: 3785]
-        final int NUM_EXAMENES = 3; [cite_start]// En el problema original es 6 [cite: 3785]
-
-        double[][] calificaciones = new double[NUM_ALUMNOS][NUM_EXAMENES]; [cite_start]// [cite: 3787]
-
-        // Leer calificaciones
-        System.out.println("Ingrese las calificaciones (" + NUM_ALUMNOS + " alumnos, " + NUM_EXAMENES + " exámenes):");
-        for (int i = 0; i < NUM_ALUMNOS; i++) {
-            System.out.println("Alumno " + (i + 1) + ":");
-            for (int j = 0; j < NUM_EXAMENES; j++) {
-                System.out.print("Examen " + (j + 1) + ": ");
-                calificaciones[i][j] = scanner.nextDouble();
-            }
-        }
-
-        [cite_start]// a) Promedio por examen [cite: 3788]
-        System.out.println("\n--- Promedio por Examen ---");
-        double[] promedioExamen = new double[NUM_EXAMENES];
-        double maxPromedioExamen = -1.0;
-        int indiceMaxExamen = -1;
-        for (int j = 0; j < NUM_EXAMENES; j++) { // Iterar por columnas (examen)
-            double sumaExamen = 0;
-            for (int i = 0; i < NUM_ALUMNOS; i++) { // Iterar por filas (alumno)
-                sumaExamen += calificaciones[i][j];
-            }
-            promedioExamen[j] = sumaExamen / NUM_ALUMNOS;
-            System.out.printf("Promedio Examen %d: %.2f%n", (j + 1), promedioExamen[j]);
-
-            // Para inciso c
-            if (promedioExamen[j] > maxPromedioExamen) {
-                 maxPromedioExamen = promedioExamen[j];
-                 indiceMaxExamen = j;
-            }
-        }
-
-        [cite_start]// b) Promedio por alumno [cite: 3789]
-        System.out.println("\n--- Promedio por Alumno ---");
-        double[] promedioAlumno = new double[NUM_ALUMNOS];
-        for (int i = 0; i < NUM_ALUMNOS; i++) { // Iterar por filas (alumno)
-            double sumaAlumno = 0;
-            for (int j = 0; j < NUM_EXAMENES; j++) { // Iterar por columnas (examen)
-                sumaAlumno += calificaciones[i][j];
-            }
-            promedioAlumno[i] = sumaAlumno / NUM_EXAMENES;
-            System.out.printf("Promedio Alumno %d: %.2f%n", (i + 1), promedioAlumno[i]);
-        }
-
-        [cite_start]// c) Examen con mayor promedio [cite: 3790]
-         System.out.println("\n--- Examen con Mayor Promedio ---");
-         if (indiceMaxExamen != -1) {
-              System.out.printf("Examen número %d tuvo el mayor promedio: %.2f%n", (indiceMaxExamen + 1), maxPromedioExamen);
-         }
-
-        scanner.close();
-    }
-}</code></pre>
-              </section>
-              <aside class="exercise-sidebar">
-                  <h3>Notas rápidas</h3>
-                  <ul>
-                      <li>Para procesar por columnas (inciso a), el bucle externo itera sobre los exámenes (`j`) y el interno sobre los alumnos (`i`).</li>
-                      <li>Para procesar por filas (inciso b), el bucle externo itera sobre los alumnos (`i`) y el interno sobre los exámenes (`j`).</li>
-                      <li>`matriz[i][j]` accede al elemento en la fila `i` y columna `j`. Recuerda que los índices empiezan en 0.</li>
-                  </ul>
-              </aside>
-          </div>
-      </article>
-
-      <article id="ps_4_35_java" class="exercise-card" aria-labelledby="ps_4_35_java-title">
-          <header class="exercise-header">
-              <span class="exercise-badge">Ejercicio Java</span>
-              <h2 id="ps_4_35_java-title">Directorio Telefónico (PS 4.35)</h2>
-              <p class="exercise-description">
-                  Simular un directorio telefónico usando dos arrays paralelos: uno para nombres (`String`, ordenado alfabéticamente) y otro para teléfonos (`String`). [cite_start]Implementar la búsqueda de un nombre: si existe, mostrar el teléfono; si no existe y hay espacio, pedir el teléfono y agregarlo manteniendo el orden[cite: 3852, 3853, 3854, 3855]. Practicar búsqueda en arrays ordenados (podría ser binaria o secuencial adaptada) e inserción manteniendo el orden.
-              </p>
-          </header>
-          <div class="exercise-content">
-              <section class="exercise-main">
-                  <h3>Requisitos</h3>
-                  <ul>
-                      [cite_start]<li>Declarar dos arrays paralelos, `String[] nombres` y `String[] telefonos`, de un tamaño máximo (p. ej., 1000)[cite: 3856].</li>
-                      <li>Mantener una variable `int contador` para saber cuántos elementos válidos hay actualmente en los arrays.</li>
-                      <li>Leer datos iniciales o empezar con los arrays vacíos. Asegurarse de que `nombres` esté siempre ordenado.</li>
-                      <li>Implementar un bucle que permita al usuario ingresar nombres repetidamente hasta que decida salir (p.ej., ingresando "salir").</li>
-                      <li>Dentro del bucle:
-                          <ul>
-                              <li>Leer el `nombreBuscado`.</li>
-                              <li>**Buscar `nombreBuscado` en `nombres`:**
-                                  <ul>
-                                      [cite_start]<li>Se puede usar búsqueda binaria (`Arrays.binarySearch` o implementarla) ya que está ordenado[cite: 2809].</li>
-                                      <li>O una búsqueda secuencial optimizada que se detenga si `nombres[i]` es mayor que `nombreBuscado`.</li>
-                                  </ul>
-                              </li>
-                              [cite_start]<li>**Si se encuentra** en la posición `indice`: Imprimir `telefonos[indice]`[cite: 3854].</li>
-                              <li>**Si no se encuentra:**
-                                  <ul>
-                                      [cite_start]<li>Verificar si hay espacio (`contador < tamañoMaximo`)[cite: 3855].</li>
-                                      <li>Si hay espacio:
-                                          <ul>
-                                              <li>Determinar la posición `posInsercion` donde debería ir para mantener el orden (la búsqueda binaria a menudo devuelve `-(punto de inserción) - 1`).</li>
-                                              [cite_start]<li>Pedir al usuario el `nuevoTelefono`[cite: 3855].</li>
-                                              <li>Desplazar los elementos en `nombres` y `telefonos` desde `posInsercion` hasta `contador - 1` una posición a la derecha para hacer espacio.</li>
-                                              <li>Insertar `nombreBuscado` en `nombres[posInsercion]` y `nuevoTelefono` en `telefonos[posInsercion]`.</li>
-                                              <li>Incrementar `contador`.</li>
-                                              <li>Informar al usuario que se agregó el contacto.</li>
-                                          </ul>
-                                      </li>
-                                      <li>Si no hay espacio, informar al usuario.</li>
-                                  </ul>
-                              </li>
-                          </ul>
-                      </li>
-                  </ul>
-                  <h3>Ejemplo de uso esperado</h3>
-                  <pre><code class="code-block">import java.util.Arrays;
-import java.util.Scanner;
-
-public class DirectorioTelefonico {
-    static final int MAX_CONTACTOS = 1000; [cite_start]// [cite: 3856]
-    static String[] nombres = new String[MAX_CONTACTOS]; [cite_start]// [cite: 3856]
-    static String[] telefonos = new String[MAX_CONTACTOS]; [cite_start]// [cite: 3856]
-    static int contador = 0; // Número actual de contactos
-
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        // Opcional: Cargar datos iniciales ordenados aquí
-        // contador = ...;
-
-        String nombreBuscado;
-        System.out.println("Directorio Telefónico (ingrese 'salir' para terminar)");
-
-        while (true) {
-            System.out.print("\nIngrese nombre a buscar o agregar: ");
-            nombreBuscado = scanner.nextLine();
-
-            if (nombreBuscado.equalsIgnoreCase("salir")) {
-                break;
-            }
-
-            [cite_start]// Búsqueda Binaria [cite: 2809]
-            // Arrays.binarySearch requiere que el array esté ordenado y busca en el rango [0, contador)
-            int indice = Arrays.binarySearch(nombres, 0, contador, nombreBuscado);
-
-            [cite_start]if (indice >= 0) { // Encontrado [cite: 3854]
-                System.out.println("Teléfono de " + nombres[indice] + ": " + telefonos[indice]);
-            [cite_start]} else { // No encontrado [cite: 3855]
-                System.out.println(nombreBuscado + " no encontrado.");
-                [cite_start]if (contador < MAX_CONTACTOS) { // Hay espacio [cite: 3855]
-                    System.out.print("Ingrese el teléfono para " + nombreBuscado + ": ");
-                    String nuevoTelefono = scanner.nextLine();
-
-                    // Calcular posición de inserción
-                    int posInsercion = -(indice + 1);
-
-                    // Desplazar elementos para hacer espacio
-                    // Mover desde el final hacia atrás hasta la posición de inserción
-                    for (int i = contador; i > posInsercion; i--) {
-                        nombres[i] = nombres[i - 1];
-                        telefonos[i] = telefonos[i - 1];
-                    }
-
-                    // Insertar nuevo contacto
-                    nombres[posInsercion] = nombreBuscado;
-                    telefonos[posInsercion] = nuevoTelefono;
-                    contador++; // Incrementar contador
-
-                    System.out.println(nombreBuscado + " agregado al directorio.");
-
-                } else { // No hay espacio
-                    System.out.println("Directorio lleno, no se puede agregar.");
-                }
-            }
-             // Opcional: Imprimir directorio actual para verificar orden
-             // System.out.println("Directorio actual ("+contador+"):");
-             // for(int i=0; i < contador; i++) System.out.println(nombres[i] + ": " + telefonos[i]);
-        }
-
-        System.out.println("Saliendo del directorio.");
-        scanner.close();
-    }
-}</code></pre>
-              </section>
-              <aside class="exercise-sidebar">
-                  <h3>Notas rápidas</h3>
-                  <ul>
-                      <li>Los arrays paralelos mantienen información relacionada en el mismo índice en arrays diferentes.</li>
-                      <li>`Arrays.binarySearch(array, fromIndex, toIndex, key)` busca `key` en el rango especificado. Devuelve el índice si lo encuentra, o `-(punto de inserción) - 1` si no lo encuentra.</li>
-                      <li>La inserción en un array ordenado requiere desplazar los elementos posteriores para mantener el orden. Es más eficiente hacerlo desde el final hacia la posición de inserción.</li>
-                      <li>Usar `ArrayList<Contacto>` (donde `Contacto` es una clase con nombre y teléfono) suele ser más idiomático en Java que arrays paralelos, pero el ejercicio pide simular la estructura del problema original.</li>
-                  </ul>
-              </aside>
-          </div>
+Ingrese un nombre a buscar (o 'SALIR' para terminar): SALIR
+--- Directorio cerrado ---</code></pre>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <ul>
+              <li>**Arreglos Paralelos:** `nombre[5]` y `telefono[5]` pertenecen a la misma persona.</li>
+              <li>**Búsqueda Secuencial:** Recorrer un arreglo uno por uno (de `0` a `N`) hasta encontrar algo.</li>
+              <li>`numContactosActuales` es la variable clave: te dice dónde agregar el próximo contacto (en el índice `N`) y hasta dónde buscar.</li>
+            </ul>
+            
+            <div class="tip-box">
+              <strong>Tip:</strong> Usa `.equalsIgnoreCase()` en lugar de `==` para comparar `String`s. `==` compara la memoria, `.equals()` compara el contenido.
+            </div>
+          </aside>
+        </div>
       </article>
 
     </main>

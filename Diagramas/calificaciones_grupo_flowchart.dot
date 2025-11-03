@@ -1,0 +1,70 @@
+digraph CalificacionesGrupo {
+    node [shape=box, style="rounded,filled", fillcolor=lightblue];
+
+    // Nodos principales
+    inicio [label="Inicio"];
+    declarar [label="Declarar matriz[30][6]\ny variables"];
+    
+    // Llenado de matriz
+    inicio_llenado [label="i = 0 hasta 29"];
+    inicio_llenado_interno [label="j = 0 hasta 5"];
+    leer_cal [label="Leer calificación[i][j]"];
+    fin_llenado_interno [label="j++"];
+    fin_llenado [label="i++"];
+    
+    // Promedios por examen
+    inicio_prom_exam [label="j = 0 hasta 5"];
+    inicio_suma_exam [label="i = 0 hasta 29"];
+    sumar_exam [label="sumaExamen += calificación[i][j]"];
+    fin_suma_exam [label="i++"];
+    calcular_prom_exam [label="promedio = suma/30"];
+    verificar_mejor [shape=diamond, label="¿promedio > mejorPromedio?"];
+    actualizar_mejor [label="mejorPromedio = promedio\nmejorExamen = j+1"];
+    fin_prom_exam [label="j++"];
+    
+    // Promedios por alumno
+    inicio_prom_alum [label="i = 0 hasta 29"];
+    inicio_suma_alum [label="j = 0 hasta 5"];
+    sumar_alum [label="sumaAlumno += calificación[i][j]"];
+    fin_suma_alum [label="j++"];
+    calcular_prom_alum [label="promedio = suma/6"];
+    fin_prom_alum [label="i++"];
+    
+    // Mostrar resultados
+    mostrar_resultado [label="Mostrar mejorExamen\ny mejorPromedio"];
+    fin [label="Fin"];
+
+    // Conexiones principales
+    inicio -> declarar -> inicio_llenado;
+    
+    // Bucle de llenado
+    inicio_llenado -> inicio_llenado_interno;
+    inicio_llenado_interno -> leer_cal -> fin_llenado_interno;
+    fin_llenado_interno -> inicio_llenado_interno [label="j < 5"];
+    fin_llenado_interno -> fin_llenado [label="j = 5"];
+    fin_llenado -> inicio_llenado [label="i < 29"];
+    fin_llenado -> inicio_prom_exam [label="i = 29"];
+    
+    // Bucle de promedios por examen
+    inicio_prom_exam -> inicio_suma_exam;
+    inicio_suma_exam -> sumar_exam -> fin_suma_exam;
+    fin_suma_exam -> inicio_suma_exam [label="i < 29"];
+    fin_suma_exam -> calcular_prom_exam [label="i = 29"];
+    calcular_prom_exam -> verificar_mejor;
+    verificar_mejor -> actualizar_mejor [label="Sí"];
+    verificar_mejor -> fin_prom_exam [label="No"];
+    actualizar_mejor -> fin_prom_exam;
+    fin_prom_exam -> inicio_prom_exam [label="j < 5"];
+    fin_prom_exam -> inicio_prom_alum [label="j = 5"];
+    
+    // Bucle de promedios por alumno
+    inicio_prom_alum -> inicio_suma_alum;
+    inicio_suma_alum -> sumar_alum -> fin_suma_alum;
+    fin_suma_alum -> inicio_suma_alum [label="j < 5"];
+    fin_suma_alum -> calcular_prom_alum [label="j = 5"];
+    calcular_prom_alum -> fin_prom_alum;
+    fin_prom_alum -> inicio_prom_alum [label="i < 29"];
+    fin_prom_alum -> mostrar_resultado [label="i = 29"];
+    
+    mostrar_resultado -> fin;
+}

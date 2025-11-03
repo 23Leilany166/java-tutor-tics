@@ -1,0 +1,25 @@
+digraph CalcularCotangente {
+    node [shape=box, style="rounded,filled", fillcolor=lightblue];
+    
+    // Nodos
+    inicio [label="Inicio"];
+    leer_seno [label="Leer seno"];
+    leer_coseno [label="Leer coseno"];
+    decision [shape=diamond, label="¿seno ≠ 0?"];
+    calcular [label="cotangente = coseno / seno"];
+    mostrar_resultado [label="Mostrar cotangente"];
+    mostrar_error [label="Mostrar error:\nCotangente no definida"];
+    fin [label="Fin"];
+    
+    // Conexiones
+    inicio -> leer_seno;
+    leer_seno -> leer_coseno;
+    leer_coseno -> decision;
+    
+    decision -> calcular [label="Sí"];
+    decision -> mostrar_error [label="No"];
+    
+    calcular -> mostrar_resultado;
+    mostrar_resultado -> fin;
+    mostrar_error -> fin;
+}

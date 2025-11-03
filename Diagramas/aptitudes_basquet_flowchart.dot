@@ -1,0 +1,51 @@
+digraph AptitudesBasquet {
+    node [shape=box, style="rounded,filled", fillcolor=lightblue];
+    
+    // Nodos principales
+    inicio [label="Inicio"];
+    inicializar [label="Inicializar contadores:\ntotalMujeres = 0\naptasMujeres = 0\ntotalHombres = 0\naptosHombres = 0"];
+    leer_nombre [label="Leer nombre"];
+    verificar_fin [shape=diamond, label="¿nombre = 'X'?"];
+    leer_datos [label="Leer:\nsexo, edad,\npeso, altura"];
+    
+    // Decisiones de clasificación
+    es_mujer [shape=diamond, label="¿Es mujer?"];
+    apta_mujer [shape=diamond, label="¿altura ≥ 1.73\ny peso ≤ 90?"];
+    apto_hombre [shape=diamond, label="¿altura ≥ 1.83\ny peso ≤ 110?"];
+    
+    // Acciones de conteo
+    contar_mujer [label="totalMujeres++"];
+    contar_apta [label="aptasMujeres++\nMostrar en lista"];
+    contar_hombre [label="totalHombres++"];
+    contar_apto [label="aptosHombres++\nMostrar en lista"];
+    
+    // Cálculo de porcentajes
+    calcular_porcentajes [label="Calcular e imprimir\nporcentajes"];
+    fin [label="Fin"];
+    
+    // Conexiones principales
+    inicio -> inicializar;
+    inicializar -> leer_nombre;
+    leer_nombre -> verificar_fin;
+    
+    verificar_fin -> calcular_porcentajes [label="Sí"];
+    verificar_fin -> leer_datos [label="No"];
+    
+    leer_datos -> es_mujer;
+    
+    // Rama mujeres
+    es_mujer -> contar_mujer [label="Sí"];
+    contar_mujer -> apta_mujer;
+    apta_mujer -> contar_apta [label="Sí"];
+    apta_mujer -> leer_nombre [label="No"];
+    contar_apta -> leer_nombre;
+    
+    // Rama hombres
+    es_mujer -> contar_hombre [label="No"];
+    contar_hombre -> apto_hombre;
+    apto_hombre -> contar_apto [label="Sí"];
+    apto_hombre -> leer_nombre [label="No"];
+    contar_apto -> leer_nombre;
+    
+    calcular_porcentajes -> fin;
+}

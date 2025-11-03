@@ -1,0 +1,35 @@
+digraph GrilloTemperatura {
+    node [shape=box, style=rounded];
+    
+    // Nodos del diagrama
+    start [label="Inicio", shape=oval];
+    declare [label="Declarar variables:\nN: entero\nT: real"];
+    input [label="Mostrar: 'Introduce el número\nde sonidos por minuto (N):'"];
+    read [label="Leer N"];
+    
+    // Condición
+    condition [label="¿N > 0?", shape=diamond];
+    
+    // Proceso si N > 0
+    calculate [label="T = N/4 + 40"];
+    output [label="Mostrar:\n'La temperatura es: T\ngrados Fahrenheit'"];
+    
+    // Cierre y fin
+    close [label="Cerrar Scanner"];
+    end [label="Fin", shape=oval];
+    
+    // Conexiones
+    start -> declare;
+    declare -> input;
+    input -> read;
+    read -> condition;
+    
+    // Ramas de la condición
+    condition -> calculate [label="Sí"];
+    condition -> close [label="No"];
+    
+    // Resto del flujo
+    calculate -> output;
+    output -> close;
+    close -> end;
+}

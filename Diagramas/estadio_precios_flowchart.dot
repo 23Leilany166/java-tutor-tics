@@ -1,0 +1,55 @@
+digraph EstadioPrecios {
+    node [shape=box, style=rounded];
+    
+    // Nodos principales
+    start [label="Inicio", shape=oval];
+    declare [label="Declarar variables:\nAP1-AP5, CLAVE, CANT: entero\nRECAU, P1-P5, PRE: real"];
+    
+    // Inicialización
+    init [label="Inicializar:\nAP1-AP5 = 0\nRECAU = 0.0"];
+    
+    // Lectura de precios
+    readPrices [label="Leer precios\nP1, P2, P3, P4, P5"];
+    
+    // Primera lectura
+    primeRead [label="Leer CLAVE, CANT"];
+    
+    // Condición del bucle
+    whileCheck [label="CLAVE ≠ -1 y\nCANT ≠ -1?", shape=diamond];
+    
+    // Proceso de venta
+    processKey [label="Procesar venta según CLAVE:\nCalcular PRE\nActualizar AP1-AP5"];
+    
+    // Validación de clave
+    validateKey [label="¿Clave válida\n(1-5)?", shape=diamond];
+    
+    // Actualización de recaudación
+    updateRecau [label="RECAU = RECAU + PRE"];
+    
+    // Nueva lectura
+    readNext [label="Leer siguiente\nCLAVE, CANT"];
+    
+    // Reporte final
+    printReport [label="Mostrar reporte final:\nCantidades por tipo\nRecaudación total"];
+    
+    end [label="Fin", shape=oval];
+    
+    // Conexiones
+    start -> declare;
+    declare -> init;
+    init -> readPrices;
+    readPrices -> primeRead;
+    primeRead -> whileCheck;
+    
+    whileCheck -> processKey [label="Sí"];
+    whileCheck -> printReport [label="No"];
+    
+    processKey -> validateKey;
+    validateKey -> updateRecau [label="Sí"];
+    validateKey -> readNext [label="No"];
+    
+    updateRecau -> readNext;
+    readNext -> whileCheck;
+    
+    printReport -> end;
+}

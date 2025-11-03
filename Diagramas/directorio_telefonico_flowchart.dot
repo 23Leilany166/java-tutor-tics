@@ -1,0 +1,44 @@
+digraph DirectorioTelefonico {
+    node [shape=box, style="rounded,filled", fillcolor=lightblue];
+    
+    // Nodos principales
+    inicio [label="Inicio"];
+    declarar [label="Declarar arreglos\nnombre[1000]\ntelefono[1000]\nnumContactos = 0"];
+    leer_nombre [label="Leer nombreBuscado"];
+    
+    // Decisiones principales
+    es_salir [shape=diamond, label="¿nombreBuscado\n= 'SALIR'?"];
+    buscar_nombre [label="Buscar nombreBuscado\nen arreglo nombre[]"];
+    encontrado [shape=diamond, label="¿Encontrado?"];
+    hay_espacio [shape=diamond, label="¿numContactos\n< 1000?"];
+    
+    // Acciones
+    mostrar_telefono [label="Mostrar teléfono\nencontrado"];
+    leer_telefono [label="Leer nuevo\nteléfono"];
+    agregar_contacto [label="Agregar nombre y teléfono\nnumContactos++"];
+    mostrar_error [label="Mostrar error:\nDirectorio lleno"];
+    mostrar_cierre [label="Mostrar mensaje\nde cierre"];
+    fin [label="Fin"];
+    
+    // Conexiones
+    inicio -> declarar;
+    declarar -> leer_nombre;
+    leer_nombre -> es_salir;
+    
+    es_salir -> mostrar_cierre [label="Sí"];
+    es_salir -> buscar_nombre [label="No"];
+    
+    buscar_nombre -> encontrado;
+    encontrado -> mostrar_telefono [label="Sí"];
+    encontrado -> hay_espacio [label="No"];
+    
+    hay_espacio -> leer_telefono [label="Sí"];
+    hay_espacio -> mostrar_error [label="No"];
+    
+    leer_telefono -> agregar_contacto;
+    agregar_contacto -> leer_nombre;
+    mostrar_error -> leer_nombre;
+    mostrar_telefono -> leer_nombre;
+    
+    mostrar_cierre -> fin;
+}

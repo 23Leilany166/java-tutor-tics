@@ -1,0 +1,22 @@
+digraph SegundosEnDias {
+    node [shape=box, style=rounded];
+    
+    // Nodos del diagrama
+    start [label="Inicio", shape=oval];
+    declare [label="Declarar variables:\ndias: entero\nseg: real"];
+    input [label="Mostrar: 'Introduce el\nnúmero de días:'"];
+    read [label="Leer dias"];
+    calculate [label="seg = dias * 24 * 60 * 60"];
+    output [label="Mostrar:\n'En dias días, hay seg segundos'"];
+    close [label="Cerrar Scanner"];
+    end [label="Fin", shape=oval];
+    
+    // Conexiones
+    start -> declare;
+    declare -> input;
+    input -> read;
+    read -> calculate;
+    calculate -> output;
+    output -> close;
+    close -> end;
+}

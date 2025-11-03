@@ -1,0 +1,24 @@
+digraph ContarNumerosArreglo {
+    node [shape=box, style="rounded,filled", fillcolor=lightblue];
+
+    inicio [label="Inicio"];
+    leer_N [label="Leer N"];
+    validar_N [shape=diamond, label="¿1 ≤ N ≤ 300?"];
+    error [label="Imprimir error y Fin"];
+    crear_arreglo [label="Crear ARRE[N]"];
+    iniciar_bucle [label="i = 0 hasta N-1"];
+    leer_numero [label="Leer número"];
+    almacenar [label="ARRE[i] = numero"];
+    clasificar [label="Si >0 cpos++; si <0 cneg++; si==0 cnul++"];
+    fin_bucle [label="i++"];
+    mostrar_resultado [label="Mostrar cpos, cneg, cnul"];
+    fin [label="Fin"];
+
+    inicio -> leer_N -> validar_N;
+    validar_N -> crear_arreglo [label="Sí"];
+    validar_N -> error [label="No"];
+    crear_arreglo -> iniciar_bucle -> leer_numero -> almacenar -> clasificar -> fin_bucle -> iniciar_bucle;
+    iniciar_bucle -> mostrar_resultado [label="Terminado"];
+    mostrar_resultado -> fin;
+    error -> fin;
+}

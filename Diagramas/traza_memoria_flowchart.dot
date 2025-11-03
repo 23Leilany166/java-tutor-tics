@@ -1,0 +1,37 @@
+digraph TrazaMemoria {
+    node [shape=box, style=rounded];
+    start [label="Inicio", shape=oval];
+    declare [label="Declarar variables\nI, ACUM, J: entero\nREA, SUM: real\nCAR: caracter\nBAND: booleano"];
+    step1 [label="1. I ← 0"];
+    step2 [label="2. I ← I + 1"];
+    step3 [label="3. ACUM ← 0"];
+    step4 [label="4. J ← 5² div 3"];
+    step5 [label="5. CAR ← 'a'"];
+    step6 [label="6. ACUM ← J div I"];
+    step7 [label="7. REA ← ACUM / 3"];
+    step8 [label="8. BAND ← (8 > 5) y (15 < 2³)"];
+    step9 [label="9. SUM ← ACUM * 5 / J²"];
+    step10 [label="10. I ← I * 3"];
+    step11 [label="11. REA ← REA / 5"];
+    step12 [label="12. BAND ← BAND o (I = J)"];
+    error13 [label="13. Error: I ← REA\n(Incompatibilidad de tipos)", color=red];
+    error14 [label="14. Error: CAR ← J\n(Incompatibilidad de tipos)", color=red];
+    end [label="Fin", shape=oval];
+
+    start -> declare;
+    declare -> step1;
+    step1 -> step2;
+    step2 -> step3;
+    step3 -> step4;
+    step4 -> step5;
+    step5 -> step6;
+    step6 -> step7;
+    step7 -> step8;
+    step8 -> step9;
+    step9 -> step10;
+    step10 -> step11;
+    step11 -> step12;
+    step12 -> error13;
+    error13 -> error14;
+    error14 -> end;
+}

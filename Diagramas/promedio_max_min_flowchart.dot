@@ -1,0 +1,55 @@
+digraph PromedioMaxMin {
+    node [shape=box, style="rounded,filled", fillcolor=lightblue];
+    
+    // Nodos principales
+    inicio [label="Inicio"];
+    inicializar_variables [label="mejorProm = -1\npeorProm = 101\nmatMejor = 0\nmatPeor = 0"];
+    iniciar_bucle_alumnos [label="i = 1 hasta 35"];
+    leer_matricula [label="Leer matrícula"];
+    inicializar_suma [label="suma = 0"];
+    iniciar_bucle_calificaciones [label="j = 1 hasta 5"];
+    leer_calificacion [label="Leer calificación"];
+    acumular [label="suma += calificación"];
+    calcular_promedio [label="promedio = suma / 5"];
+    verificar_mejor [shape=diamond, label="¿promedio > mejorProm?"];
+    actualizar_mejor [label="mejorProm = promedio\nmatMejor = matricula"];
+    verificar_peor [shape=diamond, label="¿promedio < peorProm?"];
+    actualizar_peor [label="peorProm = promedio\nmatPeor = matricula"];
+    siguiente_alumno [label="i++"];
+    mostrar_resultados [label="Mostrar mejores\ny peores alumnos"];
+    fin [label="Fin"];
+    
+    // Decisión principal del bucle
+    decision_alumnos [shape=diamond, label="¿i ≤ 35?"];
+    decision_calificaciones [shape=diamond, label="¿j ≤ 5?"];
+    
+    // Conexiones
+    inicio -> inicializar_variables;
+    inicializar_variables -> iniciar_bucle_alumnos;
+    iniciar_bucle_alumnos -> decision_alumnos;
+    
+    decision_alumnos -> leer_matricula [label="Sí"];
+    decision_alumnos -> mostrar_resultados [label="No"];
+    
+    leer_matricula -> inicializar_suma;
+    inicializar_suma -> iniciar_bucle_calificaciones;
+    
+    iniciar_bucle_calificaciones -> decision_calificaciones;
+    decision_calificaciones -> leer_calificacion [label="Sí"];
+    decision_calificaciones -> calcular_promedio [label="No"];
+    
+    leer_calificacion -> acumular;
+    acumular -> decision_calificaciones;
+    
+    calcular_promedio -> verificar_mejor;
+    verificar_mejor -> actualizar_mejor [label="Sí"];
+    verificar_mejor -> verificar_peor [label="No"];
+    actualizar_mejor -> verificar_peor;
+    
+    verificar_peor -> actualizar_peor [label="Sí"];
+    verificar_peor -> siguiente_alumno [label="No"];
+    actualizar_peor -> siguiente_alumno;
+    
+    siguiente_alumno -> decision_alumnos;
+    mostrar_resultados -> fin;
+}

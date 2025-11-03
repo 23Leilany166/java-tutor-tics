@@ -1,0 +1,57 @@
+digraph ListaSinRepeticiones {
+    node [shape=box, style=rounded];
+    
+    // Nodos principales
+    start [label="Inicio", shape=oval];
+    declare [label="Declarar variables:\nN, I, REPET: entero\nVEC: arreglo de enteros"];
+    
+    // Lectura y validación de N
+    readN [label="Leer N"];
+    validateN [label="N >= 1 y\nN <= 500?", shape=diamond];
+    
+    // Error por N inválido
+    errorN [label="Mostrar:\n'Número de elementos\nincorrecto'", color=red];
+    
+    // Creación y llenado del array
+    createArray [label="Crear VEC[N]"];
+    initI [label="I = 0"];
+    checkI [label="I < N?", shape=diamond];
+    readValue [label="Leer VEC[I]"];
+    incrementI [label="I++"];
+    
+    // Procesamiento para eliminar repeticiones
+    resetI [label="I = 0"];
+    processStart [label="I < N?", shape=diamond];
+    printNum [label="Mostrar VEC[I]"];
+    saveRepet [label="REPET = VEC[I]"];
+    skipDups [label="I < N y\nREPET = VEC[I]?", shape=diamond];
+    nextI [label="I++"];
+    
+    end [label="Fin", shape=oval];
+    
+    // Conexiones
+    start -> declare;
+    declare -> readN;
+    readN -> validateN;
+    
+    validateN -> errorN [label="No"];
+    validateN -> createArray [label="Sí"];
+    
+    createArray -> initI;
+    initI -> checkI;
+    checkI -> readValue [label="Sí"];
+    checkI -> resetI [label="No"];
+    readValue -> incrementI;
+    incrementI -> checkI;
+    
+    resetI -> processStart;
+    processStart -> printNum [label="Sí"];
+    processStart -> end [label="No"];
+    printNum -> saveRepet;
+    saveRepet -> skipDups;
+    skipDups -> nextI [label="Sí"];
+    skipDups -> processStart [label="No"];
+    nextI -> skipDups;
+    
+    errorN -> end;
+}

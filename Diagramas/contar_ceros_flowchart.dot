@@ -1,0 +1,44 @@
+digraph ContarCeros {
+    node [shape=box, style=rounded];
+    
+    // Nodos del diagrama
+    start [label="Inicio", shape=oval];
+    declare [label="Declarar variables:\nN, NUM: entero\nCUECER: entero"];
+    initialize [label="CUECER ← 0"];
+    readN [label="Mostrar: '¿Cuántos números\nenteros vas a ingresar?'\nLeer N"];
+    
+    // Inicio del bucle
+    forStart [label="i = 1"];
+    forCondition [label="i ≤ N?", shape=diamond];
+    
+    // Dentro del bucle
+    readNum [label="Mostrar: 'Ingresa el número i'\nLeer NUM"];
+    checkZero [label="NUM = 0?", shape=diamond];
+    increment [label="CUECER ← CUECER + 1"];
+    forIncrement [label="i ← i + 1"];
+    
+    // Salida y fin
+    output [label="Mostrar:\n'El número total de\nceros ingresados fue: CUECER'"];
+    close [label="Cerrar Scanner"];
+    end [label="Fin", shape=oval];
+    
+    // Conexiones
+    start -> declare;
+    declare -> initialize;
+    initialize -> readN;
+    readN -> forStart;
+    forStart -> forCondition;
+    
+    // Bucle principal
+    forCondition -> readNum [label="Sí"];
+    forCondition -> output [label="No"];
+    readNum -> checkZero;
+    checkZero -> increment [label="Sí"];
+    checkZero -> forIncrement [label="No"];
+    increment -> forIncrement;
+    forIncrement -> forCondition;
+    
+    // Finalización
+    output -> close;
+    close -> end;
+}
