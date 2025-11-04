@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1200" viewBox="0 0 900 1200">
+  <defs>
+    <style>
+      .title { font: 700 22px 'Segoe UI', Arial, sans-serif; fill:#0d1b2a; }
+      .label { font: 600 16px 'Segoe UI', Arial, sans-serif; fill:#0d1b2a; }
+      .small { font: 14px 'Segoe UI', Arial, sans-serif; fill:#475569; }
+      .term { fill:#fff8e6; stroke:#f4a261; stroke-width:2.4; }
+      .proc { fill:#f0fff4; stroke:#2a9d8f; stroke-width:2.4; rx:10; ry:10; }
+      .io { fill:#e6f2ff; stroke:#2563eb; stroke-width:2.4; }
+      .dec { fill:#fff; stroke:#9333ea; stroke-width:2.4; }
+      .arrow { stroke:#000; stroke-width:2.2; fill:none; marker-end:url(#ah); }
+    </style>
+    <marker id="ah" markerWidth="10" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="strokeWidth">
+      <polygon points="0,0 10,4 0,8" fill="#000"/>
+    </marker>
+  </defs>
+  <rect width="900" height="1200" fill="#fafafa"/>
+  <text x="450" y="40" text-anchor="middle" class="title">PS 2.10 – Verificar (A/B)^N = A^N / B^N</text>
+
+  <!-- Inicio -->
+  <ellipse class="term" cx="450" cy="80" rx="80" ry="26"/>
+  <text x="450" y="86" text-anchor="middle" class="label">INICIO</text>
+
+  <!-- Lectura de datos -->
+  <polygon class="io" points="300,130 600,130 570,180 270,180"/>
+  <text x="450" y="165" text-anchor="middle" class="label">Leer A, B, N</text>
+
+  <!-- Validar B != 0 -->
+  <polygon class="dec" points="450,210 560,260 450,310 340,260"/>
+  <text x="450" y="267" text-anchor="middle" class="label">¿B ≠ 0?</text>
+
+  <!-- Error B=0 -->
+  <rect class="proc" x="610" y="240" width="150" height="48"/>
+  <text x="685" y="270" text-anchor="middle" class="label">"Error: B = 0"</text>
+
+  <!-- Validar N entero (opcional) -->
+  <polygon class="dec" points="450,340 580,390 450,440 320,390"/>
+  <text x="450" y="397" text-anchor="middle" class="label">¿N ≥ 0?</text>
+  <text x="650" y="400" class="small">Si N &lt; 0 usar reales</text>
+
+  <!-- Cálculos -->
+  <rect class="proc" x="280" y="470" width="340" height="52"/>
+  <text x="450" y="502" text-anchor="middle" class="label">AN ← A^N ; BN ← B^N</text>
+
+  <rect class="proc" x="280" y="540" width="340" height="52"/>
+  <text x="450" y="573" text-anchor="middle" class="label">L ← AN / BN (real)</text>
+
+  <rect class="proc" x="280" y="610" width="340" height="52"/>
+  <text x="450" y="643" text-anchor="middle" class="label">R ← (A / B)^N (real)</text>
+
+  <!-- Comparación con tolerancia -->
+  <rect class="proc" x="280" y="680" width="340" height="52"/>
+  <text x="450" y="713" text-anchor="middle" class="label">DIF ← |L − R|</text>
+  <text x="450" y="735" text-anchor="middle" class="small">Usar ε = 1×10⁻⁹</text>
+
+  <polygon class="dec" points="450,760 580,810 450,860 320,810"/>
+  <text x="450" y="817" text-anchor="middle" class="label">¿DIF ≤ ε?</text>
+
+  <!-- Mensajes -->
+  <rect class="proc" x="280" y="890" width="340" height="50"/>
+  <text x="450" y="920" text-anchor="middle" class="label">"Iguales"</text>
+
+  <rect class="proc" x="600" y="820" width="200" height="50"/>
+  <text x="700" y="850" text-anchor="middle" class="label">"No son iguales"</text>
+
+  <!-- Fin -->
+  <ellipse class="term" cx="450" cy="990" rx="80" ry="26"/>
+  <text x="450" y="995" text-anchor="middle" class="label">FIN</text>
+
+  <!-- Flechas -->
+  <path class="arrow" d="M 450 106 L 450 130"/>
+  <path class="arrow" d="M 450 180 L 450 210"/>
+  <path class="arrow" d="M 450 310 L 450 340"/>
+  <path class="arrow" d="M 450 440 L 450 470"/>
+  <path class="arrow" d="M 450 522 L 450 540"/>
+  <path class="arrow" d="M 450 592 L 450 610"/>
+  <path class="arrow" d="M 450 662 L 450 680"/>
+  <path class="arrow" d="M 450 732 L 450 760"/>
+  <path class="arrow" d="M 450 860 L 450 890"/>
+  <path class="arrow" d="M 620 810 C 640 810, 650 810, 650 820"/>
+  <path class="arrow" d="M 450 940 L 450 964"/>
+
+</svg>

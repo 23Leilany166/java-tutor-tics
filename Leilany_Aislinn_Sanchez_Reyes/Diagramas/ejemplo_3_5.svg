@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900">
+  <defs>
+    <style>
+      .title { font: 700 22px 'Segoe UI', Arial, sans-serif; fill:#0d1b2a; }
+      .label { font: 600 18px 'Segoe UI', Arial, sans-serif; fill:#0d1b2a; }
+      .small { font: 15px 'Segoe UI', Arial, sans-serif; fill:#415a77; }
+      .io { fill:#e6f2ff; stroke:#2c7be5; stroke-width:2.5; }
+      .process { fill:#f7fff2; stroke:#2a9d8f; stroke-width:2.5; rx:10; ry:10; }
+      .terminator { fill:#fff8e6; stroke:#f4a261; stroke-width:2.5; }
+      .decision { fill:#ffffff; stroke:#7c3aed; stroke-width:2.5; }
+      .arrow { stroke:#1f2937; stroke-width:2.5; fill:none; marker-end:url(#arrowhead); }
+      .note { fill:#ffffff; }
+      .note-border { stroke:#94a3b8; stroke-width:1.5; fill:none; stroke-dasharray:4 4; }
+    </style>
+    <marker id="arrowhead" markerWidth="12" markerHeight="8" refX="10" refY="4" orient="auto">
+      <polygon points="0,0 12,4 0,8" fill="#1f2937" />
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1200" height="900" fill="#fafafa"/>
+
+  <text x="430" y="50" class="title">Estructura Repetitiva (Mientras) – Cubo de números hasta -1</text>
+  <text x="430" y="78" class="small">Lee NUM1, NUM2, …; termina con -1</text>
+
+  <!-- START -->
+  <ellipse class="terminator" cx="420" cy="120" rx="110" ry="35"/>
+  <text x="420" y="125" text-anchor="middle" class="label">INICIO</text>
+
+  <line class="arrow" x1="420" y1="155" x2="420" y2="205"/>
+
+  <!-- Input first NUM -->
+  <polygon class="io" points="330,205 540,205 510,255 300,255"/>
+  <text x="420" y="238" text-anchor="middle" class="label">NUM</text>
+
+  <!-- Arrow to decision -->
+  <line class="arrow" x1="420" y1="255" x2="420" y2="320"/>
+
+  <!-- Decision -->
+  <polygon class="decision" points="420,320 550,390 420,460 290,390"/>
+  <text x="420" y="395" text-anchor="middle" class="label">¿NUM ≠ −1?</text>
+
+  <!-- No branch to right rail (exit loop) -->
+  <line class="arrow" x1="550" y1="390" x2="800" y2="390"/>
+  <text x="690" y="380" class="small">No</text>
+
+  <!-- Yes branch down -->
+  <line class="arrow" x1="420" y1="460" x2="420" y2="520"/>
+  <text x="435" y="495" class="small">Sí</text>
+
+  <!-- Process: compute cube -->
+  <rect class="process" x="300" y="520" width="240" height="65" rx="10" ry="10"/>
+  <text x="420" y="562" text-anchor="middle" class="label">CUB ← NUM</text>
+  <text x="486" y="548" class="label" baseline-shift="super" font-size="75%">3</text>
+
+  <!-- Output CUB -->
+  <line class="arrow" x1="420" y1="585" x2="420" y2="640"/>
+  <polygon class="io" points="330,640 540,640 570,690 360,690"/>
+  <text x="450" y="673" text-anchor="middle" class="label">CUB</text>
+
+  <!-- Read next NUM -->
+  <line class="arrow" x1="450" y1="690" x2="450" y2="740"/>
+  <polygon class="io" points="360,740 570,740 540,790 330,790"/>
+  <text x="450" y="773" text-anchor="middle" class="label">NUM</text>
+
+  <!-- Adjusted loopback arrow (higher and smoother) -->
+  <path class="arrow" d="M 330 760 L 250 760 L 250 390 L 290 390"/>
+
+  <!-- From exit rail to END -->
+  <line class="arrow" x1="800" y1="390" x2="800" y2="520"/>
+  <ellipse class="terminator" cx="800" cy="560" rx="110" ry="35"/>
+  <text x="800" y="565" text-anchor="middle" class="label">FIN</text>
+
+  <!-- Notes -->
+  <g>
+    <rect x="860" y="205" width="300" height="56" class="note"/>
+    <rect x="860" y="205" width="300" height="56" class="note-border"/>
+    <text x="875" y="240" class="small">{Lectura de datos inicial}</text>
+
+    <rect x="860" y="320" width="300" height="96" class="note"/>
+    <rect x="860" y="320" width="300" height="96" class="note-border"/>
+    <text x="875" y="350" class="small">Mientras NUM ≠ −1, procesa y repite.</text>
+    <text x="875" y="372" class="small">−1 es el fin de datos (centinela).</text>
+
+    <rect x="860" y="520" width="300" height="112" class="note"/>
+    <rect x="860" y="520" width="300" height="112" class="note-border"/>
+    <text x="875" y="552" class="small">Se calcula el cubo: CUB = NUM³</text>
+    <text x="875" y="574" class="small">Se escribe CUB y se vuelve a leer NUM.</text>
+  </g>
+
+  <text x="40" y="880" class="small">Estructura repetitiva – “Mientras NUM ≠ −1”</text>
+</svg>

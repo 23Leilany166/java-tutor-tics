@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="740" viewBox="0 0 500 740">
+  <style>
+    .term { fill:#fff8e6; stroke:#f4a261; stroke-width:2; }
+    .proc { fill:#e7fff3; stroke:#2a9d8f; stroke-width:2; rx:8; ry:8; }
+    .io { fill:#e6f2ff; stroke:#2563eb; stroke-width:2; }
+    .dec { fill:#fff; stroke:#9333ea; stroke-width:2; }
+    .label { font:600 12px 'Segoe UI', Arial, sans-serif; fill:#0d1b2a; text-anchor:middle; }
+    .arrow { stroke:#000; stroke-width:1.5; fill:none; marker-end:url(#ah); }
+  </style>
+  <defs>
+    <marker id="ah" markerWidth="10" markerHeight="8" refX="8" refY="4" orient="auto">
+      <polygon points="0,0 10,4 0,8" fill="#000"/>
+    </marker>
+  </defs>
+
+  <rect width="500" height="740" fill="#fafafa"/>
+  <text x="250" y="25" text-anchor="middle" style="font:700 14px Arial;">PS 3.29 – UNICEF Orfanatos</text>
+
+  <!-- Inicio -->
+  <ellipse class="term" cx="250" cy="50" rx="60" ry="18"/>
+  <text x="250" y="55" class="label">INICIO</text>
+
+  <!-- Leer N y datos -->
+  <polygon class="io" points="140,80 360,80 340,110 120,110"/>
+  <text x="250" y="100" class="label">Leer N, nombre, sexo, edad, orfanato, estado</text>
+
+  <!-- Inicialización -->
+  <rect class="proc" x="140" y="120" width="220" height="30"/>
+  <text x="250" y="140" class="label">Inicializar contadores y grupos</text>
+
+  <!-- Bucle por niño -->
+  <polygon class="dec" points="250,170 305,200 250,230 195,200"/>
+  <text x="250" y="205" class="label">¿i ≤ N?</text>
+
+  <!-- Clasificar por edad -->
+  <rect class="proc" x="120" y="240" width="260" height="30"/>
+  <text x="250" y="260" class="label">Clasificar niño en grupo 1–4 según edad</text>
+
+  <!-- Contar por estado -->
+  <rect class="proc" x="120" y="280" width="260" height="30"/>
+  <text x="250" y="300" class="label">Sumar huérfanos México y DF</text>
+
+  <!-- Incremento i -->
+  <rect class="proc" x="190" y="320" width="120" height="25"/>
+  <text x="250" y="338" class="label">i ← i + 1</text>
+
+  <!-- Repetición (flecha curva) -->
+  <path class="arrow" d="M250 345 C150 350, 150 200, 195 200"/>
+  <text x="130" y="270" style="font:italic 10px Arial;">Repite para cada niño</text>
+
+  <!-- Calcular porcentajes -->
+  <rect class="proc" x="140" y="370" width="220" height="30"/>
+  <text x="250" y="390" class="label">Calcular % México y DF</text>
+
+  <!-- Determinar grupo mayor -->
+  <rect class="proc" x="140" y="410" width="220" height="30"/>
+  <text x="250" y="430" class="label">Determinar grupo con más huérfanos</text>
+
+  <!-- Mostrar resultados -->
+  <polygon class="io" points="160,460 340,460 320,490 140,490"/>
+  <text x="250" y="480" class="label">Mostrar porcentajes y grupo mayor</text>
+
+  <!-- Fin -->
+  <ellipse class="term" cx="250" cy="530" rx="60" ry="18"/>
+  <text x="250" y="534" class="label">FIN</text>
+
+  <!-- Flechas principales -->
+  <path class="arrow" d="M250 68 L250 80"/>
+  <path class="arrow" d="M250 110 L250 120"/>
+  <path class="arrow" d="M250 150 L250 170"/>
+  <path class="arrow" d="M250 230 L250 240"/>
+  <path class="arrow" d="M250 310 L250 320"/>
+  <path class="arrow" d="M250 345 L250 370"/>
+  <path class="arrow" d="M250 400 L250 410"/>
+  <path class="arrow" d="M250 440 L250 460"/>
+  <path class="arrow" d="M250 490 L250 512"/>
+</svg>

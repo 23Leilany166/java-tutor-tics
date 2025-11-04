@@ -1,0 +1,65 @@
+<?xml version="1.0" ?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1200">
+  <rect x="0" y="0" width="900" height="1200" fill="#ffffff"/>
+  <text x="450" y="40" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700" fill="#0077cc">Problema 4.37 – (Completar enunciado)</text>
+  <filter id="shadow110">
+    <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#000" flood-opacity="0.15"/>
+  </filter>
+  <rect x="310" y="86" width="280" height="48" rx="24" ry="24" fill="#f5f5f5" stroke="#0077cc" stroke-width="2" filter="url(#shadow110)"/>
+  <text x="450" y="116" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="16" fill="#111111" font-weight="600">Inicio</text>
+  <filter id="shadow220">
+    <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#000" flood-opacity="0.15"/>
+  </filter>
+  <polygon points="310,188 650,188 590,252 250,252" fill="#e0e5eb" stroke="#0077cc" stroke-width="2" filter="url(#shadow220)"/>
+  <text x="450" y="214" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="15" fill="#555">Entrada: parámetros y datos</text>
+  <text x="450" y="232" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="15" fill="#555">del arreglo/matriz</text>
+  <filter id="shadow330">
+    <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#000" flood-opacity="0.15"/>
+  </filter>
+  <rect x="270" y="298" width="360" height="64" rx="8" ry="8" fill="#f5f5f5" stroke="#0077cc" stroke-width="2" filter="url(#shadow330)"/>
+  <text x="450" y="324" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="15" fill="#111">Preparar estructuras;</text>
+  <text x="450" y="342" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="15" fill="#111">ordenar/filtrar si aplica</text>
+  <filter id="shadow440">
+    <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#000" flood-opacity="0.15"/>
+  </filter>
+  <polygon points="450,390 600,440 450,490 300,440" fill="#fff4e6" stroke="#0077cc" stroke-width="2" filter="url(#shadow440)"/>
+  <text x="450" y="434" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="15" fill="#d97706" font-weight="600">¿Condición de búsqueda /</text>
+  <text x="450" y="452" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="15" fill="#d97706" font-weight="600">comparación?</text>
+  <filter id="shadow550">
+    <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#000" flood-opacity="0.15"/>
+  </filter>
+  <rect x="270" y="518" width="360" height="64" rx="8" ry="8" fill="#f5f5f5" stroke="#0077cc" stroke-width="2" filter="url(#shadow550)"/>
+  <text x="450" y="544" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="15" fill="#111">Actualizar mejor caso / contador /</text>
+  <text x="450" y="562" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="15" fill="#111">estructura de salida</text>
+  <filter id="shadow660">
+    <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#000" flood-opacity="0.15"/>
+  </filter>
+  <polygon points="450,610 600,660 450,710 300,660" fill="#fff4e6" stroke="#0077cc" stroke-width="2" filter="url(#shadow660)"/>
+  <text x="450" y="654" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="15" fill="#d97706" font-weight="600">¿Terminar iteración? (fin</text>
+  <text x="450" y="672" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="15" fill="#d97706" font-weight="600">de datos)</text>
+  <filter id="shadow770">
+    <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#000" flood-opacity="0.15"/>
+  </filter>
+  <polygon points="310,738 650,738 590,802 250,802" fill="#e0e5eb" stroke="#0077cc" stroke-width="2" filter="url(#shadow770)"/>
+  <text x="450" y="764" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="15" fill="#555">Imprimir resultados finales</text>
+  <text x="450" y="782" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="15" fill="#555">(formato solicitado)</text>
+  <filter id="shadow880">
+    <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#000" flood-opacity="0.15"/>
+  </filter>
+  <rect x="310" y="856" width="280" height="48" rx="24" ry="24" fill="#f5f5f5" stroke="#0077cc" stroke-width="2" filter="url(#shadow880)"/>
+  <text x="450" y="886" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="16" fill="#111111" font-weight="600">Fin</text>
+  <line x1="450" y1="160" x2="450" y2="160" stroke="#0077cc" stroke-width="2"/>
+  <polygon points="444,160 456,160 450,170" fill="#0077cc"/>
+  <line x1="450" y1="270" x2="450" y2="270" stroke="#0077cc" stroke-width="2"/>
+  <polygon points="444,270 456,270 450,280" fill="#0077cc"/>
+  <line x1="450" y1="380" x2="450" y2="380" stroke="#0077cc" stroke-width="2"/>
+  <polygon points="444,380 456,380 450,390" fill="#0077cc"/>
+  <line x1="450" y1="490" x2="450" y2="490" stroke="#0077cc" stroke-width="2"/>
+  <polygon points="444,490 456,490 450,500" fill="#0077cc"/>
+  <line x1="450" y1="600" x2="450" y2="600" stroke="#0077cc" stroke-width="2"/>
+  <polygon points="444,600 456,600 450,610" fill="#0077cc"/>
+  <line x1="450" y1="710" x2="450" y2="710" stroke="#0077cc" stroke-width="2"/>
+  <polygon points="444,710 456,710 450,720" fill="#0077cc"/>
+  <line x1="450" y1="820" x2="450" y2="820" stroke="#0077cc" stroke-width="2"/>
+  <polygon points="444,820 456,820 450,830" fill="#0077cc"/>
+</svg>

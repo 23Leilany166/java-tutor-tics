@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="2400" viewBox="0 0 900 2400">
+  <defs>
+    <style>
+      .label { font: 600 14px 'Segoe UI', Arial, sans-serif; fill:#0d1b2a; }
+      .term { fill:#fff8e6; stroke:#f4a261; stroke-width:2; }
+      .process { fill:#f0fff4; stroke:#2a9d8f; stroke-width:2; rx:10; ry:10; }
+      .io { fill:#e6f2ff; stroke:#2563eb; stroke-width:2; }
+      .decision { fill:#fff; stroke:#9333ea; stroke-width:2; }
+      .arrow { stroke:#000; stroke-width:2; fill:none; marker-end:url(#arrowhead); }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="strokeWidth">
+      <polygon points="0,0 10,4 0,8" fill="#000"/>
+    </marker>
+  </defs>
+
+  <rect width="900" height="2400" fill="#fafafa"/>
+  <text x="450" y="40" text-anchor="middle" font-size="18" font-weight="bold">Diagrama de Flujo 5.4 – Sistema de Empleados y Departamentos</text>
+
+  <!-- INICIO -->
+  <ellipse class="term" cx="450" cy="90" rx="70" ry="25"/>
+  <text x="450" y="95" text-anchor="middle" class="label">INICIO</text>
+
+  <!-- Entrada número de empleados -->
+  <polygon class="io" points="320,140 580,140 550,190 290,190"/>
+  <text x="435" y="175" text-anchor="middle" class="label">"Ingrese número de empleados [1..1000]"</text>
+
+  <rect class="process" x="390" y="210" width="120" height="40"/>
+  <text x="450" y="235" text-anchor="middle" class="label">NE</text>
+
+  <polygon class="decision" points="450,270 550,320 450,370 350,320"/>
+  <text x="450" y="325" text-anchor="middle" class="label">¿1 ≤ NE ≤ 1000?</text>
+
+  <!-- Error rama derecha -->
+  <rect class="process" x="610" y="300" width="100" height="40"/>
+  <text x="660" y="325" text-anchor="middle" class="label">"Error"</text>
+
+  <!-- Inicialización de I -->
+  <rect class="process" x="390" y="400" width="120" height="40"/>
+  <text x="450" y="425" text-anchor="middle" class="label">I ← 1</text>
+
+  <polygon class="decision" points="450,460 550,510 450,560 350,510"/>
+  <text x="450" y="515" text-anchor="middle" class="label">¿I ≤ NE?</text>
+
+  <polygon class="io" points="320,580 580,580 550,630 290,630"/>
+  <text x="435" y="615" text-anchor="middle" class="label">"Ingrese nombre, clave, dpto, antigüedad y sueldo"</text>
+
+  <rect class="process" x="280" y="650" width="340" height="40"/>
+  <text x="450" y="675" text-anchor="middle" class="label">EMPLE[I].NOM, CLADEP, ANTI, SUE</text>
+
+  <rect class="process" x="390" y="710" width="120" height="40"/>
+  <text x="450" y="735" text-anchor="middle" class="label">I ← I + 1</text>
+
+  <polygon class="io" points="330,770 570,770 540,820 300,820"/>
+  <text x="435" y="805" text-anchor="middle" class="label">"Ingrese número de dpto. [1..20]"</text>
+
+  <rect class="process" x="390" y="840" width="120" height="40"/>
+  <text x="450" y="865" text-anchor="middle" class="label">ND</text>
+
+  <polygon class="decision" points="450,900 550,950 450,1000 350,950"/>
+  <text x="450" y="955" text-anchor="middle" class="label">¿1 ≤ ND ≤ 20?</text>
+
+  <!-- Error ND no válido -->
+  <rect class="process" x="610" y="930" width="100" height="40"/>
+  <text x="660" y="955" text-anchor="middle" class="label">"Error"</text>
+
+  <!-- Conectores A, B, C -->
+  <polygon class="decision" points="340,1020 375,1040 340,1060 305,1040"/>
+  <text x="340" y="1045" text-anchor="middle" class="label">A</text>
+  <polygon class="decision" points="440,1020 475,1040 440,1060 405,1040"/>
+  <text x="440" y="1045" text-anchor="middle" class="label">B</text>
+  <polygon class="decision" points="540,1020 575,1040 540,1060 505,1040"/>
+  <text x="540" y="1045" text-anchor="middle" class="label">C</text>
+
+  <!-- Segunda parte (A) -->
+  <rect class="process" x="390" y="1100" width="120" height="40"/>
+  <text x="450" y="1125" text-anchor="middle" class="label">I ← 1</text>
+
+  <polygon class="decision" points="450,1160 550,1210 450,1260 350,1210"/>
+  <text x="450" y="1217" text-anchor="middle" class="label">¿I ≤ ND?</text>
+
+  <polygon class="io" points="320,1280 580,1280 550,1330 290,1330"/>
+  <text x="435" y="1315" text-anchor="middle" class="label">"Ingrese clave, nombre, total y jefe del dpto."</text>
+
+  <rect class="process" x="280" y="1350" width="340" height="40"/>
+  <text x="450" y="1375" text-anchor="middle" class="label">DEPA[I].CLADEP, NOMDEP, NUMEMP, NOMJEF</text>
+
+  <rect class="process" x="390" y="1410" width="120" height="40"/>
+  <text x="450" y="1435" text-anchor="middle" class="label">I ← I + 1</text>
+
+  <!-- Decisión de opciones -->
+  <polygon class="io" points="320,1480 580,1480 550,1530 290,1530"/>
+  <text x="435" y="1515" text-anchor="middle" class="label">"Información, más sueldo, altas o terminar"</text>
+
+  <rect class="process" x="390" y="1550" width="120" height="40"/>
+  <text x="450" y="1575" text-anchor="middle" class="label">OPCION</text>
+
+  <polygon class="decision" points="450,1610 590,1660 450,1710 310,1660"/>
+  <text x="450" y="1665" text-anchor="middle" class="label">(OPCION ≥ 1) y (OPCION ≤ 5)?</text>
+
+  <rect class="process" x="390" y="1750" width="120" height="40"/>
+  <text x="450" y="1775" text-anchor="middle" class="label">"Datos actualizados"</text>
+
+  <ellipse class="term" cx="450" cy="1840" rx="70" ry="25"/>
+  <text x="450" y="1845" text-anchor="middle" class="label">FIN</text>
+
+  <!-- Flechas -->
+  <path class="arrow" d="M 450 115 L 450 140"/>
+  <path class="arrow" d="M 450 190 L 450 210"/>
+  <path class="arrow" d="M 450 250 L 450 270"/>
+  <path class="arrow" d="M 450 370 L 450 400"/>
+  <path class="arrow" d="M 450 440 L 450 460"/>
+  <path class="arrow" d="M 450 560 L 450 580"/>
+  <path class="arrow" d="M 450 630 L 450 650"/>
+  <path class="arrow" d="M 450 690 L 450 710"/>
+  <path class="arrow" d="M 450 750 L 450 770"/>
+  <path class="arrow" d="M 450 820 L 450 840"/>
+  <path class="arrow" d="M 450 880 L 450 900"/>
+  <path class="arrow" d="M 450 1000 L 450 1020"/>
+  <path class="arrow" d="M 450 1060 L 450 1100"/>
+  <path class="arrow" d="M 450 1140 L 450 1160"/>
+  <path class="arrow" d="M 450 1260 L 450 1280"/>
+  <path class="arrow" d="M 450 1330 L 450 1350"/>
+  <path class="arrow" d="M 450 1390 L 450 1410"/>
+  <path class="arrow" d="M 450 1450 L 450 1480"/>
+  <path class="arrow" d="M 450 1530 L 450 1550"/>
+  <path class="arrow" d="M 450 1590 L 450 1610"/>
+  <path class="arrow" d="M 450 1710 L 450 1750"/>
+  <path class="arrow" d="M 450 1790 L 450 1840"/>
+</svg>

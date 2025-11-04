@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="740" viewBox="0 0 520 740">
+  <style>
+    .term { fill:#fff8e6; stroke:#f4a261; stroke-width:2; }
+    .proc { fill:#e7fff3; stroke:#2a9d8f; stroke-width:2; rx:9; ry:9; }
+    .io { fill:#e6f2ff; stroke:#2563eb; stroke-width:2; }
+    .dec { fill:#fff; stroke:#9333ea; stroke-width:2; }
+    .label { font:600 13px 'Segoe UI', Arial, sans-serif; fill:#0d1b2a; text-anchor:middle; }
+    .arrow { stroke:#000; stroke-width:1.7; fill:none; marker-end:url(#ah); }
+  </style>
+  <defs>
+    <marker id="ah" markerWidth="10" markerHeight="8" refX="8" refY="4" orient="auto">
+      <polygon points="0,0 10,4 0,8" fill="#000"/>
+    </marker>
+  </defs>
+
+  <rect width="520" height="740" fill="#fafafa"/>
+  <text x="260" y="26" text-anchor="middle" style="font:700 16px Arial;">PS 3.28 – Empleados de Empresa</text>
+
+  <!-- Inicio -->
+  <ellipse class="term" cx="260" cy="55" rx="62" ry="18"/>
+  <text x="260" y="60" class="label">INICIO</text>
+
+  <!-- Leer N -->
+  <polygon class="io" points="160,85 360,85 340,118 140,118"/>
+  <text x="250" y="108" class="label">Leer N (número de empleados)</text>
+
+  <!-- Inicializar -->
+  <rect class="proc" x="150" y="128" width="220" height="34"/>
+  <text x="260" y="150" class="label">Inicializar contadores</text>
+
+  <!-- Decisión i <= N -->
+  <polygon class="dec" points="260,172 320,206 260,240 200,206"/>
+  <text x="260" y="208" class="label">¿i ≤ N?</text>
+
+  <!-- Leer datos empleado -->
+  <polygon class="io" points="155,250 365,250 345,283 135,283"/>
+  <text x="250" y="273" class="label">Leer CLAVE, EDAD, SEXO, SUELDO</text>
+
+  <!-- Actualizar contadores -->
+  <rect class="proc" x="145" y="293" width="230" height="34"/>
+  <text x="260" y="315" class="label">Actualizar contadores</text>
+
+  <!-- i = i + 1 -->
+  <rect class="proc" x="210" y="337" width="100" height="28"/>
+  <text x="260" y="356" class="label">i ← i + 1</text>
+
+  <!-- Mostrar resultados -->
+  <polygon class="io" points="180,408 340,408 322,441 162,441"/>
+  <text x="251" y="430" class="label">Mostrar totales y resultados</text>
+
+  <!-- Fin -->
+  <ellipse class="term" cx="260" cy="480" rx="62" ry="18"/>
+  <text x="260" y="485" class="label">FIN</text>
+
+  <!-- Flechas únicas (sin bucle de repetición) -->
+  <path class="arrow" d="M260 73 L260 85"/>
+  <path class="arrow" d="M260 118 L260 128"/>
+  <path class="arrow" d="M260 162 L260 172"/>
+  <path class="arrow" d="M260 240 L260 250"/>
+  <path class="arrow" d="M260 283 L260 293"/>
+  <path class="arrow" d="M260 327 L260 337"/>
+  <path class="arrow" d="M260 365 L260 408"/>
+  <path class="arrow" d="M260 441 L260 462"/>
+</svg>

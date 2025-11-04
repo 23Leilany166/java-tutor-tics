@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="800" viewBox="0 0 1000 800"><rect x="440" y="20" width="120" height="30" rx="15" ry="15" fill="#d0e8ff" stroke="#333" stroke-width="1.5"/><text x="500" y="35.0" font-size="12" text-anchor="middle" font-family="Arial" fill="#111"><tspan x="500" dy="0">Inicio</tspan></text>
+    <defs>
+      <marker id="arrow" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+        <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+      </marker>
+    </defs>
+    <line x1="500" y1="50" x2="500" y2="90" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <polygon points="360,90 660,90 640,140 340,140" fill="#e0e5eb" stroke="#333" stroke-width="1.5"/><text x="500" y="115.0" font-size="12" text-anchor="middle" font-family="Arial" fill="#111"><tspan x="500" dy="0">Leer N</tspan></text>
+    <defs>
+      <marker id="arrow" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+        <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+      </marker>
+    </defs>
+    <line x1="500" y1="140" x2="500" y2="200" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <rect x="100" y="200" width="800" height="60" rx="8" ry="8" fill="#f5f5f5" stroke="#333" stroke-width="1.5"/><text x="500" y="209.0" font-size="12" text-anchor="middle" font-family="Arial" fill="#111"><tspan x="500" dy="0">Inicializar: maxF,</tspan><tspan x="500" dy="14">matF, maxM, matM,</tspan><tspan x="500" dy="14">sumS[1,3,5,7],</tspan><tspan x="500" dy="14">cntS[...]</tspan></text>
+    <defs>
+      <marker id="arrow" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+        <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+      </marker>
+    </defs>
+    <line x1="500" y1="260" x2="500" y2="320" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <rect x="20" y="320" width="960" height="60" rx="8" ry="8" fill="#f5f5f5" stroke="#333" stroke-width="1.5"/><text x="500" y="329.0" font-size="12" text-anchor="middle" font-family="Arial" fill="#111"><tspan x="500" dy="0">Para i=1..N: Leer MAT,</tspan><tspan x="500" dy="14">SEX, SEM, PRO;</tspan><tspan x="500" dy="14">actualizar máximos y</tspan><tspan x="500" dy="14">promedios por semestre</tspan></text>
+    <defs>
+      <marker id="arrow" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+        <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+      </marker>
+    </defs>
+    <line x1="500" y1="380" x2="500" y2="440" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <rect x="80" y="440" width="840" height="60" rx="8" ry="8" fill="#f5f5f5" stroke="#333" stroke-width="1.5"/><text x="500" y="456.0" font-size="12" text-anchor="middle" font-family="Arial" fill="#111"><tspan x="500" dy="0">Calcular promS[s] =</tspan><tspan x="500" dy="14">sumS[s]/cntS[s] (si</tspan><tspan x="500" dy="14">cntS>0)</tspan></text>
+    <defs>
+      <marker id="arrow" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+        <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+      </marker>
+    </defs>
+    <line x1="500" y1="500" x2="500" y2="560" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <polygon points="100,560 920,560 900,610 80,610" fill="#e8f7ff" stroke="#333" stroke-width="1.5"/><text x="500" y="564.0" font-size="12" text-anchor="middle" font-family="Arial" fill="#111"><tspan x="500" dy="0">Imprimir matF,maxF;</tspan><tspan x="500" dy="14">matM,maxM; promS[1],pr</tspan><tspan x="500" dy="14">omS[3],promS[5],promS[</tspan><tspan x="500" dy="14">7]</tspan></text></svg>

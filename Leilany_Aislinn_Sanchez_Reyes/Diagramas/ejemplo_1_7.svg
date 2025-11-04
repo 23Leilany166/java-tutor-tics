@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="700" viewBox="0 0 800 700">
+  <defs>
+    <style>
+      .title { font: 700 22px 'Segoe UI', Arial, sans-serif; fill:#0d1b2a; }
+      .label { font: 600 18px 'Segoe UI', Arial, sans-serif; fill:#0d1b2a; }
+      .small { font: 15px 'Segoe UI', Arial, sans-serif; fill:#415a77; }
+      .io { fill:#e6f2ff; stroke:#2c7be5; stroke-width:2.5; }
+      .process { fill:#f7fff2; stroke:#2a9d8f; stroke-width:2.5; rx:8; ry:8; }
+      .terminator { fill:#fff8e6; stroke:#f4a261; stroke-width:2.5; }
+      .arrow { stroke:#1f2937; stroke-width:2.5; fill:none; marker-end:url(#arrowhead); }
+      .note { fill:#ffffff; }
+      .note-border { stroke:#94a3b8; stroke-width:1.5; fill:none; stroke-dasharray:4 4; }
+    </style>
+    <marker id="arrowhead" markerWidth="12" markerHeight="8" refX="10" refY="4" orient="auto">
+      <polygon points="0,0 12,4 0,8" fill="#1f2937" />
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect x="0" y="0" width="800" height="700" fill="#fafafa"/>
+
+  <!-- Title -->
+  <text x="400" y="60" text-anchor="middle" class="title">Diagrama de flujo – Expresión con RES</text>
+
+  <!-- Vertical layout positions -->
+  <!-- START terminator (rounded ellipse) -->
+  <ellipse class="terminator" cx="250" cy="120" rx="110" ry="35"/>
+  <text x="250" y="125" text-anchor="middle" class="label">INICIO</text>
+
+  <!-- Arrow to Input -->
+  <line class="arrow" x1="250" y1="155" x2="250" y2="200"/>
+
+  <!-- Input parallelogram -->
+  <polygon class="io" points="170,200 360,200 330,250 140,250"/>
+  <text x="250" y="232" text-anchor="middle" class="label">A, B</text>
+
+  <!-- Arrow to Process -->
+  <line class="arrow" x1="250" y1="250" x2="250" y2="310"/>
+
+  <!-- Process rectangle -->
+  <rect class="process" x="110" y="310" width="280" height="70" rx="10" ry="10"/>
+  <text x="250" y="352" text-anchor="middle" class="label">RES ← ((A + B) × 2) / 3</text>
+
+  <!-- Arrow to Output -->
+  <line class="arrow" x1="250" y1="380" x2="250" y2="440"/>
+
+  <!-- Output parallelogram -->
+  <polygon class="io" points="140,440 330,440 360,490 170,490"/>
+  <text x="250" y="472" text-anchor="middle" class="label">RES</text>
+
+  <!-- Arrow to END -->
+  <line class="arrow" x1="250" y1="490" x2="250" y2="545"/>
+
+  <!-- END terminator -->
+  <ellipse class="terminator" cx="250" cy="585" rx="110" ry="35"/>
+  <text x="250" y="590" text-anchor="middle" class="label">FIN</text>
+
+  <!-- Right-side notes -->
+  <g>
+    <rect x="440" y="200" width="300" height="50" class="note" />
+    <rect x="440" y="200" width="300" height="50" class="note-border" />
+    <text x="455" y="230" class="small">{Lectura de datos}</text>
+
+    <rect x="440" y="310" width="300" height="70" class="note" />
+    <rect x="440" y="310" width="300" height="70" class="note-border" />
+    <text x="455" y="338" class="small">El resultado de la expresión se</text>
+    <text x="455" y="358" class="small">almacena en la variable real RES</text>
+
+    <rect x="440" y="440" width="300" height="50" class="note" />
+    <rect x="440" y="440" width="300" height="50" class="note-border" />
+    <text x="455" y="470" class="small">{Escritura de RES con el resultado}</text>
+  </g>
+</svg>
