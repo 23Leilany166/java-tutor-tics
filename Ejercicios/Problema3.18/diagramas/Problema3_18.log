@@ -1,0 +1,27 @@
+# Problema 3.18 — Diagrama de Flujo (texto .log)
+# TERMINAL: Inicio/Fin
+# INPUT: Lectura de datos
+# DECISION: Condición Si / Mientras
+# PROCESS: Asignación o cálculo
+# OUTPUT: Impresión de resultados
+
+TERMINAL: INICIO
+PROCESS: MAYPRO <- 0
+INPUT: Leer N
+DECISION: N <= 100 ?
+    NO -> OUTPUT: "Error en número de fábricas" -> TERMINAL: FIN
+    SI -> PROCESS: I <- 1
+        DECISION: I <= N ?
+            NO -> OUTPUT: "Fábrica con mayor producción: CLAVE, MAYPRO" -> TERMINAL: FIN
+            SI -> INPUT: Leer FABRICA
+                  PROCESS: TOTANU <- 0; J <- 1
+                  DECISION: J <= 12 ?
+                      NO -> OUTPUT: "Producción anual fábrica", FABRICA, TOTANU
+                            DECISION: TOTANU > MAYPRO ?
+                                SI -> PROCESS: MAYPRO <- TOTANU; CLAVE <- FABRICA
+                            PROCESS: I <- I + 1 -> regresar a I <= N
+                      SI -> INPUT: Leer MES
+                            PROCESS: TOTANU <- TOTANU + MES
+                            DECISION: J == 7 Y MES > 3,000,000 ?
+                                SI -> OUTPUT: "FABRICA superó $3,000,000 en julio"
+                            PROCESS: J <- J + 1 -> regresar a J <= 12

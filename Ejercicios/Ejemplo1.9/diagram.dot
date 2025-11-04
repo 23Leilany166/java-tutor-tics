@@ -1,0 +1,14 @@
+digraph G {
+    rankdir=TB;
+    node [shape=box];
+    start [label="Inicio", shape=ellipse];
+    read_num [label="Leer NUM", shape=parallelogram];
+    calculate [label="CUA = NUM * NUM\nCUB = NUM * NUM * NUM"];
+    print_result [label="Imprimir CUA, CUB", shape=parallelogram];
+    end [label="Fin", shape=ellipse];
+
+    start -> read_num;
+    read_num -> calculate;
+    calculate -> print_result;
+    print_result -> end;
+}

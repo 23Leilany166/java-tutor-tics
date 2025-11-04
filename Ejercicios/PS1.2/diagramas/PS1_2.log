@@ -1,0 +1,9 @@
+# PS 1.2 - Diagrama de flujo
+INICIO
+Leer RADIO
+RADIO > 0 ?
+    No -> "Error: radio inválido" -> FIN
+    Si -> AREA = PI * RADIO^2
+          CIRC = 2 * PI * RADIO
+          Imprimir AREA y CIRC
+FIN

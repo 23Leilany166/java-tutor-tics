@@ -1,0 +1,44 @@
+<h1>Diagrama de Flujo: Primos Gemelos (PS 3.31)</h1>
+
+    <div class="mermaid">
+        graph TD
+            Inicio((Inicio)) --> Leer[/Leer A, B/];
+            Leer --> I_set[I = A];
+            I_set --> Loop_I{"I &lt;= B - 2?"};
+            Loop_I -- No --> Fin((Fin));
+
+            %% --- Bloque 1: Verificar si I es Primo ---
+            Loop_I -- Sí --> P1_Set[PRIMO1 = VERDADERO];
+            P1_Set --> P1_Cond_1{"I &lt; 2?"};
+            P1_Cond_1 -- Sí --> P1_Set_F[PRIMO1 = FALSO];
+            P1_Cond_1 -- No --> D1_Set[D1 = 2];
+            D1_Set --> Loop_D1{"D1 &lt; I?"};
+            
+            P1_Set_F --> P2_Set[PRIMO2 = VERDADERO]; %% Conector
+            Loop_D1 -- No --> P2_Set; %% Conector
+
+            Loop_D1 -- Sí --> P1_Cond_Mod{"I MOD D1 == 0?"};
+            P1_Cond_Mod -- No --> D1_Inc[D1 = D1 + 1];
+            D1_Inc --> Loop_D1;
+            P1_Cond_Mod -- Sí --> P1_Set_F_2[PRIMO1 = FALSO];
+            P1_Set_F_2 --> P2_Set; %% Conector
+
+            %% --- Bloque 2: Verificar si I+2 es Primo ---
+            P2_Set --> N2_Set[N2 = I + 2];
+            N2_Set --> D2_Set[D2 = 2];
+            D2_Set --> Loop_D2{"D2 &lt; N2?"};
+            
+            Loop_D2 -- No --> Cond_Final{"PRIMO1 Y PRIMO2?"}; %% Conector
+
+            Loop_D2 -- Sí --> P2_Cond_Mod{"N2 MOD D2 == 0?"};
+            P2_Cond_Mod -- No --> D2_Inc[D2 = D2 + 1];
+            D2_Inc --> Loop_D2;
+            P2_Cond_Mod -- Sí --> P2_Set_F[PRIMO2 = FALSO];
+            P2_Set_F --> Cond_Final; %% Conector
+
+            %% --- Bloque 3: Imprimir y continuar ---
+            Cond_Final -- No --> Inc_I[I = I + 1];
+            Cond_Final -- Sí --> Imprimir[/Imprimir I, N2/];
+            Imprimir --> Inc_I;
+            Inc_I --> Loop_I;
+    </div>

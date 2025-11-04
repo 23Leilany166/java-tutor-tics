@@ -1,0 +1,17 @@
+# Problema 3.2 - Diagrama de Flujo (texto .log, ASCII)
+# TERMINAL: Inicio/Fin
+# PROCESS: Operaciones y asignaciones
+# DECISION: Condición Mientras
+# OUTPUT: Impresión de resultados
+
+TERMINAL: INICIO
+PROCESS: BAND <- 'T'; SUMSER <- 0; I <- 2
+DECISION: I <= 1800 ?
+    SI -> PROCESS: SUMSER <- SUMSER + I
+          OUTPUT: imprimir I
+          DECISION: BAND == 'T' ?
+              SI -> PROCESS: BAND <- 'F'; I <- I + 3
+              NO -> PROCESS: BAND <- 'T'; I <- I + 2
+          REGRESAR A: I <= 1800 ?
+    NO -> OUTPUT: imprimir SUMSER
+TERMINAL: FIN

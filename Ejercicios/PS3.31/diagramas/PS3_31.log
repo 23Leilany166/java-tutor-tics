@@ -1,0 +1,16 @@
+# PS 3.31 — Diagrama de Flujo
+INICIO
+Leer A, B
+A > 0 y B > 0 y A < B ?
+    No -> "Error: A y B inválidos" -> FIN
+    Sí ->
+        p = max(A, 3)
+        Si p es par -> p = p + 1
+        Mientras p <= B - 2 hacer:
+            Si esPrimo(p) y esPrimo(p + 2) y (p + 2 <= B) entonces
+                Imprimir (p, p+2)
+            FinSi
+            p = p + 2
+        FinMientras
+        Si no se imprimió ninguna pareja -> "No hay primos gemelos"
+FIN

@@ -1,0 +1,11 @@
+# PS 4.23 — Diagrama de Flujo
+INICIO
+Leer matriz ALUM[1..12, 1..7]
+Leer X, Y, T
+Verificar rangos 1 ≤ X ≤ 12, 1 ≤ Y ≤ 7, 1 ≤ T ≤ 7
+Calcular total por año: SUMA_ANIO[i] = Σ(ALUM[i][j])
+Calcular porcentaje = ALUM[X][Y] / SUMA_ANIO[X] * 100
+Buscar menor ingreso global → (minAnio, minCar)
+Buscar mayor ingreso en carrera T → (anioMax)
+Imprimir resultados
+FIN

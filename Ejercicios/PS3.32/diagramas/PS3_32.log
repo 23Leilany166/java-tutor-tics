@@ -1,0 +1,30 @@
+# PS 3.32 — Diagrama de Flujo
+INICIO
+Leer N
+Si N < 1 o N > 50 -> "Error: N fuera de rango" -> FIN
+Para i = 1 hasta 14 hacer
+    Para j = 1 hasta N hacer
+        Leer VENTA[i][j]
+    FinPara
+FinPara
+totalEmpresa = 0
+mejorPromedio = 0
+Para cada año i = 1..14 hacer
+    sumaAnio = 0
+    maxAnio = 0
+    sucMax = 0
+    Para j = 1..N hacer
+        sumaAnio += VENTA[i][j]
+        Si VENTA[i][j] > maxAnio entonces
+            maxAnio = VENTA[i][j]
+            sucMax = j
+    FinPara
+    promAnio = sumaAnio / N
+    totalEmpresa += sumaAnio
+    Si promAnio > mejorPromedio entonces
+        mejorPromedio = promAnio
+        anioMejorProm = i
+    FinSi
+FinPara
+Imprimir sucMax por año, promedios, año con mayor promedio y totalEmpresa
+FIN

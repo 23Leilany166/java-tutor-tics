@@ -1,0 +1,18 @@
+# Problema 4.5 — Diagrama de Flujo (.log)
+# Inserción directa de un arreglo
+
+TERMINAL: INICIO
+INPUT: Leer N y los N elementos del arreglo A
+PROCESS: i <- 1
+LOOP: Mientras i < N hacer
+    PROCESS: clave <- A[i]
+    PROCESS: j <- i - 1
+    LOOP: Mientras j >= 0 y A[j] > clave
+        PROCESS: A[j + 1] <- A[j]
+        PROCESS: j <- j - 1
+    FIN LOOP
+    PROCESS: A[j + 1] <- clave
+    PROCESS: i <- i + 1
+FIN LOOP
+OUTPUT: Imprimir arreglo ordenado
+TERMINAL: FIN

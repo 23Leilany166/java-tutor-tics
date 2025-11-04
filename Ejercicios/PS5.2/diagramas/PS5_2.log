@@ -1,0 +1,11 @@
+# PS 5.2 — Diagrama de Flujo
+INICIO
+Leer N alumnos
+PARA cada alumno:
+  Leer nombre, matrícula, semestres, promedios, carrera
+FIN PARA
+Mostrar alumnos con promedio general > 9
+Mostrar Economía con todos los promedios > 9
+Buscar alumno con mayor promedio en Ingeniería en Computación
+Imprimir resultados
+FIN

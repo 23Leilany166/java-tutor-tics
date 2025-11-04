@@ -1,0 +1,14 @@
+# Problema 2.5 - Diagrama de Flujo (texto .log)
+# TERMINAL: Inicio/Fin
+# INPUT: Lectura de datos
+# DECISION: Condición Si/Entonces/Sino
+# OUTPUT: Impresión de resultados
+
+TERMINAL: INICIO
+INPUT: Leer NUM (número entero)
+DECISION: ¿NUM > 0?
+    SI -> OUTPUT: "POSITIVO"
+    NO -> DECISION: ¿NUM == 0?
+        SI -> OUTPUT: "NULO"
+        NO -> OUTPUT: "NEGATIVO"
+TERMINAL: FIN

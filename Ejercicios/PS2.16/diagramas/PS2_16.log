@@ -1,0 +1,10 @@
+# PS 2.16 — Diagrama de Flujo
+INICIO
+Leer MODELO, PRECIO
+PRECIO > 0 ?
+    No -> "Error: precio inválido" -> FIN
+    Sí -> Determinar porcentaje según modelo
+          Calcular DESCUENTO = PRECIO * PORC
+          Calcular TOTAL = PRECIO - DESCUENTO
+          Imprimir MODELO, PORC, DESCUENTO, TOTAL
+FIN

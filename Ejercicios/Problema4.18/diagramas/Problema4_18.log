@@ -1,0 +1,16 @@
+# Problema 4.18 — Diagrama de Flujo (Cuadrado Mágico)
+TERMINAL: INICIO
+INPUT: Ingresar N (dimensión impar entre 1 y 50)
+DECISION: N válido (1<=N<=50 y N impar)?
+    NO -> OUTPUT: "Error en el dato" -> TERMINAL: FIN
+    SI -> PROCESS: j = N/2; i = 0; CM[i][j] = 1; NUM = 2
+          LOOP: Mientras NUM <= N*N hacer
+                PROCESS: iPrev = i; jPrev = j
+                PROCESS: i = (i-1+N) % N; j = (j+1) % N
+                DECISION: CM[i][j] != 0 ?
+                    SI -> PROCESS: i = (iPrev+1) % N; j = jPrev
+                PROCESS: CM[i][j] = NUM
+                PROCESS: NUM = NUM + 1
+          FIN LOOP
+          OUTPUT: Mostrar CM y constante mágica M = N*(N*N+1)/2
+TERMINAL: FIN

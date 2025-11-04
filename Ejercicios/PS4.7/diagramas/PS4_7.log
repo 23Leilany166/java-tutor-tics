@@ -1,0 +1,19 @@
+# PS 4.7 — Diagrama de Flujo: Búsqueda Secuencial
+INICIO
+Leer N
+Si N < 1 o N > 50 -> "Error: N fuera de rango" -> FIN
+Leer VECTOR[1..N]
+Leer X
+i <- 1
+encontrado <- FALSO
+Mientras i <= N y no encontrado hacer
+    Si VECTOR[i] == X entonces
+        encontrado <- VERDADERO
+    Sino
+        i <- i + 1
+FinMientras
+Si encontrado entonces
+    Imprimir "Encontrado en posición ", i
+Sino
+    Imprimir "No encontrado"
+FIN

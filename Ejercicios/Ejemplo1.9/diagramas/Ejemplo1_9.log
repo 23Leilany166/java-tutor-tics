@@ -1,0 +1,13 @@
+# Ejemplo 1.9 - Diagrama de Flujo (formato .log de texto simple)
+# Simbología:
+# TERMINAL: Inicio/Fin
+# INPUT: Lectura de datos
+# PROCESS: Cálculo
+# OUTPUT: Impresión de resultados
+
+TERMINAL: INICIO
+INPUT: Leer NUM (entero positivo) desde teclado
+PROCESS: CUA <- NUM * NUM
+PROCESS: CUB <- NUM * NUM * NUM
+OUTPUT: Mostrar CUA, CUB
+TERMINAL: FIN

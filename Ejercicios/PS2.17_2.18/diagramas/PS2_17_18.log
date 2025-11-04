@@ -1,0 +1,15 @@
+# PS 2.17–2.18 — Diagrama de Flujo
+INICIO
+Leer OPCION, MED
+MED >= 0 ?
+    No -> "Error: medida inválida" -> FIN
+    Sí ->
+        OPCION == 1 ?
+            resultado = MED * 25.40, etiqueta = "mm"
+        OPCION == 2 ?
+            resultado = MED * 0.9144, etiqueta = "m"
+        OPCION == 3 ?
+            resultado = MED * 1.6093, etiqueta = "km"
+        Caso contrario -> "Error: opcion inválida" -> FIN
+Imprimir resultado y etiqueta
+FIN
