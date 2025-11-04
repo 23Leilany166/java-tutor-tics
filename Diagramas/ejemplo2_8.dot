@@ -1,0 +1,60 @@
+digraph CalculoAumentoSueldo {
+    // Configuración general del grafo
+    rankdir=TB;
+    node [shape=box, fontname="Helvetica", style=filled, color=white];
+    edge [fontname="Helvetica"];
+
+    // Nodos
+    start [label="Inicio", shape=ellipse];
+    init [label="Declarar variables\nIniciar Scanner"];
+    in_categoria [label="Leer categoría", shape=parallelogram];
+    in_sueldo [label="Leer sueldo", shape=parallelogram];
+    
+    switch_decision [label="¿Valor de categoria?", shape=diamond];
+    
+    // Casos válidos
+    case1 [label="aumento = sueldo * 0.15"];
+    case2 [label="aumento = sueldo * 0.10"];
+    case3 [label="aumento = sueldo * 0.08"];
+    case4 [label="aumento = sueldo * 0.07"];
+    
+    // Ruta de error (default)
+    case_default [label="Imprimir 'Categoría inválida'", shape=parallelogram];
+    close_scanner_error [label="scanner.close()"];
+    end_error [label="Fin", shape=ellipse];
+
+    // Ruta de éxito (común a los casos 1-4)
+    merge_point [shape=point, width=0.01, height=0.01]; // Punto de unión invisible
+    calc_nuevo [label="nuevoSueldo = sueldo + aumento"];
+    out_results [label="Imprimir resultados\n(Categoría, Nuevo sueldo, ...)", shape=parallelogram];
+    close_scanner_ok [label="scanner.close()"];
+    end_ok [label="Fin", shape=ellipse];
+
+    // --- Definición del Flujo ---
+    start -> init;
+    init -> in_categoria;
+    in_categoria -> in_sueldo;
+    in_sueldo -> switch_decision;
+
+    // Flujo del Switch
+    switch_decision -> case1 [label="1"];
+    switch_decision -> case2 [label="2"];
+    switch_decision -> case3 [label="3"];
+    switch_decision -> case4 [label="4"];
+    switch_decision -> case_default [label="Otro (default)"];
+
+    // Flujo de la ruta de error
+    case_default -> close_scanner_error;
+    close_scanner_error -> end_error;
+
+    // Flujo de la ruta de éxito (uniendo los casos)
+    case1 -> merge_point;
+    case2 -> merge_point;
+    case3 -> merge_point;
+    case4 -> merge_point;
+    
+    merge_point -> calc_nuevo;
+    calc_nuevo -> out_results;
+    out_results -> close_scanner_ok;
+    close_scanner_ok -> end_ok;
+}

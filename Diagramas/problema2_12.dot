@@ -1,0 +1,95 @@
+digraph Problema_2_12 {
+    // Configuración general
+    rankdir=TB;
+    node [shape=box, fontname="Helvetica", style=filled, color=white];
+    edge [fontname="Helvetica"];
+
+    // Nodos principales
+    start [label="Inicio", shape=ellipse];
+    init [label="Iniciar Scanner\nrepetir = true"];
+    
+    // Bucle While
+    loop_cond [label="¿repetir == true?", shape=diamond];
+    
+    // Nodos dentro del bucle
+    subgraph cluster_loop {
+        label = "Bucle de Cálculo";
+        style=filled;
+        color=lightgrey;
+        
+        read_sueldo [label="Leer sueldo", shape=parallelogram];
+        read_categoria [label="Leer categoría", shape=parallelogram];
+        read_he [label="Leer horas extras (he)", shape=parallelogram];
+        
+        if_cate [label="Determinar pagoHoraExtra\nsegún categoría", shape=diamond];
+        
+        // Casos de categoría
+        cate1 [label="pagoHoraExtra = 30"];
+        cate2 [label="pagoHoraExtra = 38"];
+        cate3 [label="pagoHoraExtra = 50"];
+        cate4 [label="pagoHoraExtra = 70"];
+        cate_default [label="Imprimir error\npagoHoraExtra = 0"];
+        
+        merge_cate [shape=point, width=0.01, height=0.01]; // Unión post-categoría
+        
+        if_tope [label="¿horasExtras > 30?", shape=diamond];
+        
+        // Casos de tope
+        tope_si [label="horasPagadas = 30\nImprimir nota de tope"];
+        tope_no [label="horasPagadas = horasExtras"];
+        
+        merge_tope [shape=point, width=0.01, height=0.01]; // Unión post-tope
+        
+        calc_total [label="montoTotal = sueldo + (horasPagadas * pagoHoraExtra)"];
+        print_results [label="Imprimir Resumen de Pago\n(sueldo, categoría, he, horasPagadas, montoTotal)", shape=parallelogram];
+        read_respuesta [label="Leer respuesta (S/N)", shape=parallelogram];
+        set_repetir [label="repetir = (respuesta == 'S')"];
+    }
+    
+    // Nodos finales
+    close_scanner [label="scanner.close()"];
+    end [label="Fin", shape=ellipse];
+
+    // --- Definición del Flujo ---
+
+    // Flujo principal
+    start -> init -> loop_cond;
+    
+    // Flujo de salida (fin del bucle)
+    loop_cond -> close_scanner [label="No"];
+    close_scanner -> end;
+
+    // Flujo de entrada al bucle
+    loop_cond -> read_sueldo [label="Sí"];
+    
+    // Flujo dentro del bule
+    read_sueldo -> read_categoria -> read_he -> if_cate;
+    
+    // Flujo del if-else if de categoría
+    if_cate -> cate1 [label="Cat 1"];
+    if_cate -> cate2 [label="Cat 2"];
+    if_cate -> cate3 [label="Cat 3"];
+    if_cate -> cate4 [label="Cat 4"];
+    if_cate -> cate_default [label="Otro"];
+    
+    cate1 -> merge_cate;
+    cate2 -> merge_cate;
+    cate3 -> merge_cate;
+    cate4 -> merge_cate;
+    cate_default -> merge_cate;
+    
+    // Flujo del if de tope de horas
+    merge_cate -> if_tope;
+    if_tope -> tope_si [label="Sí"];
+    if_tope -> tope_no [label="No"];
+    
+    tope_si -> merge_tope;
+    tope_no -> merge_tope;
+
+    // Flujo del resto del bucle
+    merge_tope -> calc_total;
+    calc_total -> print_results;
+    print_results -> read_respuesta;
+    read_respuesta -> set_repetir;
+    set_repetir -> loop_cond [style=dashed, label="volver a evaluar"];
+}

@@ -1,0 +1,56 @@
+digraph Ejemplo_5_4 {
+    // Configuración general del grafo
+    rankdir=TB; // Dirección de arriba hacia abajo
+    node [shape=box, fontname="Helvetica", style=filled, color=white];
+    edge [fontname="Helvetica"];
+
+    // Subgrafo para el método main()
+    subgraph cluster_main {
+        label = "Método main()";
+        style=filled;
+        color=lightgrey;
+        
+        main_start [label="Inicio main()", shape=ellipse];
+        
+        init_arrays [label="Inicializar arreglos paralelos:\n- numeros = {1, 2}\n- nombres = {\"Juan Pérez\", ...}\n- departamentos = {\"Ventas\", ...}\n- niveles = {2, 3}\n- sueldos = {2500.50, ...}"];
+        
+        init_loop [label="i = 0"];
+        
+        loop_cond [label="¿ i < 2 ?", shape=diamond];
+        
+        call_mostrar [label="Llamar a mostrarEmpleado(\ni + 1, numeros[i], nombres[i], \ndepartamentos[i], niveles[i], sueldos[i]\n)", style=dashed];
+        
+        loop_inc [label="i = i + 1"];
+        
+        main_end [label="Fin main()", shape=ellipse];
+
+        // --- Flujo del main ---
+        main_start -> init_arrays;
+        init_arrays -> init_loop;
+        init_loop -> loop_cond;
+        loop_cond -> call_mostrar [label="Sí"];
+        call_mostrar -> loop_inc;
+        loop_inc -> loop_cond [style=dashed];
+        loop_cond -> main_end [label="No"];
+    }
+
+    // Subgrafo para el método mostrarEmpleado()
+    subgraph cluster_mostrar {
+        label = "Método mostrarEmpleado(...)";
+        style=filled;
+        color="#E0E0E0"; // Un gris ligeramente diferente
+        
+        mostrar_start [label="Inicio mostrarEmpleado()", shape=ellipse];
+        
+        print_data [label="Imprimir todos los datos del empleado\n(indice, numero, nombre, ...)", shape=parallelogram];
+        
+        mostrar_end [label="Fin mostrarEmpleado()", shape=ellipse];
+
+        // --- Flujo de mostrarEmpleado ---
+        mostrar_start -> print_data;
+        print_data -> mostrar_end;
+    }
+    
+    // Conexión que muestra la invocación desde main
+    call_mostrar -> mostrar_start [style=dotted, label="invoca", constraint=false];
+}

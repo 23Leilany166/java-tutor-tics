@@ -3,34 +3,32 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Ejercicios de OOP en Python</title>
+  <title>Ejercicios de Programación Estructurada en Java</title>
   <link rel="stylesheet" href="style/styles_desc.css">
 </head>
 <body>
   <div class="container">
     <header class="page-header">
-      <h1>Ejercicios de Programación Orientada a Objetos en Python</h1>
+      <h1>Ejercicios de Programación Estructurada en Java</h1>
       <p class="subtitle">Selecciona un ejercicio del menú para ver los detalles.</p>
     </header>
 
     <nav class="exercises-nav" aria-label="Navegación de ejercicios">
       <a href="#employee" class="nav-link">Ejemplo 2.8</a>
       <a href="#person" class="nav-link">Problema 2.12</a>
-      <a href="#point2d" class="nav-link">Point2D</a>
-      <a href="#time" class="nav-link">Time</a>
-      <a href="#freqtable" class="nav-link">FreqTable</a>
-      <a href="#domicilio-registro" class="nav-link">Registro Domicilio</a>
-      <a href="#registro-empleado" class="nav-link">Registro Empleado</a>
-      <a href="#esfera-calculo" class="nav-link">Área/Volumen Esfera</a>
-      <a href="#conteo-calificaciones" class="nav-link">Conteo Calificaciones</a>
-      <a href="#capital-interes" class="nav-link">Inversión Interés Mensual</a>
-      <a href="#invertir-numero" class="nav-link">Invertir Número</a>
-      <a href="#bisiestos-perfectos" class="nav-link">Años Bisiestos/Perfectos</a>
-      <a href="#teatro-reservas" class="nav-link">Reservas Teatro</a>
+      <a href="#point2d" class="nav-link">Problema 3.9</a>
+      <a href="#freqtable" class="nav-link">Ejemplo 4.6</a>
+      <a href="#domicilio-registro" class="nav-link">Ejemplo 5.3</a>
+      <a href="#registro-empleado" class="nav-link">Ejemplo 5.4</a>
+      <a href="#esfera-calculo" class="nav-link">PS 1.9</a>
+      <a href="#conteo-calificaciones" class="nav-link">PS 3.13</a>
+      <a href="#capital-interes" class="nav-link">PS 3.14</a>
+      <a href="#invertir-numero" class="nav-link">PS 3.42</a>   
+      <a href="#bisiestos-perfectos" class="nav-link">PS 4.14</a>
+      <a href="#teatro-reservas" class="nav-link">PS 4.30</a>
     </nav>
 
     <main class="exercises-main">
-      <!-- Employee & Meeting -->
       <article id="employee" class="exercise-card" aria-labelledby="employee-title">
         <header class="exercise-header">
           <span class="exercise-badge">Ejemplo</span>
@@ -64,43 +62,7 @@
             </ul>
             
             <h3>Ejemplo de uso esperado</h3>
-            <pre><code class="code-block">import java.util.Scanner;
-
-public class CalculoAumentoSueldo {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        
-        System.out.print("Ingrese la categoría del trabajador (1-4): ");
-        int categoria = scanner.nextInt();
-
-        System.out.print("Ingrese el sueldo del trabajador: ");
-        double sueldo = scanner.nextDouble();
-
-        double aumento;
-
-        switch (categoria) {
-            case 1:
-                aumento = sueldo * 0.15;
-                break;
-            case 2:
-                aumento = sueldo * 0.10;
-                break;
-            case 3:
-                aumento = sueldo * 0.08;
-                break;
-            case 4:
-                aumento = sueldo * 0.07;
-                break;
-            default:
-                System.out.println("Categoría inválida.");
-                return; // Termina el programa si la categoría es inválida
-        }
-
-        double nuevoSueldo = sueldo + aumento;
-        System.out.println("Categoría del trabajador: " + categoria);
-        System.out.println("Nuevo sueldo: " + nuevoSueldo);
-    }
-}</code></pre>
+            <textarea id="java-editor" ></textarea>
           </section>
           
           <aside class="exercise-sidebar">
@@ -123,7 +85,6 @@ public class CalculoAumentoSueldo {
 
 
 
-      <!-- Person -->
       <article id="person" class="exercise-card" aria-labelledby="person-title">
         <header class="exercise-header">
           <span class="exercise-badge">Ejercicio</span>
@@ -156,65 +117,7 @@ public class CalculoAumentoSueldo {
             </ul>
             
             <h3>Ejemplo de uso esperado</h3>
-            <pre><code class="code-block">/*
-SUELDO _HORAS_EXTRAS
-{El program a calcula lo que hay que pagarle a un trabajador teniendo en cuenta su
-sueldo, horas extras y su categoría}
- */
-package c.Problema_2_12;
-import java.util.Scanner;
-
-/**
- *
- * @author DELL
- */
-public class Problema_2_12 {
-    
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        boolean repetir = true;
-        
-        while (repetir) {
-        System.out.println("Ingrese el sueldo base del trabajador:");
-        double sue = sc.nextDouble();
-
-        System.out.println("Ingrese la categoría del trabajador: ");
-        int cate = sc.nextInt();
-
-        System.out.println("Ingrese las horas extras trabajadas:");
-        int he = sc.nextInt();
-
-        double phe;
-
-        if (cate == 1) {
-            phe = 30;
-        } else if (cate == 2) {
-            phe = 38;
-        } else if (cate == 3) {
-            phe = 50;
-        } else if (cate == 4) {
-            phe = 70;
-        } else {
-            phe = 0;
-        }
-
-        double mSue;
-
-        if (he > 30) {
-            mSue = sue + 30 * phe;
-        } else {
-            mSue = sue + he * phe;
-        }
-
-        System.out.println("Monto a pagar al trabajador: " + mSue);
-        System.out.println("Costo de la hora: " + phe);
-        
-        System.out.println("¿Desea realizar otro cálculo? (S/N)");
-        String respuesta = sc.next();
-        repetir = respuesta.equalsIgnoreCase("S");
-        }
-    }
-}</code></pre>
+            <textarea id="java-editor" ></textarea>
           </section>
           
           <aside class="exercise-sidebar">
@@ -223,11 +126,11 @@ public class Problema_2_12 {
             <ul>
               <li>Se usa una cadena <code>if-else if</code> para asignar el valor de <code>phe</code> (pago hora extra).</li>
               <li>La regla de negocio <code>if (he > 30)</code> es crucial para aplicar el tope de 30 horas.</li>
-              <li>Las categorías que no son 1, 2, 3 o 4 (como 5, 6, 7, 8) reciben un <code>phe</code> de 0, tal como lo especifica el libro.</li>
+              <li>Las categorías que no son 1, 2, 3 o 4 reciben un <code>phe</code> de 0, tal como lo especifica el libro.</li>
             </ul>
             
             <div class="tip-box">
-              <strong>Tip:</strong> El código Java añade un bucle <code>while(repetir)</code> que permite al usuario realizar múltiples cálculos sin tener que reiniciar el programa.
+              <strong>Tip:</strong> El código añade un bucle <code>while(repetir)</code> que permite al usuario realizar múltiples cálculos sin tener que reiniciar el programa.
             </div>
           </aside>
         </div>
@@ -238,7 +141,6 @@ public class Problema_2_12 {
 
 
 
-      <!-- Point2D -->
       <article id="point2d" class="exercise-card" aria-labelledby="point2d-title">
         <header class="exercise-header">
           <span class="exercise-badge">Ejercicio</span>
@@ -246,7 +148,7 @@ public class Problema_2_12 {
           
           <p class="exercise-description">
             Este ejemplo, basado en el Problema 3.9 del libro, calcula el resultado de la serie 
-            matemática donde cada término `i` se eleva a su propia potencia (`i` elevado a `i`), 
+            matemática donde cada término <code>i</code> se eleva a su propia potencia (<code>i</code> elevado a <code>i</code>), 
             sumando los resultados desde 1 hasta N.
           </p>
         </header>
@@ -264,46 +166,17 @@ public class Problema_2_12 {
             </ul>
             
             <h3>Ejemplo de uso esperado</h3>
-            <pre><code class="code-block">package com.ITSOEH.programasjava.Problema_3_9;
-
-import java.util.Scanner;
-
-/**
- *
- * @author imac28
- */
-public class SumaSerie {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.print("Ingrese el número de términos (N): ");
-        int N = scanner.nextInt();
-
-        double serie = calcularSumaSerie(N);
-
-        System.out.println("La suma de la serie es: " + serie);
-    }
-
-    // Método para calcular la SERIE de la serie
-    static double calcularSumaSerie(int _N) {
-        double SERIE = 0;
-
-        for (int i = 1; i <= _N; i++) {
-            SERIE += Math.pow(i, i);
-        }
-
-        return SERIE;
-    }
-}</code></pre>
+            <textarea id="java-editor" ></textarea>
           </section>
           
           <aside class="exercise-sidebar">
             <h3>Notas rápidas</h3>
             <p class="note-text">Puntos clave de este ejemplo:</p>
             <ul>
-              <li>Es fundamental usar <code>double</code> para la variable <code>SERIE</code>, ya que el valor de <code>N^N</code> (ej. 10^10) supera rápidamente la capacidad de un <code>int</code> o <code>long</code>.</li>
+              <li>Es fundamental usar <code>double</code> para la variable suma, ya que el valor de <code>N^N</code> (ej. 10^10) supera rápidamente la capacidad de un <code>int</code> o <code>long</code>.</li>
               <li>Se utiliza <code>Math.pow(base, exponente)</code> para calcular la potencia.</li>
               <li>El problema implementa un bucle <code>for</code>, una estructura repetitiva (como se describe en el Capítulo 3 del libro).</li>
+              <li>Los métodos estáticos son parte de la programación estructurada y ayudan a modularizar el código.</li>
             </ul>
           </aside>
         </div>
@@ -318,11 +191,10 @@ public class SumaSerie {
 
 
 
-      <!-- FreqTable -->
       <article id="freqtable" class="exercise-card" aria-labelledby="freqtable-title">
         <header class="exercise-header">
           <span class="exercise-badge">Ejercicio</span>
-          <h2 id="fibonacci-array-title">Almacenar los 100 primeros números Fibonacci (PS 4.6)</h2>
+          <h2 id="fibonacci-array-title">Almacenar los 100 primeros números Fibonacci (Ejemplo 4.6)</h2>
           
           <p class="exercise-description">
             Este ejemplo, basado en el Problema Suplementario 4.6 (página 442) del libro, genera los
@@ -349,35 +221,7 @@ public class SumaSerie {
             </ul>
             
             <h3>Ejemplo de uso esperado</h3>
-            <pre><code class="code-block">package com.ITSOEH.programasjava.PS_4_6;
-
-/**
- *
- * @author imac28
- */
-import java.math.BigInteger;
-
-public class Fibonacci {
-    public static void main(String[] args) {
-        // Creación del arreglo para almacenar los números Fibonacci
-        BigInteger[] fibonacci = new BigInteger[100];
-        
-        // Calcula los primeros 100 números Fibonacci y los almacena en el arreglo
-        fibonacci[0] = BigInteger.ZERO;
-        fibonacci[1] = BigInteger.ONE;
-        
-        for (int i = 2; i < 100; i++) {
-            fibonacci[i] = fibonacci[i-1].add(fibonacci[i-2]);
-        }
-        
-        // Imprime el arreglo de números Fibonacci
-        System.out.println("Arreglo de los primeros 100 números Fibonacci:");
-        
-        for (int i = 0; i < 100; i++) {
-            System.out.print(fibonacci[i] + " ");
-        }
-    }
-}</code></pre>
+            <textarea id="java-editor" ></textarea>
           </section>
           
           <aside class="exercise-sidebar">
@@ -385,8 +229,9 @@ public class Fibonacci {
             <p class="note-text">Puntos clave de este ejemplo:</p>
             <ul>
               <li>El uso de <code>BigInteger</code> es obligatorio. El número Fibonacci <code>F(93)</code> ya es demasiado grande para un <code>long</code> de 64 bits en Java.</li>
-              <li><code>BigInteger</code> es una clase, por lo que las operaciones aritméticas se hacen con métodos (ej. <code>.add()</code>) en lugar de operadores (<code>+</code>).</li>
+              <li><code>BigInteger</code> es una clase de Java, por lo que las operaciones aritméticas se hacen con métodos (ej. <code>.add()</code>) en lugar de operadores (<code>+</code>).</li>
               <li>Este es un ejemplo clásico de "Arreglos Unidimensionales" (Capítulo 4 del libro).</li>
+              <li>El uso de arreglos y bucles es característico de la programación estructurada.</li>
             </ul>
           </aside>
         </div>
@@ -400,95 +245,44 @@ public class Fibonacci {
       <article id="domicilio-registro" class="exercise-card" aria-labelledby="domicilio-registro-title">
         <header class="exercise-header">
           <span class="exercise-badge">Ejemplo</span>
-          <h2 id="domicilio-registro-title">Definir un Registro (Clase) Domicilio (Ejemplo 5.3)</h2>
+          <h2 id="domicilio-registro-title">Registro de Domicilio con Variables (Ejemplo 5.3)</h2>
           
           <p class="exercise-description">
-            Este ejemplo, basado en el Ejemplo 5.3 del libro (Capítulo 5), introduce el concepto de
-            "Registros". En Java, un registro se implementa como una <strong>Clase</strong>. 
-            Esta clase <code>Domicilio</code> agrupa múltiples tipos de datos (Strings e ints) bajo una sola estructura.
+            Este ejemplo, basado en el Ejemplo 5.3 del libro (Capítulo 5), muestra cómo almacenar
+            información de un domicilio usando <strong>variables simples</strong> y <strong>arreglos</strong>
+            en lugar de clases. Los datos (Strings e ints) se agrupan mediante variables individuales o arreglos.
           </p>
         </header>
         
         <div class="exercise-content">
           <section class="exercise-main">
             <h3>Requisitos</h3>
-            <ul>
-              <li>Crear una clase <code>Domicilio</code> para agrupar los datos.</li>
-              <li>Definir los campos (atributos) de la clase:
-                <ul>
-                  <li><code>String calle</code></li>
-                  <li><code>int numero</code></li>
-                  <li><code>String ciudad</code></li>
-                  <li><code>String pais</code></li>
-                </ul>
-              </li>
-              <li>Implementar un constructor <code>Domicilio(...)</code> que reciba los 4 valores y los asigne a los atributos de la instancia (<code>this.calle = calle;</code>).</li>
-              <li>En el método <code>main</code>, usar <code>Scanner</code> para solicitar y leer los cuatro datos del usuario.</li>
-              <li>Crear un nuevo objeto (instancia) de la clase <code>Domicilio</code> usando los datos leídos.</li>
-              <li>Imprimir los datos almacenados en los campos del objeto.</li>
-            </ul>
-            
+              <ul>
+                <li>En el método <code>main</code>, usar <code>Scanner</code> para solicitar y leer los cuatro datos del usuario:
+                  <ul>
+                    <li><code>String calle</code></li>
+                    <li><code>int numero</code></li>
+                    <li><code>String ciudad</code></li>
+                    <li><code>String pais</code></li>
+                  </ul>
+                </li>
+                <li>Almacenar los datos en variables simples o en un arreglo.</li>
+                <li>Opcionalmente, crear métodos estáticos auxiliares para leer datos y mostrar resultados (mantiene programación estructurada).</li>
+                <li>Imprimir los datos ingresados por el usuario de forma clara.</li>
+                <li><strong>Nota:</strong> En programación estructurada no se usan clases personalizadas ni objetos. Los datos se manejan con variables, arreglos y funciones/métodos estáticos.</li>
+              </ul>
+                          
             <h3>Ejemplo de uso esperado</h3>
-            <pre><code class="code-block">/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
-package Ejercicios_Libros;
-
-import java.util.Scanner;
-
-/**
- *
- * @author zenri
- */
-public class Ejemplo_5_3 {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Ingrese la calle: ");
-        String calle = scanner.nextLine();
-        System.out.print("Ingrese el número: ");
-        int numero = scanner.nextInt();
-        scanner.nextLine();
-        System.out.print("Ingrese la ciudad: ");
-        String ciudad = scanner.nextLine();
-        System.out.print("Ingrese el país: ");
-        String pais = scanner.nextLine();
-
-        Domicilio domicilio = new Domicilio(calle, numero, ciudad, pais);
-
-        System.out.println("Calle: " + domicilio.calle);
-        System.out.println("Número: " + domicilio.numero);
-        System.out.println("Ciudad: " + domicilio.ciudad);
-        System.out.println("País: " + domicilio.pais);
-    }
-}
-
-class Domicilio {
-
-    String calle;
-    int numero;
-    String ciudad;
-    String pais;
-
-    public Domicilio(String calle, int numero, String ciudad, String pais) {
-        this.calle = calle;
-        this.numero = numero;
-        this.ciudad = ciudad;
-        this.pais = pais;
-    }
-}</code></pre>
+         <textarea id="java-editor" ></textarea>
           </section>
           
           <aside class="exercise-sidebar">
             <h3>Notas rápidas</h3>
             <p class="note-text">Puntos clave de este ejemplo:</p>
             <ul>
-              <li>El concepto de <strong>Registro</strong> (página 343 del libro) es la base de la <strong>Programación Orientada a Objetos</strong>. Una <strong>Clase</strong> es la implementación de un registro.</li>
+              <li>El concepto de <strong>Registro</strong> (página 343 del libro) se implementa aquí usando <strong>variables simples</strong> en lugar de clases.</li>
               <li>Se usa <code>scanner.nextLine()</code> después de <code>scanner.nextInt()</code> para consumir el salto de línea pendiente y evitar errores al leer el siguiente <code>String</code>.</li>
+              <li>Esta implementación mantiene la programación estructurada al evitar la creación de objetos personalizados.</li>
             </ul>
           </aside>
         </div>
@@ -501,103 +295,51 @@ class Domicilio {
       <article id="registro-empleado" class="exercise-card" aria-labelledby="registro-empleado-title">
         <header class="exercise-header">
           <span class="exercise-badge">Ejemplo</span>
-          <h2 id="registro-empleado-title">Definir un Registro (Clase) Empleado (Ejemplo 5.4)</h2>
+          <h2 id="registro-empleado-title">Registro de Empleados con Arreglos (Ejemplo 5.4)</h2>
           
           <p class="exercise-description">
-            Implementación del Ejemplo 5.4 del libro (página 345). Este código muestra cómo definir 
-            una estructura <code>Empleado</code> (como una clase interna) y asignar valores 
-            directamente a sus campos (atributos).
+            Implementación del Ejemplo 5.4 del libro (página 345). Este código muestra cómo almacenar 
+            información de empleados usando <strong>arreglos paralelos</strong> o <strong>variables individuales</strong>
+            en lugar de clases, asignando valores directamente a las estructuras de datos.
           </p>
         </header>
         
         <div class="exercise-content">
           <section class="exercise-main">
-            <h3>Requisitos</h3>
-            <ul>
-              <li>Definir una clase <code>Empleado</code> (en este caso, como una clase interna dentro de <code>main</code>).</li>
-              <li>La clase debe tener los siguientes campos (atributos):
-                <ul>
-                  <li><code>int numero</code></li>
-                  <li><code>String nombre</code></li>
-                  <li><code>String departamento</code></li>
-                  <li><code>int nivel</code></li>
-                  <li><code>double sueldo</code></li>
-                </ul>
-              </li>
-              <li>Crear dos instancias (objetos) de la clase <code>Empleado</code>.</li>
-              <li>Asignar valores a los campos de cada instancia directamente (ej. <code>empleado1.numero = 1;</code>).</li>
-              <li>Imprimir todos los datos de ambos empleados en la consola.</li>
-            </ul>
+           <h3>Requisitos</h3>
+              <ul>
+                <li>Definir variables para almacenar los datos de dos empleados con los siguientes campos:
+                  <ul>
+                    <li><code>int numero</code></li>
+                    <li><code>String nombre</code></li>
+                    <li><code>String departamento</code></li>
+                    <li><code>int nivel</code></li>
+                    <li><code>double sueldo</code></li>
+                  </ul>
+                </li>
+                <li>Usar arreglos paralelos o variables individuales para almacenar los datos de cada empleado.</li>
+                <li>Asignar valores directamente a las variables de cada empleado.</li>
+                <li>Opcionalmente, crear métodos estáticos auxiliares para mostrar los datos de un empleado.</li>
+                <li>Imprimir todos los datos de ambos empleados en la consola.</li>
+                <li><strong>Nota:</strong> En programación estructurada no se usan clases personalizadas ni objetos. Los datos se manejan con variables, arreglos y funciones/métodos estáticos.</li>
+              </ul>
             
             <h3>Ejemplo de uso esperado</h3>
-            <pre><code class="code-block">package programas;
-
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
-/**
- *
- * @author Chema
- */
-public class Ejemplo_5_4 {
-public static void main(String[] args) {
-// Declaración del registro EMPLEADO
-class Empleado {
-int numero;
-String nombre;
-String departamento;
-int nivel;
-double sueldo;
-}
-
-// Creación de un objeto empleado1
-Empleado empleado1 = new Empleado();
-empleado1.numero = 1;
-empleado1.nombre = "Juan Pérez";
-empleado1.departamento = "Ventas";
-empleado1.nivel = 2;
-empleado1.sueldo = 2500.50;
-
-// Creación de un objeto empleado2
-Empleado empleado2 = new Empleado();
-empleado2.numero = 2;
-empleado2.nombre = "María López";
-empleado2.departamento = "Recursos Humanos";
-empleado2.nivel = 3;
-empleado2.sueldo = 3000.75;
-
-// Imprimir los datos de los empleados
-System.out.println("Datos del empleado 1:");
-System.out.println("Número: " + empleado1.numero);
-System.out.println("Nombre: " + empleado1.nombre);
-System.out.println("Departamento: " + empleado1.departamento);
-System.out.println("Nivel: " + empleado1.nivel);
-System.out.println("Sueldo: " + empleado1.sueldo);
-
-System.out.println("\nDatos del empleado 2:");
-System.out.println("Número: " + empleado2.numero);
-System.out.println("Nombre: " + empleado2.nombre);
-System.out.println("Departamento: " + empleado2.departamento);
-System.out.println("Nivel: " + empleado2.nivel);
-System.out.println("Sueldo: " + empleado2.sueldo);
-}
-
-}</code></pre>
+           <textarea id="java-editor" ></textarea>
           </section>
           
           <aside class="exercise-sidebar">
             <h3>Notas rápidas</h3>
             <p class="note-text">Puntos clave de este ejemplo:</p>
             <ul>
-              <li>Esto implementa el <strong>Registro EMPLEADO</strong> (página 345 del libro).</li>
-              <li>En Java, un "registro" se implementa como una <strong>Clase</strong>.</li>
-              <li>A diferencia del Ejemplo 5.3, este código usa <strong>asignación directa de campos</strong> (<code>empleado1.nombre = ...</code>) en lugar de un constructor.</li>
+              <li>Esto implementa el <strong>Registro EMPLEADO</strong> (página 345 del libro) usando <strong>arreglos paralelos</strong>.</li>
+              <li>Los arreglos paralelos mantienen sincronizados los datos de cada empleado usando el mismo índice.</li>
+              <li>A diferencia de POO, aquí se usan estructuras de datos simples (arreglos) y métodos estáticos.</li>
+              <li>Esta es una técnica común en programación estructurada para agrupar datos relacionados.</li>
             </ul>
             
             <div class="tip-box">
-              <strong>Tip:</strong> Para este ejemplo, la clase <code>Empleado</code> se definió <i>dentro</i> del método <code>main</code>. Es más común definir clases en su propio archivo <code>.java</code>.
+              <strong>Tip:</strong> Los arreglos paralelos son útiles cuando necesitas almacenar múltiples atributos de varios elementos sin usar objetos.
             </div>
           </aside>
         </div>
@@ -632,32 +374,7 @@ System.out.println("Sueldo: " + empleado2.sueldo);
             </ul>
             
             <h3>Ejemplo de uso esperado</h3>
-            <pre><code class="code-block">package programas;
-
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-import java.util.Scanner;
-/**
- *
- * @author imac22
- */
-public class PS_1_9 {
-    
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        
-        System.out.print("Ingrese el radio de la esfera: ");
-        double radio = sc.nextDouble();
-        
-        double area = 4 * Math.PI * Math.pow(radio, 2);
-        double volumen = (4.0 / 3.0) * Math.PI * Math.pow(radio, 3);
-        
-        System.out.println("Área de la esfera: " + area);
-        System.out.println("Volumen de la esfera: " + volumen);
-    }
-}</code></pre>
+           <textarea id="java-editor" ></textarea>
           </section>
           
           <aside class="exercise-sidebar">
@@ -685,8 +402,8 @@ public class PS_1_9 {
           <h2 id="conteo-calificaciones-title">Conteo de Calificaciones por Rango (PS 3.13)</h2>
           
           <p class="exercise-description">
-            [cite_start]Implementación del Problema Suplementario 3.13 (página 422)[cite: 3553]. Este programa lee
-            [cite_start]calificaciones una por una hasta que el usuario ingresa <code>-1</code>[cite: 7]. 
+            Implementación del Problema Suplementario 3.13 (página 422). Este programa lee
+            calificaciones una por una hasta que el usuario ingresa <code>-1</code>. 
             Luego, muestra cuántas calificaciones cayeron en cuatro rangos predefinidos.
           </p>
         </header>
@@ -695,65 +412,31 @@ public class PS_1_9 {
           <section class="exercise-main">
             <h3>Requisitos</h3>
             <ul>
-              [cite_start]<li>Solicitar al usuario que ingrese calificaciones (<code>double</code>)[cite: 1, 12].</li>
-              [cite_start]<li>Usar un bucle <code>while</code> que se repita mientras la calificación sea diferente de <code>-1</code>[cite: 7]. [cite_start]El <code>-1</code> es el valor centinela que indica el fin de los datos[cite: 3556].</li>
-              [cite_start]<li>Utilizar cuatro variables (<code>conteo1</code>, <code>conteo2</code>, <code>conteo3</code>, <code>conteo4</code>) para contar las calificaciones en cada rango[cite: 2, 3, 4, 5, 6].</li>
-              [cite_start]<li>Clasificar cada calificación usando <code>if-else if</code> en los rangos[cite: 3554, 3555]:
+              <li>Solicitar al usuario que ingrese calificaciones (<code>double</code>).</li>
+              <li>Usar un bucle <code>while</code> que se repita mientras la calificación sea diferente de <code>-1</code>. El <code>-1</code> es el valor centinela que indica el fin de los datos.</li>
+              <li>Utilizar cuatro variables (<code>conteo1</code>, <code>conteo2</code>, <code>conteo3</code>, <code>conteo4</code>) para contar las calificaciones en cada rango.</li>
+              <li>Clasificar cada calificación usando <code>if-else if</code> en los rangos:
                 <ul>
-                  [cite_start]<li>Rango 1: 0 a 3.99 [cite: 8]</li>
-                  [cite_start]<li>Rango 2: 4 a 5.99 [cite: 9]</li>
-                  [cite_start]<li>Rango 3: 6 a 7.99 [cite: 10]</li>
-                  [cite_start]<li>Rango 4: 8 a 10 [cite: 11]</li>
+                  <li>Rango 1: 0 a 3.99</li>
+                  <li>Rango 2: 4 a 5.99</li>
+                  <li>Rango 3: 6 a 7.99</li>
+                  <li>Rango 4: 8 a 10</li>
                 </ul>
               </li>
-              [cite_start]<li>Al final del bucle, imprimir los totales de cada contador[cite: 13, 14].</li>
+              <li>Al final del bucle, imprimir los totales de cada contador.</li>
             </ul>
             
             <h3>Ejemplo de uso esperado</h3>
-            <pre><code class="code-block">import java.util.Scanner;
-
-public class ConteoCalificaciones {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        // Declarar variables para contar las calificaciones en cada rango
-        int conteo1 = 0; // 0...3.99
-        int conteo2 = 0; // 4...5.99
-        int conteo3 = 0; // 6...7.99
-        int conteo4 = 0; // 8...10
-
-        System.out.print("Ingrese una calificación (-1 para finalizar): ");
-        double calificacion = scanner.nextDouble();
-        // Leer las calificaciones y contar en cada rango hasta que se ingrese -1
-        while (calificacion != -1) {
-            if (calificacion >= 0 && calificacion <= 3.99) {
-                conteo1++;
-            } else if (calificacion >= 4 && calificacion <= 5.99) {
-                conteo2++;
-            } else if (calificacion >= 6 && calificacion <= 7.99) {
-                conteo3++;
-            } else if (calificacion >= 8 && calificacion <= 10) {
-                conteo4++;
-            }
-
-            System.out.print("Ingrese una calificación (-1 para finalizar): ");
-            calificacion = scanner.nextDouble();
-        }
-
-        // Imprimir los resultados
-        System.out.println("Calificaciones en el rango 0...3.99: " + conteo1);
-        System.out.println("Calificaciones en el rango 4...5.99: " + conteo2);
-        System.out.println("Calificaciones en el rango 6...7.99: " + conteo3);
-        System.out.println("Calificaciones en el rango 8...10: " + conteo4);
-    }
-}</code></pre>
+            <textarea id="java-editor" ></textarea>
           </section>
           
           <aside class="exercise-sidebar">
             <h3>Notas rápidas</h3>
             <p class="note-text">Puntos clave de este ejemplo:</p>
             <ul>
-              [cite_start]<li>Este problema utiliza la estructura repetitiva <strong>mientras (<code>while</code>)</strong>, ideal para cuando no se sabe cuántos datos se ingresarán[cite: 2121].</li>
-              <li>El valor <code>-1</code> se conoce como <strong>centinela</strong>. [cite_start]Es una técnica común para finalizar bucles de entrada de datos[cite: 3556].</li>
+              <li>Este problema utiliza la estructura repetitiva <strong>mientras (<code>while</code>)</strong>, ideal para cuando no se sabe cuántos datos se ingresarán.</li>
+              <li>El valor <code>-1</code> se conoce como <strong>centinela</strong>. Es una técnica común para finalizar bucles de entrada de datos.</li>
+              <li>Los contadores se inicializan en 0 y se incrementan con <code>++</code> cada vez que se encuentra una calificación en el rango correspondiente.</li>
             </ul>
           </aside>
         </div>
@@ -772,7 +455,7 @@ public class ConteoCalificaciones {
           
           <p class="exercise-description">
             Implementación del Problema Suplementario 3.14 (página 422). Este programa calcula el 
-            monto final de una inversión después de 'N' meses, aplicando una tasa de interés 
+            monto final de una inversión después de N meses, aplicando una tasa de interés 
             diferente para cada mes.
           </p>
         </header>
@@ -785,60 +468,13 @@ public class ConteoCalificaciones {
               <li>Solicitar el capital inicial (<code>double capIni</code>).</li>
               <li>Crear un arreglo de tipo <code>double</code> (<code>tasas</code>) del tamaño de <code>meses</code>.</li>
               <li>Usar un bucle <code>for</code> para pedir y almacenar cada una de las tasas de interés mensuales en el arreglo.</li>
-              <li>Crear un método (<code>calcularMonto</code>) que reciba el capital inicial y el arreglo de tasas.</li>
+              <li>Crear un método estático (<code>calcularMonto</code>) que reciba el capital inicial y el arreglo de tasas.</li>
               <li>Dentro del método, usar un bucle (<code>for-each</code>) para iterar sobre las tasas y aplicar el interés compuesto mes a mes: <code>montoFinal += montoFinal * tasa</code>.</li>
               <li>Imprimir el monto final de la inversión.</li>
             </ul>
             
             <h3>Ejemplo de uso esperado</h3>
-            <pre><code class="code-block">import java.util.Scanner;
-
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
-
-/**
- *
- * @author imac13
- */
-public class Capital {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
-        
-        Scanner dato = new Scanner(System.in);
-        
-        System.out.println("Ingrese el número de meses: ");
-        int meses = dato.nextInt();
-        
-        System.out.println("Ingrese el capital inicial: ");
-        double capIni = dato.nextInt();
-        
-        double [] tasas = new double [meses];
-        
-        for(int i = 0; i < meses; i++) { 
-            System.out.println("Ingrese el interés mensual: ");
-            tasas[i] = dato.nextDouble();
-        }
-        
-        double montoFinal = calcularMonto(capIni, tasas);
-        System.out.println("El monto final de la inversión es: " + montoFinal);
-    }        
-        
-    public static double calcularMonto(double capIni, double[] tasas) {
-        double montoFinal = capIni;
-
-        for (double tasa : tasas) {
-            montoFinal += montoFinal * tasa;
-        }
-
-        return montoFinal;    
-    }
-}</code></pre>
+         <textarea id="java-editor" ></textarea>
           </section>
           
           <aside class="exercise-sidebar">
@@ -847,6 +483,7 @@ public class Capital {
             <ul>
               <li>El problema combina el uso de arreglos (para las tasas) con bucles (para leerlas y calcularlas).</li>
               <li>La fórmula <code>montoFinal += montoFinal * tasa</code> es una forma abreviada de <code>montoFinal = montoFinal * (1 + tasa)</code>, que calcula correctamente el interés compuesto para cada período.</li>
+              <li>El uso de métodos estáticos para modularizar el cálculo es una buena práctica en programación estructurada.</li>
             </ul>
           </aside>
         </div>
@@ -888,44 +525,7 @@ public class Capital {
             </ul>
             
             <h3>Ejemplo de uso esperado</h3>
-            <pre><code class="code-block">/*
-hacer operaciones
-
- */
-package ps_3_42;
-
-import java.util.Scanner;
-
-/**
- *
- * @author imac27
- */
-public class PS_3_42 {
-   public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.print("Ingrese un número entero: ");
-        int n = scanner.nextInt();
-
-        int x = 0;
-        int k = 0;
-
-        if (n > 0) {
-            while (n > 0) {
-                k = n % 10;
-                x = x * 10 + k;
-                n = n / 10;
-            }
-            // Nótese que el diagrama 6.1 del libro imprime 'x'
-            // Este código imprime el estado final de las variables
-            System.out.println("k -> n % 10 = " + k);
-            System.out.println("x -> x * 10 + k = " + x);
-             System.out.println("n -> n / 10= " + n);
-        } else {
-            System.out.println("El número ingresado no es válido.");
-        }
-    }
-}</code></pre>
+          <textarea id="java-editor" ></textarea>
           </section>
           
           <aside class="exercise-sidebar">
@@ -935,7 +535,7 @@ public class PS_3_42 {
               <li>Esta es la técnica algorítmica estándar para <strong>invertir un número</strong>.</li>
               <li>El valor <code>n % 10</code> (módulo 10) siempre obtiene el último dígito.</li>
               <li>El valor <code>n / 10</code> (división entera) siempre elimina el último dígito.</li>
-              <li>El diagrama de flujo 6.1 del libro (PS 3.42) pide imprimir <code>X</code>, que es el número invertido. Este código Java imprime el estado final de las variables de trabajo.</li>
+              <li>El diagrama de flujo 6.1 del libro (PS 3.42) pide imprimir <code>X</code>, que es el número invertido.</li>
             </ul>
           </aside>
         </div>
@@ -964,12 +564,12 @@ public class PS_3_42 {
             <h3>Requisitos</h3>
             <ul>
               <li>Iterar en un bucle <code>for</code> desde <code>year = 1</code> hasta <code>2020</code>.</li>
-              <li>Crear un método <code>esBisiesto(int year)</code> que devuelva <code>true</code> si el año cumple la regla:
+              <li>Crear un método estático <code>esBisiesto(int year)</code> que devuelva <code>true</code> si el año cumple la regla:
                 <ul>
                   <li>(Es divisible por 4 Y no por 100) O (Es divisible por 400).</li>
                 </ul>
               </li>
-              <li>Crear un método <code>esPerfecto(int num)</code> que devuelva <code>true</code> si la suma de sus divisores (excepto él mismo) es igual a <code>num</code>.
+              <li>Crear un método estático <code>esPerfecto(int num)</code> que devuelva <code>true</code> si la suma de sus divisores (excepto él mismo) es igual a <code>num</code>.
                 <ul>
                   <li>Ej. 6 es perfecto (1 + 2 + 3 = 6).</li>
                 </ul>
@@ -980,68 +580,7 @@ public class PS_3_42 {
             </ul>
             
             <h3>Ejemplo de uso esperado</h3>
-            <pre><code class="code-block">/*
-Construya un diagrama de flujo que almacene en un arreglo unidimensional todos los años bisiestos y perfectos comprendidos desde el año 1 hasta el año 2020.Cabe aclarar que un año es bisiesto si es divisible entre 4, sin embargo no se considera bisiesto si es divisible entre 100 a menos que sea divisible entre 400.Por otra parte, un número se considera perfecto si es igual a la suma de sus divisores, incluyendo al 1 y exceptuando a él mismo. Por ejemplo, el 6 es perfecto (6 = 1 + 2 + 3).
-*/
-package c.PS_4_14;
-
-/**
- *
- * @author DELL
- */
-public class PS_4_14 {
-    public static void main(String[] args) {
-        int[] bisiestos = new int[2020]; // Arreglo para almacenar años bisiestos
-        int[] perfectos = new int[2020]; // Arreglo para almacenar años perfectos
-
-        int contadorBisiestos = 0; // Contador de años bisiestos
-        int contadorPerfectos = 0; // Contador de años perfectos
-
-        for (int year = 1; year <= 2020; year++) {
-            if (esBisiesto(year)) {
-                bisiestos[contadorBisiestos] = year;
-                contadorBisiestos++;
-            }
-
-            if (esPerfecto(year)) {
-                perfectos[contadorPerfectos] = year;
-                contadorPerfectos++;
-            }
-        }
-
-        // Imprimir años bisiestos
-        System.out.println("Años bisiestos:");
-        for (int i = 0; i < contadorBisiestos; i++) {
-            System.out.print(bisiestos[i] + " ");
-        }
-        System.out.println();
-
-        // Imprimir años perfectos
-        System.out.println("Años perfectos:");
-        for (int i = 0; i < contadorPerfectos; i++) {
-            System.out.print(perfectos[i] + " ");
-        }
-    }
-
-    // Método para verificar si un año es bisiesto
-    public static boolean esBisiesto(int year) {
-        return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
-    }
-
-    // Método para verificar si un número es perfecto
-    public static boolean esPerfecto(int num) {
-        int sumaDivisores = 1; // Comienza con 1 ya que todo número es divisible por 1
-
-        for (int i = 2; i <= num / 2; i++) {
-            if (num % i == 0) {
-                sumaDivisores += i;
-            }
-        }
-
-        return sumaDivisores == num;
-    }
-    
-}</code></pre>
+        <textarea id="java-editor" ></textarea>
           </section>
           
           <aside class="exercise-sidebar">
@@ -1051,6 +590,7 @@ public class PS_4_14 {
               <li>Los arreglos <code>bisiestos</code> y <code>perfectos</code> se inicializan con un tamaño grande (2020), aunque se podrían optimizar.</li>
               <li>Se usan contadores (<code>contadorBisiestos</code>) para imprimir solo las posiciones del arreglo que sí se llenaron.</li>
               <li>El método <code>esPerfecto</code> busca divisores solo hasta <code>num / 2</code>, lo cual es una optimización correcta.</li>
+              <li>Los métodos estáticos permiten modularizar el código manteniendo la programación estructurada.</li>
             </ul>
           </aside>
         </div>
@@ -1087,113 +627,16 @@ public class PS_4_14 {
               <li>Verificar si el asiento elegido está disponible (si es <code>""</code>).</li>
               <li>Si está ocupado, mostrar un mensaje y volver a pedir.</li>
               <li>Si está disponible, solicitar el nombre del cliente y asignarlo al asiento en el arreglo.</li>
+              <li>Crear un método estático para verificar si el teatro está lleno.</li>
             </ul>
             
             <h3>Ejemplo de uso esperado</h3>
-            <pre><code class="code-block">package com.ITSOEH.programasjava.PS_4_30;
+            <textarea id="java-editor" ></textarea>
 
-import java.util.Scanner;
 
-/**
- *
- * @author imac28
- */
-public class Teatro {
-    
-        
-    // Función para verificar si el teatro está completamente lleno
-    static boolean verificarTeatroLleno(String[][] teatro) {
-        for (int i = 0; i < 26; i++) {
-            for (int j = 0; j < 10; j++) {
-                if (teatro[i][j].equals("")) {
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
-    
-        public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        
-        // Creación del arreglo bidimensional para el teatro
-        String[][] TEATRO = new String[26][10];
-        
-        // Inicialización del arreglo con asientos vacíos
-        for (int i = 0; i < 26; i++) {
-            for (int j = 0; j < 10; j++) {
-                TEATRO[i][j] = "";
-            }
-        }
-        
-        // Variable para controlar la disponibilidad del teatro
-        boolean teatroLleno = false;
-        
-        while (!teatroLleno) {
-            // Mostrar estado actual del teatro
-            System.out.println("\nEstado actual del teatro:");
-            for (int i = 0; i < 26; i++) {
-                System.out.print((char)('A' + i) + " ");
-                for (int j = 0; j < 10; j++) {
-                    System.out.print(TEATRO[i][j] + " ");
-                }
-                System.out.println();
-            }
-            
-            // Pedir al usuario la elección de asiento
-            try {
-                System.out.print("\nIngrese la fila (A-Z) del asiento: ");
-                char fila = scanner.next().charAt(0);
-                scanner.nextLine(); // Limpiar el buffer
-                
-                System.out.print("Ingrese el número (1-10) del asiento: ");
-                int numero = scanner.nextInt();
-                scanner.nextLine(); // Limpiar el buffer
-                
-                // Validar rango de fila y número de asiento
-                if (fila < 'A' || fila > 'Z' || numero < 1 || numero > 10) {
-                    System.out.println("Opción no válida o fuera de rango. Por favor, intente nuevamente.");
-                    continue; // Volver al inicio del ciclo
-                }
-                
-                // Validar disponibilidad del asiento
-                if (TEATRO[fila - 'A'][numero - 1].equals("")) {
-                    // Asiento disponible, pedir el nombre del cliente
-                    System.out.print("Ingrese el nombre del cliente: ");
-                    String nombre = scanner.nextLine();
-                    
-                    // Reservar el asiento
-                    TEATRO[fila - 'A'][numero - 1] = nombre;
-                    
-                    System.out.println("Reserva realizada con éxito.");
-                    
-                    // Verificar si el teatro está lleno
-                    teatroLleno = verificarTeatroLleno(TEATRO);
-                    
-                    // Preguntar si el usuario desea salir del programa
-                    if (!teatroLleno) {
-                        System.out.print("¿Desea salir del programa? (s/n): ");
-                        char opcion = scanner.next().charAt(0);
-                        scanner.nextLine(); // Limpiar el buffer
-                        
-                        if (opcion == 's' || opcion == 'S') {
-                            teatroLleno = true;
-                        }
-                    }
-                } else {
-                    System.out.println("El asiento seleccionado ya está reservado. Por favor, elija otro asiento.");
-                }
-            } catch (Exception e) {
-                System.out.println("Opción no válida o formato incorrecto. Por favor, intente nuevamente.");
-                scanner.nextLine(); // Limpiar el buffer
-            }
-        }
-        
-        System.out.println("El teatro está completamente lleno. ¡Gracias por su visita!");
-    }
 
-}</code></pre>
           </section>
+          
           
           <aside class="exercise-sidebar">
             <h3>Notas rápidas</h3>
@@ -1206,18 +649,6 @@ public class Teatro {
           </aside>
         </div>
       </article>
-
-
-
-
-
-
-
-
-
-
-
-
     </main>
 
     <footer class="page-footer">

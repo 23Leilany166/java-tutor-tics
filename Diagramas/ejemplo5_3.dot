@@ -1,0 +1,31 @@
+digraph Ejemplo_5_3 {
+    // Configuración general del grafo
+    rankdir=TB; // Dirección de arriba hacia abajo
+    node [shape=box, fontname="Helvetica", style=filled, color=white];
+    edge [fontname="Helvetica"];
+
+    // Nodos
+    start [label="Inicio", shape=ellipse];
+    init [label="Iniciar Scanner\nDeclarar variables\n(calle, ciudad, pais, numero)"];
+    
+    in_calle [label="Leer calle", shape=parallelogram];
+    in_numero [label="Leer numero", shape=parallelogram];
+    in_buffer [label="Limpiar buffer (scanner.nextLine())"];
+    in_ciudad [label="Leer ciudad", shape=parallelogram];
+    in_pais [label="Leer pais", shape=parallelogram];
+    
+    out_datos [label="Imprimir datos del domicilio\n(calle, numero, ciudad, pais)", shape=parallelogram];
+    close [label="scanner.close()"];
+    end [label="Fin", shape=ellipse];
+
+    // Conexiones del flujo (secuencial)
+    start -> init;
+    init -> in_calle;
+    in_calle -> in_numero;
+    in_numero -> in_buffer;
+    in_buffer -> in_ciudad;
+    in_ciudad -> in_pais;
+    in_pais -> out_datos;
+    out_datos -> close;
+    close -> end;
+}

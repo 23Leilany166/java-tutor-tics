@@ -1,14 +1,53 @@
 digraph SumaSerie {
-  node [shape=box];
+    // Configuración general
+    rankdir=TB;
+    node [shape=box, fontname="Helvetica", style=filled, color=white];
+    edge [fontname="Helvetica"];
 
-  Inicio [shape=ellipse, label="Inicio", style="filled"];
-  LeerN [label="Leer número de términos (N)"];
-  CalcularSerie [label="Calcular suma de la serie"];
-  MostrarResultado [label="Mostrar resultado"];
-  Fin [shape=ellipse, label="Fin"];
+    // Nodos principales
+    start [label="Inicio", shape=ellipse];
+    init [label="Iniciar Scanner\nDeclarar n\ndouble suma = 0"];
+    read_n [label="Leer N", shape=parallelogram];
+    
+    if_valid [label="¿N > 0?", shape=diamond];
+    
+    // Ruta de error
+    print_error [label="Imprimir 'Error: El número debe ser positivo'", shape=parallelogram];
+    
+    // Nodos del bucle (agrupados)
+    subgraph cluster_loop {
+        label = "Bucle For (Suma de Serie)";
+        style=filled;
+        color=lightgrey;
 
-  Inicio -> LeerN;
-  LeerN -> CalcularSerie;
-  CalcularSerie -> MostrarResultado;
-  MostrarResultado -> Fin;
+        loop_init [label="i = 1"];
+        loop_cond [label="¿i <= N?", shape=diamond];
+        loop_calc [label="suma = suma + Math.pow(i, i)"];
+        loop_inc [label="i = i + 1"];
+        
+        // --- Flujo del bucle ---
+        loop_init -> loop_cond;
+        loop_cond -> loop_calc [label="Sí"];
+        loop_calc -> loop_inc;
+        loop_inc -> loop_cond [style=dashed];
+    }
+    
+    // Nodos finales
+    print_result [label="Imprimir 'La suma... es: ' + suma", shape=parallelogram];
+    close_scanner [label="scanner.close()"];
+    end [label="Fin", shape=ellipse];
+
+    // --- Definición del Flujo ---
+    start -> init -> read_n -> if_valid;
+
+    // Flujo de error
+    if_valid -> print_error [label="No"];
+    print_error -> close_scanner;
+
+    // Flujo principal (con bucle)
+    if_valid -> loop_init [label="Sí"];
+    loop_cond -> print_result [label="No"]; // Salida del bucle
+    
+    print_result -> close_scanner;
+    close_scanner -> end;
 }

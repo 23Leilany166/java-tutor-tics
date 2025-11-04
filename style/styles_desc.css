@@ -345,7 +345,28 @@
     word-wrap: normal;
     -webkit-overflow-scrolling: touch;
   }
-  
+
+   textarea {
+    width: 680px;
+    height: 800px;
+    display: block;
+    background: var(--color-bg-code);
+    padding: var(--spacing-md);
+    border: 0;
+    border-radius: var(--border-radius-md);
+    overflow: scroll;
+    overflow-x: auto;
+    overflow-y: auto;
+    color: var(--color-text);
+    font-family: Menlo, Monaco, 'Courier New', monospace;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    white-space: pre;
+    word-wrap: normal;
+    -webkit-overflow-scrolling: touch;
+    resize: none;
+  }
+
   @media (min-width: 768px) {
     .code-block {
       font-size: 0.95rem;

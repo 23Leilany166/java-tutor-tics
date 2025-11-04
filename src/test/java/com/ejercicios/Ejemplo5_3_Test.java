@@ -9,7 +9,7 @@ import java.io.InputStream;
 import java.io.PrintStream;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class PS3_13test {
+public class Ejemplo5_3_Test {
 
     private final InputStream originalIn = System.in;
     private final PrintStream originalOut = System.out;
@@ -32,17 +32,16 @@ public class PS3_13test {
     }
 
     @Test
-    public void testConteoRangos() {
-        // 2 en R1, 1 en R2, 1 en R3, 3 en R4
-        String input = "2.5\n9.0\n8.1\n4.5\n7.9\n10.0\n0.0\n-1\n";
+    public void testRegistroDomicilio() {
+        String input = "Avenida Siempreviva 742\n742\nSpringfield\nMéxico\n";
         System.setIn(new ByteArrayInputStream(input.getBytes()));
 
-        PS3_13.main(null);
+        Ejemplo5_3.main(null);
         String output = normalize(outContent.toString());
 
-        assertTrue(output.contains("rango 0...3.99: 2"));
-        assertTrue(output.contains("rango 4...5.99: 1"));
-        assertTrue(output.contains("rango 6...7.99: 1"));
-        assertTrue(output.contains("rango 8...10: 3"));
+        assertTrue(output.contains("Calle: Avenida Siempreviva 742"));
+        assertTrue(output.contains("Número: 742"));
+        assertTrue(output.contains("Ciudad: Springfield"));
+        assertTrue(output.contains("País: México"));
     }
 }

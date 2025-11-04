@@ -9,7 +9,7 @@ import java.io.InputStream;
 import java.io.PrintStream;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class PS3_13test {
+public class PS3_14test {
 
     private final InputStream originalIn = System.in;
     private final PrintStream originalOut = System.out;
@@ -32,17 +32,16 @@ public class PS3_13test {
     }
 
     @Test
-    public void testConteoRangos() {
-        // 2 en R1, 1 en R2, 1 en R3, 3 en R4
-        String input = "2.5\n9.0\n8.1\n4.5\n7.9\n10.0\n0.0\n-1\n";
+    public void testCalculoCapital() {
+        // 2 meses, 1000 inicial, tasa 1 = 0.1 (10%), tasa 2 = 0.1 (10%)
+        String input = "2\n1000\n0.1\n0.1\n";
         System.setIn(new ByteArrayInputStream(input.getBytes()));
 
-        PS3_13.main(null);
+        PS3_14.main(null);
         String output = normalize(outContent.toString());
 
-        assertTrue(output.contains("rango 0...3.99: 2"));
-        assertTrue(output.contains("rango 4...5.99: 1"));
-        assertTrue(output.contains("rango 6...7.99: 1"));
-        assertTrue(output.contains("rango 8...10: 3"));
+        // Mes 1: 1000 + (1000 * 0.1) = 1100
+        // Mes 2: 1100 + (1100 * 0.1) = 1100 + 110 = 1210.0
+        assertTrue(output.contains("El monto final de la inversión es: 1210.0"));
     }
 }

@@ -3,13 +3,13 @@ package com.ejercicios;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.PrintStream;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class PS3_13test {
+public class PS4_14test {
 
     private final InputStream originalIn = System.in;
     private final PrintStream originalOut = System.out;
@@ -32,17 +32,21 @@ public class PS3_13test {
     }
 
     @Test
-    public void testConteoRangos() {
-        // 2 en R1, 1 en R2, 1 en R3, 3 en R4
-        String input = "2.5\n9.0\n8.1\n4.5\n7.9\n10.0\n0.0\n-1\n";
-        System.setIn(new ByteArrayInputStream(input.getBytes()));
-
-        PS3_13.main(null);
+    public void testBisiestosYPerfectos() {
+        PS4_14.main(null);
         String output = normalize(outContent.toString());
 
-        assertTrue(output.contains("rango 0...3.99: 2"));
-        assertTrue(output.contains("rango 4...5.99: 1"));
-        assertTrue(output.contains("rango 6...7.99: 1"));
-        assertTrue(output.contains("rango 8...10: 3"));
+        // Verificar bisiestos
+        assertTrue(output.contains("Años bisiestos:"));
+        assertTrue(output.contains(" 2000 ")); // Divisible por 400
+        assertTrue(output.contains(" 2004 ")); // Divisible por 4
+        assertTrue(output.contains(" 2020 ")); // Ultimo
+        assertFalse(output.contains(" 1900 ")); // Divisible por 100 pero no 400
+
+        // Verificar perfectos
+        assertTrue(output.contains("Años perfectos:"));
+        assertTrue(output.contains(" 6 "));
+        assertTrue(output.contains(" 28 "));
+        assertTrue(output.contains(" 496 "));
     }
 }

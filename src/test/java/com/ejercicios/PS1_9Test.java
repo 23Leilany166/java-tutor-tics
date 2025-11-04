@@ -9,7 +9,7 @@ import java.io.InputStream;
 import java.io.PrintStream;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class PS3_13test {
+public class PS1_9Test {
 
     private final InputStream originalIn = System.in;
     private final PrintStream originalOut = System.out;
@@ -32,17 +32,32 @@ public class PS3_13test {
     }
 
     @Test
-    public void testConteoRangos() {
-        // 2 en R1, 1 en R2, 1 en R3, 3 en R4
-        String input = "2.5\n9.0\n8.1\n4.5\n7.9\n10.0\n0.0\n-1\n";
+    public void testCalculoRadio1() {
+        // Radio = 1
+        String input = "1\n";
         System.setIn(new ByteArrayInputStream(input.getBytes()));
 
-        PS3_13.main(null);
+        PS1_9.main(null);
         String output = normalize(outContent.toString());
 
-        assertTrue(output.contains("rango 0...3.99: 2"));
-        assertTrue(output.contains("rango 4...5.99: 1"));
-        assertTrue(output.contains("rango 6...7.99: 1"));
-        assertTrue(output.contains("rango 8...10: 3"));
+        // Area = 4 * PI * 1^2 = 12.566...
+        // Volumen = (4/3) * PI * 1^3 = 4.188...
+        assertTrue(output.contains("Área de la esfera: 12.566"));
+        assertTrue(output.contains("Volumen de la esfera: 4.188"));
+    }
+
+    @Test
+    public void testCalculoRadio10() {
+        // Radio = 10
+        String input = "10\n";
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+
+        PS1_9.main(null);
+        String output = normalize(outContent.toString());
+
+        // Area = 4 * PI * 10^2 = 1256.6...
+        // Volumen = (4/3) * PI * 10^3 = 4188.7...
+        assertTrue(output.contains("Área de la esfera: 1256.6"));
+        assertTrue(output.contains("Volumen de la esfera: 4188.7"));
     }
 }
