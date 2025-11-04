@@ -21,14 +21,14 @@ class problema_1_5Test {
         double volEsperado = 1570.7963;
         double areaEsperada = 314.1592;
 
-        assertEquals(volEsperado, cilindro.calcularVolumen(radio, altura), 0.0001);
-        assertEquals(areaEsperada, cilindro.calcularArea(radio, altura), 0.0001);
+        assertEquals(volEsperado, cilindro.calcularVolumen(radio, altura), 0.0001, "problema_1_5 - testCalculosRegulares: Volumen incorrecto para radio=10, altura=5");
+        assertEquals(areaEsperada, cilindro.calcularArea(radio, altura), 0.0001, "problema_1_5 - testCalculosRegulares: Área incorrecta para radio=10, altura=5");
     }
 
     @Test
     void testCalculosConCero() {
-        assertEquals(0.0, cilindro.calcularVolumen(0, 10));
-        assertEquals(0.0, cilindro.calcularArea(10, 0));
-        assertEquals(0.0, cilindro.calcularVolumen(0, 0));
+        assertEquals(0.0, cilindro.calcularVolumen(0, 10), "problema_1_5 - testCalculosConCero: Volumen debe ser 0 si radio=0");
+        assertEquals(0.0, cilindro.calcularArea(10, 0), "problema_1_5 - testCalculosConCero: Área debe ser 0 si altura=0");
+        assertEquals(0.0, cilindro.calcularVolumen(0, 0), "problema_1_5 - testCalculosConCero: Volumen debe ser 0 si radio=0 y altura=0");
     }
 }

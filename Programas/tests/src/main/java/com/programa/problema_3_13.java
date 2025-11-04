@@ -2,40 +2,31 @@ package com.programa;
 
 import java.util.Scanner;
 
+/**
+ * problema_3_13 - Plantilla para procesar datos meteorológicos mensuales
+ *
+ * OBJETIVO:
+ * Implementar procesarDatos que reciba tres arreglos de 12 valores cada uno
+ * (regiones norte, centro y sur) y calcule:
+ *  a) Promedio anual de la región centro
+ *  b) Mes con menor lluvia en la región sur
+ *  c) Región con mayor lluvia anual
+ *
+ * INSTRUCCIONES:
+ * - Mantén la firma del método.
+ * - Retorna un objeto ReporteClima con los valores solicitados.
+ */
 public class problema_3_13 {
 
     // Lógica separada
     public ReporteClima procesarDatos(double[] rno, double[] rce, double[] rsu) {
-        ReporteClima reporte = new ReporteClima();
-        double arno = 0, arce = 0, arsu = 0;
-        reporte.registroMenorLluviaSur = Double.MAX_VALUE; // Valor inicial muy alto
-        reporte.mesMenorLluviaSur = -1;
-
-        // Asumimos que los arreglos tienen 12 elementos
-        for (int i = 0; i < 12; i++) {
-            arno += rno[i];
-            arce += rce[i];
-            arsu += rsu[i];
-
-            if (rsu[i] < reporte.registroMenorLluviaSur) {
-                reporte.registroMenorLluviaSur = rsu[i];
-                reporte.mesMenorLluviaSur = i + 1; // Mes 1-12
-            }
-        }
-
-        // a) Promedio Región Centro
-        reporte.promedioCentro = arce / 12.0;
-
-        // c) Región con mayor lluvia anual
-        if (arno > arce && arno > arsu) {
-            reporte.regionMayorLluvia = "NORTE";
-        } else if (arce > arno && arce > arsu) {
-            reporte.regionMayorLluvia = "CENTRO";
-        } else {
-            reporte.regionMayorLluvia = "SUR";
-        }
+        // TODO: Implementa el procesamiento de los arreglos de 12 meses
+        // Pasos sugeridos:
+        // 1. Sumar los 12 valores para cada región para determinar promedios y totales
+        // 2. Buscar el índice (mes) con menor valor en rsu
+        // 3. Comparar totales anuales para decidir la región con mayor lluvia
         
-        return reporte;
+        return new ReporteClima(); // Reemplaza con el ReporteClima calculado
     }
 
     // El main solo maneja I/O

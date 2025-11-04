@@ -2,14 +2,26 @@ package com.programa;
 
 import java.util.Scanner;
 
+/**
+ * ps_3_22 - Plantilla para cálculo de promedios
+ *
+ * OBJETIVO:
+ * Implementar el método calcularPromedio que recibe 5 calificaciones y devuelve
+ * el promedio simple.
+ *
+ * INSTRUCCIONES PARA ALUMNOS:
+ * - Mantén la firma del método.
+ * - Asegúrate de usar división con double para obtener decimales.
+ */
 public class ps_3_22 {
 
     // Lógica separada
     public double calcularPromedio(double c1, double c2, double c3, double c4, double c5) {
-        return (c1 + c2 + c3 + c4 + c5) / 5.0;
+        // TODO: Implementa el cálculo del promedio de 5 calificaciones
+        return 0.0; // Reemplaza con la implementación correcta
     }
 
-    // El main solo maneja I/O
+    // El main solo maneja I/O (no requiere cambios por parte del alumno)
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         ps_3_22 pa = new ps_3_22();

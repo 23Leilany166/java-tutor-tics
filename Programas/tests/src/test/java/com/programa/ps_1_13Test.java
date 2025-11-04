@@ -19,9 +19,9 @@ class ps_1_13Test {
         double areaTotal = p.calcularAreaTotal(areaBase, areaLateral); // (2 * 43) + 250 = 336
         double volumen = p.calcularVolumen(areaBase, alt); // 43 * 10 = 430
 
-        assertEquals(43.0, areaBase, 0.001);
-        assertEquals(250.0, areaLateral, 0.001);
-        assertEquals(336.0, areaTotal, 0.001);
-        assertEquals(430.0, volumen, 0.001);
+        assertEquals(43.0, areaBase, 0.001, "ps_1_13 - testCalculosPrisma: Área de la base incorrecta (esperado 43.0)");
+        assertEquals(250.0, areaLateral, 0.001, "ps_1_13 - testCalculosPrisma: Área lateral incorrecta (esperado 250.0)");
+        assertEquals(336.0, areaTotal, 0.001, "ps_1_13 - testCalculosPrisma: Área total incorrecta (esperado 336.0)");
+        assertEquals(430.0, volumen, 0.001, "ps_1_13 - testCalculosPrisma: Volumen incorrecto (esperado 430.0)");
     }
 }

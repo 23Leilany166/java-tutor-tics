@@ -1,32 +1,66 @@
 package com.programa;
 
+/**
+ * Ejemplo 1.4 - Evaluación de Expresiones Lógicas
+ * 
+ * OBJETIVO:
+ * Implementar la evaluación de expresiones lógicas complejas que involucran
+ * operadores lógicos (Y, O, NO), operadores relacionales y operaciones aritméticas.
+ * 
+ * INSTRUCCIONES:
+ * 1. Implementa los métodos evaluarCasoA() y evaluarCasoB() para que evalúen
+ *    correctamente las expresiones dadas.
+ * 2. Usa Math.pow(base, exponente) para calcular potencias
+ * 3. La división entera en Java se hace automáticamente entre tipos int
+ * 4. Los operadores lógicos en Java son:
+ *    - Y (AND): &&
+ *    - O (OR): ||
+ *    - NO (NOT): !
+ * 5. No modifiques los nombres ni las firmas de los métodos
+ */
 public class ejemplo_1_4 {
-
-    // Lógica separada
     
-    // a) NO(15 >= 7**2) O (43 - 8 * 2 div 4 <> 3 * 2 div 2)
+    /**
+     * Caso A: NO(15 >= 7**2) O (43 - 8 * 2 div 4 <> 3 * 2 div 2)
+     * donde:
+     * - ** significa potencia (usa Math.pow)
+     * - div significa división entera
+     * - <> significa diferente (en Java: !=)
+     * 
+     * @return el resultado de evaluar la expresión
+     */
     public boolean evaluarCasoA() {
-        // 'div' es división entera (Java lo hace automático con ints)
-        return !(15 >= Math.pow(7, 2)) || (43 - (8 * 2 / 4) != (3 * 2 / 2));
+        // TODO: Implementa la expresión del Caso A
+        // Tip: Divide la expresión en partes más pequeñas si es necesario
+        return false; // Reemplaza este return con tu implementación
     }
 
-    // b) (15 >= 7*3**2 Y 8 > 3 Y 15 > 6) O NO(7*3 < 5 + 12*2 div 3**2)
+    /**
+     * Caso B: (15 >= 7*3**2 Y 8 > 3 Y 15 > 6) O NO(7*3 < 5 + 12*2 div 3**2)
+     * donde:
+     * - ** significa potencia (usa Math.pow)
+     * - div significa división entera
+     * - Y significa AND (&&)
+     * 
+     * @return el resultado de evaluar la expresión
+     */
     public boolean evaluarCasoB() {
-        boolean parteB1 = (15 >= (7 * Math.pow(3, 2))) && (8 > 3) && (15 > 6);
-        // (12*2 div 3**2) = (24 div 9) = 2 (división entera)
-        boolean parteB2 = !( (7 * 3) < (5 + (12 * 2 / (int)Math.pow(3, 2))) );
-        return parteB1 || parteB2;
+        // TODO: Implementa la expresión del Caso B
+        // Sugerencia: Usa variables intermedias para mayor claridad
+        // Ejemplo: boolean parte1 = ..., parte2 = ...;
+        return false; // Reemplaza este return con tu implementación
     }
-    
-    // c) Caso C es un error de tipos (boolean = int), no se puede ejecutar.
 
-    // El main solo llama a la lógica
+    /**
+     * Método principal para probar tus implementaciones
+     */
     public static void main(String[] args) {
         ejemplo_1_4 ee = new ejemplo_1_4();
         
         System.out.println("--- Evaluación de Expresiones Lógicas (Ejemplo 1.4) ---");
         System.out.println("Caso a) Resultado: " + ee.evaluarCasoA());
         System.out.println("Caso b) Resultado: " + ee.evaluarCasoB());
-        System.out.println("Caso c) Produce un error de tipos, como se indica en el libro.");
+        System.out.println("Nota: Para verificar si tu implementación es correcta,");
+        System.out.println("      ejecuta los tests en ejemplo_1_4Test.java");
     }
 }

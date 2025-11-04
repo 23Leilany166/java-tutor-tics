@@ -2,24 +2,24 @@ package com.programa;
 
 import java.util.Arrays;
 
+/**
+ * problema_4_13 - Plantilla para intercambiar mitades de una matriz
+ *
+ * OBJETIVO:
+ * Implementar el método intercambiar(int[][] matrix) que invierte las filas
+ * de la matriz (intercambia fila 0 con fila N-1, fila 1 con fila N-2, ...).
+ *
+ * INSTRUCCIONES:
+ * - Modifica la matriz "in-place".
+ * - Maneja matrices n x n y casos n == 0 o matrix == null.
+ */
 public class problema_4_13 {
 
     // Lógica separada
     // Modifica la matriz "in-place" (directamente), no devuelve nada (void)
     public void intercambiar(int[][] matrix) {
-        if (matrix == null || matrix.length == 0) return;
-        
-        int n = matrix.length;
-        
-        // El ciclo va hasta N / 2
-        for (int i = 0; i < n / 2; i++) {
-            // Iterar por todas las columnas (J)
-            for (int j = 0; j < n; j++) {
-                int aux = matrix[i][j];
-                matrix[i][j] = matrix[n - 1 - i][j]; // Fila opuesta (índice base 0)
-                matrix[n - 1 - i][j] = aux;
-            }
-        }
+        // TODO: Implementa el intercambio de filas
+        // Sugerencia: usa dos índices i (desde 0) y k = n-1-i para swap
     }
     
     // Método main para demostración

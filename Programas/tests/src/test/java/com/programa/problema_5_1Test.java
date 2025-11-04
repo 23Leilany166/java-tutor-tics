@@ -36,6 +36,6 @@ class problema_5_1Test {
 
         int[][] C_real = s.sumar(A1, B1, M, N);
 
-        assertArrayEquals(C_esperada, C_real);
+        assertArrayEquals(C_esperada, C_real, "problema_5_1 - testSumaEsparcida: La suma de matrices esparcidas no coincide con la esperada");
     }
 }

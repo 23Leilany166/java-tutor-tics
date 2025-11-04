@@ -2,23 +2,38 @@ package com.programa;
 
 import java.util.Scanner;
 
+/**
+ * ps_1_13 - Plantilla para operaciones de un prisma (áreas y volumen)
+ *
+ * OBJETIVO:
+ * Implementar métodos que calculen el área de la base, área lateral, área total
+ * y volumen de un prisma, usando las fórmulas provistas.
+ *
+ * INSTRUCCIONES:
+ * - Mantén las firmas de los métodos.
+ * - Maneja valores inválidos (por ejemplo radios o alturas negativas) si aplica.
+ */
 public class ps_1_13 {
 
     // Lógica separada
     public double calcularAreaBase(double per, double apo) {
-        return (per * apo) / 2.0;
+        // TODO: Implementa la fórmula del área de la base: (per * apo) / 2
+        return 0.0; // Reemplaza con la implementación correcta
     }
 
     public double calcularAreaLateral(double per, double alt) {
-        return per * alt;
+        // TODO: Implementa la fórmula del área lateral: per * alt
+        return 0.0; // Reemplaza con la implementación correcta
     }
 
     public double calcularAreaTotal(double areaBase, double areaLateral) {
-        return (2 * areaBase) + areaLateral;
+        // TODO: Implementa la fórmula del área total: 2*areaBase + areaLateral
+        return 0.0; // Reemplaza con la implementación correcta
     }
 
     public double calcularVolumen(double areaBase, double alt) {
-        return areaBase * alt;
+        // TODO: Implementa la fórmula del volumen: areaBase * alt
+        return 0.0; // Reemplaza con la implementación correcta
     }
     
     // El main solo maneja I/O

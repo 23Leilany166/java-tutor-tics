@@ -26,7 +26,7 @@ class problema_4_13Test {
         ir.intercambiar(original); // Modifica 'original'
         
         // assertArrayEquals es necesario para comparar el contenido de los arreglos
-        assertArrayEquals(esperado, original);
+        assertArrayEquals(esperado, original, "problema_4_13 - testIntercambioMatrizPar: La matriz debe invertirse por filas para N=4");
     }
 
     @Test
@@ -44,6 +44,6 @@ class problema_4_13Test {
         };
         
         ir.intercambiar(original);
-        assertArrayEquals(esperado, original);
+        assertArrayEquals(esperado, original, "problema_4_13 - testIntercambioMatrizImpar: La matriz debe invertirse por filas para N=3 (fila central permanece)");
     }
 }

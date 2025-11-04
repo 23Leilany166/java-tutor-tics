@@ -1,11 +1,21 @@
 package com.programa;
 
-// Clase para simular el REGISTRO del libro
+/**
+ * MatrizElemento - Estructura simple para representar un elemento no nulo
+ * de una matriz dispersa (renglón, columna, valor).
+ *
+ * NOTA:
+ * - Se usa en los ejercicios donde las matrices se representan como listas
+ *   de elementos no nulos para optimizar almacenamiento.
+ */
 public class MatrizElemento {
-    int ren, col, val;
+    // Usamos campos públicos para facilitar el acceso en ejercicios educativos
+    public int ren;
+    public int col;
+    public int val;
     
-    MatrizElemento(int ren, int col, int val) {
-        // Usamos índices base 0 para Java
+    public MatrizElemento(int ren, int col, int val) {
+        // Índices en Java base 0
         this.ren = ren; 
         this.col = col; 
         this.val = val;

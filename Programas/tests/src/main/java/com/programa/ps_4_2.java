@@ -2,21 +2,27 @@ package com.programa;
 
 import java.util.Scanner;
 
+/**
+ * ps_4_2 - Plantilla para contar ocurrencias en un arreglo
+ *
+ * OBJETIVO:
+ * Implementar el método contarOcurrencias(int[] vec, int num) que devuelve
+ * cuántas veces aparece num en el arreglo vec.
+ *
+ * INSTRUCCIONES PARA ALUMNOS:
+ * - Mantén la firma del método.
+ * - Considera que vec puede ser null.
+ * - Recorre el arreglo y cuenta las coincidencias exactas.
+ */
 public class ps_4_2 {
 
     // Lógica separada
     public int contarOcurrencias(int[] vec, int num) {
-        if (vec == null) return 0;
-        int contador = 0;
-        for (int i = 0; i < vec.length; i++) {
-            if (vec[i] == num) {
-                contador++;
-            }
-        }
-        return contador;
+        // TODO: Implementa la lógica para contar cuántas veces aparece num en vec
+        // Sugerencia: maneja el caso vec == null
+        return 0; // Reemplaza con tu implementación
     }
 
-    // El main solo maneja I/O
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         ps_4_2 c = new ps_4_2();

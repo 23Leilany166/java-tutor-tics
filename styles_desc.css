@@ -352,6 +352,37 @@
       padding: 14px;
     }
   }
+
+  /* ==========================================
+     Java Editor (Added)
+     ========================================== */
+  .java-editor {
+    width: 100%; /* Modificado para ser responsivo */
+    max-width: 100%;
+    box-sizing: border-box; /* Para que el padding no rompa el layout */
+    height: 400px; /* Reducido de 800px, es más manejable */
+    display: block;
+    background: var(--color-bg-code);
+    padding: var(--spacing-md);
+    border: 0;
+    border-radius: var(--border-radius-md);
+    overflow: auto; /* Cambiado de 'scroll' a 'auto' */
+    color: var(--color-text);
+    font-family: Menlo, Monaco, 'Courier New', monospace;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    white-space: pre;
+    word-wrap: normal;
+    -webkit-overflow-scrolling: touch;
+    resize: vertical; /* Cambiado de 'none' a 'vertical' */
+  }
+
+  @media (min-width: 768px) {
+    .java-editor {
+      font-size: 0.95rem;
+      padding: 14px;
+    }
+  }
   
   /* ==========================================
      Footer

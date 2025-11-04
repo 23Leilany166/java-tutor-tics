@@ -20,13 +20,13 @@ class problema_3_13Test {
         ReporteClima reporte = m.procesarDatos(rno, rce, rsu);
 
         // a) Test Promedio Centro
-        assertEquals(20.0, reporte.promedioCentro, 0.001);
+        assertEquals(20.0, reporte.promedioCentro, 0.001, "problema_3_13 - testProcesarDatos: Promedio Región Centro debe ser 20.0");
         
         // b) Test Menor Lluvia Sur
-        assertEquals(5.0, reporte.registroMenorLluviaSur, 0.001);
-        assertEquals(3, reporte.mesMenorLluviaSur); // Mes 3
+        assertEquals(5.0, reporte.registroMenorLluviaSur, 0.001, "problema_3_13 - testProcesarDatos: Registro menor en Región Sur debe ser 5.0");
+        assertEquals(3, reporte.mesMenorLluviaSur, "problema_3_13 - testProcesarDatos: El mes con menor lluvia en Región Sur debe ser 3 (Marzo)"); // Mes 3
 
         // c) Test Región Mayor
-        assertEquals("SUR", reporte.regionMayorLluvia);
+        assertEquals("SUR", reporte.regionMayorLluvia, "problema_3_13 - testProcesarDatos: La región con mayor lluvia anual debe ser 'SUR'");
     }
 }
