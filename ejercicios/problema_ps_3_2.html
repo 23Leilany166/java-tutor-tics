@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Problema PS 3.2 - Promedio de Calificaciones</title>
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/exercises.css">
+    <link rel="stylesheet" href="../styles/navigation.css">
+    <style>
+        .test-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            background: white;
+        }
+        .test-table th, .test-table td {
+            border: 1px solid var(--color-border);
+            padding: 0.5rem;
+            text-align: center;
+        }
+        .test-table th {
+            background: var(--color-bg);
+            color: var(--color-primary-text);
+        }
+        .test-table tr:nth-child(even) {
+            background: #f5f5f5;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>Problema PS 3.2 - Promedio de Calificaciones</h1>
+        <a href="../index.html" class="nav-button">Volver al Menú Principal</a>
+    </header>
+
+    <div class="exercise-description">
+        <section class="problem-statement">
+            <h3>Enunciado del Problema</h3>
+            <p>
+                Se tienen las calificaciones de un grupo de alumnos que presentaron un examen.
+                El profesor desea obtener el promedio de estas calificaciones. Escriba un diagrama
+                de flujo para resolver lo planteado anteriormente.
+            </p>
+
+            <h3>Datos:</h3>
+            <ul>
+                <li><strong>CAL₁, CAL₂, CAL₃, ..., -1:</strong> Calificaciones de los alumnos. El fin de datos está dado por -1.</li>
+            </ul>
+
+            <h3>Explicación de variables:</h3>
+            <ul>
+                <li><strong>CAL:</strong> Variable de tipo real. Representa la calificación de un alumno.
+                    El valor -1 indica el fin de los datos (no es una calificación válida).</li>
+                <li><strong>SUMA:</strong> Variable de tipo real. Acumula la suma total de las calificaciones.</li>
+                <li><strong>CONTADOR:</strong> Variable de tipo entero. Cuenta cuántas calificaciones válidas se han ingresado
+                    (excluye el -1).</li>
+                <li><strong>PROMEDIO:</strong> Variable de tipo real. Almacena el resultado del cálculo: SUMA / CONTADOR.</li>
+            </ul>
+        </section>
+
+        <section class="explanation">
+            <h3>💡 Explicación del Algoritmo</h3>
+            <p>
+                Este problema utiliza un ciclo con centinela (-1) para procesar un número indeterminado de calificaciones.
+                El algoritmo suma todas las calificaciones válidas y cuenta cuántas son, para finalmente calcular el promedio.
+            </p>
+            
+            <h3>Proceso:</h3>
+            <ol>
+                <li><strong>Inicialización:</strong> SUMA ← 0, CONTADOR ← 0</li>
+                <li><strong>Lectura:</strong> Leer primera CAL</li>
+                <li><strong>Ciclo:</strong> Mientras CAL ≠ -1:
+                    <ul>
+                        <li>SUMA ← SUMA + CAL</li>
+                        <li>CONTADOR ← CONTADOR + 1</li>
+                        <li>Leer siguiente CAL</li>
+                    </ul>
+                </li>
+                <li><strong>Cálculo:</strong> PROMEDIO ← SUMA / CONTADOR</li>
+                <li><strong>Resultado:</strong> Imprimir PROMEDIO</li>
+            </ol>
+
+            <h3>Ejemplo de ejecución:</h3>
+            <p><strong>Entrada de datos:</strong> 85, 90, 78, 92, 88, -1</p>
+            
+            <h4>Traza de ejecución:</h4>
+            <table class="test-table">
+                <thead>
+                    <tr>
+                        <th>Iteración</th>
+                        <th>CAL leída</th>
+                        <th>SUMA</th>
+                        <th>CONTADOR</th>
+                        <th>Observación</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Inicial</td>
+                        <td>-</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>Inicialización</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>85</td>
+                        <td>85</td>
+                        <td>1</td>
+                        <td>0 + 85</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>90</td>
+                        <td>175</td>
+                        <td>2</td>
+                        <td>85 + 90</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>78</td>
+                        <td>253</td>
+                        <td>3</td>
+                        <td>175 + 78</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>92</td>
+                        <td>345</td>
+                        <td>4</td>
+                        <td>253 + 92</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>88</td>
+                        <td>433</td>
+                        <td>5</td>
+                        <td>345 + 88</td>
+                    </tr>
+                    <tr>
+                        <td>Final</td>
+                        <td>-1</td>
+                        <td>433</td>
+                        <td>5</td>
+                        <td>Centinela detectado, sale del ciclo</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p><strong>Cálculo del promedio:</strong> PROMEDIO = 433 / 5 = 86.6</p>
+
+            <h4>Otros ejemplos:</h4>
+            <table class="test-table">
+                <thead>
+                    <tr>
+                        <th>Calificaciones ingresadas</th>
+                        <th>SUMA</th>
+                        <th>CONTADOR</th>
+                        <th>PROMEDIO</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>100, 90, 80, -1</td>
+                        <td>270</td>
+                        <td>3</td>
+                        <td>90.0</td>
+                    </tr>
+                    <tr>
+                        <td>75, 85, 95, 70, 80, -1</td>
+                        <td>405</td>
+                        <td>5</td>
+                        <td>81.0</td>
+                    </tr>
+                    <tr>
+                        <td>100, -1</td>
+                        <td>100</td>
+                        <td>1</td>
+                        <td>100.0</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <div class="solution-diagram">
+            <h3>📊 Diagrama de Flujo</h3>
+            
+            <div style="text-align: center; margin: 20px 0;">
+                <img src="../images/problema_ps_3_2.png" alt="Diagrama de Flujo - PS 3.2" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px; padding: 10px; background: white;">
+            </div>
+        </div>
+
+        <div class="source-code">
+            <h3>💻 Código Fuente Completo</h3>
+            <div class="code-block">
+                <pre><code>package com.tutortics;
+
+import java.util.Scanner;
+
+/**
+ * Problema PS 3.2 - Promedio de Calificaciones
+ * Calcula el promedio de calificaciones usando centinela -1 para indicar fin de datos.
+ * Programación Estructurada: todos los métodos son estáticos.
+ */
+public class problema_ps_3_2 {
+
+    /**
+     * Calcula el promedio de un arreglo de calificaciones.
+     * El arreglo debe terminar con el valor -1 que indica fin de datos.
+     * 
+     * @param calificaciones Arreglo con las calificaciones y -1 al final
+     * @return El promedio de las calificaciones (excluyendo el -1)
+     */
+    public static double calcularPromedio(double[] calificaciones) {
+        double suma = 0;  // SUMA ← 0
+        int contador = 0;  // CONTADOR ← 0
+        
+        // Procesar cada calificación hasta encontrar -1
+        for (double cal : calificaciones) {
+            if (cal == -1) {  // Si CAL = -1
+                break;  // Salir del ciclo
+            }
+            suma = suma + cal;  // SUMA ← SUMA + CAL
+            contador = contador + 1;  // CONTADOR ← CONTADOR + 1
+        }
+        
+        // PROMEDIO ← SUMA / CONTADOR
+        if (contador > 0) {
+            return suma / contador;
+        } else {
+            return 0.0;  // Sin calificaciones válidas
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("========================================");
+        System.out.println("Cálculo de Promedio de Calificaciones");
+        System.out.println("========================================");
+        System.out.println("Ingrese las calificaciones (ingrese -1 para terminar):");
+
+        // Usar una lista para almacenar calificaciones
+        java.util.ArrayList<Double> listaCals = new java.util.ArrayList<>();
+        
+        while (true) {
+            System.out.print("Calificación: ");
+            double cal = scanner.nextDouble();
+            listaCals.add(cal);
+            
+            if (cal == -1) {
+                break;
+            }
+        }
+
+        // Convertir a arreglo
+        double[] calificaciones = new double[listaCals.size()];
+        for (int i = 0; i < listaCals.size(); i++) {
+            calificaciones[i] = listaCals.get(i);
+        }
+
+        // Calcular promedio
+        double promedio = calcularPromedio(calificaciones);
+
+        // Mostrar resultado
+        System.out.println("\n========================================");
+        System.out.printf("El promedio de calificaciones es: %.2f%n", promedio);
+        System.out.println("========================================");
+
+        scanner.close();
+    }
+}</code></pre>
+            </div>
+
+            <h4 style="margin-top: 30px;">Archivo Esqueleto para Estudiantes</h4>
+            <p>Este archivo contiene la estructura básica sin la lógica implementada, para que el estudiante la complete:</p>
+            <p><strong>Archivo:</strong> <code>src/main/java/com/tutortics/problema_ps_3_2_Estudiante.java</code></p>
+            <div style="background: #fff3cd; padding: 15px; border-left: 4px solid #ffc107; margin: 20px 0;">
+                <p><strong>💡 Actividad para el estudiante:</strong></p>
+                <p>Completa los métodos marcados con <code>// TODO</code> en el archivo <code>problema_ps_3_2_Estudiante.java</code></p>
+                <p><strong>Pistas:</strong></p>
+                <ul>
+                    <li>Inicializa SUMA en 0 y CONTADOR en 0 antes del ciclo</li>
+                    <li>Usa un ciclo para recorrer el arreglo de calificaciones</li>
+                    <li>Si encuentras -1, sal del ciclo inmediatamente (usa <code>break</code>)</li>
+                    <li>Por cada calificación válida, súmala a SUMA e incrementa CONTADOR</li>
+                    <li>Al final, calcula PROMEDIO = SUMA / CONTADOR</li>
+                    <li>Verifica que CONTADOR > 0 antes de dividir (evitar división por cero)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="test-results">
+            <h3>Resultados de las Pruebas</h3>
+            <p>El archivo <code>problema_ps_3_2_test.java</code> contiene pruebas unitarias que verifican:</p>
+            <ul>
+                <li>Cálculo correcto del promedio con diferentes conjuntos de calificaciones</li>
+                <li>Manejo correcto del centinela -1</li>
+                <li>Casos especiales (una sola calificación, sin calificaciones)</li>
+                <li>Precisión en el cálculo con decimales</li>
+            </ul>
+            <p>Para ejecutar las pruebas:</p>
+            <pre style="background: #f4f4f4; padding: 10px; border-radius: 5px;"><code>mvn test -Dtest=problema_ps_3_2_test</code></pre>
+        </div>
+    </div>
+</div>
+</body>
+</html>

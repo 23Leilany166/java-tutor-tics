@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Problema PS 3.1 - Suma de N Primeros Números Naturales</title>
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/exercises.css">
+    <link rel="stylesheet" href="../styles/navigation.css">
+    <style>
+        .test-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            background: white;
+        }
+        .test-table th, .test-table td {
+            border: 1px solid var(--color-border);
+            padding: 0.5rem;
+            text-align: center;
+        }
+        .test-table th {
+            background: var(--color-bg);
+            color: var(--color-primary-text);
+        }
+        .test-table tr:nth-child(even) {
+            background: #f5f5f5;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>Problema PS 3.1 - Suma de N Primeros Números Naturales</h1>
+        <a href="../index.html" class="nav-button">Volver al Menú Principal</a>
+    </header>
+
+    <div class="exercise-description">
+        <section class="problem-statement">
+            <h3>Enunciado del Problema</h3>
+            <p>
+                Construya un diagrama de flujo que calcule e imprima la suma de los N primeros números naturales.
+            </p>
+
+            <h3>Dato:</h3>
+            <ul>
+                <li><strong>N:</strong> Variable de tipo entero.</li>
+            </ul>
+
+            <h3>Explicación de variables:</h3>
+            <ul>
+                <li><strong>N:</strong> Variable de tipo entero. Indica cuántos números naturales se van a sumar 
+                    (desde 1 hasta N).</li>
+                <li><strong>I:</strong> Variable de tipo entero. Se utiliza como contador del ciclo (variable de control).</li>
+                <li><strong>SUMA:</strong> Variable de tipo entero. Acumula la suma de los números desde 1 hasta N.</li>
+            </ul>
+        </section>
+
+        <section class="explanation">
+            <h3>💡 Explicación del Algoritmo</h3>
+            <p>
+                Este problema utiliza un ciclo para sumar los primeros N números naturales. 
+                La suma se calcula de forma iterativa: 1 + 2 + 3 + ... + N.
+            </p>
+            
+            <h3>Proceso:</h3>
+            <ol>
+                <li><strong>Inicialización:</strong> SUMA ← 0, I ← 1</li>
+                <li><strong>Ciclo:</strong> Mientras I ≤ N:
+                    <ul>
+                        <li>SUMA ← SUMA + I</li>
+                        <li>I ← I + 1</li>
+                    </ul>
+                </li>
+                <li><strong>Resultado:</strong> Imprimir SUMA</li>
+            </ol>
+
+            <h3>Ejemplo de ejecución:</h3>
+            <p><strong>Trazas con diferentes valores de N:</strong></p>
+            
+            <h4>Ejemplo 1: N = 5</h4>
+            <table class="test-table">
+                <thead>
+                    <tr>
+                        <th>Iteración</th>
+                        <th>I</th>
+                        <th>SUMA</th>
+                        <th>Operación</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Inicial</td>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>0 + 1</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>1 + 2</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>3</td>
+                        <td>6</td>
+                        <td>3 + 3</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>4</td>
+                        <td>10</td>
+                        <td>6 + 4</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>5</td>
+                        <td>15</td>
+                        <td>10 + 5</td>
+                    </tr>
+                    <tr>
+                        <td>Final</td>
+                        <td>6</td>
+                        <td>15</td>
+                        <td>I > N, sale del ciclo</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4>Otros ejemplos:</h4>
+            <table class="test-table">
+                <thead>
+                    <tr>
+                        <th>N</th>
+                        <th>Suma (1 + 2 + ... + N)</th>
+                        <th>Resultado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>10</td>
+                        <td>1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10</td>
+                        <td>55</td>
+                    </tr>
+                    <tr>
+                        <td>100</td>
+                        <td>1 + 2 + 3 + ... + 100</td>
+                        <td>5050</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p><strong>Nota matemática:</strong> La suma de los N primeros números naturales también se puede calcular 
+                con la fórmula: SUMA = N × (N + 1) / 2</p>
+        </section>
+
+        <div class="solution-diagram">
+            <h3>📊 Diagrama de Flujo</h3>
+            
+            <div style="text-align: center; margin: 20px 0;">
+                <img src="../images/problema_ps_3_1.png" alt="Diagrama de Flujo - PS 3.1" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px; padding: 10px; background: white;">
+            </div>
+
+            <p><strong>Nota:</strong> Si el diagrama no se muestra, ejecuta el script de Python para generar los diagramas:</p>
+            <pre style="background: #f4f4f4; padding: 10px; border-radius: 5px;"><code>python generate_diagrams.py</code></pre>
+        </div>
+
+        <div class="source-code">
+            <h3>💻 Código Fuente Completo</h3>
+            <div class="code-block">
+                <pre><code>package com.tutortics;
+
+import java.util.Scanner;
+
+/**
+ * Problema PS 3.1 - Suma de N Primeros Números Naturales
+ * Calcula la suma: 1 + 2 + 3 + ... + N
+ * Programación Estructurada: todos los métodos son estáticos.
+ */
+public class problema_ps_3_1 {
+
+    /**
+     * Calcula la suma de los N primeros números naturales usando un ciclo.
+     * 
+     * @param n Cantidad de números a sumar
+     * @return La suma de 1 + 2 + 3 + ... + N
+     */
+    public static int calcularSuma(int n) {
+        int suma = 0;  // SUMA ← 0
+        
+        // I ← 1, mientras I ≤ N
+        for (int i = 1; i <= n; i++) {
+            suma = suma + i;  // SUMA ← SUMA + I
+            // I ← I + 1 (automático en el for)
+        }
+        
+        return suma;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Lectura de N
+        System.out.print("Ingrese el valor de N: ");
+        int n = scanner.nextInt();
+
+        // Calcular la suma
+        int suma = calcularSuma(n);
+
+        // Mostrar resultado
+        System.out.println("\n========================================");
+        System.out.println("La suma de los primeros " + n + " números naturales es: " + suma);
+        System.out.println("========================================");
+
+        scanner.close();
+    }
+}</code></pre>
+            </div>
+
+            <h4 style="margin-top: 30px;">Archivo Esqueleto para Estudiantes</h4>
+            <p>Este archivo contiene la estructura básica sin la lógica implementada, para que el estudiante la complete:</p>
+            <p><strong>Archivo:</strong> <code>src/main/java/com/tutortics/problema_ps_3_1_Estudiante.java</code></p>
+            <div style="background: #fff3cd; padding: 15px; border-left: 4px solid #ffc107; margin: 20px 0;">
+                <p><strong>💡 Actividad para el estudiante:</strong></p>
+                <p>Completa los métodos marcados con <code>// TODO</code> en el archivo <code>problema_ps_3_1_Estudiante.java</code></p>
+                <p><strong>Pistas:</strong></p>
+                <ul>
+                    <li>Inicializa SUMA en 0 antes de comenzar el ciclo</li>
+                    <li>Usa un ciclo <code>for</code> desde I = 1 hasta I ≤ N</li>
+                    <li>En cada iteración, suma el valor de I a SUMA: SUMA = SUMA + I</li>
+                    <li>Incrementa I en cada iteración (automático en el for)</li>
+                    <li>Retorna el valor acumulado en SUMA</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="test-results">
+            <h3>Resultados de las Pruebas</h3>
+            <p>El archivo <code>Test_problema_ps_3_1.java</code> contiene pruebas unitarias que verifican:</p>
+            <ul>
+                <li>Suma de los primeros 1, 5, 10 y 100 números naturales</li>
+                <li>Casos especiales (N = 0, N = 3, N = 4, N = 20)</li>
+                <li>Verificación con la fórmula matemática: N × (N + 1) / 2</li>
+            </ul>
+            <p>Para ejecutar las pruebas:</p>
+            <pre style="background: #f4f4f4; padding: 10px; border-radius: 5px;"><code>mvn test -Dtest=Test_problema_ps_3_1</code></pre>
+        </div>
+    </div>
+</div>
+</body>
+</html>

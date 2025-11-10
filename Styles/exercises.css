@@ -1,0 +1,124 @@
+.exercise-description {
+    background: var(--color-card-bg);
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.exercise-description h2 {
+    color: var(--color-primary-text);
+    margin-top: 0;
+    border-bottom: 2px solid var(--color-border);
+    padding-bottom: 1rem;
+}
+
+.problem-statement {
+    margin-bottom: 2rem;
+}
+
+.explanation {
+    margin-bottom: 2rem;
+}
+
+.solution-diagram {
+    background: white;
+    padding: 1rem;
+    border-radius: 4px;
+    margin-bottom: 2rem;
+}
+
+.solution-diagram img {
+    max-width: 100%;
+    height: auto;
+}
+
+.source-code {
+    background: var(--color-bg);
+    padding: 1rem;
+    border-radius: 4px;
+    margin-bottom: 2rem;
+    overflow-x: auto;
+}
+
+.code-block {
+    font-family: monospace;
+    white-space: pre;
+    color: var(--color-primary-text);
+}
+
+.test-section {
+    background: var(--color-bg);
+    padding: 1rem;
+    border-radius: 4px;
+}
+
+/* Tablas de prueba */
+.test-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    background: white;
+}
+
+.test-table th, .test-table td {
+    border: 1px solid var(--color-border);
+    padding: 0.5rem;
+    text-align: center;
+}
+
+.test-table th {
+    background: var(--color-bg);
+    color: var(--color-primary-text);
+}
+
+.test-table tr:nth-child(even) {
+    background: #f5f5f5;
+}
+
+/* Fórmulas matemáticas */
+.formula {
+    background: #f8f9fa;
+    padding: 20px;
+    margin: 20px 0;
+    border-left: 4px solid #007bff;
+    font-family: 'Courier New', monospace;
+}
+
+/* Secciones de contenido */
+.test-cases {
+    margin-bottom: 2rem;
+}
+
+.trace-table {
+    margin-bottom: 2rem;
+}
+
+.code-implementation {
+    margin-bottom: 2rem;
+}
+
+.code-implementation pre {
+    background: #2c3e50;
+    color: #ecf0f1;
+    padding: 15px;
+    border-radius: 5px;
+    overflow-x: auto;
+}
+
+.code-implementation code {
+    font-family: 'Courier New', Consolas, monospace;
+}
+
+.student-activities {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+}
+
+.unit-tests {
+    background: #e7f3ff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+}

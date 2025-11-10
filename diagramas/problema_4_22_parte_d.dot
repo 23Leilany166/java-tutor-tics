@@ -1,0 +1,32 @@
+digraph problema_4_22_parte_d {
+    rankdir=TB;
+    node [shape=box, style=filled];
+
+    // Nodos
+    conector_eliminar [label="ELIMINAR", shape=pentagon, fillcolor=white];
+    asignar_i [label="I ← 1", fillcolor=lightblue];
+    ciclo_i [label="I ≤ N", shape=diamond, fillcolor=lightblue];
+    condicion_cero [label="CAN[I] = 0", shape=diamond, fillcolor=lightblue];
+    asignar_j [label="J ← I", fillcolor=lightblue];
+    ciclo_j [label="J ≤ N", shape=diamond, fillcolor=lightblue];
+    desplazar [label="PRO[J] ← PRO[J + 1]\nCAN[J] ← CAN[J + 1]", fillcolor=lightblue];
+    incremento_j [label="J ← J + 1", fillcolor=lightblue];
+    decrementar_n [label="N ← N - 1", fillcolor=lightblue];
+    incremento_i [label="I ← I + 1", fillcolor=lightblue];
+    fin [label="FIN", shape=oval, fillcolor=lightcoral];
+
+    // Conexiones
+    conector_eliminar -> asignar_i;
+    asignar_i -> ciclo_i;
+    ciclo_i -> condicion_cero [label="Sí"];
+    ciclo_i -> fin [label="No"];
+    condicion_cero -> asignar_j [label="Sí"];
+    condicion_cero -> incremento_i [label="No"];
+    asignar_j -> ciclo_j;
+    ciclo_j -> desplazar [label="Sí"];
+    ciclo_j -> decrementar_n [label="No"];
+    desplazar -> incremento_j;
+    incremento_j -> ciclo_j;
+    decrementar_n -> ciclo_i;
+    incremento_i -> ciclo_i;
+}

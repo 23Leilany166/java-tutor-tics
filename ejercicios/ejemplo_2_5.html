@@ -1,0 +1,161 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Ejemplo 2.5 - Selector Múltiple</title>
+    <link rel='stylesheet' href='../Styles/style.css'>
+    <link rel='stylesheet' href='../Styles/exercises.css'>
+    <link rel='stylesheet' href='../Styles/navigation.css'>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>Ejemplo 2.5 - Selector Múltiple</h1>
+        <a href="../index.html" class="nav-button">Volver al Menú Principal</a>
+    </header>
+
+    <div class="exercise-description">
+        <div class="problem-statement">
+            <h3>Enunciado del Problema</h3>
+            <p>En este ejemplo se presenta la implementación de un selector múltiple que ejecuta diferentes acciones dependiendo del valor seleccionado.</p>
+        </div>
+
+        <div class="explanation">
+            <h3>Explicación</h3>
+            <p>El programa implementa una estructura de control de selección múltiple que:</p>
+            <ol>
+                <li>Evalúa un selector y dependiendo de su valor ejecuta una acción específica:
+                    <ul>
+                        <li>Si es Valor 1: Ejecuta Acción 1</li>
+                        <li>Si es Valor 2: Ejecuta Acción 2</li>
+                        <li>Si es Valor 3: Ejecuta Acción 3</li>
+                        <li>Si es otro valor: Ejecuta Acción X</li>
+                    </ul>
+                </li>
+                <li>Después de ejecutar cualquiera de las acciones anteriores, siempre ejecuta la Acción Y</li>
+            </ol>
+        </div>
+
+        <div class="solution-diagram">
+            <h3>Diagrama de Flujo (Diagrama 2.8)</h3>
+            <div style="text-align: center; margin: 20px 0;">
+                <img src="../images/ejemplo_2_5.png" alt="Diagrama de Flujo - Ejemplo 2.5" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px; padding: 10px; background: white;">
+            </div>
+            <div class="algoritmo" style="background: #f9f9f9; padding: 15px; border-left: 4px solid #4CAF50; margin: 20px 0;">
+                <h4>Algoritmo (Programa 2.8):</h4>
+                <pre style="margin: 0;">Si selector igual
+    Valor 1: Hacer acción 1
+    Valor 2: Hacer acción 2
+    Valor 3: Hacer acción 3
+    De otra forma: Hacer acción X
+{Fin del condicional}
+Hacer acción Y</pre>
+            </div>
+            <p><strong>Nota:</strong> Si el diagrama no se muestra, genera el PNG visitando:</p>
+            <p><a href="https://dreampuf.github.io/GraphvizOnline/" target="_blank">https://dreampuf.github.io/GraphvizOnline/</a></p>
+            <p>Y pega el contenido de: <code>diagramas/ejemplo_2_5.dot</code></p>
+        </div>
+
+        <div class="source-code">
+            <h3>Código Fuente Completo</h3>
+            <div class="code-block">
+                <pre><code>package com.tutortics;
+// src/ejemplo_2.5.java
+
+import java.util.Scanner;
+
+public class ejemplo_2_5 {
+
+    /**
+     * Devuelve la secuencia de acciones según el valor del selector.
+     * La lógica se basa en el diagrama de flujo 2.8.
+     * * Nota: El pseudocódigo del "Programa 2.8" en la imagen menciona "Valor 5: Hacer acción 3",
+     * pero el diagrama de flujo y la nota descriptiva indican que es "Valor 3".
+     * Esta implementación sigue el diagrama y la nota, que son más consistentes.
+     *
+     * @param selector El valor entero que determina qué acción tomar.
+     * @return Una cadena de texto describiendo las acciones ejecutadas.
+     */
+    public String ejecutarFlujo(int selector) {
+        String accionPrincipal;
+
+        switch (selector) {
+            case 1:
+                accionPrincipal = "Se ejecutó la ACCION 1.";
+                break;
+            case 2:
+                accionPrincipal = "Se ejecutó la ACCION 2.";
+                break;
+            case 3:
+                accionPrincipal = "Se ejecutó la ACCION 3.";
+                break;
+            default:
+                accionPrincipal = "De otra forma: Se ejecutó la ACCION X.";
+                break;
+        }
+
+        // Acción Y siempre se ejecuta al final
+        String accionFinal = "Luego, se ejecutó la ACCION Y.";
+        
+        return accionPrincipal + " " + accionFinal;
+    }
+
+    /**
+     * Método principal para la interacción con el usuario.
+     */
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        ejemplo_2_5 selectorAccion = new ejemplo_2_5();
+
+        System.out.println("Introduce un valor para el SELECTOR (1, 2, 3, u otro):");
+        int valorSelector = scanner.nextInt();
+
+        String resultado = selectorAccion.ejecutarFlujo(valorSelector);
+
+        System.out.println("---------------------------------");
+        System.out.println(resultado);
+        System.out.println("---------------------------------");
+        
+        scanner.close();
+    }
+}</code></pre>
+            </div>
+
+            <h4 style="margin-top: 30px;">Archivo Esqueleto para Estudiantes</h4>
+            <p>Este archivo contiene la estructura básica sin la lógica implementada, para que el estudiante la complete:</p>
+            <p><strong>Archivo:</strong> <code>src/main/java/com/tutortics/ejemplo_2_5_Estudiante.java</code></p>
+            <div style="background: #fff3cd; padding: 15px; border-left: 4px solid #ffc107; margin: 20px 0;">
+                <p><strong>💡 Actividad para el estudiante:</strong></p>
+                <p>Completa los métodos marcados con <code>// TODO</code> en el archivo <code>ejemplo_2_5_Estudiante.java</code></p>
+                <p><strong>Pistas:</strong></p>
+                <ul>
+                    <li>Usa una estructura <code>switch(selector)</code> para evaluar los diferentes valores</li>
+                    <li>Define casos para los valores 1, 2 y 3</li>
+                    <li>Usa <code>default:</code> para manejar cualquier otro valor</li>
+                    <li>No olvides el <code>break;</code> después de cada caso</li>
+                    <li>La ACCION Y se ejecuta SIEMPRE al final, independientemente de qué acción principal se ejecutó</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="test-results">
+            <h3>Resultados de las Pruebas</h3>
+            <div class='exercise-group'>
+                <div class='exercise-header'>
+                    <h4>Pruebas del Ejemplo 2.5</h4>
+                </div>
+                <div class='test-cases'>
+                    <div class='exercise-details'>
+                        <div class='test-case-item status-pasado'>testEjecutarFlujoValoresConocidos<br><small>0.034 s</small></div>
+                    </div>
+                    <div class='exercise-details'>
+                        <div class='test-case-item status-pasado'>testEjecutarFlujoValorPorDefecto<br><small>0.002 s</small></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

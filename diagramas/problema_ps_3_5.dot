@@ -1,0 +1,39 @@
+digraph problema_ps_3_5 {
+    rankdir=TB;
+    node [shape=box, style=filled];
+    
+    // Nodos
+    inicio [label="INICIO", fillcolor=lightgreen, shape=ellipse];
+    leer_n [label="Leer N", fillcolor=lightyellow, shape=parallelogram];
+    init_suma [label="SUMA ← 0.0", fillcolor=lightblue];
+    init_i [label="I ← 1", fillcolor=lightblue];
+    
+    cond_ciclo [label="I ≤ N?", fillcolor=lightblue, shape=diamond];
+    
+    calc_termino [label="SUMA ← SUMA + 1.0/I", fillcolor=lightblue];
+    inc_i [label="I ← I + 1", fillcolor=lightblue];
+    
+    mostrar [label="Mostrar SUMA", fillcolor=lightyellow, shape=parallelogram];
+    fin [label="FIN", fillcolor=lightcoral, shape=ellipse];
+    
+    // Conectores invisibles para mejor alineación
+    conector1 [label="", shape=point, width=0, fillcolor=white];
+    conector2 [label="", shape=point, width=0, fillcolor=white];
+    
+    // Flujo
+    inicio -> leer_n;
+    leer_n -> init_suma;
+    init_suma -> init_i;
+    init_i -> cond_ciclo;
+    
+    cond_ciclo -> calc_termino [label="Sí"];
+    calc_termino -> inc_i;
+    inc_i -> conector1 [arrowhead=none];
+    conector1 -> cond_ciclo;
+    
+    cond_ciclo -> mostrar [label="No"];
+    mostrar -> fin;
+    
+    // Alineación
+    {rank=same; conector1; cond_ciclo;}
+}

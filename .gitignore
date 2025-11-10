@@ -1,0 +1,56 @@
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+# Java
+*.class
+*.jar
+*.war
+*.ear
+*.log
+hs_err_pid*
+
+# IDE
+.idea/
+*.iml
+.vscode/
+.settings/
+.project
+.classpath
+.factorypath
+
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+
+# Sistema
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+nul
+
+# Instaladores y archivos temporales
+*.exe
+*.zip
+*.tar.gz
+*.rar
+
+# Scripts de generación temporal
+generar_png_simple.sh
+generate_diagrams.py
+INSTRUCCIONES_DIAGRAMAS.md
+
+# Claude
+.claude/

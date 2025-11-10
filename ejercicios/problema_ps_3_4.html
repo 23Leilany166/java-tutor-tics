@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Problema PS 3.4 - Tabla de Multiplicar</title>
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/exercises.css">
+    <link rel="stylesheet" href="../styles/navigation.css">
+    <style>
+        .test-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            background: white;
+        }
+        .test-table th, .test-table td {
+            border: 1px solid var(--color-border);
+            padding: 0.5rem;
+            text-align: center;
+        }
+        .test-table th {
+            background: var(--color-bg);
+            color: var(--color-primary-text);
+        }
+        .test-table tr:nth-child(even) {
+            background: #f5f5f5;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>Problema PS 3.4 - Tabla de Multiplicar</h1>
+        <a href="../index.html" class="nav-button">Volver al Menú Principal</a>
+    </header>
+
+    <div class="exercise-description">
+        <section class="problem-statement">
+            <h3>Enunciado del Problema</h3>
+            <p>
+                Haga un diagrama de flujo para obtener la tabla de multiplicar de un número entero K, 
+                comenzando desde 1.
+            </p>
+
+            <h3>Dato:</h3>
+            <ul>
+                <li><strong>K:</strong> Variable de tipo entero que representa el número entero del cual 
+                    queremos obtener la tabla de multiplicar.</li>
+            </ul>
+
+            <h3>Explicación de variables:</h3>
+            <ul>
+                <li><strong>K:</strong> Variable de tipo entero. El número base para generar la tabla de multiplicar.</li>
+                <li><strong>I:</strong> Variable de tipo entero. Contador del ciclo que va desde 1 hasta 10 
+                    (representa el multiplicador).</li>
+                <li><strong>RESULTADO:</strong> Variable de tipo entero. Almacena el producto K × I en cada iteración.</li>
+            </ul>
+        </section>
+
+        <section class="explanation">
+            <h3>💡 Explicación del Algoritmo</h3>
+            <p>
+                Este problema utiliza un ciclo para generar la tabla de multiplicar del 1 al 10 para un número K dado.
+                En cada iteración, se calcula K × I y se muestra el resultado.
+            </p>
+            
+            <h3>Proceso:</h3>
+            <ol>
+                <li><strong>Entrada:</strong> Leer K</li>
+                <li><strong>Inicialización:</strong> I ← 1</li>
+                <li><strong>Ciclo:</strong> Mientras I ≤ 10:
+                    <ul>
+                        <li>RESULTADO ← K × I</li>
+                        <li>Imprimir K, "×", I, "=", RESULTADO</li>
+                        <li>I ← I + 1</li>
+                    </ul>
+                </li>
+                <li><strong>Fin:</strong> Terminar</li>
+            </ol>
+
+            <h3>Ejemplo de ejecución:</h3>
+            <p><strong>Entrada:</strong> K = 7</p>
+            
+            <h4>Traza de ejecución:</h4>
+            <table class="test-table">
+                <thead>
+                    <tr>
+                        <th>Iteración (I)</th>
+                        <th>K</th>
+                        <th>I</th>
+                        <th>RESULTADO (K × I)</th>
+                        <th>Salida</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>7</td>
+                        <td>1</td>
+                        <td>7</td>
+                        <td>7 × 1 = 7</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>7</td>
+                        <td>2</td>
+                        <td>14</td>
+                        <td>7 × 2 = 14</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>7</td>
+                        <td>3</td>
+                        <td>21</td>
+                        <td>7 × 3 = 21</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>7</td>
+                        <td>4</td>
+                        <td>28</td>
+                        <td>7 × 4 = 28</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>7</td>
+                        <td>5</td>
+                        <td>35</td>
+                        <td>7 × 5 = 35</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>7</td>
+                        <td>6</td>
+                        <td>42</td>
+                        <td>7 × 6 = 42</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>7</td>
+                        <td>7</td>
+                        <td>49</td>
+                        <td>7 × 7 = 49</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>7</td>
+                        <td>8</td>
+                        <td>56</td>
+                        <td>7 × 8 = 56</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>7</td>
+                        <td>9</td>
+                        <td>63</td>
+                        <td>7 × 9 = 63</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>7</td>
+                        <td>10</td>
+                        <td>70</td>
+                        <td>7 × 10 = 70</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4>Otros ejemplos:</h4>
+            <table class="test-table">
+                <thead>
+                    <tr>
+                        <th>K</th>
+                        <th>Tabla de Multiplicar (K × 1 hasta K × 10)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>5</td>
+                        <td>5, 10, 15, 20, 25, 30, 35, 40, 45, 50</td>
+                    </tr>
+                    <tr>
+                        <td>12</td>
+                        <td>12, 24, 36, 48, 60, 72, 84, 96, 108, 120</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>1, 2, 3, 4, 5, 6, 7, 8, 9, 10</td>
+                    </tr>
+                    <tr>
+                        <td>0</td>
+                        <td>0, 0, 0, 0, 0, 0, 0, 0, 0, 0</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <div class="solution-diagram">
+            <h3>📊 Diagrama de Flujo</h3>
+            
+            <div style="text-align: center; margin: 20px 0;">
+                <img src="../images/problema_ps_3_4.png" alt="Diagrama de Flujo - PS 3.4" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px; padding: 10px; background: white;">
+            </div>
+
+        </div>
+
+        <div class="source-code">
+            <h3>💻 Código Fuente Completo</h3>
+            <div class="code-block">
+                <pre><code>package com.tutortics;
+
+import java.util.Scanner;
+
+/**
+ * Problema PS 3.4 - Tabla de Multiplicar
+ * Genera la tabla de multiplicar de un número K desde 1 hasta 10.
+ * Programación Estructurada: todos los métodos son estáticos.
+ */
+public class problema_ps_3_4 {
+
+    /**
+     * Genera la tabla de multiplicar de K del 1 al 10.
+     * 
+     * @param k El número base para la tabla de multiplicar
+     * @return Arreglo de enteros con los resultados (K×1, K×2, ..., K×10)
+     */
+    public static int[] generarTablaMultiplicar(int k) {
+        int[] tabla = new int[10];  // Arreglo para almacenar los 10 resultados
+        
+        // I ← 1, mientras I ≤ 10
+        for (int i = 1; i <= 10; i++) {
+            int resultado = k * i;  // RESULTADO ← K × I
+            tabla[i - 1] = resultado;  // Guardar en el arreglo (índice 0-based)
+            // I ← I + 1 (automático en el for)
+        }
+        
+        return tabla;
+    }
+
+    /**
+     * Imprime la tabla de multiplicar de K.
+     * 
+     * @param k El número base
+     */
+    public static void imprimirTablaMultiplicar(int k) {
+        System.out.println("\n========================================");
+        System.out.println("Tabla de multiplicar del " + k);
+        System.out.println("========================================");
+        
+        // I ← 1, mientras I ≤ 10
+        for (int i = 1; i <= 10; i++) {
+            int resultado = k * i;  // RESULTADO ← K × I
+            System.out.printf("%d × %d = %d%n", k, i, resultado);
+            // I ← I + 1 (automático en el for)
+        }
+        
+        System.out.println("========================================");
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("========================================");
+        System.out.println("Generador de Tabla de Multiplicar");
+        System.out.println("========================================");
+        
+        // Lectura de K
+        System.out.print("Ingrese el número K: ");
+        int k = scanner.nextInt();
+
+        // Imprimir la tabla de multiplicar
+        imprimirTablaMultiplicar(k);
+
+        scanner.close();
+    }
+}</code></pre>
+            </div>
+
+            <h4 style="margin-top: 30px;">Archivo Esqueleto para Estudiantes</h4>
+            <p>Este archivo contiene la estructura básica sin la lógica implementada, para que el estudiante la complete:</p>
+            <p><strong>Archivo:</strong> <code>src/main/java/com/tutortics/problema_ps_3_4_Estudiante.java</code></p>
+            <div style="background: #fff3cd; padding: 15px; border-left: 4px solid #ffc107; margin: 20px 0;">
+                <p><strong>💡 Actividad para el estudiante:</strong></p>
+                <p>Completa los métodos marcados con <code>// TODO</code> en el archivo <code>problema_ps_3_4_Estudiante.java</code></p>
+                <p><strong>Pistas:</strong></p>
+                <ul>
+                    <li>Crea un arreglo de 10 enteros para almacenar los resultados</li>
+                    <li>Usa un ciclo <code>for</code> desde i = 1 hasta i ≤ 10</li>
+                    <li>En cada iteración, calcula RESULTADO = K × I</li>
+                    <li>Guarda el resultado en el arreglo (recuerda que los índices van de 0 a 9)</li>
+                    <li>Retorna el arreglo con los 10 resultados</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="test-results">
+            <h3>Resultados de las Pruebas</h3>
+            <p>El archivo <code>problema_ps_3_4_test.java</code> contiene pruebas unitarias que verifican:</p>
+            <ul>
+                <li>Generación correcta de tablas de multiplicar para diferentes valores de K</li>
+                <li>Casos especiales (K = 0, K = 1, K negativos)</li>
+                <li>Verificación de todos los 10 resultados en cada tabla</li>
+                <li>Exactitud de los cálculos</li>
+            </ul>
+            <p>Para ejecutar las pruebas:</p>
+            <pre style="background: #f4f4f4; padding: 10px; border-radius: 5px;"><code>mvn test -Dtest=problema_ps_3_4_test</code></pre>
+        </div>
+    </div>
+</div>
+</body>
+</html>

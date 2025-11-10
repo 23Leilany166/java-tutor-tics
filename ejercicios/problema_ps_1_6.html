@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Problema PS 1.6 - Plan de Financiamiento Automotriz</title>
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/exercises.css">
+    <link rel="stylesheet" href="../styles/navigation.css">
+    <style>
+        .test-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            background: white;
+        }
+        .test-table th, .test-table td {
+            border: 1px solid var(--color-border);
+            padding: 0.5rem;
+            text-align: center;
+        }
+        .test-table th {
+            background: var(--color-bg);
+            color: var(--color-primary-text);
+        }
+        .test-table tr:nth-child(even) {
+            background: #f5f5f5;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>Problema PS 1.6 - Plan de Financiamiento Automotriz</h1>
+        <a href="../index.html" class="nav-button">Volver al Menú Principal</a>
+    </header>
+
+    <div class="exercise-description">
+        <section class="problem-statement">
+            <h3>Enunciado del Problema</h3>
+            <p>
+                Dada la estabilidad económica que existe en un determinado país de América Latina, 
+                las agencias automotrices comienzan a ofrecer distintos planes de financiamiento 
+                para la comercialización de sus vehículos. La empresa XGW ofrece el siguiente plan 
+                de financiación: dado el monto total del vehículo, el cliente debe pagar el 35% de 
+                enganche y el resto en 18 mensualidades iguales sin intereses. Construya el diagrama 
+                de flujo que permita obtener cuál es el importe del enganche y las mensualidades que 
+                debe pagar el cliente.
+            </p>
+
+            <h3>Dato:</h3>
+            <ul>
+                <li><strong>MON:</strong> Variable de tipo real que representa el precio del vehículo.</li>
+            </ul>
+
+            <h3>Explicación de variables:</h3>
+            <ul>
+                <li><strong>MON:</strong> Variable de tipo real. Representa el monto total o precio del vehículo.</li>
+                <li><strong>ENG:</strong> Variable de tipo real. Almacena el importe del enganche (35% del monto total).</li>
+                <li><strong>MEN:</strong> Variable de tipo real. Almacena el valor de cada mensualidad 
+                    (el resto después del enganche dividido entre 18).</li>
+            </ul>
+        </section>
+
+        <section class="explanation">
+            <h3>💡 Explicación del Algoritmo</h3>
+            <p>
+                Este problema requiere calcular dos valores a partir del precio del vehículo:
+            </p>
+            
+            <ol>
+                <li><strong>Enganche (ENG):</strong> Se calcula como el 35% del monto total.
+                    <br>Fórmula: ENG = MON × 0.35</li>
+                <li><strong>Mensualidad (MEN):</strong> Se calcula tomando el resto (65%) y dividiéndolo entre 18 meses.
+                    <br>Fórmula: MEN = (MON - ENG) / 18</li>
+            </ol>
+
+            <h3>Ejemplo de ejecución:</h3>
+            <p><strong>Datos de entrada:</strong></p>
+            <table class="test-table">
+                <thead>
+                    <tr>
+                        <th>Corrida</th>
+                        <th>MON (Precio del vehículo)</th>
+                        <th>ENG (Enganche 35%)</th>
+                        <th>MEN (Mensualidad)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>$250,000.00</td>
+                        <td>$87,500.00</td>
+                        <td>$9,027.78</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>$180,000.00</td>
+                        <td>$63,000.00</td>
+                        <td>$6,500.00</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>$420,000.00</td>
+                        <td>$147,000.00</td>
+                        <td>$15,166.67</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <div class="solution-diagram">
+            <h3>📊 Diagrama de Flujo</h3>
+            
+            <div style="text-align: center; margin: 20px 0;">
+                <img src="../images/problema_ps_1_6.png" alt="Diagrama de Flujo - PS 1.6" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px; padding: 10px; background: white;">
+            </div>
+
+        </div>
+
+        <div class="source-code">
+            <h3>💻 Código Fuente Completo</h3>
+            <div class="code-block">
+                <pre><code>package com.tutortics;
+
+import java.util.Scanner;
+
+/**
+ * Problema PS 1.6 - Plan de Financiamiento Automotriz
+ * Calcula el enganche (35%) y las mensualidades (resto / 18) de un vehículo.
+ * Programación Estructurada: todos los métodos son estáticos.
+ */
+public class problema_ps_1_6 {
+
+    /**
+     * Calcula el enganche del vehículo (35% del monto total).
+     * 
+     * @param mon Monto total del vehículo
+     * @return Enganche a pagar
+     */
+    public static double calcularEnganche(double mon) {
+        // ENG ← MON * 0.35
+        return mon * 0.35;
+    }
+
+    /**
+     * Calcula la mensualidad (resto después del enganche / 18 meses).
+     * 
+     * @param mon Monto total del vehículo
+     * @param eng Enganche ya pagado
+     * @return Mensualidad a pagar
+     */
+    public static double calcularMensualidad(double mon, double eng) {
+        // MEN ← (MON - ENG) / 18
+        return (mon - eng) / 18;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Lectura del monto del vehículo
+        System.out.print("Ingrese el precio del vehículo: $");
+        double mon = scanner.nextDouble();
+
+        // Calcular enganche
+        double eng = calcularEnganche(mon);
+
+        // Calcular mensualidad
+        double men = calcularMensualidad(mon, eng);
+
+        // Mostrar resultados
+        System.out.println("\n========================================");
+        System.out.println("PLAN DE FINANCIAMIENTO XGW");
+        System.out.println("========================================");
+        System.out.printf("Precio del vehículo: $%.2f%n", mon);
+        System.out.printf("Enganche (35%%):     $%.2f%n", eng);
+        System.out.printf("Mensualidad (18):    $%.2f%n", men);
+        System.out.println("========================================");
+
+        scanner.close();
+    }
+}</code></pre>
+            </div>
+
+            <h4 style="margin-top: 30px;">Archivo Esqueleto para Estudiantes</h4>
+            <p>Este archivo contiene la estructura básica sin la lógica implementada, para que el estudiante la complete:</p>
+            <p><strong>Archivo:</strong> <code>src/main/java/com/tutortics/problema_ps_1_6_Estudiante.java</code></p>
+            <div style="background: #fff3cd; padding: 15px; border-left: 4px solid #ffc107; margin: 20px 0;">
+                <p><strong>💡 Actividad para el estudiante:</strong></p>
+                <p>Completa los métodos marcados con <code>// TODO</code> en el archivo <code>problema_ps_1_6_Estudiante.java</code></p>
+                <p><strong>Pistas:</strong></p>
+                <ul>
+                    <li>El enganche es el 35% del monto total: ENG = MON × 0.35</li>
+                    <li>El resto a financiar es: MON - ENG (equivalente al 65%)</li>
+                    <li>La mensualidad se obtiene dividiendo el resto entre 18 meses</li>
+                    <li>Usa variables de tipo <code>double</code> para manejar decimales correctamente</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

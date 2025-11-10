@@ -1,0 +1,19 @@
+digraph problema_ps_1_6 {
+    rankdir=TB;
+    node [shape=box, style=filled];
+
+    // Nodos
+    inicio [label="INICIO", shape=oval, fillcolor=lightgreen];
+    input_mon [label="MON", shape=parallelogram, fillcolor=lightyellow];
+    calc_eng [label="ENG ← MON * 0.35", fillcolor=lightblue];
+    calc_men [label="MEN ← (MON - ENG) / 18", fillcolor=lightblue];
+    output [label="ENG, MEN", shape=parallelogram, fillcolor=lightyellow];
+    fin [label="FIN", shape=oval, fillcolor=lightcoral];
+
+    // Conexiones
+    inicio -> input_mon;
+    input_mon -> calc_eng;
+    calc_eng -> calc_men;
+    calc_men -> output;
+    output -> fin;
+}

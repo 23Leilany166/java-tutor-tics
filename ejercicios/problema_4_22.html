@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Problema 4.22 - Gestión de Inventario</title>
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/exercises.css">
+    <link rel="stylesheet" href="../styles/navigation.css">
+    <style>
+        .test-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            background: white;
+        }
+        .test-table th, .test-table td {
+            border: 1px solid var(--color-border);
+            padding: 0.5rem;
+            text-align: center;
+        }
+        .test-table th {
+            background: var(--color-bg);
+            color: var(--color-primary-text);
+        }
+        .test-table tr:nth-child(even) {
+            background: #f5f5f5;
+        }
+        .trace-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            background: white;
+        }
+        .trace-table th, .trace-table td {
+            border: 1px solid var(--color-border);
+            padding: 0.5rem;
+            text-align: center;
+        }
+        .trace-table th {
+            background: var(--color-bg);
+            color: var(--color-primary-text);
+        }
+        .trace-table tr:nth-child(even) {
+            background: #f5f5f5;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>Problema 4.22 - Gestión de Inventario</h1>
+        <a href="../index.html" class="nav-button">Volver al Menú Principal</a>
+    </header>
+
+    <div class="exercise-description">
+        <section class="problem-statement">
+            <h2>📋 Planteamiento del Problema</h2>
+            <h3>Enunciado del Problema</h3>
+            <p>
+                La información sobre los productos y existencia de los mismos de la tienda "Don Marce", 
+                se almacena en dos arreglos paralelos llamados PRO y CAN. Construya un diagrama de flujo 
+                que realice lo siguiente:
+            </p>
+            <ol type="a">
+                <li>Lea las claves y cantidades de los productos.</li>
+                <li>Obtenga la clave del producto que tenga la mayor existencia. Asuma que no habrá 
+                    cantidades iguales. La existencia representa el número de cajas disponibles del producto.</li>
+                <li>Imprima la clave de los productos que se deben pedir al proveedor. Estos son aquellos 
+                    cuya existencia es mayor o igual a 1 y menor a 50. Lo que se solicita es la diferencia 
+                    entre 50 y la actual existencia.</li>
+                <li>Elimine aquellos productos cuya existencia sea cero.</li>
+            </ol>
+
+            <h3>Datos:</h3>
+            <ul>
+                <li><strong>PRO [1..N], CAN [1..N]</strong> donde <strong>1 ≤ N ≤ 100</strong></li>
+            </ul>
+
+            <h3>Donde:</h3>
+            <ul>
+                <li><strong>PRO:</strong> es un arreglo unidimensional de tipo entero que almacena las claves de los productos.</li>
+                <li><strong>CAN:</strong> es un arreglo unidimensional de tipo entero que almacena la existencia de los productos.</li>
+            </ul>
+
+            <h3>Explicación de variables:</h3>
+            <ul>
+                <li><strong>N:</strong> Variable de tipo entero. Indica el número de elementos que tendrán los arreglos.</li>
+                <li><strong>I y J:</strong> Variables de tipo entero. Se utilizan como variables de control de los ciclos.</li>
+                <li><strong>PRO y CAN:</strong> Arreglos unidimensionales de tipo entero.</li>
+                <li><strong>MCA:</strong> Variable de tipo entero. Se utiliza para almacenar la existencia más alta.</li>
+                <li><strong>MPR:</strong> Variable de tipo entero. Se utiliza para almacenar la clave del producto que tiene la existencia más alta.</li>
+            </ul>
+        </section>
+
+        <section class="explanation">
+            <h2>💡 Explicación del Algoritmo</h2>
+            <p>
+                Este problema trabaja con dos arreglos paralelos donde cada posición representa información 
+                relacionada de un mismo producto: su clave (PRO) y su cantidad en existencia (CAN).
+            </p>
+            
+            <h3>Operaciones principales:</h3>
+            <ol>
+                <li><strong>Lectura de datos:</strong> Se ingresan N productos con sus claves y cantidades.</li>
+                <li><strong>Mayor existencia:</strong> Se recorre el arreglo CAN para encontrar el índice del 
+                    producto con mayor existencia, y se imprime la clave correspondiente de PRO.</li>
+                <li><strong>Productos a pedir:</strong> Se identifican productos con existencia entre 1 y 49 
+                    (inclusive), calculando cuántas cajas pedir para llegar a 50.</li>
+                <li><strong>Eliminación:</strong> Se eliminan los productos con existencia cero, compactando 
+                    ambos arreglos paralelos y ajustando N.</li>
+            </ol>
+
+            <h3>Ejemplo de ejecución:</h3>
+            <p><strong>Datos de entrada (N = 5):</strong></p>
+            <table class="trace-table">
+                <thead>
+                    <tr>
+                        <th>Índice</th>
+                        <th>PRO[I]</th>
+                        <th>CAN[I]</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>101</td>
+                        <td>75</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>102</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>103</td>
+                        <td>25</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>104</td>
+                        <td>100</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>105</td>
+                        <td>48</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p><strong>Resultados:</strong></p>
+            <ul>
+                <li><strong>Mayor existencia:</strong> Clave 104 (100 cajas)</li>
+                <li><strong>Productos a pedir:</strong>
+                    <ul>
+                        <li>Clave 103: Pedir 25 cajas (50 - 25 = 25)</li>
+                        <li>Clave 105: Pedir 2 cajas (50 - 48 = 2)</li>
+                    </ul>
+                </li>
+                <li><strong>Después de eliminar (N = 4):</strong> Se elimina el producto 102 con existencia 0</li>
+            </ul>
+
+            <table class="trace-table">
+                <thead>
+                    <tr>
+                        <th>Índice</th>
+                        <th>PRO[I]</th>
+                        <th>CAN[I]</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>101</td>
+                        <td>75</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>103</td>
+                        <td>25</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>104</td>
+                        <td>100</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>105</td>
+                        <td>48</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <div class="solution-diagram">
+            <h3>📊 Diagramas de Flujo</h3>
+            
+            <div class="flowchart-part">
+                <h4>Parte A: Lectura de Datos</h4>
+                <div style="text-align: center; margin: 20px 0;">
+                    <img src="../images/problema_4_22_parte_a.png" alt="Diagrama de Flujo - Parte A" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px; padding: 10px; background: white;">
+                </div>
+            </div>
+
+            <div class="flowchart-part">
+                <h4>Parte B: Mayor Existencia</h4>
+                <div style="text-align: center; margin: 20px 0;">
+                    <img src="../images/problema_4_22_parte_b.png" alt="Diagrama de Flujo - Parte B" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px; padding: 10px; background: white;">
+                </div>
+            </div>
+
+            <div class="flowchart-part">
+                <h4>Parte C: Productos a Pedir</h4>
+                <div style="text-align: center; margin: 20px 0;">
+                    <img src="../images/problema_4_22_parte_c.png" alt="Diagrama de Flujo - Parte C" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px; padding: 10px; background: white;">
+                </div>
+            </div>
+
+            <div class="flowchart-part">
+                <h4>Parte D: Eliminación de Productos con Existencia Cero</h4>
+                <div style="text-align: center; margin: 20px 0;">
+                    <img src="../images/problema_4_22_parte_d.png" alt="Diagrama de Flujo - Parte D" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px; padding: 10px; background: white;">
+                </div>
+            </div>
+
+            
+        </div>
+
+        <div class="source-code">
+            <h3>💻 Código Fuente Completo</h3>
+            <div class="code-block">
+                <pre><code>package com.tutortics;
+
+import java.util.Scanner;
+
+public class problema_4_22 {
+
+    // Método para encontrar el producto con mayor existencia
+    public static int obtenerMayorExistencia(int[] can, int n) {
+        int max = can[0];
+        int pos = 0;
+        
+        for (int i = 1; i < n; i++) {
+            if (can[i] > max) {
+                max = can[i];
+                pos = i;
+            }
+        }
+        
+        return pos;
+    }
+
+    // Método para imprimir productos a pedir
+    public static void productosAPedir(int[] pro, int[] can, int n) {
+        System.out.println("\n=== PRODUCTOS A PEDIR AL PROVEEDOR ===");
+        boolean hayProductos = false;
+        
+        for (int i = 0; i < n; i++) {
+            if (can[i] >= 1 && can[i] < 50) {
+                int cantidad = 50 - can[i];
+                System.out.println("Clave: " + pro[i] + " - Pedir: " + cantidad + " cajas");
+                hayProductos = true;
+            }
+        }
+        
+        if (!hayProductos) {
+            System.out.println("No hay productos que pedir");
+        }
+    }
+
+    // Método para eliminar productos con existencia cero
+    public static int eliminarConExistenciaCero(int[] pro, int[] can, int n) {
+        int j = 0;
+        
+        for (int i = 0; i < n; i++) {
+            if (can[i] != 0) {
+                pro[j] = pro[i];
+                can[j] = can[i];
+                j++;
+            }
+        }
+        
+        return j; // Nuevo tamaño
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Lectura del número de productos
+        System.out.print("Ingrese el número de productos (1-100): ");
+        int n = scanner.nextInt();
+
+        if (n < 1 || n > 100) {
+            System.out.println("Error: N debe estar entre 1 y 100");
+            scanner.close();
+            return;
+        }
+
+        int[] pro = new int[n];
+        int[] can = new int[n];
+
+        // a) Lectura de claves y cantidades
+        System.out.println("\n=== INGRESO DE PRODUCTOS ===");
+        for (int i = 0; i < n; i++) {
+            System.out.print("Producto " + (i + 1) + " - Clave: ");
+            pro[i] = scanner.nextInt();
+            System.out.print("Producto " + (i + 1) + " - Existencia: ");
+            can[i] = scanner.nextInt();
+        }
+
+        // b) Producto con mayor existencia
+        int posMayor = obtenerMayorExistencia(can, n);
+        System.out.println("\n=== PRODUCTO CON MAYOR EXISTENCIA ===");
+        System.out.println("Clave: " + pro[posMayor] + " - Existencia: " + can[posMayor]);
+
+        // c) Productos a pedir al proveedor
+        productosAPedir(pro, can, n);
+
+        // d) Eliminar productos con existencia cero
+        int nuevoN = eliminarConExistenciaCero(pro, can, n);
+        
+        System.out.println("\n=== INVENTARIO DESPUÉS DE ELIMINAR EXISTENCIA CERO ===");
+        System.out.println("Productos restantes: " + nuevoN);
+        for (int i = 0; i < nuevoN; i++) {
+            System.out.println("Clave: " + pro[i] + " - Existencia: " + can[i]);
+        }
+
+        scanner.close();
+    }
+}
+            </code></pre>
+            </div>
+
+            <h4 style="margin-top: 30px;">Archivo Esqueleto para Estudiantes</h4>
+            <p>Este archivo contiene la estructura básica sin la lógica implementada, para que el estudiante la complete:</p>
+            <p><strong>Archivo:</strong> <code>src/main/java/com/tutortics/problema_4_22_Estudiante.java</code></p>
+            <div style="background: #fff3cd; padding: 15px; border-left: 4px solid #ffc107; margin: 20px 0;">
+                <p><strong>💡 Actividad para el estudiante:</strong></p>
+                <p>Completa los métodos marcados con <code>// TODO</code> en el archivo <code>problema_4_22_Estudiante.java</code></p>
+                <p><strong>Pistas:</strong></p>
+                <ul>
+                    <li><strong>Mayor existencia:</strong> Inicializa con el primer elemento (MCA ← CAN[1], MPR ← PRO[1]) 
+                        y compara con los demás desde I = 2</li>
+                    <li><strong>Arreglos paralelos:</strong> Mantén siempre sincronizados PRO y CAN - cuando muevas/elimines 
+                        un elemento, hazlo en ambos arreglos</li>
+                    <li><strong>Productos a pedir:</strong> Verifica la condición CAN[I] ≥ 1 Y CAN[I] < 50, 
+                        luego calcula: cantidad_a_pedir = 50 - CAN[I]</li>
+                    <li><strong>Eliminación:</strong> Al encontrar CAN[I] = 0, usa un ciclo con J para desplazar 
+                        todos los elementos desde J+1 hacia J</li>
+                    <li><strong>Importante:</strong> Después de eliminar, decrementa N y NO incrementes I 
+                        (debes verificar el nuevo elemento que quedó en esa posición)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

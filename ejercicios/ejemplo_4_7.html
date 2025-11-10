@@ -1,0 +1,372 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Problema 4.7 - Búsqueda Binaria</title>
+    <link rel='stylesheet' href='../Styles/style.css'>
+    <link rel='stylesheet' href='../Styles/exercises.css'>
+    <link rel='stylesheet' href='../Styles/navigation.css'>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>Problema 4.7 - Búsqueda Binaria</h1>
+        <a href="../index.html" class="nav-button">Volver al Menú Principal</a>
+    </header>
+
+    <div class="exercise-description">
+        <div class="problem-statement">
+            <h3>Enunciado del Problema</h3>
+            <p>La búsqueda binaria consiste en dividir el intervalo de búsqueda en dos partes y comparar el elemento buscado con el elemento central del arreglo. En caso de ser diferentes, se deben redefinir los extremos del intervalo considerando si el elemento a buscado es mayor o menor que el elemento que se encuentra en la posición central.</p>
+            
+            <h4>Datos de Entrada:</h4>
+            <ul>
+                <li><code>VECTOR[1..N]</code>: Arreglo unidimensional de tipo entero (1 ≤ N ≤ 50)</li>
+                <li><code>X</code>: Variable que representa el dato a buscar</li>
+            </ul>
+
+            <h4>Variables:</h4>
+            <ul>
+                <li><code>N</code>: Total de componentes del arreglo</li>
+                <li><code>I</code>: Índice del arreglo y variable de control</li>
+                <li><code>X</code>: Dato a buscar</li>
+                <li><code>IZQ</code>: Extremo izquierdo del intervalo</li>
+                <li><code>DER</code>: Extremo derecho del intervalo</li>
+                <li><code>CEN</code>: Centro del intervalo</li>
+                <li><code>BAN</code>: Bandera para control de búsqueda</li>
+            </ul>
+        </div>
+
+        <div class="explanation">
+            <h3>Explicación del Algoritmo</h3>
+            <p>El método de búsqueda binaria es eficiente para arreglos ordenados porque:</p>
+            <ul>
+                <li>En cada iteración el espacio de búsqueda se reduce a la mitad</li>
+                <li>El número de comparaciones disminuye considerablemente</li>
+                <li>Es más eficiente cuanto más grande es el tamaño del arreglo</li>
+                <li>Solo funciona con arreglos previamente ordenados</li>
+            </ul>
+        </div>
+
+        <div class="test-cases">
+            <h3>Tablas de Seguimiento del Algoritmo</h3>
+            <p>En las siguientes tres tablas se puede observar el seguimiento del algoritmo para diferentes corridas.</p>
+
+            <h4>Dato de Entrada:</h4>
+            <p><strong>VECTOR:</strong></p>
+            <table style="border-collapse: collapse; margin: 10px 0;">
+                <tr>
+                    <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">5</td>
+                    <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">12</td>
+                    <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">14</td>
+                    <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">18</td>
+                    <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">21</td>
+                    <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">33</td>
+                    <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">38</td>
+                    <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">45</td>
+                    <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">52</td>
+                    <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">65</td>
+                    <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">76</td>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid #ddd; padding: 8px; text-align: center; font-size: 0.9em;">1</td>
+                    <td style="border: 1px solid #ddd; padding: 8px; text-align: center; font-size: 0.9em;">2</td>
+                    <td style="border: 1px solid #ddd; padding: 8px; text-align: center; font-size: 0.9em;">3</td>
+                    <td style="border: 1px solid #ddd; padding: 8px; text-align: center; font-size: 0.9em;">4</td>
+                    <td style="border: 1px solid #ddd; padding: 8px; text-align: center; font-size: 0.9em;">5</td>
+                    <td style="border: 1px solid #ddd; padding: 8px; text-align: center; font-size: 0.9em;">6</td>
+                    <td style="border: 1px solid #ddd; padding: 8px; text-align: center; font-size: 0.9em;">7</td>
+                    <td style="border: 1px solid #ddd; padding: 8px; text-align: center; font-size: 0.9em;">8</td>
+                    <td style="border: 1px solid #ddd; padding: 8px; text-align: center; font-size: 0.9em;">9</td>
+                    <td style="border: 1px solid #ddd; padding: 8px; text-align: center; font-size: 0.9em;">10</td>
+                    <td style="border: 1px solid #ddd; padding: 8px; text-align: center; font-size: 0.9em;">11</td>
+                </tr>
+            </table>
+
+            <h4 style="margin-top: 30px;">Tabla 4.5 - Búsqueda del valor 65</h4>
+            <table class="test-table" style="width: 100%; border-collapse: collapse; margin: 10px 0;">
+                <thead>
+                    <tr style="background-color: #f0f0f0;">
+                        <th style="border: 1px solid #ddd; padding: 8px;">N</th>
+                        <th style="border: 1px solid #ddd; padding: 8px;">X</th>
+                        <th style="border: 1px solid #ddd; padding: 8px;">IZQ</th>
+                        <th style="border: 1px solid #ddd; padding: 8px;">DER</th>
+                        <th style="border: 1px solid #ddd; padding: 8px;">BAN</th>
+                        <th style="border: 1px solid #ddd; padding: 8px;">CEN</th>
+                        <th style="border: 1px solid #ddd; padding: 8px;">X = VECTOR[CEN]</th>
+                        <th style="border: 1px solid #ddd; padding: 8px;">X > VECTOR[CEN]</th>
+                        <th style="border: 1px solid #ddd; padding: 8px;">RESULTADO</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">11</td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">65</td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">1</td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">11</td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">1</td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">6</td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">65 = 33? NO</td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">65 > 33? SI</td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;"></td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;"></td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;"></td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">7</td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;"></td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;"></td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">9</td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">65 = 52? NO</td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">65 > 52? SI</td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;"></td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;"></td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;"></td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">10</td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;"></td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">0</td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">10</td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">65 = 65? SI</td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;"></td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">"El elemento SI está en el arreglo"</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4 style="margin-top: 30px;">Tabla 4.6 - Búsqueda del valor 18</h4>
+            <table class="test-table" style="width: 100%; border-collapse: collapse; margin: 10px 0;">
+                <thead>
+                    <tr style="background-color: #f0f0f0;">
+                        <th style="border: 1px solid #ddd; padding: 8px;">N</th>
+                        <th style="border: 1px solid #ddd; padding: 8px;">X</th>
+                        <th style="border: 1px solid #ddd; padding: 8px;">IZQ</th>
+                        <th style="border: 1px solid #ddd; padding: 8px;">DER</th>
+                        <th style="border: 1px solid #ddd; padding: 8px;">BAN</th>
+                        <th style="border: 1px solid #ddd; padding: 8px;">CEN</th>
+                        <th style="border: 1px solid #ddd; padding: 8px;">X = VECTOR[CEN]</th>
+                        <th style="border: 1px solid #ddd; padding: 8px;">X > VECTOR[CEN]</th>
+                        <th style="border: 1px solid #ddd; padding: 8px;">RESULTADO</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">11</td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">18</td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">1</td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">11</td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">1</td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">6</td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">18 = 50? NO</td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">18 > 33? NO</td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;"></td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;"></td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;"></td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;"></td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">5</td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;"></td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">3</td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">18 = 14? NO</td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">18 > 14? SI</td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;"></td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;"></td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;"></td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">4</td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;"></td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">0</td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">4</td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">18 = 18? SI</td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;"></td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">"El elemento SI está en el arreglo"</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4 style="margin-top: 30px;">Tabla 4.7 - Búsqueda del valor 55 (no encontrado)</h4>
+            <table class="test-table" style="width: 100%; border-collapse: collapse; margin: 10px 0;">
+                <thead>
+                    <tr style="background-color: #f0f0f0;">
+                        <th style="border: 1px solid #ddd; padding: 8px;">N</th>
+                        <th style="border: 1px solid #ddd; padding: 8px;">X</th>
+                        <th style="border: 1px solid #ddd; padding: 8px;">IZQ</th>
+                        <th style="border: 1px solid #ddd; padding: 8px;">DER</th>
+                        <th style="border: 1px solid #ddd; padding: 8px;">BAN</th>
+                        <th style="border: 1px solid #ddd; padding: 8px;">CEN</th>
+                        <th style="border: 1px solid #ddd; padding: 8px;">X = VECTOR[CEN]</th>
+                        <th style="border: 1px solid #ddd; padding: 8px;">X > VECTOR[CEN]</th>
+                        <th style="border: 1px solid #ddd; padding: 8px;">RESULTADO</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">11</td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">55</td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">1</td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">11</td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">1</td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">6</td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">55 = 33? NO</td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">55 > 33? SI</td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;"></td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;"></td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;"></td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">7</td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;"></td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;"></td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">9</td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">55 = 52? NO</td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">55 > 52? SI</td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;"></td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;"></td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;"></td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">10</td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;"></td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;"></td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">10</td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">55 = 65? NO</td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">55 > 65? NO</td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;"></td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;"></td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;"></td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;"></td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">9</td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;"></td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;"></td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;"></td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;"></td>
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">"El elemento NO está en el arreglo"</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="solution-diagram">
+            <h3>Diagrama de Flujo</h3>
+            <div style="text-align: center; margin: 20px 0;">
+                <p><em>Parte A: Lectura del arreglo y validación de datos</em></p>
+                <img src="../images/ejemplo_4_7_A.png" alt="Diagrama de Flujo - Problema 4.7 Parte A" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px; padding: 10px; background: white; margin-bottom: 20px;">
+                
+            </div>
+            <div style="text-align: center; margin: 20px 0;">
+                <p><em>Parte B: Proceso de búsqueda binaria</em></p>
+                <img src="../images/ejemplo_4_7_parte_b.png" alt="Diagrama de Flujo - Problema 4.7 Parte B" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px; padding: 10px; background: white; margin-bottom: 20px;">
+                
+            </div>
+            <div style="text-align: center; margin: 20px 0;">
+                <p><em>Parte C: Resultado de la búsqueda</em></p>
+                <img src="../images/ejemplo_4_7_parte_c.png" alt="Diagrama de Flujo - Problema 4.7 Parte C" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px; padding: 10px; background: white;">
+                
+            </div>
+        </div>
+
+        <div class="source-code">
+            <h3>Código Fuente Completo</h3>
+            <div class="code-block">
+<pre><code>package com.tutortics;
+
+public class ejemplo_4_7 {
+    private int[] vector;
+    private int n;
+
+    public ejemplo_4_7(int tamano) {
+        if (tamano < 1 || tamano > 50) {
+            throw new IllegalArgumentException("El tamaño debe estar entre 1 y 50");
+        }
+        this.n = tamano;
+        this.vector = new int[tamano];
+    }
+
+    /**
+     * Inserta un valor en el arreglo en orden ascendente.
+     * @param valor El valor a insertar
+     * @param posicion La posición donde insertar (base 0)
+     */
+    public void insertarValor(int valor, int posicion) {
+        if (posicion < 0 || posicion >= n) {
+            throw new IllegalArgumentException("Posición inválida");
+        }
+        vector[posicion] = valor;
+    }
+
+    /**
+     * Implementa el algoritmo de búsqueda binaria.
+     * @param x El valor a buscar
+     * @return true si el elemento fue encontrado, false en caso contrario
+     */
+    public boolean busquedaBinaria(int x) {
+        int izq = 0;
+        int der = n - 1;
+        int cen;
+        boolean ban = true;
+
+        while (izq <= der && ban == true) {
+            cen = (izq + der) / 2;
+            
+            if (x == vector[cen]) {
+                ban = false;  // Elemento encontrado
+            } else if (x > vector[cen]) {
+                izq = cen + 1;
+            } else {
+                der = cen - 1;
+            }
+        }
+
+        return !ban;  // true si se encontró, false si no
+    }
+
+    public static void main(String[] args) {
+        // Ejemplo de uso
+        ejemplo_4_7 buscador = new ejemplo_4_7(10);
+        
+        // Insertamos valores ordenados
+        int[] valores = {1, 3, 5, 7, 9, 11, 13, 15, 17, 19};
+        for (int i = 0; i < valores.length; i++) {
+            buscador.insertarValor(valores[i], i);
+        }
+
+        // Probamos la búsqueda
+        int valorBuscado = 7;
+        boolean encontrado = buscador.busquedaBinaria(valorBuscado);
+        
+        System.out.println("Búsqueda del valor " + valorBuscado + ":");
+        if (encontrado) {
+            System.out.println("El elemento SÍ está en el arreglo");
+        } else {
+            System.out.println("El elemento NO está en el arreglo");
+        }
+    }
+}</code></pre>
+            </div>
+        </div>
+
+        <h4 style="margin-top: 30px;">Archivo Esqueleto para Estudiantes</h4>
+        <p>Este archivo contiene la estructura básica sin la lógica implementada, para que el estudiante la complete:</p>
+        <p><strong>Archivo:</strong> <code>src/main/java/com/tutortics/ejemplo_4_7_Estudiante.java</code></p>
+        <div style="background: #fff3cd; padding: 15px; border-left: 4px solid #ffc107; margin: 20px 0;">
+            <p><strong>💡 Actividad para el estudiante:</strong></p>
+            <p>Completa los métodos marcados con <code>// TODO</code> en el archivo <code>ejemplo_4_7_Estudiante.java</code></p>
+            <p><strong>Pistas:</strong></p>
+            <ul>
+                <li>Recuerda que el arreglo debe estar ordenado antes de realizar la búsqueda binaria</li>
+                <li>Implementa el cálculo del punto medio usando (izq + der) / 2</li>
+                <li>Considera los casos donde el elemento buscado es igual, mayor o menor que el elemento central</li>
+                <li>La búsqueda termina cuando se encuentra el elemento o cuando izq > der</li>
+                <li>Utiliza la variable ban como bandera para controlar el ciclo de búsqueda</li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>

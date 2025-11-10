@@ -1,0 +1,33 @@
+digraph problema_ps_5_6 {
+    rankdir=TB;
+    node [shape=box, style=rounded];
+    
+    inicio [label="INICIO", shape=ellipse, style=filled, fillcolor=lightgreen];
+    leer_n [label="Leer N"];
+    
+    leer_datos [label="Para I = 1 hasta N:\nLeer NOMBRE[I],\nEDAD[I], SEXO[I]"];
+    
+    calc_promedio [label="SUMA ← 0\nPara I = 1 hasta N:\n  SUMA ← SUMA + EDAD[I]\nPROMEDIO ← SUMA / N"];
+    
+    buscar_joven [label="MIN ← EDAD[1]\nJOVEN ← 1\nPara I = 2 hasta N:\n  Si EDAD[I] < MIN\n    MIN ← EDAD[I]\n    JOVEN ← I"];
+    
+    buscar_viejo [label="MAX ← EDAD[1]\nVIEJO ← 1\nPara I = 2 hasta N:\n  Si EDAD[I] > MAX\n    MAX ← EDAD[I]\n    VIEJO ← I"];
+    
+    contar_f [label="CONT_F ← 0\nPara I = 1 hasta N:\n  Si SEXO[I] = 'F' ∧\n     EDAD[I] > PROMEDIO\n    CONT_F ← CONT_F + 1"];
+    
+    contar_m [label="CONT_M ← 0\nPara I = 1 hasta N:\n  Si SEXO[I] = 'M' ∧\n     EDAD[I] < PROMEDIO\n    CONT_M ← CONT_M + 1"];
+    
+    imprimir [label="Escribir:\nPROMEDIO\nNOMBRE[JOVEN]\nNOMBRE[VIEJO]\nCONT_F\nCONT_M"];
+    
+    fin [label="FIN", shape=ellipse, style=filled, fillcolor=lightcoral];
+    
+    inicio -> leer_n;
+    leer_n -> leer_datos;
+    leer_datos -> calc_promedio;
+    calc_promedio -> buscar_joven;
+    buscar_joven -> buscar_viejo;
+    buscar_viejo -> contar_f;
+    contar_f -> contar_m;
+    contar_m -> imprimir;
+    imprimir -> fin;
+}

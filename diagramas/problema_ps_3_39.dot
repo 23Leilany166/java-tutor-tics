@@ -1,0 +1,46 @@
+digraph problema_ps_3_39 {
+    rankdir=TB;
+    node [shape=box, style=rounded];
+    
+    inicio [label="INICIO", shape=ellipse, style=filled, fillcolor=lightgreen];
+    leer_k [label="Leer K"];
+    iniciar_i [label="I ← 1"];
+    
+    cond_i [label="I ≤ K", shape=diamond, style=filled, fillcolor=lightyellow];
+    leer_xyz [label="Leer X, Y, Z"];
+    
+    cond1 [label="X > 0 ∧\nY > 0 ∧\nZ > 0", shape=diamond, style=filled, fillcolor=lightyellow];
+    calc_factorial_zy [label="F ← Z! / Y!"];
+    
+    cond2 [label="X > 0", shape=diamond, style=filled, fillcolor=lightyellow];
+    calc_factorial_x [label="F ← X!"];
+    
+    calc_uno [label="F ← 1"];
+    
+    imprimir [label="Imprimir F"];
+    incrementar [label="I ← I + 1"];
+    
+    fin [label="FIN", shape=ellipse, style=filled, fillcolor=lightcoral];
+    
+    inicio -> leer_k;
+    leer_k -> iniciar_i;
+    iniciar_i -> cond_i;
+    
+    cond_i -> leer_xyz [label="Sí"];
+    cond_i -> fin [label="No"];
+    
+    leer_xyz -> cond1;
+    
+    cond1 -> calc_factorial_zy [label="Sí"];
+    cond1 -> cond2 [label="No"];
+    
+    cond2 -> calc_factorial_x [label="Sí"];
+    cond2 -> calc_uno [label="No"];
+    
+    calc_factorial_zy -> imprimir;
+    calc_factorial_x -> imprimir;
+    calc_uno -> imprimir;
+    
+    imprimir -> incrementar;
+    incrementar -> cond_i;
+}

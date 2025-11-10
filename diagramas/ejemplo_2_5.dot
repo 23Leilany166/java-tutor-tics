@@ -1,0 +1,48 @@
+digraph SelectorMultiple {
+    // Configuración general
+    rankdir=TB;
+    node [shape=box, style=filled, fillcolor=lightblue, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    // Nodo inicial
+    start [label="INICIO", shape=ellipse, fillcolor=lightgreen];
+
+    // Nodo del selector (hexágono)
+    selector [label="SELECTOR", shape=hexagon, fillcolor=lightyellow, width=1.5];
+
+    // Acciones según el valor del selector
+    accion1 [label="ACCION 1", shape=box, fillcolor=lightblue];
+    accion2 [label="ACCION 2", shape=box, fillcolor=lightblue];
+    accion3 [label="ACCION 3", shape=box, fillcolor=lightblue];
+    accionX [label="ACCION X", shape=box, fillcolor=lightblue];
+
+    // Punto de convergencia
+    convergencia [label="", shape=circle, fillcolor=black, width=0.2, height=0.2];
+
+    // Acción final Y
+    accionY [label="ACCION Y", shape=box, fillcolor=lightblue];
+
+    // Nodo final
+    end [label="FIN", shape=ellipse, fillcolor=lightcoral];
+
+    // Conexiones
+    start -> selector;
+
+    // Desde el selector a cada acción
+    selector -> accion1 [label="Valor 1"];
+    selector -> accion2 [label="Valor 2"];
+    selector -> accion3 [label="Valor 3"];
+    selector -> accionX [label="De otra forma"];
+
+    // Convergencia hacia ACCION Y
+    accion1 -> convergencia;
+    accion2 -> convergencia;
+    accion3 -> convergencia;
+    accionX -> convergencia;
+
+    // De convergencia a ACCION Y
+    convergencia -> accionY;
+
+    // Final del flujo
+    accionY -> end;
+}

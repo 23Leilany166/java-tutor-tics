@@ -1,0 +1,68 @@
+digraph MayorMenor {
+    // Configuración general
+    rankdir=TB;
+    node [shape=box, style=filled, fillcolor=lightblue, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    // Nodo inicial
+    start [label="INICIO", shape=ellipse, fillcolor=lightgreen];
+
+    // Inicialización de variables
+    init [label="MAY ← -100000\nMEN ← 100000", shape=box, fillcolor=lightblue];
+
+    // Lectura de N
+    read_n [label="Leer N", shape=parallelogram, fillcolor=lightyellow];
+
+    // Inicialización del contador
+    init_i [label="I ← 1", shape=box, fillcolor=lightblue];
+
+    // Decisión del ciclo
+    decision_ciclo [label="I ≤ N?", shape=diamond, fillcolor=lightcyan];
+
+    // Lectura de NUM
+    read_num [label="Leer NUM", shape=parallelogram, fillcolor=lightyellow];
+
+    // Primera comparación: NUM > MAY
+    decision_mayor [label="NUM > MAY?", shape=diamond, fillcolor=lightcyan];
+    update_may [label="MAY ← NUM", shape=box, fillcolor=lightblue];
+
+    // Segunda comparación: NUM < MEN
+    decision_menor [label="NUM < MEN?", shape=diamond, fillcolor=lightcyan];
+    update_men [label="MEN ← NUM", shape=box, fillcolor=lightblue];
+
+    // Incremento del contador
+    increment [label="I ← I + 1", shape=box, fillcolor=lightblue];
+
+    // Escritura de resultados
+    write_output [label="Escribir MAY, MEN", shape=parallelogram, fillcolor=lightyellow];
+
+    // Nodo final
+    end [label="FIN", shape=ellipse, fillcolor=lightcoral];
+
+    // Conexiones principales
+    start -> init;
+    init -> read_n;
+    read_n -> init_i;
+    init_i -> decision_ciclo;
+
+    // Ciclo principal
+    decision_ciclo -> read_num [label="Sí"];
+    decision_ciclo -> write_output [label="No"];
+
+    // Flujo dentro del ciclo
+    read_num -> decision_mayor;
+
+    decision_mayor -> update_may [label="Sí"];
+    decision_mayor -> decision_menor [label="No"];
+    update_may -> decision_menor;
+
+    decision_menor -> update_men [label="Sí"];
+    decision_menor -> increment [label="No"];
+    update_men -> increment;
+
+    // Regreso al inicio del ciclo
+    increment -> decision_ciclo;
+
+    // Final
+    write_output -> end;
+}

@@ -1,0 +1,33 @@
+digraph ProblemaPS33 {
+    rankdir=TB;
+    node [shape=box, style=rounded];
+    
+    // Nodos
+    inicio [label="INICIO", shape=ellipse, style=filled, fillcolor=lightgreen];
+    leerN [label="Leer N", shape=parallelogram, style=filled, fillcolor=lightyellow];
+    init [label="PARES ← 0\nIMPARES ← 0\nI ← 1", style=filled, fillcolor=lightblue];
+    decision1 [label="I ≤ N?", shape=diamond, style=filled, fillcolor=lightblue];
+    leerNum [label="Leer NUM", shape=parallelogram, style=filled, fillcolor=lightyellow];
+    decision2 [label="NUM % 2 = 0?", shape=diamond, style=filled, fillcolor=lightblue];
+    incrementaPares [label="PARES ← PARES + 1", style=filled, fillcolor=lightblue];
+    incrementaImpares [label="IMPARES ← IMPARES + 1", style=filled, fillcolor=lightblue];
+    conector [label="", shape=circle, width=0.3, style=filled, fillcolor=white];
+    incrementaI [label="I ← I + 1", style=filled, fillcolor=lightblue];
+    imprimir [label="Imprimir PARES, IMPARES", shape=parallelogram, style=filled, fillcolor=lightyellow];
+    fin [label="FIN", shape=ellipse, style=filled, fillcolor=lightcoral];
+    
+    // Conexiones
+    inicio -> leerN;
+    leerN -> init;
+    init -> decision1;
+    decision1 -> leerNum [label="Verdadero"];
+    decision1 -> imprimir [label="Falso"];
+    leerNum -> decision2;
+    decision2 -> incrementaPares [label="Verdadero"];
+    decision2 -> incrementaImpares [label="Falso"];
+    incrementaPares -> conector;
+    incrementaImpares -> conector;
+    conector -> incrementaI;
+    incrementaI -> decision1;
+    imprimir -> fin;
+}

@@ -1,0 +1,23 @@
+digraph problema_4_22_parte_c {
+    rankdir=TB;
+    node [shape=box, style=filled];
+
+    // Nodos
+    conector_pedido [label="PEDIDO", shape=pentagon, fillcolor=white];
+    asignar_i [label="I ← 1", fillcolor=lightblue];
+    ciclo [label="I ≤ N", shape=diamond, fillcolor=lightblue];
+    condicion [label="CAN[I] ≥ 1\ny\nCAN[I] < 50", shape=diamond, fillcolor=lightblue];
+    imprimir [label="PRO[I], 50 - CAN[I]", fillcolor=lightyellow];
+    incremento [label="I ← I + 1", fillcolor=lightblue];
+    fin [label="FIN", shape=oval, fillcolor=lightcoral];
+
+    // Conexiones
+    conector_pedido -> asignar_i;
+    asignar_i -> ciclo;
+    ciclo -> condicion [label="Sí"];
+    ciclo -> fin [label="No"];
+    condicion -> imprimir [label="Sí"];
+    condicion -> incremento [label="No"];
+    imprimir -> incremento;
+    incremento -> ciclo;
+}

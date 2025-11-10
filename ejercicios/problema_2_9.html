@@ -1,0 +1,225 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Problema 2.9 - Cálculo de Impuestos</title>
+    <link rel='stylesheet' href='../Styles/style.css'>
+    <link rel='stylesheet' href='../Styles/exercises.css'>
+    <link rel='stylesheet' href='../Styles/navigation.css'>
+    <style>
+        .test-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            background: white;
+        }
+        .test-table th, .test-table td {
+            border: 1px solid var(--color-border);
+            padding: 0.5rem;
+            text-align: center;
+        }
+        .test-table th {
+            background: var(--color-bg);
+            color: var(--color-primary-text);
+        }
+        .test-table tr:nth-child(even) {
+            background: #f5f5f5;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>Problema 2.9 - Cálculo de Impuestos</h1>
+        <a href="../index.html" class="nav-button">Volver al Menú Principal</a>
+    </header>
+
+    <div class="exercise-description">
+        <div class="problem-statement">
+            <h3>Enunciado del Problema</h3>
+            <p>En un cierto país el impuesto que se debe pagar por los artículos se calcula mediante la siguiente regla:</p>
+            <ul>
+                <li>Los primeros $20 no causan impuesto</li>
+                <li>Los siguientes $20 tienen el 30% de impuesto</li>
+                <li>El resto tiene el 40% de impuesto</li>
+                <li>Si el costo del producto es mayor a $500, entonces en lugar del 40% se cobra el 50%</li>
+            </ul>
+            <p>Diseñe un diagrama de flujo que lea el costo básico de un artículo y calcule su precio total (precio total = precio básico + impuesto).</p>
+        </div>
+
+        <div class="explanation">
+            <h3>Explicación de las Variables</h3>
+            <ul>
+                <li><strong>PREBAS:</strong> Variable de tipo real. Representa el precio básico del producto que se ingresa.</li>
+                <li><strong>IMP:</strong> Variable de tipo real. Almacena el impuesto del producto que se ingresa.</li>
+                <li><strong>PRETOT:</strong> Variable de tipo real. Almacena el costo total del producto, es decir el costo básico más el impuesto.</li>
+            </ul>
+        </div>
+
+        <div class="solution-diagram">
+            <h3>Diagrama de Flujo (Diagrama 2.24)</h3>
+            <div style="text-align: center; margin: 20px 0;">
+                <img src="../images/problema_2_9.png" alt="Diagrama de Flujo - Problema 2.9" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px; padding: 10px; background: white;">
+            </div>
+            <p><em>El diagrama muestra una estructura selectiva doble (Si entonces / sino) que evalúa el precio básico y calcula el impuesto correspondiente según los rangos establecidos.</em></p>
+            <p><strong>Nota:</strong> Si el diagrama no se muestra, ejecuta el script de Python para generar los diagramas:</p>
+            <pre style="background: #f4f4f4; padding: 10px; border-radius: 5px;"><code>python generate_diagrams.py</code></pre>
+        </div>
+
+        <div class="test-cases">
+            <h3>Tabla de Pruebas</h3>
+            <p>A continuación podemos observar el seguimiento del algoritmo para diferentes corridas:</p>
+            <table class="test-table">
+                <thead>
+                    <tr>
+                        <th>NÚMERO DE CORRIDA</th>
+                        <th>PREBAS</th>
+                        <th>IMP</th>
+                        <th>PRETOT</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>75.68</td>
+                        <td>20.27</td>
+                        <td>95.95</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>17.55</td>
+                        <td>0</td>
+                        <td>17.55</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>128.40</td>
+                        <td>41.36</td>
+                        <td>169.76</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>27.90</td>
+                        <td>2.37</td>
+                        <td>30.27</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>527.50</td>
+                        <td>249.75</td>
+                        <td>777.25</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>217.80</td>
+                        <td>77.12</td>
+                        <td>294.92</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="source-code">
+            <h3>Código Fuente Completo</h3>
+            <div class="code-block">
+                <pre><code>package com.tutortics;
+// src/problema_2.9.java
+
+import java.util.Scanner;
+
+public class problema_2_9 {
+
+    /**
+     * Calcula el impuesto según las reglas del Problema 2.9.
+     *
+     * @param precioBase El precio básico del artículo (PREBAS).
+     * @return El impuesto calculado (IMP).
+     */
+    public double calcularImpuesto(double precioBase) {
+        double impuesto;
+
+        if (precioBase > 500) {
+            // Los primeros $20 no pagan. Los siguientes $20 pagan 30%. El resto sobre $40 paga 50%.
+            impuesto = (20 * 0.30) + (precioBase - 40) * 0.50;
+        } else if (precioBase > 40) {
+            // Los primeros $20 no pagan. Los siguientes $20 pagan 30%. El resto sobre $40 paga 40%.
+            impuesto = (20 * 0.30) + (precioBase - 40) * 0.40;
+        } else if (precioBase > 20) {
+            // Los primeros $20 no pagan. El resto sobre $20 paga 30%.
+            impuesto = (precioBase - 20) * 0.30;
+        } else {
+            // Menor o igual a $20 no causa impuesto.
+            impuesto = 0;
+        }
+
+        return impuesto;
+    }
+
+    /**
+     * Calcula el precio total sumando el precio base y el impuesto.
+     *
+     * @param precioBase El precio básico del artículo (PREBAS).
+     * @return El precio total (PRETOT).
+     */
+    public double calcularPrecioTotal(double precioBase) {
+        double impuesto = calcularImpuesto(precioBase);
+        return precioBase + impuesto;
+    }
+
+    /**
+     * Método principal para la interacción con el usuario.
+     */
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        problema_2_9 calculadora = new problema_2_9();
+
+        System.out.println("Introduce el precio básico del producto:");
+        double precioBase = scanner.nextDouble();
+
+        double precioTotal = calculadora.calcularPrecioTotal(precioBase);
+        double impuesto = precioTotal - precioBase;
+
+        System.out.println("===================================");
+        System.out.printf("Precio Básico (PREBAS): $%.2f%n", precioBase);
+        System.out.printf("Impuesto (IMP):         $%.2f%n", impuesto);
+        System.out.printf("Precio Total (PRETOT):  $%.2f%n", precioTotal);
+        System.out.println("===================================");
+
+        scanner.close();
+    }
+}</code></pre>
+            </div>
+
+            <h4 style="margin-top: 30px;">Archivo Esqueleto para Estudiantes</h4>
+            <p>Este archivo contiene la estructura básica sin la lógica implementada, para que el estudiante la complete:</p>
+            <p><strong>Archivo:</strong> <code>src/main/java/com/tutortics/problema_2_9_Estudiante.java</code></p>
+            <div style="background: #fff3cd; padding: 15px; border-left: 4px solid #ffc107; margin: 20px 0;">
+                <p><strong>💡 Actividad para el estudiante:</strong></p>
+                <p>Completa los métodos marcados con <code>// TODO</code> en el archivo <code>problema_2_9_Estudiante.java</code></p>
+                <p><strong>Pistas:</strong></p>
+                <ul>
+                    <li>Usa estructuras if-else anidadas para evaluar los rangos de precio</li>
+                    <li>Recuerda que los primeros $20 NO causan impuesto</li>
+                    <li>Verifica primero si el precio es mayor a $500 para aplicar el 50% en lugar del 40%</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="test-results">
+            <h3>Resultados de las Pruebas</h3>
+            <div class='exercise-group'>
+                <div class='exercise-header'>
+                    <h4>Pruebas del Problema 2.9</h4>
+                </div>
+                <div class='test-cases'>
+                    <div class='exercise-details'>
+                        <div class='test-case-item status-pasado'>testCalcularImpuestoYPrecioTotal<br><small>0.006 s</small></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

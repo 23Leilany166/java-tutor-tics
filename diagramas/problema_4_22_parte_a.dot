@@ -1,0 +1,37 @@
+digraph problema_4_22_parte_a {
+    rankdir=TB;
+    node [shape=box, style=filled];
+
+    // Nodos
+    inicio [label="INICIO", shape=oval, fillcolor=lightgreen];
+    mensaje1 [label="\"Ingrese el número\nde productos\"", fillcolor=lightyellow];
+    input_n [label="N", shape=parallelogram, fillcolor=lightyellow];
+    validacion [label="N ≥ 1\ny\nN ≤ 100", shape=diamond, fillcolor=lightblue];
+    asignar_i [label="I ← 1", fillcolor=lightblue];
+    ciclo [label="I ≤ N", shape=diamond, fillcolor=lightblue];
+    mensaje2 [label="\"Ingrese la clave del\nproducto y la cantidad\"", fillcolor=lightyellow];
+    input_datos [label="PRO[I], CAN[I]", shape=parallelogram, fillcolor=lightyellow];
+    incremento [label="I ← I + 1", fillcolor=lightblue];
+    error [label="\"Error en el dato\"", fillcolor=lightyellow];
+    conector_mayor [label="MAYOR", shape=pentagon, fillcolor=white];
+    conector_pedido [label="PEDIDO", shape=pentagon, fillcolor=white];
+    conector_eliminar [label="ELIMINAR", shape=pentagon, fillcolor=white];
+    fin [label="FIN", shape=oval, fillcolor=lightcoral];
+
+    // Conexiones
+    inicio -> mensaje1;
+    mensaje1 -> input_n;
+    input_n -> validacion;
+    validacion -> asignar_i [label="Sí"];
+    validacion -> error [label="No"];
+    asignar_i -> ciclo;
+    ciclo -> mensaje2 [label="Sí"];
+    ciclo -> conector_mayor [label="No"];
+    mensaje2 -> input_datos;
+    input_datos -> incremento;
+    incremento -> ciclo;
+    conector_mayor -> conector_pedido;
+    conector_pedido -> conector_eliminar;
+    error -> fin;
+    conector_eliminar -> fin;
+}

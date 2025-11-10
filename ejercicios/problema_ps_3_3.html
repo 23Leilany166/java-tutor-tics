@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Problema PS 3.3 - Contar Pares e Impares</title>
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/exercises.css">
+    <link rel="stylesheet" href="../styles/navigation.css">
+    <style>
+        .test-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            background: white;
+        }
+        .test-table th, .test-table td {
+            border: 1px solid var(--color-border);
+            padding: 0.5rem;
+            text-align: center;
+        }
+        .test-table th {
+            background: var(--color-bg);
+            color: var(--color-primary-text);
+        }
+        .test-table tr:nth-child(even) {
+            background: #f5f5f5;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>Problema PS 3.3 - Contar Pares e Impares</h1>
+        <a href="../index.html" class="nav-button">Volver al Menú Principal</a>
+    </header>
+
+    <div class="exercise-description">
+        <section class="problem-statement">
+            <h3>Enunciado del Problema</h3>
+            <p>
+                Escriba un diagrama de flujo tal que dado como datos N números enteros, determine 
+                cuántos de ellos son pares y cuántos impares.
+            </p>
+
+            <h3>Datos:</h3>
+            <ul>
+                <li><strong>N:</strong> Número de enteros que se ingresarán.</li>
+                <li><strong>NUM₁, NUM₂, ..., NUM_N:</strong> Los N números enteros a analizar.</li>
+            </ul>
+
+            <h3>Explicación de variables:</h3>
+            <ul>
+                <li><strong>N:</strong> Variable de tipo entero. Representa el número de enteros que se ingresarán 
+                    (cantidad total de números a procesar).</li>
+                <li><strong>NUMi:</strong> Variable de tipo entero. Representa el número i que se ingresa (1 ≤ i ≤ N).</li>
+                <li><strong>PARES:</strong> Variable de tipo entero. Contador que acumula cuántos números pares se han ingresado.</li>
+                <li><strong>IMPARES:</strong> Variable de tipo entero. Contador que acumula cuántos números impares se han ingresado.</li>
+                <li><strong>I:</strong> Variable de tipo entero. Se utiliza como contador del ciclo (variable de control) 
+                    para iterar desde 1 hasta N.</li>
+            </ul>
+        </section>
+
+        <section class="explanation">
+            <h3>💡 Explicación del Algoritmo</h3>
+            <p>
+                Este problema utiliza un ciclo con contador fijo (N veces) para procesar exactamente N números enteros.
+                En cada iteración, se verifica si el número es par (NUM % 2 = 0) o impar, incrementando el contador correspondiente.
+            </p>
+            
+            <h3>Proceso:</h3>
+            <ol>
+                <li><strong>Entrada:</strong> Leer N (cantidad de números)</li>
+                <li><strong>Inicialización:</strong> PARES ← 0, IMPARES ← 0, I ← 1</li>
+                <li><strong>Ciclo:</strong> Mientras I ≤ N:
+                    <ul>
+                        <li>Leer NUM</li>
+                        <li>Si NUM % 2 = 0 entonces PARES ← PARES + 1</li>
+                        <li>Si no, IMPARES ← IMPARES + 1</li>
+                        <li>I ← I + 1</li>
+                    </ul>
+                </li>
+                <li><strong>Resultado:</strong> Imprimir PARES e IMPARES</li>
+            </ol>
+
+            <h3>Ejemplo de ejecución:</h3>
+            <p><strong>Entrada de datos:</strong> N = 6, números: 12, 7, 8, 15, 20, 3</p>
+            
+            <h4>Traza de ejecución:</h4>
+            <table class="test-table">
+                <thead>
+                    <tr>
+                        <th>Iteración (I)</th>
+                        <th>NUM leído</th>
+                        <th>NUM % 2</th>
+                        <th>Tipo</th>
+                        <th>PARES</th>
+                        <th>IMPARES</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Inicial</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>12</td>
+                        <td>0</td>
+                        <td>Par</td>
+                        <td>1</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>7</td>
+                        <td>1</td>
+                        <td>Impar</td>
+                        <td>1</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>8</td>
+                        <td>0</td>
+                        <td>Par</td>
+                        <td>2</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>15</td>
+                        <td>1</td>
+                        <td>Impar</td>
+                        <td>2</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>20</td>
+                        <td>0</td>
+                        <td>Par</td>
+                        <td>3</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>3</td>
+                        <td>1</td>
+                        <td>Impar</td>
+                        <td>3</td>
+                        <td>3</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p><strong>Resultado:</strong> PARES = 3, IMPARES = 3</p>
+
+            <h4>Otros ejemplos:</h4>
+            <table class="test-table">
+                <thead>
+                    <tr>
+                        <th>N</th>
+                        <th>Números ingresados</th>
+                        <th>PARES</th>
+                        <th>IMPARES</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>5</td>
+                        <td>2, 4, 6, 8, 10</td>
+                        <td>5</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>1, 3, 5, 7</td>
+                        <td>0</td>
+                        <td>4</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>10, 15, 22, 33, 44, 55, 66</td>
+                        <td>4</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>0</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p><strong>Nota importante:</strong> El número 0 se considera par (0 % 2 = 0).</p>
+        </section>
+
+        <div class="solution-diagram">
+            <h3>📊 Diagrama de Flujo</h3>
+            
+            <div style="text-align: center; margin: 20px 0;">
+                <img src="../images/problema_ps_3_3.png" alt="Diagrama de Flujo - PS 3.3" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px; padding: 10px; background: white;">
+            </div>
+
+            <p><strong>Nota:</strong> Si el diagrama no se muestra, ejecuta el script de Python para generar los diagramas:</p>
+            <pre style="background: #f4f4f4; padding: 10px; border-radius: 5px;"><code>python generate_diagrams.py</code></pre>
+        </div>
+
+        <div class="source-code">
+            <h3>💻 Código Fuente Completo</h3>
+            <div class="code-block">
+                <pre><code>package com.tutortics;
+
+import java.util.Scanner;
+
+/**
+ * Problema PS 3.3 - Contar Pares e Impares
+ * Dado N números enteros, determina cuántos son pares y cuántos impares.
+ * Programación Estructurada: todos los métodos son estáticos.
+ */
+public class problema_ps_3_3 {
+
+    /**
+     * Clase para almacenar el resultado del conteo de pares e impares.
+     */
+    public static class ResultadoConteo {
+        public int pares;
+        public int impares;
+        
+        public ResultadoConteo(int pares, int impares) {
+            this.pares = pares;
+            this.impares = impares;
+        }
+    }
+
+    /**
+     * Cuenta cuántos números en el arreglo son pares y cuántos son impares.
+     * 
+     * @param numeros Arreglo de números enteros
+     * @param n Cantidad de números a procesar
+     * @return Objeto ResultadoConteo con pares e impares
+     */
+    public static ResultadoConteo contarParesImpares(int[] numeros, int n) {
+        int pares = 0;     // PARES ← 0
+        int impares = 0;   // IMPARES ← 0
+        
+        // I ← 1, mientras I ≤ N
+        for (int i = 0; i < n; i++) {
+            int num = numeros[i];  // Leer NUM
+            
+            if (num % 2 == 0) {  // Si NUM % 2 = 0
+                pares = pares + 1;  // PARES ← PARES + 1
+            } else {
+                impares = impares + 1;  // IMPARES ← IMPARES + 1
+            }
+            // I ← I + 1 (automático en el for)
+        }
+        
+        return new ResultadoConteo(pares, impares);
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("========================================");
+        System.out.println("Contador de Números Pares e Impares");
+        System.out.println("========================================");
+        
+        // Lectura de N
+        System.out.print("¿Cuántos números desea ingresar? N = ");
+        int n = scanner.nextInt();
+
+        // Leer los N números
+        int[] numeros = new int[n];
+        System.out.println("\nIngrese los " + n + " números:");
+        for (int i = 0; i < n; i++) {
+            System.out.print("Número " + (i + 1) + ": ");
+            numeros[i] = scanner.nextInt();
+        }
+
+        // Contar pares e impares
+        ResultadoConteo resultado = contarParesImpares(numeros, n);
+
+        // Mostrar resultados
+        System.out.println("\n========================================");
+        System.out.println("Resultados:");
+        System.out.println("Números PARES: " + resultado.pares);
+        System.out.println("Números IMPARES: " + resultado.impares);
+        System.out.println("========================================");
+
+        scanner.close();
+    }
+}</code></pre>
+            </div>
+
+            <h4 style="margin-top: 30px;">Archivo Esqueleto para Estudiantes</h4>
+            <p>Este archivo contiene la estructura básica sin la lógica implementada, para que el estudiante la complete:</p>
+            <p><strong>Archivo:</strong> <code>src/main/java/com/tutortics/problema_ps_3_3_Estudiante.java</code></p>
+            <div style="background: #fff3cd; padding: 15px; border-left: 4px solid #ffc107; margin: 20px 0;">
+                <p><strong>💡 Actividad para el estudiante:</strong></p>
+                <p>Completa los métodos marcados con <code>// TODO</code> en el archivo <code>problema_ps_3_3_Estudiante.java</code></p>
+                <p><strong>Pistas:</strong></p>
+                <ul>
+                    <li>Inicializa PARES = 0 e IMPARES = 0 antes del ciclo</li>
+                    <li>Usa un ciclo <code>for</code> desde i = 0 hasta i < n</li>
+                    <li>Para verificar si un número es par: <code>num % 2 == 0</code></li>
+                    <li>Si es par, incrementa PARES; si no, incrementa IMPARES</li>
+                    <li>Retorna un objeto ResultadoConteo con los valores finales</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="test-results">
+            <h3>Resultados de las Pruebas</h3>
+            <p>El archivo <code>problema_ps_3_3_test.java</code> contiene pruebas unitarias que verifican:</p>
+            <ul>
+                <li>Conteo correcto de pares e impares en diferentes conjuntos</li>
+                <li>Casos con todos pares o todos impares</li>
+                <li>Casos con números mixtos</li>
+                <li>Manejo correcto del número 0 (considerado par)</li>
+            </ul>
+            <p>Para ejecutar las pruebas:</p>
+            <pre style="background: #f4f4f4; padding: 10px; border-radius: 5px;"><code>mvn test -Dtest=problema_ps_3_3_test</code></pre>
+        </div>
+    </div>
+</div>
+</body>
+</html>

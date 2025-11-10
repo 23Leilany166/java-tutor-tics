@@ -1,0 +1,208 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Ejemplo 4.3 - Arreglo de 70 Elementos</title>
+    <link rel='stylesheet' href='../Styles/style.css'>
+    <link rel='stylesheet' href='../Styles/exercises.css'>
+    <link rel='stylesheet' href='../Styles/navigation.css'>
+    <style>
+        .array-visualization {
+            background: white;
+            padding: 1rem;
+            border-radius: 4px;
+            margin: 1rem 0;
+            overflow-x: auto;
+        }
+        .array-boxes {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            margin: 1rem 0;
+        }
+        .array-box {
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--color-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .array-index {
+            font-size: 0.8em;
+            color: var(--color-secondary-text);
+            text-align: center;
+        }
+        .array-ellipsis {
+            margin: 0 1rem;
+            color: var(--color-secondary-text);
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>Ejemplo 4.3 - Arreglo de 70 Elementos</h1>
+        <a href="../index.html" class="nav-button">Volver al Menú Principal</a>
+    </header>
+
+    <div class="exercise-description">
+        <div class="problem-statement">
+            <h3>Enunciado del Problema</h3>
+            <p>Sea ARRE un arreglo de 70 elementos enteros con índices enteros. Su representación queda como se muestra en la figura 4.3.</p>
+            
+            <div class="array-visualization">
+                <p><code>ARRE = ARREGLO[1..70] DE enteros</code></p>
+                <div class="array-boxes">
+                    <div>
+                        <div class="array-box"></div>
+                        <div class="array-index">1</div>
+                    </div>
+                    <div>
+                        <div class="array-box"></div>
+                        <div class="array-index">2</div>
+                    </div>
+                    <div>
+                        <div class="array-box"></div>
+                        <div class="array-index">3</div>
+                    </div>
+                    <span class="array-ellipsis">...</span>
+                    <div>
+                        <div class="array-box"></div>
+                        <div class="array-index">70</div>
+                    </div>
+                </div>
+            </div>
+
+            <h4>Características:</h4>
+            <ul>
+                <li><strong>NTE = (70 - 1 + 1) = 70</strong></li>
+                <li>Cada elemento del arreglo ARRE será un número entero y podrá accesarse por medio de un índice que será un valor comprendido entre 1 y 70.</li>
+            </ul>
+
+            <h4>Ejemplos de acceso:</h4>
+            <ul>
+                <li><code>ARRE[1]</code> hace referencia al elemento de la posición 1</li>
+                <li><code>ARRE[2]</code> hace referencia al elemento de la posición 2</li>
+                <li>...</li>
+                <li><code>ARRE[70]</code> hace referencia al elemento de la posición 70</li>
+            </ul>
+        </div>
+
+        <div class="explanation">
+            <h3>Explicación</h3>
+            <p>Este ejemplo ilustra la declaración y uso de un arreglo unidimensional (vector) con las siguientes características:</p>
+            <ul>
+                <li>Tamaño fijo de 70 elementos</li>
+                <li>Índices desde 1 hasta 70</li>
+                <li>Almacena valores enteros</li>
+                <li>Acceso directo a elementos mediante índice</li>
+            </ul>
+        </div>
+
+        <div class="solution-diagram">
+            <h3>Diagrama de Flujo</h3>
+            <img src="../images/ejemplo_4_3.png" alt="Diagrama de Flujo del Ejemplo 4.3">
+        </div>
+
+        <div class="source-code">
+            <h3>Código Fuente</h3>
+            <div class="code-block">
+package com.tutortics;
+// src/ejemplo_4.3.java
+
+import java.util.Arrays;
+
+public class ejemplo_4_3 {
+
+    /**
+     * Crea y popula un arreglo de enteros. Para este ejemplo, cada elemento
+     * será su índice multiplicado por 10.
+     *
+     * @param tamano El número de elementos que tendrá el arreglo.
+     * @return El arreglo populado.
+     */
+    public int[] crearArreglo(int tamano) {
+        // ARRE = ARREGLO [1..70] DE enteros
+        // En Java, la declaración es la siguiente:
+        int[] arre = new int[tamano];
+
+        // Llenamos el arreglo con valores de ejemplo
+        for (int i = 0; i < tamano; i++) {
+            // Asignamos un valor a cada posición.
+            arre[i] = (i + 1) * 10;
+        }
+        return arre;
+    }
+
+    /**
+     * Método principal para demostrar el uso del arreglo.
+     */
+    public static void main(String[] args) {
+        ejemplo_4_3 ejemplo = new ejemplo_4_3();
+        
+        // Creamos un arreglo de 70 elementos como en la Figura 4.3
+        final int N_ELEMENTOS = 70;
+        int[] miArreglo = ejemplo.crearArreglo(N_ELEMENTOS);
+
+        System.out.println("Demostración del Ejemplo 4.3 - Arreglos");
+        System.out.println("=========================================");
+
+        // Accediendo a elementos específicos como se describe.
+        // Recordar: Java usa índice 0 para la primera posición.
+        // ARRE[1] en el libro es miArreglo[0] en Java.
+        System.out.println("El valor en la primera posición (índice 0) es: " + miArreglo[0]);
+        
+        // ARRE[2] en el libro es miArreglo[1] en Java.
+        System.out.println("El valor en la segunda posición (índice 1) es: " + miArreglo[1]);
+
+        // ARRE[70] en el libro es miArreglo[69] en Java.
+        System.out.println("El valor en la última posición (índice 69) es: " + miArreglo[69]);
+        
+        System.out.println("-----------------------------------------");
+        System.out.println("Contenido completo del arreglo:");
+        // Arrays.toString() es una forma fácil de imprimir todos los elementos.
+        System.out.println(Arrays.toString(miArreglo));
+        System.out.println("=========================================");
+    }
+}
+
+            </div>
+        </div>
+
+        <h4 style="margin-top: 30px;">Archivo Esqueleto para Estudiantes</h4>
+            <p>Este archivo contiene la estructura básica sin la lógica implementada, para que el estudiante la complete:</p>
+            <p><strong>Archivo:</strong> <code>src/main/java/com/tutortics/ejemplo_4_3_Estudiante.java</code></p>
+            <div style="background: #fff3cd; padding: 15px; border-left: 4px solid #ffc107; margin: 20px 0;">
+                <p><strong>💡 Actividad para el estudiante:</strong></p>
+                <p>Completa los métodos marcados con <code>// TODO</code> en el archivo <code>ejemplo_4_3_Estudiante.java</code></p>
+                <p><strong>Pistas:</strong></p>
+                <ul>
+                    <li>Implementa los métodos básicos de manipulación del arreglo:</li>
+                    <li>Calcula el promedio de todos los elementos</li>
+                    <li>Encuentra el valor máximo y mínimo en el arreglo</li>
+                    <li>Cuenta cuántos números pares hay en el arreglo</li>
+                    <li>Recuerda que en Java los índices comienzan en 0, mientras que el problema usa índices desde 1</li>
+                    <li>Utiliza bucles for para recorrer eficientemente el arreglo</li>
+                </ul>
+            </div>
+
+        <div class="test-results">
+            <h3>Resultados de las Pruebas</h3>
+            <div class='exercise-group'>
+                <div class='exercise-header'>
+                    <h4>Pruebas del Ejemplo 4.3</h4>
+                </div>
+                <div class='test-cases'>
+                    <div class='exercise-details'>
+                        <div class='test-case-item status-pasado'>testCrearArregloTamanoYValores<br><small>0.008 s</small></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

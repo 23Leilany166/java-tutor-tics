@@ -1,0 +1,47 @@
+digraph problema_ps_4_11 {
+    rankdir=TB;
+    node [shape=box, style=rounded];
+    
+    inicio [label="INICIO", shape=ellipse, style=filled, fillcolor=lightgreen];
+    leer_n [label="Leer N"];
+    
+    leer_ciudades [label="Leer CIUDADES[1..N]"];
+    leer_ciu [label="Leer CIU"];
+    
+    iniciar_vars [label="ENCONTRADO ← false\nI ← 1"];
+    
+    cond_while [label="I ≤ N ∧\n¬ENCONTRADO", shape=diamond, style=filled, fillcolor=lightyellow];
+    
+    comparar [label="CIUDADES[I]\n= CIU", shape=diamond, style=filled, fillcolor=lightyellow];
+    
+    encontrado_true [label="ENCONTRADO ← true"];
+    incrementar [label="I ← I + 1"];
+    
+    cond_resultado [label="ENCONTRADO", shape=diamond, style=filled, fillcolor=lightyellow];
+    
+    msg_si [label="Escribir\n'La ciudad SÍ\nse encuentra'"];
+    msg_no [label="Escribir\n'La ciudad NO\nse encuentra'"];
+    
+    fin [label="FIN", shape=ellipse, style=filled, fillcolor=lightcoral];
+    
+    inicio -> leer_n;
+    leer_n -> leer_ciudades;
+    leer_ciudades -> leer_ciu;
+    leer_ciu -> iniciar_vars;
+    iniciar_vars -> cond_while;
+    
+    cond_while -> comparar [label="Sí"];
+    cond_while -> cond_resultado [label="No"];
+    
+    comparar -> encontrado_true [label="Sí"];
+    comparar -> incrementar [label="No"];
+    
+    encontrado_true -> cond_while;
+    incrementar -> cond_while;
+    
+    cond_resultado -> msg_si [label="true"];
+    cond_resultado -> msg_no [label="false"];
+    
+    msg_si -> fin;
+    msg_no -> fin;
+}

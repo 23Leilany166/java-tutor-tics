@@ -1,0 +1,29 @@
+digraph PromedioCalificaciones {
+    // Configuración general
+    rankdir=TB;
+    node [shape=box, style=filled, fillcolor=lightblue, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    // Nodo inicial (círculo)
+    start [label="INICIO", shape=ellipse, fillcolor=lightgreen];
+
+    // Nodo de lectura de datos (paralelogramo)
+    read1 [label="Leer MAT", shape=parallelogram, fillcolor=lightyellow];
+    read2 [label="Leer CAL1, CAL2,\nCAL3, CAL4, CAL5", shape=parallelogram, fillcolor=lightyellow];
+
+    // Nodo de proceso (rectángulo)
+    process [label="PRO ← (CAL1 + CAL2 +\nCAL3 + CAL4 + CAL5) / 5", shape=box, fillcolor=lightblue];
+
+    // Nodo de escritura/salida (paralelogramo)
+    write [label="Escribir MAT, PRO", shape=parallelogram, fillcolor=lightyellow];
+
+    // Nodo final (círculo)
+    end [label="FIN", shape=ellipse, fillcolor=lightcoral];
+
+    // Conexiones
+    start -> read1;
+    read1 -> read2;
+    read2 -> process;
+    process -> write;
+    write -> end;
+}

@@ -1,0 +1,26 @@
+digraph problema_ps_3_1 {
+    rankdir=TB;
+    node [shape=box, style=filled];
+
+    // Nodos
+    inicio [label="INICIO", shape=oval, fillcolor=lightgreen];
+    input_n [label="N", shape=parallelogram, fillcolor=lightyellow];
+    init_suma [label="SUMA ← 0", fillcolor=lightblue];
+    init_i [label="I ← 1", fillcolor=lightblue];
+    ciclo [label="I ≤ N", shape=diamond, fillcolor=lightblue];
+    acumular [label="SUMA ← SUMA + I", fillcolor=lightblue];
+    incremento [label="I ← I + 1", fillcolor=lightblue];
+    output [label="SUMA", shape=parallelogram, fillcolor=lightyellow];
+    fin [label="FIN", shape=oval, fillcolor=lightcoral];
+
+    // Conexiones
+    inicio -> input_n;
+    input_n -> init_suma;
+    init_suma -> init_i;
+    init_i -> ciclo;
+    ciclo -> acumular [label="Sí"];
+    ciclo -> output [label="No"];
+    acumular -> incremento;
+    incremento -> ciclo;
+    output -> fin;
+}

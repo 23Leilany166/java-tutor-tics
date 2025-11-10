@@ -1,0 +1,277 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Problema 3.6 - Mayor y Menor de N números</title>
+    <link rel='stylesheet' href='../Styles/style.css'>
+    <link rel='stylesheet' href='../Styles/exercises.css'>
+    <link rel='stylesheet' href='../Styles/navigation.css'>
+    <style>
+        .test-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            background: white;
+        }
+        .test-table th, .test-table td {
+            border: 1px solid var(--color-border);
+            padding: 0.5rem;
+            text-align: center;
+        }
+        .test-table th {
+            background: var(--color-bg);
+            color: var(--color-primary-text);
+        }
+        .test-table tr:nth-child(even) {
+            background: #f5f5f5;
+        }
+        .highlight {
+            background-color: #e0e0e0 !important;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>Problema 3.6 - Mayor y Menor de N números</h1>
+        <a href="../index.html" class="nav-button">Volver al Menú Principal</a>
+    </header>
+
+    <div class="exercise-description">
+        <div class="problem-statement">
+            <h3>Enunciado del Problema</h3>
+            <p>Construya un diagrama de flujo tal que dado N números enteros como dato, calcule el mayor y el menor de estos números.</p>
+            
+            <h4>Datos:</h4>
+            <p>N, NUM<sub>1</sub>, NUM<sub>2</sub>, . . ., NUM<sub>N</sub></p>
+            
+            <h4>Donde:</h4>
+            <ul>
+                <li><strong>N</strong> es una variable de tipo entero que indica el número de enteros que se ingresan.</li>
+                <li><strong>NUM<sub>i</sub></strong> es una variable de tipo entero que representa el número i que se ingresa (1 ≤ i ≤ N).</li>
+            </ul>
+        </div>
+
+        <div class="explanation">
+            <h3>Explicación de las Variables</h3>
+            <ul>
+                <li><strong>I:</strong> Variable de tipo entero. Representa la variable de control del ciclo.</li>
+                <li><strong>N y NUM:</strong> Variables de tipo entero.</li>
+                <li><strong>MAY:</strong> Variable de tipo entero. Almacena el máximo valor. Se inicializa con un valor negativo alto para que tome el valor del primer número que se ingresa.</li>
+                <li><strong>MEN:</strong> Variable de tipo entero. Almacena el mínimo valor. Se inicializa con un valor alto para que tome el valor del primer número que se ingresa.</li>
+            </ul>
+        </div>
+
+        <div class="solution-diagram">
+            <h3>Diagrama de Flujo</h3>
+            <img src="../images/problema_3_6.png" alt="Diagrama de Flujo del Problema 3.6">
+            <p>El diagrama muestra una estructura repetitiva que itera N veces para encontrar el mayor y menor número.</p>
+        </div>
+
+        <div class="test-cases">
+            <h3>Tabla de Seguimiento</h3>
+            <p>A continuación presentamos el seguimiento del algoritmo para una corrida con N = 12:</p>
+            <table class="test-table">
+                <thead>
+                    <tr>
+                        <th>I</th>
+                        <th>N</th>
+                        <th>NUM</th>
+                        <th>MAY</th>
+                        <th>MEN</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>12</td>
+                        <td></td>
+                        <td>-100 000</td>
+                        <td>100 000</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td></td>
+                        <td>170</td>
+                        <td>170</td>
+                        <td>170</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td></td>
+                        <td>44</td>
+                        <td></td>
+                        <td>44</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td></td>
+                        <td>815</td>
+                        <td>815</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td></td>
+                        <td>1700</td>
+                        <td>1700</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td></td>
+                        <td>38</td>
+                        <td></td>
+                        <td>38</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td></td>
+                        <td>140</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td></td>
+                        <td>380</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td></td>
+                        <td>1020</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td></td>
+                        <td>116</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td></td>
+                        <td>14</td>
+                        <td></td>
+                        <td>14</td>
+                    </tr>
+                    <tr>
+                        <td>12</td>
+                        <td></td>
+                        <td>730</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="highlight">
+                        <td>13</td>
+                        <td></td>
+                        <td>960</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>Las celdas sombreadas expresan valores que se imprimen.</p>
+        </div>
+
+        <div class="source-code">
+            <h3>Código Fuente</h3>
+            <div class="code-block">
+package com.tutortics;
+// src/problema_3.6.java
+
+import java.util.Scanner;
+import java.util.Arrays;
+
+public class problema_3_6 {
+
+    /**
+     * Encuentra el número mayor y menor en un arreglo de enteros.
+     *
+     * @param numeros El arreglo de números a procesar.
+     * @return Un arreglo de dos enteros donde la posición 0 es el MAYOR y la 1 es el MENOR.
+     * Retorna null si el arreglo de entrada es nulo o está vacío.
+     */
+    public int[] encontrarMayorMenor(int[] numeros) {
+        if (numeros == null || numeros.length == 0) {
+            return null; // No se puede procesar un arreglo vacío
+        }
+
+        int mayor = Integer.MIN_VALUE; // Inicializa con el valor más pequeño posible
+        int menor = Integer.MAX_VALUE; // Inicializa con el valor más grande posible
+
+        // Estructura Repetitiva (Ciclo)
+        for (int num : numeros) {
+            // ¿NUM > MAY?
+            if (num > mayor) {
+                mayor = num;
+            }
+            // ¿NUM < MEN?
+            if (num < menor) {
+                menor = num;
+            }
+        }
+
+        return new int[]{mayor, menor};
+    }
+
+    /**
+     * Método principal para la interacción con el usuario.
+     */
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        problema_3_6 buscador = new problema_3_6();
+
+        System.out.println("Introduce la cantidad de números a ingresar (N):");
+        int n = scanner.nextInt();
+
+        if (n <= 0) {
+            System.out.println("Por favor, introduce un número positivo.");
+        } else {
+            int[] numerosIngresados = new int[n];
+            System.out.println("Introduce los " + n + " números:");
+            for (int i = 0; i < n; i++) {
+                numerosIngresados[i] = scanner.nextInt();
+            }
+
+            int[] resultado = buscador.encontrarMayorMenor(numerosIngresados);
+
+            if (resultado != null) {
+                System.out.println("===================================");
+                System.out.println("El número MAYOR es: " + resultado[0]);
+                System.out.println("El número MENOR es: " + resultado[1]);
+                System.out.println("===================================");
+            }
+        }
+        scanner.close();
+    }
+}
+
+            </div>
+        </div>
+
+        <div class="test-results">
+            <h3>Resultados de las Pruebas</h3>
+            <div class='exercise-group'>
+                <div class='exercise-header'>
+                    <h4>Pruebas del Problema 3.6</h4>
+                </div>
+                <div class='test-cases'>
+                    <div class='exercise-details'>
+                        <div class='test-case-item status-pasado'>testEncontrarMayorMenorNullOEmpty<br><small>0.079 s</small></div>
+                    </div>
+                    <div class='exercise-details'>
+                        <div class='test-case-item status-pasado'>testEncontrarMayorMenorNormal<br><small>0.01 s</small></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

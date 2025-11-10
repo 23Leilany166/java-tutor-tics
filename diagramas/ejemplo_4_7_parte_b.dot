@@ -1,0 +1,51 @@
+digraph problema_4_7_parte_2 {
+    // Configuración general
+    rankdir=TB;
+    node [shape=box, style=filled, fillcolor=lightblue, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    // Conector de entrada
+    conector_a [label="A", shape=hexagon, fillcolor=white];
+
+    // Nodos de entrada/salida (paralelogramos con color amarillo)
+    pedir_x [label="\"Ingrese el dato\na buscar\"", shape=box, fillcolor=lightyellow];
+    leer_x [label="X", shape=parallelogram, fillcolor=lightyellow];
+    encontrado [label="\"El elemento SI\nestá en el arreglo\"", shape=box, fillcolor=lightyellow];
+    no_encontrado [label="\"El elemento NO\nestá en el arreglo\"", shape=box, fillcolor=lightyellow];
+
+    // Nodos de proceso (rectángulos con color azul claro)
+    init_vars [label="IZQ ← 1\nDER ← N\nBAN ← 1", shape=box, fillcolor=lightblue];
+    calc_cen [label="CEN ← (IZQ + DER) DIV 2", shape=box, fillcolor=lightblue];
+    set_ban [label="BAN ← 0", shape=box, fillcolor=lightblue];
+    set_izq [label="IZQ ← CEN + 1", shape=box, fillcolor=lightblue];
+    set_der [label="DER ← CEN - 1", shape=box, fillcolor=lightblue];
+
+    // Nodos de decisión (diamantes con color azul claro)
+    check_loop [label="IZQ ≤ DER y\nBAN = 1", shape=diamond, fillcolor=lightblue];
+    check_igual [label="X = VECTOR[CEN]", shape=diamond, fillcolor=lightblue];
+    check_mayor [label="X > VECTOR[CEN]", shape=diamond, fillcolor=lightblue];
+
+    // Conector de salida
+    conector_c [label="C", shape=hexagon, fillcolor=white];
+
+    // Conexiones
+    conector_a -> pedir_x;
+    pedir_x -> leer_x;
+    leer_x -> init_vars;
+    init_vars -> check_loop;
+    
+    check_loop -> calc_cen [label="Si"];
+    check_loop -> conector_c [label="No"];
+    
+    calc_cen -> check_igual;
+    
+    check_igual -> set_ban [label="Si"];
+    check_igual -> check_mayor [label="No"];
+    
+    check_mayor -> set_izq [label="Si"];
+    check_mayor -> set_der [label="No"];
+    
+    set_ban -> check_loop;
+    set_izq -> check_loop;
+    set_der -> check_loop;
+}

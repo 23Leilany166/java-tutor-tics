@@ -1,0 +1,27 @@
+digraph problema_4_22_parte_b {
+    rankdir=TB;
+    node [shape=box, style=filled];
+
+    // Nodos
+    conector_mayor [label="MAYOR", shape=pentagon, fillcolor=white];
+    inicializar [label="MCA ← CAN[1]\nMPR ← PRO[1]", fillcolor=lightblue];
+    asignar_i [label="I ← 2", fillcolor=lightblue];
+    ciclo [label="I ≤ N", shape=diamond, fillcolor=lightblue];
+    comparacion [label="MCA < CAN[I]", shape=diamond, fillcolor=lightblue];
+    actualizar [label="MCA ← CAN[I]\nMPR ← PRO[I]", fillcolor=lightblue];
+    incremento [label="I ← I + 1", fillcolor=lightblue];
+    mensaje [label="\"La clave del producto que tiene la\nmayor existencia es\", MPR", fillcolor=lightyellow];
+    fin [label="FIN", shape=oval, fillcolor=lightcoral];
+
+    // Conexiones
+    conector_mayor -> inicializar;
+    inicializar -> asignar_i;
+    asignar_i -> ciclo;
+    ciclo -> comparacion [label="Sí"];
+    ciclo -> mensaje [label="No"];
+    comparacion -> actualizar [label="Sí"];
+    comparacion -> incremento [label="No"];
+    actualizar -> incremento;
+    incremento -> ciclo;
+    mensaje -> fin;
+}

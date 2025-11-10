@@ -1,0 +1,31 @@
+digraph problema_4_7_parte_3 {
+    // Configuración general
+    rankdir=TB;
+    node [shape=box, style=filled, fillcolor=lightblue, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    // Conectores de entrada
+    conector_c [label="C", shape=hexagon, fillcolor=white];
+    conector_b [label="B", shape=hexagon, fillcolor=white];
+
+    // Nodo de decisión
+    check_ban [label="BAN = 1", shape=diamond, fillcolor=lightblue];
+
+    // Nodos de salida (mensajes)
+    no_encontrado [label="\"El elemento NO\nestá en el arreglo\"", shape=box, fillcolor=lightyellow];
+    encontrado [label="\"El elemento SI\nestá en el arreglo\"", shape=box, fillcolor=lightyellow];
+
+    // Nodo final
+    fin [label="FIN", shape=ellipse, fillcolor=lightcoral];
+
+    // Conexiones
+    conector_c -> check_ban;
+    check_ban -> no_encontrado [label="Si"];
+    check_ban -> encontrado [label="No"];
+    no_encontrado -> fin;
+    encontrado -> fin;
+    conector_b -> fin;
+
+    // Alinear los conectores C y B
+    {rank=same; conector_c; conector_b}
+}

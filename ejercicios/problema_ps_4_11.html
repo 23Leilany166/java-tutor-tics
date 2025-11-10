@@ -1,0 +1,274 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Problema PS 4.11 - Búsqueda de Ciudad en Arreglo</title>
+    <link rel='stylesheet' href='../Styles/style.css'>
+    <link rel='stylesheet' href='../Styles/exercises.css'>
+    <link rel='stylesheet' href='../Styles/navigation.css'>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>Problema PS 4.11 - Búsqueda de Ciudad en Arreglo</h1>
+        <a href="../index.html" class="nav-button">Volver al Menú Principal</a>
+    </header>
+
+    <div class="exercise-description">
+        <div class="problem-statement">
+            <h3>Enunciado del Problema</h3>
+            <p>Escriba un diagrama de flujo tal que dado un arreglo unidimensional de tipo cadena de caracteres que contiene los nombres de las ciudades de más de 50,000 habitantes de un país, determine dado el nombre de una ciudad, si ésta se encuentra en el arreglo.</p>
+            
+            <p><strong>Datos:</strong> CIUDADES [1..N], CIU &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1 ≤ N ≤ 1000</p>
+            
+            <p><strong>Donde:</strong></p>
+            <ul>
+                <li><strong>CIUDADES:</strong> es un arreglo unidimensional de tipo cadena de caracteres que contiene las ciudades del país con más de 50,000 habitantes.</li>
+                <li><strong>CIU:</strong> es una variable de tipo cadena de caracteres que representa la ciudad que se ingresa.</li>
+            </ul>
+            
+            <div style="background: #fff9c4; padding: 15px; border-left: 4px solid #fbc02d; margin: 20px 0;">
+                <p><strong>📝 Nota:</strong> El arreglo CIUDADES no se encuentra ordenado.</p>
+            </div>
+        </div>
+
+        <div class="explanation">
+            <h3>Explicación de las Variables</h3>
+            <ul>
+                <li><strong>N:</strong> Variable de tipo entero. Número de ciudades en el arreglo (entre 1 y 1000).</li>
+                <li><strong>CIUDADES:</strong> Arreglo unidimensional de cadenas. Almacena los nombres de las ciudades.</li>
+                <li><strong>CIU:</strong> Variable de tipo cadena. La ciudad que se busca en el arreglo.</li>
+                <li><strong>I:</strong> Variable de tipo entero. Índice para recorrer el arreglo.</li>
+                <li><strong>ENCONTRADO:</strong> Variable de tipo booleano. Indica si se encontró la ciudad (true) o no (false).</li>
+            </ul>
+
+            <h3>Algoritmo de Búsqueda Lineal</h3>
+            <p>Dado que el arreglo <strong>no está ordenado</strong>, se utiliza una <strong>búsqueda lineal (secuencial)</strong>:</p>
+            <ol>
+                <li>Leer el número de ciudades N y llenar el arreglo CIUDADES</li>
+                <li>Leer la ciudad a buscar (CIU)</li>
+                <li>Recorrer el arreglo desde la posición 1 hasta N</li>
+                <li>Comparar cada elemento con CIU (sin distinguir mayúsculas/minúsculas)</li>
+                <li>Si se encuentra, marcar ENCONTRADO = true y terminar la búsqueda</li>
+                <li>Si se recorre todo el arreglo sin encontrarla, ENCONTRADO = false</li>
+            </ol>
+        </div>
+
+        <div class="solution-diagram">
+            <h3>Diagrama de Flujo</h3>
+            <div style="text-align: center; margin: 20px 0;">
+                <img src="../images/problema_ps_4_11.png" alt="Diagrama de Flujo - PS 4.11" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px; padding: 10px; background: white;">
+            </div>
+            <p><em>El diagrama muestra el algoritmo de búsqueda lineal en un arreglo no ordenado.</em></p>
+            <p><strong>Nota:</strong> Si el diagrama no se muestra, ejecuta el script de Python para generar los diagramas:</p>
+            <pre style="background: #f4f4f4; padding: 10px; border-radius: 5px;"><code>python generate_diagrams.py</code></pre>
+        </div>
+
+        <div class="test-cases">
+            <h3>Ejemplos de Ejecución</h3>
+            
+            <h4>Caso 1: Ciudad encontrada</h4>
+            <p><strong>Entrada:</strong></p>
+            <ul>
+                <li>N = 5</li>
+                <li>CIUDADES = ["Madrid", "Bogotá", "Tokio", "Lima", "Buenos Aires"]</li>
+                <li>CIU = "Tokio"</li>
+            </ul>
+            <p><strong>Proceso:</strong></p>
+            <ul>
+                <li>I = 1: CIUDADES[1] = "Madrid" ≠ "Tokio"</li>
+                <li>I = 2: CIUDADES[2] = "Bogotá" ≠ "Tokio"</li>
+                <li>I = 3: CIUDADES[3] = "Tokio" = "Tokio" ✓ (¡Encontrado!)</li>
+            </ul>
+            <p><strong>Resultado:</strong> La ciudad "Tokio" SÍ se encuentra en el arreglo.</p>
+
+            <h4>Caso 2: Ciudad no encontrada</h4>
+            <p><strong>Entrada:</strong></p>
+            <ul>
+                <li>N = 5</li>
+                <li>CIUDADES = ["Madrid", "Bogotá", "Tokio", "Lima", "Buenos Aires"]</li>
+                <li>CIU = "París"</li>
+            </ul>
+            <p><strong>Proceso:</strong></p>
+            <ul>
+                <li>I = 1: CIUDADES[1] = "Madrid" ≠ "París"</li>
+                <li>I = 2: CIUDADES[2] = "Bogotá" ≠ "París"</li>
+                <li>I = 3: CIUDADES[3] = "Tokio" ≠ "París"</li>
+                <li>I = 4: CIUDADES[4] = "Lima" ≠ "París"</li>
+                <li>I = 5: CIUDADES[5] = "Buenos Aires" ≠ "París"</li>
+            </ul>
+            <p><strong>Resultado:</strong> La ciudad "París" NO se encuentra en el arreglo.</p>
+
+            <h4>Caso 3: Búsqueda sin distinguir mayúsculas</h4>
+            <p><strong>Entrada:</strong></p>
+            <ul>
+                <li>N = 5</li>
+                <li>CIUDADES = ["Madrid", "Bogotá", "Tokio", "Lima", "Buenos Aires"]</li>
+                <li>CIU = "bogotá" (minúsculas)</li>
+            </ul>
+            <p><strong>Proceso:</strong></p>
+            <ul>
+                <li>I = 1: "Madrid" ≠ "bogotá"</li>
+                <li>I = 2: "Bogotá" = "bogotá" (ignorando mayúsculas) ✓</li>
+            </ul>
+            <p><strong>Resultado:</strong> La ciudad "bogotá" SÍ se encuentra en el arreglo.</p>
+        </div>
+
+        <div class="trace-table">
+            <h3>Tabla de Traza - Caso 1 (Ciudad encontrada)</h3>
+            <table class="test-table">
+                <thead>
+                    <tr>
+                        <th>I</th>
+                        <th>CIUDADES[I]</th>
+                        <th>CIU</th>
+                        <th>¿Coincide?</th>
+                        <th>ENCONTRADO</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>"Tokio"</td>
+                        <td>-</td>
+                        <td>false</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>"Madrid"</td>
+                        <td>"Tokio"</td>
+                        <td>No</td>
+                        <td>false</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>"Bogotá"</td>
+                        <td>"Tokio"</td>
+                        <td>No</td>
+                        <td>false</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>"Tokio"</td>
+                        <td>"Tokio"</td>
+                        <td>Sí</td>
+                        <td>true</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p><em>La búsqueda se detiene cuando ENCONTRADO = true</em></p>
+        </div>
+
+        <div class="code-implementation">
+            <h3>Implementación en Java (Programación Estructurada)</h3>
+            <pre><code>package com.tutortics;
+
+import java.util.Scanner;
+
+public class problema_ps_4_11 {
+
+    /**
+     * Busca una ciudad en un arreglo de cadenas usando una búsqueda lineal.
+     * La búsqueda no distingue entre mayúsculas y minúsculas.
+     *
+     * @param ciudades El arreglo de nombres de ciudades.
+     * @param ciu La ciudad a buscar.
+     * @return true si la ciudad se encuentra en el arreglo, false en caso contrario.
+     */
+    public static boolean buscarCiudad(String[] ciudades, String ciu) {
+        if (ciudades == null || ciu == null) {
+            return false;
+        }
+
+        for (String ciudadEnArreglo : ciudades) {
+            // Usamos equalsIgnoreCase para que "Paris" sea igual a "paris"
+            if (ciudadEnArreglo.equalsIgnoreCase(ciu)) {
+                return true; // Se encontró la ciudad, terminamos la búsqueda.
+            }
+        }
+
+        // Si el bucle termina, significa que no se encontró la ciudad.
+        return false;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Ingrese el número de ciudades (N) [1-1000]:");
+        int n = scanner.nextInt();
+        scanner.nextLine(); // Consumir el salto de línea pendiente
+
+        if (n >= 1 &amp;&amp; n <= 1000) {
+            String[] listaCiudades = new String[n];
+            System.out.println("Ingrese los nombres de las " + n + " ciudades:");
+            for (int i = 0; i &lt; n; i++) {
+                listaCiudades[i] = scanner.nextLine();
+            }
+
+            System.out.println("\\nIngrese el nombre de la ciudad a buscar (CIU):");
+            String ciudadBuscada = scanner.nextLine();
+
+            boolean encontrada = buscarCiudad(listaCiudades, ciudadBuscada);
+
+            System.out.println("=========================================");
+            if (encontrada) {
+                System.out.println("La ciudad '" + ciudadBuscada + "' SÍ se encuentra en el arreglo.");
+            } else {
+                System.out.println("La ciudad '" + ciudadBuscada + "' NO se encuentra en el arreglo.");
+            }
+            System.out.println("=========================================");
+
+        } else {
+            System.out.println("Error: N debe estar entre 1 y 1000.");
+        }
+        scanner.close();
+    }
+}</code></pre>
+        </div>
+
+        <div class="student-activities">
+            <h3>Actividades para el Estudiante</h3>
+            <p><strong>Archivo:</strong> <code>problema_ps_4_11_Estudiante.java</code></p>
+            <p>Completa el método marcado con <code>// TODO</code>:</p>
+            <ol>
+                <li><strong>buscarCiudad(ciudades, ciu):</strong> Implementa la búsqueda lineal en el arreglo</li>
+            </ol>
+            
+            <h4>Preguntas de Reflexión:</h4>
+            <ul>
+                <li>¿Por qué se usa búsqueda lineal y no búsqueda binaria en este problema?</li>
+                <li>¿Cuál es la complejidad temporal de la búsqueda lineal?</li>
+                <li>¿Por qué usamos <code>equalsIgnoreCase</code> en lugar de <code>equals</code>?</li>
+                <li>¿En qué casos la búsqueda termina antes de revisar todo el arreglo?</li>
+            </ul>
+            
+            <h4>Prueba tus Conocimientos:</h4>
+            <ul>
+                <li>Prueba con ciudades = ["Madrid", "Bogotá", "Tokio"], ciudad = "Tokio" (debería encontrar)</li>
+                <li>Prueba con ciudades = ["Madrid", "Bogotá", "Tokio"], ciudad = "París" (no debería encontrar)</li>
+                <li>Prueba con ciudades = ["Lima", "Quito"], ciudad = "lima" (debería encontrar, ignorando mayúsculas)</li>
+                <li>Verifica que todos los tests pasen correctamente</li>
+            </ul>
+        </div>
+
+        <div class="unit-tests">
+            <h3>Tests Unitarios</h3>
+            <p>El archivo <code>problema_ps_4_11_test.java</code> contiene pruebas automáticas que verifican:</p>
+            <ul>
+                <li>✓ Búsqueda exitosa de una ciudad que existe en el arreglo</li>
+                <li>✓ Búsqueda no exitosa de una ciudad que no existe</li>
+                <li>✓ Búsqueda ignorando mayúsculas y minúsculas</li>
+            </ul>
+            
+            <p style="background: #fff9c4; padding: 15px; border-left: 4px solid #fbc02d; margin: 15px 0;">
+                <strong>Concepto Clave:</strong> La búsqueda lineal es apropiada para arreglos no ordenados. 
+                Revisa cada elemento secuencialmente hasta encontrar el valor buscado o llegar al final del arreglo. 
+                Su complejidad temporal es O(n), donde n es el tamaño del arreglo.
+            </p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+digraph ProblemaPS34 {
+    rankdir=TB;
+    node [shape=box, style=rounded];
+    
+    // Nodos
+    inicio [label="INICIO", shape=ellipse, style=filled, fillcolor=lightgreen];
+    leerK [label="Leer K", shape=parallelogram, style=filled, fillcolor=lightyellow];
+    init [label="I ← 1", style=filled, fillcolor=lightblue];
+    decision [label="I ≤ 10?", shape=diamond, style=filled, fillcolor=lightblue];
+    calcular [label="RESULTADO ← K × I", style=filled, fillcolor=lightblue];
+    imprimir [label="Imprimir K, \"×\", I, \"=\", RESULTADO", shape=parallelogram, style=filled, fillcolor=lightyellow];
+    incrementar [label="I ← I + 1", style=filled, fillcolor=lightblue];
+    fin [label="FIN", shape=ellipse, style=filled, fillcolor=lightcoral];
+    
+    // Conexiones
+    inicio -> leerK;
+    leerK -> init;
+    init -> decision;
+    decision -> calcular [label="Verdadero"];
+    decision -> fin [label="Falso"];
+    calcular -> imprimir;
+    imprimir -> incrementar;
+    incrementar -> decision;
+}

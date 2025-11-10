@@ -1,0 +1,55 @@
+digraph Flowchart_Styled {
+    // --- Configuración General (del ejemplo) ---
+    graph [
+        rankdir=TB,
+        nodesep=0.5,
+        splines=ortho
+    ];
+    node [shape=box, style=filled, fillcolor=lightblue, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    // --- Nodos con Estilos Específicos ---
+    
+    // Inicio (Verde)
+    inicio [label="INICIO", shape=ellipse, fillcolor=lightgreen];
+    
+    // Entrada/Salida (Amarillo)
+    pedir_n [label="\"Ingrese número\nde elementos\"", shape=parallelogram, fillcolor=lightyellow];
+    leer_n [label="N", shape=parallelogram, fillcolor=lightyellow];
+    pedir_dato [label="\"Ingrese el dato\"", shape=parallelogram, fillcolor=lightyellow];
+    leer_vector [label="VECTOR[I]", shape=parallelogram, fillcolor=lightyellow];
+    
+    // Decisión (Cyan)
+    validar_n [label="N ≥ 1 y\nN ≤ 50", shape=diamond, fillcolor=lightcyan];
+    loop_check [label="I ≤ N", shape=diamond, fillcolor=lightcyan];
+    
+    // Proceso (Azul - Usan el estilo por defecto)
+    error [label="\"Error en los datos\""]; // No necesita 'shape=box' ni color, ya es el default
+    init_i [label="I ← 1"];
+    incrementar_i [label="I ← I + 1"];
+    
+    // Conectores (Hexágono - Usan el color azul por defecto)
+    conector_a [label="A", shape=hexagon];
+    conector_b [label="B", shape=hexagon];
+
+    // --- Conexiones (se mantienen igual) ---
+    inicio -> pedir_n;
+    pedir_n -> leer_n;
+    leer_n -> validar_n;
+
+    validar_n -> init_i [label="Si"];
+    validar_n -> error [label="No"];
+
+    init_i -> loop_check;
+    loop_check -> pedir_dato [label="Si"];
+    loop_check -> conector_a [label="No"];
+
+    pedir_dato -> leer_vector;
+    leer_vector -> incrementar_i;
+    incrementar_i -> loop_check; // Bucle de regreso
+
+    error -> conector_b;
+
+    // Alinear los conectores A y B
+    {rank=same; conector_a; conector_b}
+}

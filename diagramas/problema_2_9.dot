@@ -1,0 +1,68 @@
+digraph CalculoImpuestos {
+    // Configuración general
+    rankdir=TB;
+    node [shape=box, style=filled, fillcolor=lightblue, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    // Nodo inicial
+    start [label="INICIO", shape=ellipse, fillcolor=lightgreen];
+
+    // Lectura de datos
+    read_prebas [label="Leer PREBAS", shape=parallelogram, fillcolor=lightyellow];
+
+    // Primera decisión: PREBAS > 500
+    decision1 [label="PREBAS\n> 500?", shape=diamond, fillcolor=lightcyan];
+
+    // Rama Si (PREBAS > 500)
+    calc_imp_500 [label="IMP ← 20*0.30 +\n(PREBAS-40)*0.50", shape=box, fillcolor=lightblue];
+
+    // Segunda decisión: PREBAS > 40
+    decision2 [label="PREBAS\n> 40?", shape=diamond, fillcolor=lightcyan];
+
+    // Rama Si (PREBAS > 40 pero <= 500)
+    calc_imp_40 [label="IMP ← 20*0.30 +\n(PREBAS-40)*0.40", shape=box, fillcolor=lightblue];
+
+    // Tercera decisión: PREBAS > 20
+    decision3 [label="PREBAS\n> 20?", shape=diamond, fillcolor=lightcyan];
+
+    // Rama Si (PREBAS > 20 pero <= 40)
+    calc_imp_20 [label="IMP ← (PREBAS-20)\n* 0.30", shape=box, fillcolor=lightblue];
+
+    // Rama No (PREBAS <= 20)
+    calc_imp_0 [label="IMP ← 0", shape=box, fillcolor=lightblue];
+
+    // Cálculo del precio total
+    calc_pretot [label="PRETOT ← PREBAS + IMP", shape=box, fillcolor=lightblue];
+
+    // Escritura de resultados
+    write_output [label="Escribir PREBAS, PRETOT", shape=parallelogram, fillcolor=lightyellow];
+
+    // Nodo final
+    end [label="FIN", shape=ellipse, fillcolor=lightcoral];
+
+    // Conexiones
+    start -> read_prebas;
+    read_prebas -> decision1;
+
+    // Primera decisión
+    decision1 -> calc_imp_500 [label="Sí"];
+    decision1 -> decision2 [label="No"];
+
+    // Segunda decisión
+    decision2 -> calc_imp_40 [label="Sí"];
+    decision2 -> decision3 [label="No"];
+
+    // Tercera decisión
+    decision3 -> calc_imp_20 [label="Sí"];
+    decision3 -> calc_imp_0 [label="No"];
+
+    // Todas las ramas convergen al cálculo del precio total
+    calc_imp_500 -> calc_pretot;
+    calc_imp_40 -> calc_pretot;
+    calc_imp_20 -> calc_pretot;
+    calc_imp_0 -> calc_pretot;
+
+    // Final del flujo
+    calc_pretot -> write_output;
+    write_output -> end;
+}

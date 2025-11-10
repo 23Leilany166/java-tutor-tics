@@ -1,0 +1,26 @@
+digraph ProblemaPS32 {
+    rankdir=TB;
+    node [shape=box, style=rounded];
+    
+    // Nodos
+    inicio [label="INICIO", shape=ellipse, style=filled, fillcolor=lightgreen];
+    init [label="SUMA ← 0\nCONTADOR ← 0", style=filled, fillcolor=lightblue];
+    leer1 [label="Leer CAL", shape=parallelogram, style=filled, fillcolor=lightyellow];
+    decision [label="CAL ≠ -1?", shape=diamond, style=filled, fillcolor=lightblue];
+    suma [label="SUMA ← SUMA + CAL\nCONTADOR ← CONTADOR + 1", style=filled, fillcolor=lightblue];
+    leer2 [label="Leer CAL", shape=parallelogram, style=filled, fillcolor=lightyellow];
+    calcular [label="PROMEDIO ← SUMA / CONTADOR", style=filled, fillcolor=lightblue];
+    imprimir [label="Imprimir PROMEDIO", shape=parallelogram, style=filled, fillcolor=lightyellow];
+    fin [label="FIN", shape=ellipse, style=filled, fillcolor=lightcoral];
+    
+    // Conexiones
+    inicio -> init;
+    init -> leer1;
+    leer1 -> decision;
+    decision -> suma [label="Verdadero"];
+    decision -> calcular [label="Falso"];
+    suma -> leer2;
+    leer2 -> decision;
+    calcular -> imprimir;
+    imprimir -> fin;
+}

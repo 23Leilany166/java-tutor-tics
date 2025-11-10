@@ -1,0 +1,45 @@
+digraph Ejemplo_4_3 {
+    // Configuración general
+    rankdir=TB;
+    node [shape=box, style=filled, fillcolor=lightblue, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+    
+    // Nodo inicial (círculo)
+    inicio [shape=ellipse, label="INICIO", fillcolor=lightgreen];
+    
+    // Nodos de proceso (rectángulos)
+    declarar [label="Declarar ARRE[1..70]", fillcolor=lightblue];
+    inicializar [label="i ← 1", fillcolor=lightblue];
+    
+    // Nodo de decisión (diamante)
+    condicion [shape=diamond, label="i ≤ 70?", fillcolor=lightblue];
+    
+    // Nodos de entrada/salida (paralelogramos)
+    leer [shape=parallelogram, label="Leer ARRE[i]", fillcolor=lightyellow];
+    imprimir [shape=parallelogram, label="Mostrar ARRE", fillcolor=lightyellow];
+    
+    // Nodo de proceso (rectángulo)
+    incrementar [label="i ← i + 1", fillcolor=lightblue];
+    
+    // Nodo final (círculo)
+    fin [shape=ellipse, label="FIN", fillcolor=lightcoral];
+
+    // Conexiones
+    inicio -> declarar;
+    declarar -> inicializar;
+    inicializar -> condicion;
+    condicion -> leer [label="Sí"];
+    leer -> incrementar;
+    incrementar -> condicion;
+    condicion -> imprimir [label="No"];
+    imprimir -> fin;
+
+    // Subgrafo para notas
+    subgraph cluster_0 {
+        style=dashed;
+        color=gray;
+        node [shape=note, style=filled, fillcolor=lightyellow];
+        nota1 [label="ARRE: Arreglo de enteros\nTamaño: 70 elementos\nÍndices: 1 a 70"];
+        nota2 [label="NTE = (70 - 1 + 1) = 70"];
+    }
+}
