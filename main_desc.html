@@ -18,7 +18,11 @@
       <a href="#EJ_2.6" class="nav-link">Ejemplo 2.6</a>
       <a href="#PROB_2.10" class="nav-link">Problema 2.10</a>
       <a href="#PROB_3.7" class="nav-link">Problema 3.7</a>
-      <a href="#EJ_4.4" class="nav-link">Ejemplo 4.4</a>
+      <a href="#EJ_4.4.1" class="nav-link">Ejemplo 4.4.1</a>
+      <a href="#EJ_4.4.2" class="nav-link">Ejemplo 4.4.2</a>
+      <a href="#EJ_4.4.3" class="nav-link">Ejemplo 4.4.3</a>
+      <a href="#EJ_4.4.4" class="nav-link">Ejemplo 4.4.4</a>
+      <a href="#EJ_4.4.5" class="nav-link">Ejemplo 4.4.5</a>
       <a href="#PROB_4.8" class="nav-link">Problema 4.8</a>
       <a href="#EJ_5.1" class="nav-link">Ejemplo 5.1</a>
       <a href="#PS_1.7" class="nav-link">PS 1.7</a>
@@ -256,62 +260,306 @@ Ventas grandes (>= 400): 2
         </div>
       </article>
       <!-- Ejemplo 4.4 -->
-      <article id="EJ_4.4" class="exercise-card" aria-labelledby="Ej_4.4-title">
+      <article id="EJ_4.4.1" class="exercise-card" aria-labelledby="Ej_4.4.1-title">
         <header class="exercise-header">
-          <span class="exercise-badge">Ejemplo 4.4</span>
-          <h2 id="Ej_4.4-title">A continuación presentamos la solución en lenguaje algorítmico del diagrama de flujo 1.4.</h2>
+          <span class="exercise-badge">Ejemplo 4.4.1</span>
+          <h2 id="Ej_4.4.1-title">Eliminar Elemento (Arreglo Desordenado)</h2>
           
           <p class="exercise-description">
-            El programa, dado como dato un número entero positivo, calcula el cuadrado y el cubo de dicho número NUM es una variable de tipo entero. CUA y CUB son variables de tipo real
+            Escribe un programa que pida al usuario una lista de números (un arreglo), y luego le permita eliminar un número específico de esa lista.
           </p>
         </header>
         
         <div class="exercise-content">
           <section class="exercise-main">
             <h3>Requisitos</h3>
+            <p>Todo el código debe estar dentro del método <code>main</code>.</p>
             <ul>
-              <li>Crear la clase <code>CuadradoCubo</code>.</li>
-              <li>Declarar las variables:
-                <ul>
-                  <li><code>num</code>: Tiene que ser de tipo <code>entero</code>.</li>
-                  <li><code>cua</code>, <code>cub</code>: Ambas tienen que ser de tipo <code>double</code>.</li>
-                </ul>
-              </li>
-              <li>Crear un objeto <code>Scanner</code> para leer los datos introducidos.</li>
-              <li>Leer la variable <code>num</code></li>
-              <li>Calcular <code>cua</code> y <code>cub</code>.</li> <!--Nota-->
-              <li>Escribir <code>cua</code> y <code>cub</code></li> <!--Tip-->
+              <li>Pide el tamaño del arreglo con el texto: <code>"Ingrese el tamaño del arreglo (N): "</code>.</li>
+              <li>Pide los elementos del arreglo con el texto: <code>"Ingrese los [n] elementos del arreglo:"</code>.</li>
+              <li>Pide el elemento a eliminar con el texto: <code>"Ingrese el elemento a eliminar (X): "</code>.</li>
+              <li>Busca la <strong>primera aparición</strong> del elemento a eliminar en el arreglo.</li>
+              <li>Si lo encuentras, "elimínalo" desplazando los elementos que están a su derecha una posición a la izquierda.</li>
+              <li>Imprime el mensaje de confirmación: <code>"Elemento eliminado. Arreglo resultante:"</code>.</li>
+              <li>Si no lo encuentras, imprime el mensaje: <code>"Elemento no encontrado. El arreglo no ha cambiado:"</code>.</li>
+              <li>Al final, imprime los elementos del arreglo resultante en una sola línea, separados por espacios.</li>
             </ul>
             
             <h3>Ejemplo de uso esperado</h3>
-            <pre><code class="code-block"># Leer el número
-System.out.print("Introduce un número entero: ");
-num = teclado.nextInt();
+            <pre><code class="code-block">Ingrese el tamaño del arreglo (N): 5
+Ingrese los 5 elementos del arreglo:
+10
+20
+30
+40
+50
+Ingrese el elemento a eliminar (X): 30
+Elemento eliminado. Arreglo resultante:
+10 20 40 50 
 
-# Calcular valores 
-cua = Math.pow(num, 2); // Eleva num al cuadrado
-cub = Math.pow(num, 3); // Eleva num al cubo
-
-# Visualizar los resultados 
-System.out.println("El cuadrado de " + num + " es: " + cua);
-System.out.println("El cubo de " + num + " es: " + cub); 
+Ingrese el tamaño del arreglo (N): 3
+Ingrese los 3 elementos del arreglo:
+1
+2
+3
+Ingrese el elemento a eliminar (X): 99
+Elemento no encontrado. El arreglo no ha cambiado:
+1 2 3 
             </code></pre>
           </section>
           
           <aside class="exercise-sidebar">
-            <h3>Notas rápidas</h3>
-            <p class="note-text">Asegúrate de:</p>
+            <h3>Notas para tus Pruebas</h3>
+            <p class="note-text">Las pruebas automáticas son muy estrictas con el texto que tu programa imprime. ¡Asegúrate de que sea idéntico al de los ejemplos!</p>
             <ul>
-              <li>Tu objeto <code>Scanner</code> sea correcto para que lea los datos itroducidos por el usuario.</li>
-              <li>Utiliza la función <code>Math.Pow()</code> para hacer el calculo de los valores.</li>
+              <li>Los mensajes de entrada y salida deben ser exactos, incluyendo espacios y dos puntos.</li>
+              <li>El arreglo final se debe imprimir en una sola línea, con un espacio después de cada número.</li>
             </ul>
             
             <div class="tip-box">
-              <strong>Tip:</strong>
-              <ul>
-                <li>Al momento de introducir el número se recomienda que no sea un número con valor decimal o fracción.</li>
-                <li>O implementa el codigo para que el número ingresado sea de tipo double.</li>
-              </ul> 
+              <strong>Tip: ¿Cómo "eliminar" un elemento?</strong>
+              <p>En un arreglo básico, no puedes simplemente "borrar" un espacio. La técnica consiste en sobrescribir el elemento que quieres eliminar con el que le sigue, y así sucesivamente hasta el final.</p>
+              <p>No olvides reducir el tamaño lógico de tu arreglo (la variable <code>n</code>) para que al imprimirlo al final, no se muestre el último elemento duplicado.</p>
+            </div>
+          </aside>
+        </div>
+      </article>
+
+      <!-- Ejemplo 4.4.2 -->
+      <article id="EJ_4.4.2" class="exercise-card" aria-labelledby="Ej_4.4.2-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Ejemplo 4.4.2</span>
+          <h2 id="Ej_4.4.2-title">Eliminar Elemento (Arreglo Ordenado)</h2>
+          
+          <p class="exercise-description">
+            Escribe un programa que elimine un elemento de un <strong>arreglo que ya está ordenado</strong>. Para hacerlo más eficiente, deberás usar el algoritmo de búsqueda binaria.
+          </p>
+        </header>
+        
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <p>Todo el código debe estar dentro del método <code>main</code>.</p>
+            <ul>
+              <li>Pide el tamaño del arreglo con: <code>"Ingrese el tamaño del arreglo (N): "</code>.</li>
+              <li>Pide los elementos con: <code>"Ingrese los [n] elementos del arreglo (deben estar ordenados):"</code>.</li>
+              <li>Pide el elemento a eliminar con: <code>"Ingrese el elemento a eliminar (X): "</code>.</li>
+              <li>Usa <strong>búsqueda binaria</strong> para encontrar la posición del elemento.</li>
+              <li>Si lo encuentras, elimínalo y muestra: <code>"Elemento eliminado. Arreglo resultante:"</code>.</li>
+              <li>Si no lo encuentras, muestra: <code>"Elemento no encontrado. El arreglo no ha cambiado:"</code>.</li>
+              <li>Al final, imprime el arreglo resultante en una sola línea, con elementos separados por espacios.</li>
+            </ul>
+            
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block">Ingrese el tamaño del arreglo (N): 5
+Ingrese los 5 elementos del arreglo (deben estar ordenados):
+10
+20
+30
+40
+50
+Ingrese el elemento a eliminar (X): 30
+Elemento eliminado. Arreglo resultante:
+10 20 40 50 
+
+Ingrese el tamaño del arreglo (N): 4
+Ingrese los 4 elementos del arreglo (deben estar ordenados):
+10
+20
+40
+50
+Ingrese el elemento a eliminar (X): 30
+Elemento no encontrado. El arreglo no ha cambiado:
+10 20 40 50 
+            </code></pre>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Concepto Clave: Búsqueda Binaria</h3>
+            <p class="note-text">La búsqueda binaria es un algoritmo muy rápido para encontrar un elemento en un arreglo <strong>ordenado</strong>. Funciona dividiendo repetidamente el arreglo a la mitad hasta encontrar el elemento o determinar que no existe.</p>
+            
+            <div class="tip-box">
+              <strong>Tip para la Búsqueda Binaria</strong>
+              <p>Necesitarás tres variables: <code>bajo</code> (inicio), <code>alto</code> (fin) y <code>central</code>. En cada paso del bucle, calculas <code>central = (bajo + alto) / 2</code> y comparas el valor en esa posición con el que buscas. Si es mayor, ajustas <code>alto</code>; si es menor, ajustas <code>bajo</code>.</p>
+            </div>
+          </aside>
+        </div>
+      </article>
+
+      <!-- Ejemplo 4.4.3 -->
+      <article id="EJ_4.4.3" class="exercise-card" aria-labelledby="Ej_4.4.3-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Ejemplo 4.4.3</span>
+          <h2 id="Ej_4.4.3-title">Insertar Elemento (Arreglo Ordenado)</h2>
+          
+          <p class="exercise-description">
+            Escribe un programa que inserte un nuevo número en un <strong>arreglo que ya está ordenado</strong>, asegurándose de que el arreglo se mantenga ordenado después de la inserción.
+          </p>
+        </header>
+        
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <p>Todo el código debe estar dentro del método <code>main</code>.</p>
+            <ul>
+              <li>Pide la cantidad inicial de elementos con: <code>"Ingrese la cantidad de elementos iniciales (N < 100): "</code>.</li>
+              <li>Pide los elementos ordenados con: <code>"Ingrese los [n] elementos del arreglo (ordenados):"</code>.</li>
+              <li>Pide el elemento a insertar con: <code>"Ingrese el elemento a insertar (X): "</code>.</li>
+              <li>Busca la posición correcta donde debe ir el nuevo elemento.</li>
+              <li>Si el elemento ya existe, muestra el mensaje: <code>"No se pudo insertar el elemento (ya existe)."</code> y el arreglo sin cambios.</li>
+              <li>Si el elemento no existe, desplaza los elementos necesarios a la derecha, inserta el nuevo número y muestra: <code>"Elemento insertado exitosamente."</code> seguido de <code>"Arreglo resultante:"</code>.</li>
+              <li>Imprime siempre el estado final del arreglo en una sola línea, con elementos separados por espacios.</li>
+            </ul>
+            
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block">Ingrese la cantidad de elementos iniciales (N < 100): 4
+Ingrese los 4 elementos del arreglo (ordenados):
+10
+20
+40
+50
+Ingrese el elemento a insertar (X): 30
+Elemento insertado exitosamente.
+Arreglo resultante:
+10 20 30 40 50 
+
+Ingrese la cantidad de elementos iniciales (N < 100): 3
+Ingrese los 3 elementos del arreglo (ordenados):
+10
+20
+30
+Ingrese el elemento a insertar (X): 20
+No se pudo insertar el elemento (ya existe).
+10 20 30 
+            </code></pre>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas para tus Pruebas</h3>
+            <p class="note-text">Los mensajes que tu programa imprime deben ser <strong>exactos</strong> a los de los ejemplos para que las pruebas automáticas funcionen.</p>
+            
+            <div class="tip-box">
+              <strong>Tip: Desplazar a la Derecha</strong>
+              <p>Para hacer espacio para el nuevo elemento, necesitas mover los números que son más grandes que él una posición a la derecha.</p>
+              <p>La clave es hacerlo con un bucle <code>for</code> que vaya <strong>desde el final hacia el principio</strong> (<code>for (int i = n; i > pos; i--)</code>). Si lo haces al revés, ¡sobrescribirás tus propios datos!</p>
+            </div>
+          </aside>
+        </div>
+      </article>
+
+      <!-- Ejemplo 4.4.4 -->
+      <article id="EJ_4.4.4" class="exercise-card" aria-labelledby="Ej_4.4.4-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Ejemplo 4.4.4</span>
+          <h2 id="Ej_4.4.4-title">Insertar Elemento (Arreglo Desordenado)</h2>
+          
+          <p class="exercise-description">
+            Escribe un programa que permita al usuario añadir números a un arreglo uno por uno. El programa debe continuar pidiendo números hasta que el usuario decida parar o el arreglo se llene.
+          </p>
+        </header>
+        
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <p>Todo el código debe estar dentro del método <code>main</code>.</p>
+            <ul>
+              <li>Usa un arreglo con una capacidad fija (ej. 5 o 10).</li>
+              <li>Dentro de un bucle <code>while</code>, pide un número con: <code>"Ingrese el elemento a insertar: "</code>.</li>
+              <li>Inserta el número al final del arreglo y muestra: <code>"Elemento insertado correctamente."</code>.</li>
+              <li>Muestra el estado actual del arreglo con: <code>"Arreglo actual: [num1] [num2] ..."</code>.</li>
+              <li>Pregunta al usuario si quiere continuar con: <code>"¿Desea insertar otro elemento? (s/n)"</code>.</li>
+              <li>El bucle debe terminar si el usuario responde algo diferente a 's' o 'S', o si el arreglo se llena.</li>
+              <li>Si el arreglo se llena, muestra el mensaje: <code>"No hay más espacio para insertar elementos."</code>.</li>
+              <li>Al final de todo, imprime: <code>"Proceso finalizado."</code>.</li>
+            </ul>
+            
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block">Ingrese el elemento a insertar: 10
+Elemento insertado correctamente.
+Arreglo actual: 10 
+
+¿Desea insertar otro elemento? (s/n)
+s
+Ingrese el elemento a insertar: 20
+Elemento insertado correctamente.
+Arreglo actual: 10 20 
+
+¿Desea insertar otro elemento? (s/n)
+n
+Proceso finalizado.
+            </code></pre>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Concepto Clave: Bucles Condicionales</h3>
+            <p class="note-text">A diferencia de un bucle <code>for</code>, un bucle <code>while</code> es perfecto cuando no sabes cuántas veces se repetirá una acción. Se ejecuta "mientras" una condición sea verdadera.</p>
+            
+            <div class="tip-box">
+              <strong>Tip: Condición del Bucle <code>while</code></strong>
+              <p>Tu bucle necesita dos condiciones para continuar: que haya espacio en el arreglo (<code>n < a.length</code>) Y que el usuario quiera continuar (<code>continuar == 's'</code>).</p>
+              <p>Puedes unir estas condiciones con el operador <code>&&</code> (Y lógico).</p>
+            </div>
+          </aside>
+        </div>
+      </article>
+
+      <article id="EJ_4.4.5" class="exercise-card" aria-labelledby="EJ_4.4.5-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Ejemplo 4.4.5</span>
+          <h2 id="EJ_4.4.5-title">Modificar Elemento (Arreglo Desordenado)</h2>
+          
+          <p class="exercise-description">
+            Escribe un programa que pida al usuario una lista de números, un valor a buscar dentro de la lista y un nuevo valor para reemplazarlo.
+          </p>
+        </header>
+        
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <p>Todo el código debe estar dentro del método <code>main</code>.</p>
+            <ul>
+              <li>Pide el tamaño del arreglo con: <code>"Ingrese el tamaño del arreglo (N): "</code>.</li>
+              <li>Pide los elementos del arreglo con: <code>"Ingrese los [n] elementos del arreglo:"</code>.</li>
+              <li>Pide el elemento a modificar con: <code>"Ingrese el elemento a modificar (X): "</code>.</li>
+              <li>Pide el nuevo valor con: <code>"Ingrese el nuevo valor (Y): "</code>.</li>
+              <li>Busca la <strong>primera aparición</strong> del elemento a modificar y reemplázalo por el nuevo valor.</li>
+              <li>Si la modificación es exitosa, muestra: <code>"Arreglo modificado:"</code> seguido del nuevo arreglo.</li>
+              <li>Si el elemento a modificar no se encuentra, muestra: <code>"El elemento [X] no está en el arreglo."</code>.</li>
+              <li>Si el tamaño inicial del arreglo es 0, muestra: <code>"El arreglo está vacío."</code>.</li>
+            </ul>
+            
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block">Ingrese el tamaño del arreglo (N): 5
+Ingrese los 5 elementos del arreglo:
+10
+20
+30
+40
+50
+Ingrese el elemento a modificar (X): 30
+Ingrese el nuevo valor (Y): 99
+Arreglo modificado:
+10 20 99 40 50 
+
+Ingrese el tamaño del arreglo (N): 3
+Ingrese los 3 elementos del arreglo:
+1
+2
+3
+Ingrese el elemento a modificar (X): 99
+Ingrese el nuevo valor (Y): 100
+El elemento 99 no está en el arreglo.
+            </code></pre>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Concepto Clave: Banderas (Flags)</h3>
+            <p class="note-text">Una "bandera" (o <em>flag</em>) es una variable, usualmente de tipo booleano (<code>true/false</code>), que usas para señalar que un evento ha ocurrido. Es muy útil para controlar el flujo de tu programa.</p>
+            
+            <div class="tip-box">
+              <strong>Tip: Usando una Bandera</strong>
+              <p>Crea una variable <code>boolean encontrado = false;</code>. Cuando encuentres el número que buscas, cámbiala a <code>true</code>.</p>
+              <p>Puedes usar esta bandera para dos cosas: 1) para detener el bucle de búsqueda una vez que ya encontraste el elemento, y 2) para decidir al final si imprimes el arreglo modificado o el mensaje de "no encontrado".</p>
             </div>
           </aside>
         </div>
@@ -321,121 +569,111 @@ System.out.println("El cubo de " + num + " es: " + cub);
       <article id="PROB_4.8" class="exercise-card" aria-labelledby="PROB_4.8-title">
         <header class="exercise-header">
           <span class="exercise-badge">Problema 4.8</span>
-          <h2 id="PROB_4.8-title">A continuación presentamos la solución en lenguaje algorítmico del diagrama de flujo 1.4.</h2>
+          <h2 id="PROB_4.8-title">Estadísticas de Calificaciones</h2>
           
           <p class="exercise-description">
-            El programa, dado como dato un número entero positivo, calcula el cuadrado y el cubo de dicho número NUM es una variable de tipo entero. CUA y CUB son variables de tipo real
+            Escribe un programa que calcule varias estadísticas sobre las calificaciones de un grupo de alumnos. El programa primero preguntará cuántos alumnos son y luego pedirá la calificación de cada uno.
           </p>
         </header>
         
         <div class="exercise-content">
           <section class="exercise-main">
             <h3>Requisitos</h3>
+            <p>Todo el código debe estar dentro del método <code>main</code>.</p>
             <ul>
-              <li>Crear la clase <code>CuadradoCubo</code>.</li>
-              <li>Declarar las variables:
-                <ul>
-                  <li><code>num</code>: Tiene que ser de tipo <code>entero</code>.</li>
-                  <li><code>cua</code>, <code>cub</code>: Ambas tienen que ser de tipo <code>double</code>.</li>
-                </ul>
+              <li>Pide el número de alumnos con el texto: <code>"Introduce el número de alumnos del grupo: "</code>.</li>
+              <li>Dentro de un bucle, pide cada calificación con: <code>"Introduce la calificación del alumno #[num]: "</code>.</li>
+              <li>Al final, imprime un reporte con el siguiente formato exacto (los valores decimales deben tener 2 decimales):
+                <pre><code class="code-block">--- Reporte de Calificaciones ---
+Promedio general: [valor]
+Alumnos aprobados (>6): [valor]
+Alumnos reprobados (<=6): [valor]
+Porcentaje de aprobados: [valor]%
+Porcentaje de reprobados: [valor]%
+Alumnos con calificación mayor a 8: [valor]</code></pre>
               </li>
-              <li>Crear un objeto <code>Scanner</code> para leer los datos introducidos.</li>
-              <li>Leer la variable <code>num</code></li>
-              <li>Calcular <code>cua</code> y <code>cub</code>.</li> <!--Nota-->
-              <li>Escribir <code>cua</code> y <code>cub</code></li> <!--Tip-->
             </ul>
             
             <h3>Ejemplo de uso esperado</h3>
-            <pre><code class="code-block"># Leer el número
-System.out.print("Introduce un número entero: ");
-num = teclado.nextInt();
+            <pre><code class="code-block">Introduce el número de alumnos del grupo: 5
+Introduce la calificación del alumno #1: 10
+Introduce la calificación del alumno #2: 9
+Introduce la calificación del alumno #3: 7
+Introduce la calificación del alumno #4: 6
+Introduce la calificación del alumno #5: 5
 
-# Calcular valores 
-cua = Math.pow(num, 2); // Eleva num al cuadrado
-cub = Math.pow(num, 3); // Eleva num al cubo
-
-# Visualizar los resultados 
-System.out.println("El cuadrado de " + num + " es: " + cua);
-System.out.println("El cubo de " + num + " es: " + cub); 
+--- Reporte de Calificaciones ---
+Promedio general: 7.40
+Alumnos aprobados (>6): 3
+Alumnos reprobados (<=6): 2
+Porcentaje de aprobados: 60.00%
+Porcentaje de reprobados: 40.00%
+Alumnos con calificación mayor a 8: 2
             </code></pre>
           </section>
           
           <aside class="exercise-sidebar">
-            <h3>Notas rápidas</h3>
-            <p class="note-text">Asegúrate de:</p>
-            <ul>
-              <li>Tu objeto <code>Scanner</code> sea correcto para que lea los datos itroducidos por el usuario.</li>
-              <li>Utiliza la función <code>Math.Pow()</code> para hacer el calculo de los valores.</li>
-            </ul>
+            <h3>Formato de Decimales</h3>
+            <p class="note-text">Para imprimir un número decimal con exactamente dos decimales (ej. <code>7.40</code> o <code>60.00%</code>), no puedes usar <code>System.out.println()</code> directamente. Necesitas una función de formato.</p>
             
             <div class="tip-box">
-              <strong>Tip:</strong>
-              <ul>
-                <li>Al momento de introducir el número se recomienda que no sea un número con valor decimal o fracción.</li>
-                <li>O implementa el codigo para que el número ingresado sea de tipo double.</li>
-              </ul> 
+              <strong>Tip: Usando <code>printf</code></strong>
+              <p>El método <code>System.out.printf()</code> te permite formatear texto. Para imprimir un número de tipo <code>double</code> con dos decimales, usa el especificador <code>%.2f</code>.</p>
+              <p>Ejemplo: <code>System.out.printf("Promedio: %.2f", miVariablePromedio);</code></p>
             </div>
           </aside>
         </div>
       </article>
 
       <!-- Ejemplo 5.1 -->
-      <article id="EJ_5.1" class="exercise-card" aria-labelledby="Ej_5.1-title">
+      <article id="EJ_5.1" class="exercise-card" aria-labelledby="EJ_5.1-title">
         <header class="exercise-header">
           <span class="exercise-badge">Ejemplo 5.1</span>
-          <h2 id="Ej_5.1-title">A continuación presentamos la solución en lenguaje algorítmico del diagrama de flujo 1.4.</h2>
+          <h2 id="EJ_5.1-title">Creando tu Primera Clase: Alumno</h2>
           
           <p class="exercise-description">
-            El programa, dado como dato un número entero positivo, calcula el cuadrado y el cubo de dicho número NUM es una variable de tipo entero. CUA y CUB son variables de tipo real
+            ¡Bienvenido a la Programación Orientada a Objetos! En este ejercicio, crearás una "plantilla" (una clase) para representar a un Alumno. Luego, tu programa pedirá los datos de un alumno al usuario y los usará para crear un "objeto" Alumno.
           </p>
         </header>
         
         <div class="exercise-content">
           <section class="exercise-main">
             <h3>Requisitos</h3>
+            <p>El programa se divide en dos partes: la **clase** y el **método `main`**.</p>
+            <h5>Parte 1: La Clase `P14_7_ej_5_1`</h5>
             <ul>
-              <li>Crear la clase <code>CuadradoCubo</code>.</li>
-              <li>Declarar las variables:
-                <ul>
-                  <li><code>num</code>: Tiene que ser de tipo <code>entero</code>.</li>
-                  <li><code>cua</code>, <code>cub</code>: Ambas tienen que ser de tipo <code>double</code>.</li>
-                </ul>
-              </li>
-              <li>Crear un objeto <code>Scanner</code> para leer los datos introducidos.</li>
-              <li>Leer la variable <code>num</code></li>
-              <li>Calcular <code>cua</code> y <code>cub</code>.</li> <!--Nota-->
-              <li>Escribir <code>cua</code> y <code>cub</code></li> <!--Tip-->
+              <li>Debe tener atributos privados: <code>nombre</code>, <code>direccion</code>, <code>carrera</code> (String) y <code>matricula</code> (int).</li>
+              <li>Debe tener un **constructor** que reciba y asigne todos estos atributos.</li>
+              <li>Debe tener métodos `get` y `set` para cada uno de los atributos.</li>
+            </ul>
+            <h5>Parte 2: El Método `main`</h5>
+            <ul>
+              <li>Pide al usuario los datos de un alumno (nombre, dirección, carrera y matrícula).</li>
+              <li>Crea un nuevo objeto de la clase `P14_7_ej_5_1` usando los datos introducidos.</li>
+              <li>Imprime un reporte final con los datos del objeto creado.</li>
             </ul>
             
             <h3>Ejemplo de uso esperado</h3>
-            <pre><code class="code-block"># Leer el número
-System.out.print("Introduce un número entero: ");
-num = teclado.nextInt();
+            <pre><code class="code-block">Introduce el nombre del alumno: Juan Perez
+Introduce la dirección: Avenida Siempre Viva 742
+Introduce la carrera: Sistemas Computacionales
+Introduce la matrícula: 123456
 
-# Calcular valores 
-cua = Math.pow(num, 2); // Eleva num al cuadrado
-cub = Math.pow(num, 3); // Eleva num al cubo
-
-# Visualizar los resultados 
-System.out.println("El cuadrado de " + num + " es: " + cua);
-System.out.println("El cubo de " + num + " es: " + cub); 
+--- Datos del Alumno Registrado ---
+Nombre: Juan Perez
+Matrícula: 123456
+Dirección: Avenida Siempre Viva 742
+Carrera: Sistemas Computacionales
             </code></pre>
           </section>
           
           <aside class="exercise-sidebar">
-            <h3>Notas rápidas</h3>
-            <p class="note-text">Asegúrate de:</p>
-            <ul>
-              <li>Tu objeto <code>Scanner</code> sea correcto para que lea los datos itroducidos por el usuario.</li>
-              <li>Utiliza la función <code>Math.Pow()</code> para hacer el calculo de los valores.</li>
-            </ul>
+            <h3>Concepto Clave: Clases y Objetos</h3>
+            <p class="note-text">Una <strong>clase</strong> es como un plano o un molde. Define las propiedades (atributos) y los comportamientos (métodos) que algo tendrá. Un <strong>objeto</strong> es una instancia de esa clase, es decir, una "cosa" real creada a partir de ese molde.</p>
             
             <div class="tip-box">
-              <strong>Tip:</strong>
-              <ul>
-                <li>Al momento de introducir el número se recomienda que no sea un número con valor decimal o fracción.</li>
-                <li>O implementa el codigo para que el número ingresado sea de tipo double.</li>
-              </ul> 
+              <strong>Tip: El Constructor</strong>
+              <p>El constructor es un método especial que se llama automáticamente cuando creas un nuevo objeto (<code>new P14_7_ej_5_1(...)</code>). Su trabajo es inicializar los atributos del objeto con los valores que le pasas.</p>
             </div>
           </aside>
         </div>
@@ -444,60 +682,44 @@ System.out.println("El cubo de " + num + " es: " + cub);
       <!-- PS 1.7 -->
       <article id="PS_1.7" class="exercise-card" aria-labelledby="PS_1.7-title">
         <header class="exercise-header">
-          <span class="exercise-badge">Problema suplemenatrio 1.7</span>
-          <h2 id="PS_1.7-title">A continuación presentamos la solución en lenguaje algorítmico del diagrama de flujo 1.4.</h2>
+          <span class="exercise-badge">Problema Suplementario 1.7</span>
+          <h2 id="PS_1.7-title">Calculadora de Plan de Pagos</h2>
           
           <p class="exercise-description">
-            El programa, dado como dato un número entero positivo, calcula el cuadrado y el cubo de dicho número NUM es una variable de tipo entero. CUA y CUB son variables de tipo real
+            Una agencia de autos vende vehículos a crédito. El plan consiste en dar un enganche del 35% del precio del vehículo y pagar el resto en 36 mensualidades fijas. Escribe un programa que calcule y muestre el monto del enganche y de cada mensualidad.
           </p>
         </header>
         
         <div class="exercise-content">
           <section class="exercise-main">
             <h3>Requisitos</h3>
+            <p>Todo el código debe estar dentro del método <code>main</code>.</p>
             <ul>
-              <li>Crear la clase <code>CuadradoCubo</code>.</li>
-              <li>Declarar las variables:
-                <ul>
-                  <li><code>num</code>: Tiene que ser de tipo <code>entero</code>.</li>
-                  <li><code>cua</code>, <code>cub</code>: Ambas tienen que ser de tipo <code>double</code>.</li>
-                </ul>
-              </li>
-              <li>Crear un objeto <code>Scanner</code> para leer los datos introducidos.</li>
-              <li>Leer la variable <code>num</code></li>
-              <li>Calcular <code>cua</code> y <code>cub</code>.</li> <!--Nota-->
-              <li>Escribir <code>cua</code> y <code>cub</code></li> <!--Tip-->
+              <li>Pide al usuario el precio del vehículo con el texto: <code>"Introduce el precio del vehículo: "</code>.</li>
+              <li>Calcula el enganche, que es el 35% del precio (<code>precio * 0.35</code>).</li>
+              <li>Calcula el monto restante a pagar (<code>precio - enganche</code>).</li>
+              <li>Calcula la mensualidad dividiendo el resto entre 36.</li>
+              <li>Imprime un reporte final con los resultados formateados a dos decimales.</li>
             </ul>
             
             <h3>Ejemplo de uso esperado</h3>
-            <pre><code class="code-block"># Leer el número
-System.out.print("Introduce un número entero: ");
-num = teclado.nextInt();
+            <pre><code class="code-block">Introduce el precio del vehículo: 250000
 
-# Calcular valores 
-cua = Math.pow(num, 2); // Eleva num al cuadrado
-cub = Math.pow(num, 3); // Eleva num al cubo
-
-# Visualizar los resultados 
-System.out.println("El cuadrado de " + num + " es: " + cua);
-System.out.println("El cubo de " + num + " es: " + cub); 
+--- Plan de Pagos ---
+Enganche (35%): $87500.00
+Pago mensual (36 meses): $4513.89
             </code></pre>
           </section>
           
           <aside class="exercise-sidebar">
-            <h3>Notas rápidas</h3>
-            <p class="note-text">Asegúrate de:</p>
-            <ul>
-              <li>Tu objeto <code>Scanner</code> sea correcto para que lea los datos itroducidos por el usuario.</li>
-              <li>Utiliza la función <code>Math.Pow()</code> para hacer el calculo de los valores.</li>
-            </ul>
+            <h3>Formato de Moneda</h3>
+            <p class="note-text">Para mostrar los resultados como si fueran dinero (con dos decimales), es ideal usar <code>System.out.printf()</code>.</p>
             
             <div class="tip-box">
-              <strong>Tip:</strong>
-              <ul>
-                <li>Al momento de introducir el número se recomienda que no sea un número con valor decimal o fracción.</li>
-                <li>O implementa el codigo para que el número ingresado sea de tipo double.</li>
-              </ul> 
+              <strong>Tip: Usando <code>printf</code></strong>
+              <p>El método <code>System.out.printf()</code> te permite formatear texto. Para imprimir un número de tipo <code>double</code> con dos decimales, usa el especificador <code>%.2f</code>.</p>
+              <p>Ejemplo: <code>System.out.printf("Enganche: $%.2f\n", miVariableEnganche);</code></p>
+              <p>El <code>\n</code> al final es importante para que la siguiente línea se imprima abajo.</p>
             </div>
           </aside>
         </div>
@@ -506,60 +728,47 @@ System.out.println("El cubo de " + num + " es: " + cub);
       <!-- PS 3.6 -->
       <article id="PS_3.6" class="exercise-card" aria-labelledby="PS_3.6-title">
         <header class="exercise-header">
-          <span class="exercise-badge">Problema suplemenatrio 3.6</span>
-          <h2 id="PS_3.6-title">A continuación presentamos la solución en lenguaje algorítmico del diagrama de flujo 1.4.</h2>
+          <span class="exercise-badge">Problema Suplementario 3.6</span>
+          <h2 id="PS_3.6-title">Aumento de Sueldo Condicional</h2>
           
           <p class="exercise-description">
-            El programa, dado como dato un número entero positivo, calcula el cuadrado y el cubo de dicho número NUM es una variable de tipo entero. CUA y CUB son variables de tipo real
+            Una empresa aplica un aumento de sueldo del 15% a todos sus trabajadores cuyo sueldo actual es inferior a $800. Escribe un programa que pida los sueldos de N trabajadores y muestre el nuevo sueldo de cada uno.
           </p>
         </header>
         
         <div class="exercise-content">
           <section class="exercise-main">
             <h3>Requisitos</h3>
+            <p>Todo el código debe estar dentro del método <code>main</code>.</p>
             <ul>
-              <li>Crear la clase <code>CuadradoCubo</code>.</li>
-              <li>Declarar las variables:
-                <ul>
-                  <li><code>num</code>: Tiene que ser de tipo <code>entero</code>.</li>
-                  <li><code>cua</code>, <code>cub</code>: Ambas tienen que ser de tipo <code>double</code>.</li>
-                </ul>
-              </li>
-              <li>Crear un objeto <code>Scanner</code> para leer los datos introducidos.</li>
-              <li>Leer la variable <code>num</code></li>
-              <li>Calcular <code>cua</code> y <code>cub</code>.</li> <!--Nota-->
-              <li>Escribir <code>cua</code> y <code>cub</code></li> <!--Tip-->
+              <li>Pide al usuario el número de empleados con: <code>"Introduce el número de empleados: "</code>.</li>
+              <li>Usa un bucle <code>for</code> para procesar cada empleado.</li>
+              <li>Dentro del bucle, pide el sueldo de cada uno con: <code>"Sueldo del empleado #[num]: "</code>.</li>
+              <li>Si el sueldo es menor a 800, aplícale un aumento del 15% (<code>sueldo * 1.15</code>).</li>
+              <li>Imprime inmediatamente el nuevo sueldo de ese empleado, formateado a dos decimales, con el texto: <code>" -> Nuevo sueldo: $[sueldo]"</code>.</li>
             </ul>
             
             <h3>Ejemplo de uso esperado</h3>
-            <pre><code class="code-block"># Leer el número
-System.out.print("Introduce un número entero: ");
-num = teclado.nextInt();
-
-# Calcular valores 
-cua = Math.pow(num, 2); // Eleva num al cuadrado
-cub = Math.pow(num, 3); // Eleva num al cubo
-
-# Visualizar los resultados 
-System.out.println("El cuadrado de " + num + " es: " + cua);
-System.out.println("El cubo de " + num + " es: " + cub); 
+            <pre><code class="code-block">Introduce el número de empleados: 3
+--- Introduce los sueldos ---
+Sueldo del empleado #1: 500
+ -> Nuevo sueldo: $575.00
+Sueldo del empleado #2: 800
+ -> Nuevo sueldo: $800.00
+Sueldo del empleado #3: 1000
+ -> Nuevo sueldo: $1000.00
             </code></pre>
           </section>
           
           <aside class="exercise-sidebar">
-            <h3>Notas rápidas</h3>
-            <p class="note-text">Asegúrate de:</p>
-            <ul>
-              <li>Tu objeto <code>Scanner</code> sea correcto para que lea los datos itroducidos por el usuario.</li>
-              <li>Utiliza la función <code>Math.Pow()</code> para hacer el calculo de los valores.</li>
-            </ul>
+            <h3>Condición Clave</h3>
+            <p class="note-text">La condición para el aumento es estricta: <code>sueldo < 800</code>. Esto significa que un sueldo de exactamente 800.00 no recibe aumento.</p>
             
             <div class="tip-box">
-              <strong>Tip:</strong>
-              <ul>
-                <li>Al momento de introducir el número se recomienda que no sea un número con valor decimal o fracción.</li>
-                <li>O implementa el codigo para que el número ingresado sea de tipo double.</li>
-              </ul> 
+              <strong>Tip: Usando <code>printf</code></strong>
+              <p>Para mostrar el sueldo con formato de moneda (dos decimales), es ideal usar <code>System.out.printf()</code>.</p>
+              <p>Ejemplo: <code>System.out.printf(" -> Nuevo sueldo: $%.2f\n", nuevoSueldo);</code></p>
+              <p>El <code>\n</code> al final asegura que la siguiente petición de sueldo aparezca en una nueva línea.</p>
             </div>
           </aside>
         </div>
@@ -568,60 +777,49 @@ System.out.println("El cubo de " + num + " es: " + cub);
       <!-- PS 3.7 -->
       <article id="PS_3.7" class="exercise-card" aria-labelledby="PS_3.7-title">
         <header class="exercise-header">
-          <span class="exercise-badge">Problema suplemenatrio 3.7</span>
-          <h2 id="PS_3.7-title">A continuación presentamos la solución en lenguaje algorítmico del diagrama de flujo 1.4.</h2>
+          <span class="exercise-badge">Problema Suplementario 3.7</span>
+          <h2 id="PS_3.7-title">Calculadora de Nómina con Aumentos por Rango</h2>
           
           <p class="exercise-description">
-            El programa, dado como dato un número entero positivo, calcula el cuadrado y el cubo de dicho número NUM es una variable de tipo entero. CUA y CUB son variables de tipo real
+            Una empresa desea calcular su nómina total después de aplicar aumentos de sueldo. Los aumentos se basan en el sueldo actual del empleado: 10% si ganan menos de $10,000; 7% si ganan entre $10,000 y $25,000; y 8% si ganan más de $25,000.
           </p>
         </header>
         
         <div class="exercise-content">
           <section class="exercise-main">
             <h3>Requisitos</h3>
+            <p>Todo el código debe estar dentro del método <code>main</code>.</p>
             <ul>
-              <li>Crear la clase <code>CuadradoCubo</code>.</li>
-              <li>Declarar las variables:
-                <ul>
-                  <li><code>num</code>: Tiene que ser de tipo <code>entero</code>.</li>
-                  <li><code>cua</code>, <code>cub</code>: Ambas tienen que ser de tipo <code>double</code>.</li>
-                </ul>
-              </li>
-              <li>Crear un objeto <code>Scanner</code> para leer los datos introducidos.</li>
-              <li>Leer la variable <code>num</code></li>
-              <li>Calcular <code>cua</code> y <code>cub</code>.</li> <!--Nota-->
-              <li>Escribir <code>cua</code> y <code>cub</code></li> <!--Tip-->
+              <li>Pide al usuario el número de empleados con: <code>"Introduce el número de empleados: "</code>.</li>
+              <li>Usa un bucle <code>for</code> para procesar cada empleado.</li>
+              <li>Dentro del bucle, pide el sueldo de cada uno con: <code>"Sueldo del empleado #[num]: "</code>.</li>
+              <li>Usa una estructura <code>if-else if-else</code> para calcular el nuevo sueldo según el rango.</li>
+              <li>Imprime el nuevo sueldo de ese empleado, formateado a dos decimales: <code>" -> Nuevo sueldo: $[sueldo]"</code>.</li>
+              <li>Mantén un acumulador para sumar todos los nuevos sueldos.</li>
+              <li>Al final del bucle, imprime la nómina total con: <code>"El total de la nueva nómina es: $[total]"</code>.</li>
             </ul>
             
             <h3>Ejemplo de uso esperado</h3>
-            <pre><code class="code-block"># Leer el número
-System.out.print("Introduce un número entero: ");
-num = teclado.nextInt();
+            <pre><code class="code-block">Introduce el número de empleados: 3
+Sueldo del empleado #1: 5000
+ -> Nuevo sueldo: $5500.00
+Sueldo del empleado #2: 20000
+ -> Nuevo sueldo: $21400.00
+Sueldo del empleado #3: 30000
+ -> Nuevo sueldo: $32400.00
 
-# Calcular valores 
-cua = Math.pow(num, 2); // Eleva num al cuadrado
-cub = Math.pow(num, 3); // Eleva num al cubo
-
-# Visualizar los resultados 
-System.out.println("El cuadrado de " + num + " es: " + cua);
-System.out.println("El cubo de " + num + " es: " + cub); 
+El total de la nueva nómina es: $59300.00
             </code></pre>
           </section>
           
           <aside class="exercise-sidebar">
-            <h3>Notas rápidas</h3>
-            <p class="note-text">Asegúrate de:</p>
-            <ul>
-              <li>Tu objeto <code>Scanner</code> sea correcto para que lea los datos itroducidos por el usuario.</li>
-              <li>Utiliza la función <code>Math.Pow()</code> para hacer el calculo de los valores.</li>
-            </ul>
+            <h3>Rangos y Condiciones</h3>
+            <p class="note-text">Presta atención a los límites de los rangos. El rango intermedio incluye el 10,000 y el 25,000 (<code>sueldo <= 25000</code>).</p>
             
             <div class="tip-box">
-              <strong>Tip:</strong>
-              <ul>
-                <li>Al momento de introducir el número se recomienda que no sea un número con valor decimal o fracción.</li>
-                <li>O implementa el codigo para que el número ingresado sea de tipo double.</li>
-              </ul> 
+              <strong>Tip: Acumuladores</strong>
+              <p>Un "acumulador" es una variable que usas para llevar una suma continua. Declara una variable <code>double totalNomina = 0;</code> antes del bucle.</p>
+              <p>Dentro del bucle, después de calcular cada <code>nuevoSueldo</code>, simplemente añádelo al total con <code>totalNomina += nuevoSueldo;</code>.</p>
             </div>
           </aside>
         </div>
@@ -630,60 +828,51 @@ System.out.println("El cubo de " + num + " es: " + cub);
       <!-- PS 3.40 -->
       <article id="PS_3.40" class="exercise-card" aria-labelledby="PS_3.40-title">
         <header class="exercise-header">
-          <span class="exercise-badge">Problema suplemenatrio 3.40</span>
-          <h2 id="PS_3.40-title">A continuación presentamos la solución en lenguaje algorítmico del diagrama de flujo 1.4.</h2>
+          <span class="exercise-badge">Problema Suplementario 3.40</span>
+          <h2 id="PS_3.40-title">Análisis de Conductividad de Elementos</h2>
           
           <p class="exercise-description">
-            El programa, dado como dato un número entero positivo, calcula el cuadrado y el cubo de dicho número NUM es una variable de tipo entero. CUA y CUB son variables de tipo real
+            Escribe un programa que lea el nombre, la conductividad eléctrica y la conductividad térmica de varios elementos. El programa debe detenerse cuando el usuario ingrese "NN" como nombre. Al final, debe reportar cuál es el mejor y peor conductor eléctrico, y el mejor y peor conductor térmico.
           </p>
         </header>
         
         <div class="exercise-content">
           <section class="exercise-main">
             <h3>Requisitos</h3>
+            <p>Todo el código debe estar dentro del método <code>main</code>.</p>
             <ul>
-              <li>Crear la clase <code>CuadradoCubo</code>.</li>
-              <li>Declarar las variables:
-                <ul>
-                  <li><code>num</code>: Tiene que ser de tipo <code>entero</code>.</li>
-                  <li><code>cua</code>, <code>cub</code>: Ambas tienen que ser de tipo <code>double</code>.</li>
-                </ul>
-              </li>
-              <li>Crear un objeto <code>Scanner</code> para leer los datos introducidos.</li>
-              <li>Leer la variable <code>num</code></li>
-              <li>Calcular <code>cua</code> y <code>cub</code>.</li> <!--Nota-->
-              <li>Escribir <code>cua</code> y <code>cub</code></li> <!--Tip-->
+              <li>Usa un bucle <code>do-while</code> para pedir datos hasta que el usuario ingrese "NN".</li>
+              <li>Dentro del bucle, pide el nombre, la conductividad eléctrica y la conductividad térmica.</li>
+              <li>Guarda estos datos en tres arreglos paralelos (uno para nombres, uno para cond. eléctrica y otro para cond. térmica).</li>
+              <li>Después de que el usuario termine de ingresar datos, usa bucles <code>for</code> para encontrar los elementos con los valores máximos y mínimos para cada tipo de conductividad.</li>
+              <li>Imprime un reporte final con los resultados.</li>
             </ul>
             
             <h3>Ejemplo de uso esperado</h3>
-            <pre><code class="code-block"># Leer el número
-System.out.print("Introduce un número entero: ");
-num = teclado.nextInt();
+            <pre><code class="code-block">--- Ingrese los datos de los elementos ---
+Ingrese el nombre del elemento (o 'NN' para finalizar): Plata
+Ingrese la conductividad electrica: 63.0
+Ingrese la conductividad termica: 429.0
+Ingrese el nombre del elemento (o 'NN' para finalizar): Azufre
+Ingrese la conductividad electrica: 0.1
+Ingrese la conductividad termica: 0.2
+Ingrese el nombre del elemento (o 'NN' para finalizar): NN
 
-# Calcular valores 
-cua = Math.pow(num, 2); // Eleva num al cuadrado
-cub = Math.pow(num, 3); // Eleva num al cubo
-
-# Visualizar los resultados 
-System.out.println("El cuadrado de " + num + " es: " + cua);
-System.out.println("El cubo de " + num + " es: " + cub); 
+--- Resultados del Análisis de Conductividad ---
+Mejor conductor eléctrico: Plata
+Peor conductor eléctrico: Azufre
+Mejor conductor térmico: Plata
+Peor conductor térmico: Azufre
             </code></pre>
           </section>
           
           <aside class="exercise-sidebar">
-            <h3>Notas rápidas</h3>
-            <p class="note-text">Asegúrate de:</p>
-            <ul>
-              <li>Tu objeto <code>Scanner</code> sea correcto para que lea los datos itroducidos por el usuario.</li>
-              <li>Utiliza la función <code>Math.Pow()</code> para hacer el calculo de los valores.</li>
-            </ul>
+            <h3>Concepto Clave: Arreglos Paralelos</h3>
+            <p class="note-text">Los arreglos paralelos son una técnica donde usas múltiples arreglos y el índice `i` se refiere a la misma entidad en todos ellos. Por ejemplo, `nombres[i]`, `condElectrica[i]` y `condTermica[i]` contienen toda la información del i-ésimo elemento.</p>
             
             <div class="tip-box">
-              <strong>Tip:</strong>
-              <ul>
-                <li>Al momento de introducir el número se recomienda que no sea un número con valor decimal o fracción.</li>
-                <li>O implementa el codigo para que el número ingresado sea de tipo double.</li>
-              </ul> 
+              <strong>Tip: Encontrando el Máximo/Mínimo</strong>
+              <p>Para encontrar el valor máximo en un arreglo, inicializa una variable `max` con el primer valor del arreglo. Luego, recorre el resto del arreglo con un bucle `for`. Si encuentras un valor mayor que `max`, actualiza `max` con ese nuevo valor. Haz lo mismo para el mínimo.</p>
             </div>
           </aside>
         </div>
@@ -692,60 +881,58 @@ System.out.println("El cubo de " + num + " es: " + cub);
       <!-- PS 4.12 -->
       <article id="PS_4.12" class="exercise-card" aria-labelledby="PS_4.12-title">
         <header class="exercise-header">
-          <span class="exercise-badge">Problema suplemenatrio 4.12</span>
-          <h2 id="PS_4.12-title">A continuación presentamos la solución en lenguaje algorítmico del diagrama de flujo 1.4.</h2>
+          <span class="exercise-badge">Problema Suplementario 4.12</span>
+          <h2 id="PS_4.12-title">Análisis de Ventas de Fábrica</h2>
           
           <p class="exercise-description">
-            El programa, dado como dato un número entero positivo, calcula el cuadrado y el cubo de dicho número NUM es una variable de tipo entero. CUA y CUB son variables de tipo real
+            Una fábrica produce 8 modelos de productos. Se te pide escribir un programa que analice los registros de ventas para generar un reporte. El programa debe calcular el total recaudado por cada modelo, el total recaudado por día, y encontrar el modelo que generó más ingresos.
           </p>
         </header>
         
         <div class="exercise-content">
           <section class="exercise-main">
             <h3>Requisitos</h3>
+            <p>Todo el código debe estar dentro del método <code>main</code>.</p>
             <ul>
-              <li>Crear la clase <code>CuadradoCubo</code>.</li>
-              <li>Declarar las variables:
-                <ul>
-                  <li><code>num</code>: Tiene que ser de tipo <code>entero</code>.</li>
-                  <li><code>cua</code>, <code>cub</code>: Ambas tienen que ser de tipo <code>double</code>.</li>
-                </ul>
-              </li>
-              <li>Crear un objeto <code>Scanner</code> para leer los datos introducidos.</li>
-              <li>Leer la variable <code>num</code></li>
-              <li>Calcular <code>cua</code> y <code>cub</code>.</li> <!--Nota-->
-              <li>Escribir <code>cua</code> y <code>cub</code></li> <!--Tip-->
+              <li>Usa un arreglo predefinido para los precios de los 8 modelos: <code>{ 10.0, 15.0, 12.5, 8.75, 9.5, 11.25, 14.0, 13.5 }</code>.</li>
+              <li>Pide al usuario el número de registros de venta a procesar.</li>
+              <li>Usa un bucle para leer cada registro. Cada registro consiste en tres números: <strong>Día</strong>, <strong>Modelo</strong> (1-8), y <strong>Cantidad</strong>.</li>
+              <li>Calcula el total recaudado para cada uno de los 8 modelos.</li>
+              <li>Calcula el total recaudado para cada día (asume un máximo de 30 días).</li>
+              <li>Encuentra cuál de los 8 modelos generó la mayor cantidad de ingresos en total.</li>
+              <li>Imprime un reporte final con todos los resultados.</li>
             </ul>
             
             <h3>Ejemplo de uso esperado</h3>
-            <pre><code class="code-block"># Leer el número
-System.out.print("Introduce un número entero: ");
-num = teclado.nextInt();
+            <pre><code class="code-block">Introduce el número de registros de venta a procesar: 4
+--- Introduce los datos de cada venta (Día Modelo Cantidad) ---
+Registro #1: 1 1 10
+Registro #2: 1 2 5
+Registro #3: 2 1 2
+Registro #4: 2 3 8
 
-# Calcular valores 
-cua = Math.pow(num, 2); // Eleva num al cuadrado
-cub = Math.pow(num, 3); // Eleva num al cubo
+--- Reporte de Ventas ---
+Total recaudado por modelo:
+Modelo 1: $120.00
+Modelo 2: $75.00
+Modelo 3: $100.00
+... (los demás modelos en $0.00)
 
-# Visualizar los resultados 
-System.out.println("El cuadrado de " + num + " es: " + cua);
-System.out.println("El cubo de " + num + " es: " + cub); 
+Total recaudado por día:
+Día 1: $175.00
+Día 2: $120.00
+
+El modelo que más dinero produjo fue el modelo 1
             </code></pre>
           </section>
           
           <aside class="exercise-sidebar">
-            <h3>Notas rápidas</h3>
-            <p class="note-text">Asegúrate de:</p>
-            <ul>
-              <li>Tu objeto <code>Scanner</code> sea correcto para que lea los datos itroducidos por el usuario.</li>
-              <li>Utiliza la función <code>Math.Pow()</code> para hacer el calculo de los valores.</li>
-            </ul>
+            <h3>Concepto Clave: Índices de Arreglos</h3>
+            <p class="note-text">Recuerda que los arreglos en Java empiezan en el índice 0. Si el usuario introduce "Modelo 1", deberás acceder al índice 0 de tus arreglos (<code>precios[0]</code>, <code>recaudadoPorModelo[0]</code>). Siempre tendrás que restar 1 al número de modelo y al día para usarlos como índice.</p>
             
             <div class="tip-box">
-              <strong>Tip:</strong>
-              <ul>
-                <li>Al momento de introducir el número se recomienda que no sea un número con valor decimal o fracción.</li>
-                <li>O implementa el codigo para que el número ingresado sea de tipo double.</li>
-              </ul> 
+              <strong>Tip: Múltiples Arreglos de Totales</strong>
+              <p>Necesitarás un arreglo para acumular los totales por modelo (<code>double[] recaudadoPorModelo</code>) y otro para los totales por día (<code>double[] recaudadoPorDia</code>). A medida que procesas cada venta, actualizarás una posición en cada uno de estos arreglos.</p>
             </div>
           </aside>
         </div>
@@ -754,60 +941,51 @@ System.out.println("El cubo de " + num + " es: " + cub);
       <!-- PS 4.28 -->
       <article id="PS_4.28" class="exercise-card" aria-labelledby="PS_4.28-title">
         <header class="exercise-header">
-          <span class="exercise-badge">Problema suplemenatrio 4.28</span>
-          <h2 id="PS_4.28-title">A continuación presentamos la solución en lenguaje algorítmico del diagrama de flujo 1.4.</h2>
+          <span class="exercise-badge">Problema Suplementario 4.28</span>
+          <h2 id="PS_4.28-title">Verificador de Cuadrado Mágico</h2>
           
           <p class="exercise-description">
-            El programa, dado como dato un número entero positivo, calcula el cuadrado y el cubo de dicho número NUM es una variable de tipo entero. CUA y CUB son variables de tipo real
+            Un "cuadrado mágico" es una matriz cuadrada donde la suma de los números de cada fila, cada columna y ambas diagonales principales es la misma. Escribe un programa que determine si una matriz ingresada por el usuario es un cuadrado mágico.
           </p>
         </header>
         
         <div class="exercise-content">
           <section class="exercise-main">
             <h3>Requisitos</h3>
+            <p>Todo el código debe estar dentro del método <code>main</code>.</p>
             <ul>
-              <li>Crear la clase <code>CuadradoCubo</code>.</li>
-              <li>Declarar las variables:
-                <ul>
-                  <li><code>num</code>: Tiene que ser de tipo <code>entero</code>.</li>
-                  <li><code>cua</code>, <code>cub</code>: Ambas tienen que ser de tipo <code>double</code>.</li>
-                </ul>
-              </li>
-              <li>Crear un objeto <code>Scanner</code> para leer los datos introducidos.</li>
-              <li>Leer la variable <code>num</code></li>
-              <li>Calcular <code>cua</code> y <code>cub</code>.</li> <!--Nota-->
-              <li>Escribir <code>cua</code> y <code>cub</code></li> <!--Tip-->
+              <li>Pide al usuario el tamaño de la matriz cuadrada (N).</li>
+              <li>Usa bucles anidados para pedir al usuario cada uno de los elementos de la matriz.</li>
+              <li>Calcula la suma de la primera fila y úsala como la "suma de referencia".</li>
+              <li>Verifica que la suma de todas las demás filas, todas las columnas y ambas diagonales sea igual a la suma de referencia.</li>
+              <li>Si todas las sumas son iguales, imprime: <code>"La matriz es un cuadrado mágico"</code>.</li>
+              <li>Si encuentras una sola suma que sea diferente, imprime: <code>"La matriz no es un cuadrado mágico"</code>.</li>
             </ul>
             
             <h3>Ejemplo de uso esperado</h3>
-            <pre><code class="code-block"># Leer el número
-System.out.print("Introduce un número entero: ");
-num = teclado.nextInt();
-
-# Calcular valores 
-cua = Math.pow(num, 2); // Eleva num al cuadrado
-cub = Math.pow(num, 3); // Eleva num al cubo
-
-# Visualizar los resultados 
-System.out.println("El cuadrado de " + num + " es: " + cua);
-System.out.println("El cubo de " + num + " es: " + cub); 
+            <pre><code class="code-block">Introduce el tamaño de la matriz cuadrada (N): 3
+Introduce los elementos de la matriz:
+Elemento [0][0]: 8
+Elemento [0][1]: 1
+Elemento [0][2]: 6
+Elemento [1][0]: 3
+Elemento [1][1]: 5
+Elemento [1][2]: 7
+Elemento [2][0]: 4
+Elemento [2][1]: 9
+Elemento [2][2]: 2
+La matriz es un cuadrado mágico
             </code></pre>
           </section>
           
           <aside class="exercise-sidebar">
-            <h3>Notas rápidas</h3>
-            <p class="note-text">Asegúrate de:</p>
-            <ul>
-              <li>Tu objeto <code>Scanner</code> sea correcto para que lea los datos itroducidos por el usuario.</li>
-              <li>Utiliza la función <code>Math.Pow()</code> para hacer el calculo de los valores.</li>
-            </ul>
+            <h3>Concepto Clave: Matrices</h3>
+            <p class="note-text">Una matriz (o arreglo bidimensional) es como una tabla o una cuadrícula. Se declara con dos pares de corchetes: <code>int[][] matriz = new int[N][N];</code>. Para acceder a un elemento, necesitas dos índices: uno para la fila y otro para la columna (<code>matriz[fila][columna]</code>).</p>
             
             <div class="tip-box">
-              <strong>Tip:</strong>
-              <ul>
-                <li>Al momento de introducir el número se recomienda que no sea un número con valor decimal o fracción.</li>
-                <li>O implementa el codigo para que el número ingresado sea de tipo double.</li>
-              </ul> 
+              <strong>Tip: Usando una Bandera</strong>
+              <p>Crea una variable <code>boolean esMagico = true;</code> al principio. Dentro de tus bucles de verificación, si encuentras una suma que no coincide con la de referencia, simplemente cambia la bandera a <code>false</code>.</p>
+              <p>Al final, solo necesitas un <code>if (esMagico)</code> para decidir qué mensaje imprimir. Esto es más limpio que tener múltiples mensajes de error y salidas del programa.</p>
             </div>
           </aside>
         </div>

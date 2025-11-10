@@ -1,0 +1,42 @@
+digraph P14_7_ej_5_1_Flowchart {
+    // Configuración general del grafo
+    rankdir=TB;
+    node [fontname="Helvetica", fontsize=10];
+    edge [fontname="Helvetica", fontsize=9];
+
+    // Definición de estilos de nodos
+    node [shape=ellipse, style=filled, fillcolor=lightgrey]; // Inicio/Fin
+    start [label="INICIO"];
+    end [label="FIN"];
+
+    node [shape=box, style=filled, fillcolor=lightblue]; // Proceso
+    declare_vars [label="DECLARAR:\nScanner sc, String nombre, direccion, carrera,\nint matricula"];
+    create_object [label="Crear objeto 'alumno' de la clase P14_7_ej_5_1\ncon los datos leídos"];
+    close_scanner [label="Cerrar Scanner"];
+
+    node [shape=parallelogram, style=filled, fillcolor=lightgoldenrod1]; // Entrada/Salida
+    prompt_nombre [label="IMPRIMIR \"Introduce el nombre del alumno: \""];
+    read_nombre [label="LEER nombre"];
+    prompt_direccion [label="IMPRIMIR \"Introduce la dirección: \""];
+    read_direccion [label="LEER direccion"];
+    prompt_carrera [label="IMPRIMIR \"Introduce la carrera: \""];
+    read_carrera [label="LEER carrera"];
+    prompt_matricula [label="IMPRIMIR \"Introduce la matrícula: \""];
+    read_matricula [label="LEER matricula"];
+    print_reporte [label="IMPRIMIR \"--- Datos del Alumno Registrado ---\"\n- Nombre: alumno.getNombre()\n- Matrícula: alumno.getMatricula()\n- Dirección: alumno.getDireccion()\n- Carrera: alumno.getCarrera()"];
+
+    // Conexiones (flujo)
+    start -> declare_vars;
+    declare_vars -> prompt_nombre;
+    prompt_nombre -> read_nombre;
+    read_nombre -> prompt_direccion;
+    prompt_direccion -> read_direccion;
+    read_direccion -> prompt_carrera;
+    prompt_carrera -> read_carrera;
+    read_carrera -> prompt_matricula;
+    prompt_matricula -> read_matricula;
+    read_matricula -> create_object;
+    create_object -> print_reporte;
+    print_reporte -> close_scanner;
+    close_scanner -> end;
+}

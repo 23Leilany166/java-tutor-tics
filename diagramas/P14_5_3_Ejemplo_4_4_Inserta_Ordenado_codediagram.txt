@@ -1,0 +1,65 @@
+digraph P14_5_3_Ejemplo_4_4_Inserta_Ordenado_Flowchart {
+    // Configuración general del grafo
+    rankdir=TB;
+    node [fontname="Helvetica", fontsize=10];
+    edge [fontname="Helvetica", fontsize=9];
+
+    // Definición de estilos de nodos
+    node [shape=ellipse, style=filled, fillcolor=lightgrey]; // Inicio/Fin
+    start [label="INICIO"];
+    end [label="FIN"];
+
+    node [shape=box, style=filled, fillcolor=lightblue]; // Proceso
+    declare_vars [label="DECLARAR:\nScanner sc, int[] a, int n, int x,\nint pos=0"];
+    read_elements_loop [label="BUCLE for (i=0 hasta n-1)"];
+    read_element [label="LEER a[i]"];
+    find_pos_proc [label="pos++"];
+    shift_loop [label="BUCLE for (i=n hasta pos+1)"];
+    shift_proc [label="a[i] = a[i-1]"];
+    insert_proc [label="a[pos] = x"];
+    increment_n [label="n++"];
+    print_loop [label="BUCLE for (i=0 hasta n-1)"];
+    print_element [label="IMPRIMIR a[i]"];
+    close_scanner [label="Cerrar Scanner"];
+
+    node [shape=parallelogram, style=filled, fillcolor=lightgoldenrod1]; // Entrada/Salida
+    prompt_n [label="IMPRIMIR \"Ingrese cantidad de elementos (N < 100): \""];
+    read_n [label="LEER n"];
+    print_lleno [label="IMPRIMIR \"El arreglo ya está lleno.\""];
+    prompt_elements [label="IMPRIMIR \"Ingrese los elementos (ordenados):\""];
+    prompt_x [label="IMPRIMIR \"Ingrese el elemento a insertar (X): \""];
+    read_x [label="LEER x"];
+    print_existe [label="IMPRIMIR \"No se pudo insertar (ya existe).\""];
+    print_success [label="IMPRIMIR \"Elemento insertado exitosamente.\nArreglo resultante:\""];
+
+    node [shape=diamond, style=filled, fillcolor=khaki, width=2, height=1.2]; // Decisión
+    decision_lleno [label="n >= 100"];
+    find_pos_loop [label="pos < n &&\na[pos] < x"];
+    decision_existe [label="pos < n &&\na[pos] == x"];
+
+    // Conexiones (flujo)
+    start -> declare_vars -> prompt_n -> read_n -> decision_lleno;
+    decision_lleno -> print_lleno [label="Sí"];
+    decision_lleno -> prompt_elements [label="No"];
+    print_lleno -> close_scanner;
+
+    prompt_elements -> read_elements_loop -> read_element -> read_elements_loop;
+    read_elements_loop -> prompt_x [label="Fin del bucle"];
+    prompt_x -> read_x -> find_pos_loop;
+
+    find_pos_loop -> find_pos_proc [label="Sí"];
+    find_pos_proc -> find_pos_loop;
+    find_pos_loop -> decision_existe [label="No"];
+
+    decision_existe -> print_existe [label="Sí"];
+    decision_existe -> shift_loop [label="No"];
+    print_existe -> print_loop;
+
+    shift_loop -> shift_proc -> shift_loop;
+    shift_loop -> insert_proc [label="Fin del bucle"];
+    insert_proc -> increment_n -> print_success -> print_loop;
+
+    print_loop -> print_element -> print_loop;
+    print_loop -> close_scanner [label="Fin del bucle"];
+    close_scanner -> end;
+}

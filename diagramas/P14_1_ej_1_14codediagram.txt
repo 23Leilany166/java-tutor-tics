@@ -1,0 +1,34 @@
+digraph P14_1_ej_1_14_Flowchart {
+    // Configuración general del grafo
+    rankdir=TB; // De arriba hacia abajo
+    node [fontname="Helvetica", fontsize=10];
+    edge [fontname="Helvetica", fontsize=9];
+
+    // Definición de estilos de nodos
+    node [shape=ellipse, style=filled, fillcolor=lightgrey]; // Inicio/Fin
+    start [label="INICIO"];
+    end [label="FIN"];
+
+    node [shape=box, style=filled, fillcolor=lightblue]; // Proceso
+    declare_vars [label="DECLARAR:\nnum (int)\ncua (double)\ncub (double)"];
+    calc_cua [label="cua = num * num"];
+    calc_cub [label="cub = num * num * num"];
+    close_scanner [label="Cerrar Scanner"];
+
+    node [shape=parallelogram, style=filled, fillcolor=lightgoldenrod1]; // Entrada/Salida
+    prompt_num [label="IMPRIMIR \"Introduce un número entero: \""];
+    read_num [label="LEER num"];
+    print_cua [label="IMPRIMIR \"El cuadrado de \" + num + \" es: \" + cua"];
+    print_cub [label="IMPRIMIR \"El cubo de \" + num + \" es: \" + cub"];
+
+    // Conexiones (flujo)
+    start -> declare_vars;
+    declare_vars -> prompt_num;
+    prompt_num -> read_num;
+    read_num -> calc_cua;
+    calc_cua -> calc_cub;
+    calc_cub -> print_cua;
+    print_cua -> print_cub;
+    print_cub -> close_scanner;
+    close_scanner -> end;
+}

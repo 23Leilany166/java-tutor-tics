@@ -1,0 +1,67 @@
+digraph P14_11_ps_3_40_Flowchart {
+    // Configuración general del grafo
+    rankdir=TB;
+    node [fontname="Helvetica", fontsize=10];
+    edge [fontname="Helvetica", fontsize=9];
+
+    // Definición de estilos de nodos
+    node [shape=ellipse, style=filled, fillcolor=lightgrey]; // Inicio/Fin
+    start [label="INICIO"];
+    end [label="FIN"];
+
+    node [shape=box, style=filled, fillcolor=lightblue]; // Proceso
+    declare_vars [label="DECLARAR:\nScanner scanner, Arreglos para nombres, condElectrica, condTermica,\nint n=0"];
+    read_data [label="LEER nombreElemento, condElectrica[n], condTermica[n]"];
+    store_data [label="nombres[n] = nombreElemento\nn++"];
+    init_minmax [label="Inicializar variables min/max\ncon los valores del primer elemento (índice 0)"];
+    find_loop [label="BUCLE for (i=1 hasta n-1)"];
+    update_max_elec [label="maxElec = condElectrica[i]\nnombreMaxElec = nombres[i]"];
+    update_min_elec [label="minElec = condElectrica[i]\nnombreMinElec = nombres[i]"];
+    update_max_term [label="maxTerm = condTermica[i]\nnombreMaxTerm = nombres[i]"];
+    update_min_term [label="minTerm = condTermica[i]\nnombreMinTerm = nombres[i]"];
+    close_scanner [label="Cerrar Scanner"];
+
+    node [shape=parallelogram, style=filled, fillcolor=lightgoldenrod1]; // Entrada/Salida
+    prompt_nombre [label="IMPRIMIR \"Ingrese nombre (o 'NN' para finalizar): \""];
+    print_no_data [label="IMPRIMIR \"No se ingresaron elementos.\""];
+    print_reporte [label="IMPRIMIR Reporte Final:\n- Mejor/Peor Eléctrico\n- Mejor/Peor Térmico"];
+
+    node [shape=diamond, style=filled, fillcolor=khaki, width=2.5, height=1.2]; // Decisión
+    main_loop_cond [label="nombreElemento != 'NN'"];
+    decision_n_gt_0 [label="n > 0"];
+    check_max_elec [label="condElectrica[i] > maxElec"];
+    check_min_elec [label="condElectrica[i] < minElec"];
+    check_max_term [label="condTermica[i] > maxTerm"];
+    check_min_term [label="condTermica[i] < minTerm"];
+
+    // Conexiones (flujo)
+    start -> declare_vars -> prompt_nombre;
+    prompt_nombre -> main_loop_cond;
+
+    main_loop_cond -> read_data [label="Sí"];
+    main_loop_cond -> decision_n_gt_0 [label="No"];
+    read_data -> store_data -> prompt_nombre;
+
+    decision_n_gt_0 -> print_no_data [label="No"];
+    print_no_data -> close_scanner;
+
+    decision_n_gt_0 -> init_minmax [label="Sí"];
+    init_minmax -> find_loop;
+
+    find_loop -> check_max_elec;
+    check_max_elec -> update_max_elec [label="Sí"];
+    check_max_elec -> check_min_elec [label="No"];
+    update_max_elec -> check_min_elec;
+    check_min_elec -> update_min_elec [label="Sí"];
+    check_min_elec -> check_max_term [label="No"];
+    update_min_elec -> check_max_term;
+    check_max_term -> update_max_term [label="Sí"];
+    check_max_term -> check_min_term [label="No"];
+    update_max_term -> check_min_term;
+    check_min_term -> update_min_term [label="Sí"];
+    check_min_term -> find_loop [label="No"];
+    update_min_term -> find_loop;
+
+    find_loop -> print_reporte [label="Fin del bucle"];
+    print_reporte -> close_scanner -> end;
+}

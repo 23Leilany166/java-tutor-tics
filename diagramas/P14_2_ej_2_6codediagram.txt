@@ -1,0 +1,45 @@
+digraph P14_2_ej_2_6_Flowchart {
+    // Configuración general del grafo
+    rankdir=TB;
+    node [fontname="Helvetica", fontsize=10];
+    edge [fontname="Helvetica", fontsize=9];
+
+    // Definición de estilos de nodos
+    node [shape=ellipse, style=filled, fillcolor=lightgrey]; // Inicio/Fin
+    start [label="INICIO"];
+    end [label="FIN"];
+
+    node [shape=box, style=filled, fillcolor=lightblue]; // Proceso
+    declare_vars [label="DECLARAR:\nselector (int)"];
+    close_scanner [label="Cerrar Scanner"];
+
+    node [shape=parallelogram, style=filled, fillcolor=lightgoldenrod1]; // Entrada/Salida
+    prompt_selector [label="IMPRIMIR \"Introduce un número selector (entero): \""];
+    read_selector [label="LEER selector"];
+    print_accion1 [label="IMPRIMIR \"Realizando acción 1\""];
+    print_accion2 [label="IMPRIMIR \"Realizando acción 2\""];
+    print_accion3 [label="IMPRIMIR \"Realizando acción 3\""];
+    print_accionX [label="IMPRIMIR \"Realizando acción X\""];
+
+    node [shape=diamond, style=filled, fillcolor=khaki, width=2.5, height=1]; // Decisión
+    decision1 [label="selector == 1\n|| selector == 2"];
+    decision2 [label="selector >= 3\n&& selector <= 5"];
+
+    // Conexiones (flujo)
+    start -> declare_vars;
+    declare_vars -> prompt_selector;
+    prompt_selector -> read_selector;
+    read_selector -> decision1;
+
+    decision1 -> print_accion1 [label="Sí"];
+    decision1 -> decision2 [label="No"];
+    decision2 -> print_accion2 [label="Sí"];
+    decision2 -> print_accion3 [label="No"];
+
+    print_accion1 -> print_accionX;
+    print_accion2 -> print_accionX;
+    print_accion3 -> print_accionX;
+    
+    print_accionX -> close_scanner;
+    close_scanner -> end;
+}

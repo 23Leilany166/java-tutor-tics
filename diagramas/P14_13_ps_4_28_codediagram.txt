@@ -1,0 +1,69 @@
+digraph P14_13_ps_4_28_Flowchart {
+    // Configuración general del grafo
+    rankdir=TB;
+    node [fontname="Helvetica", fontsize=10];
+    edge [fontname="Helvetica", fontsize=9];
+
+    // Definición de estilos de nodos
+    node [shape=ellipse, style=filled, fillcolor=lightgrey]; // Inicio/Fin
+    start [label="INICIO"];
+    end [label="FIN"];
+
+    node [shape=box, style=filled, fillcolor=lightblue]; // Proceso
+    declare_vars [label="DECLARAR:\nScanner scanner, int N, int[][] A,\nint sumaReferencia, boolean esMagico=true"];
+    read_matrix_loop [label="BUCLE for anidado para leer la matriz A"];
+    read_element [label="LEER A[i][j]"];
+    calc_ref [label="Calcular sumaReferencia\n(suma de la primera fila)"];
+    
+    check_rows_loop [label="BUCLE for filas (i=1 hasta N-1)"];
+    calc_suma_fila [label="Calcular sumaFila"];
+    
+    check_cols_loop [label="BUCLE for columnas (j=0 hasta N-1)"];
+    calc_suma_col [label="Calcular sumaColumna"];
+    
+    calc_diag1 [label="Calcular sumaDiagonal1"];
+    calc_diag2 [label="Calcular sumaDiagonal2"];
+    
+    close_scanner [label="Cerrar Scanner"];
+
+    node [shape=parallelogram, style=filled, fillcolor=lightgoldenrod1]; // Entrada/Salida
+    prompt_n [label="IMPRIMIR \"Introduce el tamaño de la matriz (N): \""];
+    read_n [label="LEER N"];
+    prompt_elements [label="IMPRIMIR \"Introduce los elementos de la matriz:\""];
+    print_magico [label="IMPRIMIR \"La matriz es un cuadrado mágico\""];
+    print_no_magico [label="IMPRIMIR \"La matriz no es un cuadrado mágico\""];
+
+    node [shape=diamond, style=filled, fillcolor=khaki, width=2, height=1.2]; // Decisión
+    check_fila [label="sumaFila != sumaReferencia"];
+    check_col [label="sumaColumna != sumaReferencia"];
+    check_diag1 [label="sumaDiagonal1 != sumaReferencia"];
+    check_diag2 [label="sumaDiagonal2 != sumaReferencia"];
+    decision_final [label="esMagico"];
+
+    // Conexiones (flujo)
+    start -> declare_vars -> prompt_n -> read_n -> prompt_elements -> read_matrix_loop -> read_element -> read_matrix_loop;
+    read_matrix_loop -> calc_ref [label="Fin del bucle"];
+
+    calc_ref -> check_rows_loop;
+    check_rows_loop -> calc_suma_fila -> check_fila;
+    check_fila -> check_rows_loop [label="No"];
+    check_fila -> check_rows_loop [label="Sí, esMagico=false"];
+    check_rows_loop -> check_cols_loop [label="Fin del bucle"];
+
+    check_cols_loop -> calc_suma_col -> check_col;
+    check_col -> check_cols_loop [label="No"];
+    check_col -> check_cols_loop [label="Sí, esMagico=false"];
+    check_cols_loop -> calc_diag1 [label="Fin del bucle"];
+
+    calc_diag1 -> check_diag1;
+    check_diag1 -> calc_diag2 [label="No"];
+    check_diag1 -> calc_diag2 [label="Sí, esMagico=false"];
+
+    calc_diag2 -> check_diag2;
+    check_diag2 -> decision_final [label="No"];
+    check_diag2 -> decision_final [label="Sí, esMagico=false"];
+
+    decision_final -> print_magico [label="Sí"];
+    decision_final -> print_no_magico [label="No"];
+    {print_magico, print_no_magico} -> close_scanner -> end;
+}

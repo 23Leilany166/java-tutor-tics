@@ -1,0 +1,43 @@
+digraph P14_4_pro_3_7_Flowchart {
+    // Configuración general del grafo
+    rankdir=TB;
+    node [fontname="Helvetica", fontsize=10];
+    edge [fontname="Helvetica", fontsize=9];
+
+    // Definición de estilos de nodos
+    node [shape=ellipse, style=filled, fillcolor=lightgrey]; // Inicio/Fin
+    start [label="INICIO"];
+    end [label="FIN"];
+
+    node [shape=box, style=filled, fillcolor=lightblue]; // Proceso
+    declare_vars [label="DECLARAR:\nventasChicas, ventasMedianas, ventasGrandes (int)\ncantidadVentas (int)"];
+    init_loop [label="INICIAR bucle for\n(i desde 0 hasta cantidadVentas-1)"];
+    increment_chicas [label="ventasChicas++"];
+    increment_medianas [label="ventasMedianas++"];
+    increment_grandes [label="ventasGrandes++"];
+    close_scanner [label="Cerrar Scanner"];
+
+    node [shape=parallelogram, style=filled, fillcolor=lightgoldenrod1]; // Entrada/Salida
+    prompt_cantidad [label="IMPRIMIR \"Introduce la cantidad de ventas a procesar: \""];
+    read_cantidad [label="LEER cantidadVentas"];
+    prompt_monto [label="IMPRIMIR \"Introduce el monto de la venta #[i+1]: \""];
+    read_monto [label="LEER monto"];
+    print_resumen [label="IMPRIMIR Resumen de ventas:\n- Chicas: [ventasChicas]\n- Medianas: [ventasMedianas]\n- Grandes: [ventasGrandes]"];
+
+    node [shape=diamond, style=filled, fillcolor=khaki, width=2, height=1]; // Decisión
+    decision_chica [label="monto <= 200"];
+    decision_grande [label="monto >= 400"];
+
+    // Conexiones (flujo)
+    start -> declare_vars -> prompt_cantidad -> read_cantidad -> init_loop;
+    init_loop -> prompt_monto -> read_monto -> decision_chica;
+
+    decision_chica -> increment_chicas [label="Sí"];
+    decision_chica -> decision_grande [label="No"];
+    decision_grande -> increment_grandes [label="Sí"];
+    decision_grande -> increment_medianas [label="No"];
+
+    {increment_chicas, increment_medianas, increment_grandes} -> init_loop; // Fin del bucle
+    init_loop -> print_resumen [label="Fin del bucle"];
+    print_resumen -> close_scanner -> end;
+}

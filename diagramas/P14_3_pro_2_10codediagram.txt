@@ -1,0 +1,56 @@
+digraph P14_3_pro_2_10_Flowchart {
+    // Configuración general del grafo
+    rankdir=TB;
+    node [fontname="Helvetica", fontsize=10];
+    edge [fontname="Helvetica", fontsize=9];
+
+    // Definición de estilos de nodos
+    node [shape=ellipse, style=filled, fillcolor=lightgrey]; // Inicio/Fin
+    start [label="INICIO"];
+    end [label="FIN"];
+
+    node [shape=box, style=filled, fillcolor=lightblue]; // Proceso
+    declare_vars [label="DECLARAR:\na, b, c (double)"];
+    close_scanner [label="Cerrar Scanner"];
+
+    node [shape=parallelogram, style=filled, fillcolor=lightgoldenrod1]; // Entrada/Salida
+    prompt_a [label="IMPRIMIR \"Introduce el primer número (A): \""];
+    read_a [label="LEER a"];
+    prompt_b [label="IMPRIMIR \"Introduce el segundo número (B): \""];
+    read_b [label="LEER b"];
+    prompt_c [label="IMPRIMIR \"Introduce el tercer número (C): \""];
+    read_c [label="LEER c"];
+    print_a_mayor [label="IMPRIMIR \"A es el mayor.\""];
+    print_b_mayor [label="IMPRIMIR \"B es el mayor.\""];
+    print_c_mayor [label="IMPRIMIR \"C es el mayor.\""];
+    print_ab_mayores [label="IMPRIMIR \"A y B son los mayores.\""];
+    print_ac_mayores [label="IMPRIMIR \"A y C son los mayores.\""];
+    print_bc_mayores [label="IMPRIMIR \"B y C son los mayores.\""];
+    print_abc_iguales [label="IMPRIMIR \"A, B y C son iguales.\""];
+
+    node [shape=diamond, style=filled, fillcolor=khaki, width=2, height=1]; // Decisión
+    d1 [label="a > b\n&& a > c"];
+    d2 [label="b > a\n&& b > c"];
+    d3 [label="c > a\n&& c > b"];
+    d4 [label="a == b\n&& a > c"];
+    d5 [label="a == c\n&& a > b"];
+    d6 [label="b == c\n&& b > a"];
+
+    // Conexiones (flujo)
+    start -> declare_vars -> prompt_a -> read_a -> prompt_b -> read_b -> prompt_c -> read_c -> d1;
+
+    d1 -> print_a_mayor [label="Sí"];
+    d1 -> d2 [label="No"];
+    d2 -> print_b_mayor [label="Sí"];
+    d2 -> d3 [label="No"];
+    d3 -> print_c_mayor [label="Sí"];
+    d3 -> d4 [label="No"];
+    d4 -> print_ab_mayores [label="Sí"];
+    d4 -> d5 [label="No"];
+    d5 -> print_ac_mayores [label="Sí"];
+    d5 -> d6 [label="No"];
+    d6 -> print_bc_mayores [label="Sí"];
+    d6 -> print_abc_iguales [label="No"];
+
+    {print_a_mayor, print_b_mayor, print_c_mayor, print_ab_mayores, print_ac_mayores, print_bc_mayores, print_abc_iguales} -> close_scanner -> end;
+}

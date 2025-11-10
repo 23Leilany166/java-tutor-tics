@@ -1,0 +1,50 @@
+digraph P14_10_ps_3_7_Flowchart {
+    // Configuración general del grafo
+    rankdir=TB;
+    node [fontname="Helvetica", fontsize=10];
+    edge [fontname="Helvetica", fontsize=9];
+
+    // Definición de estilos de nodos
+    node [shape=ellipse, style=filled, fillcolor=lightgrey]; // Inicio/Fin
+    start [label="INICIO"];
+    end [label="FIN"];
+
+    node [shape=box, style=filled, fillcolor=lightblue]; // Proceso
+    declare_vars [label="DECLARAR:\nScanner scanner, double totalNomina=0, int n"];
+    loop_init [label="BUCLE for (i=0 hasta n-1)"];
+    calc_aumento_10 [label="nuevoSueldo = sueldoActual * 1.10"];
+    calc_aumento_7 [label="nuevoSueldo = sueldoActual * 1.07"];
+    calc_aumento_8 [label="nuevoSueldo = sueldoActual * 1.08"];
+    update_nomina [label="totalNomina += nuevoSueldo"];
+    close_scanner [label="Cerrar Scanner"];
+
+    node [shape=parallelogram, style=filled, fillcolor=lightgoldenrod1]; // Entrada/Salida
+    prompt_n [label="IMPRIMIR \"Introduce el número de empleados: \""];
+    read_n [label="LEER n"];
+    prompt_sueldo [label="IMPRIMIR \"Sueldo del empleado #[i+1]: \""];
+    read_sueldo [label="LEER sueldoActual"];
+    print_nuevo_sueldo [label="IMPRIMIR \" -> Nuevo sueldo: $%.2f\""];
+    print_no_empleados [label="IMPRIMIR \"No hay empleados para procesar.\""];
+    print_total_nomina [label="IMPRIMIR \"El total de la nueva nómina es: $%.2f\""];
+
+    node [shape=diamond, style=filled, fillcolor=khaki, width=2, height=1.2]; // Decisión
+    decision_n_gt_0 [label="n > 0"];
+    decision_rango1 [label="sueldoActual < 10000"];
+    decision_rango2 [label="sueldoActual <= 25000"];
+
+    // Conexiones (flujo)
+    start -> declare_vars -> prompt_n -> read_n -> decision_n_gt_0;
+    decision_n_gt_0 -> print_no_empleados [label="No"];
+    print_no_empleados -> close_scanner;
+
+    decision_n_gt_0 -> loop_init [label="Sí"];
+    loop_init -> prompt_sueldo -> read_sueldo -> decision_rango1;
+    decision_rango1 -> calc_aumento_10 [label="Sí"];
+    decision_rango1 -> decision_rango2 [label="No"];
+    decision_rango2 -> calc_aumento_7 [label="Sí"];
+    decision_rango2 -> calc_aumento_8 [label="No"];
+    {calc_aumento_10, calc_aumento_7, calc_aumento_8} -> print_nuevo_sueldo -> update_nomina -> loop_init;
+    
+    loop_init -> print_total_nomina [label="Fin del bucle"];
+    print_total_nomina -> close_scanner -> end;
+}

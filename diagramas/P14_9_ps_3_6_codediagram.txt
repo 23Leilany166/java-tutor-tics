@@ -1,0 +1,44 @@
+digraph P14_9_ps_3_6_Flowchart {
+    // Configuración general del grafo
+    rankdir=TB;
+    node [fontname="Helvetica", fontsize=10];
+    edge [fontname="Helvetica", fontsize=9];
+
+    // Definición de estilos de nodos
+    node [shape=ellipse, style=filled, fillcolor=lightgrey]; // Inicio/Fin
+    start [label="INICIO"];
+    end [label="FIN"];
+
+    node [shape=box, style=filled, fillcolor=lightblue]; // Proceso
+    declare_vars [label="DECLARAR:\nScanner sc, int n"];
+    loop_init [label="BUCLE for (i=0 hasta n-1)"];
+    calc_aumento [label="sueldo = sueldo * 1.15"];
+    close_scanner [label="Cerrar Scanner"];
+
+    node [shape=parallelogram, style=filled, fillcolor=lightgoldenrod1]; // Entrada/Salida
+    prompt_n [label="IMPRIMIR \"Introduce el número de empleados: \""];
+    read_n [label="LEER n"];
+    prompt_sueldo [label="IMPRIMIR \"Sueldo del empleado #[i+1]: \""];
+    read_sueldo [label="LEER sueldo"];
+    print_nuevo_sueldo [label="IMPRIMIR \" -> Nuevo sueldo: $%.2f\""];
+    print_no_empleados [label="IMPRIMIR \"No hay empleados para procesar.\""];
+
+    node [shape=diamond, style=filled, fillcolor=khaki, width=2, height=1]; // Decisión
+    decision_n_gt_0 [label="n > 0"];
+    decision_aumento [label="sueldo < 800"];
+
+    // Conexiones (flujo)
+    start -> declare_vars -> prompt_n -> read_n -> decision_n_gt_0;
+    decision_n_gt_0 -> print_no_empleados [label="No"];
+    print_no_empleados -> close_scanner;
+
+    decision_n_gt_0 -> loop_init [label="Sí"];
+    loop_init -> prompt_sueldo -> read_sueldo -> decision_aumento;
+    decision_aumento -> calc_aumento [label="Sí"];
+    decision_aumento -> print_nuevo_sueldo [label="No"];
+    calc_aumento -> print_nuevo_sueldo;
+    print_nuevo_sueldo -> loop_init;
+    
+    loop_init -> close_scanner [label="Fin del bucle"];
+    close_scanner -> end;
+}

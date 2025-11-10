@@ -1,0 +1,66 @@
+digraph P14_5_2_Ejemplo_4_4_Elimina_Ordenado_Flowchart {
+    // Configuración general del grafo
+    rankdir=TB;
+    node [fontname="Helvetica", fontsize=10];
+    edge [fontname="Helvetica", fontsize=9];
+
+    // Definición de estilos de nodos
+    node [shape=ellipse, style=filled, fillcolor=lightgrey]; // Inicio/Fin
+    start [label="INICIO"];
+    end [label="FIN"];
+
+    node [shape=box, style=filled, fillcolor=lightblue]; // Proceso
+    declare_vars [label="DECLARAR:\nScanner sc, int[] a, int n, int x,\nint bajo=0, alto, central, indiceEncontrado=-1,\nboolean encontrado=false"];
+    read_elements_loop [label="BUCLE for (i=0 hasta n-1)"];
+    read_element [label="LEER a[i]"];
+    set_alto [label="alto = n - 1"];
+    calc_central [label="central = (bajo + alto) / 2"];
+    set_encontrado [label="encontrado = true\nindiceEncontrado = central"];
+    set_alto_menor [label="alto = central - 1"];
+    set_bajo_mayor [label="bajo = central + 1"];
+    decrement_n [label="n--"];
+    shift_loop [label="BUCLE for (k=indiceEncontrado hasta n-1)"];
+    shift_proc [label="a[k] = a[k+1]"];
+    print_loop [label="BUCLE for (k=0 hasta n-1)"];
+    print_element [label="IMPRIMIR a[k]"];
+    close_scanner [label="Cerrar Scanner"];
+
+    node [shape=parallelogram, style=filled, fillcolor=lightgoldenrod1]; // Entrada/Salida
+    prompt_n [label="IMPRIMIR \"Ingrese el tamaño del arreglo (N): \""];
+    read_n [label="LEER n"];
+    prompt_elements [label="IMPRIMIR \"Ingrese los elementos (ordenados):\""];
+    prompt_x [label="IMPRIMIR \"Ingrese el elemento a eliminar (X): \""];
+    read_x [label="LEER x"];
+    print_success [label="IMPRIMIR \"Elemento eliminado...\""];
+    print_failure [label="IMPRIMIR \"Elemento no encontrado...\""];
+
+    node [shape=diamond, style=filled, fillcolor=khaki, width=2, height=1.2]; // Decisión
+    binary_search_loop [label="bajo <= alto &&\n!encontrado"];
+    check_equal [label="a[central] == x"];
+    check_less [label="x < a[central]"];
+    decision_encontrado [label="encontrado"];
+
+    // Conexiones (flujo)
+    start -> declare_vars -> prompt_n -> read_n -> prompt_elements -> read_elements_loop -> read_element -> read_elements_loop;
+    read_elements_loop -> prompt_x [label="Fin del bucle"];
+    prompt_x -> read_x -> set_alto -> binary_search_loop;
+
+    binary_search_loop -> calc_central [label="Sí"];
+    binary_search_loop -> decision_encontrado [label="No"];
+    calc_central -> check_equal;
+    check_equal -> set_encontrado [label="Sí"];
+    check_equal -> check_less [label="No"];
+    check_less -> set_alto_menor [label="Sí"];
+    check_less -> set_bajo_mayor [label="No"];
+    {set_encontrado, set_alto_menor, set_bajo_mayor} -> binary_search_loop;
+
+    decision_encontrado -> print_success [label="Sí"];
+    decision_encontrado -> print_failure [label="No"];
+    print_success -> decrement_n -> shift_loop -> shift_proc -> shift_loop;
+    shift_loop -> print_loop [label="Fin del bucle"];
+    print_failure -> print_loop;
+    
+    print_loop -> print_element -> print_loop;
+    print_loop -> close_scanner [label="Fin del bucle"];
+    close_scanner -> end;
+}
