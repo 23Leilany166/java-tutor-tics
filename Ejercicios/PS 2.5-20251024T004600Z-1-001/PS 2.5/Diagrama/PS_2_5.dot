@@ -1,41 +1,66 @@
 digraph Calculo_Expresiones {
-  Inicio [
-    shape=ellipse,
-    label="Inicio", 
-    fillcolor="#FF0000", 
-    style="filled"
-  ];
-  Leer_datos [
-    shape=parallelogram,
-    label="Leer A, B, C, D"
-  ];
-  Calcular_expresion1 [
-    shape=diamond,
-    label="D < 0"
-  ];
-  Calcular_expresion2 [
-    shape=diamond,
-    label="Entonces"
-  ];
-  Imprimir_resultado1 [
-    shape=box,
-    label="Imprimir (A - C)^2 / D"
-  ];
-  Imprimir_resultado2 [
-    shape=box,
-    label="Imprimir (A - B)^3 / D"
-  ];
-  Fin [
-    shape=ellipse,
-    label="Fin"
-  ];
+    
+    // --- Configuración de Nodos ---
+    node [fontname="Arial"];
 
-  Inicio -> Leer_datos;
-  Leer_datos -> Calcular_expresion1;
-  Calcular_expresion1 -> Calcular_expresion2 [label="Sí"];
-  Calcular_expresion2 -> Imprimir_resultado1 ;
-  Calcular_expresion2 -> Imprimir_resultado2 ;
-  Calcular_expresion1 -> Fin [label="No"] ;
-  Imprimir_resultado1 -> Fin;
-  Imprimir_resultado2 -> Fin;
+    Inicio [
+        shape=ellipse,
+        label="Inicio", 
+        fillcolor="#40e0d0", /* Color de inicio (verde) */
+        style="filled"
+    ];
+    
+    Leer_datos [
+        shape=parallelogram,
+        label="Leer A, B, C, D",
+        fillcolor="#DAF7A6", /* Color de E/S (verde claro) */
+        style="filled"
+    ];
+    
+    Condicion_D [
+        shape=diamond,
+        label="D < 0",
+        fillcolor="#FFFFFF", /* Color de condición (blanco) */
+        style="filled"
+    ];
+    
+    Imprimir_resultado1 [
+        shape=box,
+        label="Imprimir (A - C)^2 / D",
+        fillcolor="#EFEFEF", /* Color de proceso (gris claro) */
+        style="filled"
+    ];
+    
+    Imprimir_resultado2 [
+        shape=box,
+        label="Imprimir (A - B)^3 / D",
+        fillcolor="#EFEFEF",
+        style="filled"
+    ];
+    
+    Fin [
+        shape=ellipse,
+        label="Fin",
+        fillcolor="#FF6B6B", /* Color de fin (rojo) */
+        style="filled"
+    ];
+
+    // --- Flujo Lógico Corregido ---
+    
+    // 1. Inicio
+    Inicio -> Leer_datos;
+    
+    // 2. Leer datos
+    Leer_datos -> Condicion_D;
+    
+    // 3. Condición IF-ELSE
+    // Si D < 0 es "Sí", va al primer resultado
+    Condicion_D -> Imprimir_resultado1 [label="Sí"];
+    
+    // Si D < 0 es "No", va al segundo resultado
+    Condicion_D -> Imprimir_resultado2 [label="No"];
+    
+    // 4. Los dos caminos se unen en el final
+    Imprimir_resultado1 -> Fin;
+    Imprimir_resultado2 -> Fin;
 }

@@ -5,6 +5,7 @@ import java.util.Scanner;
  * @author imac27
  */
 public class PS_2_6 {
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         
@@ -13,20 +14,37 @@ public class PS_2_6 {
         
         System.out.print("Ingrese el tiempo de estancia (en días): ");
         int tiempoEstancia = scanner.nextInt();
+        scanner.close();
         
-        int distanciaVuelta = distanciaIda; // La distancia de vuelta es igual a la distancia de ida
+        // Llamar a la lógica refactorizada
+        double precioFinal = calcularPrecioBillete(distanciaIda, tiempoEstancia);
         
-        int distanciaTotal = distanciaIda + distanciaVuelta;
+        // Imprimir el resultado (usando printf para formato de moneda)
+        System.out.printf("El precio del billete de ida y vuelta es: $%.2f%n", precioFinal);
+    }
+
+    /**
+     * Calcula el precio del billete de ida y vuelta, aplicando descuentos si cumplen
+     * las condiciones.
+     * Esta es la lógica que probaremos.
+     *
+     * @param distanciaIda Distancia del viaje de ida (en km).
+     * @param tiempoEstancia Tiempo de estancia (en días).
+     * @return El precio final del billete.
+     */
+    public static double calcularPrecioBillete(int distanciaIda, int tiempoEstancia) {
+        int distanciaVuelta = distanciaIda;
+        int distanciaTotal = distanciaIda + distanciaVuelta; // o (distanciaIda * 2)
         double precioPorKm = 0.23;
         
         double precioBillete = distanciaTotal * precioPorKm;
         
+        // Lógica del descuento
         if (tiempoEstancia > 7 && distanciaTotal > 800) {
-            // Aplicar descuento del 30% si el tiempo de estancia es superior a 7 días y la distancia total es superior a 800 km
-            double descuento = precioBillete * 0.3;
-            precioBillete -= descuento;
+            // Aplicar descuento del 30% (es más eficiente multiplicar por 0.7)
+            precioBillete = precioBillete * 0.70;
         }
         
-        System.out.println("El precio del billete de ida y vuelta es: $" + precioBillete);
+        return precioBillete;
     }
 }

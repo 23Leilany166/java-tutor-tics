@@ -1,0 +1,71 @@
+digraph Problema_1_7 {
+    // --- Configuración de Estilos ---
+    node [fontname="Arial", style="filled"];
+    edge [fontname="Arial"];
+
+    // --- Nodos del Diagrama ---
+    
+    Inicio [
+        shape=ellipse, 
+        label="Inicio", 
+        fillcolor="#40e0d0"
+    ];
+    
+    Leer_Datos [
+        shape=parallelogram, 
+        label="Leer L1, L2, L3", 
+        fillcolor="#DAF7A6"
+    ];
+    
+    Calcular_Area [
+        shape=box, 
+        // Este proceso representa la llamada a la función
+        label="AREA = calcularAreaHeron(L1, L2, L3)", 
+        fillcolor="#EFEFEF"
+    ];
+    
+    Condicion_Error [
+        shape=diamond, 
+        label="AREA == -1.0", 
+        fillcolor="#FFFFFF"
+    ];
+    
+    Imprimir_Error [
+        shape=document, 
+        label="Imprimir 'Error: Triángulo inválido'", 
+        fillcolor="#FADBD8" // Color de error
+    ];
+    
+    Calcular_S [
+        shape=box, 
+        label="S = (L1 + L2 + L3) / 2.0", 
+        fillcolor="#EFEFEF"
+    ];
+    
+    Imprimir_Resultados [
+        shape=document, 
+        label="Imprimir S, AREA, L1, L2, L3", 
+        fillcolor="#E6E6FA"
+    ];
+    
+    Fin [
+        shape=ellipse, 
+        label="Fin", 
+        fillcolor="#FF6B6B"
+    ];
+
+    // --- Definición del Flujo ---
+    
+    Inicio -> Leer_Datos;
+    Leer_Datos -> Calcular_Area;
+    Calcular_Area -> Condicion_Error;
+    
+    // Rama "Sí" (Error)
+    Condicion_Error -> Imprimir_Error [label="Sí"];
+    Imprimir_Error -> Fin;
+    
+    // Rama "No" (Éxito)
+    Condicion_Error -> Calcular_S [label="No"];
+    Calcular_S -> Imprimir_Resultados;
+    Imprimir_Resultados -> Fin;
+}

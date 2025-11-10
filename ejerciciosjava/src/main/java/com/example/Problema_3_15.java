@@ -1,61 +1,45 @@
 package com.example;
 
-
-import java.util.Scanner;
-
-/**
- *
- * @author imac22
- */
+// Esta clase contiene la lógica (ya no usa Scanner ni main)
 public class Problema_3_15 {
+    
+    private int cl = 0;
+    private double cuenta = 0;
 
-    public static void main(String[] args) {
-        int CL = 0;
-        int CUENTA = 0;
+    // El test llama a este método
+    public void procesarLlamada(String tipo, int dur) {
         
-        Scanner scanner = new Scanner(System.in);
-        
-        System.out.print("Ingrese TIPO: ");
-        String TIPO = scanner.nextLine();
-        
-        System.out.print("Ingrese DUR: ");
-        int DUR = scanner.nextInt();
-        
-        while (!TIPO.equals("X") && DUR != -1) {
-            if (TIPO.equals("H") && DUR > 3) {
-                double COSTO = 7.59 + ((DUR - 3) * 3.03);
-                CUENTA += COSTO;
-            } else {
-                double COSTO = 7.59;
-                CUENTA += COSTO;
-            }
-            
-            if (TIPO.equals("L")) {
-                CL++;
-                
-                if (CL > 50) {
-                    CUENTA += 0.60;
-                }
-            }
-            
-            if (DUR > 3) {
-                double COSTO = 1.20 + ((DUR - 3) * 0.48);
-                CUENTA += COSTO;
-            } else {
-                double COSTO = 1.20;
-                CUENTA += COSTO;
-            }
-            
-            System.out.print("Ingrese TIPO: ");
-            TIPO = scanner.nextLine();
-            
-            System.out.print("Ingrese DUR: ");
-            DUR = scanner.nextInt();
-            
-            scanner.nextLine(); // Limpiar el búfer de entrada
+        if (tipo.equals("H") && dur > 3) {
+            double costo = 7.59 + ((dur - 3) * 3.03);
+            cuenta += costo;
+        } else {
+            double costo = 7.59;
+            cuenta += costo;
         }
         
-        System.out.println("CUENTA: " + CUENTA);
+        if (tipo.equals("L")) {
+            cl++;
+            if (cl > 50) {
+                cuenta += 0.60;
+            }
+        }
+        
+        if (dur > 3) {
+            double costo = 1.20 + ((dur - 3) * 0.48);
+            cuenta += costo;
+        } else {
+            double costo = 1.20;
+            cuenta += costo;
+        }
+    }
+
+    // El test usa esto para verificar el resultado
+    public double getCuenta() {
+        return cuenta;
+    }
+
+    // El test usa esto para verificar el contador
+    public int getCL() {
+        return cl;
     }
 }
-

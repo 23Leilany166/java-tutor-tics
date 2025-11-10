@@ -1,0 +1,38 @@
+digraph Ejemplo_1_6 {
+    // --- Configuración de Estilos ---
+    node [fontname="Arial", style="filled"];
+    edge [fontname="Arial"];
+
+    // --- Nodos del Diagrama ---
+    
+    Inicio [
+        shape=ellipse, 
+        label="Inicio", 
+        fillcolor="#40e0d0" // Color verde
+    ];
+    
+    Leer_Datos [
+        shape=parallelogram, 
+        label="Leer A, B, C, D", 
+        fillcolor="#DAF7A6" // Color amarillo-verde
+    ];
+    
+    Imprimir_Datos [
+        // La forma de "documento" se usa a menudo para la salida
+        shape=document, 
+        label="Imprimir D, C, B, A", 
+        fillcolor="#E6E6FA" // Color lavanda
+    ];
+    
+    Fin [
+        shape=ellipse, 
+        label="Fin", 
+        fillcolor="#FF6B6B" // Color rojo
+    ];
+
+    // --- Definición del Flujo (Secuencial) ---
+    
+    Inicio -> Leer_Datos;
+    Leer_Datos -> Imprimir_Datos;
+    Imprimir_Datos -> Fin;
+}

@@ -1,19 +1,16 @@
-/*
- SUMA_GASTOS
-{El programa obtiene el total de gastos de un viaje}
-*/
-
-import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.Scanner; // Importa esto
 
 /**
- *
  * @author DELL
  */
-
-
 public class Ejemplo_3_4 {
-    
- public static void main(String[] args) {
+
+    /**
+     * Este es tu método main original.
+     * Sirve para ejecutar el programa manualmente.
+     */
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         double sumGas = 0;
 
@@ -28,5 +25,18 @@ public class Ejemplo_3_4 {
 
         System.out.println("El total de gastos del viaje es: " + sumGas);
     }
-    
+
+    /**
+     * ESTE ES EL MÉTODO QUE EL TEST NECESITA.
+     * Toma una lista de gastos y devuelve el total.
+     * Añade este método a tu clase.
+     */
+    public double calcularTotalGastos(ArrayList<Double> gastos) {
+        double total = 0.0;
+        // Este bucle suma todos los elementos de la lista que recibe
+        for (double gasto : gastos) {
+            total += gasto;
+        }
+        return total;
+    }
 }

@@ -1,0 +1,117 @@
+digraph Problema_4_2 {
+    // --- Configuración de Estilos ---
+    node [fontname="Arial", style="filled"];
+    edge [fontname="Arial"];
+
+    // --- Nodos del Diagrama ---
+    
+    Inicio [
+        shape=ellipse, 
+        label="Inicio", 
+        fillcolor="#40e0d0"
+    ];
+    
+    Leer_N [
+        shape=parallelogram, 
+        label="Leer N", 
+        fillcolor="#DAF7A6"
+    ];
+    
+    Condicion_N [
+        shape=diamond, 
+        label="N < 1 O\nN > 500", 
+        fillcolor="#FFFFFF"
+    ];
+    
+    Imprimir_Error [
+        shape=document, 
+        label="Imprimir 'Tamaño fuera de rango'", 
+        fillcolor="#FADBD8"
+    ];
+    
+    Crear_VEC [
+        shape=box, 
+        label="Crear ArrayList VEC", 
+        fillcolor="#EFEFEF"
+    ];
+    
+    // Nodos para el bucle FOR
+    // Usamos 'i' como contador
+    Inicializar_Loop [
+        shape=box, 
+        label="i = 0", 
+        fillcolor="#EFEFEF"
+    ];
+    
+    Condicion_Loop [
+        shape=diamond, 
+        label="i < N", 
+        fillcolor="#FFFFFF"
+    ];
+    
+    Leer_Elemento [
+        shape=parallelogram, 
+        label="Leer elemento\nVEC.add(elemento)", 
+        fillcolor="#DAF7A6"
+    ];
+    
+    Incrementar_Loop [
+        shape=box, 
+        label="i = i + 1", 
+        fillcolor="#EFEFEF"
+    ];
+    // Fin de nodos del bucle
+    
+    Imprimir_Original [
+        shape=document, 
+        label="Imprimir 'Vector original'", 
+        fillcolor="#E6E6FA"
+    ];
+    
+    Calcular_Sin_Repetir [
+        shape=box, 
+        // Representa la llamada a la función
+        label="vecSinRepetir = eliminarDuplicados(VEC)", 
+        fillcolor="#EFEFEF"
+    ];
+    
+    Imprimir_Resultado [
+        shape=document, 
+        label="Imprimir 'Vector sin repeticiones'", 
+        fillcolor="#E6E6FA"
+    ];
+    
+    Fin [
+        shape=ellipse, 
+        label="Fin", 
+        fillcolor="#FF6B6B"
+    ];
+
+    // --- Definición del Flujo ---
+    
+    Inicio -> Leer_N -> Condicion_N;
+    
+    // Rama "Sí" (Error)
+    Condicion_N -> Imprimir_Error [label="Sí"];
+    Imprimir_Error -> Fin;
+    
+    // Rama "No" (Flujo principal)
+    Condicion_N -> Crear_VEC [label="No"];
+    
+    // Bucle FOR
+    Crear_VEC -> Inicializar_Loop;
+    Inicializar_Loop -> Condicion_Loop;
+    
+    // Rama "Sí" del bucle (cuerpo del bucle)
+    Condicion_Loop -> Leer_Elemento [label="Sí"];
+    Leer_Elemento -> Incrementar_Loop;
+    Incrementar_Loop -> Condicion_Loop; // Regresa a la condición
+    
+    // Rama "No" del bucle (salir del bucle)
+    Condicion_Loop -> Imprimir_Original [label="No"];
+    
+    // Resto del flujo
+    Imprimir_Original -> Calcular_Sin_Repetir;
+    Calcular_Sin_Repetir -> Imprimir_Resultado;
+    Imprimir_Resultado -> Fin;
+}

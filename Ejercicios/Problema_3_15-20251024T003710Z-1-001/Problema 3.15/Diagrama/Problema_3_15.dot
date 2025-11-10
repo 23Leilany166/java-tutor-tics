@@ -1,117 +1,95 @@
-digraph Calcular_Costo_Llamadas {
-  Inicio [
-    shape=ellipse,
-    label="Inicio", 
-    fillcolor="#FF0000", 
-    style="filled"
-  ];
-  Leer_TIPO_DUR [
-    shape=parallelogram,
-    label="Leer TIPO, DUR"
-  ];
-  Inicio -> Leer_TIPO_DUR;
+digraph Flowchart_Problema_3_15 {
+    // --- Configuración Global ---
+    graph [fontname = "Arial"];
+    node [fontname = "Arial", style="filled", fillcolor="#EFEFEF"]; // Estilo de nodo por defecto
+    edge [fontname = "Arial"];
+    
+    // Nodos con forma de diamante (condiciones)
+    node [shape=diamond, fillcolor="#FFFFFF"]; 
+    Loop_Cond; Cond_TIPO; Cond_DUR_I; Cond_CL; Cond_DUR_N;
+    
+    // Nodos con forma de óvalo (inicio/fin)
+    node [shape=ellipse, fillcolor="#EFEFEF"]; 
+    Inicio; Fin;
+    
+    // Nodos con forma de paralelogramo (entrada/salida)
+    node [shape=parallelogram]; 
+    Leer_Datos_1; Leer_Datos_2; Mostrar_Cuenta;
+    
+    // Nodos con forma de caja (procesos)
+    node [shape=box]; 
+    Inicializacion; Costo_I_Largo; Costo_I_Corto; Inc_CL;
+    Costo_L_Cargo; Costo_L_SinCargo; Costo_N_Largo; Costo_N_Corto;
+    Actualizar_Cuenta;
 
-  Subgraph cluster_condicional {
-    label="Mientras (TIPO ≠ \"X\") y (DUR ≠ -1)";
-    Leer_TIPO_DUR -> Condicional_TIPO_DUR;
-    Condicional_TIPO_DUR [
-      shape=diamond,
-      label="TIPO ≠ \"X\"\nDUR ≠ -1"
-    ];
-    Leer_TIPO_DUR -> Condicional_TIPO_DUR [label="Sí"];
-    Condicional_TIPO_DUR -> Leer_TIPO_DUR [label="No"];
+    // --- Definición de Etiquetas (Labels) ---
+    Inicio [label="INICIO"];
+    Inicializacion [label="CL <- 0\nCUENTA <- 0"];
+    Leer_Datos_1 [label="TIPO, DUR"];
+    Loop_Cond [label="(TIPO <> 'X')\ny (DUR <> -1)"];
+    
+    Mostrar_Cuenta [label="CUENTA"];
+    Fin [label="FIN"];
 
-    Subgraph cluster_condicion_I {
-      label="Si TIPO = \"I\"";
-      Condicional_TIPO_DUR -> Condicional_TIPO_I [label="Sí"];
-      Condicional_TIPO_I [
-        shape=diamond,
-        label="DUR > 3"
-      ];
-      Condicional_TIPO_DUR -> Condicional_TIPO_I [label="No"];
+    Cond_TIPO [label="TIPO"]; 
+    
+    // Branch 'I'
+    Cond_DUR_I [label="DUR > 3"];
+    Costo_I_Largo [label="COSTO <- 7.59 + (DUR-3)\n* 3.03"];
+    Costo_I_Corto [label="COSTO <- 7.59"];
 
-      Calcular_COSTO_I [
-        shape=box,
-        label="COSTO = 7.59 + ((DUR - 3) * 3.03)"
-      ];
-      Calcular_COSTO_I -> Incrementar_CUENTA_I;
-      Incrementar_CUENTA_I [
-        shape=box,
-        label="CUENTA = CUENTA + COSTO"
-      ];
+    // Branch 'L'
+    Inc_CL [label="CL <- CL + 1"];
+    Cond_CL [label="CL > 50"];
+    Costo_L_Cargo [label="COSTO <- 0.60"];
+    Costo_L_SinCargo [label="COSTO <- 0"]; // Como se muestra en la imagen
 
-      Condicional_TIPO_I -> Calcular_COSTO_I [label="Sí"];
-      Condicional_TIPO_I -> Incrementar_CUENTA_I [label="No"];
-    }
+    // Branch 'N'
+    Cond_DUR_N [label="DUR > 3"];
+    Costo_N_Largo [label="COSTO <- 1.20 + (DUR-3)\n* 0.48"];
+    Costo_N_Corto [label="COSTO <- 1.20"];
 
-    Subgraph cluster_condicion_L {
-      label="Si TIPO = \"L\"";
-      Condicional_TIPO_DUR -> Condicional_TIPO_L [label="Sí"];
-      Condicional_TIPO_L [
-        shape=diamond,
-        label="CL > 50"
-      ];
-      Condicional_TIPO_DUR -> Condicional_TIPO_L [label="No"];
+    // Nodos de Fin de Bucle
+    Actualizar_Cuenta [label="CUENTA <- CUENTA + COSTO"];
+    Leer_Datos_2 [label="TIPO, DUR"];
+    
+    // --- Conexiones (Flujo) ---
+    
+    // Flujo principal
+    Inicio -> Inicializacion -> Leer_Datos_1 -> Loop_Cond;
 
-      Incrementar_CL_L [
-        shape=box,
-        label="CL = CL + 1"
-      ];
-      Incrementar_CL_L -> Condicional_Costo_L [label="Sí"];
+    // Salida del bucle (rama "No")
+    Loop_Cond -> Mostrar_Cuenta [label=" No"]; 
+    Mostrar_Cuenta -> Fin;
+    
+    // Entrada al bucle (rama "Si")
+    Loop_Cond -> Cond_TIPO [label=" Si"]; 
 
-      Condicional_Costo_L [
-        shape=diamond,
-        label="CL > 50"
-      ];
-      Incrementar_CL_L -> Condicional_Costo_L [label="No"];
+    // --- Ramas del "Switch" TIPO ---
+    Cond_TIPO -> Cond_DUR_I [label=" 'I'"];
+    Cond_TIPO -> Inc_CL [label=" 'L'"]; // La rama 'L' empieza con CL+1
+    Cond_TIPO -> Cond_DUR_N [label=" 'N'"];
+    
+    // --- Flujo Branch 'I' ---
+    Cond_DUR_I -> Costo_I_Largo [label="Si"];
+    Cond_DUR_I -> Costo_I_Corto [label="No"];
+    Costo_I_Largo -> Actualizar_Cuenta;
+    Costo_I_Corto -> Actualizar_Cuenta;
 
-      Calcular_Costo_L [
-        shape=box,
-        label="COSTO = 0.60"
-      ];
-      Calcular_Costo_L -> Incrementar_CUENTA_L;
+    // --- Flujo Branch 'L' ---
+    Inc_CL -> Cond_CL;
+    Cond_CL -> Costo_L_Cargo [label="Si"];
+    Cond_CL -> Costo_L_SinCargo [label="No"];
+    Costo_L_Cargo -> Actualizar_Cuenta;
+    Costo_L_SinCargo -> Actualizar_Cuenta;
 
-      Condicional_Costo_L -> Calcular_Costo_L [label="Sí"];
-      Condicional_Costo_L -> Incrementar_CUENTA_L [label="No"];
-    }
+    // --- Flujo Branch 'N' ---
+    Cond_DUR_N -> Costo_N_Largo [label="Si"];
+    Cond_DUR_N -> Costo_N_Corto [label="No"];
+    Costo_N_Largo -> Actualizar_Cuenta;
+    Costo_N_Corto -> Actualizar_Cuenta;
 
-    Subgraph cluster_condicion_N {
-      label="Si TIPO = \"N\"";
-      Condicional_TIPO_DUR -> Condicional_TIPO_N [label="Sí"];
-      Condicional_TIPO_N [
-        shape=diamond,
-        label="DUR > 3"
-      ];
-      Condicional_TIPO_DUR -> Condicional_TIPO_N [label="No"];
-
-      Calcular_Costo_N [
-        shape=box,
-        label="COSTO = 1.20 + ((DUR - 3) * 0.48)"
-      ];
-      Calcular_Costo_N -> Incrementar_CUENTA_N;
-
-      Condicional_TIPO_N -> Calcular_Costo_N [label="Sí"];
-      Condicional_TIPO_N -> Incrementar_CUENTA_N [label="No"];
-    }
-  }
-
-  Escribir_CUENTA [
-    shape=box,
-    label="Escribir CUENTA"
-  ];
-
-  Leer_TIPO_DUR -> Subgraph cluster_condicional;
-
-  Incrementar_CUENTA_I -> Leer_TIPO_DUR;
-  Incrementar_CUENTA_L -> Leer_TIPO_DUR;
-  Incrementar_CUENTA_N -> Leer_TIPO_DUR;
-
-  Escribir_CUENTA -> Fin;
-
-  Fin [
-    shape=ellipse,
-    label="Fin"
-  ];
-  
-  Leer_TIPO_DUR -> Fin [label="TIPO = \"X\"\nDUR = -1"];
+    // --- Flujo de re-alimentación (Loop) ---
+    Actualizar_Cuenta -> Leer_Datos_2;
+    Leer_Datos_2 -> Loop_Cond; // Vuelve a la condición
 }
