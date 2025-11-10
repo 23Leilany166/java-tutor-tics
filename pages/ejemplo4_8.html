@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Ejemplo 4.8 - Matriz con índices negativos</title>
+  <title>Ejemplo 4.8 - Arreglo de reales con índices negativos</title>
   <link rel="stylesheet" href="../assets/styles_desc.css">
 </head>
 
@@ -11,26 +11,61 @@
   <div class="container">
     <header class="page-header">
       <h1>Ejemplo 4.8</h1>
-      <p class="subtitle">Simulación de una matriz con índices negativos en Java</p>
+      <p class="subtitle">Arreglo de reales con índices negativos</p>
     </header>
 
-    <article class="exercise-card">
-      <h2>Descripción</h2>
-      <p>
-        Consideremos un arreglo de números reales con índices negativos. 
-        La matriz se define como: <code>MATRIZ1 = ARREGLO[-11..3, -17..-13]</code>.
-      </p>
-      <p>
-        El número total de elementos se obtiene mediante:
-        <code>NTE = (3 - (-11) + 1) * (-13 - (-17) + 1) = 15 × 5 = 75</code>.
-      </p>
+    <main class="exercises-main">
+      <article class="exercise-card">
+        <header class="exercise-header">
+          <span class="exercise-badge">Ejemplo</span>
+          <h2>Descripción</h2>
+        </header>
 
-      <h3>Código Java</h3>
-      <pre class="code-block">
+        <section class="exercise-main">
+          <p class="exercise-description">
+            Consideremos el arreglo de reales del ejemplo anterior, 
+            utilicemos ahora índices negativos. 
+            Su representación queda como se muestra en la figura correspondiente del libro.
+          </p>
+
+          <p>
+            <strong>MATRIZ1 = ARREGLO [-11..3, -17..-13] de reales.</strong>
+          </p>
+
+          <p>
+            El número total de elementos se obtiene mediante:
+            <code>NTE = (3 - (-11) + 1) * (-13 - (-17) + 1) = 15 × 5 = 75</code>.
+          </p>
+
+          <ul>
+            <li>Cada elemento de <code>MATRIZ1</code> será un número real.</li>
+            <li>Para hacer referencia a cada elemento se usarán dos índices, 
+                y el nombre de la variable tipo arreglo será: <code>MATRIZ1[i, j]</code>.</li>
+          </ul>
+
+          <h3>Representación textual</h3>
+          <pre class="code-block">
+        MATRIZ1
+       -17  -16  -15  -14  -13
+-11     [ ]  [ ]  [ ]  [ ]  [ ]
+-10     [ ]  [ ]  [ ]  [ ]  [ ]
+ -9     [ ]  [ ]  [ ]  [ ]  [ ]
+ ...     ⋮    ⋮    ⋮    ⋮    ⋮
+  2     [ ]  [ ]  [ ]  [ ]  [ ]
+  3     [ ]  [ ]  [ ]  [ ]  [ ]
+
+Donde:
+   -11 ≤ i ≤ 3
+   -17 ≤ j ≤ -13
+          </pre>
+
+          <h3>Fragmento representativo en Java</h3>
+          <pre class="code-block">
+// src/Ejemplo4_8.java
 public class Ejemplo4_8 {
     public static double[][] crearMatriz() {
-        int filas = (3 - (-11)) + 1;
-        int columnas = (-13 - (-17)) + 1;
+        int filas = (3 - (-11)) + 1;      // 15 filas
+        int columnas = (-13 - (-17)) + 1; // 5 columnas
         double[][] matriz = new double[filas][columnas];
         double valor = 1.0;
         for (int i = 0; i < filas; i++) {
@@ -40,32 +75,37 @@ public class Ejemplo4_8 {
         }
         return matriz;
     }
+
     public static int contarElementos(double[][] matriz) {
         int total = 0;
         for (double[] fila : matriz) total += fila.length;
         return total;
     }
+
     public static void main(String[] args) {
         double[][] matriz = crearMatriz();
         int total = contarElementos(matriz);
         System.out.println("Número total de elementos (NTE): " + total);
+        System.out.println("Dimensiones: 15 filas × 5 columnas");
     }
 }
-      </pre>
+          </pre>
 
-      <h3>Resultado esperado</h3>
-      <div class="tip-box">
-        Número total de elementos (NTE): 75<br>
-        Dimensiones: 15 filas x 5 columnas
-      </div>
+          <p>
+            Este ejemplo demuestra cómo representar un arreglo bidimensional de números reales 
+            cuyos índices incluyen valores negativos. 
+            En Java, no existen índices negativos directamente, por lo que se simulan ajustando los rangos 
+            dentro del arreglo real.
+          </p>
+        </section>
 
-      <footer class="page-footer buttons-nav">
-  <a href="problema3_11.html"> Ejercicio anterior</a>
-  <a href="../main_desc.html"> Volver al índice</a>
-  <a href="problema4_11.html"> Siguiente ejercicio</a>
-</footer>
-</article>
-</div>
+        <footer class="page-footer buttons-nav">
+          <a href="problema3_11.html">Ejercicio anterior</a>
+          <a href="../main_desc.html">Volver al índice</a>
+          <a href="problema4_11.html">Siguiente ejercicio</a>
+        </footer>
+      </article>
+    </main>
+  </div>
 </body>
 </html>
-

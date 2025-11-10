@@ -460,3 +460,38 @@
   transform: scale(1.03);
 }
 
+/* ==========================================
+   Tablas de ejercicios y costos
+   ========================================== */
+.styled-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 0.95rem;
+  text-align: center;
+  background-color: #ffffff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.styled-table th {
+  background-color: #0077cc;
+  color: white;
+  padding: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.styled-table td {
+  padding: 10px;
+  border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tr:nth-child(even) {
+  background-color: #f5f9ff;
+}
+
+.styled-table tr:hover {
+  background-color: #eaf4ff;
+}

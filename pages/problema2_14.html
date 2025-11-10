@@ -22,15 +22,18 @@
         </header>
 
         <section class="exercise-main">
-          <p>
-            Programa que calcula el costo total de hospitalización de un paciente según el 
-            tipo de enfermedad, la edad y los días de estancia. 
-            Si el paciente tiene entre <code>14</code> y <code>22</code> años, se aplica un 
-            <strong>10 % adicional</strong>.
+          <p class="exercise-description">
+            En un hospital se ha realizado un estudio sobre los pacientes registrados durante los últimos 
+            diez años, con el propósito de aproximar los costos de internación por paciente. 
+            Se obtuvo un costo promedio diario según el tipo de enfermedad que aqueja al paciente. 
+            Además, se determinó que, en promedio, todos los pacientes con edad entre 
+            <code>14</code> y <code>22</code> años implican un costo adicional del <strong>10 %</strong>.  
+            La siguiente tabla expresa los costos diarios según el tipo de enfermedad.
           </p>
 
           <h3>Diagrama de flujo</h3>
-          <img src="../assets/diagramas/diagrama2_14.png" alt="Diagrama de flujo del Problema 2.14" style="max-width:100%; border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.15);">
+          <img src="../assets/diagramas/diagrama2_14.png" alt="Diagrama de flujo del Problema 2.14" 
+               style="max-width:100%; border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.15);">
 
           <h3>Tabla de costos diarios</h3>
           <table class="styled-table">
@@ -47,6 +50,13 @@
               <tr><td>4</td><td>32</td></tr>
             </tbody>
           </table>
+
+          <h3>Datos del problema</h3>
+          <ul>
+            <li><code>TIPOENF</code>: variable entera que representa el tipo de enfermedad del paciente.</li>
+            <li><code>EDAD</code>: variable entera que indica la edad del paciente.</li>
+            <li><code>DIAS</code>: variable entera que indica el número de días que el paciente estuvo hospitalizado.</li>
+          </ul>
 
           <h3>Código representativo en Java</h3>
           <pre><code class="code-block">
@@ -82,14 +92,13 @@ public class Problema2_14 {
           </p>
         </section>
 
-      <footer class="page-footer buttons-nav">
-  <a href="ejemplo2_10.html"> Ejercicio anterior</a>
-  <a href="../main_desc.html"> Volver al índice</a>
-  <a href="problema3_11.html"> Siguiente ejercicio</a>
-</footer>
-</article>
-</main>
-</div>
+        <footer class="page-footer buttons-nav">
+          <a href="ejemplo2_10.html"> Ejercicio anterior</a>
+          <a href="../main_desc.html"> Volver al índice</a>
+          <a href="problema3_11.html"> Siguiente ejercicio</a>
+        </footer>
+      </article>
+    </main>
+  </div>
 </body>
 </html>
-

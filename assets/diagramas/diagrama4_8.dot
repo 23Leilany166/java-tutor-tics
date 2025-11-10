@@ -1,0 +1,21 @@
+digraph MatrizNegativa {
+  rankdir=TB;
+  node [shape=plaintext fontname="Arial"];
+
+  MATRIZ1 [
+    label=<
+      <table border="1" cellborder="1" cellspacing="0" cellpadding="6">
+        <tr><td colspan="5" bgcolor="lightgray"><b>MATRIZ1</b></td></tr>
+        <tr>
+          <td><b></b></td>
+          <td>-17</td><td>-16</td><td>-15</td><td>-14</td><td>-13</td>
+        </tr>
+        <tr><td><b>-11</b></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td><b>-10</b></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td><b>-9</b></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td><b>...</b></td><td colspan="5" align="center">⋯</td></tr>
+        <tr><td><b>2</b></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td><b>3</b></td><td></td><td></td><td></td><td></td><td></td></tr>
+      </table>
+    >];
+}

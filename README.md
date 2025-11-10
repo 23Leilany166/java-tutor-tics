@@ -95,9 +95,9 @@ Facilitar la comprensión visual mediante diagramas de flujo y pruebas automatiz
 Integrar herramientas de desarrollo profesional en un entorno accesible para principiantes.
 
 Autor
-Xavier Amed Guerrero Hernández
-Estudiante de Ingeniería en Tecnologías de la Información y Comunicaciones
-Instituto Tecnológico Superior del Occidente del Estado de Hidalgo (ITSOEH)
-Correo: 230110579@itsoeh.edu.mx
+- Xavier Amed Guerrero Hernández
+- Estudiante de Ingeniería en Tecnologías de la Información y Comunicaciones
+- Instituto Tecnológico Superior del Occidente del Estado de Hidalgo (ITSOEH)
+- Correo: 230110579@itsoeh.edu.mx
 
 
