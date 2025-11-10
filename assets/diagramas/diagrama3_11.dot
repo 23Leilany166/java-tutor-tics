@@ -1,0 +1,50 @@
+digraph Problema3_11 {
+  rankdir=TB;
+  splines=ortho;
+  node [fontname="Arial", fontsize=11, style=rounded];
+
+  Inicio     [shape=ellipse, label="INICIO"];
+  Inicializa [shape=box, label="CAN1 <- 0\nCAN2 <- 0\nCAN3 <- 0\nCAN4 <- 0"];
+  LeerVoto1  [shape=parallelogram, label="Leer VOTO"];
+
+  CondVoto   [shape=diamond, label="VOTO <> 0 ?"];
+
+  SelVoto    [shape=diamond, label="VOTO"];
+
+  Inc1       [shape=box, label="CAN1 <- CAN1 + 1"];
+  Inc2       [shape=box, label="CAN2 <- CAN2 + 1"];
+  Inc3       [shape=box, label="CAN3 <- CAN3 + 1"];
+  Inc4       [shape=box, label="CAN4 <- CAN4 + 1"];
+
+  LeerVoto2  [shape=parallelogram, label="Leer VOTO"];
+
+  Sumv       [shape=box, label="SUMV <- CAN1 + CAN2\n       + CAN3 + CAN4"];
+  Porc       [shape=box, label="POR1 <- (CAN1 / SUMV) * 100\nPOR2 <- (CAN2 / SUMV) * 100\nPOR3 <- (CAN3 / SUMV) * 100\nPOR4 <- (CAN4 / SUMV) * 100"];
+
+  Mostrar    [shape=parallelogram,
+              label="Mostrar votos y porcentajes\nde cada candidato\ny cantidad de votantes (SUMV)"];
+
+  Fin        [shape=ellipse, label="FIN"];
+
+  // flujo principal
+  Inicio -> Inicializa -> LeerVoto1 -> CondVoto;
+
+  // ciclo mientras VOTO <> 0
+  CondVoto -> SelVoto [label="Sí"];
+  CondVoto -> Sumv    [label="No"];
+
+  SelVoto -> Inc1 [label="1"];
+  SelVoto -> Inc2 [label="2"];
+  SelVoto -> Inc3 [label="3"];
+  SelVoto -> Inc4 [label="4"];
+
+  Inc1 -> LeerVoto2;
+  Inc2 -> LeerVoto2;
+  Inc3 -> LeerVoto2;
+  Inc4 -> LeerVoto2;
+
+  LeerVoto2 -> CondVoto;
+
+  // parte final
+  Sumv    -> Porc -> Mostrar -> Fin;
+}

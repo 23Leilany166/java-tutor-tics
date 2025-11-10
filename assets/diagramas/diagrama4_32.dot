@@ -1,0 +1,22 @@
+digraph G {
+  node [shape=rectangle, style="rounded,filled", fillcolor=white, fontname="Arial"];
+  rankdir=TB;
+  bgcolor=transparent;
+
+  inicio [label="INICIO", shape=ellipse];
+  datos [label="Leer M, N\nLeer matrices A y B"];
+  inicializa [label="Declarar matriz R[M][N]"];
+  cicloI [label="i = 1 a M", shape=diamond];
+  cicloJ [label="j = 1 a N", shape=diamond];
+  operacion [label="R[i][j] ← A[i][j] + B[j][i]"];
+  imprimir [label="Imprimir matriz R"];
+  fin [label="FIN", shape=ellipse];
+
+  inicio -> datos -> inicializa -> cicloI;
+  cicloI -> cicloJ [label="Sí"];
+  cicloJ -> operacion [label="Sí"];
+  operacion -> cicloJ [label="j++"];
+  cicloJ -> cicloI [label="No"];
+  cicloI -> imprimir [label="No"];
+  imprimir -> fin;
+}

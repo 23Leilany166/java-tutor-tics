@@ -1,37 +1,90 @@
-<!-- ===================== PRÁCTICA 4.32 ===================== -->
-<article id="ps432" class="exercise-card" aria-labelledby="ps432-title">
-  <header class="exercise-header">
-    <span class="exercise-badge">Práctica 4.32</span>
-    <h2 id="ps432-title">Suma de una matriz con la traspuesta de otra</h2>
-    <p class="exercise-description">
-      Dada una matriz <code>A(M×N)</code> y una matriz <code>B(N×M)</code>,
-      construya un algoritmo que obtenga la suma de <code>A + Bᵀ</code> e imprima
-      la matriz resultante.
-    </p>
-  </header>
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Práctica 4.32 - Suma de una matriz con la traspuesta de otra</title>
+  <link rel="stylesheet" href="../assets/styles_desc.css">
+</head>
 
-  <section class="exercise-main">
-    <h3>Datos del problema</h3>
-    <ul>
-      <li><code>A[1..M, 1..N]</code>, <code>B[1..N, 1..M]</code>: arreglos bidimensionales</li>
-      <li><code>1 &lt; M &lt; 10</code>, <code>1 &lt; N &lt; 10</code></li>
-    </ul>
+<body>
+  <div class="container">
+    <header class="page-header">
+      <h1>Práctica 4.32</h1>
+      <p class="subtitle">Suma de una matriz con la traspuesta de otra</p>
+    </header>
 
-    <h3>Ejemplo en Java</h3>
-    <pre><code class="code-block">
-int[][] A = {{1, 2}, {3, 4}};
-int[][] B = {{5, 6}, {7, 8}};
+    <main class="exercises-main">
+      <!-- ===================== PRÁCTICA 4.32 ===================== -->
+      <article id="ps432" class="exercise-card highlight-blue" aria-labelledby="ps432-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Práctica 4.32</span>
+          <h2 id="ps432-title">Suma de una matriz con la traspuesta de otra</h2>
+          <p class="exercise-description">
+            Dada una matriz <code>A(M×N)</code> y una matriz <code>B(N×M)</code>,
+            construya un algoritmo que obtenga la suma de <code>A + Bᵀ</code> e imprima
+            la matriz resultante.
+          </p>
+        </header>
 
-int[][] R = Practica4_32.sumarConTraspuesta(A, B);
-Practica4_32.imprimirMatriz(R);
+        <section class="exercise-main">
+          <h3>Diagrama de flujo</h3>
+          <img src="../assets/diagramas/diagrama4_32.png" 
+               alt="Diagrama de flujo de la Práctica 4.32" 
+               style="max-width:100%; border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.15); margin-bottom:15px;">
 
-// Salida esperada:
-// 6 9
-// 9 12
-    </code></pre>
+          <h3>Datos del problema</h3>
+          <ul>
+            <li><code>A[1..M, 1..N]</code>, <code>B[1..N, 1..M]</code>: arreglos bidimensionales</li>
+            <li><code>1 &lt; M &lt; 10</code>, <code>1 &lt; N &lt; 10</code></li>
+          </ul>
 
-    <h3>Prueba JUnit</h3>
-    <pre><code class="code-block">
+          <h3>Ejemplo en Java</h3>
+          <div class="code-container">
+            <p class="code-title">Código (Java)</p>
+            <pre><code class="code-block">
+// src/Practica4_32.java
+public class Practica4_32 {
+    public static int[][] sumarConTraspuesta(int[][] A, int[][] B) {
+        int M = A.length;
+        int N = A[0].length;
+        int[][] R = new int[M][N];
+        
+        for (int i = 0; i < M; i++) {
+            for (int j = 0; j < N; j++) {
+                R[i][j] = A[i][j] + B[j][i];
+            }
+        }
+        return R;
+    }
+
+    public static void imprimirMatriz(int[][] R) {
+        for (int[] fila : R) {
+            for (int valor : fila) {
+                System.out.print(valor + " ");
+            }
+            System.out.println();
+        }
+    }
+}
+            </code></pre>
+          </div>
+
+          <h3>Ejemplo de ejecución</h3>
+          <pre><code>
+Entrada:
+A = [[1, 2], [3, 4]]
+B = [[5, 6], [7, 8]]
+
+Salida:
+Matriz resultante:
+6 9
+9 12
+          </code></pre>
+
+          <h3>Prueba JUnit</h3>
+          <pre><code class="code-block">
+// tests/TestPractica4_32.java
 @Test
 public void testSumaConTraspuesta() {
     int[][] A = {{1, 2}, {3, 4}};
@@ -41,13 +94,15 @@ public void testSumaConTraspuesta() {
     for (int i = 0; i < 2; i++)
         assertArrayEquals(esperado[i], resultado[i]);
 }
-    </code></pre>
-  </section>
+          </code></pre>
+        </section>
 
-  <footer class="page-footer">
-    <div class="buttons">
-      <a href="ps4_16.html"> Anterior (4.16)</a>
-      <a href="../main_desc.html"> Volver al índice</a>
-    </div>
-  </footer>
-</article>
+        <footer class="page-footer buttons-nav">
+          <a href="ps4_16.html"> Anterior (4.16)</a>
+          <a href="../main_desc.html"> Volver al índice</a>
+        </footer>
+      </article>
+    </main>
+  </div>
+</body>
+</html>

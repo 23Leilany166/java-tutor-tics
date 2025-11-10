@@ -1,22 +1,32 @@
-<!-- ===================== PRÁCTICA 3.44 ===================== -->
-<article id="ps344" class="exercise-card highlight-blue" aria-labelledby="ps344-title">
-  <header class="exercise-header">
-    <span class="exercise-badge">Práctica 3.44</span>
-    <h2 id="ps344-title">Análisis del diagrama de flujo 6.3</h2>
-    <p class="exercise-description">
-      Construya un mapa de memoria para <code>N = 5</code>, interprete el resultado y
-      marque las estructuras algorítmicas utilizadas en el diagrama.
-    </p>
-  </header>
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Práctica 3.44 - Análisis del diagrama de flujo 6.3</title>
+  <link rel="stylesheet" href="../assets/styles_desc.css">
+</head>
 
-  <section class="exercise-main">
-    <h3> Diagrama de flujo</h3>
-    <img src="../assets/diagramas/diagrama_ps3_44.png" alt="Diagrama de flujo PS 3.44" class="exercise-image">
+<body>
+  <div class="container">
+    <header class="page-header">
+      <h1>Práctica 3.44</h1>
+      <p class="subtitle">Análisis del diagrama de flujo 6.3</p>
+    </header>
 
-    <h3> Programa equivalente en Java</h3>
-    <div class="code-container">
-      <p class="code-title">Código (Java)</p>
-      <pre><code class="code-block">
+    <main class="exercises-main">
+      <article class="exercise-card">
+        <header class="exercise-header">
+          <span class="exercise-badge">Práctica</span>
+          <h2>Construya un mapa de memoria para <code>N = 5</code>, interprete el resultado y marque las estructuras algorítmicas utilizadas en el diagrama.</h2>
+        </header>
+
+        <section class="exercise-main">
+          <h3>Diagrama de flujo</h3>
+          <img src="../assets/diagramas/diagrama_ps3_44.png" alt="Diagrama de flujo PS 3.44" style="max-width:100%; border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.15);">
+
+          <h3>Programa equivalente en Java</h3>
+          <pre><code class="code-block">
 // src/Practica3_44.java
 public class Practica3_44 {
     public static void ejecutar(int N) {
@@ -40,46 +50,50 @@ public class Practica3_44 {
         }
     }
 }
-      </code></pre>
-    </div>
+          </code></pre>
 
-    <h3> a) Mapa de memoria para N = 5</h3>
-    <table class="styled-table">
-      <thead>
-        <tr>
-          <th>Iteración (I)</th>
-          <th>P1 inicial</th>
-          <th>P2 inicial</th>
-          <th>Valores impresos (P1,P2)</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>0</td><td>5</td><td>0</td><td>(5,0) (4,1) (3,2)</td></tr>
-        <tr><td>1</td><td>3</td><td>1</td><td>(3,1) (2,2)</td></tr>
-        <tr><td>2</td><td>1</td><td>2</td><td>(1,2)</td></tr>
-        <tr><td>3+</td><td>Negativos</td><td>Fuera de rango</td><td>No imprime</td></tr>
-      </tbody>
-    </table>
+          <h3>a) Mapa de memoria para N = 5</h3>
+          <table class="styled-table">
+            <thead>
+              <tr>
+                <th>Iteración (I)</th>
+                <th>P1 inicial</th>
+                <th>P2 inicial</th>
+                <th>Valores impresos (P1,P2)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>0</td><td>5</td><td>0</td><td>(5,0) (4,1) (3,2)</td></tr>
+              <tr><td>1</td><td>3</td><td>1</td><td>(3,1) (2,2)</td></tr>
+              <tr><td>2</td><td>1</td><td>2</td><td>(1,2)</td></tr>
+              <tr><td>3+</td><td>Negativos</td><td>Fuera de rango</td><td>No imprime</td></tr>
+            </tbody>
+          </table>
 
-    <h3> b) Interpretación</h3>
-    <p>
-      El algoritmo genera todas las combinaciones posibles de <code>P1</code> y <code>P2</code>
-      para cada valor de <code>I</code>, dentro del rango definido por <code>N</code>.
-      Se observa que los valores de <code>P1</code> decrecen y los de <code>P2</code> aumentan
-      de manera simétrica, imprimiendo las parejas válidas que cumplen la condición.
-    </p>
+          <h3>b) Interpretación</h3>
+          <p>
+            El algoritmo genera todas las combinaciones posibles de <code>P1</code> y <code>P2</code>
+            para cada valor de <code>I</code>, dentro del rango definido por <code>N</code>.
+            Se observa que los valores de <code>P1</code> decrecen y los de <code>P2</code> aumentan
+            de manera simétrica, imprimiendo las parejas válidas que cumplen la condición.
+          </p>
 
-    <h3> c) Estructuras utilizadas</h3>
-    <ul>
-      <li><strong>Estructura condicional:</strong> if (N > 0)</li>
-      <li><strong>Estructura repetitiva externa:</strong> while (I ≤ N)</li>
-      <li><strong>Estructura repetitiva interna:</strong> while ((P2 + I) ≤ N && P1 ≥ P2)</li>
-    </ul>
-  </section>
+          <h3>c) Estructuras utilizadas</h3>
+          <ul>
+            <li><strong>Estructura condicional:</strong> if (N > 0)</li>
+            <li><strong>Estructura repetitiva externa:</strong> while (I ≤ N)</li>
+            <li><strong>Estructura repetitiva interna:</strong> while ((P2 + I) ≤ N && P1 ≥ P2)</li>
+          </ul>
+        </section>
 
-  <footer class="page-footer buttons-nav">
-    <a href="ps3_18_3_20.html"> Anterior (3.20)</a>
-    <a href="../main_desc.html"> Volver al índice</a>
-    <a href="ps4_16.html"> Siguiente práctica</a>
-  </footer>
+        <footer class="page-footer buttons-nav">
+  <a href="ps3_18_3_20.html"> Ejercicio anterior</a>
+  <a href="../main_desc.html"> Volver al índice</a>
+  <a href="ps4_16.html"> Siguiente práctica</a>
+</footer>
 </article>
+</main>
+</div>
+</body>
+</html>
+

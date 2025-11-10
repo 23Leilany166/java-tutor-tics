@@ -1,0 +1,12 @@
+digraph Problema1_3 {
+  rankdir=TB; // Dirección del flujo: de arriba hacia abajo
+  node [fontname="Arial", fontsize=11, style=rounded];
+
+  Inicio   [shape=ellipse,       label="INICIO"];
+  Leer     [shape=parallelogram, label="NOM, PES, LON"];
+  Calcular [shape=box,           label="PESKIL <- PES * 1000\nLONMET <- LON * 0.3047"];
+  Mostrar  [shape=parallelogram, label="NOM, PESKIL, LONMET"];
+  Fin      [shape=ellipse,       label="FIN"];
+
+  Inicio -> Leer -> Calcular -> Mostrar -> Fin;
+}

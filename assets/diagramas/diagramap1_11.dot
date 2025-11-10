@@ -1,0 +1,13 @@
+digraph Practica1_11 {
+  rankdir=TB;
+  node [shape=box, style=rounded, fontname="Arial"];
+
+  Inicio [shape=ellipse, label="Inicio"];
+  Leer   [label="Ingrese X1, Y1, X2, Y2, X3, Y3"];
+  Calculo [label="Calcule D12, D23, D31"];
+  Perimetro [label="PERIMETRO = D12 + D23 + D31"];
+  Mostrar [label="Mostrar resultado"];
+  Fin [shape=ellipse, label="Fin"];
+
+  Inicio -> Leer -> Calculo -> Perimetro -> Mostrar -> Fin;
+}

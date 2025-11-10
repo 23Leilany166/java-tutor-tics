@@ -1,0 +1,41 @@
+digraph P4_11_5 {
+  rankdir=TB;
+  node [fontname="Arial", fontsize=11, style=rounded];
+
+  ConD   [shape=hexagon, label="D"];
+
+  CondPS [shape=diamond, label="PS ≤ TPS"];
+  IncPA1 [shape=box, label="PA ← PA + 1"];
+  AsigS  [shape=box,
+          label="AMERICA[PA] ← SUR[PS]\nPS ← PS + 1"];
+
+  CondPC [shape=diamond, label="PC ≤ TPC"];
+  IncPA2 [shape=box, label="PA ← PA + 1"];
+  AsigC  [shape=box,
+          label="AMERICA[PA] ← CENTRO[PC]\nPC ← PC + 1"];
+
+  CondPN [shape=diamond, label="PN ≤ TPN"];
+  IncPA3 [shape=box, label="PA ← PA + 1"];
+  AsigN  [shape=box,
+          label="AMERICA[PA] ← NORTE[PN]\nPN ← PN + 1"];
+
+  MsgArr [shape=box, label="\"Arreglo AMERICA\""];
+
+  ConE   [shape=hexagon, label="E"];
+
+  ConD -> CondPS;
+
+  CondPS -> IncPA1 [label="Sí"];
+  CondPS -> CondPC [label="No"];
+  IncPA1 -> AsigS -> CondPS;
+
+  CondPC -> IncPA2 [label="Sí"];
+  CondPC -> CondPN [label="No"];
+  IncPA2 -> AsigC -> CondPC;
+
+  CondPN -> IncPA3 [label="Sí"];
+  CondPN -> MsgArr [label="No"];
+  IncPA3 -> AsigN -> CondPN;
+
+  MsgArr -> ConE;
+}

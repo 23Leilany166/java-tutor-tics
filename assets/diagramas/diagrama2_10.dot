@@ -1,0 +1,35 @@
+digraph Diagrama2_10 {
+  rankdir=TB;                 // De arriba hacia abajo
+  splines=ortho;              // Líneas rectas tipo diagrama de flujo
+  node [fontname="Arial", fontsize=11, style=rounded];
+
+  // Nodos principales
+  Entrada [shape=point, width=0.1, label=""];
+  Cond1   [shape=diamond, label="CONDICIÓN 1"];
+  Cond2   [shape=diamond, label="CONDICIÓN 2"];
+  Cond3   [shape=diamond, label="CONDICIÓN 3"];
+  Op21    [shape=box,      label="OPERACIÓN 21"];
+  Op22    [shape=box,      label="OPERACIÓN 22"];
+  Op31    [shape=box,      label="OPERACIÓN 31"];
+  Union   [shape=point, width=0.1, label=""];
+
+  // Flujo principal
+  Entrada -> Cond1;
+
+  // Rama izquierda: estructura selectiva doble (si / sino)
+  Cond1 -> Cond2 [label="Sí"];
+  Cond2 -> Op21  [label="Sí"];
+  Cond2 -> Op22  [label="No"];
+  Op21  -> Union;
+  Op22  -> Union;
+
+  // Rama derecha: estructura selectiva simple (si entonces)
+  Cond1 -> Cond3 [label="No"];
+  Cond3 -> Op31  [label="Sí"];
+  Cond3 -> Union [label="No"];
+  Op31  -> Union;
+
+  // Continuación hacia abajo (puntos suspensivos del libro)
+  Continuacion [shape=point, width=0.1, label=""];
+  Union -> Continuacion;
+}

@@ -1,0 +1,29 @@
+digraph Practica3_44 {
+  rankdir=TB;
+  node [shape=box, style=rounded, fontname="Arial"];
+
+  Inicio [shape=ellipse, label="Inicio"];
+  LeerM [label="M"];
+  CondM [shape=diamond, label="M > 0?"];
+  Error [label="\"Error\""];
+  AsigI [label="I ← 0"];
+  CondI [shape=diamond, label="I ≤ M"];
+  AsigP [label="P1 ← M - 2 * I\nP2 ← 1"];
+  CondP [shape=diamond, label="(P2 + I) ≤ M y P1 ≥ P2"];
+  Imprime [label="P1, P2, I"];
+  Decrementa [label="P1 ← P1 - 1\nP2 ← P2 + 1"];
+  IncrementaI [label="I ← I + 1"];
+  Fin [shape=ellipse, label="Fin"];
+
+  Inicio -> LeerM -> CondM;
+  CondM -> AsigI [label="Sí"];
+  CondM -> Error [label="No"];
+  AsigI -> CondI;
+  CondI -> AsigP [label="Sí"];
+  CondI -> Fin [label="No"];
+  AsigP -> CondP;
+  CondP -> Imprime [label="Sí"];
+  CondP -> IncrementaI [label="No"];
+  Imprime -> Decrementa -> CondP;
+  IncrementaI -> CondI;
+}

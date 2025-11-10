@@ -1,0 +1,60 @@
+digraph P4_11_4 {
+  rankdir=TB;
+  node [fontname="Arial", fontsize=11, style=rounded];
+
+  ConC   [shape=hexagon, label="C"];
+
+  CondSN [shape=diamond,
+          label="PS ≤ TPS\ny PN ≤ TPN"];
+
+  IncPA1 [shape=box, label="PA ← PA + 1"];
+
+  CondSurN [shape=diamond,
+            label="SUR[PS] < NORTE[PN]"];
+
+  AsigSur [shape=box,
+           label="AMERICA[PA] ← SUR[PS]\nPS ← PS + 1"];
+
+  AsigNor [shape=box,
+           label="AMERICA[PA] ← NORTE[PN]\nPN ← PN + 1"];
+
+  CondCN  [shape=diamond,
+           label="PC ≤ TPC\ny PN ≤ TPN"];
+
+  IncPA2  [shape=box, label="PA ← PA + 1"];
+
+  CondCenN [shape=diamond,
+            label="CENTRO[PC] < NORTE[PN]"];
+
+  AsigCen [shape=box,
+           label="AMERICA[PA] ← CENTRO[PC]\nPC ← PC + 1"];
+
+  AsigNor2 [shape=box,
+            label="AMERICA[PA] ← NORTE[PN]\nPN ← PN + 1"];
+
+  ConD    [shape=hexagon, label="D"];
+
+  ConC -> CondSN;
+
+  // SUR vs NORTE
+  CondSN -> IncPA1  [label="Sí"];
+  CondSN -> CondCN  [label="No"];
+
+  IncPA1 -> CondSurN;
+  CondSurN -> AsigSur [label="Sí"];
+  CondSurN -> AsigNor [label="No"];
+
+  AsigSur -> CondSN;
+  AsigNor -> CondSN;
+
+  // CENTRO vs NORTE
+  CondCN -> IncPA2  [label="Sí"];
+  CondCN -> ConD    [label="No"];
+
+  IncPA2 -> CondCenN;
+  CondCenN -> AsigCen  [label="Sí"];
+  CondCenN -> AsigNor2 [label="No"];
+
+  AsigCen  -> CondCN;
+  AsigNor2 -> CondCN;
+}

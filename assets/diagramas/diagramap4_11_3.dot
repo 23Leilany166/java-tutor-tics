@@ -1,0 +1,78 @@
+digraph P4_11_3 {
+  rankdir=TB;
+  node [fontname="Arial", fontsize=11, style=rounded];
+
+  ConB   [shape=hexagon, label="B"];
+
+  InitIdx [shape=box,
+           label="PS ← 1, PC ← 1\nPN ← 1, PA ← 0"];
+
+  CondAll [shape=diamond,
+           label="PS ≤ TPS\ny PC ≤ TPC\ny PN ≤ TPN"];
+
+  IncPA1  [shape=box, label="PA ← PA + 1"];
+
+  // Comparaciones de los tres arreglos
+  CondS_C [shape=diamond,
+           label="SUR[PS] < CENTRO[PC]\ny SUR[PS] < NORTE[PN]"];
+
+  AsigS   [shape=box,
+           label="AMERICA[PA] ← SUR[PS]\nPS ← PS + 1"];
+
+  CondC_N [shape=diamond,
+           label="CENTRO[PC] < NORTE[PN]"];
+
+  AsigC   [shape=box,
+           label="AMERICA[PA] ← CENTRO[PC]\nPC ← PC + 1"];
+
+  AsigN   [shape=box,
+           label="AMERICA[PA] ← NORTE[PN]\nPN ← PN + 1"];
+
+  // siguiente bloque del diagrama (cuando uno se agota)
+  CondAll2 [shape=diamond,
+            label="PS ≤ TPS\ny PC ≤ TPC"];
+
+  IncPA2  [shape=box, label="PA ← PA + 1"];
+
+  CondS_C2 [shape=diamond,
+            label="SUR[PS] < CENTRO[PC]"];
+
+  AsigS2 [shape=box,
+          label="AMERICA[PA] ← SUR[PS]\nPS ← PS + 1"];
+
+  AsigC2 [shape=box,
+          label="AMERICA[PA] ← CENTRO[PC]\nPC ← PC + 1"];
+
+  ConC   [shape=hexagon, label="C"];
+
+  // flujo
+  ConB -> InitIdx -> CondAll;
+
+  CondAll -> IncPA1 [label="Sí"];
+  CondAll -> CondAll2 [label="No"];
+
+  IncPA1 -> CondS_C;
+
+  CondS_C -> AsigS [label="Sí"];
+  CondS_C -> CondC_N [label="No"];
+
+  AsigS -> CondAll;
+
+  CondC_N -> AsigC [label="Sí"];
+  CondC_N -> AsigN [label="No"];
+
+  AsigC -> CondAll;
+  AsigN -> CondAll;
+
+  // bloque con dos arreglos
+  CondAll2 -> IncPA2 [label="Sí"];
+  CondAll2 -> ConC   [label="No"];
+
+  IncPA2 -> CondS_C2;
+
+  CondS_C2 -> AsigS2 [label="Sí"];
+  CondS_C2 -> AsigC2 [label="No"];
+
+  AsigS2 -> CondAll2;
+  AsigC2 -> CondAll2;
+}

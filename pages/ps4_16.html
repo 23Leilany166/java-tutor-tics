@@ -1,40 +1,59 @@
-<!-- ===================== PRÁCTICA 4.16 ===================== -->
-<article id="ps416" class="exercise-card" aria-labelledby="ps416-title">
-  <header class="exercise-header">
-    <span class="exercise-badge">Práctica 4.16</span>
-    <h2 id="ps416-title">Diagonal de una matriz cuadrada</h2>
-    <p class="exercise-description">
-      Escriba un diagrama de flujo tal que, dada una matriz A(N x N),
-      escriba los elementos de su diagonal principal.
-    </p>
-  </header>
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Práctica 4.16 - Diagonal de una matriz cuadrada</title>
+  <link rel="stylesheet" href="../assets/styles_desc.css">
+</head>
 
-  <section class="exercise-main">
-    <h3>Datos del problema</h3>
-    <ul>
-      <li><code>A[1..N, 1..N]</code>: arreglo bidimensional de tipo real</li>
-      <li><code>1 &lt; N &lt; 50</code></li>
-    </ul>
+<body>
+  <div class="container">
+    <header class="page-header">
+      <h1>Práctica 4.16</h1>
+      <p class="subtitle">Diagonal de una matriz cuadrada</p>
+    </header>
 
-    <h3>Lógica</h3>
-    <p>
-      Para mostrar la diagonal principal, basta recorrer la matriz con un solo índice <code>i</code>
-      e imprimir <code>A[i][i]</code> para cada fila.
-    </p>
+    <main class="exercises-main">
+      <article class="exercise-card">
+        <header class="exercise-header">
+          <span class="exercise-badge">Práctica</span>
+          <h2>Escriba un diagrama de flujo tal que, dada una matriz A(N x N), escriba los elementos de su diagonal principal.</h2>
+        </header>
 
-    <h3>Código en Java</h3>
-    <pre><code class="code-block">
+        <section class="exercise-main">
+          <h3>Datos del problema</h3>
+          <ul>
+            <li><code>A[1..N, 1..N]</code>: arreglo bidimensional de tipo real</li>
+            <li><code>1 &lt; N &lt; 50</code></li>
+          </ul>
+
+          <h3>Lógica</h3>
+          <p>
+            Para mostrar la diagonal principal, basta recorrer la matriz con un solo índice <code>i</code> 
+            e imprimir <code>A[i][i]</code> para cada fila.
+          </p>
+
+      <img src="../assets/diagramas/diagramap4_11_6.png" alt="Diagrama de flujo de la Práctica 4.16" 
+     style="max-width:100%; border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.15);">
+
+
+
+          <h3>Código representativo en Java</h3>
+          <pre><code class="code-block">
 // src/Practica4_16.java
-public static void imprimirDiagonal(double[][] A, int N) {
-    System.out.println("Diagonal principal de la matriz:");
-    for (int i = 0; i < N; i++) {
-        System.out.print(A[i][i] + " ");
+public class Practica4_16 {
+    public static void imprimirDiagonal(double[][] A, int N) {
+        System.out.println("Diagonal principal de la matriz:");
+        for (int i = 0; i < N; i++) {
+            System.out.print(A[i][i] + " ");
+        }
     }
 }
-    </code></pre>
+          </code></pre>
 
-    <h3>Ejemplo de entrada y salida</h3>
-    <pre><code>
+          <h3>Ejemplo de entrada y salida</h3>
+          <pre><code class="code-block">
 Entrada:
 N = 3
 Matriz:
@@ -44,25 +63,28 @@ Matriz:
 
 Salida:
 Diagonal principal: 1 5 9
-    </code></pre>
+          </code></pre>
 
-    <h3>Prueba JUnit</h3>
-    <pre><code class="code-block">
+          <h3>Prueba JUnit</h3>
+          <pre><code class="code-block">
 // tests/TestPractica4_16.java
 @Test
 public void testDiagonalCorrecta() {
     double[][] A = {{1,2,3},{4,5,6},{7,8,9}};
     double[] esperada = {1,5,9};
-    ...
+    // Asserciones para verificar los valores
 }
-    </code></pre>
-  </section>
+          </code></pre>
+        </section>
 
-  <footer class="page-footer">
-    <div class="buttons">
-      <a href="ps3_44.html"> Anterior (3.44)</a>
-      <a href="../main_desc.html"> Volver al índice</a>
-      <a href="ps4_32.html"> Siguiente práctica</a>
-    </div>
-  </footer>
+       <footer class="page-footer buttons-nav">
+  <a href="ps3_44.html"> Ejercicio anterior</a>
+  <a href="../main_desc.html"> Volver al índice</a>
+  <a href="ps4_32.html"> Siguiente práctica</a>
+</footer>
 </article>
+</main>
+</div>
+</body>
+</html>
+

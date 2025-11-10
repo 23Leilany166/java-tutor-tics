@@ -1,0 +1,41 @@
+digraph P4_11_1 {
+  rankdir=TB;
+  node [fontname="Arial", fontsize=11, style=rounded];
+
+  Inicio    [shape=ellipse, label="INICIO"];
+  MsgTotal  [shape=box, label="Ingrese el total de\npaíses de Sur, Centro\ny Norteamérica"];
+  LeerT     [shape=parallelogram, label="TPS, TPC, TPN"];
+
+  CondRango [shape=diamond,
+             label="1 ≤ TPS ≤ 30\ny 1 ≤ TPC ≤ 30\ny 1 ≤ TPN ≤ 30"];
+
+  MsgSur    [shape=box,
+             label="Ingrese los nombres\nde los países de\nSudamérica"];
+  IInit     [shape=box, label="I ← 1"];
+  CondI_TPS [shape=diamond, label="I ≤ TPS"];
+  MsgPaisS  [shape=box, label="Ingrese nombre\ndel país, I"];
+  SurRead   [shape=parallelogram, label="SUR[I]"];
+  IInc      [shape=box, label="I ← I + 1"];
+
+  MsgCentro [shape=box,
+             label="Ingrese los nombres\nde los países de\nCentroamérica"];
+  ConA      [shape=hexagon, label="A"];
+
+  MsgError  [shape=box, label="Verifique el número\nde países ingresados"];
+  ConF      [shape=hexagon, label="F"];
+
+  Inicio   -> MsgTotal -> LeerT -> CondRango;
+
+  CondRango -> MsgSur   [label="Sí"];
+  CondRango -> MsgError [label="No"];
+
+  MsgSur    -> IInit -> CondI_TPS;
+  CondI_TPS -> MsgPaisS [label="Sí"];
+  CondI_TPS -> MsgCentro [label="No"];
+
+  MsgPaisS -> SurRead -> IInc -> CondI_TPS;
+
+  MsgCentro -> ConA;
+
+  MsgError -> ConF;
+}

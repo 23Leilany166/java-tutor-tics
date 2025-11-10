@@ -1,29 +1,95 @@
-<article class="exercise-card" id="problema2_14">
-  <h2>Problema 2.14 Costo Total del Paciente</h2>
-  <p>
-    Programa que calcula el costo total de hospitalización de un paciente según el tipo de enfermedad,
-    la edad y los días de estancia. Si el paciente tiene entre 14 y 22 años, se aplica un 10% adicional.
-  </p>
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Problema 2.14 - Costo Total del Paciente</title>
+  <link rel="stylesheet" href="../assets/styles_desc.css">
+</head>
 
-  <h3>Diagrama de flujo:</h3>
-  <img src="../assets/diagramas/diagrama2_14.png" alt="Diagrama de flujo del Problema 2.14" width="500">
+<body>
+  <div class="container">
+    <header class="page-header">
+      <h1>Problema 2.14</h1>
+      <p class="subtitle">Costo total del paciente</p>
+    </header>
 
-  <h3>Tabla de costos diarios:</h3>
-  <table border="1" cellpadding="5">
-    <tr>
-      <th>Tipo de enfermedad</th>
-      <th>Costo / Paciente / Día</th>
-    </tr>
-    <tr><td>1</td><td>25</td></tr>
-    <tr><td>2</td><td>16</td></tr>
-    <tr><td>3</td><td>20</td></tr>
-    <tr><td>4</td><td>32</td></tr>
-  </table>
+    <main class="exercises-main">
+      <article class="exercise-card">
+        <header class="exercise-header">
+          <span class="exercise-badge">Problema</span>
+          <h2>Cálculo del costo total de hospitalización</h2>
+        </header>
 
- <footer class="page-footer">
-  <div class="buttons">
-    <a href="ejemplo2_10.html"> Ejercicio anterior</a>
-    <a href="../main_desc.html"> Volver al índice</a>
-    <a href="problema3_11.html"> Siguiente ejercicio</a>
-  </div>
+        <section class="exercise-main">
+          <p>
+            Programa que calcula el costo total de hospitalización de un paciente según el 
+            tipo de enfermedad, la edad y los días de estancia. 
+            Si el paciente tiene entre <code>14</code> y <code>22</code> años, se aplica un 
+            <strong>10 % adicional</strong>.
+          </p>
+
+          <h3>Diagrama de flujo</h3>
+          <img src="../assets/diagramas/diagrama2_14.png" alt="Diagrama de flujo del Problema 2.14" style="max-width:100%; border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.15);">
+
+          <h3>Tabla de costos diarios</h3>
+          <table class="styled-table">
+            <thead>
+              <tr>
+                <th>Tipo de enfermedad</th>
+                <th>Costo / Paciente / Día</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>1</td><td>25</td></tr>
+              <tr><td>2</td><td>16</td></tr>
+              <tr><td>3</td><td>20</td></tr>
+              <tr><td>4</td><td>32</td></tr>
+            </tbody>
+          </table>
+
+          <h3>Código representativo en Java</h3>
+          <pre><code class="code-block">
+// src/Problema2_14.java
+public class Problema2_14 {
+    public static double calcularCostoTotal(int tipoEnf, int edad, int dias) {
+        double costoDia = 0;
+
+        if (tipoEnf == 1) costoDia = 25;
+        else if (tipoEnf == 2) costoDia = 16;
+        else if (tipoEnf == 3) costoDia = 20;
+        else if (tipoEnf == 4) costoDia = 32;
+
+        double costoTot = dias * costoDia;
+
+        if (edad >= 14 && edad <= 22)
+            costoTot = costoTot * 1.10;
+
+        return costoTot;
+    }
+
+    public static void main(String[] args) {
+        int tipo = 3, edad = 18, dias = 5;
+        double total = calcularCostoTotal(tipo, edad, dias);
+        System.out.println("Costo total: " + total);
+    }
+}
+          </code></pre>
+
+          <p>
+            Este programa determina el costo total de hospitalización según las condiciones indicadas. 
+            Aplica un incremento del 10 % si la edad del paciente está entre 14 y 22 años.
+          </p>
+        </section>
+
+      <footer class="page-footer buttons-nav">
+  <a href="ejemplo2_10.html"> Ejercicio anterior</a>
+  <a href="../main_desc.html"> Volver al índice</a>
+  <a href="problema3_11.html"> Siguiente ejercicio</a>
 </footer>
+</article>
+</main>
+</div>
+</body>
+</html>
+

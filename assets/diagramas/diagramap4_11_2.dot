@@ -1,0 +1,35 @@
+digraph P4_11_2 {
+  rankdir=TB;
+  node [fontname="Arial", fontsize=11, style=rounded];
+
+  ConA      [shape=hexagon, label="A"];
+  MsgCentro [shape=box,
+             label="Ingrese los nombres\nde los países de\nCentroamérica"];
+  I1        [shape=box, label="I ← 1"];
+  CondI_TPC [shape=diamond, label="I ≤ TPC"];
+  MsgPaisC  [shape=box, label="Ingrese nombre\ndel país, I"];
+  CentroRd  [shape=parallelogram, label="CENTRO[I]"];
+  IIncC     [shape=box, label="I ← I + 1"];
+
+  MsgNorte  [shape=box,
+             label="Ingrese los nombres\nde los países de\nNorteamérica"];
+  I2        [shape=box, label="I ← 1"];
+  CondI_TPN [shape=diamond, label="I ≤ TPN"];
+  MsgPaisN  [shape=box, label="Ingrese nombre\ndel país, I"];
+  NorteRd   [shape=parallelogram, label="NORTE[I]"];
+  IIncN     [shape=box, label="I ← I + 1"];
+
+  ConB      [shape=hexagon, label="B"];
+
+  ConA      -> MsgCentro -> I1 -> CondI_TPC;
+  CondI_TPC -> MsgPaisC [label="Sí"];
+  CondI_TPC -> MsgNorte [label="No"];
+
+  MsgPaisC -> CentroRd -> IIncC -> CondI_TPC;
+
+  MsgNorte  -> I2 -> CondI_TPN;
+  CondI_TPN -> MsgPaisN [label="Sí"];
+  CondI_TPN -> ConB     [label="No"];
+
+  MsgPaisN -> NorteRd -> IIncN -> CondI_TPN;
+}

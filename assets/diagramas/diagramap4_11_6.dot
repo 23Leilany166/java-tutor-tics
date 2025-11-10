@@ -1,0 +1,24 @@
+digraph P4_11_6 {
+  rankdir=TB;
+  node [fontname="Arial", fontsize=11, style=rounded];
+
+  ConE   [shape=hexagon, label="E"];
+  IInit  [shape=box, label="I ← 1"];
+  CondI  [shape=diamond, label="I ≤ PA"];
+  Mostrar [shape=parallelogram, label="AMERICA[I]"];
+  IInc   [shape=box, label="I ← I + 1"];
+  Fin    [shape=ellipse, label="FIN"];
+
+  ConF   [shape=hexagon, label="F"]; // camino de error de la parte 1
+
+  // flujo normal desde E:
+  ConE -> IInit -> CondI;
+
+  CondI -> Mostrar [label="Sí"];
+  CondI -> Fin     [label="No"];
+
+  Mostrar -> IInc -> CondI;
+
+  // camino alterno que viene de F (desde la parte 1)
+  ConF -> Fin;
+}
