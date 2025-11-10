@@ -2,83 +2,59 @@ package com.example;
 
 import java.util.Scanner;
 
+/**
+ * Pide las calificaciones de un grupo de alumnos y calcula estadísticas sobre ellas.
+ * Esta es una versión simplificada para principiantes con todo en el main.
+ */
 public class P14_6_pro_4_8 {
 
-    /**
-     * Calcula varias estadísticas basadas en un arreglo de calificaciones de alumnos.
-     *
-     * @param calificaciones Un arreglo de enteros con las calificaciones.
-     * @return Un arreglo de doubles con los resultados en el siguiente orden:
-     * [0] Promedio general
-     * [1] Total de alumnos aprobados
-     * [2] Total de alumnos reprobados
-     * [3] Porcentaje de aprobados
-     * [4] Porcentaje de reprobados
-     * [5] Total de alumnos con calificación > 8
-     */
-    public double[] calcularEstadisticas(int[] calificaciones) {
-        int n = calificaciones.length;
-        if (n == 0) {
-            // Si no hay calificaciones, devuelve ceros para evitar división por cero.
-            return new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
-        }
-
-        int totalAprobados = 0;
-        int totalReprobados = 0;
-        int calificacionMayorA8 = 0;
+    public static void main(String[] args) {
+        // 1. Herramientas y variables iniciales.
+        Scanner scanner = new Scanner(System.in);
+        int aprobados = 0;
+        int reprobados = 0;
+        int mayoresA8 = 0;
         double sumaCalificaciones = 0;
 
-        for (int calificacion : calificaciones) {
-            if (calificacion > 6) {
-                totalAprobados++;
-                if (calificacion > 8) {
-                    calificacionMayorA8++;
-                }
-            } else {
-                totalReprobados++;
-            }
-            sumaCalificaciones += calificacion;
-        }
-
-        double promedio = sumaCalificaciones / n;
-        double porcAprobados = (double) totalAprobados / n * 100.0;
-        double porcReprobados = (double) totalReprobados / n * 100.0;
-
-        return new double[]{
-            promedio,
-            totalAprobados,
-            totalReprobados,
-            porcAprobados,
-            porcReprobados,
-            calificacionMayorA8
-        };
-    }
-
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        P14_6_pro_4_8 programa = new P14_6_pro_4_8();
-
-        System.out.print("Ingrese número de alumnos: ");
+        // 2. Pedir el número de alumnos.
+        System.out.print("Introduce el número de alumnos del grupo: ");
         int n = scanner.nextInt();
 
-        if (n > 0 && n < 100) { // Simplificado para aceptar 1 alumno
-            int[] calificaciones = new int[n];
-
+        if (n > 0) {
+            // 3. Bucle para pedir la calificación de cada alumno.
             for (int i = 0; i < n; i++) {
-                System.out.print("Ingrese calificación del alumno " + (i + 1) + ": ");
-                calificaciones[i] = scanner.nextInt();
+                System.out.print("Introduce la calificación del alumno #" + (i + 1) + ": ");
+                int cal = scanner.nextInt();
+
+                // 4. Actualizar estadísticas en cada iteración.
+                sumaCalificaciones += cal;
+
+                if (cal > 6) {
+                    aprobados++;
+                } else {
+                    reprobados++;
+                }
+
+                if (cal > 8) {
+                    mayoresA8++;
+                }
             }
 
-            double[] resultados = programa.calcularEstadisticas(calificaciones);
+            // 5. Calcular los resultados finales.
+            double promedio = sumaCalificaciones / n;
+            double porcAprobados = ((double) aprobados / n) * 100;
+            double porcReprobados = ((double) reprobados / n) * 100;
 
-            System.out.println("Promedio del grupo: " + resultados[0]);
-            System.out.println("Total alumnos aprobados: " + (int)resultados[1]);
-            System.out.println("Total alumnos reprobados: " + (int)resultados[2]);
-            System.out.println("Porcentaje alumnos aprobados: " + resultados[3] + "%");
-            System.out.println("Porcentaje alumnos reprobados: " + resultados[4] + "%");
-            System.out.println("Número de alumnos con calificación mayor a 8: " + (int)resultados[5]);
+            // 6. Imprimir el reporte final.
+            System.out.println("\n--- Reporte de Calificaciones ---");
+            System.out.printf("Promedio general: %.2f\n", promedio);
+            System.out.println("Alumnos aprobados (>6): " + aprobados);
+            System.out.println("Alumnos reprobados (<=6): " + reprobados);
+            System.out.printf("Porcentaje de aprobados: %.2f%%\n", porcAprobados);
+            System.out.printf("Porcentaje de reprobados: %.2f%%\n", porcReprobados);
+            System.out.println("Alumnos con calificación mayor a 8: " + mayoresA8);
         } else {
-            System.out.println("El número de alumnos ingresado es incorrecto.");
+            System.out.println("No hay alumnos para procesar.");
         }
         scanner.close();
     }

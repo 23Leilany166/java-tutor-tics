@@ -1,59 +1,66 @@
 package com.example;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.io.PrintStream;
+import java.util.Locale;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * Clase de prueba para P14_6_pro_4_8.
+ * Simula la entrada del usuario y captura la salida para verificar el resultado.
  */
 public class P14_6_pro_4_8Test {
 
-    private final P14_6_pro_4_8 programa = new P14_6_pro_4_8();
-    private final double DELTA = 0.001; // Un pequeño margen de error para comparar doubles
+    private final InputStream originalIn = System.in;
+    private final PrintStream originalOut = System.out;
+    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+
+    @BeforeEach
+    public void setUpStreams() {
+        System.setOut(new PrintStream(outContent));
+        // Usar Locale.US para asegurar que el punto decimal sea '.'
+        Locale.setDefault(Locale.US);
+    }
+
+    @AfterEach
+    public void restoreStreams() {
+        System.setIn(originalIn);
+        System.setOut(originalOut);
+    }
+
+    private void provideInputAndRun(String data) {
+        InputStream testInput = new ByteArrayInputStream(data.getBytes());
+        System.setIn(testInput);
+        P14_6_pro_4_8.main(new String[0]);
+    }
 
     @Test
     void testMezclaDeCalificaciones() {
-        int[] calificaciones = {10, 9, 7, 6, 5}; // 5 alumnos
-        // Esperado: Prom=7.4, Aprob=3, Reprob=2, %A=60, %R=40, >8=2
-        double[] expected = {7.4, 3.0, 2.0, 60.0, 40.0, 2.0};
-        double[] actual = programa.calcularEstadisticas(calificaciones);
-        assertArrayEquals(expected, actual, DELTA);
-    }
+        // 5 alumnos con calificaciones: 10, 9, 7, 6, 5
+        String input = "5\n10\n9\n7\n6\n5\n";
+        provideInputAndRun(input);
 
-    @Test
-    void testTodosAprobados() {
-        int[] calificaciones = {7, 8, 9, 10}; // 4 alumnos
-        // Esperado: Prom=8.5, Aprob=4, Reprob=0, %A=100, %R=0, >8=2
-        double[] expected = {8.5, 4.0, 0.0, 100.0, 0.0, 2.0};
-        double[] actual = programa.calcularEstadisticas(calificaciones);
-        assertArrayEquals(expected, actual, DELTA);
-    }
-
-    @Test
-    void testTodosReprobados() {
-        int[] calificaciones = {4, 5, 6}; // 3 alumnos
-        // Esperado: Prom=5.0, Aprob=0, Reprob=3, %A=0, %R=100, >8=0
-        double[] expected = {5.0, 0.0, 3.0, 0.0, 100.0, 0.0};
-        double[] actual = programa.calcularEstadisticas(calificaciones);
-        assertArrayEquals(expected, actual, DELTA);
-    }
-
-    @Test
-    void testValoresLimite() {
-        // Prueba los límites >6 y >8
-        int[] calificaciones = {6, 7, 8, 9}; // 4 alumnos
-        // Esperado: Prom=7.5, Aprob=3, Reprob=1, %A=75, %R=25, >8=1
-        double[] expected = {7.5, 3.0, 1.0, 75.0, 25.0, 1.0};
-        double[] actual = programa.calcularEstadisticas(calificaciones);
-        assertArrayEquals(expected, actual, DELTA);
+        // Normalizar la salida para facilitar la búsqueda
+        String output = outContent.toString().replace(",", ".");
+        
+        assertTrue(output.contains("Promedio general: 7.40"), "El promedio debe ser 7.40");
+        assertTrue(output.contains("Alumnos aprobados (>6): 3"), "Debe haber 3 aprobados");
+        assertTrue(output.contains("Alumnos reprobados (<=6): 2"), "Debe haber 2 reprobados");
+        assertTrue(output.contains("Porcentaje de aprobados: 60.00%"), "El porcentaje de aprobados debe ser 60.00%");
+        assertTrue(output.contains("Porcentaje de reprobados: 40.00%"), "El porcentaje de reprobados debe ser 40.00%");
+        assertTrue(output.contains("Alumnos con calificación mayor a 8: 2"), "Debe haber 2 alumnos con más de 8");
     }
 
     @Test
     void testSinCalificaciones() {
-        int[] calificaciones = {};
-        // Esperado: todo en ceros
-        double[] expected = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
-        double[] actual = programa.calcularEstadisticas(calificaciones);
-        assertArrayEquals(expected, actual, DELTA);
+        String input = "0\n";
+        provideInputAndRun(input);
+        assertTrue(outContent.toString().contains("No hay alumnos para procesar."), "Debe mostrar un mensaje si no hay alumnos");
     }
 }

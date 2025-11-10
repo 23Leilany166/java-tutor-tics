@@ -11,11 +11,7 @@ import java.util.Locale;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-/**
- * Clase de prueba para P14_9_ps_3_6.
- * Simula la entrada del usuario y captura la salida para verificar el resultado.
- */
-public class P14_9_ps_3_6Test {
+public class P14_13_ps_4_28Test {
 
     private final InputStream originalIn = System.in;
     private final PrintStream originalOut = System.out;
@@ -36,18 +32,22 @@ public class P14_9_ps_3_6Test {
     private void provideInputAndRun(String data) {
         InputStream testInput = new ByteArrayInputStream(data.getBytes());
         System.setIn(testInput);
-        P14_9_ps_3_6.main(new String[0]);
+        P14_13_ps_4_28.main(new String[0]);
     }
 
     @Test
-    void main_cuandoSueldosSonMixtos_deberiaAplicarAumentoCorrectamente() {
-        // 3 empleados con sueldos: 500 (<800), 800 (==800), 1000 (>800)
-        String input = "3\n500\n800\n1000\n";
+    void main_cuandoEsCuadradoMagico_deberiaImprimirExito() {
+        // Cuadrado mágico de 3x3 (Lo Shu)
+        String input = "3\n8\n1\n6\n3\n5\n7\n4\n9\n2\n";
         provideInputAndRun(input);
+        assertTrue(outContent.toString().contains("La matriz es un cuadrado mágico"), "Debería detectar un cuadrado mágico.");
+    }
 
-        String output = outContent.toString().replace(",", ".");
-        assertTrue(output.contains("Nuevo sueldo: $575.00"), "El sueldo de 500 debe aumentar a 575.00");
-        assertTrue(output.contains("Nuevo sueldo: $800.00"), "El sueldo de 800 no debe cambiar.");
-        assertTrue(output.contains("Nuevo sueldo: $1000.00"), "El sueldo de 1000 no debe cambiar.");
+    @Test
+    void main_cuandoNoEsCuadradoMagico_deberiaImprimirFallo() {
+        // Matriz no mágica
+        String input = "3\n1\n2\n3\n4\n5\n6\n7\n8\n9\n";
+        provideInputAndRun(input);
+        assertTrue(outContent.toString().contains("La matriz no es un cuadrado mágico"), "Debería detectar que no es un cuadrado mágico.");
     }
 }

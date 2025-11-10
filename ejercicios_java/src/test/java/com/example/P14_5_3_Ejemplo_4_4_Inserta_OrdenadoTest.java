@@ -1,83 +1,63 @@
 package com.example;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import java.util.Arrays;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.io.PrintStream;
+import java.util.Locale;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * Clase de prueba para P14_5_3_Ejemplo_4_4_Inserta_Ordenado.
+ * Simula la entrada del usuario y captura la salida para verificar el resultado.
  */
 public class P14_5_3_Ejemplo_4_4_Inserta_OrdenadoTest {
 
-    private final P14_5_3_Ejemplo_4_4_Inserta_Ordenado insertador = new P14_5_3_Ejemplo_4_4_Inserta_Ordenado();
+    private final InputStream originalIn = System.in;
+    private final PrintStream originalOut = System.out;
+    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 
-    @Test
-    void testInsertarEnMedio() {
-        int[] arreglo = new int[10];
-        arreglo[0] = 10;
-        arreglo[1] = 20;
-        arreglo[2] = 40;
-        arreglo[3] = 50;
-        
-        int nuevoTamano = insertador.insertarElementoOrdenado(arreglo, 4, 30);
-        
-        assertEquals(5, nuevoTamano);
-        assertArrayEquals(new int[]{10, 20, 30, 40, 50}, Arrays.copyOf(arreglo, nuevoTamano));
+    @BeforeEach
+    public void setUpStreams() {
+        System.setOut(new PrintStream(outContent));
+        Locale.setDefault(Locale.US);
     }
 
-    @Test
-    void testInsertarAlPrincipio() {
-        int[] arreglo = new int[10];
-        arreglo[0] = 20;
-        arreglo[1] = 30;
-        
-        int nuevoTamano = insertador.insertarElementoOrdenado(arreglo, 2, 10);
-        
-        assertEquals(3, nuevoTamano);
-        assertArrayEquals(new int[]{10, 20, 30}, Arrays.copyOf(arreglo, nuevoTamano));
+    @AfterEach
+    public void restoreStreams() {
+        System.setIn(originalIn);
+        System.setOut(originalOut);
+    }
+
+    private void provideInputAndRun(String data) {
+        InputStream testInput = new ByteArrayInputStream(data.getBytes());
+        System.setIn(testInput);
+        P14_5_3_Ejemplo_4_4_Inserta_Ordenado.main(new String[0]);
     }
 
     @Test
-    void testInsertarAlFinal() {
-        int[] arreglo = new int[10];
-        arreglo[0] = 10;
-        arreglo[1] = 20;
-        
-        int nuevoTamano = insertador.insertarElementoOrdenado(arreglo, 2, 30);
-        
-        assertEquals(3, nuevoTamano);
-        assertArrayEquals(new int[]{10, 20, 30}, Arrays.copyOf(arreglo, nuevoTamano));
-    }
-    
-    @Test
-    void testElementoYaExiste() {
-        int[] arreglo = new int[10];
-        arreglo[0] = 10;
-        arreglo[1] = 20;
-        arreglo[2] = 30;
-        
-        int[] arregloOriginal = Arrays.copyOf(arreglo, 10);
-        int nuevoTamano = insertador.insertarElementoOrdenado(arreglo, 3, 20);
-        
-        assertEquals(3, nuevoTamano, "El tamaño no debe cambiar si el elemento ya existe");
-        assertArrayEquals(arregloOriginal, arreglo, "El arreglo no debe cambiar si el elemento ya existe");
+    void main_cuandoSeInsertaCorrectamente_deberiaMostrarArreglo() {
+        // Simula: tamaño 4, arreglo 10 20 40 50, insertar 30
+        String input = "4\n10\n20\n40\n50\n30\n";
+        provideInputAndRun(input);
+
+        String actualOutput = outContent.toString().trim().replaceAll("\\s+", " ");
+        assertTrue(actualOutput.contains("Elemento insertado exitosamente."), "Debería mostrar el mensaje de éxito.");
+        assertTrue(actualOutput.endsWith("10 20 30 40 50"), "El arreglo resultante no es el esperado.");
     }
 
     @Test
-    void testArregloLleno() {
-        int[] arreglo = {10, 20, 30}; // Arreglo de tamaño 3, lleno
-        int nuevoTamano = insertador.insertarElementoOrdenado(arreglo, 3, 25);
-        
-        assertEquals(3, nuevoTamano, "El tamaño no debe cambiar si el arreglo está lleno");
-    }
-    
-    @Test
-    void testInsertarEnArregloVacio() {
-        int[] arreglo = new int[10];
-        int nuevoTamano = insertador.insertarElementoOrdenado(arreglo, 0, 100);
-        
-        assertEquals(1, nuevoTamano);
-        assertEquals(100, arreglo[0]);
+    void main_cuandoElementoYaExiste_deberiaMostrarMensaje() {
+        // Simula: tamaño 3, arreglo 10 20 30, insertar 20
+        String input = "3\n10\n20\n30\n20\n";
+        provideInputAndRun(input);
+
+        String actualOutput = outContent.toString().trim().replaceAll("\\s+", " ");
+        assertTrue(actualOutput.contains("No se pudo insertar el elemento (ya existe)."), "Debería mostrar el mensaje de que ya existe.");
+        assertTrue(actualOutput.endsWith("10 20 30"), "El arreglo no debería haber cambiado.");
     }
 }

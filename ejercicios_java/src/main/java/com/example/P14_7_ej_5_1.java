@@ -1,5 +1,7 @@
 
 package com.example;
+
+import java.util.Scanner;
 // CORRECCIÓN 1: El nombre de la clase ahora es válido (empieza con una letra)
 public class P14_7_ej_5_1 { 
     private String nombre;
@@ -48,27 +50,32 @@ public class P14_7_ej_5_1 {
     }
     
     public static void main(String[] args) {
-        // CORRECCIÓN 3: Al crear los objetos, usamos el nuevo nombre de la clase
-        P14_7_ej_5_1 alumno1 = new P14_7_ej_5_1("Juan Perez", "Calle Principal 123", 123456, "Ingeniería Informática");
-        P14_7_ej_5_1 alumno2 = new P14_7_ej_5_1("Maria Lopez", "Avenida Central 456", 789012, "Administración de Empresas");
+        // 1. Herramientas y variables iniciales.
+        Scanner sc = new Scanner(System.in);
+
+        // 2. Pedir los datos del alumno al usuario.
+        System.out.print("Introduce el nombre del alumno: ");
+        String nombre = sc.nextLine();
+
+        System.out.print("Introduce la dirección: ");
+        String direccion = sc.nextLine();
+
+        System.out.print("Introduce la carrera: ");
+        String carrera = sc.nextLine();
+
+        System.out.print("Introduce la matrícula: ");
+        int matricula = sc.nextInt();
+
+        // 3. Crear un objeto (una instancia) de la clase Alumno con los datos proporcionados.
+        P14_7_ej_5_1 alumno = new P14_7_ej_5_1(nombre, direccion, matricula, carrera);
         
-        // El resto del código no necesita cambios
-        String nombreAlumno1 = alumno1.getNombre();
-        int matriculaAlumno2 = alumno2.getMatricula();
-        
-        alumno1.setDireccion("Calle Secundaria 789");
-        alumno2.setCarrera("Contabilidad");
-        
-        System.out.println("Alumno 1:");
-        System.out.println("Nombre: " + alumno1.getNombre());
-        System.out.println("Dirección: " + alumno1.getDireccion());
-        System.out.println("Matrícula: " + alumno1.getMatricula());
-        System.out.println("Carrera: " + alumno1.getCarrera());
-        
-        System.out.println("\nAlumno 2:");
-        System.out.println("Nombre: " + alumno2.getNombre());
-        System.out.println("Dirección: " + alumno2.getDireccion());
-        System.out.println("Matrícula: " + alumno2.getMatricula());
-        System.out.println("Carrera: " + alumno2.getCarrera());
+        // 4. Mostrar los datos del alumno usando los métodos 'get' del objeto.
+        System.out.println("\n--- Datos del Alumno Registrado ---");
+        System.out.println("Nombre: " + alumno.getNombre());
+        System.out.println("Matrícula: " + alumno.getMatricula());
+        System.out.println("Dirección: " + alumno.getDireccion());
+        System.out.println("Carrera: " + alumno.getCarrera());
+
+        sc.close();
     }
 }

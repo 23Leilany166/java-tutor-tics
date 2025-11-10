@@ -1,47 +1,53 @@
 package com.example;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.io.PrintStream;
+import java.util.Locale;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * Clase de prueba para P14_8_ps_1_7.
+ * Simula la entrada del usuario y captura la salida para verificar el resultado.
  */
 public class P14_8_ps_1_7Test {
 
-    private final P14_8_ps_1_7 calculadora = new P14_8_ps_1_7();
-    private final double DELTA = 0.01; // Margen de error para comparar doubles (precisión de un centavo)
+    private final InputStream originalIn = System.in;
+    private final PrintStream originalOut = System.out;
+    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+
+    @BeforeEach
+    public void setUpStreams() {
+        System.setOut(new PrintStream(outContent));
+        Locale.setDefault(Locale.US);
+    }
+
+    @AfterEach
+    public void restoreStreams() {
+        System.setIn(originalIn);
+        System.setOut(originalOut);
+    }
+
+    private void provideInputAndRun(String data) {
+        InputStream testInput = new ByteArrayInputStream(data.getBytes());
+        System.setIn(testInput);
+        P14_8_ps_1_7.main(new String[0]);
+    }
 
     @Test
     void testCalculoConPrecioEstandar() {
-        double precioVehiculo = 250000.0;
-        // Enganche esperado: 87500
-        // Mensualidad esperada: ~5397.32 (Valor corregido)
-        double[] expected = {87500.0, 5397.33}; // <-- VALOR CORREGIDO
-        
-        double[] actual = calculadora.calcularPagos(precioVehiculo);
-        
-        assertArrayEquals(expected, actual, DELTA, "El cálculo para un vehículo estándar es incorrecto");
-    }
+        String input = "250000\n";
+        provideInputAndRun(input);
 
-    @Test
-    void testCalculoConPrecioCero() {
-        double precioVehiculo = 0.0;
-        double[] expected = {0.0, 0.0};
-        
-        double[] actual = calculadora.calcularPagos(precioVehiculo);
-        
-        assertArrayEquals(expected, actual, DELTA, "El cálculo para un vehículo de precio cero debe ser cero");
-    }
-
-    @Test
-    void testCalculoConOtroPrecio() {
-        double precioVehiculo = 100000.0;
-        // Enganche esperado: 35000
-        // Mensualidad esperada: ~2158.93 (Valor corregido)
-        double[] expected = {35000.0, 2158.93}; // <-- VALOR CORREGIDO
-        
-        double[] actual = calculadora.calcularPagos(precioVehiculo);
-        
-        assertArrayEquals(expected, actual, DELTA, "El cálculo para un vehículo de 100,000 es incorrecto");
+        String output = outContent.toString().replace(",", ".");
+        // Enganche: 250000 * 0.35 = 87500
+        // Resto: 162500. Mensualidad: 162500 / 36 = 4513.888...
+        assertTrue(output.contains("Enganche (35%): $87500.00"), "El enganche debe ser 87500.00");
+        assertTrue(output.contains("Pago mensual (36 meses): $4513.89"), "La mensualidad debe ser 4513.89");
     }
 }

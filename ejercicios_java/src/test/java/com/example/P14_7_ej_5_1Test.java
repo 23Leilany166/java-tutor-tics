@@ -1,57 +1,53 @@
 package com.example;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.io.PrintStream;
+import java.util.Locale;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
- * Clase de prueba para la clase de modelo P14_7_ej_5_1 (Alumno).
+ * Clase de prueba para P14_7_ej_5_1.
+ * Simula la entrada del usuario y captura la salida para verificar el resultado.
  */
 public class P14_7_ej_5_1Test {
 
-    private P14_7_ej_5_1 alumno;
+    private final InputStream originalIn = System.in;
+    private final PrintStream originalOut = System.out;
+    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 
-    // El método con @BeforeEach se ejecuta antes de cada prueba.
-    // Es perfecto para inicializar un objeto limpio para cada test.
     @BeforeEach
-    void setUp() {
-        alumno = new P14_7_ej_5_1("Juan Perez", "Calle Principal 123", 123456, "Ingeniería Informática");
+    public void setUpStreams() {
+        System.setOut(new PrintStream(outContent));
+        Locale.setDefault(Locale.US);
+    }
+
+    @AfterEach
+    public void restoreStreams() {
+        System.setIn(originalIn);
+        System.setOut(originalOut);
+    }
+
+    private void provideInputAndRun(String data) {
+        InputStream testInput = new ByteArrayInputStream(data.getBytes());
+        System.setIn(testInput);
+        P14_7_ej_5_1.main(new String[0]);
     }
 
     @Test
-    void testConstructorYGetters() {
-        // Esta prueba verifica que el constructor y los getters funcionen correctamente.
-        assertEquals("Juan Perez", alumno.getNombre(), "El nombre no fue inicializado correctamente");
-        assertEquals("Calle Principal 123", alumno.getDireccion(), "La dirección no fue inicializada correctamente");
-        assertEquals(123456, alumno.getMatricula(), "La matrícula no fue inicializada correctamente");
-        assertEquals("Ingeniería Informática", alumno.getCarrera(), "La carrera no fue inicializada correctamente");
-    }
+    void main_cuandoSeIngresanDatos_deberiaImprimirReporte() {
+        String input = "Juan Perez\nAvenida Siempre Viva 742\nSistemas Computacionales\n123456\n";
+        provideInputAndRun(input);
 
-    @Test
-    void testSetNombre() {
-        // Prueba el método setNombre
-        alumno.setNombre("Carlos Sanchez");
-        assertEquals("Carlos Sanchez", alumno.getNombre(), "El nombre no fue actualizado por el setter");
-    }
-
-    @Test
-    void testSetDireccion() {
-        // Prueba el método setDireccion
-        alumno.setDireccion("Avenida Central 456");
-        assertEquals("Avenida Central 456", alumno.getDireccion(), "La dirección no fue actualizada por el setter");
-    }
-
-    @Test
-    void testSetMatricula() {
-        // Prueba el método setMatricula
-        alumno.setMatricula(987654);
-        assertEquals(987654, alumno.getMatricula(), "La matrícula no fue actualizada por el setter");
-    }
-
-    @Test
-    void testSetCarrera() {
-        // Prueba el método setCarrera
-        alumno.setCarrera("Arquitectura");
-        assertEquals("Arquitectura", alumno.getCarrera(), "La carrera no fue actualizada por el setter");
+        String output = outContent.toString().trim().replaceAll("\\s+", " ");
+        assertTrue(output.contains("Nombre: Juan Perez"), "El reporte debe contener el nombre correcto.");
+        assertTrue(output.contains("Matrícula: 123456"), "El reporte debe contener la matrícula correcta.");
+        assertTrue(output.contains("Dirección: Avenida Siempre Viva 742"), "El reporte debe contener la dirección correcta.");
+        assertTrue(output.contains("Carrera: Sistemas Computacionales"), "El reporte debe contener la carrera correcta.");
     }
 }

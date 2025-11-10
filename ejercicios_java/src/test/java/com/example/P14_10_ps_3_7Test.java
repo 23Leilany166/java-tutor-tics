@@ -1,74 +1,54 @@
 package com.example;
 
-import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.io.PrintStream;
+import java.util.Locale;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * Clase de prueba para P14_10_ps_3_7.
+ * Simula la entrada del usuario y captura la salida para verificar el resultado.
  */
 public class P14_10_ps_3_7Test {
 
-    private final P14_10_ps_3_7 programa = new P14_10_ps_3_7();
-    private final double DELTA = 0.01; // Margen de error para comparar doubles
+    private final InputStream originalIn = System.in;
+    private final PrintStream originalOut = System.out;
+    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 
-    // Pruebas anidadas para organizar los tests por método
-    @Nested
-    class PruebasParaCalcularNuevoSueldo {
-
-        @Test
-        void testSueldoBajo10000() {
-            // Sueldo < 10000, aumento del 10%
-            double nuevoSueldo = programa.calcularNuevoSueldo(5000);
-            assertEquals(5500.0, nuevoSueldo, DELTA);
-        }
-
-        @Test
-        void testSueldoLimiteInferior() {
-            // Sueldo = 10000, aumento del 7%
-            double nuevoSueldo = programa.calcularNuevoSueldo(10000);
-            assertEquals(10700.0, nuevoSueldo, DELTA);
-        }
-
-        @Test
-        void testSueldoEntre10000y25000() {
-            // Sueldo en el rango medio, aumento del 7%
-            double nuevoSueldo = programa.calcularNuevoSueldo(20000);
-            assertEquals(21400.0, nuevoSueldo, DELTA);
-        }
-
-        @Test
-        void testSueldoLimiteSuperior() {
-            // Sueldo = 25000, aumento del 7%
-            double nuevoSueldo = programa.calcularNuevoSueldo(25000);
-            assertEquals(26750.0, nuevoSueldo, DELTA);
-        }
-
-        @Test
-        void testSueldoMayorA25000() {
-            // Sueldo > 25000, aumento del 8%
-            double nuevoSueldo = programa.calcularNuevoSueldo(30000);
-            assertEquals(32400.0, nuevoSueldo, DELTA);
-        }
+    @BeforeEach
+    public void setUpStreams() {
+        System.setOut(new PrintStream(outContent));
+        Locale.setDefault(Locale.US);
     }
-    
-    @Nested
-    class PruebasParaCalcularNominaTotal {
-        
-        @Test
-        void testNominaConSueldosMixtos() {
-            // Un sueldo de cada categoría: 5000, 20000, 30000
-            double[] sueldos = {5000, 20000, 30000};
-            // Nuevos sueldos: 5500 + 21400 + 32400 = 59300
-            double nominaTotal = programa.calcularNominaTotal(sueldos);
-            assertEquals(59300.0, nominaTotal, DELTA);
-        }
 
-        @Test
-        void testNominaConArregloVacio() {
-            double[] sueldos = {};
-            double nominaTotal = programa.calcularNominaTotal(sueldos);
-            assertEquals(0.0, nominaTotal, DELTA, "La nómina de un arreglo vacío debe ser 0");
-        }
+    @AfterEach
+    public void restoreStreams() {
+        System.setIn(originalIn);
+        System.setOut(originalOut);
+    }
+
+    private void provideInputAndRun(String data) {
+        InputStream testInput = new ByteArrayInputStream(data.getBytes());
+        System.setIn(testInput);
+        P14_10_ps_3_7.main(new String[0]);
+    }
+
+    @Test
+    void main_cuandoSueldosSonMixtos_deberiaCalcularNominaCorrectamente() {
+        // 3 empleados con sueldos: 5000 (<10k), 20000 (entre 10k-25k), 30000 (>25k)
+        String input = "3\n5000\n20000\n30000\n";
+        provideInputAndRun(input);
+
+        String output = outContent.toString().replace(",", ".");
+        assertTrue(output.contains("Nuevo sueldo: $5500.00"), "El sueldo de 5000 debe aumentar a 5500.00");
+        assertTrue(output.contains("Nuevo sueldo: $21400.00"), "El sueldo de 20000 debe aumentar a 21400.00");
+        assertTrue(output.contains("Nuevo sueldo: $32400.00"), "El sueldo de 30000 debe aumentar a 32400.00");
+        assertTrue(output.contains("El total de la nueva nómina es: $59300.00"), "La nómina total debe ser 59300.00");
     }
 }

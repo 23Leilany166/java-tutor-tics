@@ -1,49 +1,33 @@
 package com.example;
 
 import java.util.Scanner;
-
+/**
+ * Calcula el plan de pagos para un vehículo.
+ * Esta es una versión simplificada para principiantes con todo en el main.
+ */
 public class P14_8_ps_1_7 {
 
-    /**
-     * Calcula el enganche y la mensualidad para la compra de un vehículo.
-     * El enganche es del 35%, a un plazo de 36 meses con una tasa de interés anual del 12%.
-     *
-     * @param precioVehiculo El costo total del vehículo.
-     * @return Un arreglo de double con dos elementos: [0] = importe del enganche, [1] = monto de la mensualidad.
-     */
-    public double[] calcularPagos(double precioVehiculo) {
-        if (precioVehiculo < 0) {
-            precioVehiculo = 0; // No permitir precios negativos en el cálculo.
-        }
-
-        double enganche = precioVehiculo * 0.35;
-        double saldoRestante = precioVehiculo - enganche;
-
-        if (saldoRestante == 0) {
-            return new double[]{enganche, 0.0};
-        }
-
-        double tasaInteresAnual = 0.12;
-        int plazoMeses = 36;
-        double tasaInteresMensual = tasaInteresAnual / 12;
-
-        double mensualidad = saldoRestante * tasaInteresMensual / (1 - Math.pow(1 + tasaInteresMensual, -plazoMeses));
-        
-        return new double[]{enganche, mensualidad};
-    }
-
     public static void main(String[] args) {
+        // 1. Herramientas y variables iniciales.
         Scanner scanner = new Scanner(System.in);
-        P14_8_ps_1_7 calculadora = new P14_8_ps_1_7();
 
-        System.out.print("Ingrese el precio del vehículo: ");
-        double mon = scanner.nextDouble();
-        
-        double[] resultados = calculadora.calcularPagos(mon);
+        // 2. Pedir el precio del vehículo.
+        System.out.print("Introduce el precio del vehículo: ");
+        double precioVehiculo = scanner.nextDouble();
 
-        System.out.println("Importe del enganche: " + resultados[0]);
-        System.out.println("Monto de las mensualidades: " + resultados[1]);
-        
+        if (precioVehiculo > 0) {
+            // 3. Calcular el enganche y las mensualidades.
+            double enganche = precioVehiculo * 0.35;
+            double resto = precioVehiculo - enganche;
+            double mensualidad = resto / 36.0;
+
+            // 4. Mostrar el plan de pagos.
+            System.out.println("\n--- Plan de Pagos ---");
+            System.out.printf("Enganche (35%%): $%.2f\n", enganche);
+            System.out.printf("Pago mensual (36 meses): $%.2f\n", mensualidad);
+        } else {
+            System.out.println("El precio del vehículo debe ser mayor a cero.");
+        }
+
         scanner.close();
-    }
-}
+    }}

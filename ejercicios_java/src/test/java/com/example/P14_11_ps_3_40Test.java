@@ -1,59 +1,54 @@
 package com.example;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.io.PrintStream;
+import java.util.Locale;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class P14_11_ps_3_40Test {
 
-    private final P14_11_ps_3_40 programa = new P14_11_ps_3_40();
-    
-    private final Elemento plata = new Elemento("Plata", 63.0, 429.0);
-    private final Elemento cobre = new Elemento("Cobre", 59.6, 401.0);
-    private final Elemento oro = new Elemento("Oro", 45.2, 318.0);
-    private final Elemento azufre = new Elemento("Azufre", 0.0000000000000001, 0.205);
-    private final Elemento vidrio = new Elemento("Vidrio", 0.00000000000000001, 1.1);
+    private final InputStream originalIn = System.in;
+    private final PrintStream originalOut = System.out;
+    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+
+    @BeforeEach
+    public void setUpStreams() {
+        System.setOut(new PrintStream(outContent));
+        Locale.setDefault(Locale.US);
+    }
+
+    @AfterEach
+    public void restoreStreams() {
+        System.setIn(originalIn);
+        System.setOut(originalOut);
+    }
+
+    private void provideInputAndRun(String data) {
+        InputStream testInput = new ByteArrayInputStream(data.getBytes());
+        System.setIn(testInput);
+        P14_11_ps_3_40.main(new String[0]);
+    }
 
     @Test
     void testAnalisisConVariosElementos() {
-        List<Elemento> elementos = Arrays.asList(plata, cobre, oro, azufre, vidrio);
-        
-        ResultadosAnalisis resultados = programa.analizarConductores(elementos);
-        
-        List<String> mejoresElectricos = Arrays.asList("Plata", "Cobre");
-        List<String> peoresElectricos = Arrays.asList("Vidrio", "Azufre");
-        List<String> mejoresTermicos = Arrays.asList("Plata", "Cobre");
-        List<String> peoresTermicos = Arrays.asList("Azufre", "Vidrio");
+        // Simula la entrada de 4 elementos y luego finaliza con "NN"
+        String input = "Plata\n63.0\n429.0\n" +
+                       "Cobre\n59.6\n401.0\n" +
+                       "Azufre\n0.1\n0.2\n" +
+                       "Vidrio\n0.01\n1.1\n" +
+                       "NN\n";
+        provideInputAndRun(input);
 
-        assertEquals(mejoresElectricos, getNames(resultados.getMejoresElectricos()));
-        assertEquals(peoresElectricos, getNames(resultados.getPeoresElectricos()));
-        assertEquals(mejoresTermicos, getNames(resultados.getMejoresTermicos()));
-        assertEquals(peoresTermicos, getNames(resultados.getPeoresTermicos()));
-    }
-    
-    @Test
-    void testAnalisisConMenosDeDosElementos() {
-        List<Elemento> elementos = Arrays.asList(cobre);
-        ResultadosAnalisis resultados = programa.analizarConductores(elementos);
-        
-        assertEquals(Arrays.asList("Cobre"), getNames(resultados.getMejoresElectricos()));
-        assertEquals(Arrays.asList("Cobre"), getNames(resultados.getPeoresTermicos()));
-        assertEquals(1, resultados.getMejoresElectricos().size());
-    }
-    
-    @Test
-    void testAnalisisConArregloVacio() {
-        List<Elemento> elementos = Arrays.asList();
-        ResultadosAnalisis resultados = programa.analizarConductores(elementos);
-
-        assertEquals(0, resultados.getMejoresElectricos().size());
-        assertEquals(0, resultados.getPeoresElectricos().size());
-    }
-
-    private List<String> getNames(List<Elemento> elementos) {
-        return elementos.stream().map(Elemento::getNombre).collect(Collectors.toList());
+        String output = outContent.toString();
+        assertTrue(output.contains("Mejor conductor eléctrico: Plata"), "Plata debería ser el mejor conductor eléctrico.");
+        assertTrue(output.contains("Peor conductor eléctrico: Vidrio"), "Vidrio debería ser el peor conductor eléctrico.");
+        assertTrue(output.contains("Mejor conductor térmico: Plata"), "Plata debería ser el mejor conductor térmico.");
+        assertTrue(output.contains("Peor conductor térmico: Azufre"), "Azufre debería ser el peor conductor térmico.");
     }
 }

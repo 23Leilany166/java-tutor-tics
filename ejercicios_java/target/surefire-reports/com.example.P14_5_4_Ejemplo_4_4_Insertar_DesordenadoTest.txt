@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.example.P14_5_4_Ejemplo_4_4_Insertar_DesordenadoTest
 -------------------------------------------------------------------------------
-Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 s -- in com.example.P14_5_4_Ejemplo_4_4_Insertar_DesordenadoTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.052 s -- in com.example.P14_5_4_Ejemplo_4_4_Insertar_DesordenadoTest

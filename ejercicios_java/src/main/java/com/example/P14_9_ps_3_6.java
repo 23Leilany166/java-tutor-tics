@@ -1,47 +1,37 @@
 package com.example;
 
 import java.util.Scanner;
-
+/**
+ * Pide los sueldos de varios empleados y aplica un aumento del 15%
+ * a aquellos que ganan menos de $800.
+ * Esta es una versión simplificada para principiantes con todo en el main.
+ */
 public class P14_9_ps_3_6 {
 
-    /**
-     * Aplica un aumento del 15% a los sueldos que son menores a 800.
-     * La modificación se realiza directamente sobre el arreglo de entrada.
-     *
-     * @param sueldos El arreglo de doubles con los sueldos a procesar.
-     */
-    public void aplicarAumento(double[] sueldos) {
-        if (sueldos == null) {
-            return; // Evita errores si el arreglo es nulo
-        }
-        for (int i = 0; i < sueldos.length; i++) {
-            if (sueldos[i] < 800) {
-                sueldos[i] *= 1.15;
-            }
-        }
-    }
-
     public static void main(String[] args) {
+        // 1. Herramientas y variables iniciales.
         Scanner scanner = new Scanner(System.in);
-        P14_9_ps_3_6 programa = new P14_9_ps_3_6();
 
-        System.out.print("Ingrese el número de empleados: ");
+        // 2. Pedir el número de empleados.
+        System.out.print("Introduce el número de empleados: ");
         int n = scanner.nextInt();
-        double[] sueldos = new double[n];
 
-        for (int i = 0; i < n; i++) {
-            System.out.print("Ingrese el sueldo del trabajador " + (i + 1) + ": ");
-            sueldos[i] = scanner.nextDouble();
+        if (n > 0) {
+            System.out.println("--- Introduce los sueldos ---");
+            // 3. Bucle para procesar cada empleado.
+            for (int i = 0; i < n; i++) {
+                System.out.print("Sueldo del empleado #" + (i + 1) + ": ");
+                double sueldo = scanner.nextDouble();
+
+                // 4. Aplicar aumento si es necesario y mostrar el nuevo sueldo.
+                if (sueldo < 800) {
+                    sueldo = sueldo * 1.15;
+                }
+                System.out.printf(" -> Nuevo sueldo: $%.2f\n", sueldo);
+            }
+        } else {
+            System.out.println("No hay empleados para procesar.");
         }
-
-        // Se llama al método refactorizado para aplicar la lógica
-        programa.aplicarAumento(sueldos);
-
-        System.out.println("Sueldos con el aumento:");
-        for (int i = 0; i < n; i++) {
-            System.out.println("Trabajador " + (i + 1) + ": " + sueldos[i]);
-        }
-        
         scanner.close();
     }
 }

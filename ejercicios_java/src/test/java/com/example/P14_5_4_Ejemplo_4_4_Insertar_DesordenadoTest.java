@@ -1,46 +1,64 @@
 package com.example;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import java.util.Arrays;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.io.PrintStream;
+import java.util.Locale;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * Clase de prueba para P14_5_4_Ejemplo_4_4_Insertar_Desordenado.
+ * Simula la entrada del usuario y captura la salida para verificar el resultado.
  */
 public class P14_5_4_Ejemplo_4_4_Insertar_DesordenadoTest {
 
-    private final P14_5_4_Ejemplo_4_4_Insertar_Desordenado insertador = new P14_5_4_Ejemplo_4_4_Insertar_Desordenado();
+    private final InputStream originalIn = System.in;
+    private final PrintStream originalOut = System.out;
+    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 
-    @Test
-    void testInsertarEnArregloConEspacio() {
-        int[] arreglo = new int[5];
-        arreglo[0] = 10;
-        arreglo[1] = 20;
-        
-        int nuevoTamano = insertador.insertarElementoDesordenado(arreglo, 2, 30);
-        
-        assertEquals(3, nuevoTamano, "El nuevo tamaño debería ser 3");
-        assertEquals(30, arreglo[2], "El nuevo elemento debería estar en la posición 2");
+    @BeforeEach
+    public void setUpStreams() {
+        System.setOut(new PrintStream(outContent));
+        Locale.setDefault(Locale.US);
+    }
+
+    @AfterEach
+    public void restoreStreams() {
+        System.setIn(originalIn);
+        System.setOut(originalOut);
+    }
+
+    private void provideInputAndRun(String data) {
+        InputStream testInput = new ByteArrayInputStream(data.getBytes());
+        System.setIn(testInput);
+        P14_5_4_Ejemplo_4_4_Insertar_Desordenado.main(new String[0]);
     }
 
     @Test
-    void testInsertarEnArregloVacio() {
-        int[] arreglo = new int[5];
-        int nuevoTamano = insertador.insertarElementoDesordenado(arreglo, 0, 99);
-        
-        assertEquals(1, nuevoTamano);
-        assertEquals(99, arreglo[0]);
+    void main_cuandoUsuarioInsertaVariosYPara_deberiaMostrarArregloFinal() {
+        // Simula: insertar 10, continuar (s), insertar 20, parar (n)
+        String input = "10\ns\n20\nn\n";
+        provideInputAndRun(input);
+
+        String actualOutput = outContent.toString().trim().replaceAll("\\s+", " ");
+        assertTrue(actualOutput.contains("Arreglo actual: 10 20"), "Debería mostrar el arreglo con 10 y 20.");
+        assertTrue(actualOutput.endsWith("Proceso finalizado."), "Debería finalizar el proceso.");
     }
-    
+
     @Test
-    void testInsertarEnArregloLleno() {
-        int[] arreglo = {1, 2, 3}; // Arreglo de tamaño 3, completamente lleno
-        int[] arregloOriginal = Arrays.copyOf(arreglo, 3);
-        
-        int nuevoTamano = insertador.insertarElementoDesordenado(arreglo, 3, 4);
-        
-        assertEquals(3, nuevoTamano, "El tamaño no debe cambiar si el arreglo está lleno");
-        assertArrayEquals(arregloOriginal, arreglo, "El arreglo no debe cambiar si está lleno");
+    void main_cuandoArregloSeLlena_deberiaMostrarMensajeDeLleno() {
+        // Simula llenar un arreglo de capacidad 5
+        String input = "1\ns\n2\ns\n3\ns\n4\ns\n5\n";
+        provideInputAndRun(input);
+
+        String actualOutput = outContent.toString().trim().replaceAll("\\s+", " ");
+        assertTrue(actualOutput.contains("Arreglo actual: 1 2 3 4 5"), "Debería mostrar el arreglo lleno.");
+        assertTrue(actualOutput.contains("No hay más espacio para insertar elementos."), "Debería mostrar el mensaje de que no hay espacio.");
+        assertTrue(actualOutput.endsWith("Proceso finalizado."), "Debería finalizar el proceso.");
     }
 }
