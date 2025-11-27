@@ -4,35 +4,41 @@ digraph P14_8_ps_1_7_Flowchart {
     node [fontname="Helvetica", fontsize=10];
     edge [fontname="Helvetica", fontsize=9];
 
-    // Definición de estilos de nodos
-    node [shape=ellipse, style=filled, fillcolor=lightgrey]; // Inicio/Fin
-    start [label="INICIO"];
-    end [label="FIN"];
+    // Definición de nodos
+    start [label="INICIO", shape=ellipse, style=filled, fillcolor=lightgrey];
+    end [label="FIN", shape=ellipse, style=filled, fillcolor=lightgrey];
 
-    node [shape=box, style=filled, fillcolor=lightblue]; // Proceso
-    declare_vars [label="DECLARAR:\nScanner scanner, double precioVehiculo"];
-    calc_pagos [label="enganche = precioVehiculo * 0.35\nresto = precioVehiculo - enganche\nmensualidad = resto / 36.0"];
-    close_scanner [label="Cerrar Scanner"];
+    declare_vars [label="DECLARAR\nprecioVehiculo (double), enganche (double),\nresto (double), mensualidad (double)", shape=box, style=filled, fillcolor=lightblue];
+    
+    prompt_precio [label="IMPRIMIR 'Introduce el precio del vehículo:'", shape=document, style=filled, fillcolor=lightgoldenrod1];
+    read_precio [label="LEER precioVehiculo", shape=parallelogram, style=filled, fillcolor=lightgoldenrod1];
 
-    node [shape=parallelogram, style=filled, fillcolor=lightgoldenrod1]; // Entrada/Salida
-    prompt_precio [label="IMPRIMIR \"Introduce el precio del vehículo: \""];
-    read_precio [label="LEER precioVehiculo"];
-    print_reporte [label="IMPRIMIR \"--- Plan de Pagos ---\"\n- Enganche (35%%): $%.2f\n- Pago mensual (36 meses): $%.2f"];
-    print_error [label="IMPRIMIR \"El precio debe ser mayor a cero.\""];
+    decision_precio [label="precioVehiculo > 0", shape=diamond, style=filled, fillcolor=khaki];
 
-    node [shape=diamond, style=filled, fillcolor=khaki, width=2, height=1]; // Decisión
-    decision_precio [label="precioVehiculo > 0"];
+    calc_pagos [label="enganche = precioVehiculo * 0.35\nresto = precioVehiculo - enganche\nmensualidad = resto / 36.0", shape=box, style=filled, fillcolor=lightblue];
+    
+    print_plan_header [label="IMPRIMIR '--- Plan de Pagos ---'", shape=document, style=filled, fillcolor=lightgoldenrod1];
+    print_enganche [label="IMPRIMIR 'Enganche (35%%): ' + enganche", shape=document, style=filled, fillcolor=lightgoldenrod1];
+    print_mensualidad [label="IMPRIMIR 'Pago mensual (36 meses): ' + mensualidad", shape=document, style=filled, fillcolor=lightgoldenrod1];
+
+    print_error [label="IMPRIMIR 'El precio del vehículo debe ser mayor a cero.'", shape=document, style=filled, fillcolor=lightgoldenrod1];
+    
+    close_scanner [label="Cerrar Scanner", shape=box, style=filled, fillcolor=lightblue];
 
     // Conexiones (flujo)
     start -> declare_vars;
     declare_vars -> prompt_precio;
     prompt_precio -> read_precio;
     read_precio -> decision_precio;
-
-    decision_precio -> calc_pagos [label="Sí"];
-    decision_precio -> print_error [label="No"];
     
-    calc_pagos -> print_reporte;
-    {print_reporte, print_error} -> close_scanner;
+    decision_precio -> calc_pagos [label="Sí"];
+    calc_pagos -> print_plan_header;
+    print_plan_header -> print_enganche;
+    print_enganche -> print_mensualidad;
+    print_mensualidad -> close_scanner;
+    
+    decision_precio -> print_error [label="No"];
+    print_error -> close_scanner;
+
     close_scanner -> end;
 }

@@ -1,66 +1,97 @@
 digraph P14_5_2_Ejemplo_4_4_Elimina_Ordenado_Flowchart {
-    // Configuración general del grafo
     rankdir=TB;
     node [fontname="Helvetica", fontsize=10];
     edge [fontname="Helvetica", fontsize=9];
 
-    // Definición de estilos de nodos
-    node [shape=ellipse, style=filled, fillcolor=lightgrey]; // Inicio/Fin
-    start [label="INICIO"];
-    end [label="FIN"];
+    // --- Nodos ---
+    // Inicio y Fin (Elipse)
+    start [label="INICIO", shape=ellipse, style=filled, fillcolor=lightgrey];
+    end [label="FIN", shape=ellipse, style=filled, fillcolor=lightgrey];
 
-    node [shape=box, style=filled, fillcolor=lightblue]; // Proceso
-    declare_vars [label="DECLARAR:\nScanner sc, int[] a, int n, int x,\nint bajo=0, alto, central, indiceEncontrado=-1,\nboolean encontrado=false"];
-    read_elements_loop [label="BUCLE for (i=0 hasta n-1)"];
-    read_element [label="LEER a[i]"];
-    set_alto [label="alto = n - 1"];
-    calc_central [label="central = (bajo + alto) / 2"];
-    set_encontrado [label="encontrado = true\nindiceEncontrado = central"];
-    set_alto_menor [label="alto = central - 1"];
-    set_bajo_mayor [label="bajo = central + 1"];
-    decrement_n [label="n--"];
-    shift_loop [label="BUCLE for (k=indiceEncontrado hasta n-1)"];
-    shift_proc [label="a[k] = a[k+1]"];
-    print_loop [label="BUCLE for (k=0 hasta n-1)"];
-    print_element [label="IMPRIMIR a[k]"];
-    close_scanner [label="Cerrar Scanner"];
+    // Entrada/Salida (Paralelogramo)
+    prompt_n [label="IMPRIMIR 'Ingrese el tamaño del arreglo (N):'", shape=parallelogram, style=filled, fillcolor=lightgoldenrod1];
+    read_n [label="LEER n", shape=parallelogram, style=filled, fillcolor=lightgoldenrod1];
+    prompt_elements [label="IMPRIMIR 'Ingrese los elementos (ordenados):'", shape=parallelogram, style=filled, fillcolor=lightgoldenrod1];
+    read_a_i [label="LEER a[i]", shape=parallelogram, style=filled, fillcolor=lightgoldenrod1];
+    prompt_x [label="IMPRIMIR 'Ingrese el elemento a eliminar (X):'", shape=parallelogram, style=filled, fillcolor=lightgoldenrod1];
+    read_x [label="LEER x", shape=parallelogram, style=filled, fillcolor=lightgoldenrod1];
+    print_success [label="IMPRIMIR 'Elemento eliminado. Arreglo resultante:'", shape=parallelogram, style=filled, fillcolor=lightgoldenrod1];
+    print_failure [label="IMPRIMIR 'Elemento no encontrado. El arreglo no ha cambiado:'", shape=parallelogram, style=filled, fillcolor=lightgoldenrod1];
+    print_element [label="IMPRIMIR a[k] + ' '", shape=parallelogram, style=filled, fillcolor=lightgoldenrod1];
 
-    node [shape=parallelogram, style=filled, fillcolor=lightgoldenrod1]; // Entrada/Salida
-    prompt_n [label="IMPRIMIR \"Ingrese el tamaño del arreglo (N): \""];
-    read_n [label="LEER n"];
-    prompt_elements [label="IMPRIMIR \"Ingrese los elementos (ordenados):\""];
-    prompt_x [label="IMPRIMIR \"Ingrese el elemento a eliminar (X): \""];
-    read_x [label="LEER x"];
-    print_success [label="IMPRIMIR \"Elemento eliminado...\""];
-    print_failure [label="IMPRIMIR \"Elemento no encontrado...\""];
+    // Proceso (Rectángulo)
+    declare_vars [label="DECLARAR\nScanner sc, int[] a = new int[100]", shape=box, style=filled, fillcolor=lightblue];
+    init_loop_vars [label="i = 0", shape=box, style=filled, fillcolor=lightblue];
+    increment_i [label="i++", shape=box, style=filled, fillcolor=lightblue];
+    init_search_vars [label="DECLARAR\nbajo = 0, alto = n - 1, central, indiceEncontrado = -1\nboolean encontrado = false", shape=box, style=filled, fillcolor=lightblue];
+    calc_central [label="central = (bajo + alto) / 2", shape=box, style=filled, fillcolor=lightblue];
+    set_encontrado [label="encontrado = true\nindiceEncontrado = central", shape=box, style=filled, fillcolor=lightblue];
+    update_alto [label="alto = central - 1", shape=box, style=filled, fillcolor=lightblue];
+    update_bajo [label="bajo = central + 1", shape=box, style=filled, fillcolor=lightblue];
+    decrement_n [label="n--", shape=box, style=filled, fillcolor=lightblue];
+    init_shift_vars [label="k = indiceEncontrado", shape=box, style=filled, fillcolor=lightblue];
+    shift_element [label="a[k] = a[k+1]", shape=box, style=filled, fillcolor=lightblue];
+    increment_k_shift [label="k++", shape=box, style=filled, fillcolor=lightblue];
+    init_print_vars [label="k = 0", shape=box, style=filled, fillcolor=lightblue];
+    increment_k_print [label="k++", shape=box, style=filled, fillcolor=lightblue];
+    close_scanner [label="Cerrar Scanner", shape=box, style=filled, fillcolor=lightblue];
+    
+    // Decisión (Diamante)
+    loop_cond_i [label="i < n", shape=diamond, style=filled, fillcolor=khaki];
+    search_loop_cond [label="bajo <= alto &&\n!encontrado", shape=diamond, style=filled, fillcolor=khaki];
+    check_equal [label="a[central] == x", shape=diamond, style=filled, fillcolor=khaki];
+    check_less [label="x < a[central]", shape=diamond, style=filled, fillcolor=khaki];
+    decision_encontrado [label="¿encontrado?", shape=diamond, style=filled, fillcolor=khaki];
+    loop_cond_shift [label="k < n", shape=diamond, style=filled, fillcolor=khaki];
+    loop_cond_print [label="k < n", shape=diamond, style=filled, fillcolor=khaki];
 
-    node [shape=diamond, style=filled, fillcolor=khaki, width=2, height=1.2]; // Decisión
-    binary_search_loop [label="bajo <= alto &&\n!encontrado"];
-    check_equal [label="a[central] == x"];
-    check_less [label="x < a[central]"];
-    decision_encontrado [label="encontrado"];
+    // --- Conexiones (Flujo) ---
+    start -> declare_vars -> prompt_n -> read_n -> prompt_elements;
+    
+    // Bucle para leer elementos
+    prompt_elements -> init_loop_vars -> loop_cond_i;
+    loop_cond_i -> read_a_i [label="Sí"];
+    read_a_i -> increment_i -> loop_cond_i;
+    
+    // Iniciar búsqueda
+    loop_cond_i -> prompt_x [label="No"];
+    prompt_x -> read_x -> init_search_vars -> search_loop_cond;
 
-    // Conexiones (flujo)
-    start -> declare_vars -> prompt_n -> read_n -> prompt_elements -> read_elements_loop -> read_element -> read_elements_loop;
-    read_elements_loop -> prompt_x [label="Fin del bucle"];
-    prompt_x -> read_x -> set_alto -> binary_search_loop;
-
-    binary_search_loop -> calc_central [label="Sí"];
-    binary_search_loop -> decision_encontrado [label="No"];
+    // Bucle de búsqueda binaria
+    search_loop_cond -> calc_central [label="Sí"];
     calc_central -> check_equal;
     check_equal -> set_encontrado [label="Sí"];
+    set_encontrado -> search_loop_cond;
     check_equal -> check_less [label="No"];
-    check_less -> set_alto_menor [label="Sí"];
-    check_less -> set_bajo_mayor [label="No"];
-    {set_encontrado, set_alto_menor, set_bajo_mayor} -> binary_search_loop;
-
-    decision_encontrado -> print_success [label="Sí"];
-    decision_encontrado -> print_failure [label="No"];
-    print_success -> decrement_n -> shift_loop -> shift_proc -> shift_loop;
-    shift_loop -> print_loop [label="Fin del bucle"];
-    print_failure -> print_loop;
+    check_less -> update_alto [label="Sí"];
+    update_alto -> search_loop_cond;
+    check_less -> update_bajo [label="No"];
+    update_bajo -> search_loop_cond;
     
-    print_loop -> print_element -> print_loop;
-    print_loop -> close_scanner [label="Fin del bucle"];
+    // Después del bucle de búsqueda
+    search_loop_cond -> decision_encontrado [label="No"];
+    
+    // Si se encontró, eliminar y mostrar
+    decision_encontrado -> print_success [label="Sí"];
+    print_success -> decrement_n -> init_shift_vars -> loop_cond_shift;
+    
+    // Bucle para desplazar elementos
+    loop_cond_shift -> shift_element [label="Sí"];
+    shift_element -> increment_k_shift -> loop_cond_shift;
+    
+    // Si no se encontró
+    decision_encontrado -> print_failure [label="No"];
+    
+    // Conectar ambos caminos al bucle de impresión
+    loop_cond_shift -> init_print_vars [label="No"];
+    print_failure -> init_print_vars;
+
+    // Bucle para imprimir el resultado
+    init_print_vars -> loop_cond_print;
+    loop_cond_print -> print_element [label="Sí"];
+    print_element -> increment_k_print -> loop_cond_print;
+
+    // Fin
+    loop_cond_print -> close_scanner [label="No"];
     close_scanner -> end;
 }

@@ -5,49 +5,62 @@ digraph P14_6_pro_4_8_Flowchart {
     edge [fontname="Helvetica", fontsize=9];
 
     // Definición de estilos de nodos
-    node [shape=ellipse, style=filled, fillcolor=lightgrey]; // Inicio/Fin
-    start [label="INICIO"];
-    end [label="FIN"];
+    node_start_end [shape=ellipse, style=filled, fillcolor=lightgrey];
+    node_process [shape=box, style=filled, fillcolor=lightblue];
+    node_io [shape=parallelogram, style=filled, fillcolor=lightgoldenrod1];
+    node_decision [shape=diamond, style=filled, fillcolor=khaki];
+    node_output [shape=document, style=filled, fillcolor="#F2CFC2"];
 
-    node [shape=box, style=filled, fillcolor=lightblue]; // Proceso
-    declare_vars [label="DECLARAR:\nScanner sc, int aprobados=0, reprobados=0,\nmayoresA8=0, double sumaCalificaciones=0, int n"];
-    loop_init [label="BUCLE for (i=0 hasta n-1)"];
-    update_suma [label="sumaCalificaciones += cal"];
-    increment_aprobados [label="aprobados++"];
-    increment_reprobados [label="reprobados++"];
-    increment_mayoresA8 [label="mayoresA8++"];
-    calc_finales [label="Calcular promedio, porcAprobados, porcReprobados"];
-    close_scanner [label="Cerrar Scanner"];
-
-    node [shape=parallelogram, style=filled, fillcolor=lightgoldenrod1]; // Entrada/Salida
-    prompt_n [label="IMPRIMIR \"Introduce el número de alumnos: \""];
-    read_n [label="LEER n"];
-    prompt_cal [label="IMPRIMIR \"Introduce la calificación del alumno #[i+1]: \""];
-    read_cal [label="LEER cal"];
-    print_no_alumnos [label="IMPRIMIR \"No hay alumnos para procesar.\""];
-    print_reporte [label="IMPRIMIR Reporte Final:\n- Promedio\n- Aprobados\n- Reprobados\n- % Aprobados\n- % Reprobados\n- > 8"];
-
-    node [shape=diamond, style=filled, fillcolor=khaki, width=2, height=1.2]; // Decisión
-    decision_n_gt_0 [label="n > 0"];
-    decision_aprobado [label="cal > 6"];
-    decision_mayorA8 [label="cal > 8"];
-
-    // Conexiones (flujo)
-    start -> declare_vars -> prompt_n -> read_n -> decision_n_gt_0;
-    decision_n_gt_0 -> print_no_alumnos [label="No"];
-    print_no_alumnos -> close_scanner;
-
-    decision_n_gt_0 -> loop_init [label="Sí"];
-    loop_init -> prompt_cal -> read_cal -> update_suma -> decision_aprobado;
+    // Nodos del diagrama
+    start [label="INICIO", shape=ellipse, style=filled, fillcolor=lightgrey];
+    declare_vars [label="DECLARAR\nScanner scanner,\naprobados = 0, reprobados = 0,\nmayoresA8 = 0, sumaCalificaciones = 0", shape=box, style=filled, fillcolor=lightblue];
+    prompt_n [label="IMPRIMIR \"Introduce el número de alumnos del grupo: \"", shape=parallelogram, style=filled, fillcolor=lightgoldenrod1];
+    read_n [label="LEER n", shape=parallelogram, style=filled, fillcolor=lightgoldenrod1];
+    decision_n [label="n > 0", shape=diamond, style=filled, fillcolor=khaki];
     
-    decision_aprobado -> increment_aprobados [label="Sí"];
-    decision_aprobado -> increment_reprobados [label="No"];
-    increment_aprobados -> decision_mayorA8;
-    increment_reprobados -> loop_init; // Vuelve al bucle
-    decision_mayorA8 -> increment_mayoresA8 [label="Sí"];
-    decision_mayorA8 -> loop_init [label="No"];
-    increment_mayoresA8 -> loop_init;
+    loop_start [label="PARA i = 0 HASTA n-1", shape=box, style=filled, fillcolor=lightblue];
+    prompt_cal [label="IMPRIMIR \"Introduce la calificación del alumno #\" + (i+1)", shape=parallelogram, style=filled, fillcolor=lightgoldenrod1];
+    read_cal [label="LEER cal", shape=parallelogram, style=filled, fillcolor=lightgoldenrod1];
+    update_sum [label="sumaCalificaciones += cal", shape=box, style=filled, fillcolor=lightblue];
+    
+    decision_aprobado [label="cal > 6", shape=diamond, style=filled, fillcolor=khaki];
+    inc_aprobados [label="aprobados++", shape=box, style=filled, fillcolor=lightblue];
+    inc_reprobados [label="reprobados++", shape=box, style=filled, fillcolor=lightblue];
+    
+    decision_mayor8 [label="cal > 8", shape=diamond, style=filled, fillcolor=khaki];
+    inc_mayor8 [label="mayoresA8++", shape=box, style=filled, fillcolor=lightblue];
+    
+    loop_end [label="FIN PARA", shape=box, style=filled, fillcolor=lightblue];
 
-    loop_init -> calc_finales [label="Fin del bucle"];
-    calc_finales -> print_reporte -> close_scanner -> end;
+    calc_results [label="promedio = sumaCalificaciones / n\nporcAprobados = (aprobados / n) * 100\nporcReprobados = (reprobados / n) * 100", shape=box, style=filled, fillcolor=lightblue];
+    
+    print_report [label="IMPRIMIR Reporte:\n- Promedio general\n- Alumnos aprobados\n- Alumnos reprobados\n- % de aprobados\n- % de reprobados\n- Alumnos con calificación > 8", shape=document, style=filled, fillcolor="#F2CFC2"];
+    print_no_alumnos [label="IMPRIMIR \"No hay alumnos para procesar.\"", shape=document, style=filled, fillcolor="#F2CFC2"];
+    
+    close_scanner [label="Cerrar Scanner", shape=box, style=filled, fillcolor=lightblue];
+    end [label="FIN", shape=ellipse, style=filled, fillcolor=lightgrey];
+
+    // Conexiones del flujo
+    start -> declare_vars -> prompt_n -> read_n -> decision_n;
+    decision_n -> loop_start [label="Sí"];
+    decision_n -> print_no_alumnos [label="No"];
+    
+    loop_start -> prompt_cal -> read_cal -> update_sum -> decision_aprobado;
+    
+    decision_aprobado -> inc_aprobados [label="Sí"];
+    decision_aprobado -> inc_reprobados [label="No"];
+    
+    inc_aprobados -> decision_mayor8;
+    inc_reprobados -> decision_mayor8;
+    
+    decision_mayor8 -> inc_mayor8 [label="Sí"];
+    decision_mayor8 -> loop_end [label="No"];
+    inc_mayor8 -> loop_end;
+
+    loop_end -> loop_start; // Simula el ciclo volviendo al inicio del PARA
+    
+    loop_start -> calc_results [label="Fin del bucle"]; // Etiqueta para cuando el bucle termina
+    calc_results -> print_report -> close_scanner;
+    print_no_alumnos -> close_scanner;
+    close_scanner -> end;
 }

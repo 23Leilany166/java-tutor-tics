@@ -17,11 +17,15 @@ digraph P14_4_pro_3_7_Flowchart {
     increment_grandes [label="ventasGrandes++"];
     close_scanner [label="Cerrar Scanner"];
 
-    node [shape=parallelogram, style=filled, fillcolor=lightgoldenrod1]; // Entrada/Salida
-    prompt_cantidad [label="IMPRIMIR \"Introduce la cantidad de ventas a procesar: \""];
+    // Entrada (Input)
+    node [shape=parallelogram, style=filled, fillcolor=lightgoldenrod1];
     read_cantidad [label="LEER cantidadVentas"];
-    prompt_monto [label="IMPRIMIR \"Introduce el monto de la venta #[i+1]: \""];
     read_monto [label="LEER monto"];
+
+    // Salida (Output / Display)
+    node [shape=document, style=filled, fillcolor=lightcyan];
+    prompt_cantidad [label="IMPRIMIR \"Introduce la cantidad de ventas a procesar: \""];
+    prompt_monto [label="IMPRIMIR \"Introduce el monto de la venta #[i+1]: \""];
     print_resumen [label="IMPRIMIR Resumen de ventas:\n- Chicas: [ventasChicas]\n- Medianas: [ventasMedianas]\n- Grandes: [ventasGrandes]"];
 
     node [shape=diamond, style=filled, fillcolor=khaki, width=2, height=1]; // Decisión

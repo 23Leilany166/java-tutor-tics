@@ -4,26 +4,29 @@ digraph P14_7_ej_5_1_Flowchart {
     node [fontname="Helvetica", fontsize=10];
     edge [fontname="Helvetica", fontsize=9];
 
-    // Definición de estilos de nodos
-    node [shape=ellipse, style=filled, fillcolor=lightgrey]; // Inicio/Fin
-    start [label="INICIO"];
-    end [label="FIN"];
+    // Definición de nodos
+    start [label="INICIO", shape=ellipse, style=filled, fillcolor="#B0E0E6"];
+    end [label="FIN", shape=ellipse, style=filled, fillcolor="#B0E0E6"];
 
-    node [shape=box, style=filled, fillcolor=lightblue]; // Proceso
-    declare_vars [label="DECLARAR:\nScanner sc, String nombre, direccion, carrera,\nint matricula"];
-    create_object [label="Crear objeto 'alumno' de la clase P14_7_ej_5_1\ncon los datos leídos"];
-    close_scanner [label="Cerrar Scanner"];
+    declare_vars [label="DECLARAR:\nScanner sc\nString nombre, direccion, carrera\nint matricula", shape=box, style=filled, fillcolor="#FFFACD"];
 
-    node [shape=parallelogram, style=filled, fillcolor=lightgoldenrod1]; // Entrada/Salida
-    prompt_nombre [label="IMPRIMIR \"Introduce el nombre del alumno: \""];
-    read_nombre [label="LEER nombre"];
-    prompt_direccion [label="IMPRIMIR \"Introduce la dirección: \""];
-    read_direccion [label="LEER direccion"];
-    prompt_carrera [label="IMPRIMIR \"Introduce la carrera: \""];
-    read_carrera [label="LEER carrera"];
-    prompt_matricula [label="IMPRIMIR \"Introduce la matrícula: \""];
-    read_matricula [label="LEER matricula"];
-    print_reporte [label="IMPRIMIR \"--- Datos del Alumno Registrado ---\"\n- Nombre: alumno.getNombre()\n- Matrícula: alumno.getMatricula()\n- Dirección: alumno.getDireccion()\n- Carrera: alumno.getCarrera()"];
+    prompt_nombre [label="IMPRIMIR\n\"Introduce el nombre del alumno: \"", shape=document, style=filled, fillcolor="#D8BFD8"];
+    read_nombre [label="LEER nombre", shape=parallelogram, style=filled, fillcolor="#98FB98"];
+    
+    prompt_direccion [label="IMPRIMIR\n\"Introduce la dirección: \"", shape=document, style=filled, fillcolor="#D8BFD8"];
+    read_direccion [label="LEER direccion", shape=parallelogram, style=filled, fillcolor="#98FB98"];
+
+    prompt_carrera [label="IMPRIMIR\n\"Introduce la carrera: \"", shape=document, style=filled, fillcolor="#D8BFD8"];
+    read_carrera [label="LEER carrera", shape=parallelogram, style=filled, fillcolor="#98FB98"];
+
+    prompt_matricula [label="IMPRIMIR\n\"Introduce la matrícula: \"", shape=document, style=filled, fillcolor="#D8BFD8"];
+    read_matricula [label="LEER matricula", shape=parallelogram, style=filled, fillcolor="#98FB98"];
+    
+    create_object [label="Crear objeto 'alumno'\ncon los datos leídos", shape=box, style=filled, fillcolor="#FFFACD"];
+    
+    print_reporte [label="IMPRIMIR REPORTE\n\"--- Datos del Alumno Registrado ---\"\n+ alumno.getNombre()\n+ alumno.getMatricula()\n+ alumno.getDireccion()\n+ alumno.getCarrera()", shape=document, style=filled, fillcolor="#D8BFD8"];
+    
+    close_scanner [label="Cerrar Scanner", shape=box, style=filled, fillcolor="#FFFACD"];
 
     // Conexiones (flujo)
     start -> declare_vars;

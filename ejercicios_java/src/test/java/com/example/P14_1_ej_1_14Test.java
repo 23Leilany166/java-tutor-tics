@@ -12,7 +12,7 @@ import java.util.Locale;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
- * Clase de prueba para P14_1_ej_1_14.
+ * Clase de prueba para App.
  *
  * Probar un método `main` que interactúa con la consola (System.in y System.out)
  * es más complejo que probar métodos simples.

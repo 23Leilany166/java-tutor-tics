@@ -4,41 +4,53 @@ digraph P14_9_ps_3_6_Flowchart {
     node [fontname="Helvetica", fontsize=10];
     edge [fontname="Helvetica", fontsize=9];
 
-    // Definición de estilos de nodos
-    node [shape=ellipse, style=filled, fillcolor=lightgrey]; // Inicio/Fin
-    start [label="INICIO"];
-    end [label="FIN"];
+    // Definición de nodos
+    start [label="INICIO", shape=ellipse, style=filled, fillcolor=lightgrey];
+    end [label="FIN", shape=ellipse, style=filled, fillcolor=lightgrey];
 
-    node [shape=box, style=filled, fillcolor=lightblue]; // Proceso
-    declare_vars [label="DECLARAR:\nScanner sc, int n"];
-    loop_init [label="BUCLE for (i=0 hasta n-1)"];
-    calc_aumento [label="sueldo = sueldo * 1.15"];
-    close_scanner [label="Cerrar Scanner"];
+    declare_vars [label="DECLARAR\nScanner scanner, int n", shape=box, style=filled, fillcolor=lightblue];
+    prompt_n [label="IMPRIMIR 'Introduce el número de empleados:'", shape=document, style=filled, fillcolor=lightgoldenrod1];
+    read_n [label="LEER n", shape=parallelogram, style=filled, fillcolor=lightgoldenrod1];
+    
+    decision_n [label="n > 0", shape=diamond, style=filled, fillcolor=khaki];
+    
+    print_no_empleados [label="IMPRIMIR 'No hay empleados para procesar.'", shape=document, style=filled, fillcolor=lightgoldenrod1];
+    print_header [label="IMPRIMIR '--- Introduce los sueldos ---'", shape=document, style=filled, fillcolor=lightgoldenrod1];
 
-    node [shape=parallelogram, style=filled, fillcolor=lightgoldenrod1]; // Entrada/Salida
-    prompt_n [label="IMPRIMIR \"Introduce el número de empleados: \""];
-    read_n [label="LEER n"];
-    prompt_sueldo [label="IMPRIMIR \"Sueldo del empleado #[i+1]: \""];
-    read_sueldo [label="LEER sueldo"];
-    print_nuevo_sueldo [label="IMPRIMIR \" -> Nuevo sueldo: $%.2f\""];
-    print_no_empleados [label="IMPRIMIR \"No hay empleados para procesar.\""];
+    // Nodos del bucle
+    loop_init [label="i = 0", shape=box, style=filled, fillcolor=lightblue];
+    loop_cond [label="i < n", shape=diamond, style=filled, fillcolor=khaki];
+    prompt_sueldo [label="IMPRIMIR 'Sueldo del empleado #[i+1]:'", shape=document, style=filled, fillcolor=lightgoldenrod1];
+    read_sueldo [label="LEER sueldo", shape=parallelogram, style=filled, fillcolor=lightgoldenrod1];
+    decision_aumento [label="sueldo < 800", shape=diamond, style=filled, fillcolor=khaki];
+    calc_aumento [label="sueldo = sueldo * 1.15", shape=box, style=filled, fillcolor=lightblue];
+    print_nuevo_sueldo [label="IMPRIMIR '-> Nuevo sueldo: $' + sueldo", shape=document, style=filled, fillcolor=lightgoldenrod1];
+    loop_inc [label="i++", shape=box, style=filled, fillcolor=lightblue];
 
-    node [shape=diamond, style=filled, fillcolor=khaki, width=2, height=1]; // Decisión
-    decision_n_gt_0 [label="n > 0"];
-    decision_aumento [label="sueldo < 800"];
+    close_scanner [label="Cerrar Scanner", shape=box, style=filled, fillcolor=lightblue];
 
     // Conexiones (flujo)
-    start -> declare_vars -> prompt_n -> read_n -> decision_n_gt_0;
-    decision_n_gt_0 -> print_no_empleados [label="No"];
-    print_no_empleados -> close_scanner;
+    start -> declare_vars;
+    declare_vars -> prompt_n;
+    prompt_n -> read_n;
+    read_n -> decision_n;
 
-    decision_n_gt_0 -> loop_init [label="Sí"];
-    loop_init -> prompt_sueldo -> read_sueldo -> decision_aumento;
+    decision_n -> print_header [label="Sí"];
+    print_header -> loop_init;
+    loop_init -> loop_cond;
+
+    loop_cond -> prompt_sueldo [label="Sí"];
+    prompt_sueldo -> read_sueldo;
+    read_sueldo -> decision_aumento;
     decision_aumento -> calc_aumento [label="Sí"];
-    decision_aumento -> print_nuevo_sueldo [label="No"];
     calc_aumento -> print_nuevo_sueldo;
-    print_nuevo_sueldo -> loop_init;
+    decision_aumento -> print_nuevo_sueldo [label="No"];
+    print_nuevo_sueldo -> loop_inc;
+    loop_inc -> loop_cond;
+
+    loop_cond -> close_scanner [label="No"];
+    decision_n -> print_no_empleados [label="No"];
+    print_no_empleados -> close_scanner;
     
-    loop_init -> close_scanner [label="Fin del bucle"];
     close_scanner -> end;
 }

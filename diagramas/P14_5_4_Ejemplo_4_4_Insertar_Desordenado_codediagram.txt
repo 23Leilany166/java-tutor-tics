@@ -4,43 +4,64 @@ digraph P14_5_4_Ejemplo_4_4_Insertar_Desordenado_Flowchart {
     node [fontname="Helvetica", fontsize=10];
     edge [fontname="Helvetica", fontsize=9];
 
-    // Definición de estilos de nodos
-    node [shape=ellipse, style=filled, fillcolor=lightgrey]; // Inicio/Fin
+    // --- NODOS ---
+
+    // Inicio/Fin
+    node [shape=ellipse, style=filled, fillcolor=lightgrey];
     start [label="INICIO"];
     end [label="FIN"];
 
-    node [shape=box, style=filled, fillcolor=lightblue]; // Proceso
-    declare_vars [label="DECLARAR:\nScanner sc, int[] a, int n=0,\nchar continuar='s'"];
-    insert_proc [label="a[n] = y\nn++"];
-    print_loop [label="BUCLE for (i=0 hasta n-1)"];
-    print_element [label="IMPRIMIR a[i]"];
+    // Procesos
+    node [shape=box, style=filled, fillcolor=lightblue];
+    declare_vars [label="DECLARAR\nScanner sc, int[] a = new int[5],\nint n = 0, char continuar = 's'"];
+    insert_element [label="a[n] = y\nn++"];
+    print_array_loop_init [label="i = 0"];
+    print_array_inc [label="i++"];
     close_scanner [label="Cerrar Scanner"];
 
-    node [shape=parallelogram, style=filled, fillcolor=lightgoldenrod1]; // Entrada/Salida
-    prompt_y [label="IMPRIMIR \"Ingrese el elemento a insertar: \""];
+    // Entrada de datos
+    node [shape=parallelogram, style=filled, fillcolor=lightgoldenrod1];
     read_y [label="LEER y"];
-    print_success [label="IMPRIMIR \"Elemento insertado...\""];
-    print_current_array [label="IMPRIMIR \"Arreglo actual: \""];
-    prompt_continue [label="IMPRIMIR \"¿Desea insertar otro? (s/n)\""];
     read_continue [label="LEER continuar"];
-    print_lleno [label="IMPRIMIR \"No hay más espacio...\""];
-    print_finalizado [label="IMPRIMIR \"Proceso finalizado.\""];
 
-    node [shape=diamond, style=filled, fillcolor=khaki, width=2.5, height=1.2]; // Decisión
-    main_loop_cond [label="n < a.length &&\n(continuar == 's' || continuar == 'S')"];
-    check_if_full [label="n < a.length"];
+    // Salida de datos
+    node [shape=note, style=filled, fillcolor=lemonchiffon];
+    prompt_y [label="IMPRIMIR 'Ingrese el elemento a insertar'"];
+    print_success [label="IMPRIMIR 'Elemento insertado correctamente'"];
+    print_current_header [label="IMPRIMIR 'Arreglo actual:'"];
+    print_element [label="IMPRIMIR a[i]"];
+    prompt_continue [label="IMPRIMIR '\n¿Desea insertar otro elemento? (s/n)'"];
+    print_full [label="IMPRIMIR 'No hay más espacio para insertar'"];
+    print_final [label="IMPRIMIR 'Proceso finalizado'"];
 
-    // Conexiones (flujo)
-    start -> declare_vars -> main_loop_cond;
-    main_loop_cond -> prompt_y [label="Sí"];
-    main_loop_cond -> check_if_full [label="No"];
+    // Decisiones y Bucles
+    node [shape=diamond, style=filled, fillcolor=khaki, width=2, height=1.2];
+    while_condition [label="n < 5 &&\n(continuar == 's' || continuar == 'S')"];
+    if_space_left [label="n < 5"];
+    print_array_loop_cond [label="i < n"];
+    if_full_after_loop [label="n >= 5"];
 
-    prompt_y -> read_y -> insert_proc -> print_success -> print_current_array -> print_loop -> print_element -> print_loop;
-    print_loop -> prompt_continue [label="Fin del bucle"];
-    prompt_continue -> read_continue -> main_loop_cond;
+    // --- CONEXIONES ---
+    start -> declare_vars -> while_condition;
 
-    check_if_full -> print_finalizado [label="No, lleno"];
-    check_if_full -> print_lleno [label="Sí, no lleno"];
-    print_lleno -> print_finalizado;
-    print_finalizado -> close_scanner -> end;
+    while_condition -> prompt_y [label="Sí"];
+    prompt_y -> read_y -> insert_element -> print_success -> print_current_header -> print_array_loop_init -> print_array_loop_cond;
+
+    print_array_loop_cond -> print_element [label="Sí"];
+    print_element -> print_array_inc -> print_array_loop_cond;
+    
+    print_array_loop_cond -> if_space_left [label="No"];
+
+    if_space_left -> prompt_continue [label="Sí"];
+    prompt_continue -> read_continue -> while_condition;
+
+    if_space_left -> if_full_after_loop [label="No"];
+    
+    while_condition -> if_full_after_loop [label="No"];
+    
+    if_full_after_loop -> print_full [label="Sí"];
+    print_full -> print_final;
+    if_full_after_loop -> print_final [label="No"];
+    
+    print_final -> close_scanner -> end;
 }

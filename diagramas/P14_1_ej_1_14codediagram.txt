@@ -15,9 +15,11 @@ digraph P14_1_ej_1_14_Flowchart {
     calc_cub [label="cub = num * num * num"];
     close_scanner [label="Cerrar Scanner"];
 
-    node [shape=parallelogram, style=filled, fillcolor=lightgoldenrod1]; // Entrada/Salida
-    prompt_num [label="IMPRIMIR \"Introduce un número entero: \""];
+    node [shape=parallelogram, style=filled, fillcolor=lightgoldenrod1]; // Entrada
     read_num [label="LEER num"];
+
+    node [shape=document, style=filled, fillcolor=lightcyan]; // Salida (Mostrar)
+    prompt_num [label="IMPRIMIR \"Introduce un número entero: \""];
     print_cua [label="IMPRIMIR \"El cuadrado de \" + num + \" es: \" + cua"];
     print_cub [label="IMPRIMIR \"El cubo de \" + num + \" es: \" + cub"];
 

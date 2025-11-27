@@ -1,70 +1,126 @@
 digraph P14_12_ps_4_12_Flowchart {
-    // Configuración general del grafo
     rankdir=TB;
-    node [fontname="Helvetica", fontsize=10];
+    node [fontname="Helvetica", fontsize=10, shape=box, style=filled, fillcolor=lightblue];
     edge [fontname="Helvetica", fontsize=9];
 
-    // Definición de estilos de nodos
-    node [shape=ellipse, style=filled, fillcolor=lightgrey]; // Inicio/Fin
-    start [label="INICIO"];
-    end [label="FIN"];
+    // Nodos de Estilos Específicos
+    start_node [label="INICIO", shape=ellipse, fillcolor=lightgrey];
+    end_node [label="FIN", shape=ellipse, fillcolor=lightgrey];
+    input_node [shape=parallelogram, fillcolor=lightgoldenrod1];
+    output_node [shape=document, fillcolor=lightcyan];
+    decision_node [shape=diamond, fillcolor=lightyellow];
 
-    node [shape=box, style=filled, fillcolor=lightblue]; // Proceso
-    declare_vars [label="DECLARAR:\nprecios[], scanner, numVentas,\ndias[], modelos[], cantidades[],\nrecaudadoPorModelo[], recaudadoPorDia[]"];
-    read_ventas_loop [label="BUCLE for (i=0 hasta numVentas-1)"];
-    read_venta [label="LEER dias[i], modelos[i], cantidades[i]"];
-    calc_modelo_loop [label="BUCLE for (i=0 hasta numVentas-1)"];
-    calc_modelo_proc [label="recaudadoPorModelo[modelo] += cantidad * precios[modelo]"];
-    calc_dia_loop [label="BUCLE for (i=0 hasta numVentas-1)"];
-    calc_dia_proc [label="recaudadoPorDia[dia] += cantidad * precios[modelo]"];
-    find_best_loop [label="BUCLE for (i=0 hasta 7)"];
-    update_best [label="maxRecaudado = recaudadoPorModelo[i]\nmodeloMasVendido = i + 1"];
-    print_modelo_loop [label="BUCLE for (i=0 hasta 7)"];
-    print_dia_loop [label="BUCLE for (i=0 hasta 29)"];
+    // Definición de Nodos
+    start_node;
+    
+    declare_vars [label="DECLARAR precios[] = {10.0, ...}, scanner"];
+    prompt_numVentas [label="IMPRIMIR \"Introduce el número de registros de venta a procesar: \"", shape=document, fillcolor=lightcyan];
+    read_numVentas [label="LEER numVentas", shape=parallelogram, fillcolor=lightgoldenrod1];
+    check_numVentas [label="numVentas > 0", shape=diamond, fillcolor=lightyellow];
+    
+    // Rama IF (Sí hay ventas)
+    declare_data_arrays [label="DECLARAR dias[numVentas], modelos[numVentas], cantidades[numVentas]"];
+    prompt_header [label="IMPRIMIR \"--- Introduce los datos de cada venta (Día Modelo Cantidad) ---\"", shape=document, fillcolor=lightcyan];
+    
+    loop1_init [label="i = 0"];
+    loop1_cond [label="i < numVentas", shape=diamond, fillcolor=lightyellow];
+    prompt_registro [label="IMPRIMIR \"Registro #\" + (i + 1) + \": \"", shape=document, fillcolor=lightcyan];
+    read_venta_data [label="LEER dias[i], modelos[i], cantidades[i]", shape=parallelogram, fillcolor=lightgoldenrod1];
+    loop1_inc [label="i++"];
+    
+    calc_modelo_init [label="DECLARAR recaudadoPorModelo[8]\ni = 0"];
+    loop2_cond [label="i < numVentas", shape=diamond, fillcolor=lightyellow];
+    get_modelo_data [label="modelo = modelos[i] - 1\ncantidad = cantidades[i]"];
+    check_modelo_valid [label="modelo >= 0 && modelo < 8", shape=diamond, fillcolor=lightyellow];
+    calc_recaudado_modelo [label="recaudadoPorModelo[modelo] += cantidad * precios[modelo]"];
+    loop2_inc [label="i++"];
+
+    calc_dia_init [label="DECLARAR recaudadoPorDia[30]\ni = 0"];
+    loop3_cond [label="i < numVentas", shape=diamond, fillcolor=lightyellow];
+    get_dia_data [label="dia = dias[i] - 1\nmodelo = modelos[i] - 1\ncantidad = cantidades[i]"];
+    check_dia_valid [label="dia >= 0 && dia < 30 &&\nmodelo >= 0 && modelo < 8", shape=diamond, fillcolor=lightyellow];
+    calc_recaudado_dia [label="recaudadoPorDia[dia] += cantidad * precios[modelo]"];
+    loop3_inc [label="i++"];
+
+    find_max_init [label="modeloMasVendido = 0\nmaxRecaudado = 0\ni = 0"];
+    loop4_cond [label="i < 8", shape=diamond, fillcolor=lightyellow];
+    check_max [label="recaudadoPorModelo[i] > maxRecaudado", shape=diamond, fillcolor=lightyellow];
+    update_max [label="maxRecaudado = recaudadoPorModelo[i]\nmodeloMasVendido = i + 1"];
+    loop4_inc [label="i++"];
+
+    print_report_header [label="IMPRIMIR \"\n--- Reporte de Ventas ---\"", shape=document, fillcolor=lightcyan];
+    print_modelo_header [label="IMPRIMIR \"Total recaudado por modelo:\"", shape=document, fillcolor=lightcyan];
+    loop5_init [label="i = 0"];
+    loop5_cond [label="i < 8", shape=diamond, fillcolor=lightyellow];
+    print_recaudado_modelo [label="IMPRIMIR \"Modelo \" + (i + 1) + \": $\" + recaudadoPorModelo[i]", shape=document, fillcolor=lightcyan];
+    loop5_inc [label="i++"];
+    
+    print_dia_header [label="IMPRIMIR \"\nTotal recaudado por día:\"", shape=document, fillcolor=lightcyan];
+    loop6_init [label="i = 0"];
+    loop6_cond [label="i < 30", shape=diamond, fillcolor=lightyellow];
+    check_dia_venta [label="recaudadoPorDia[i] > 0", shape=diamond, fillcolor=lightyellow];
+    print_recaudado_dia [label="IMPRIMIR \"Día \" + (i + 1) + \": $\" + recaudadoPorDia[i]", shape=document, fillcolor=lightcyan];
+    loop6_inc [label="i++"];
+
+    print_mas_vendido [label="IMPRIMIR \"\nEl modelo que más dinero produjo fue el modelo \" + modeloMasVendido", shape=document, fillcolor=lightcyan];
+    
+    // Rama ELSE (No hay ventas)
+    no_ventas [label="IMPRIMIR \"No hay ventas para procesar.\"", shape=document, fillcolor=lightcyan];
+
     close_scanner [label="Cerrar Scanner"];
+    end_node;
 
-    node [shape=parallelogram, style=filled, fillcolor=lightgoldenrod1]; // Entrada/Salida
-    prompt_numVentas [label="IMPRIMIR \"Introduce el número de registros de venta: \""];
-    read_numVentas [label="LEER numVentas"];
-    prompt_ventas [label="IMPRIMIR \"Introduce los datos de cada venta...\""];
-    print_no_ventas [label="IMPRIMIR \"No hay ventas para procesar.\""];
-    print_reporte_modelo [label="IMPRIMIR \"Total recaudado por modelo:\""];
-    print_modelo [label="IMPRIMIR \"Modelo [i+1]: $%.2f\""];
-    print_reporte_dia [label="IMPRIMIR \"Total recaudado por día:\""];
-    print_dia [label="IMPRIMIR \"Día [i+1]: $%.2f\""];
-    print_mejor_modelo [label="IMPRIMIR \"El modelo que más dinero produjo fue el modelo [modeloMasVendido]\""];
+    // Conexiones
+    start_node -> declare_vars -> prompt_numVentas -> read_numVentas -> check_numVentas;
+    check_numVentas -> declare_data_arrays [label="Sí"];
+    check_numVentas -> no_ventas [label="No"];
 
-    node [shape=diamond, style=filled, fillcolor=khaki, width=2, height=1.2]; // Decisión
-    decision_numVentas [label="numVentas > 0"];
-    check_dia_gt_0 [label="recaudadoPorDia[i] > 0"];
-    check_best [label="recaudadoPorModelo[i] > maxRecaudado"];
-
-    // Conexiones (flujo)
-    start -> declare_vars -> prompt_numVentas -> read_numVentas -> decision_numVentas;
-    decision_numVentas -> print_no_ventas [label="No"];
-    print_no_ventas -> close_scanner;
-
-    decision_numVentas -> prompt_ventas [label="Sí"];
-    prompt_ventas -> read_ventas_loop -> read_venta -> read_ventas_loop;
-    read_ventas_loop -> calc_modelo_loop [label="Fin del bucle"];
+    // Flujo del IF
+    declare_data_arrays -> prompt_header -> loop1_init -> loop1_cond;
+    loop1_cond -> prompt_registro [label="Sí"];
+    prompt_registro -> read_venta_data -> loop1_inc -> loop1_cond;
+    loop1_cond -> calc_modelo_init [label="No"];
     
-    calc_modelo_loop -> calc_modelo_proc -> calc_modelo_loop;
-    calc_modelo_loop -> calc_dia_loop [label="Fin del bucle"];
-    calc_dia_loop -> calc_dia_proc -> calc_dia_loop;
-    calc_dia_loop -> find_best_loop [label="Fin del bucle"];
-    
-    find_best_loop -> check_best;
-    check_best -> update_best [label="Sí"];
-    check_best -> find_best_loop [label="No"];
-    update_best -> find_best_loop;
-    find_best_loop -> print_reporte_modelo [label="Fin del bucle"];
+    calc_modelo_init -> loop2_cond;
+    loop2_cond -> get_modelo_data [label="Sí"];
+    get_modelo_data -> check_modelo_valid;
+    check_modelo_valid -> calc_recaudado_modelo [label="Sí"];
+    calc_recaudado_modelo -> loop2_inc;
+    check_modelo_valid -> loop2_inc [label="No"];
+    loop2_inc -> loop2_cond;
+    loop2_cond -> calc_dia_init [label="No"];
 
-    print_reporte_modelo -> print_modelo_loop -> print_modelo -> print_modelo_loop;
-    print_modelo_loop -> print_reporte_dia [label="Fin del bucle"];
-    print_reporte_dia -> print_dia_loop -> check_dia_gt_0;
-    check_dia_gt_0 -> print_dia [label="Sí"];
-    check_dia_gt_0 -> print_dia_loop [label="No"];
-    print_dia -> print_dia_loop;
-    print_dia_loop -> print_mejor_modelo [label="Fin del bucle"];
-    print_mejor_modelo -> close_scanner -> end;
+    calc_dia_init -> loop3_cond;
+    loop3_cond -> get_dia_data [label="Sí"];
+    get_dia_data -> check_dia_valid;
+    check_dia_valid -> calc_recaudado_dia [label="Sí"];
+    calc_recaudado_dia -> loop3_inc;
+    check_dia_valid -> loop3_inc [label="No"];
+    loop3_inc -> loop3_cond;
+    loop3_cond -> find_max_init [label="No"];
+
+    find_max_init -> loop4_cond;
+    loop4_cond -> check_max [label="Sí"];
+    check_max -> update_max [label="Sí"];
+    update_max -> loop4_inc;
+    check_max -> loop4_inc [label="No"];
+    loop4_inc -> loop4_cond;
+    loop4_cond -> print_report_header [label="No"];
+    
+    print_report_header -> print_modelo_header -> loop5_init -> loop5_cond;
+    loop5_cond -> print_recaudado_modelo [label="Sí"];
+    print_recaudado_modelo -> loop5_inc -> loop5_cond;
+    loop5_cond -> print_dia_header [label="No"];
+    
+    print_dia_header -> loop6_init -> loop6_cond;
+    loop6_cond -> check_dia_venta [label="Sí"];
+    check_dia_venta -> print_recaudado_dia [label="Sí"];
+    print_recaudado_dia -> loop6_inc;
+    check_dia_venta -> loop6_inc [label="No"];
+    loop6_inc -> loop6_cond;
+    loop6_cond -> print_mas_vendido [label="No"];
+    
+    print_mas_vendido -> close_scanner;
+    no_ventas -> close_scanner;
+    close_scanner -> end_node;
 }

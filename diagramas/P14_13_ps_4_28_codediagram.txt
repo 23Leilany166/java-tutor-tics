@@ -5,65 +5,51 @@ digraph P14_13_ps_4_28_Flowchart {
     edge [fontname="Helvetica", fontsize=9];
 
     // Definición de estilos de nodos
-    node [shape=ellipse, style=filled, fillcolor=lightgrey]; // Inicio/Fin
-    start [label="INICIO"];
-    end [label="FIN"];
+    node_start_end [shape=ellipse, style=filled, fillcolor="#E6E6FA"];
+    node_process [shape=box, style=filled, fillcolor="#ADD8E6"];
+    node_io [shape=parallelogram, style=filled, fillcolor="#FFFACD"];
+    node_decision [shape=diamond, style=filled, fillcolor="#FFDAB9", width=2.5, height=1.5];
 
-    node [shape=box, style=filled, fillcolor=lightblue]; // Proceso
-    declare_vars [label="DECLARAR:\nScanner scanner, int N, int[][] A,\nint sumaReferencia, boolean esMagico=true"];
-    read_matrix_loop [label="BUCLE for anidado para leer la matriz A"];
-    read_element [label="LEER A[i][j]"];
-    calc_ref [label="Calcular sumaReferencia\n(suma de la primera fila)"];
+    // Nodos del diagrama
+    start [label="INICIO", shape=ellipse, style=filled, fillcolor=lightgrey];
+    end [label="FIN", shape=ellipse, style=filled, fillcolor=lightgrey];
+
+    declare_vars [label="DECLARAR\nScanner scanner, int N\nint[][] A, int sumaReferencia\nboolean esMagico = true", shape=box, style=filled, fillcolor=lightblue];
+    prompt_n [label="IMPRIMIR 'Introduce el tamaño de la matriz (N):'", shape=parallelogram, style=filled, fillcolor=lightgoldenrod1];
+    read_n [label="LEER N", shape=parallelogram, style=filled, fillcolor=lightgoldenrod1];
+    create_matrix [label="Crear matriz A[N][N]", shape=box, style=filled, fillcolor=lightblue];
     
-    check_rows_loop [label="BUCLE for filas (i=1 hasta N-1)"];
-    calc_suma_fila [label="Calcular sumaFila"];
+    prompt_elements [label="IMPRIMIR 'Introduce los elementos de la matriz:'", shape=parallelogram, style=filled, fillcolor=lightgoldenrod1];
+    read_loop [label="BUCLE i=0 hasta N-1\n  BUCLE j=0 hasta N-1\n    IMPRIMIR 'Elemento [i][j]: '\n    LEER A[i][j]", shape=box, style=filled, fillcolor=lightblue];
+
+    calc_ref [label="sumaReferencia = Suma de la fila 0 de A", shape=box, style=filled, fillcolor=lightblue];
+
+    verify_rows [label="Verificar suma de filas 1 a N-1\nSi alguna suma es diferente a sumaReferencia\n  esMagico = false", shape=box, style=filled, fillcolor=lightblue];
+    verify_cols [label="Verificar suma de todas las columnas\nSi alguna suma es diferente a sumaReferencia\n  esMagico = false", shape=box, style=filled, fillcolor=lightblue];
+    verify_diag1 [label="Verificar suma de diagonal principal\nSi la suma es diferente a sumaReferencia\n  esMagico = false", shape=box, style=filled, fillcolor=lightblue];
+    verify_diag2 [label="Verificar suma de diagonal secundaria\nSi la suma es diferente a sumaReferencia\n  esMagico = false", shape=box, style=filled, fillcolor=lightblue];
+
+    decision_final [label="¿esMagico es true?", shape=diamond, style=filled, fillcolor=khaki];
+    print_magico [label="IMPRIMIR 'La matriz es un cuadrado mágico'", shape=parallelogram, style=filled, fillcolor=lightgoldenrod1];
+    print_no_magico [label="IMPRIMIR 'La matriz no es un cuadrado mágico'", shape=parallelogram, style=filled, fillcolor=lightgoldenrod1];
     
-    check_cols_loop [label="BUCLE for columnas (j=0 hasta N-1)"];
-    calc_suma_col [label="Calcular sumaColumna"];
-    
-    calc_diag1 [label="Calcular sumaDiagonal1"];
-    calc_diag2 [label="Calcular sumaDiagonal2"];
-    
-    close_scanner [label="Cerrar Scanner"];
+    close_scanner [label="Cerrar Scanner", shape=box, style=filled, fillcolor=lightblue];
 
-    node [shape=parallelogram, style=filled, fillcolor=lightgoldenrod1]; // Entrada/Salida
-    prompt_n [label="IMPRIMIR \"Introduce el tamaño de la matriz (N): \""];
-    read_n [label="LEER N"];
-    prompt_elements [label="IMPRIMIR \"Introduce los elementos de la matriz:\""];
-    print_magico [label="IMPRIMIR \"La matriz es un cuadrado mágico\""];
-    print_no_magico [label="IMPRIMIR \"La matriz no es un cuadrado mágico\""];
-
-    node [shape=diamond, style=filled, fillcolor=khaki, width=2, height=1.2]; // Decisión
-    check_fila [label="sumaFila != sumaReferencia"];
-    check_col [label="sumaColumna != sumaReferencia"];
-    check_diag1 [label="sumaDiagonal1 != sumaReferencia"];
-    check_diag2 [label="sumaDiagonal2 != sumaReferencia"];
-    decision_final [label="esMagico"];
-
-    // Conexiones (flujo)
-    start -> declare_vars -> prompt_n -> read_n -> prompt_elements -> read_matrix_loop -> read_element -> read_matrix_loop;
-    read_matrix_loop -> calc_ref [label="Fin del bucle"];
-
-    calc_ref -> check_rows_loop;
-    check_rows_loop -> calc_suma_fila -> check_fila;
-    check_fila -> check_rows_loop [label="No"];
-    check_fila -> check_rows_loop [label="Sí, esMagico=false"];
-    check_rows_loop -> check_cols_loop [label="Fin del bucle"];
-
-    check_cols_loop -> calc_suma_col -> check_col;
-    check_col -> check_cols_loop [label="No"];
-    check_col -> check_cols_loop [label="Sí, esMagico=false"];
-    check_cols_loop -> calc_diag1 [label="Fin del bucle"];
-
-    calc_diag1 -> check_diag1;
-    check_diag1 -> calc_diag2 [label="No"];
-    check_diag1 -> calc_diag2 [label="Sí, esMagico=false"];
-
-    calc_diag2 -> check_diag2;
-    check_diag2 -> decision_final [label="No"];
-    check_diag2 -> decision_final [label="Sí, esMagico=false"];
+    // Conexiones del flujo
+    start -> declare_vars;
+    declare_vars -> prompt_n -> read_n -> create_matrix;
+    create_matrix -> prompt_elements -> read_loop;
+    read_loop -> calc_ref;
+    calc_ref -> verify_rows;
+    verify_rows -> verify_cols;
+    verify_cols -> verify_diag1;
+    verify_diag1 -> verify_diag2;
+    verify_diag2 -> decision_final;
 
     decision_final -> print_magico [label="Sí"];
     decision_final -> print_no_magico [label="No"];
-    {print_magico, print_no_magico} -> close_scanner -> end;
+
+    print_magico -> close_scanner;
+    print_no_magico -> close_scanner;
+    close_scanner -> end;
 }

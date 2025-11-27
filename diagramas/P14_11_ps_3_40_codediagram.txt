@@ -1,67 +1,92 @@
 digraph P14_11_ps_3_40_Flowchart {
-    // Configuración general del grafo
+    // Configuración general
     rankdir=TB;
     node [fontname="Helvetica", fontsize=10];
     edge [fontname="Helvetica", fontsize=9];
 
-    // Definición de estilos de nodos
-    node [shape=ellipse, style=filled, fillcolor=lightgrey]; // Inicio/Fin
-    start [label="INICIO"];
-    end [label="FIN"];
+    // Nodos
+    start [label="INICIO", shape=ellipse, style=filled, fillcolor=lightgrey];
+    end [label="FIN", shape=ellipse, style=filled, fillcolor=lightgrey];
 
-    node [shape=box, style=filled, fillcolor=lightblue]; // Proceso
-    declare_vars [label="DECLARAR:\nScanner scanner, Arreglos para nombres, condElectrica, condTermica,\nint n=0"];
-    read_data [label="LEER nombreElemento, condElectrica[n], condTermica[n]"];
-    store_data [label="nombres[n] = nombreElemento\nn++"];
-    init_minmax [label="Inicializar variables min/max\ncon los valores del primer elemento (índice 0)"];
-    find_loop [label="BUCLE for (i=1 hasta n-1)"];
-    update_max_elec [label="maxElec = condElectrica[i]\nnombreMaxElec = nombres[i]"];
-    update_min_elec [label="minElec = condElectrica[i]\nnombreMinElec = nombres[i]"];
-    update_max_term [label="maxTerm = condTermica[i]\nnombreMaxTerm = nombres[i]"];
-    update_min_term [label="minTerm = condTermica[i]\nnombreMinTerm = nombres[i]"];
-    close_scanner [label="Cerrar Scanner"];
+    declare_vars [label="DECLARAR:\nScanner, Arreglos para nombres, condElectrica, condTermica, int n=0", shape=box, style=filled, fillcolor=lightblue];
+    prompt_init [label="IMPRIMIR\n'--- Ingrese los datos... ---'", shape=parallelogram, style=filled, fillcolor=lightgoldenrod1];
+    
+    // Bucle de entrada de datos
+    prompt_nombre [label="IMPRIMIR\n\"Ingrese nombre (o 'NN' para finalizar):\"", shape=parallelogram, style=filled, fillcolor=lightgoldenrod1];
+    read_nombre [label="LEER nombreElemento", shape=parallelogram, style=filled, fillcolor=lightgoldenrod1];
+    check_nombre [label="nombreElemento != 'NN'", shape=diamond, style=filled, fillcolor=khaki];
+    prompt_cond_elec [label="IMPRIMIR 'Ingrese conductividad eléctrica:'", shape=parallelogram, style=filled, fillcolor=lightgoldenrod1];
+    read_cond_elec [label="LEER condElectrica[n]", shape=parallelogram, style=filled, fillcolor=lightgoldenrod1];
+    prompt_cond_term [label="IMPRIMIR 'Ingrese conductividad térmica:'", shape=parallelogram, style=filled, fillcolor=lightgoldenrod1];
+    read_cond_term [label="LEER condTermica[n]", shape=parallelogram, style=filled, fillcolor=lightgoldenrod1];
+    store_data [label="nombres[n] = nombreElemento\nn++", shape=box, style=filled, fillcolor=lightblue];
+    
+    // Análisis de datos
+    check_n_gt_0 [label="n > 0", shape=diamond, style=filled, fillcolor=khaki];
+    init_minmax [label="Inicializar min/max con valores del 1er elemento:\nmaxElec, minElec, maxTerm, minTerm y sus nombres", shape=box, style=filled, fillcolor=lightblue];
+    
+    // Bucle de análisis
+    loop_analisis_init [label="i = 1", shape=box, style=filled, fillcolor=lightblue];
+    loop_analisis_cond [label="i < n", shape=diamond, style=filled, fillcolor=khaki];
+    
+    // -- Comparaciones Electricidad
+    check_max_elec [label="condElectrica[i] > maxElec", shape=diamond, style=filled, fillcolor=khaki];
+    update_max_elec [label="maxElec = condElectrica[i]\nnombreMaxElec = nombres[i]", shape=box, style=filled, fillcolor=lightblue];
+    check_min_elec [label="condElectrica[i] < minElec", shape=diamond, style=filled, fillcolor=khaki];
+    update_min_elec [label="minElec = condElectrica[i]\nnombreMinElec = nombres[i]", shape=box, style=filled, fillcolor=lightblue];
+    
+    // -- Comparaciones Térmica
+    check_max_term [label="condTermica[i] > maxTerm", shape=diamond, style=filled, fillcolor=khaki];
+    update_max_term [label="maxTerm = condTermica[i]\nnombreMaxTerm = nombres[i]", shape=box, style=filled, fillcolor=lightblue];
+    check_min_term [label="condTermica[i] < minTerm", shape=diamond, style=filled, fillcolor=khaki];
+    update_min_term [label="minTerm = condTermica[i]\nnombreMinTerm = nombres[i]", shape=box, style=filled, fillcolor=lightblue];
+    
+    increment_i [label="i++", shape=box, style=filled, fillcolor=lightblue];
+    
+    // Salida
+    print_reporte [label="IMPRIMIR Reporte Final:\n- Mejor/Peor Eléctrico\n- Mejor/Peor Térmico", shape=parallelogram, style=filled, fillcolor=lightgoldenrod1];
+    print_no_data [label="IMPRIMIR\n\"No se ingresaron elementos.\"", shape=parallelogram, style=filled, fillcolor=lightgoldenrod1];
+    close_scanner [label="Cerrar Scanner", shape=box, style=filled, fillcolor=lightblue];
 
-    node [shape=parallelogram, style=filled, fillcolor=lightgoldenrod1]; // Entrada/Salida
-    prompt_nombre [label="IMPRIMIR \"Ingrese nombre (o 'NN' para finalizar): \""];
-    print_no_data [label="IMPRIMIR \"No se ingresaron elementos.\""];
-    print_reporte [label="IMPRIMIR Reporte Final:\n- Mejor/Peor Eléctrico\n- Mejor/Peor Térmico"];
-
-    node [shape=diamond, style=filled, fillcolor=khaki, width=2.5, height=1.2]; // Decisión
-    main_loop_cond [label="nombreElemento != 'NN'"];
-    decision_n_gt_0 [label="n > 0"];
-    check_max_elec [label="condElectrica[i] > maxElec"];
-    check_min_elec [label="condElectrica[i] < minElec"];
-    check_max_term [label="condTermica[i] > maxTerm"];
-    check_min_term [label="condTermica[i] < minTerm"];
-
-    // Conexiones (flujo)
-    start -> declare_vars -> prompt_nombre;
-    prompt_nombre -> main_loop_cond;
-
-    main_loop_cond -> read_data [label="Sí"];
-    main_loop_cond -> decision_n_gt_0 [label="No"];
-    read_data -> store_data -> prompt_nombre;
-
-    decision_n_gt_0 -> print_no_data [label="No"];
-    print_no_data -> close_scanner;
-
-    decision_n_gt_0 -> init_minmax [label="Sí"];
-    init_minmax -> find_loop;
-
-    find_loop -> check_max_elec;
+    // Conexiones
+    start -> declare_vars -> prompt_init -> prompt_nombre;
+    
+    // Flujo del bucle do-while
+    prompt_nombre -> read_nombre -> check_nombre;
+    check_nombre -> prompt_cond_elec [label="Sí"];
+    prompt_cond_elec -> read_cond_elec -> prompt_cond_term -> read_cond_term -> store_data -> prompt_nombre;
+    
+    // Salida del bucle do-while y bifurcación principal
+    check_nombre -> check_n_gt_0 [label="No"];
+    
+    check_n_gt_0 -> init_minmax [label="Sí"];
+    check_n_gt_0 -> print_no_data [label="No"];
+    
+    // Flujo del bucle for
+    init_minmax -> loop_analisis_init -> loop_analisis_cond;
+    loop_analisis_cond -> check_max_elec [label="Sí"];
+    
     check_max_elec -> update_max_elec [label="Sí"];
-    check_max_elec -> check_min_elec [label="No"];
     update_max_elec -> check_min_elec;
+    check_max_elec -> check_min_elec [label="No"];
+    
     check_min_elec -> update_min_elec [label="Sí"];
-    check_min_elec -> check_max_term [label="No"];
     update_min_elec -> check_max_term;
-    check_max_term -> update_max_term [label="Sí"];
-    check_max_term -> check_min_term [label="No"];
-    update_max_term -> check_min_term;
-    check_min_term -> update_min_term [label="Sí"];
-    check_min_term -> find_loop [label="No"];
-    update_min_term -> find_loop;
+    check_min_elec -> check_max_term [label="No"];
 
-    find_loop -> print_reporte [label="Fin del bucle"];
-    print_reporte -> close_scanner -> end;
+    check_max_term -> update_max_term [label="Sí"];
+    update_max_term -> check_min_term;
+    check_max_term -> check_min_term [label="No"];
+
+    check_min_term -> update_min_term [label="Sí"];
+    update_min_term -> increment_i;
+    check_min_term -> increment_i [label="No"];
+    
+    increment_i -> loop_analisis_cond;
+    
+    // Fin del bucle for y finalización
+    loop_analisis_cond -> print_reporte [label="No"];
+    print_reporte -> close_scanner;
+    print_no_data -> close_scanner;
+    close_scanner -> end;
 }

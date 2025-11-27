@@ -5,55 +5,80 @@ digraph P14_5_5_Ejemplo_4_4_Modifica_Desordenado_Flowchart {
     edge [fontname="Helvetica", fontsize=9];
 
     // Definición de estilos de nodos
-    node [shape=ellipse, style=filled, fillcolor=lightgrey]; // Inicio/Fin
-    start [label="INICIO"];
-    end [label="FIN"];
+    node_start_end [shape=ellipse, style=filled, fillcolor=lightgrey];
+    node_process [shape=box, style=filled, fillcolor=lightblue];
+    node_io [shape=parallelogram, style=filled, fillcolor=lightgoldenrod1];
+    node_decision [shape=diamond, style=filled, fillcolor=lightyellow];
+    node_display [shape=document, style=filled, fillcolor=lightcyan];
 
-    node [shape=box, style=filled, fillcolor=lightblue]; // Proceso
-    declare_vars [label="DECLARAR:\nScanner sc, int[] a, int n, int x, int y,\nboolean encontrado=false"];
-    read_elements_loop [label="BUCLE for (i=0 hasta n-1)"];
-    read_element [label="LEER a[i]"];
-    find_loop [label="BUCLE for (i=0 hasta n-1 && !encontrado)"];
-    modify_proc [label="a[i] = y\nencontrado = true"];
-    print_loop [label="BUCLE for (i=0 hasta n-1)"];
-    print_element [label="IMPRIMIR a[i]"];
-    close_scanner [label="Cerrar Scanner"];
-
-    node [shape=parallelogram, style=filled, fillcolor=lightgoldenrod1]; // Entrada/Salida
-    prompt_n [label="IMPRIMIR \"Ingrese el tamaño del arreglo (N): \""];
-    read_n [label="LEER n"];
-    print_vacio [label="IMPRIMIR \"El arreglo está vacío.\""];
-    prompt_elements [label="IMPRIMIR \"Ingrese los elementos del arreglo:\""];
-    prompt_x [label="IMPRIMIR \"Ingrese el elemento a modificar (X): \""];
-    read_x [label="LEER x"];
-    prompt_y [label="IMPRIMIR \"Ingrese el nuevo valor (Y): \""];
-    read_y [label="LEER y"];
-    print_modificado [label="IMPRIMIR \"Arreglo modificado:\""];
-    print_no_encontrado [label="IMPRIMIR \"El elemento [X] no está en el arreglo.\""];
-
-    node [shape=diamond, style=filled, fillcolor=khaki, width=2, height=1.2]; // Decisión
-    decision_n_gt_0 [label="n > 0"];
-    find_check [label="a[i] == x"];
-    decision_encontrado [label="encontrado"];
-
-    // Conexiones (flujo)
-    start -> declare_vars -> prompt_n -> read_n -> decision_n_gt_0;
-    decision_n_gt_0 -> print_vacio [label="No"];
-    print_vacio -> close_scanner;
-
-    decision_n_gt_0 -> prompt_elements [label="Sí"];
-    prompt_elements -> read_elements_loop -> read_element -> read_elements_loop;
-    read_elements_loop -> prompt_x [label="Fin del bucle"];
-    prompt_x -> read_x -> prompt_y -> read_y -> find_loop;
+    // Nodos del diagrama
+    start [label="INICIO", style="filled", fillcolor="lightgrey", shape="ellipse"];
+    declare_vars [label="DECLARAR\nScanner sc\na[] (int[100])\nn, x, y (int)\nencontrado (boolean)", style="filled", fillcolor="lightblue", shape="box"];
+    prompt_n [label="IMPRIMIR 'Ingrese el tamaño del arreglo (N):'", style="filled", fillcolor="lightgoldenrod1", shape="parallelogram"];
+    read_n [label="LEER n", style="filled", fillcolor="lightgoldenrod1", shape="parallelogram"];
     
-    find_loop -> find_check -> find_loop;
-    find_check -> modify_proc [label="Sí"];
-    find_loop -> decision_encontrado [label="Fin del bucle"];
+    check_n [label="n > 0", style="filled", fillcolor="lightyellow", shape="diamond"];
+    
+    prompt_elements [label="IMPRIMIR 'Ingrese los ' + n + ' elementos:'", style="filled", fillcolor="lightgoldenrod1", shape="parallelogram"];
+    loop_read_elements_start [label="PARA i = 0 HASTA n-1", style="filled", fillcolor="lightblue", shape="box"];
+    read_element [label="LEER a[i]", style="filled", fillcolor="lightgoldenrod1", shape="parallelogram"];
+    loop_read_elements_end [label="FIN PARA", style="filled", fillcolor="lightblue", shape="box"];
 
-    decision_encontrado -> print_modificado [label="Sí"];
-    decision_encontrado -> print_no_encontrado [label="No"];
-    print_modificado -> print_loop -> print_element -> print_loop;
-    print_loop -> close_scanner [label="Fin del bucle"];
-    print_no_encontrado -> close_scanner;
+    prompt_x [label="IMPRIMIR 'Ingrese el elemento a modificar (X):'", style="filled", fillcolor="lightgoldenrod1", shape="parallelogram"];
+    read_x [label="LEER x", style="filled", fillcolor="lightgoldenrod1", shape="parallelogram"];
+    prompt_y [label="IMPRIMIR 'Ingrese el nuevo valor (Y):'", style="filled", fillcolor="lightgoldenrod1", shape="parallelogram"];
+    read_y [label="LEER y", style="filled", fillcolor="lightgoldenrod1", shape="parallelogram"];
+    
+    set_encontrado_false [label="encontrado = false", style="filled", fillcolor="lightblue", shape="box"];
+    
+    loop_search_start [label="PARA i = 0 HASTA n-1\nY !encontrado", style="filled", fillcolor="lightblue", shape="box"];
+    check_element [label="a[i] == x", style="filled", fillcolor="lightyellow", shape="diamond"];
+    modify_element [label="a[i] = y\nencontrado = true", style="filled", fillcolor="lightblue", shape="box"];
+    loop_search_end [label="FIN PARA", style="filled", fillcolor="lightblue", shape="box"];
+    
+    check_encontrado [label="encontrado", style="filled", fillcolor="lightyellow", shape="diamond"];
+    
+    print_modified_header [label="IMPRIMIR 'Arreglo modificado:'", style="filled", fillcolor="lightcyan", shape="document"];
+    loop_print_start [label="PARA i = 0 HASTA n-1", style="filled", fillcolor="lightblue", shape="box"];
+    print_element [label="IMPRIMIR a[i]", style="filled", fillcolor="lightcyan", shape="document"];
+    loop_print_end [label="FIN PARA", style="filled", fillcolor="lightblue", shape="box"];
+    
+    print_not_found [label="IMPRIMIR 'El elemento ' + x + ' no está en el arreglo.'", style="filled", fillcolor="lightcyan", shape="document"];
+    print_empty [label="IMPRIMIR 'El arreglo está vacío.'", style="filled", fillcolor="lightcyan", shape="document"];
+    
+    close_scanner [label="Cerrar Scanner", style="filled", fillcolor="lightblue", shape="box"];
+    end [label="FIN", style="filled", fillcolor="lightgrey", shape="ellipse"];
+
+    // Conexiones del flujo
+    start -> declare_vars;
+    declare_vars -> prompt_n -> read_n -> check_n;
+    
+    check_n -> prompt_elements [label="VERDADERO"];
+    prompt_elements -> loop_read_elements_start;
+    loop_read_elements_start -> read_element -> loop_read_elements_end;
+    loop_read_elements_start -> loop_read_elements_end [label="i >= n"];
+    loop_read_elements_end -> prompt_x -> read_x -> prompt_y -> read_y;
+    read_y -> set_encontrado_false -> loop_search_start;
+    
+    loop_search_start -> check_element;
+    check_element -> modify_element [label="VERDADERO"];
+    modify_element -> loop_search_end;
+    check_element -> loop_search_end [label="FALSO"];
+    loop_search_start -> loop_search_end [label="i >= n O encontrado"];
+
+    loop_search_end -> check_encontrado;
+    
+    check_encontrado -> print_modified_header [label="VERDADERO"];
+    print_modified_header -> loop_print_start;
+    loop_print_start -> print_element -> loop_print_end;
+    loop_print_start -> loop_print_end [label="i >= n"];
+    loop_print_end -> close_scanner;
+    
+    check_encontrado -> print_not_found [label="FALSO"];
+    print_not_found -> close_scanner;
+    
+    check_n -> print_empty [label="FALSO"];
+    print_empty -> close_scanner;
+    
     close_scanner -> end;
 }
