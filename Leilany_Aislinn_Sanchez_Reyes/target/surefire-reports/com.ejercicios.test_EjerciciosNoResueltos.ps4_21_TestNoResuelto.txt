@@ -1,0 +1,11 @@
+-------------------------------------------------------------------------------
+Test set: com.ejercicios.test_EjerciciosNoResueltos.ps4_21_TestNoResuelto
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.007 s <<< FAILURE! -- in com.ejercicios.test_EjerciciosNoResueltos.ps4_21_TestNoResuelto
+com.ejercicios.test_EjerciciosNoResueltos.ps4_21_TestNoResuelto.testResolverConTemperaturasSimples -- Time elapsed: 0.005 s <<< ERROR!
+java.lang.NullPointerException: Cannot read field "max" because "r" is null
+	at com.ejercicios.test_EjerciciosNoResueltos.ps4_21_TestNoResuelto.testResolverConTemperaturasSimples(ps4_21_TestNoResuelto.java:24)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+

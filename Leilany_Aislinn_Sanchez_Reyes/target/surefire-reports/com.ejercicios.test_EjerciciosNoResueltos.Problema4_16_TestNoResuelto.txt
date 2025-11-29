@@ -1,0 +1,11 @@
+-------------------------------------------------------------------------------
+Test set: com.ejercicios.test_EjerciciosNoResueltos.Problema4_16_TestNoResuelto
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.006 s <<< FAILURE! -- in com.ejercicios.test_EjerciciosNoResueltos.Problema4_16_TestNoResuelto
+com.ejercicios.test_EjerciciosNoResueltos.Problema4_16_TestNoResuelto.testConstruirB -- Time elapsed: 0.004 s <<< ERROR!
+java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 0
+	at com.ejercicios.test_EjerciciosNoResueltos.Problema4_16_TestNoResuelto.testConstruirB(Problema4_16_TestNoResuelto.java:23)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+

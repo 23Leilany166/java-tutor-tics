@@ -1,0 +1,17 @@
+-------------------------------------------------------------------------------
+Test set: com.ejercicios.test_EjerciciosNoResueltos.Problema1_8_TestNoResuelto
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.012 s <<< FAILURE! -- in com.ejercicios.test_EjerciciosNoResueltos.Problema1_8_TestNoResuelto
+com.ejercicios.test_EjerciciosNoResueltos.Problema1_8_TestNoResuelto.testDistanciaClasica3_4_5 -- Time elapsed: 0.002 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <5.0> but was: <0.0>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:86)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:81)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1014)
+	at com.ejercicios.test_EjerciciosNoResueltos.Problema1_8_TestNoResuelto.testDistanciaClasica3_4_5(Problema1_8_TestNoResuelto.java:13)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+

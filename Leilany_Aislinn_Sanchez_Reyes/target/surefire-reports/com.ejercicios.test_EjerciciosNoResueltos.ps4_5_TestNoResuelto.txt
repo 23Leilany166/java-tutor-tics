@@ -1,0 +1,18 @@
+-------------------------------------------------------------------------------
+Test set: com.ejercicios.test_EjerciciosNoResueltos.ps4_5_TestNoResuelto
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 0.007 s <<< FAILURE! -- in com.ejercicios.test_EjerciciosNoResueltos.ps4_5_TestNoResuelto
+com.ejercicios.test_EjerciciosNoResueltos.ps4_5_TestNoResuelto.testFrecuenciasBasico -- Time elapsed: 0.003 s <<< ERROR!
+java.lang.NullPointerException: Cannot load from int array because "F" is null
+	at com.ejercicios.test_EjerciciosNoResueltos.ps4_5_TestNoResuelto.testFrecuenciasBasico(ps4_5_TestNoResuelto.java:14)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+
+com.ejercicios.test_EjerciciosNoResueltos.ps4_5_TestNoResuelto.testValoresFueraDeRangoIgnorados -- Time elapsed: 0.001 s <<< ERROR!
+java.lang.NullPointerException: Cannot load from int array because "F" is null
+	at com.ejercicios.test_EjerciciosNoResueltos.ps4_5_TestNoResuelto.testValoresFueraDeRangoIgnorados(ps4_5_TestNoResuelto.java:26)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+

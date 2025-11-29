@@ -31,6 +31,7 @@
 
   <build>
     <plugins>
+      <!-- Compilador -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -41,14 +42,52 @@
           <encoding>${project.build.sourceEncoding}</encoding>
         </configuration>
       </plugin>
+
+      <!-- Tests por defecto: SOLO ejercicios resueltos -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
         <version>3.2.5</version>
         <configuration>
           <useModulePath>false</useModulePath>
+          <!-- Por defecto corre TODOS los *Test.java -->
+          <includes>
+            <include>**/*Test.java</include>
+          </includes>
+          <!-- PERO excluye los de no resueltos -->
+          <excludes>
+            <exclude>**/*TestNoResuelto.java</exclude>
+          </excludes>
         </configuration>
       </plugin>
     </plugins>
   </build>
+
+  <profiles>
+    <!-- Perfil para correr SOLO los tests de ejercicios no resueltos -->
+    <profile>
+      <id>soloNoResueltos</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>3.2.5</version>
+            <configuration>
+              <useModulePath>false</useModulePath>
+              <!-- Aquí SÍ solo corren los TestNoResuelto -->
+              <includes>
+                <include>**/*TestNoResuelto.java</include>
+              </includes>
+              <!-- Si quieres que aunque fallen, el build NO marque error,
+                   descomenta esta línea:
+              <testFailureIgnore>true</testFailureIgnore>
+              -->
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+
 </project>

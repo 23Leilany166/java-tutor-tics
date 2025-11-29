@@ -1,0 +1,11 @@
+-------------------------------------------------------------------------------
+Test set: com.ejercicios.test_EjerciciosNoResueltos.ps3_27_TestNoResuelto
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.007 s <<< FAILURE! -- in com.ejercicios.test_EjerciciosNoResueltos.ps3_27_TestNoResuelto
+com.ejercicios.test_EjerciciosNoResueltos.ps3_27_TestNoResuelto.testResolverBasico -- Time elapsed: 0.005 s <<< ERROR!
+java.lang.NullPointerException: Cannot read field "matF" because "r" is null
+	at com.ejercicios.test_EjerciciosNoResueltos.ps3_27_TestNoResuelto.testResolverBasico(ps3_27_TestNoResuelto.java:19)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+
