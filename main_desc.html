@@ -1,0 +1,893 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ejercicios de OOP en Java</title>
+  <link rel="stylesheet" href="style/styles_desc.css">
+  <style>
+    /* Estilos básicos para que el HTML se vea como la descripción si el CSS falta */
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; background-color: #f4f7f6; color: #333; margin: 0; padding: 20px; }
+    .container { max-width: 1200px; margin: 0 auto; background-color: #ffffff; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+    .page-header { text-align: center; padding: 2rem; border-bottom: 1px solid #e0e0e0; }
+    .page-header h1 { color: #2c3e50; margin: 0; }
+    .page-header .subtitle { font-size: 1.1rem; color: #555; margin-top: 0.5rem; }
+    .exercises-nav { display: flex; flex-wrap: wrap; justify-content: center; padding: 1rem; background-color: #ecf0f1; border-bottom: 1px solid #e0e0e0; }
+    .nav-link { background-color: #3498db; color: white; padding: 0.5rem 1rem; margin: 0.25rem; border-radius: 4px; text-decoration: none; font-weight: 500; transition: background-color 0.2s ease; }
+    .nav-link:hover { background-color: #2980b9; }
+    .exercises-main { padding: 1rem; }
+    .exercise-card { background-color: #fff; border: 1px solid #e0e0e0; border-radius: 8px; margin-bottom: 2rem; box-shadow: 0 2px 5px rgba(0,0,0,0.05); overflow: hidden; }
+    .exercise-header { padding: 1.5rem 2rem; background-color: #f9f9f9; border-bottom: 1px solid #e0e0e0; }
+    .exercise-badge { background-color: #e74c3c; color: white; padding: 0.2rem 0.6rem; border-radius: 10px; font-size: 0.8rem; font-weight: bold; text-transform: uppercase; }
+    .exercise-header h2 { margin: 0.75rem 0 0.5rem 0; color: #2c3e50; }
+    .exercise-description { margin: 0; color: #555; }
+    .exercise-content { display: grid; grid-template-columns: 2fr 1fr; gap: 1.5rem; padding: 2rem; }
+    .exercise-main h3 { color: #34495e; border-bottom: 2px solid #3498db; padding-bottom: 0.3rem; margin-top: 0; }
+    .exercise-main ul { padding-left: 20px; }
+    .code-block { background-color: #2d2d2d; color: #f1f1f1; padding: 1rem; border-radius: 5px; display: block; overflow-x: auto; font-family: "Courier New", Courier, monospace; }
+    .exercise-sidebar { background-color: #fdfdfd; border: 1px dashed #ccc; border-radius: 5px; padding: 1.5rem; }
+    .exercise-sidebar h3 { margin-top: 0; color: #34495e; }
+    .tip-box { background-color: #e6f7ff; border: 1px solid #b3e0ff; padding: 1rem; border-radius: 4px; margin-top: 1rem; }
+    .tip-box strong { color: #0056b3; }
+    .page-footer { text-align: center; padding: 2rem; border-top: 1px solid #e0e0e0; background-color: #ecf0f1; }
+    .note-text { color: #777; }
+    @media (max-width: 900px) { .exercise-content { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div class="container" id="top">
+    <header class="page-header">
+      <h1>Ejercicios de Programación Orientada a Objetos en Java</h1>
+      <p class="subtitle">Selecciona un ejercicio del menú para ver los detalles (basado en el libro de Osvaldo Cairó).</p>
+    </header>
+
+    <nav class="exercises-nav" aria-label="Navegación de ejercicios">
+      <a href="#inversor_datos" class="nav-link">Inversor de Datos</a>
+      <a href="#calculadora_aumento" class="nav-link">Calculadora Aumento</a>
+      <a href="#funcion_selectiva" class="nav-link">Función Selectiva</a>
+      <a href="#suma_gastos" class="nav-link">Suma de Gastos (while)</a>
+      <a href="#promedio_sueldos_array" class="nav-link">Sueldos y Arreglos</a>
+      <a href="#seleccion_directa" class="nav-link">Ordenación Selección</a>
+      <a href="#reporte_inah" class="nav-link">Reporte INAH (3D)</a>
+      <a href="#conversor_medidas" class="nav-link">Conversor (Utilidad)</a>
+      <a href="#analizador_triangulos" class="nav-link">Analizador Triángulos</a>
+      <a href="#factura_tienda" class="nav-link">Factura "La Providencia"</a>
+      <a href="#manejo_arreglos" class="nav-link">Manejo de ArrayList</a>
+      <a href="#produccion_fabrica" class="nav-link">Producción Fábrica (2D)</a>
+      <a href="#gestion_personal" class="nav-link">Gestión de Personal (POO)</a>
+    </nav>
+
+    <main class="exercises-main">
+
+      <article id="inversor_datos" class="exercise-card" aria-labelledby="inversor_datos-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Ejercicio</span>
+          <h2 id="inversor_datos-title">Inversor de Datos (Scanner)</h2>
+          <p class="exercise-description">
+            Un ejercicio básico para practicar la lectura de datos desde la consola utilizando la clase <code>java.util.Scanner</code>
+            y la impresión de esos datos en orden inverso.
+          </p>
+        </header>
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <ul>
+              <li>Crear una clase <code>InversorDatos</code>.</li>
+              <li>Implementar un método <code>main</code>.</li>
+              <li>Dentro de <code>main</code>, crear una instancia de <code>Scanner</code> para leer desde <code>System.in</code>.</li>
+              <li>Solicitar y leer cuatro números enteros (ej. A, B, C, D).</li>
+              <li>Imprimir los números en la consola en el orden inverso (D, C, B, A).</li>
+            </ul>
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block">import java.util.Scanner;
+
+public class InversorDatos {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.println("Ingrese 4 enteros:");
+        int a = scanner.nextInt();
+        int b = scanner.nextInt();
+        int c = scanner.nextInt();
+        int d = scanner.nextInt();
+        
+        // Salida: 35, 150, 28, 7
+        System.out.printf("%d, %d, %d, %d\n", d, c, b, a);
+        
+        scanner.close();
+    }
+}</code></pre>
+          </section>
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <ul>
+              <li><code>System.in</code> es el flujo de entrada estándar (consola).</li>
+              <li><code>Scanner</code> es una herramienta poderosa para "parsear" tipos primitivos.</li>
+              <li>Es una buena práctica cerrar el <code>Scanner</code> (<code>scanner.close()</code>) cuando ya no se necesita.</li>
+            </ul>
+            <div class="tip-box">
+              <strong>Tip:</strong> <code>System.out.printf()</code> permite formatear la salida de manera similar a C, usando especificadores como <code>%d</code> (decimal/entero) y <code>\n</code> (nueva línea).
+            </div>
+          </aside>
+        </div>
+      </article>
+
+      <article id="calculadora_aumento" class="exercise-card" aria-labelledby="calculadora_aumento-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Ejercicio</span>
+          <h2 id="calculadora_aumento-title">Calculadora de Aumento de Sueldo (if-else)</h2>
+          <p class="exercise-description">
+            Implementar lógica condicional simple usando una estructura <code>if-else</code> para aplicar diferentes
+            tasas de aumento de sueldo basadas en un umbral.
+          </p>
+        </header>
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <ul>
+              <li>Crear una clase <code>CalculadoraAumento</code>.</li>
+              <li>La clase debe tener un método <code>calcularNuevoSueldo(double sueldoActual)</code>.</li>
+              <li>El método debe devolver un <code>double</code> con el nuevo sueldo.</li>
+              <li><strong>Lógica:</strong>
+                <ul>
+                  <li>Si el <code>sueldoActual</code> es inferior a 1000, aplicar un aumento del 15% (multiplicar por 1.15).</li>
+                  <li>En caso contrario (si es 1000 o más), aplicar un aumento del 12% (multiplicar por 1.12).</li>
+                </ul>
+              </li>
+            </ul>
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block">public class CalculadoraAumento {
+    public double calcularNuevoSueldo(double sueldoActual) {
+        if (sueldoActual < 1000) {
+            return sueldoActual * 1.15;
+        } else {
+            return sueldoActual * 1.12;
+        }
+    }
+}
+
+// --- En el método main ---
+CalculadoraAumento calc = new CalculadoraAumento();
+System.out.println(calc.calcularNuevoSueldo(800.0));   // Salida: 920.0
+System.out.println(calc.calcularNuevoSueldo(1000.0));  // Salida: 1120.0
+System.out.println(calc.calcularNuevoSueldo(1200.0));  // Salida: 1344.0</code></pre>
+          </section>
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <ul>
+              <li>Este ejercicio refuerza la estructura condicional básica <code>if (condicion) { ... } else { ... }</code>.</li>
+              <li>En Java, es preferible encapsular esta lógica en un método en lugar de hacerlo todo en <code>main</code>.</li>
+            </ul>
+            <div class="tip-box">
+              <strong>Tip:</strong> Para mayor claridad, puedes definir las tasas de aumento como constantes: <code>final double AUMENTO_MINIMO = 1.15;</code>.
+            </div>
+          </aside>
+        </div>
+      </article>
+
+      <article id="funcion_selectiva" class="exercise-card" aria-labelledby="funcion_selectiva-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Ejercicio</span>
+          <h2 id="funcion_selectiva-title">Función Selectiva (switch)</h2>
+          <p class="exercise-description">
+            Practicar la estructura de control <code>switch</code> de Java para ejecutar diferentes operaciones matemáticas
+            basadas en un valor selector (<code>int</code>).
+          </p>
+        </header>
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <ul>
+              <li>Crear una clase <code>ProcesadorFunciones</code>.</li>
+              <li>Crear un método <code>public double calcularValor(int num, int v)</code>.</li>
+              <li>El método debe usar <code>switch</code> sobre el parámetro <code>num</code>:
+                <ul>
+                  <li><code>case 1</code>: debe devolver <code>100 * v</code>.</li>
+                  <li><code>case 2</code>: debe devolver <code>Math.pow(100, v)</code>.</li>
+                  <li><code>case 3</code>: debe devolver <code>100.0 / v</code> (asegurar división de punto flotante).</li>
+                  <li><code>default</code>: (para cualquier otro valor de <code>num</code>) debe devolver <code>0.0</code>.</li>
+                </ul>
+              </li>
+            </ul>
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block">public class ProcesadorFunciones {
+    public double calcularValor(int num, int v) {
+        switch (num) {
+            case 1:
+                return 100 * v;
+            case 2:
+                return Math.pow(100, v);
+            case 3:
+                return 100.0 / v;
+            default:
+                return 0.0;
+        }
+    }
+}
+
+// --- En el método main ---
+ProcesadorFunciones pf = new ProcesadorFunciones();
+System.out.println(pf.calcularValor(1, 8));   // Salida: 800.0
+System.out.println(pf.calcularValor(3, 4));   // Salida: 25.0
+System.out.println(pf.calcularValor(7, 6));   // Salida: 0.0</code></pre>
+          </section>
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <ul>
+              <li><code>Math.pow(base, exponente)</code> se usa para la exponenciación.</li>
+              <li>Usar <code>100.0</code> en lugar de <code>100</code> fuerza a que la división sea de tipo <code>double</code>.</li>
+              <li>Cuando un <code>case</code> usa <code>return</code>, no es necesario usar <code>break</code>.</li>
+            </ul>
+          </aside>
+        </div>
+      </article>
+
+      <article id="suma_gastos" class="exercise-card" aria-labelledby="suma_gastos-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Ejercicio</span>
+          <h2 id="suma_gastos-title">Suma de Gastos de Viaje (while y valor centinela)</h2>
+          <p class="exercise-description">
+            Implementar un bucle <code>while</code> que lea valores (gastos) desde la consola hasta que el usuario
+            ingrese un "valor centinela" (en este caso, -1) para terminar la entrada y sumar el total.
+          </p>
+        </header>
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <ul>
+              <li>Crear una clase <code>SumadorGastos</code> con un método <code>main</code>.</li>
+              <li>Usar <code>Scanner</code> para leer valores <code>double</code>.</li>
+              <li>Usar una variable <code>double totalGastos = 0;</code> para acumular la suma.</li>
+              <li>Implementar un bucle <code>while</code> que se ejecute mientras el gasto leído sea diferente de -1.</li>
+              <li>Leer el primer gasto *antes* de entrar al bucle.</li>
+              <li>Dentro del bucle: sumar el gasto al total y leer el *siguiente* gasto.</li>
+              <li>Imprimir el <code>totalGastos</code> al finalizar el bucle.</li>
+            </ul>
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block">import java.util.Scanner;
+
+public class SumadorGastos {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        double totalGastos = 0;
+
+        System.out.print("Ingrese gasto (o -1 para terminar): ");
+        double gasto = scanner.nextDouble();
+
+        while (gasto != -1) {
+            totalGastos += gasto;
+            System.out.print("Ingrese gasto (o -1 para terminar): ");
+            gasto = scanner.nextDouble();
+        }
+
+        System.out.printf("Total de gastos: %.2f\n", totalGastos);
+        scanner.close();
+    }
+}</code></pre>
+          </section>
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <ul>
+              <li>Este patrón se llama "bucle controlado por centinela".</li>
+              <li>La lectura se hace dos veces: una para "cebar" el bucle y otra al final de cada iteración.</li>
+            </ul>
+          </aside>
+        </div>
+      </article>
+
+      <article id="promedio_sueldos_array" class="exercise-card" aria-labelledby="promedio_sueldos_array-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Ejercicio</span>
+          <h2 id="promedio_sueldos_array-title">Sueldos Superiores al Promedio (Arreglos)</h2>
+          <p class="exercise-description">
+            Practicar el manejo de arreglos (<code>double[]</code>) en dos pasadas. La primera pasada es para
+            calcular el promedio de todos los sueldos, y la segunda es para contar cuántos sueldos superan ese promedio.
+          </p>
+        </header>
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <ul>
+              <li>Crear una clase <code>AnalizadorSueldos</code>.</li>
+              <li>Crear un método <code>public int contarSueldosSobrePromedio(double[] sueldos)</code>.</li>
+              <li><strong>Pasada 1 (Calcular Promedio):</strong>
+                <ul>
+                  <li>Iterar sobre el arreglo <code>sueldos</code> (usando un bucle <code>for</code> o <code>for-each</code>).</li>
+                  <li>Sumar todos los valores en una variable <code>total</code>.</li>
+                  <li>Calcular el <code>promedio = total / sueldos.length</code>.</li>
+                </ul>
+              </li>
+              <li><strong>Pasada 2 (Contar):</strong>
+                <ul>
+                  <li>Inicializar <code>int contador = 0</code>.</li>
+                  <li>Iterar nuevamente sobre el arreglo <code>sueldos</code>.</li>
+                  <li>Si <code>sueldo > promedio</code>, incrementar <code>contador</code>.</li>
+                </ul>
+              </li>
+              <li>Devolver <code>contador</code>.</li>
+            </ul>
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block">public class AnalizadorSueldos {
+    public int contarSueldosSobrePromedio(double[] sueldos) {
+        if (sueldos == null || sueldos.length == 0) {
+            return 0;
+        }
+        
+        double total = 0;
+        for (double sueldo : sueldos) {
+            total += sueldo;
+        }
+        double promedio = total / sueldos.length;
+        
+        int contador = 0;
+        for (double sueldo : sueldos) {
+            if (sueldo > promedio) {
+                contador++;
+            }
+        }
+        return contador;
+    }
+}
+// --- En main ---
+// (Promedio de la tabla 4.1 es 1921.14)
+double[] sueldos = {1200.00, 3950.00, 7575.00, 980.00, 1050.70};
+AnalizadorSueldos as = new AnalizadorSueldos();
+System.out.println(as.contarSueldosSobrePromedio(sueldos)); // Salida: 2
+</code></pre>
+          </section>
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <ul>
+              <li>Este problema demuestra por qué los arreglos (o Colecciones) son esenciales: permiten almacenar datos para procesarlos múltiples veces.</li>
+              <li>El bucle <code>for-each</code> (<code>for (double sueldo : sueldos)</code>) es más limpio que un <code>for</code> con índice cuando no necesitas la posición.</li>
+            </ul>
+          </aside>
+        </div>
+      </article>
+      
+      <article id="seleccion_directa" class="exercise-card" aria-labelledby="seleccion_directa-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Ejercicio</span>
+          <h2 id="seleccion_directa-title">Algoritmo de Ordenación por Selección Directa</h2>
+          <p class="exercise-description">
+            Implementar el algoritmo de ordenación por selección. Este método consiste en buscar el elemento
+            mínimo en la porción no ordenada del arreglo y moverlo a la posición correcta (intercambio).
+          </p>
+        </header>
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <ul>
+              <li>Crear una clase utilitaria <code>Ordenador</code>.</li>
+              <li>Crear un método <code>public static void ordenarPorSeleccion(int[] vector)</code>.</li>
+              <li>El método debe modificar (mutar) el arreglo recibido.</li>
+              <li><strong>Lógica (Selección Directa):</strong>
+                <ul>
+                  <li>Bucle externo <code>i</code> desde <code>0</code> hasta <code>vector.length - 2</code>.</li>
+                  <li>Asumir que el mínimo está en <code>i</code> (<code>int minIndex = i</code>).</li>
+                  <li>Bucle interno <code>j</code> desde <code>i + 1</code> hasta <code>vector.length - 1</code>.</li>
+                  <li>Si <code>vector[j] < vector[minIndex]</code>, actualizar <code>minIndex = j</code>.</li>
+                  <li>Después del bucle interno, intercambiar <code>vector[i]</code> con <code>vector[minIndex]</code>.</li>
+                </ul>
+              </li>
+            </ul>
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block">import java.util.Arrays;
+
+public class Ordenador {
+    public static void ordenarPorSeleccion(int[] vector) {
+        for (int i = 0; i < vector.length - 1; i++) {
+            int minIndex = i;
+            for (int j = i + 1; j < vector.length; j++) {
+                if (vector[j] < vector[minIndex]) {
+                    minIndex = j;
+                }
+            }
+            // Intercambio
+            int temp = vector[i];
+            vector[i] = vector[minIndex];
+            vector[minIndex] = temp;
+        }
+    }
+}
+// --- En main ---
+int[] data = {32, 84, 25, 33, 61, 44, 29, 52};
+Ordenador.ordenarPorSeleccion(data);
+System.out.println(Arrays.toString(data)); // [25, 29, 32, 33, 44, 52, 61, 84]</code></pre>
+          </section>
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <ul>
+              <li>La ordenación por selección tiene una complejidad temporal de O(n²) en todos los casos (peor, mejor y promedio).</li>
+              <li>Es un algoritmo "in-place", ya que no requiere memoria adicional (aparte de una variable temporal para el intercambio).</li>
+            </ul>
+          </aside>
+        </div>
+      </article>
+
+      <article id="reporte_inah" class="exercise-card" aria-labelledby="reporte_inah-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Ejercicio</span>
+          <h2 id="reporte_inah-title">Reporte INAH (Arreglos Tridimensionales)</h2>
+          <p class="exercise-description">
+            Practicar el manejo de arreglos de 3 dimensiones (<code>int[][][]</code>) para procesar datos de visitantes
+            (Centro Arqueológico, Mes, Año) y generar reportes.
+          </p>
+        </header>
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <ul>
+              <li>Crear una clase <code>ReporteINAH</code> que almacene los datos en <code>int[][][] visitantes</code>.</li>
+              <li>La dimensión debe ser <code>[58][12][10]</code> (Centro, Mes, Año).</li>
+              <li><strong>Inciso a:</strong> Método <code>getAnoMayorAfluencia(int centro)</code>.
+                <ul>
+                  <li>Debe sumar los 12 meses para cada uno de los 10 años, solo para el <code>centro</code> dado.</li>
+                  <li>Devolver el año (1990-1999) con la suma máxima.</li>
+                </ul>
+              </li>
+              <li><strong>Inciso b:</strong> Método <code>getCentroMayorAfluencia(int ano)</code>.
+                <ul>
+                  <li>Sumar los 12 meses para cada uno de los 58 centros, solo para el <code>ano</code> dado.</li>
+                  <li>Devolver el índice del centro (0-57) con la suma máxima.</li>
+                </ul>
+              </li>
+              <li><strong>Inciso c:</strong> Método <code>getMesMayorAfluencia(int ano)</code>.
+                <ul>
+                  <li>Sumar los 58 centros para cada uno de los 12 meses, solo para el <code>ano</code> dado.</li>
+                  <li>Devolver el índice del mes (0-11) con la suma máxima.</li>
+                </ul>
+              </li>
+            </ul>
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block">public class ReporteINAH {
+    private int[][][] visitantes; // Asumimos [58][12][10]
+    
+    public ReporteINAH(int[][][] datos) {
+        this.visitantes = datos;
+    }
+
+    // Inciso a: (centro 43 del libro -> índice 42) (año 1990 -> índice 0)
+    public int getAnoMayorAfluencia(int centroIndex) {
+        long maxVisitas = -1;
+        int anoMax = 1990;
+        
+        for (int a = 0; a < 10; a++) { // 10 Años
+            long sumaAnual = 0;
+            for (int m = 0; m < 12; m++) { // 12 Meses
+                sumaAnual += visitantes[centroIndex][m][a];
+            }
+            if (sumaAnual > maxVisitas) {
+                maxVisitas = sumaAnual;
+                anoMax = 1990 + a;
+            }
+        }
+        return anoMax;
+    }
+    // ... (Implementación similar para b y c) ...
+}</code></pre>
+          </section>
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <ul>
+              <li>El manejo de índices es crucial. Si el libro usa claves de 1-58, en Java serán índices 0-57.</li>
+              <li>Los años 1990-1999 se mapean a índices 0-9.</li>
+              <li>Usar <code>long</code> para las sumas es una buena práctica para evitar desbordamiento (overflow) de enteros.</li>
+            </ul>
+          </aside>
+        </div>
+      </article>
+
+      <article id="conversor_medidas" class="exercise-card" aria-labelledby="conversor_medidas-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Ejercicio</span>
+          <h2 id="conversor_medidas-title">Conversor de Acres a Hectáreas (Métodos Estáticos)</h2>
+          <p class="exercise-description">
+            Crear una clase utilitaria (utility class) con métodos <code>static</code> para realizar conversiones de
+            unidades, específicamente de acres a hectáreas, usando las constantes de conversión dadas.
+          </p>
+        </header>
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <ul>
+              <li>Crear una clase <code>ConversorUnidades</code>.</li>
+              <li>Declarar constantes estáticas y finales:
+                <ul>
+                  <li><code>private static final double METROS_CUADRADOS_POR_ACRE = 4047.0;</code></li>
+                  <li><code>private static final double METROS_CUADRADOS_POR_HECTAREA = 10000.0;</code></li>
+                </ul>
+              </li>
+              <li>Crear un método <code>public static double acresAhectareas(double acres)</code>.</li>
+              <li>Lógica: <code>(acres * METROS_CUADRADOS_POR_ACRE) / METROS_CUADRADOS_POR_HECTAREA</code>.</li>
+              <li>Añadir un constructor privado <code>private ConversorUnidades() {}</code> para prevenir la instanciación.</li>
+            </ul>
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block">public class ConversorUnidades {
+
+    private static final double METROS_CUADRADOS_POR_ACRE = 4047.0;
+    private static final double METROS_CUADRADOS_POR_HECTAREA = 10000.0;
+
+    // Constructor privado para evitar instanciación
+    private ConversorUnidades() {}
+
+    public static double acresAhectareas(double acres) {
+        double metrosCuadrados = acres * METROS_CUADRADOS_POR_ACRE;
+        return metrosCuadrados / METROS_CUADRADOS_POR_HECTAREA;
+    }
+}
+
+// --- En main ---
+double acres = 100.0;
+double hectareas = ConversorUnidades.acresAhectareas(acres);
+System.out.printf("%.2f acres son %.2f hectáreas\n", acres, hectareas);
+// Salida: 100.00 acres son 40.47 hectáreas</code></pre>
+          </section>
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <ul>
+              <li>Las "Clases Utilitarias" agrupan funcionalidad relacionada pero no guardan estado (atributos no estáticos).</li>
+              <li><code>static</code> significa que el método pertenece a la clase, no a una instancia.</li>
+            </ul>
+          </aside>
+        </div>
+      </article>
+
+      <article id="analizador_triangulos" class="exercise-card" aria-labelledby="analizador_triangulos-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Ejercicio</span>
+          <h2 id="analizador_triangulos-title">Clase Triángulo (Validación, Tipo y Área)</h2>
+          <p class="exercise-description">
+            Implementar una clase <code>Triangulo</code> que almacene sus tres lados. La clase debe ser capaz de
+            determinar si los lados forman un triángulo válido, qué tipo de triángulo es, y calcular su área.
+          </p>
+        </header>
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <ul>
+              <li>Clase <code>Triangulo</code> con atributos <code>double a</code>, <code>double b</code>, <code>double c</code>.</li>
+              <li>Método <code>public boolean esValido()</code>.
+                <ul>
+                  <li>Lógica: <code>(a + b > c) && (a + c > b) && (b + c > a)</code>.</li>
+                </ul>
+              </li>
+              <li>Método <code>public String getTipo()</code>.
+                <ul>
+                  <li>Si no es válido, devolver "Invalido".</li>
+                  <li>Si <code>a == b && b == c</code>, devolver "Equilatero".</li>
+                  <li>Si <code>a == b || b == c || a == c</code>, devolver "Isosceles".</li>
+                  <li>En otro caso, devolver "Escaleno".</li>
+                </ul>
+              </li>
+              <li>Método <code>public double getArea()</code> (Fórmula de Herón).
+                <ul>
+                  <li>Si no es válido, devolver 0.</li>
+                  <li>Calcular <code>s = (a + b + c) / 2.0</code>.</li>
+                  <li>Devolver <code>Math.sqrt(s * (s - a) * (s - b) * (s - c))</code>.</li>
+                </ul>
+              </li>
+            </ul>
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block">public class Triangulo {
+    // ... (atributos y constructor) ...
+    
+    public boolean esValido() {
+        return (a + b > c) && (a + c > b) && (b + c > a);
+    }
+    
+    public String getTipo() {
+        if (!esValido()) return "Invalido";
+        if (a == b && b == c) return "Equilatero";
+        if (a == b || b == c || a == c) return "Isosceles";
+        return "Escaleno";
+    }
+    
+    public double getArea() {
+        if (!esValido()) return 0.0;
+        double s = (a + b + c) / 2.0;
+        return Math.sqrt(s * (s - a) * (s - b) * (s - c));
+    }
+}
+// --- En main ---
+Triangulo t1 = new Triangulo(5, 5, 5);
+System.out.println(t1.getTipo()); // Equilatero
+System.out.printf("%.2f\n", t1.getArea()); // 10.83</code></pre>
+          </section>
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <ul>
+              <li>La validación (<code>esValido()</code>) es crucial y debe ser llamada por los otros métodos (<code>getTipo</code>, <code>getArea</code>) para evitar resultados incorrectos.</li>
+              <li>La Fórmula de Herón calcula el área de un triángulo conociendo sus tres lados.</li>
+            </ul>
+          </aside>
+        </div>
+      </article>
+
+      <article id="factura_tienda" class="exercise-card" aria-labelledby="factura_tienda-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Ejercicio</span>
+          <h2 id="factura_tienda-title">Factura Tienda "La Providencia" (Agregación)</h2>
+          <p class="exercise-description">
+            Modelar un sistema de facturación. Este ejercicio practica la agregación (una Factura "tiene"
+            múltiples LíneasDeItem) y el formato de Strings para imprimir un recibo.
+          </p>
+        </header>
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <ul>
+              <li>Clase <code>ItemFactura</code> con atributos: <code>clave</code> (int), <code>ramo</code> (String), <code>cantidad</code> (int), <code>precioUnitario</code> (double).
+                <ul>
+                  <li>Debe tener un método <code>double getTotal()</code>.</li>
+                </ul>
+              </li>
+              <li>Clase <code>Factura</code> que contiene <code>ArrayList<ItemFactura> items</code>.
+                <ul>
+                  <li>Método <code>agregarItem(...)</code>.</li>
+                  <li>Método <code>imprimirFactura()</code>: Debe usar <code>System.out.printf</code> para formatear la salida como en el libro (columnas alineadas).</li>
+                  <li>Método <code>double getGranTotal()</code>.</li>
+                </ul>
+              </li>
+              <li>Clase <code>CajaRegistradora</code> que procesa múltiples facturas.
+                <ul>
+                  <li>Debe usar <code>HashMap<Integer, Double> ventasPorRamo</code> para el total del día (Inciso b).</li>
+                </ul>
+              </li>
+            </ul>
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block">public class Factura {
+    private List<ItemFactura> items = new ArrayList<>();
+    
+    // ... agregarItem(), getGranTotal() ...
+
+    public void imprimirFactura() {
+        System.out.println("TIENDA \"LA PROVIDENCIA\"");
+        System.out.println("CLAVE - RAMO    CANTIDAD   PRECIO UNITARIO   TOTAL");
+        System.out.println("--------------------------------------------------");
+        for (ItemFactura item : items) {
+            System.out.printf("%-5d - %-10s %-10d %-17.2f %-7.2f\n",
+                item.getClave(), item.getRamo(), item.getCantidad(),
+                item.getPrecioUnitario(), item.getTotal());
+        }
+        System.out.println("--------------------------------------------------");
+        System.out.printf("TOTAL A PAGAR: $ %.2f\n", getGranTotal());
+    }
+}</code></pre>
+          </section>
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <ul>
+              <li><code>System.out.printf</code> es ideal para alinear columnas.</li>
+              <li><code>%-10s</code> significa "alinear a la izquierda (<code>-</code>) en un espacio de 10 caracteres (<code>10</code>) como un string (<code>s</code>)".</li>
+              <li><code>%.2f</code> significa "formatear un float/double (<code>f</code>) con 2 decimales (<code>.2</code>)".</li>
+            </ul>
+          </aside>
+        </div>
+      </article>
+
+      <article id="manejo_arreglos" class="exercise-card" aria-labelledby="manejo_arreglos-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Ejercicio</span>
+          <h2 id="manejo_arreglos-title">Insertar y Eliminar en Arreglo (ArrayList)</h2>
+          <p class="exercise-description">
+            Usar la clase <code>java.util.ArrayList</code> para gestionar una colección de datos desordenada,
+            aprovechando sus métodos nativos <code>.add()</code> y <code>.remove()</code>.
+          </p>
+        </header>
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <ul>
+              <li>Crear una clase <code>Almacen</code> que encapsule <code>ArrayList<Integer> elementos</code>.</li>
+              <li>El constructor debe inicializar la lista: <code>elementos = new ArrayList<>();</code>.</li>
+              <li>Método <code>public void insertar(int e)</code>.
+                <ul>
+                  <li>Simplemente debe usar <code>elementos.add(e)</code>.</li>
+                </ul>
+              </li>
+              <li>Método <code>public boolean eliminar(int e)</code>.
+                <ul>
+                  <li>Debe eliminar la *primera* ocurrencia del valor <code>e</code>.</li>
+                  <li>Debe devolver <code>true</code> si lo encontró y eliminó, <code>false</code> en caso contrario.</li>
+                  <li>Usar <code>elementos.remove(Integer.valueOf(e))</code>.</li>
+                </ul>
+              </li>
+            </ul>
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block">import java.util.ArrayList;
+import java.util.List;
+
+public class Almacen {
+    private List<Integer> elementos;
+
+    public Almacen() {
+        this.elementos = new ArrayList<>();
+    }
+
+    public void insertar(int e) {
+        this.elementos.add(e);
+    }
+
+    public boolean eliminar(int e) {
+        // Debe usar Integer.valueOf() para forzar la eliminación por Objeto,
+        // no por índice.
+        return this.elementos.remove(Integer.valueOf(e));
+    }
+}
+// --- En main ---
+Almacen a = new Almacen();
+a.insertar(10);
+a.insertar(20);
+a.insertar(10);
+a.eliminar(10); // Elimina solo el primer 10
+System.out.println(a.getElementos()); // [20, 10]</code></pre>
+          </section>
+          <aside class="exercise-sidebar">
+            <h3>¡Cuidado con <code>.remove()</code>!</h3>
+            <p class="note-text">
+              <code>ArrayList</code> tiene dos métodos <code>remove</code>:
+            </p>
+            <ul>
+              <li><code>remove(int index)</code>: Elimina por posición.</li>
+              <li><code>remove(Object o)</code>: Elimina por valor.</li>
+            </ul>
+            <p class="note-text">Si tienes un <code>ArrayList<Integer></code> y llamas a <code>.remove(10)</code>, Java lo interpreta como <code>remove(int index)</code> e intentará borrar el elemento en la posición 10, (lanzando <code>IndexOutOfBoundsException</code> si es muy pequeño). Debes forzarlo a usar el método de Objeto con <code>.remove(Integer.valueOf(10))</code>.</p>
+          </aside>
+        </div>
+      </article>
+      
+      <article id="produccion_fabrica" class="exercise-card" aria-labelledby="produccion_fabrica-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Ejercicio</span>
+          <h2 id="produccion_fabrica-title">Costos de Producción Fábrica (Arreglos 2D)</h2>
+          <p class="exercise-description">
+            Procesar datos combinando un arreglo 2D (<code>double[Mes][Producto]</code>) con un arreglo 1D (<code>double[Producto]</code>)
+            para calcular costos totales de producción.
+          </p>
+        </header>
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <ul>
+              <li>Clase <code>Fabrica</code>.</li>
+              <li>Atributo <code>double[][] produccion</code> (12 meses x 10 productos).</li>
+              <li>Atributo <code>double[] costos</code> (10 costos de producto).</li>
+              <li><strong>Inciso a:</strong> Método <code>double[] getCostoAnualPorProducto()</code>.
+                <ul>
+                  <li>Devolver un arreglo de 10 posiciones.</li>
+                  <li>Para cada producto <code>j</code>, sumar <code>produccion[i][j]</code> (para los 12 meses <code>i</code>) y multiplicar por <code>costos[j]</code>.</li>
+                </ul>
+              </li>
+              <li><strong>Inciso b:</strong> Método <code>double getCostoTotalProduccion()</code>.
+                <ul>
+                  <li>Sumar los resultados del método anterior.</li>
+                </ul>
+              </li>
+              <li><strong>Inciso c:</strong> Método <code>int getProductoMasVendido()</code>.
+                <ul>
+                  <li>Sumar la *cantidad* (no el costo) por producto y devolver el índice (0-9) del producto con la mayor suma.</li>
+                </ul>
+              </li>
+            </ul>
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block">public class Fabrica {
+    private double[][] produccion; // [12][10]
+    private double[] costos;       // [10]
+
+    public Fabrica(double[][] produccion, double[] costos) {
+        this.produccion = produccion;
+        this.costos = costos;
+    }
+
+    // Inciso a (parcial)
+    public double[] getCostoAnualPorProducto() {
+        double[] costoAnual = new double[10];
+        for (int j = 0; j < 10; j++) { // Iterar por producto
+            double cantidadTotal = 0;
+            for (int i = 0; i < 12; i++) { // Iterar por mes
+                cantidadTotal += this.produccion[i][j];
+            }
+            costoAnual[j] = cantidadTotal * this.costos[j];
+        }
+        return costoAnual;
+    }
+    
+    // ... (otros métodos) ...
+}</code></pre>
+          </section>
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <ul>
+              <li>El orden de los bucles importa. Para el inciso 'a' (costo por producto), el bucle externo debe iterar sobre los productos (columnas) y el interno sobre los meses (filas).</li>
+            </ul>
+          </aside>
+        </div>
+      </article>
+
+      <article id="gestion_personal" class="exercise-card" aria-labelledby="gestion_personal-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Ejercicio</span>
+          <h2 id="gestion_personal-title">Gestión de Personal (Clases y Búsqueda)</h2>
+          <p class="exercise-description">
+            Modelar un sistema de RRHH usando clases <code>Empleado</code> y <code>Departamento</code>. Este ejercicio
+            reemplaza los "arreglos paralelos" del libro con una estructura orientada a objetos, donde los datos
+            relacionados se agrupan en clases.
+          </p>
+        </header>
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <ul>
+              <li>Clase <code>Empleado</code> (nombre, claveDept, antiguedad, sueldo).</li>
+              <li>Clase <code>Departamento</code> (claveDept, nomDept, numEmpleados, nomJefe).</li>
+              <li>Clase <code>Empresa</code> que contenga:
+                <ul>
+                  <li><code>List<Empleado> empleados</code> (ordenada por nombre).</li>
+                  <li><code>List<Departamento> departamentos</code> (ordenada por claveDept).</li>
+                  <li>(Opcional avanzado: Usar <code>HashMap</code> para búsquedas rápidas).</li>
+                </ul>
+              </li>
+              <li><strong>Inciso a:</strong> Método en <code>Empresa</code> <code>buscarInfoEmpleado(String nombre)</code>.
+                <ul>
+                  <li>Buscar al empleado (ej. Búsqueda Binaria en la lista ordenada).</li>
+                  <li>Si se encuentra, buscar su departamento por <code>claveDept</code>.</li>
+                  <li>Imprimir sueldo, nombre de depto y nombre de jefe.</li>
+                </ul>
+              </li>
+              <li><strong>Inciso b:</strong> Método <code>getEmpleadoQueMasGana(String nomDepto)</code>.</li>
+              <li><strong>Inciso c:</strong> Método <code>altaEmpleado(Empleado nuevo)</code> (Insertar en orden).</li>
+            </ul>
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block">public class Empresa {
+    private List<Empleado> empleados;
+    private List<Departamento> departamentos;
+    // (Constructor)
+    
+    // Inciso a (simplificado)
+    public void buscarInfoEmpleado(String nombre) {
+        Empleado emp = null;
+        for(Empleado e : empleados) {
+            if(e.getNombre().equals(nombre)) {
+                emp = e;
+                break;
+            }
+        }
+        
+        if (emp == null) {
+            System.out.println("Empleado no encontrado");
+            return;
+        }
+
+        Departamento dep = null;
+        for(Departamento d : departamentos) {
+            if(d.getClaveDept() == emp.getClaveDept()) {
+                dep = d;
+                break;
+            }
+        }
+        
+        System.out.println("Sueldo: " + emp.getSueldo());
+        System.out.println("Depto: " + (dep != null ? dep.getNomDept() : "N/A"));
+        System.out.println("Jefe: " + (dep != null ? dep.getNomJefe() : "N/A"));
+    }
+}</code></pre>
+          </section>
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <ul>
+              <li>Este ejercicio es una transición clave de la programación estructurada (arreglos paralelos) a la OOP (objetos que contienen sus propios datos).</li>
+              <li>Las listas (<code>ArrayList</code>) están ordenadas, lo que permite usar Búsqueda Binaria (<code>Collections.binarySearch</code>) si se implementa la interfaz <code>Comparable</code>.</li>
+              <li>Para búsquedas más rápidas por clave, se usaría un <code>HashMap<Integer, Departamento></code>.</li>
+            </ul>
+          </aside>
+        </div>
+      </article>
+
+    </main>
+
+    <footer class="page-footer">
+      <p class="note-text">Regresa al <a href="#top">menú</a> para elegir otro ejercicio.</p>
+    </footer>
+  </div>
+</body>

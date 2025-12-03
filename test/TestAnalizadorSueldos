@@ -1,0 +1,16 @@
+public class TestAnalizadorSueldos {
+    public static void main(String[] args) {
+        AnalizadorSueldos as = new AnalizadorSueldos();
+        // Promedio = (10+20+30+100) / 4 = 40
+        // Sueldos > 40: Solo el 100 (1 sueldo)
+        double[] sueldos = {10.0, 20.0, 30.0, 100.0};
+        
+        int resultado = as.contarSueldosSobrePromedio(sueldos);
+        
+        if (resultado == 1) {
+            System.out.println("✅ Test AnalizadorSueldos PASÓ");
+        } else {
+            System.out.println("❌ Test AnalizadorSueldos FALLÓ. Esperado: 1, Obtuvo: " + resultado);
+        }
+    }
+}

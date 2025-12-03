@@ -1,0 +1,22 @@
+import java.util.*;
+
+public class TestEmpresa {
+    public static void main(String[] args) {
+        Empresa emp = new Empresa();
+        // Setup manual para test (asumiendo métodos para agregar o acceso a listas)
+        // Agregamos un empleado "Juan"
+        emp.altaEmpleado(new Empleado("Juan", 1, 5, 20000));
+        
+        // Redirigir salida para capturar el print de buscarInfoEmpleado
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+        
+        emp.buscarInfoEmpleado("Juan");
+        
+        if (outContent.toString().contains("20000")) {
+             System.err.println("✅ Test Empresa PASÓ");
+        } else {
+             System.err.println("❌ Test Empresa FALLÓ");
+        }
+    }
+}

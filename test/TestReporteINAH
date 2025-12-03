@@ -1,0 +1,16 @@
+public class TestReporteINAH {
+    public static void main(String[] args) {
+        int[][][] datos = new int[58][12][10];
+        // Simulamos un pico de visitas en el centro 0, mes 0, año 5 (1995)
+        datos[0][0][5] = 1000; 
+        
+        ReporteINAH reporte = new ReporteINAH(datos);
+        
+        // Inciso A: Año mayor afluencia para centro 0. Debería ser 1995
+        if (reporte.getAnoMayorAfluencia(0) == 1995) {
+             System.out.println("✅ Test ReporteINAH PASÓ");
+        } else {
+             System.out.println("❌ Test ReporteINAH FALLÓ");
+        }
+    }
+}

@@ -1,0 +1,16 @@
+public class TestTriangulo {
+    public static void main(String[] args) {
+        Triangulo t = new Triangulo(3, 4, 5); // Triángulo rectángulo
+        
+        boolean ok1 = t.esValido();         // true
+        boolean ok2 = t.getTipo().equals("Escaleno"); // true
+        // Área (Base*Altura/2 para rectangulos) = 3*4/2 = 6
+        boolean ok3 = Math.abs(t.getArea() - 6.0) < 0.01; 
+        
+        if (ok1 && ok2 && ok3) {
+            System.out.println("✅ Test Triangulo PASÓ");
+        } else {
+            System.out.println("❌ Test Triangulo FALLÓ");
+        }
+    }
+}
