@@ -1,0 +1,723 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ejercicios de Lógica y Algoritmos en Java</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; background-color: #f4f7f6; color: #333; margin: 0; padding: 20px; scroll-behavior: smooth; }
+    .container { max-width: 1200px; margin: 0 auto; background-color: #ffffff; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+    .page-header { text-align: center; padding: 2rem; border-bottom: 1px solid #e0e0e0; background-color: #2c3e50; color: white; border-radius: 8px 8px 0 0; }
+    .page-header h1 { margin: 0; font-size: 1.8rem; }
+    .page-header .subtitle { font-size: 1rem; color: #ecf0f1; margin-top: 0.5rem; opacity: 0.9; }
+    
+    /* Navegación */
+    .exercises-nav { display: flex; flex-wrap: wrap; justify-content: center; padding: 1rem; background-color: #ecf0f1; border-bottom: 1px solid #e0e0e0; position: sticky; top: 0; z-index: 100; }
+    .nav-link { background-color: #3498db; color: white; padding: 0.5rem 0.8rem; margin: 0.25rem; border-radius: 4px; text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: background-color 0.2s ease; }
+    .nav-link:hover { background-color: #2980b9; }
+    
+    /* Contenido Principal */
+    .exercises-main { padding: 1rem; }
+    .exercise-card { background-color: #fff; border: 1px solid #e0e0e0; border-radius: 8px; margin-bottom: 2rem; box-shadow: 0 2px 5px rgba(0,0,0,0.05); overflow: hidden; scroll-margin-top: 80px; }
+    .exercise-header { padding: 1rem 2rem; background-color: #f9f9f9; border-bottom: 1px solid #e0e0e0; }
+    .exercise-badge { background-color: #e74c3c; color: white; padding: 0.2rem 0.6rem; border-radius: 10px; font-size: 0.75rem; font-weight: bold; text-transform: uppercase; }
+    .exercise-header h2 { margin: 0.5rem 0 0.5rem 0; color: #2c3e50; font-size: 1.4rem; }
+    .exercise-description { margin: 0; color: #555; font-size: 0.95rem; }
+    
+    /* Grid de código y notas */
+    .exercise-content { display: grid; grid-template-columns: 2fr 1fr; gap: 1.5rem; padding: 1.5rem 2rem; }
+    .exercise-main h3 { color: #34495e; border-bottom: 2px solid #3498db; padding-bottom: 0.3rem; margin-top: 0; font-size: 1.1rem; }
+    
+    /* Bloque de código */
+    .code-block { background-color: #282c34; color: #abb2bf; padding: 1rem; border-radius: 5px; display: block; overflow-x: auto; font-family: "Consolas", "Monaco", monospace; font-size: 0.9rem; tab-size: 4; }
+    
+    /* Sidebar */
+    .exercise-sidebar { background-color: #fdfdfd; border: 1px dashed #ccc; border-radius: 5px; padding: 1rem; font-size: 0.9rem; }
+    .exercise-sidebar h3 { margin-top: 0; color: #34495e; font-size: 1rem; }
+    .exercise-sidebar ul { padding-left: 20px; margin-bottom: 0; }
+    .exercise-sidebar li { margin-bottom: 0.5rem; }
+    .tip-box { background-color: #e6f7ff; border-left: 4px solid #3498db; padding: 0.8rem; border-radius: 0 4px 4px 0; margin-top: 1rem; }
+    .tip-box strong { color: #0056b3; display: block; margin-bottom: 0.3rem; }
+    
+    .page-footer { text-align: center; padding: 2rem; border-top: 1px solid #e0e0e0; background-color: #ecf0f1; color: #7f8c8d; }
+    
+    @media (max-width: 900px) { 
+      .exercise-content { grid-template-columns: 1fr; } 
+      .nav-link { font-size: 0.8rem; padding: 0.4rem 0.6rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="top">
+    <header class="page-header">
+      <h1>Ejercicios de Programación en Java</h1>
+      <p class="subtitle">Recopilación de problemas de lógica, arreglos, matrices y objetos.</p>
+    </header>
+
+    <nav class="exercises-nav" aria-label="Navegación de ejercicios">
+      <a href="#ejercicio_1_3" class="nav-link">Ej 1.3 Lógica</a>
+      <a href="#problema_1_4" class="nav-link">Prob 1.4 Gasolina</a>
+      <a href="#ejemplo_2_11" class="nav-link">Ej 2.11 If-Else</a>
+      <a href="#ejemplo_3_1" class="nav-link">Ej 3.1 Nómina</a>
+      <a href="#problema_3_12" class="nav-link">Prob 3.12 Mayor</a>
+      <a href="#ejemplo_4_9" class="nav-link">Ej 4.9 Matriz Str</a>
+      <a href="#problema_4_12" class="nav-link">Prob 4.12 Simetría</a>
+      <a href="#ejemplo_5_7" class="nav-link">Ej 5.7 Objetos</a>
+      <a href="#ps_1_12" class="nav-link">PS 1.12 Triángulo</a>
+      <a href="#ps_3_21" class="nav-link">PS 3.21 Facultad</a>
+      <a href="#problema_4_1" class="nav-link">Prob 4.1 Random</a>
+      <a href="#ps_4_17" class="nav-link">PS 4.17 Tabla</a>
+      <a href="#ps_4_33" class="nav-link">PS 4.33 Cubo</a>
+    </nav>
+
+    <main class="exercises-main">
+
+      <article id="ejercicio_1_3" class="exercise-card">
+        <header class="exercise-header">
+          <span class="exercise-badge">Lógica Booleana</span>
+          <h2>Ejercicio 1.3: Operadores Lógicos</h2>
+          <p class="exercise-description">Evaluación de expresiones aritméticas y lógicas complejas con tipos primitivos.</p>
+        </header>
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Código Java</h3>
+            <pre><code class="code-block">public class EjemploLogico {
+    public static void main(String[] args) {
+        int A = 5;
+        int B = 16;
+        boolean casoA = (Math.pow(A, 2) > (B / 2));
+        System.out.println("Caso A: " + casoA);
+        
+        double x = 6;
+        double b = 7.8;
+        double izquierdaB = ((x * 5) + (b * 5)) / 4;
+        double derechaB = ((x * 3) / b) / 5;
+        boolean casoB = izquierdaB <= derechaB;
+        System.out.println("Caso B: " + casoB);
+        
+        int izquierdaC1 = (1580 % 6) * 2 - 7;
+        int izquierdaC2 = (7 + 8 * 3 - 4);
+        boolean comparaIzq = izquierdaC1 > izquierdaC2;
+        boolean comparaDer = (15 / 2) == (60 * 2 / 4);
+        
+        int boolIzq = comparaIzq ? 1 : 0;
+        int boolDer = comparaDer ? 1 : 0;
+        boolean resultadoFinal = boolIzq > boolDer;
+        System.out.println("Caso C: " + resultadoFinal);
+    }
+}</code></pre>
+          </section>
+          <aside class="exercise-sidebar">
+            <h3>Conceptos Clave</h3>
+            <ul>
+              <li>Precedencia de operadores.</li>
+              <li>Operador ternario <code>? :</code>.</li>
+              <li>Diferencia entre división entera y double.</li>
+            </ul>
+            <div class="tip-box">
+              <strong>Nota:</strong> <code>15 / 2</code> en Java resulta en <code>7</code> (entero), no <code>7.5</code>.
+            </div>
+          </aside>
+        </div>
+      </article>
+
+      <article id="problema_1_4" class="exercise-card">
+        <header class="exercise-header">
+          <span class="exercise-badge">Entrada/Salida</span>
+          <h2>Problema 1.4: Calculadora de Gasolina</h2>
+          <p class="exercise-description">Conversión de unidades (Galones a Litros) y cálculo de precios usando Scanner y Constantes.</p>
+        </header>
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Código Java</h3>
+            <pre><code class="code-block">import java.util.Scanner;
+
+public class Problema1_4 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        double GAL;
+        double LITROS;
+        double TOTAL;
+        final double LITROS_POR_GALON = 3.785;
+        final double PRECIO_POR_LITRO = 8.20;
+        
+        System.out.print("Ingrese los galones surtidos (GAL): ");
+        GAL = sc.nextDouble();
+        
+        LITROS = GAL * LITROS_POR_GALON;
+        TOTAL = LITROS * PRECIO_POR_LITRO;
+        
+        System.out.printf("Litros surtidos: %.3f\n", LITROS);
+        System.out.printf("Total a pagar: $%.2f\n", TOTAL);
+        sc.close();
+    }
+}</code></pre>
+          </section>
+          <aside class="exercise-sidebar">
+            <h3>Conceptos Clave</h3>
+            <ul>
+              <li>Uso de <code>final</code> para constantes.</li>
+              <li>Formato de salida con <code>printf</code>.</li>
+              <li>Lectura de datos con <code>Scanner</code>.</li>
+            </ul>
+          </aside>
+        </div>
+      </article>
+
+      <article id="ejemplo_2_11" class="exercise-card">
+        <header class="exercise-header">
+          <span class="exercise-badge">Condicionales</span>
+          <h2>Ejemplo 2.11: Estructuras Anidadas</h2>
+          <p class="exercise-description">Manejo de flujo de control complejo utilizando múltiples sentencias <code>if-else</code> anidadas.</p>
+        </header>
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Código Java</h3>
+            <pre><code class="code-block">public class Programa2_14 {
+    public static void main(String[] args) {
+        boolean condicion1 = true;
+        boolean condicion2 = false;
+        boolean condicion3 = true;
+        boolean condicion4 = false;
+        boolean condicion5 = true;
+        
+        if (condicion1) {
+            if (condicion2) {
+                System.out.println("Hacer operación 1");
+            } else {
+                if (condicion3) {
+                    System.out.println("Hacer operación 2");
+                } else {
+                    System.out.println("Hacer operación 3");
+                }
+            }
+        } else {
+            if (condicion4) {
+                System.out.println("Hacer operación 4");
+            } else {
+                if (condicion5) {
+                    System.out.println("Hacer operación 5");
+                } else {
+                    System.out.println("Hacer operación 6");
+                }
+            }
+        }
+    }
+}</code></pre>
+          </section>
+          <aside class="exercise-sidebar">
+            <h3>Conceptos Clave</h3>
+            <ul>
+              <li>Árbol de decisiones lógicas.</li>
+              <li>Indentación correcta.</li>
+              <li>Evaluación booleana directa.</li>
+            </ul>
+            <div class="tip-box">
+              <strong>Tip:</strong> Demasiados <code>if</code> anidados pueden hacer el código difícil de leer. A veces es mejor usar <code>switch</code> o cláusulas de guarda.
+            </div>
+          </aside>
+        </div>
+      </article>
+
+      <article id="ejemplo_3_1" class="exercise-card">
+        <header class="exercise-header">
+          <span class="exercise-badge">Arreglos</span>
+          <h2>Ejemplo 3.1: Nómina de Empleados</h2>
+          <p class="exercise-description">Uso básico de arreglos unidimensionales para almacenar sueldos y calcular totales.</p>
+        </header>
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Código Java</h3>
+            <pre><code class="code-block">package Programas;
+import java.util.Scanner;
+
+public class Ejemplo_3_1 {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Ingrese los sueldos de los 10 trabajadores:");
+        double[] sueldos = new double[10];
+        
+        for (int i = 0; i < sueldos.length; i++) {
+            System.out.print("Sueldo del trabajador " + (i + 1) + ": $");
+            sueldos[i] = input.nextDouble();
+        }
+        
+        double NOMINA = 0;
+        for (double sueldo : sueldos) {
+            NOMINA += sueldo;
+        }
+        System.out.println("Total de la nómina: $" + NOMINA);
+    }
+}</code></pre>
+          </section>
+          <aside class="exercise-sidebar">
+            <h3>Conceptos Clave</h3>
+            <ul>
+              <li>Declaración de arrays <code>new double[10]</code>.</li>
+              <li>Bucle <code>for</code> tradicional para llenado.</li>
+              <li>Bucle <code>for-each</code> para recorrido.</li>
+            </ul>
+          </aside>
+        </div>
+      </article>
+
+      <article id="problema_3_12" class="exercise-card">
+        <header class="exercise-header">
+          <span class="exercise-badge">Algoritmos</span>
+          <h2>Problema 3.12: Búsqueda del Mayor</h2>
+          <p class="exercise-description">Algoritmo para encontrar el valor máximo dentro de un conjunto de datos ingresados dinámicamente.</p>
+        </header>
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Código Java</h3>
+            <pre><code class="code-block">package com.mycompany.mavenproject1;
+import java.util.Scanner;
+
+public class MayorSueldo {
+    public static void main(String[] args) {
+        int numEmp, maNum = 0;
+        float sue, maSue = 0;
+        Scanner dato = new Scanner(System.in);
+        
+        System.out.println("Ingresar el numero de empleados");
+        int n = dato.nextInt();
+        
+        for (int i = 1; i <= n; i++) {
+            System.out.println("Ingrese el numero de empleado");
+            numEmp = dato.nextInt();
+            System.out.println("Ingrese el sueldo");
+            sue = dato.nextFloat();
+            
+            if (sue > maSue) {
+                maSue = sue;
+                maNum = numEmp;
+            }
+        }
+        
+        System.out.println("Mayor numero de empleado: " + maNum);
+        System.out.println("Mayor sueldo: " + maSue);
+    }
+}</code></pre>
+          </section>
+          <aside class="exercise-sidebar">
+            <h3>Conceptos Clave</h3>
+            <ul>
+              <li>Inicialización de variables acumuladoras.</li>
+              <li>Comparación condicional dentro de un bucle.</li>
+              <li>Entrada dinámica de <code>n</code> elementos.</li>
+            </ul>
+          </aside>
+        </div>
+      </article>
+
+      <article id="ejemplo_4_9" class="exercise-card">
+        <header class="exercise-header">
+          <span class="exercise-badge">Matrices</span>
+          <h2>Ejemplo 4.9: Matriz de Cadenas</h2>
+          <p class="exercise-description">Manipulación de arreglos bidimensionales (Matrices) y aritmética de caracteres.</p>
+        </header>
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Código Java</h3>
+            <pre><code class="code-block">public class ArregloBidimensional {
+    public static void main(String[] args) {
+        String[][] CADENA = new String[26][13];
+        int NTE = (int) ('z' - 'a' + 1) * (7 - (-5) + 1); 
+        
+        for (int i = 0; i < CADENA.length; i++) {
+            for (int j = 0; j < CADENA[i].length; j++) {
+                char letra = (char) ('a' + i);
+                int numero = j - 5;
+                CADENA[i][j] = letra + "" + numero;
+            }
+        }
+        
+        String elemento1 = CADENA['b' - 'a'][-3 - (-5)];
+        String elemento2 = CADENA['e' - 'a'][4 - (-5)];
+        String elemento3 = CADENA['z' - 'a'][7 - (-5)];
+        
+        System.out.println("Elemento 1: " + elemento1);
+        System.out.println("Elemento 2: " + elemento2);
+        System.out.println("Elemento 3: " + elemento3);
+        System.out.println("NTE: " + NTE);
+    }
+}</code></pre>
+          </section>
+          <aside class="exercise-sidebar">
+            <h3>Conceptos Clave</h3>
+            <ul>
+              <li>Aritmética char (<code>'a' + 1</code>).</li>
+              <li>Índices calculados.</li>
+              <li>Casting de tipos <code>(int)</code> y <code>(char)</code>.</li>
+            </ul>
+            <div class="tip-box">
+              <strong>Curiosidad:</strong> En Java, los caracteres (<code>char</code>) se pueden tratar como números enteros pequeños (ASCII/Unicode) para operaciones matemáticas.
+            </div>
+          </aside>
+        </div>
+      </article>
+
+      <article id="problema_4_12" class="exercise-card">
+        <header class="exercise-header">
+          <span class="exercise-badge">Lógica Matricial</span>
+          <h2>Problema 4.12: Matriz Simétrica</h2>
+          <p class="exercise-description">Algoritmo para verificar si una matriz cuadrada es igual a su transpuesta (simétrica).</p>
+        </header>
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Código Java</h3>
+            <pre><code class="code-block">package programas;
+import java.util.Scanner;
+
+public class Problema_4_12 {
+    public static void main(String[] args) {
+        int N, I, J, BAND;
+        int[][] A;
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Ingrese dimensión del arreglo:");
+        N = scanner.nextInt();
+        
+        if (N >= 1 && N <= 50) {
+            A = new int[N][N];
+            for (I = 0; I < N; I++) {
+                for (J = 0; J < N; J++) {
+                    System.out.println("Elemento " + (I + 1) + "," + (J + 1) + ":");
+                    A[I][J] = scanner.nextInt();
+                }
+            }
+            
+            BAND = 1;
+            I = 0;
+            while (I < N && BAND == 1) {
+                J = 0;
+                while (J <= I && BAND == 1) {
+                    if (A[I][J] != A[J][I]) {
+                        BAND = 0; // No es simétrica
+                    }
+                    J++;
+                }
+                I++;
+            }
+            
+            if (BAND == 1) {
+                System.out.println("La matriz es simétrica");
+            } else {
+                System.out.println("La matriz no es simétrica");
+            }
+        } else {
+            System.out.println("Dimensión incorrecta");
+        }
+    }
+}</code></pre>
+          </section>
+          <aside class="exercise-sidebar">
+            <h3>Conceptos Clave</h3>
+            <ul>
+              <li>Recorrido parcial con <code>while</code> (eficiencia).</li>
+              <li>Uso de "bandera" (flag) para detener búsqueda.</li>
+              <li>Propiedad simétrica: <code>A[i][j] == A[j][i]</code>.</li>
+            </ul>
+          </aside>
+        </div>
+      </article>
+
+      <article id="ejemplo_5_7" class="exercise-card">
+        <header class="exercise-header">
+          <span class="exercise-badge">POO Básico</span>
+          <h2>Ejemplo 5.7: Clases y Objetos</h2>
+          <p class="exercise-description">Introducción a la Programación Orientada a Objetos para encapsular datos de lluvias.</p>
+        </header>
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Código Java</h3>
+            <pre><code class="code-block">package c.Ejemplo_5_7;
+import java.util.Scanner;
+
+public class Ejemplo_5_7 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        RegistroLLuvias lluvias = new RegistroLLuvias();
+        
+        System.out.print("Ingrese el nombre del estado: ");
+        lluvias.nombre = sc.nextLine();
+        
+        for (int i = 0; i < 12; i++) {
+            System.out.print("Lluvias mes " + (i + 1) + ": ");
+            lluvias.llumen[i] = sc.nextDouble();
+        }
+        
+        double totalLluvias = 0;
+        for (int i = 0; i < 12; i++) {
+            totalLluvias += lluvias.llumen[i];
+        }
+        
+        System.out.println("Total lluvias en " + lluvias.nombre + ": " + totalLluvias);
+    }
+}
+
+class RegistroLLuvias {
+    String nombre;
+    double[] llumen = new double[12];
+}</code></pre>
+          </section>
+          <aside class="exercise-sidebar">
+            <h3>Conceptos Clave</h3>
+            <ul>
+              <li>Definición de Clases auxiliares.</li>
+              <li>Atributos de instancia.</li>
+              <li>Acceso a miembros con el operador punto (<code>.</code>).</li>
+            </ul>
+          </aside>
+        </div>
+      </article>
+
+      <article id="ps_1_12" class="exercise-card">
+        <header class="exercise-header">
+          <span class="exercise-badge">Geometría</span>
+          <h2>PS 1.12: Área de Triángulo</h2>
+          <p class="exercise-description">Cálculo del área de un triángulo a partir de las coordenadas (x,y) de sus vértices.</p>
+        </header>
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Código Java</h3>
+            <pre><code class="code-block">package com.ITSOEH.programasjava.PS_1_12;
+import java.util.Scanner;
+
+public class CalcularAreaTriangulo {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Ingrese coordenadas (x,y) de los 3 vértices:");
+        
+        System.out.print("P1 - X: "); double x1 = scanner.nextDouble();
+        System.out.print("P1 - Y: "); double y1 = scanner.nextDouble();
+        
+        System.out.print("P2 - X: "); double x2 = scanner.nextDouble();
+        System.out.print("P2 - Y: "); double y2 = scanner.nextDouble();
+        
+        System.out.print("P3 - X: "); double x3 = scanner.nextDouble();
+        System.out.print("P3 - Y: "); double y3 = scanner.nextDouble();
+        
+        double area = calcularAreaTriangulo(x1, y1, x2, y2, x3, y3);
+        System.out.println("\nEl área del triángulo es: " + area);
+    }
+
+    static double calcularAreaTriangulo(double x1, double y1, double x2, double y2, double x3, double y3) {
+        double area = 0.5 * (x1 * (y2 - y3) + x2 * (y3 - y1) + x3 * (y1 - y2));
+        return Math.abs(area);
+    }
+}</code></pre>
+          </section>
+          <aside class="exercise-sidebar">
+            <h3>Conceptos Clave</h3>
+            <ul>
+              <li>Métodos estáticos con parámetros.</li>
+              <li>Uso de <code>Math.abs</code> (valor absoluto).</li>
+              <li>Geometría analítica en programación.</li>
+            </ul>
+          </aside>
+        </div>
+      </article>
+
+      <article id="ps_3_21" class="exercise-card">
+        <header class="exercise-header">
+          <span class="exercise-badge">Lógica de Selección</span>
+          <h2>PS 3.21: Candidatos Facultad</h2>
+          <p class="exercise-description">Evaluación de múltiples condiciones para filtrar alumnos aptos para diferentes carreras.</p>
+        </header>
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Código Java</h3>
+            <pre><code class="code-block">package Ejercicios_Libros;
+import java.util.Scanner;
+
+public class PS_3_21 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Ingrese el número de alumnos: ");
+        int N = scanner.nextInt();
+        
+        // Arreglos paralelos para datos
+        int[] matriculas = new int[N];
+        int[] carreras = new int[N];
+        int[] semestres = new int[N];
+        double[] promedios = new double[N];
+        
+        for (int i = 0; i < N; i++) {
+            System.out.println("--- Alumno " + (i + 1) + " ---");
+            System.out.print("Matrícula: "); matriculas[i] = scanner.nextInt();
+            System.out.print("Carrera (1-4): "); carreras[i] = scanner.nextInt();
+            System.out.print("Semestre: "); semestres[i] = scanner.nextInt();
+            System.out.print("Promedio: "); promedios[i] = scanner.nextDouble();
+        }
+
+        System.out.println("\n--- Candidatos Aceptados ---");
+        for (int i = 0; i < N; i++) {
+            boolean esCandidato = false;
+            if (carreras[i] == 1 && semestres[i] > 5 && promedios[i] > 8.5) esCandidato = true;
+            else if (carreras[i] == 2 && semestres[i] > 6 && promedios[i] > 8.8) esCandidato = true;
+            else if (carreras[i] == 3 && semestres[i] > 6 && promedios[i] > 8.5) esCandidato = true;
+            else if (carreras[i] == 4 && semestres[i] > 6 && promedios[i] > 8.8) esCandidato = true;
+            
+            if (esCandidato) {
+                System.out.println("Matrícula: " + matriculas[i] + " (" + obtenerNombreCarrera(carreras[i]) + ")");
+            }
+        }
+    }
+
+    public static String obtenerNombreCarrera(int codigo) {
+        switch (codigo) {
+            case 1: return "Economía";
+            case 2: return "Administración";
+            case 3: return "Contabilidad";
+            case 4: return "Computación";
+            default: return "Desconocida";
+        }
+    }
+}</code></pre>
+          </section>
+          <aside class="exercise-sidebar">
+            <h3>Conceptos Clave</h3>
+            <ul>
+              <li>Condicionales compuestos (AND/OR).</li>
+              <li>Manejo de estados con banderas booleanas.</li>
+              <li>Uso de <code>switch</code> para mapear códigos.</li>
+            </ul>
+          </aside>
+        </div>
+      </article>
+
+      <article id="problema_4_1" class="exercise-card">
+        <header class="exercise-header">
+          <span class="exercise-badge">Math & GUI</span>
+          <h2>Problema 4.1: Array Aleatorio</h2>
+          <p class="exercise-description">Generación de números aleatorios y uso de <code>JOptionPane</code> para entrada de datos.</p>
+        </header>
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Código Java</h3>
+            <pre><code class="code-block">package Ejercicios_Libros;
+import javax.swing.JOptionPane;
+
+public class Problema_4_1 {
+    public static void main(String[] args) {
+        String input = JOptionPane.showInputDialog("Ingresa la cantidad de valores:");
+        int valorArray = Integer.parseInt(input);
+        
+        if (valorArray >= 1 && valorArray <= 500) {
+            int[] array = new int[valorArray];
+            
+            // Llenado con aleatorios
+            for (int i = 0; i < array.length; i++) {
+                array[i] = (int) (Math.random() * 100) + 1;
+            }
+            
+            // Impresión
+            for (int i = 0; i < array.length; i++) {
+                System.out.print(array[i] + ", ");
+            }
+            System.out.println();
+        } else {
+            System.out.println("La cantidad debe estar entre 1 y 500.");
+        }
+    }
+}</code></pre>
+          </section>
+          <aside class="exercise-sidebar">
+            <h3>Conceptos Clave</h3>
+            <ul>
+              <li><code>JOptionPane</code> para interfaces gráficas simples.</li>
+              <li><code>Math.random()</code> devuelve un double entre 0.0 y 1.0.</li>
+              <li>Parsing de String a Integer.</li>
+            </ul>
+          </aside>
+        </div>
+      </article>
+
+      <article id="ps_4_17" class="exercise-card">
+        <header class="exercise-header">
+          <span class="exercise-badge">Bucles Anidados</span>
+          <h2>PS 4.17: Tabla de Multiplicar</h2>
+          <p class="exercise-description">Generación de una tabla de multiplicar completa (1-10) utilizando formato avanzado de consola.</p>
+        </header>
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Código Java</h3>
+            <pre><code class="code-block">public class TablaMultiplicar {
+    public static void main(String[] args) {
+        System.out.println("Tabla de multiplicar del 1 al 10:");
+        for (int i = 1; i <= 10; i++) {
+            for (int j = 1; j <= 10; j++) {
+                int resultado = i * j;
+                // Formato: %2d reserva 2 espacios para el número
+                System.out.printf("%2d x %2d = %3d    ", i, j, resultado);
+            }
+            System.out.println(); // Salto de línea por cada fila
+        }
+    }
+}</code></pre>
+          </section>
+          <aside class="exercise-sidebar">
+            <h3>Conceptos Clave</h3>
+            <ul>
+              <li>Bucles anidados (Filas y Columnas).</li>
+              <li>Especificadores de formato: <code>%2d</code>, <code>%3d</code>.</li>
+              <li>Alineación de texto en consola.</li>
+            </ul>
+          </aside>
+        </div>
+      </article>
+
+      <article id="ps_4_33" class="exercise-card">
+        <header class="exercise-header">
+          <span class="exercise-badge">Arreglos 3D</span>
+          <h2>PS 4.33: Censo Universitario</h2>
+          <p class="exercise-description">Manejo de estructuras de datos tridimensionales: Carreras, Semestres y Años.</p>
+        </header>
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Código Java</h3>
+            <pre><code class="code-block">import java.util.Scanner;
+
+public class Alumnos {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        // Dimensión: [7 Carreras][2 Semestres][10 Años]
+        int[][][] UN1V = new int[7][2][10]; 
+        
+        for (int carrera = 0; carrera < 7; carrera++) {
+            for (int semestre = 0; semestre < 2; semestre++) {
+                for (int año = 0; año < 10; año++) {
+                    System.out.print("Ingrese el número de alumnos para la carrera " 
+                        + (carrera + 1) + ", semestre " + (semestre + 1) 
+                        + ", año " + (año + 1) + ": ");
+                    
+                    UN1V[carrera][semestre][año] = scanner.nextInt();
+                }
+            }
+        }
+        // Procesamiento de datos continuaría aquí...
+    }
+}</code></pre>
+          </section>
+          <aside class="exercise-sidebar">
+            <h3>Conceptos Clave</h3>
+            <ul>
+              <li>Visualización de un cubo de datos.</li>
+              <li>Triple bucle anidado.</li>
+              <li>Gestión de índices complejos.</li>
+            </ul>
+            <div class="tip-box">
+              <strong>Tip:</strong> Los arreglos 3D son útiles para datos históricos, coordenadas espaciales o cubos OLAP simples.
+            </div>
+          </aside>
+        </div>
+      </article>
+
+    </main>
+
+    <footer class="page-footer">
+      <p class="note-text">Regresa al <a href="#top">menú</a> para elegir otro ejercicio.</p>
+    </footer>
+  </div>
+</body>
+</html>
