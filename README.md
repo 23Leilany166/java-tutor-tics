@@ -1,4 +1,4 @@
 # Azucena-230110874
-- Azucena Reyes Garcia 
+- azucena Reyes García
 - 230110874
 - 230110874@itsoeh.edu.mx
