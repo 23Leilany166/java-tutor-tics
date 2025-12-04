@@ -23,7 +23,7 @@ public class Ejemplo_1_8 {
         // ----- INICIA CÓDIGO DEL ESTUDIANTE -----
 
         // 2. Pide y lee la matrícula.
-        
+
         // 3. Pide y lee las 5 calificaciones.
 
         // 4. Calcula el promedio. Recuerda usar 5.0 para una división con decimales.

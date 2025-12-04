@@ -43,7 +43,7 @@ public class PS_4_22_RTest { // El nombre del archivo debe ser PS_4_22RTest.java
         System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
 
         // 2. Ejecución
-        PS_4_22_R.main(new String[]{});
+        PS_4_22.main(new String[]{});
 
         // 3. Verificación
         String output = outContent.toString();

@@ -40,7 +40,7 @@ public class PS_2_12_RTest { // El nombre del archivo debe ser PS_2_12_RTest.jav
         System.setIn(new ByteArrayInputStream(input.getBytes()));
 
         // Ejecutar el main
-        PS_2_12_R.main(new String[]{});
+        PS_2_12.main(new String[]{});
 
         // Verificar la salida
         String output = outContent.toString();

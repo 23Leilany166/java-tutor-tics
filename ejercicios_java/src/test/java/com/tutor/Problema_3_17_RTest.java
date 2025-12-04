@@ -39,7 +39,7 @@ public class Problema_3_17_RTest { // El nombre del archivo debe ser Problema_3_
         System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
 
         // 2. Ejecución: Llamamos al main del archivo resuelto
-        Problema_3_17_R.main(new String[]{});
+        Problema_3_17.main(new String[]{});
 
         // 3. Verificación
         String output = outContent.toString();

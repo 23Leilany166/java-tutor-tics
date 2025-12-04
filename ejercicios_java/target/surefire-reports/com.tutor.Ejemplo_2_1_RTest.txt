@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.tutor.Ejemplo_2_1_RTest
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.033 s - in com.tutor.Ejemplo_2_1_RTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in com.tutor.Ejemplo_2_1_RTest

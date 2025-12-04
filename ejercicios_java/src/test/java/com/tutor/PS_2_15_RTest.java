@@ -35,7 +35,7 @@ public class PS_2_15_RTest { // El nombre del archivo debe ser PS_2_15RTest.java
     private void runTestWithInput(String input, String expectedOutput) {
         outContent.reset();
         System.setIn(new ByteArrayInputStream(input.getBytes()));
-        PS_2_15_R.main(new String[]{});
+        PS_2_15.main(new String[]{});
         String output = outContent.toString().trim();
         assertTrue(output.contains(expectedOutput),
             "Para la entrada:\n" + input + "\nSe esperaba que la salida contuviera:\n" + expectedOutput + "\nPero fue:\n" + output);

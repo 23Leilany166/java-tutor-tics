@@ -39,7 +39,7 @@ public class PS_1_1_RTest { // El nombre del archivo debe ser PS_1_1RTest.java
         System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
 
         // 2. Ejecución
-        PS_1_1_R.main(new String[]{});
+        PS_1_1.main(new String[]{});
 
         // 3. Verificación
         String output = outContent.toString();

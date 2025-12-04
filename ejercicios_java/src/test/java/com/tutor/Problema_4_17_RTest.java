@@ -40,7 +40,7 @@ public class Problema_4_17_RTest { // El nombre del archivo debe ser Problema_4_
         System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
 
         // 2. Ejecución
-        Problema_4_17_R.main(new String[]{});
+        Problema_4_17.main(new String[]{});
 
         // 3. Verificación
         String output = outContent.toString().replace("\r\n", "\n"); // Normalizar saltos de línea

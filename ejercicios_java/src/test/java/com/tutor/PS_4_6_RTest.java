@@ -29,7 +29,7 @@ public class PS_4_6_RTest { // El nombre del archivo debe ser PS_4_6RTest.java
     @Test
     void testMainExecution() {
         // 1. Ejecución: Llamamos al main del archivo resuelto.
-        PS_4_6_R.main(new String[]{});
+        PS_4_6.main(new String[]{});
 
         // 2. Verificación: Comprobamos si la salida contiene los valores esperados.
         String output = outContent.toString();

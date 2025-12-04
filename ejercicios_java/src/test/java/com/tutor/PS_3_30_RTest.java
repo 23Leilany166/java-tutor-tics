@@ -35,7 +35,7 @@ public class PS_3_30_RTest { // El nombre del archivo debe ser PS_3_30RTest.java
     private void runTestWithInput(String input, String expectedTerms, String expectedValue) {
         outContent.reset();
         System.setIn(new ByteArrayInputStream(input.getBytes()));
-        PS_3_30_R.main(new String[]{});
+        PS_3_30.main(new String[]{});
         String output = outContent.toString();
 
         assertTrue(output.contains(expectedTerms), "La cantidad de términos no es la esperada para X=" + input.trim());

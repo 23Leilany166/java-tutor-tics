@@ -39,7 +39,7 @@ public class Problema_3_1_RTest { // El nombre del archivo debe ser Problema_3_1
                                 "5\n" + "10\n" + "3\n" + "8\n" + "2\n";
         System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
 
-        Problema_3_1_R.main(new String[]{});
+        Problema_3_1.main(new String[]{});
 
         String output = outContent.toString();
         // Usamos String.format con Locale.US para asegurar el punto decimal

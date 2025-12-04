@@ -30,7 +30,7 @@ public class Problema_4_4_RTest { // El nombre del archivo debe ser Problema_4_4
     void testMainExecution() {
         // 1. Ejecución: Llamamos al main del archivo resuelto.
         // No hay entrada simulada porque el programa no la necesita.
-        Problema_4_4_R.main(new String[]{});
+        Problema_4_4.main(new String[]{});
 
         // 2. Verificación: Comprobamos si la salida contiene el arreglo esperado.
         String output = outContent.toString();

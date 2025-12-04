@@ -35,7 +35,7 @@ public class PS_2_14_RTest { // El nombre del archivo debe ser PS_2_14RTest.java
     private void runTestWithInput(String input, double expectedValue) {
         outContent.reset(); // Limpiar la salida para la nueva prueba
         System.setIn(new ByteArrayInputStream(input.getBytes()));
-        PS_2_14_R.main(new String[]{});
+        PS_2_14.main(new String[]{});
         String output = outContent.toString();
         assertTrue(output.contains("El resultado de f(x) es: " + expectedValue),
             "Para x=" + input.trim() + ", el resultado debe ser " + expectedValue);

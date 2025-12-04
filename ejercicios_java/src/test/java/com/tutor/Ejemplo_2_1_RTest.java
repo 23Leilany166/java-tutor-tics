@@ -39,7 +39,7 @@ public class Ejemplo_2_1_RTest {
         System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
         
         // 2. Ejecución: Llamamos al main del archivo resuelto
-        Ejemplo_2_1_R.main(new String[]{});
+        Ejemplo_2_1.main(new String[]{});
         
         // 3. Verificación: La salida debe contener "Aprobado"
         String output = outContent.toString();
@@ -53,7 +53,7 @@ public class Ejemplo_2_1_RTest {
         System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
         
         // 2. Ejecución: Llamamos al main del archivo resuelto
-        Ejemplo_2_1_R.main(new String[]{});
+        Ejemplo_2_1.main(new String[]{});
         
         // 3. Verificación: La salida NO debe contener "Aprobado".
         // Usamos trim() para quitar espacios en blanco y saltos de línea.

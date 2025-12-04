@@ -2,8 +2,16 @@ package com.tutor; // O tu paquete específico
 
 import java.util.Scanner;
 
-public class Problema_2_4_R { // El nombre del archivo debe ser Problema_2_4_R.java
+/**
+ * Programa que calcula el promedio de calificaciones de un alumno
+ * y determina si aprueba o no.
+ * Todo el código está en main() para estudiantes principiantes.
+ */
+public class Problema_2_4_R {
 
+    /**
+     * El método main contiene toda la lógica para resolver el problema.
+     */
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -26,7 +34,7 @@ public class Problema_2_4_R { // El nombre del archivo debe ser Problema_2_4_R.j
 
         // Determinar el estado
         String estado;
-        if (promedio >= 6) {
+        if (promedio >= 6.0) {
             estado = "Aprobado";
         } else {
             estado = "No Aprobado";
@@ -38,7 +46,6 @@ public class Problema_2_4_R { // El nombre del archivo debe ser Problema_2_4_R.j
         System.out.println("Promedio: " + promedio);
         System.out.println("Estado: " + estado);
 
-        scanner.close(); // Cerrar el scanner
+        scanner.close();
     }
 }
-    
