@@ -1,0 +1,110 @@
+digraph AlumnosRegistros {
+    // Configuración general
+    rankdir=TB;
+    node [fontname="Arial", fontsize=12];
+    edge [fontsize=10];
+
+    // --- INICIO ---
+    Inicio [label="INICIO", shape=ellipse];
+    InputN [label="N", shape=parallelogram];
+    
+    // Inicialización de variables para el inciso C (Mejor de Computación)
+    InitGlobal [label="MAX_PROM ← 0\nMEJOR_NOM ← \"\"\nMEJOR_MAT ← 0\nI ← 1", shape=box];
+
+    // --- CICLO PRINCIPAL (Recorre Alumnos) ---
+    CondI [label="I ≤ N", shape=diamond];
+    
+    // Preparar variables por alumno
+    // TODO_EXC: Bandera para saber si todas las notas son > 9 (Inciso B)
+    InitStudent [label="SUMA ← 0\nTODO_EXC ← 'V'\nK ← 1", shape=box];
+
+    // --- CICLO INTERNO (Recorre Semestres) ---
+    CondK [label="K ≤ ESC[I].NSE", shape=diamond];
+    
+    // Obtener calificación actual
+    GetCalif [label="CALIF ← ESC[I].SEM[K]", shape=box];
+    
+    // Acumular suma
+    SumCalif [label="SUMA ← SUMA + CALIF", shape=box];
+    
+    // Verificar si esta nota rompe la racha de excelencia (>9)
+    CheckExc [label="CALIF ≤ 9", shape=diamond];
+    SetNotExc [label="TODO_EXC ← 'F'", shape=box];
+    
+    IncK [label="K ← K + 1", shape=box];
+
+    // --- FIN CICLO INTERNO ---
+    // Calcular Promedio
+    CalcProm [label="PROM ← SUMA / ESC[I].NSE", shape=box];
+
+    // --- INCISO A: Promedio General > 9 ---
+    CheckA [label="PROM > 9", shape=diamond];
+    PrintA [label="\"A: Alumno Destacado\",\nESC[I].NOM, ESC[I].MAT", shape=note];
+
+    // --- INCISO B: Economía y Todo > 9 ---
+    // Verificamos Carrera Y la bandera que calculamos arriba
+    CheckB [label="ESC[I].CAR = \"Economía\"\ny\nTODO_EXC = 'V'", shape=diamond];
+    PrintB [label="\"B: Economía Excelencia\",\nESC[I].NOM, ESC[I].MAT", shape=note];
+
+    // --- INCISO C: Ingeniería en Computación ---
+    CheckC [label="ESC[I].CAR = \"Ingeniería\nen Computación\"", shape=diamond];
+    
+    // Revisar si es el mejor promedio encontrado hasta ahora
+    CheckMax [label="PROM > MAX_PROM", shape=diamond];
+    UpdateMax [label="MAX_PROM ← PROM\nMEJOR_NOM ← ESC[I].NOM\nMEJOR_MAT ← ESC[I].MAT", shape=box];
+
+    IncI [label="I ← I + 1", shape=box];
+
+    // --- FIN CICLO PRINCIPAL ---
+    PrintC [label="\"C: Mejor Ing. Computación\",\nMEJOR_NOM, MEJOR_MAT, MAX_PROM", shape=note];
+    Fin [label="FIN", shape=ellipse];
+
+    // --- CONEXIONES ---
+    Inicio -> InputN;
+    InputN -> InitGlobal;
+    InitGlobal -> CondI;
+
+    // Entrar al Ciclo I
+    CondI -> InitStudent [label="Si"];
+    InitStudent -> CondK;
+
+    // Ciclo K (Semestres)
+    CondK -> GetCalif [label="Si"];
+    GetCalif -> SumCalif;
+    SumCalif -> CheckExc;
+    
+    CheckExc -> SetNotExc [label="Si"];
+    CheckExc -> IncK [label="No"];
+    SetNotExc -> IncK;
+    
+    IncK -> CondK [constraint=false]; // Retorno K
+
+    // Salida Ciclo K -> Calcular Promedio
+    CondK:e -> CalcProm [label="No"]; // Sale por la derecha
+    CalcProm -> CheckA;
+
+    // Inciso A
+    CheckA -> PrintA [label="Si"];
+    CheckA -> CheckB [label="No"];
+    PrintA -> CheckB;
+
+    // Inciso B
+    CheckB -> PrintB [label="Si"];
+    CheckB -> CheckC [label="No"];
+    PrintB -> CheckC;
+
+    // Inciso C
+    CheckC -> CheckMax [label="Si"];
+    CheckC:e -> IncI [label="No"]; // Si no es inge, avanza
+    
+    CheckMax -> UpdateMax [label="Si"];
+    CheckMax -> IncI [label="No"];
+    UpdateMax -> IncI;
+
+    // Retorno Ciclo I
+    IncI -> CondI [constraint=false]; // Regresa arriba
+
+    // Salida Final
+    CondI:e -> PrintC [label="No"];
+    PrintC -> Fin;
+}

@@ -513,7 +513,7 @@ public class ProduccionIndustrias {
   </div>
 
   <!-- Si quieres mostrar el diagrama, coloca aquí tu imagen hospedada -->
-                    <img src="./Ejercicios/Problema3.18/DiagramaProblema3_18.png" alt="Diagrama de flujo del Ejemplo 1.9" style="max-width: 100%; height: auto;">
+  <img src="./Ejercicios/Problema3.18/DiagramaProblema3_18.png" alt="Diagrama de flujo del Ejemplo 1.9" style="max-width: 150%; height: auto;">
 </article>
 <!-- Ordenación por Inserción Directa (Problema 4.5) -->
 <article id="insertion" class="exercise-card" aria-labelledby="insertion-title">
@@ -608,7 +608,7 @@ public class InsercionDirecta {
   </div>
 
   <!-- Si deseas mostrar el diagrama, coloca el enlace a tu imagen aquí -->
-                    <img src="./Ejercicios/Problema4.5/diagramas/Problema4_5.png" alt="Diagrama de flujo del Ejemplo 1.9" style="max-width: 100%; height: auto;">
+                    <img src="./Ejercicios/Problema4.5/DiagramaProblema4_5.png" alt="Diagrama de flujo del Ejemplo 1.9" style="max-width: 100%; height: auto;">
 </article>
 <!-- Cuadrado Mágico (Problema 4.18) -->
 <article id="magic-square" class="exercise-card" aria-labelledby="magic-title">
@@ -718,7 +718,7 @@ public class CuadradoMagico {
   </div>
 
   <!-- Si quieres mostrar el diagrama del libro, coloca aquí el enlace a tu imagen -->
-                    <img src="./Ejercicios/Problema4.18/diagramas/Problema4_18.png" alt="Diagrama de flujo del Ejemplo 1.9" style="max-width: 100%; height: auto;">
+                    <img src="./Ejercicios/Problema4.18/Diagrama_Problema4_18.png" alt="Diagrama de flujo del Ejemplo 1.9" style="max-width: 100%; height: auto;">
 </article>
 <!-- PS 1.2 – Área y circunferencia de un círculo -->
 <article id="ps12" class="exercise-card" aria-labelledby="ps12-title">
@@ -794,7 +794,7 @@ public class CirculoMedidas {
   </div>
 
   <!-- Si deseas mostrar el diagrama, coloca aquí el enlace a tu imagen -->
-                    <img src="./Ejercicios/PS1.2/diagramas/PS1_2.png" alt="Diagrama de flujo del Ejemplo 1.9" style="max-width: 100%; height: auto;">
+                    <img src="./Ejercicios/PS1.2/Diagrama_PS1_2.png" alt="Diagrama de flujo del Ejemplo 1.9" style="max-width: 100%; height: auto;">
 </article>
 <!-- PS 2.16 – Descuento por modelo de vehículo -->
 <article id="ps216" class="exercise-card" aria-labelledby="ps216-title">
@@ -896,28 +896,28 @@ public class PrecioVehiculo {
       </div>
     </aside>
   </div>
-                      <img src="./Ejercicios/PS2.16/diagramas/PS2_16.png" alt="Diagrama de flujo del Ejemplo 1.9" style="max-width: 100%; height: auto;">
+                      <img src="./Ejercicios/PS2.16/PS_2_16.png" alt="Diagrama de flujo del Ejemplo 1.9" style="max-width: 100%; height: auto;">
 
 </article>
 <!-- PS 2.17–2.18 · Conversor de unidades -->
-<article id="ps217" class="exercise-card" aria-labelledby="ps217-title">
+<article id="ps218" class="exercise-card" aria-labelledby="ps218-title">
   <header class="exercise-header">
-    <span class="exercise-badge">PS 2.17 / PS 2.18</span>
-    <h2 id="ps217-title">Conversión: pulgadas→mm, yardas→m, millas→km</h2>
+    <span class="exercise-badge">PS 2.17</span>
+    <h2 id="ps218-title">Conversor de medidas: Longitud</h2>
 
     <p class="exercise-description">
-      Escriba un programa que convierta una medida real <b>MED</b> según una <b>OPCION</b>:
-      1) pulgadas a milímetros, 2) yardas a metros, 3) millas a kilómetros.
+      Diseñe un algoritmo que permita convertir medidas de longitud según la opción elegida por el usuario.
+      Se debe ingresar una <b>OPCIÓN</b> (tipo de conversión) y una medida <b>MED</b>.
     </p>
 
-    <table class="exercise-table" aria-label="Opciones y factores">
+    <table class="exercise-table" aria-label="Tabla de conversiones">
       <thead>
-        <tr><th>OPCION</th><th>Conversión</th><th>Factor</th></tr>
+        <tr><th>OPCIÓN</th><th>CONVERSIÓN</th><th>FACTOR</th></tr>
       </thead>
       <tbody>
-        <tr><td>1</td><td>Pulgadas → Milímetros</td><td>25.40</td></tr>
-        <tr><td>2</td><td>Yardas → Metros</td><td>0.9144</td></tr>
-        <tr><td>3</td><td>Millas → Kilómetros</td><td>1.6093</td></tr>
+        <tr><td>1</td><td>Pulgadas &rarr; Milímetros</td><td>x 25.40</td></tr>
+        <tr><td>2</td><td>Yardas &rarr; Metros</td><td>x 0.9144</td></tr>
+        <tr><td>3</td><td>Millas &rarr; Kilómetros</td><td>x 1.6093</td></tr>
       </tbody>
     </table>
   </header>
@@ -926,68 +926,181 @@ public class PrecioVehiculo {
     <section class="exercise-main">
       <h3>Requisitos</h3>
       <ul>
-        <li>Leer <code>OPCION</code> (1..3) y <code>MED</code> (real &gt;= 0).</li>
-        <li>Usar estructura selectiva (switch) para aplicar el factor correcto.</li>
-        <li>Imprimir la medida convertida con unidades.</li>
-        <li>Si <code>OPCION</code> no es válida, mostrar mensaje de error.</li>
+        <li>Leer <code>OPCION</code> (entero) y <code>MED</code> (real).</li>
+        <li>Validar que la opción sea 1, 2 o 3.</li>
+        <li>Realizar la multiplicación correspondiente según la tabla.</li>
+        <li>Imprimir el resultado de la conversión con su unidad correspondiente.</li>
       </ul>
 
       <h3>Ejemplo de uso (Java 21, programación estructurada)</h3>
       <pre><code class="code-block">
-// Archivo: ConversorUnidades.java
-// PS 2.17/2.18 — Conversor con 3 opciones.
+// Archivo: ConversorLongitud.java
+// Convierte unidades imperiales a métricas según opción.
 
 import java.util.*;
 
-public class ConversorUnidades {
+public class ConversorLongitud {
 
     public static void main(String[] args) {
-        final double PULGADA_A_MM = 25.40;
-        final double YARDA_A_M    = 0.9144;
-        final double MILLA_A_KM   = 1.6093;
-
         Scanner sc = new Scanner(System.in);
 
-        // Entrada
-        System.out.println("OPCION: 1) in->mm, 2) yd->m, 3) mi->km");
-        System.out.print("Elige opcion (1..3): ");
+        // 1) MENÚ Y ENTRADA
+        System.out.println("--- MENÚ DE CONVERSIONES ---");
+        System.out.println("1. Pulgadas a Milímetros");
+        System.out.println("2. Yardas a Metros");
+        System.out.println("3. Millas a Kilómetros");
+        System.out.print("Elija una opción (1-3): ");
+        
         int OPCION = sc.nextInt();
-
-        System.out.print("Ingresa MED (medida a convertir): ");
+        
+        System.out.print("Ingrese la medida (MED): ");
         double MED = sc.nextDouble();
 
-        if (MED < 0) {
-            System.out.println("Error: MED debe ser >= 0");
-            sc.close();
-            return;
-        }
-
-        // Proceso
-        double resultado;
-        String etiqueta;
+        // 2) PROCESO
+        double RESULTADO = 0.0;
+        String UNIDAD = "";
 
         switch (OPCION) {
-            case 1 -> { // pulgadas a milímetros
-                resultado = MED * PULGADA_A_MM;
-                etiqueta = "mm";
-            }
-            case 2 -> { // yardas a metros
-                resultado = MED * YARDA_A_M;
-                etiqueta = "m";
-            }
-            case 3 -> { // millas a kilómetros
-                resultado = MED * MILLA_A_KM;
-                etiqueta = "km";
-            }
-            default -> {
-                System.out.println("Error: opcion invalida (usa 1, 2 o 3)");
+            case 1: // Pulgadas -> mm
+                RESULTADO = MED * 25.40;
+                UNIDAD = "milímetros";
+                break;
+            case 2: // Yardas -> m
+                RESULTADO = MED * 0.9144;
+                UNIDAD = "metros";
+                break;
+            case 3: // Millas -> km
+                RESULTADO = MED * 1.6093;
+                UNIDAD = "kilómetros";
+                break;
+            default:
+                System.out.println("Error: Opción no válida.");
+                sc.close();
+                return; // Fin del programa
+        }
+
+        // 3) SALIDA
+        System.out.printf(Locale.US, "Resultado: %.4f %s%n", RESULTADO, UNIDAD);
+
+        sc.close();
+    }
+}
+      </code></pre>
+    </section>
+
+    <aside class="exercise-sidebar">
+      <h3>Datos del problema</h3>
+      <ul>
+        <li><b>1 pulgada</b> = 25.40 mm</li>
+        <li><b>1 yarda</b> = 0.9144 m</li>
+        <li><b>1 milla</b> = 1.6093 km</li>
+      </ul>
+
+      <div class="tip-box">
+        <strong>Tip:</strong> Al usar <code>switch</code>, recuerda siempre incluir un caso <code>default</code> para manejar errores si el usuario ingresa un número fuera del rango (ej. 4 o -1).
+      </div>
+    </aside>
+  </div>
+  
+  <img src="./Ejercicios/PS2.17/DiagramaPS2_17.png" alt="Diagrama de flujo del Ejercicio PS 2.18" style="max-width: 100%; height: auto; margin-top: 20px;">
+
+</article>
+
+<article id="ps218-llamada" class="exercise-card" aria-labelledby="ps218-llamada-title">
+  <header class="exercise-header">
+    <span class="exercise-badge">PS 2.18</span>
+    <h2 id="ps218-llamada-title">Calculadora de Costo de Llamadas</h2>
+
+    <p class="exercise-description">
+      Construya un algoritmo que calcule e imprima el costo total de una llamada telefónica basándose en la zona geográfica de destino y la duración en minutos.
+    </p>
+
+    <table class="exercise-table" aria-label="Tabla de tarifas por zona">
+      <thead>
+        <tr><th>CLAVE</th><th>ZONA</th><th>PRECIO (1-3 min)</th><th>PRECIO (4+ min)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>12</td><td>América del Norte</td><td>$2.00</td><td>$1.50</td></tr>
+        <tr><td>15</td><td>América Central</td><td>$2.20</td><td>$1.80</td></tr>
+        <tr><td>18</td><td>América del Sur</td><td>$4.50</td><td>$3.50</td></tr>
+        <tr><td>19</td><td>Europa</td><td>$3.50</td><td>$2.70</td></tr>
+        <tr><td>23</td><td>Asia</td><td>$6.00</td><td>$4.60</td></tr>
+        <tr><td>25</td><td>África</td><td>$6.00</td><td>$4.60</td></tr>
+        <tr><td>29</td><td>Oceanía</td><td>$5.00</td><td>$3.90</td></tr>
+      </tbody>
+    </table>
+  </header>
+
+  <div class="exercise-content">
+    <section class="exercise-main">
+      <h3>Requisitos</h3>
+      <ul>
+        <li>Leer <code>CLAVE</code> (entero) y <code>NUMIN</code> (duración en minutos).</li>
+        <li>Identificar los costos según la tabla (costo por los primeros 3 min y costo adicional).</li>
+        <li>
+          Aplicar la regla de negocio:
+          <ul>
+            <li>Si <code>NUMIN &le; 3</code>: Costo = <code>NUMIN * Precio1</code></li>
+            <li>Si <code>NUMIN &gt; 3</code>: Costo = <code>(3 * Precio1) + ((NUMIN - 3) * Precio2)</code></li>
+          </ul>
+        </li>
+        <li>Imprimir el costo total.</li>
+      </ul>
+
+      <h3>Ejemplo de uso (Java 21, programación estructurada)</h3>
+      <pre><code class="code-block">
+// Archivo: CostoLlamada.java
+// Calcula el costo según zona y duración (tarifas escalonadas).
+
+import java.util.*;
+
+public class CostoLlamada {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // 1) ENTRADA
+        System.out.println("--- TARIFAS INTERNACIONALES ---");
+        System.out.print("Ingrese la CLAVE de la zona: ");
+        int CLAVE = sc.nextInt();
+        
+        System.out.print("Ingrese la duración (minutos): ");
+        double NUMIN = sc.nextDouble(); // Usamos double por si ingresan 3.5 min
+
+        // 2) CONFIGURACIÓN DE PRECIOS
+        double pBase = 0;  // Precio primeros 3 min
+        double pExtra = 0; // Precio del 4to min en adelante
+        String zona = "";
+
+        switch (CLAVE) {
+            case 12: pBase = 2.0; pExtra = 1.5; zona = "América del Norte"; break;
+            case 15: pBase = 2.2; pExtra = 1.8; zona = "América Central"; break;
+            case 18: pBase = 4.5; pExtra = 3.5; zona = "América del Sur"; break;
+            case 19: pBase = 3.5; pExtra = 2.7; zona = "Europa"; break;
+            case 23: pBase = 6.0; pExtra = 4.6; zona = "Asia"; break;
+            case 25: pBase = 6.0; pExtra = 4.6; zona = "África"; break;
+            case 29: pBase = 5.0; pExtra = 3.9; zona = "Oceanía"; break;
+            default:
+                System.out.println("Error: Clave de zona no válida.");
                 sc.close();
                 return;
-            }
         }
 
-        // Salida
-        System.out.printf(Locale.US, "Resultado: %.4f %s%n", resultado, etiqueta);
+        // 3) CÁLCULO
+        double costoTotal = 0;
+
+        if (NUMIN <= 3) {
+            costoTotal = NUMIN * pBase;
+        } else {
+            // Primeros 3 minutos a precio base + el resto a precio extra
+            costoTotal = (3 * pBase) + ((NUMIN - 3) * pExtra);
+        }
+
+        // 4) SALIDA
+        System.out.printf(Locale.US, "Zona: %s%n", zona);
+        System.out.printf(Locale.US, "Duración: %.1f min%n", NUMIN);
+        System.out.printf(Locale.US, "Costo Total: $%.2f%n", costoTotal);
+
         sc.close();
     }
 }
@@ -995,20 +1108,20 @@ public class ConversorUnidades {
     </section>
 
     <aside class="exercise-sidebar">
-      <h3>Notas rápidas</h3>
+      <h3>Lógica de cobro</h3>
+      <p>Este problema aplica una <b>tarifa escalonada</b>:</p>
       <ul>
-        <li>Declara los factores como <code>final double</code> para claridad.</li>
-        <li>Valida que <code>MED</code> no sea negativa.</li>
-        <li>El <code>switch</code> con flechas (Java 21) simplifica el flujo.</li>
+        <li>Los primeros 3 minutos son más caros (o tienen tarifa fija).</li>
+        <li>A partir del 4º minuto, la tarifa por minuto suele bajar.</li>
       </ul>
 
       <div class="tip-box">
-        <strong>Tip:</strong> Si planeas añadir más conversiones, guarda los factores en un
-        <code>Map&lt;Integer, Double&gt;</code> y las etiquetas en un <code>Map&lt;Integer, String&gt;</code>.
+        <strong>Nota:</strong> Si usas <code>int</code> para los minutos, el cálculo será exacto solo para minutos enteros. Si usas <code>double</code>, permites cobrar fracciones (ej. 3.5 minutos).
       </div>
     </aside>
   </div>
-                      <img src="./Ejercicios/PS2.17_2.18/diagramas/PS2_17_18.png" alt="Diagrama de flujo del Ejemplo 1.9" style="max-width: 100%; height: auto;">
+  
+  <img src="./Ejercicios/PS2.18/DiagramaPS_2_18.png" alt="Diagrama de flujo Costo Llamada" style="max-width: 100%; height: auto; margin-top: 20px;">
 
 </article>
 
@@ -1108,108 +1221,10 @@ public class PrimosGemelos {
       </div>
     </aside>
   </div>
-                        <img src="./Ejercicios/PS2.17_2.18/diagramas/PS2_17_18.png" alt="Diagrama de flujo del Ejemplo 1.9" style="max-width: 100%; height: auto;">
+                        <img src="./Ejercicios/PS3.31/DiagramaPS3_31.png" alt="Diagrama de flujo del Ejemplo 1.9" style="max-width: 100%; height: auto;">
 
 </article>
-<!-- PS 3.31 – Primos Gemelos entre A y B -->
-<article id="ps331" class="exercise-card" aria-labelledby="ps331-title">
-  <header class="exercise-header">
-    <span class="exercise-badge">PS 3.31</span>
-    <h2 id="ps331-title">Imprimir todos los “primos gemelos” en [A, B]</h2>
 
-    <p class="exercise-description">
-      Dados dos enteros positivos <b>A</b> y <b>B</b> (con <b>A &lt; B</b>), imprima todas las parejas
-      de <em>primos gemelos</em> comprendidas en el intervalo. Los primos gemelos son dos
-      números primos con diferencia exacta de 2 (ej.: 3 y 5).
-    </p>
-  </header>
-
-  <div class="exercise-content">
-    <section class="exercise-main">
-      <h3>Requisitos</h3>
-      <ul>
-        <li>Leer <code>A</code> y <code>B</code> (enteros positivos) y validar que <code>A &lt; B</code>.</li>
-        <li>Definir una función booleana <code>esPrimo(n)</code> (prueba hasta <code>sqrt(n)</code>).</li>
-        <li>Recorrer <code>p</code> desde <code>A</code> hasta <code>B-2</code> y, si <code>esPrimo(p)</code> y <code>esPrimo(p+2)</code>, imprimir <code>(p, p+2)</code>.</li>
-        <li>Si no hay parejas, mostrar “No hay primos gemelos en el rango”.</li>
-      </ul>
-
-      <h3>Ejemplo de uso (Java 21, programación estructurada)</h3>
-      <pre><code class="code-block">
-// Archivo: PrimosGemelos.java
-// Imprime todas las parejas de primos gemelos en [A, B]
-
-import java.util.*;
-
-public class PrimosGemelos {
-
-    // Devuelve true si n es primo (n >= 2)
-    public static boolean esPrimo(int n) {
-        if (n < 2) return false;
-        if (n % 2 == 0) return n == 2;
-        int limite = (int)Math.sqrt(n);
-        for (int d = 3; d <= limite; d += 2) {
-            if (n % d == 0) return false;
-        }
-        return true;
-    }
-
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-
-        // Entrada y validación
-        System.out.print("A (entero positivo): ");
-        int A = sc.nextInt();
-        System.out.print("B (entero positivo): ");
-        int B = sc.nextInt();
-
-        if (A < 1 || B < 1 || A >= B) {
-            System.out.println("Error: A y B deben ser positivos y A < B.");
-            sc.close();
-            return; // FIN
-        }
-
-        // Asegurar inicio impar (solo pares (p, p+2) con p impar > 2)
-        int inicio = Math.max(A, 3);
-        if (inicio % 2 == 0) inicio++; // saltar pares
-
-        boolean encontrado = false;
-
-        for (int p = inicio; p <= B - 2; p += 2) {
-            if (esPrimo(p) && esPrimo(p + 2) && p + 2 <= B) {
-                System.out.printf("(%d, %d)%n", p, p + 2);
-                encontrado = true;
-            }
-        }
-
-        if (!encontrado) {
-            System.out.println("No hay primos gemelos en el rango.");
-        }
-
-        sc.close();
-        // FIN
-    }
-}
-      </code></pre>
-    </section>
-
-    <aside class="exercise-sidebar">
-      <h3>Notas rápidas</h3>
-      <ul>
-        <li>Optimización básica: probar divisores solo hasta <code>√n</code> y solo impares.</li>
-        <li>El único primo par es 2; por eso el bucle empieza en un <b>impar ≥ 3</b>.</li>
-        <li>Complejidad aproximada: O((B−A)·√B).</li>
-      </ul>
-
-      <div class="tip-box">
-        <strong>Tip:</strong> Si quieres incluir la pareja (3, 5) aunque A = 1 o 2,
-        el ajuste de <code>inicio</code> ya lo cubre.
-      </div>
-    </aside>
-  </div>
-                        <img src="./Ejercicios/PS3.31/diagramas/PS3_31.png" alt="Diagrama de flujo del Ejemplo 1.9" style="max-width: 100%; height: auto;">
-
-</article>
 
 <!-- PS 3.32 — Ventas de N sucursales durante 14 años -->
 <article id="ps332" class="exercise-card" aria-labelledby="ps332-title">
@@ -1338,7 +1353,7 @@ public class VentasEmpresa {
       </div>
     </aside>
   </div>
-                        <img src="./Ejercicios/PS3.32/diagramas/PS3_32.png" alt="Diagrama de flujo del Ejemplo 1.9" style="max-width: 100%; height: auto;">
+  <img src="./Ejercicios/PS3.32/DiagramaPS3_32.png" alt="Diagrama de flujo del Ejemplo 1.9" style="max-width: 100%; height: auto;">
 
 </article>
 <!-- PS 4.7 – Búsqueda Secuencial en un vector -->
@@ -1441,7 +1456,7 @@ public class BusquedaSecuencial {
       </div>
     </aside>
   </div>
-                        <img src="./Ejercicios/PS4.7/diagramas/PS4_7.png" alt="Diagrama de flujo del Ejemplo 1.9" style="max-width: 100%; height: auto;">
+                        <img src="./Ejercicios/PS4.7/DiagramaPS4_7.png" alt="Diagrama de flujo del Ejemplo 1.9" style="max-width: 100%; height: auto;">
 
 </article>
 <!-- PS 4.23 – Ingresos de alumnos (12 años × 7 carreras) -->
@@ -1573,7 +1588,7 @@ public class IngresosUniversidad {
       </div>
     </aside>
   </div>
-                        <img src="./Ejercicios/PS4.23/diagramas/PS4_23.png" alt="Diagrama de flujo del Ejemplo 1.9" style="max-width: 100%; height: auto;">
+                        <img src="./Ejercicios/PS4.23/DiagramaPS4_23.png" alt="Diagrama de flujo del Ejemplo 1.9" style="max-width: 100%; height: auto;">
 
 </article>
 <!-- PS 5.2 – Registros de alumnos (ESC[1..N]) -->
@@ -1709,7 +1724,7 @@ public class ProcesaAlumnos {
       </div>
     </aside>
   </div>
-                        <img src="./Ejercicios/PS5.2/diagramas/PS5_2.png" alt="Diagrama de flujo del Ejemplo 1.9" style="max-width: 100%; height: auto;">
+                        <img src="./Ejercicios/PS5.2/DiagramaPS5_2.png" alt="Diagrama de flujo del Ejemplo 1.9" style="max-width: 100%; height: auto;">
 
 </article>
 

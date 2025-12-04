@@ -1,0 +1,105 @@
+digraph PrimosGemelos {
+    // Configuración general
+    rankdir=TB;
+    node [fontname="Arial", fontsize=12];
+    edge [fontsize=10];
+
+    // --- INICIO Y ENTRADA ---
+    Inicio [label="INICIO", shape=ellipse];
+    Entrada [label="A, B", shape=parallelogram];
+    
+    // Validación A < B
+    CheckAB [label="A < B", shape=diamond];
+    Error [label="\"A debe ser menor que B\"", shape=note];
+
+    // Inicialización Ciclo Principal
+    InitI [label="I ← A", shape=box];
+    
+    // Condición Ciclo Principal (Hasta B-2 porque buscamos parejas I, I+2)
+    LoopMain [label="I <= B - 2", shape=diamond];
+
+    // --- VERIFICACIÓN PRIMO 1 (I) ---
+    // Asumimos verdadero ('V') y buscamos divisores para desmentirlo
+    InitP1 [label="ES_PRIMO1 ← 'V'\nDIV ← 2", shape=box];
+    LoopP1 [label="DIV <= I / 2\ny\nES_PRIMO1 = 'V'", shape=diamond];
+    
+    CheckDiv1 [label="(I MOD DIV) = 0", shape=diamond];
+    SetFalse1 [label="ES_PRIMO1 ← 'F'", shape=box];
+    IncDiv1 [label="DIV ← DIV + 1", shape=box];
+
+    // Decisión tras verificar I
+    IsP1True [label="ES_PRIMO1 = 'V'\ny I > 1", shape=diamond];
+
+    // --- VERIFICACIÓN PRIMO 2 (I + 2) ---
+    InitP2 [label="NUM2 ← I + 2\nES_PRIMO2 ← 'V'\nDIV2 ← 2", shape=box];
+    LoopP2 [label="DIV2 <= NUM2 / 2\ny\nES_PRIMO2 = 'V'", shape=diamond];
+    
+    CheckDiv2 [label="(NUM2 MOD DIV2) = 0", shape=diamond];
+    SetFalse2 [label="ES_PRIMO2 ← 'F'", shape=box];
+    IncDiv2 [label="DIV2 ← DIV2 + 1", shape=box];
+
+    // Decisión tras verificar I+2
+    IsP2True [label="ES_PRIMO2 = 'V'", shape=diamond];
+
+    // --- IMPRESIÓN ---
+    Print [label="\"Primos Gemelos:\",\nI, NUM2", shape=note];
+    
+    // Incremento del Ciclo Principal
+    IncI [label="I ← I + 1", shape=box];
+    
+    Fin [label="FIN", shape=ellipse];
+
+    // --- CONEXIONES ---
+    
+    // Flujo inicial
+    Inicio -> Entrada;
+    Entrada -> CheckAB;
+    CheckAB -> Error [label="No"];
+    Error -> Fin;
+    CheckAB -> InitI [label="Si"];
+    InitI -> LoopMain;
+
+    // Salida del Loop Principal
+    LoopMain:e -> Fin [label="No"]; // Sale por la derecha hacia el fin
+
+    // Entra al Loop Principal
+    LoopMain -> InitP1 [label="Si"];
+    InitP1 -> LoopP1;
+
+    // Lógica Loop Primo 1
+    LoopP1 -> CheckDiv1 [label="Si"];
+    CheckDiv1 -> SetFalse1 [label="Si"];
+    CheckDiv1 -> IncDiv1 [label="No"];
+    SetFalse1 -> LoopP1 [constraint=false]; // Regresa con bandera falsa para salir
+    IncDiv1 -> LoopP1 [constraint=false];
+
+    // Salida Loop Primo 1 -> Chequeo
+    LoopP1:e -> IsP1True [label="No"]; // Termina de buscar divisores
+    
+    // Si NO es primo el primero, saltamos al incremento de I
+    IsP1True:e -> IncI [label="No"]; 
+
+    // Si SI es primo el primero, verificamos el segundo
+    IsP1True -> InitP2 [label="Si"];
+    InitP2 -> LoopP2;
+
+    // Lógica Loop Primo 2
+    LoopP2 -> CheckDiv2 [label="Si"];
+    CheckDiv2 -> SetFalse2 [label="Si"];
+    CheckDiv2 -> IncDiv2 [label="No"];
+    SetFalse2 -> LoopP2 [constraint=false];
+    IncDiv2 -> LoopP2 [constraint=false];
+
+    // Salida Loop Primo 2 -> Chequeo
+    LoopP2:e -> IsP2True [label="No"];
+
+    // Si NO es primo el segundo, saltamos
+    IsP2True:e -> IncI [label="No"];
+
+    // Si AMBOS son primos -> Imprimir
+    IsP2True -> Print [label="Si"];
+    Print -> IncI;
+
+    // Retorno del ciclo principal
+    IncI -> LoopMain [constraint=false];
+}

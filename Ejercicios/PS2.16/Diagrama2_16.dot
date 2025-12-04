@@ -1,0 +1,49 @@
+digraph DiagramaVehiculos {
+    // Configuración general
+    rankdir=TB;
+    node [fontname="Arial", fontsize=12];
+    edge [fontsize=10];
+
+    // Nodos Principales
+    Inicio [label="INICIO", shape=ellipse];
+    Entrada [label="MODELO, PRECIO", shape=parallelogram];
+    
+    // Selector Múltiple (Según tu tabla de símbolos es un hexágono)
+    Selector [label="MODELO", shape=hexagon];
+
+    // Procesos de asignación de descuento
+    Desc1 [label="DESC ← 0.08", shape=box];
+    Desc2 [label="DESC ← 0.05", shape=box];
+    Desc3 [label="DESC ← 0.06", shape=box];
+    Desc4 [label="DESC ← 0.09", shape=box];
+    DescDef [label="DESC ← 0", shape=box]; // Caso por defecto si no es ninguno
+
+    // Cálculo final (Punto de unión)
+    Calculo [label="PAGO_FINAL ← PRECIO - (PRECIO * DESC)", shape=box];
+    
+    // Salida
+    Salida [label="PAGO_FINAL", shape=note];
+    Fin [label="FIN", shape=ellipse];
+
+    // --- CONEXIONES ---
+    Inicio -> Entrada;
+    Entrada -> Selector;
+
+    // Ramas del selector (Casos)
+    Selector -> Desc1 [label="\"Blazer-Trail\""];
+    Selector -> Desc2 [label="\"Cavalier\""];
+    Selector -> Desc3 [label="\"Chevy\""];
+    Selector -> Desc4 [label="\"Opel-Astra\""];
+    Selector -> DescDef [label="Otro"];
+
+    // Unir todos los caminos al cálculo
+    Desc1 -> Calculo;
+    Desc2 -> Calculo;
+    Desc3 -> Calculo;
+    Desc4 -> Calculo;
+    DescDef -> Calculo;
+
+    // Final
+    Calculo -> Salida;
+    Salida -> Fin;
+}

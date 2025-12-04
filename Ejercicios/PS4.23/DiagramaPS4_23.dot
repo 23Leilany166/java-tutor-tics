@@ -1,0 +1,112 @@
+digraph DiagramaUniversidad {
+    // Configuración general
+    rankdir=TB;
+    node [fontname="Arial", fontsize=12];
+    edge [fontsize=10];
+
+    // --- INICIO Y LECTURA ---
+    Inicio [label="INICIO", shape=ellipse];
+    
+    // Simplificamos la lectura de la matriz para no hacer el diagrama eterno
+    InputMatriz [label="Leer Matriz\nALUM[1..12, 1..7]", shape=parallelogram];
+    
+    // Inicialización para inciso C (Menor Ingreso Global)
+    // Asumimos el primer valor como el menor inicial
+    InitMin [label="MIN_VAL ← ALUM[1,1]\nMIN_ANIO ← 1, MIN_CAR ← 1\nI ← 1", shape=box];
+
+    // --- CICLO I: AÑOS (1 a 12) ---
+    LoopI [label="I ≤ 12", shape=diamond];
+    
+    // Inicialización por año (Total anual)
+    InitRow [label="SUM_ANIO ← 0\nJ ← 1", shape=box];
+
+    // --- CICLO J: CARRERAS (1 a 7) ---
+    LoopJ [label="J ≤ 7", shape=diamond];
+    
+    // Procesos internos: Sumar y comparar mínimo
+    CalcSum [label="SUM_ANIO ← SUM_ANIO + ALUM[I,J]", shape=box];
+    CheckMin [label="ALUM[I,J] < MIN_VAL", shape=diamond];
+    UpdateMin [label="MIN_VAL ← ALUM[I,J]\nMIN_ANIO ← I\nMIN_CAR ← J", shape=box];
+    
+    IncJ [label="J ← J + 1", shape=box];
+
+    // Fin Ciclo J -> Imprimir Total Año (Inciso A) y Guardar para Inciso B
+    SaveTotal [label="TOT[I] ← SUM_ANIO", shape=box]; 
+    PrintA [label="\"Total Año\", I, \":\", SUM_ANIO", shape=note];
+    
+    IncI [label="I ← I + 1", shape=box];
+
+    // --- INCISOS B, C, D (Fuera de los ciclos de lectura) ---
+    
+    // 1. Imprimir Inciso C (Calculado arriba)
+    PrintC [label="\"Menor Ingreso Global:\"\n\"Año:\", MIN_ANIO, \" Carrera:\", MIN_CAR", shape=note];
+    
+    // 2. Inciso B: Porcentaje Año X, Carrera Y
+    InputB [label="\"Ingrese Año X y Carrera Y para %\"\nX, Y", shape=parallelogram];
+    CalcB [label="PORC ← (ALUM[X,Y] * 100) / TOT[X]", shape=box];
+    PrintB [label="\"Porcentaje:\", PORC, \"%\"", shape=note];
+
+    // 3. Inciso D: Mejor año de Carrera T
+    InputD [label="\"Ingrese Carrera T para buscar su mejor año\"\nT", shape=parallelogram];
+    InitMaxT [label="MAX_VAL ← 0\nMAX_ANIO ← 0\nK ← 1", shape=box];
+    
+    // Ciclo para recorrer los años de la carrera T
+    LoopK [label="K ≤ 12", shape=diamond];
+    CheckMaxT [label="ALUM[K,T] > MAX_VAL", shape=diamond];
+    UpdateMaxT [label="MAX_VAL ← ALUM[K,T]\nMAX_ANIO ← K", shape=box];
+    IncK [label="K ← K + 1", shape=box];
+    
+    PrintD [label="\"Año con mayor ingreso para carrera\", T, \":\", MAX_ANIO", shape=note];
+    
+    Fin [label="FIN", shape=ellipse];
+
+    // --- CONEXIONES ---
+    
+    Inicio -> InputMatriz;
+    InputMatriz -> InitMin;
+    InitMin -> LoopI;
+
+    // Entrada Ciclo I
+    LoopI -> InitRow [label="Si"];
+    InitRow -> LoopJ;
+
+    // Entrada Ciclo J
+    LoopJ -> CalcSum [label="Si"];
+    CalcSum -> CheckMin;
+    
+    // Comparación Mínimo
+    CheckMin -> UpdateMin [label="Si"];
+    CheckMin:e -> IncJ [label="No"]; // Sale por la derecha
+    UpdateMin -> IncJ;
+    
+    // Retorno J
+    IncJ -> LoopJ [constraint=false];
+
+    // Salida Ciclo J
+    LoopJ:e -> SaveTotal [label="No"];
+    SaveTotal -> PrintA;
+    PrintA -> IncI;
+    IncI -> LoopI [constraint=false]; // Retorno I
+
+    // Salida Ciclo I (Terminó de procesar la matriz)
+    LoopI:e -> PrintC [label="No"];
+    
+    // Flujo lineal de los incisos restantes
+    PrintC -> InputB;
+    InputB -> CalcB;
+    CalcB -> PrintB;
+    PrintB -> InputD;
+    InputD -> InitMaxT;
+    InitMaxT -> LoopK;
+    
+    // Ciclo K (Inciso D)
+    LoopK -> CheckMaxT [label="Si"];
+    CheckMaxT -> UpdateMaxT [label="Si"];
+    CheckMaxT:e -> IncK [label="No"];
+    UpdateMaxT -> IncK;
+    IncK -> LoopK [constraint=false];
+    
+    // Salida y Fin
+    LoopK:e -> PrintD [label="No"];
+    PrintD -> Fin;
+}

@@ -1,0 +1,27 @@
+digraph DiagramaCirculo {
+    // Configuración general
+    rankdir=TB;
+    node [fontname="Arial", fontsize=12];
+    edge [fontsize=10];
+
+    // Nodos
+    Inicio [label="INICIO", shape=ellipse];
+    
+    // Entrada de datos: RADIO
+    Entrada [label="RADIO", shape=parallelogram];
+    
+    // Proceso: Cálculo de Área y Circunferencia (Usando PI = 3.1416)
+    // Se usa \n para salto de línea dentro del cuadro
+    Proceso [label="AREA ← 3.1416 * (RADIO ^ 2)\nCIRCUNFERENCIA ← 2 * 3.1416 * RADIO", shape=box];
+    
+    // Salida: Imprimir resultados
+    Salida [label="AREA, CIRCUNFERENCIA", shape=note];
+    
+    Fin [label="FIN", shape=ellipse];
+
+    // Conexiones
+    Inicio -> Entrada;
+    Entrada -> Proceso;
+    Proceso -> Salida;
+    Salida -> Fin;
+}

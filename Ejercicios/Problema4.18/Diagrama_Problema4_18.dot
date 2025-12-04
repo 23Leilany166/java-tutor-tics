@@ -1,0 +1,117 @@
+digraph CuadradoMagico {
+    // Configuración general
+    rankdir=TB;
+    node [fontname="Arial", fontsize=12];
+    edge [fontsize=10];
+
+    // --- PARTE 1: INICIO Y VALIDACIÓN ---
+    Inicio [label="INICIO", shape=ellipse];
+    MsgDim [label="\"Ingrese dimensión\ndel cuadrado\"", shape=note];
+    InputN [label="N", shape=parallelogram];
+    
+    // Decisión compleja
+    CheckN [label="1 ≤ N ≤ 50\ny (N MOD 2 <> 0)", shape=diamond];
+    MsgError [label="\"Error en el\ndato\"", shape=note];
+
+    // --- PARTE 2: INICIALIZACIÓN ---
+    InitVars [label="J ← (N + 1) DIV 2\nI ← 1", shape=box];
+    InitCM [label="CM[I, J] ← 1", shape=box];
+    InitNum [label="NUM ← 2", shape=box];
+
+    // --- PARTE 3: CICLO DE LLENADO (WHILE) ---
+    LoopFill [label="NUM ≤ N*N", shape=diamond];
+    
+    // Decisión (NUM-1) MOD N
+    CheckMod [label="((NUM-1)\nMOD N)=0", shape=diamond];
+    
+    BranchSi_Mod [label="I ← I + 1", shape=box];
+    BranchNo_Mod [label="I ← I - 1\nJ ← J + 1", shape=box];
+
+    // Ajustes de límites (I=0 y J>N)
+    CheckI0 [label="I = 0", shape=diamond];
+    FixI [label="I ← N", shape=box];
+    
+    CheckJN [label="J > N", shape=diamond];
+    FixJ [label="J ← 1", shape=box];
+    
+    // Asignación y aumento
+    AssignCM [label="CM[I, J] ← NUM", shape=box];
+    IncNum [label="NUM ← NUM + 1", shape=box];
+
+    // --- PARTE 4: IMPRESIÓN (LOOPS ANIDADOS) ---
+    MsgMagic [label="\"Cuadrado\nMágico\"", shape=note];
+    InitPrintI [label="I ← 1", shape=box];
+    LoopPrintI [label="I ≤ N", shape=diamond];
+    
+    InitPrintJ [label="J = 1", shape=box];
+    LoopPrintJ [label="J ≤ N", shape=diamond];
+    
+    PrintVal [label="CM[I, J]", shape=note];
+    IncPrintJ [label="J = J + 1", shape=box];
+    
+    IncPrintI [label="I = I + 1", shape=box];
+
+    // --- FIN ---
+    Fin [label="FIN", shape=ellipse];
+
+    // --- CONEXIONES ---
+
+    // Flujo inicial
+    Inicio -> MsgDim;
+    MsgDim -> InputN;
+    InputN -> CheckN;
+
+    // Validación
+    CheckN:e -> MsgError [label="No"]; // Sale por la derecha
+    MsgError -> Fin; // Conecta directo al Fin (Conector B)
+    CheckN -> InitVars [label="Si"];
+
+    // Inicialización -> Ciclo
+    InitVars -> InitCM;
+    InitCM -> InitNum;
+    InitNum -> LoopFill;
+
+    // Lógica Ciclo Llenado
+    LoopFill -> CheckMod [label="Si"];
+    
+    CheckMod -> BranchSi_Mod [label="Si"];
+    CheckMod -> BranchNo_Mod [label="No"];
+    
+    // Unión hacia CheckI0
+    BranchSi_Mod -> CheckI0;
+    BranchNo_Mod -> CheckI0;
+    
+    // Check I=0
+    CheckI0 -> FixI [label="Si"];
+    CheckI0 -> CheckJN [label="No"];
+    FixI -> CheckJN;
+
+    // Check J>N
+    CheckJN -> FixJ [label="Si"];
+    CheckJN -> AssignCM [label="No"];
+    FixJ -> AssignCM;
+
+    // Vuelta del ciclo
+    AssignCM -> IncNum;
+    IncNum -> LoopFill [constraint=false]; // Regresa arriba
+
+    // Salida del Ciclo Llenado (No) -> Parte de Impresión (Conector A)
+    LoopFill:e -> MsgMagic [label="No"]; // Sale por la derecha hacia A
+    
+    MsgMagic -> InitPrintI;
+    InitPrintI -> LoopPrintI;
+
+    // Ciclo Externo Impresión (I)
+    LoopPrintI -> InitPrintJ [label="Si"];
+    LoopPrintI:e -> Fin [label="No"]; // Termina el programa
+
+    // Ciclo Interno Impresión (J)
+    InitPrintJ -> LoopPrintJ;
+    LoopPrintJ -> PrintVal [label="Si"];
+    PrintVal -> IncPrintJ;
+    IncPrintJ -> LoopPrintJ [constraint=false]; // Regresa al ciclo J
+
+    // Salida Ciclo J
+    LoopPrintJ:e -> IncPrintI [label="No"];
+    IncPrintI -> LoopPrintI [constraint=false]; // Regresa al ciclo I
+}

@@ -1,0 +1,90 @@
+digraph BusquedaSecuencial {
+    // Configuración general
+    rankdir=TB;
+    node [fontname="Arial", fontsize=12];
+    edge [fontsize=10];
+
+    // --- INICIO Y LECTURA DE DATOS ---
+    Inicio [label="INICIO", shape=ellipse];
+    InputN [label="N", shape=parallelogram];
+    
+    // Validación básica N
+    CheckN [label="1 ≤ N ≤ 50", shape=diamond];
+    ErrorN [label="\"El valor de N es incorrecto\"", shape=note];
+
+    // Ciclo para leer el arreglo (Llenar VECTOR)
+    InitRead [label="I ← 1", shape=box];
+    LoopRead [label="I ≤ N", shape=diamond];
+    InputVec [label="VECTOR[I]", shape=parallelogram];
+    IncRead [label="I ← I + 1", shape=box];
+
+    // Lectura del dato a buscar
+    InputX [label="X", shape=parallelogram];
+
+    // --- ALGORITMO DE BÚSQUEDA ---
+    // Inicializamos I en 1 y la Bandera en Falso
+    InitSearch [label="I ← 1\nBAND ← 'F'", shape=box];
+    
+    // Ciclo Mientras: (No hemos terminado) Y (No lo hemos encontrado)
+    LoopSearch [label="I ≤ N\ny\nBAND = 'F'", shape=diamond];
+    
+    // Decisión: ¿Es el que buscamos?
+    CheckMatch [label="VECTOR[I] = X", shape=diamond];
+    
+    // Si lo encuentra:
+    Found [label="BAND ← 'T'\nPOS ← I", shape=box];
+    
+    // Si no es: Avanzamos al siguiente
+    Next [label="I ← I + 1", shape=box];
+
+    // --- RESULTADOS ---
+    // Verificamos por qué se rompió el ciclo
+    CheckResult [label="BAND = 'T'", shape=diamond];
+    
+    PrintFound [label="\"El elemento está en la posición:\", POS", shape=note];
+    PrintNotFound [label="\"El elemento no se encuentra\nen el arreglo\"", shape=note];
+    
+    Fin [label="FIN", shape=ellipse];
+
+    // --- CONEXIONES ---
+    Inicio -> InputN;
+    InputN -> CheckN;
+
+    // Validación N
+    CheckN:e -> ErrorN [label="No"];
+    ErrorN -> Fin;
+    CheckN -> InitRead [label="Si"];
+
+    // Ciclo Lectura
+    InitRead -> LoopRead;
+    LoopRead -> InputVec [label="Si"];
+    InputVec -> IncRead;
+    IncRead -> LoopRead [constraint=false]; // Regresa arriba
+
+    // Fin Lectura -> Pedir X
+    LoopRead:e -> InputX [label="No"];
+    InputX -> InitSearch;
+    InitSearch -> LoopSearch;
+
+    // Ciclo Búsqueda
+    LoopSearch -> CheckMatch [label="Si"];
+    
+    // Comparación interna
+    CheckMatch -> Found [label="Si"];
+    CheckMatch:e -> Next [label="No"]; // Sale por derecha si no coincide
+    
+    // Retornos al ciclo
+    // Nota: Si encuentra (Found), regresa al LoopSearch, la condición BAND='F' fallará y saldrá del ciclo.
+    Found -> LoopSearch [constraint=false]; 
+    Next -> LoopSearch [constraint=false];
+
+    // Salida del Ciclo Búsqueda (Cuando I>N o BAND='T')
+    LoopSearch:e -> CheckResult [label="No"];
+
+    // Impresión final
+    CheckResult -> PrintFound [label="Si"];
+    CheckResult:e -> PrintNotFound [label="No"];
+    
+    PrintFound -> Fin;
+    PrintNotFound -> Fin;
+}

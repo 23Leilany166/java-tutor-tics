@@ -1,0 +1,47 @@
+digraph Conversiones {
+    // Configuración general
+    rankdir=TB;
+    node [fontname="Arial", fontsize=12];
+    edge [fontsize=10];
+
+    // Nodos Principales
+    Inicio [label="INICIO", shape=ellipse];
+    Entrada [label="OPCION, MED", shape=parallelogram];
+    
+    // Selector de Opción
+    Selector [label="OPCION", shape=hexagon];
+
+    // Procesos de conversión
+    // Caso 1: Pulgadas a Milímetros
+    Calc1 [label="RES ← MED * 25.40", shape=box];
+    
+    // Caso 2: Yardas a Metros
+    Calc2 [label="RES ← MED * 0.9144", shape=box];
+    
+    // Caso 3: Millas a Kilómetros
+    Calc3 [label="RES ← MED * 1.6093", shape=box];
+
+    // Salida de resultados
+    Salida [label="RES", shape=note];
+    Fin [label="FIN", shape=ellipse];
+
+    // --- CONEXIONES ---
+    Inicio -> Entrada;
+    Entrada -> Selector;
+
+    // Ramas del selector
+    Selector -> Calc1 [label="1"];
+    Selector -> Calc2 [label="2"];
+    Selector -> Calc3 [label="3"];
+    
+    // Opción por defecto (si no es 1, 2 o 3 va directo al Fin)
+    Selector -> Fin [label="Otro"];
+
+    // Unificar caminos hacia la Salida
+    Calc1 -> Salida;
+    Calc2 -> Salida;
+    Calc3 -> Salida;
+
+    // Finalizar
+    Salida -> Fin;
+}

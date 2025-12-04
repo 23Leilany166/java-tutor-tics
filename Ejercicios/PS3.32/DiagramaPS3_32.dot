@@ -1,0 +1,97 @@
+digraph DiagramaVentasAuto {
+    // Configuración general
+    rankdir=TB;
+    node [fontname="Arial", fontsize=12];
+    edge [fontsize=10];
+
+    // --- INICIO Y ENTRADA ---
+    Inicio [label="INICIO", shape=ellipse];
+    InputN [label="N", shape=parallelogram];
+    
+    // Inicialización de acumuladores GLOBALES
+    // TOTEMP: Total ventas de la empresa (inciso d)
+    // MAYPROM: Para guardar el mayor promedio encontrado (inciso c)
+    InitGlobal [label="TOTEMP ← 0\nMAYPROM ← 0\nANIO_M ← 0\nI ← 1", shape=box];
+    
+    // --- CICLO EXTERNO (AÑOS 1 a 14) ---
+    CondI [label="I ≤ 14", shape=diamond];
+    
+    // Inicialización de variables POR AÑO
+    // SUMANIO: Suma ventas del año actual (para el promedio)
+    // MAXVEN: Para buscar la mejor venta del año
+    InitYear [label="SUMANIO ← 0\nMAXVEN ← 0\nSUCMEJ ← 0\nJ ← 1", shape=box];
+    
+    // --- CICLO INTERNO (SUCURSALES 1 a N) ---
+    CondJ [label="J ≤ N", shape=diamond];
+    
+    // Lectura de la venta (Año I, Sucursal J)
+    InputVenta [label="VENTA", shape=parallelogram];
+    
+    // Acumulaciones
+    CalcSums [label="TOTEMP ← TOTEMP + VENTA\nSUMANIO ← SUMANIO + VENTA", shape=box];
+    
+    // Determinar mejor sucursal del año (inciso a)
+    CheckMaxB [label="VENTA > MAXVEN", shape=diamond];
+    UpdateMaxB [label="MAXVEN ← VENTA\nSUCMEJ ← J", shape=box];
+    
+    IncJ [label="J ← J + 1", shape=box];
+    
+    // --- FIN CICLO INTERNO ---
+    
+    // Cálculos al terminar el año
+    // Inciso b: Promedio por año
+    CalcProm [label="PROMANIO ← SUMANIO / N", shape=box];
+    
+    // Impresión de resultados anuales (a y b)
+    PrintYearly [label="\"Año:\", I\n\"Mejor Sucursal:\", SUCMEJ\n\"Promedio Año:\", PROMANIO", shape=note];
+    
+    // Determinar Año con mayor promedio (inciso c)
+    CheckBestYear [label="PROMANIO > MAYPROM", shape=diamond];
+    UpdateBestYear [label="MAYPROM ← PROMANIO\nANIO_M ← I", shape=box];
+    
+    IncI [label="I ← I + 1", shape=box];
+    
+    // --- FIN DEL PROGRAMA ---
+    // Impresión de resultados globales (c y d)
+    PrintFinal [label="\"Año con Mayor Promedio:\", ANIO_M\n\"Venta Total Empresa:\", TOTEMP", shape=note];
+    Fin [label="FIN", shape=ellipse];
+
+    // --- CONEXIONES ---
+    Inicio -> InputN;
+    InputN -> InitGlobal;
+    InitGlobal -> CondI;
+
+    // Entrar al Ciclo I
+    CondI -> InitYear [label="Si"];
+    InitYear -> CondJ;
+    
+    // Entrar al Ciclo J
+    CondJ -> InputVenta [label="Si"];
+    InputVenta -> CalcSums;
+    CalcSums -> CheckMaxB;
+    
+    // Revisión de máximo venta
+    CheckMaxB -> UpdateMaxB [label="Si"];
+    CheckMaxB -> IncJ [label="No"];
+    UpdateMaxB -> IncJ;
+    
+    // Retorno Ciclo J
+    IncJ -> CondJ [constraint=false]; 
+    
+    // Salida Ciclo J -> Procesos de fin de año
+    CondJ:e -> CalcProm [label="No"]; // Sale por la derecha
+    CalcProm -> PrintYearly;
+    PrintYearly -> CheckBestYear;
+    
+    // Revisión de mejor año
+    CheckBestYear -> UpdateBestYear [label="Si"];
+    CheckBestYear -> IncI [label="No"];
+    UpdateBestYear -> IncI;
+    
+    // Retorno Ciclo I
+    IncI -> CondI [constraint=false]; // Regresa arriba
+    
+    // Salida Ciclo I (Fin de los 14 años)
+    CondI:e -> PrintFinal [label="No"];
+    PrintFinal -> Fin;
+}

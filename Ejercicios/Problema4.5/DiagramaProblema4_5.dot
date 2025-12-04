@@ -1,0 +1,68 @@
+digraph DiagramaVectores {
+    // Configuración general
+    rankdir=TB;
+    node [fontname="Arial", fontsize=12];
+    edge [fontsize=10];
+
+    // --- BLOQUE 1: Lectura y Suma ---
+    Inicio [label="INICIO", shape=ellipse];
+    InitAC [label="AC ← 0", shape=box];
+    InitI1 [label="I ← 1", shape=box];
+    
+    // Condición Ciclo 1
+    Cond1 [label="I ≤ 70", shape=diamond];
+    
+    // Cuerpo Ciclo 1
+    InputS [label="S[I]", shape=parallelogram];
+    CalcSum [label="AC ← AC + S[I]\nI ← I + 1", shape=box];
+
+    // --- BLOQUE 2: Cálculo Promedio y Reinicio ---
+    CalcProm [label="PROM ← AC/70\nCONT ← 0   I ← 1", shape=box];
+    
+    // Condición Ciclo 2
+    Cond2 [label="I ≤ 70", shape=diamond];
+    
+    // Cuerpo Ciclo 2
+    CheckProm [label="S[I] > PROM", shape=diamond];
+    IncCont [label="CONT ← CONT + 1", shape=box];
+    IncI2 [label="I ← I + 1", shape=box];
+
+    // --- FIN ---
+    PrintCont [label="CONT", shape=note];
+    Fin [label="FIN", shape=ellipse];
+
+    // --- CONEXIONES ---
+
+    // Inicio hasta primer ciclo
+    Inicio -> InitAC;
+    InitAC -> InitI1;
+    InitI1 -> Cond1;
+
+    // Lógica Ciclo 1
+    Cond1 -> InputS [label="Si"];
+    InputS -> CalcSum;
+    
+    // Regreso del Ciclo 1 (Flecha izquierda hacia arriba)
+    CalcSum -> Cond1 [constraint=false]; // constraint=false permite subir sin romper el diseño
+    
+    // Salida Ciclo 1 (Hacia la derecha)
+    Cond1:e -> CalcProm [label="No"];
+
+    // Transición al Ciclo 2
+    CalcProm -> Cond2;
+
+    // Lógica Ciclo 2
+    Cond2 -> CheckProm [label="Si"];
+    
+    // Decisión interna
+    CheckProm -> IncCont [label="Si"];
+    CheckProm:e -> IncI2 [label="No"]; // Sale por la derecha si no cumple
+    IncCont -> IncI2;
+
+    // Regreso del Ciclo 2
+    IncI2 -> Cond2 [constraint=false]; 
+
+    // Salida Ciclo 2 y Fin
+    Cond2:e -> PrintCont [label="No"];
+    PrintCont -> Fin;
+}
