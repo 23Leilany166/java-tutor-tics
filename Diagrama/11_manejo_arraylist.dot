@@ -1,0 +1,37 @@
+digraph ManejoArrayList {
+    bgcolor="transparent";
+    node [style=filled, fillcolor=white, fontname="Arial"];
+    
+    // Nodos
+    start [label="INICIO", shape=oval];
+    create [label="Crear\nArrayList<Integer>\nelementos", shape=box];
+    add1 [label="elementos.add(10)", shape=box];
+    print1 [label="Imprimir lista", shape=parallelogram];
+    add2 [label="elementos.add(20)", shape=box];
+    print2 [label="Imprimir lista", shape=parallelogram];
+    add3 [label="elementos.add(30)", shape=box];
+    print3 [label="Imprimir lista", shape=parallelogram];
+    add4 [label="elementos.add(10)", shape=box];
+    print4 [label="Imprimir lista", shape=parallelogram];
+    remove [label="elementos.remove\n(Integer.valueOf(10))", shape=box];
+    print5 [label="Imprimir lista", shape=parallelogram];
+    try [label="Intentar\nremove(99)", shape=box];
+    printfinal [label="Imprimir\nEstado final", shape=parallelogram];
+    end [label="FIN", shape=oval];
+    
+    // Flujo
+    start -> create;
+    create -> add1;
+    add1 -> print1;
+    print1 -> add2;
+    add2 -> print2;
+    print2 -> add3;
+    add3 -> print3;
+    print3 -> add4;
+    add4 -> print4;
+    print4 -> remove;
+    remove -> print5;
+    print5 -> try;
+    try -> printfinal;
+    printfinal -> end;
+}

@@ -1,0 +1,28 @@
+digraph FuncionSelectiva {
+    bgcolor="transparent";
+    node [style=filled, fillcolor=white, fontname="Arial"];
+    
+    // Nodos
+    start [label="INICIO", shape=oval];
+    input [label="Leer\nopcion, v", shape=parallelogram];
+    switch [label="opcion?", shape=diamond];
+    case1 [label="resultado =\n100 * v", shape=box];
+    case2 [label="resultado =\n100^v", shape=box];
+    case3 [label="resultado =\n100 / v", shape=box];
+    default [label="resultado = 0", shape=box];
+    output [label="Imprimir\nresultado", shape=parallelogram];
+    end [label="FIN", shape=oval];
+    
+    // Flujo
+    start -> input;
+    input -> switch;
+    switch -> case1 [label="1"];
+    switch -> case2 [label="2"];
+    switch -> case3 [label="3"];
+    switch -> default [label="default"];
+    case1 -> output;
+    case2 -> output;
+    case3 -> output;
+    default -> output;
+    output -> end;
+}

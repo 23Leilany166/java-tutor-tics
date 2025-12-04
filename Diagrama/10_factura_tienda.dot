@@ -1,0 +1,32 @@
+digraph FacturaTienda {
+    bgcolor="transparent";
+    node [style=filled, fillcolor=white, fontname="Arial"];
+    
+    // Nodos
+    start [label="INICIO", shape=oval];
+    init [label="Inicializar\ntotales[4] = 0", shape=box];
+    loop [label="Para cada item", shape=box];
+    input [label="Leer clave, ramo,\ncantidad, precio", shape=parallelogram];
+    calcitem [label="totalItem =\ncantidad * precio", shape=box];
+    accumulate [label="totales[ramo] +=\ntotalItem", shape=box];
+    printline [label="Imprimir\nlínea factura", shape=parallelogram];
+    printtotal [label="Imprimir\nTOTAL FACTURA", shape=parallelogram];
+    printreport [label="Imprimir\nReporte diario\npor ramo", shape=parallelogram];
+    findmax [label="Encontrar ramo\ncon mayor venta", shape=box];
+    printmax [label="Imprimir\nRamo ganador", shape=parallelogram];
+    end [label="FIN", shape=oval];
+    
+    // Flujo
+    start -> init;
+    init -> loop;
+    loop -> input;
+    input -> calcitem;
+    calcitem -> accumulate;
+    accumulate -> printline;
+    printline -> loop [label="siguiente"];
+    loop -> printtotal [label="fin"];
+    printtotal -> printreport;
+    printreport -> findmax;
+    findmax -> printmax;
+    printmax -> end;
+}

@@ -1,0 +1,21 @@
+digraph ConversorMedidas {
+    bgcolor="transparent";
+    node [style=filled, fillcolor=white, fontname="Arial"];
+    
+    // Nodos
+    start [label="INICIO", shape=oval];
+    const1 [label="METROS_POR_ACRE\n= 4047.0", shape=box];
+    const2 [label="METROS_POR_HECTAREA\n= 10000.0", shape=box];
+    input [label="Leer acres", shape=parallelogram];
+    process [label="hectareas =\n(acres * 4047) / 10000", shape=box];
+    output [label="Imprimir\nhectareas", shape=parallelogram];
+    end [label="FIN", shape=oval];
+    
+    // Flujo
+    start -> const1;
+    const1 -> const2;
+    const2 -> input;
+    input -> process;
+    process -> output;
+    output -> end;
+}

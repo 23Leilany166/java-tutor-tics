@@ -1,0 +1,22 @@
+digraph CalculadoraAumento {
+    bgcolor="transparent";
+    node [style=filled, fillcolor=white, fontname="Arial"];
+    
+    // Nodos
+    start [label="INICIO", shape=oval];
+    input [label="Leer sueldo", shape=parallelogram];
+    decision [label="¿sueldo < 1000?", shape=diamond];
+    process1 [label="nuevoSueldo =\nsueldo * 1.15", shape=box];
+    process2 [label="nuevoSueldo =\nsueldo * 1.12", shape=box];
+    output [label="Imprimir\nnuevoSueldo", shape=parallelogram];
+    end [label="FIN", shape=oval];
+    
+    // Flujo
+    start -> input;
+    input -> decision;
+    decision -> process1 [label="SÍ"];
+    decision -> process2 [label="NO"];
+    process1 -> output;
+    process2 -> output;
+    output -> end;
+}

@@ -1,0 +1,15 @@
+digraph InversorDatos {
+    bgcolor="transparent";
+    node [style=filled, fillcolor=white, fontname="Arial"];
+    
+    // Nodos
+    start [label="INICIO", shape=oval];
+    input [label="Ingrese 4 enteros\nA, B, C, D", shape=parallelogram];
+    output [label="Imprimir:\nD, C, B, A", shape=parallelogram];
+    end [label="FIN", shape=oval];
+    
+    // Flujo
+    start -> input;
+    input -> output;
+    output -> end;
+}

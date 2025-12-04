@@ -1,0 +1,21 @@
+digraph ReporteINAH {
+    bgcolor="transparent";
+    node [style=filled, fillcolor=white, fontname="Arial"];
+    
+    // Nodos
+    start [label="INICIO", shape=oval];
+    init [label="Crear\nvisitantes[58][12][10]", shape=box];
+    incA [label="INCISO A:\nCalcular año con\nmás visitas para\ncentro específico", shape=box];
+    incB [label="INCISO B:\nCalcular centro con\nmás visitas para\naño específico", shape=box];
+    incC [label="INCISO C:\nCalcular mes con\nmás visitas para\naño específico", shape=box];
+    output [label="Imprimir\nresultados A, B, C", shape=parallelogram];
+    end [label="FIN", shape=oval];
+    
+    // Flujo
+    start -> init;
+    init -> incA;
+    incA -> incB;
+    incB -> incC;
+    incC -> output;
+    output -> end;
+}

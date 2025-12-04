@@ -1,0 +1,24 @@
+digraph SumaGastos {
+    bgcolor="transparent";
+    node [style=filled, fillcolor=white, fontname="Arial"];
+    
+    // Nodos
+    start [label="INICIO", shape=oval];
+    init [label="totalGastos = 0", shape=box];
+    input1 [label="Leer gasto", shape=parallelogram];
+    while [label="¿gasto != -1?", shape=diamond];
+    process [label="totalGastos +=\ngasto", shape=box];
+    input2 [label="Leer gasto", shape=parallelogram];
+    output [label="Imprimir\ntotalGastos", shape=parallelogram];
+    end [label="FIN", shape=oval];
+    
+    // Flujo
+    start -> init;
+    init -> input1;
+    input1 -> while;
+    while -> process [label="SÍ"];
+    process -> input2;
+    input2 -> while;
+    while -> output [label="NO"];
+    output -> end;
+}

@@ -1,0 +1,32 @@
+digraph PromedioSueldos {
+    bgcolor="transparent";
+    node [style=filled, fillcolor=white, fontname="Arial"];
+    
+    // Nodos
+    start [label="INICIO", shape=oval];
+    init1 [label="total = 0", shape=box];
+    loop1 [label="Para cada sueldo\nen sueldos", shape=box];
+    process1 [label="total +=\nsueldo", shape=box];
+    calc [label="promedio =\ntotal / length", shape=box];
+    init2 [label="contador = 0", shape=box];
+    loop2 [label="Para cada sueldo\nen sueldos", shape=box];
+    decision [label="¿sueldo >\npromedio?", shape=diamond];
+    process2 [label="contador++", shape=box];
+    output [label="Imprimir\npromedio, contador", shape=parallelogram];
+    end [label="FIN", shape=oval];
+    
+    // Flujo
+    start -> init1;
+    init1 -> loop1;
+    loop1 -> process1;
+    process1 -> loop1 [label="siguiente"];
+    loop1 -> calc [label="fin"];
+    calc -> init2;
+    init2 -> loop2;
+    loop2 -> decision;
+    decision -> process2 [label="SÍ"];
+    decision -> loop2 [label="NO\nsiguiente"];
+    process2 -> loop2 [label="siguiente"];
+    loop2 -> output [label="fin"];
+    output -> end;
+}

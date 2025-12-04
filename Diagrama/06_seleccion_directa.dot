@@ -1,0 +1,28 @@
+digraph SeleccionDirecta {
+    bgcolor="transparent";
+    node [style=filled, fillcolor=white, fontname="Arial"];
+    
+    // Nodos
+    start [label="INICIO", shape=oval];
+    outerloop [label="i = 0\nhasta n-2", shape=box];
+    init [label="minIndex = i", shape=box];
+    innerloop [label="j = i+1\nhasta n-1", shape=box];
+    decision [label="¿vector[j] <\nvector[minIndex]?", shape=diamond];
+    update [label="minIndex = j", shape=box];
+    swap [label="INTERCAMBIAR\nvector[i] con\nvector[minIndex]", shape=box];
+    output [label="Imprimir\nvector ordenado", shape=parallelogram];
+    end [label="FIN", shape=oval];
+    
+    // Flujo
+    start -> outerloop;
+    outerloop -> init;
+    init -> innerloop;
+    innerloop -> decision;
+    decision -> update [label="SÍ"];
+    decision -> innerloop [label="NO\nsiguiente j"];
+    update -> innerloop [label="siguiente j"];
+    innerloop -> swap [label="fin j"];
+    swap -> outerloop [label="siguiente i"];
+    outerloop -> output [label="fin i"];
+    output -> end;
+}

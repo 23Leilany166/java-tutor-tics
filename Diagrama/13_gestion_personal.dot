@@ -1,0 +1,21 @@
+digraph GestionPersonal {
+    bgcolor="transparent";
+    node [style=filled, fillcolor=white, fontname="Arial"];
+    
+    // Nodos
+    start [label="INICIO", shape=oval];
+    init [label="Inicializar arrays\nparalelos:\nnombres[], depts[],\nsueldos[], antigüedad[]", shape=box];
+    incA [label="INCISO A:\nBuscar empleado\npor nombre e\nimprimir sus datos", shape=box];
+    incB [label="INCISO B:\nEncontrar empleado\ncon mayor sueldo en\ndepartamento", shape=box];
+    incC [label="INCISO C:\nDar de alta nuevo\nempleado en arrays\nparalelos", shape=box];
+    output [label="Imprimir\nresultados", shape=parallelogram];
+    end [label="FIN", shape=oval];
+    
+    // Flujo
+    start -> init;
+    init -> incA;
+    incA -> incB;
+    incB -> incC;
+    incC -> output;
+    output -> end;
+}

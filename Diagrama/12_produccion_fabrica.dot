@@ -1,0 +1,21 @@
+digraph ProduccionFabrica {
+    bgcolor="transparent";
+    node [style=filled, fillcolor=white, fontname="Arial"];
+    
+    // Nodos
+    start [label="INICIO", shape=oval];
+    init [label="Crear\nproduccion[12][10],\ncostos[10]", shape=box];
+    incA [label="INCISO A:\nCalcular costo anual\npor producto\n(sumar meses * costo)", shape=box];
+    incB [label="INCISO B:\nCalcular costo total\nfábrica (suma de\ntodos los productos)", shape=box];
+    incC [label="INCISO C:\nEncontrar producto\nmás vendido", shape=box];
+    output [label="Imprimir\nresultados A, B, C", shape=parallelogram];
+    end [label="FIN", shape=oval];
+    
+    // Flujo
+    start -> init;
+    init -> incA;
+    incA -> incB;
+    incB -> incC;
+    incC -> output;
+    output -> end;
+}

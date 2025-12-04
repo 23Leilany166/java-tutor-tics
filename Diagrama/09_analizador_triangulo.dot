@@ -1,0 +1,24 @@
+digraph AnalizadorTriangulo {
+    bgcolor="transparent";
+    node [style=filled, fillcolor=white, fontname="Arial"];
+    
+    // Nodos
+    start [label="INICIO", shape=oval];
+    input [label="Leer a, b, c", shape=parallelogram];
+    validate [label="¿(a+b>c) AND\n(a+c>b) AND\n(b+c>a)?", shape=diamond];
+    invalid [label="Imprimir\n'Triángulo Inválido'", shape=parallelogram];
+    determine [label="Determinar tipo:\nEquilátero/\nIsósceles/\nEscaleno", shape=box];
+    calcarea [label="Calcular área\n(Fórmula de Herón)", shape=box];
+    output [label="Imprimir\ntipo, área", shape=parallelogram];
+    end [label="FIN", shape=oval];
+    
+    // Flujo
+    start -> input;
+    input -> validate;
+    validate -> invalid [label="NO"];
+    validate -> determine [label="SÍ"];
+    invalid -> end;
+    determine -> calcarea;
+    calcarea -> output;
+    output -> end;
+}
