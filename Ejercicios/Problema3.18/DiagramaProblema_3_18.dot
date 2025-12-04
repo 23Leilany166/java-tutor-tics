@@ -1,0 +1,93 @@
+digraph DiagramaFabricas {
+    // Configuración general
+    rankdir=TB;
+    node [fontname="Arial", fontsize=12];
+    edge [fontsize=10];
+
+    // Nodos Principales
+    Inicio [label="INICIO", shape=ellipse];
+    InitMayPro [label="MAYPRO ← 0", shape=box];
+    InputN [label="N", shape=parallelogram];
+    CheckN [label="N ≤ 100", shape=diamond];
+    
+    ErrorMsg [label="\"ERROR EN NUMERO\nDE FABRICAS\"", shape=note];
+    
+    // Inicio del Ciclo Principal (Fábricas)
+    InitI [label="I ← 1", shape=box];
+    CheckI [label="I ≤ N", shape=diamond];
+    
+    // Cuerpo Ciclo Principal
+    InputFabrica [label="FABRICA", shape=parallelogram];
+    InitInner [label="TOTANU ← 0\nJ ← 1", shape=box];
+    
+    // Inicio del Ciclo Interno (Meses)
+    CheckJ [label="J ≤ 12", shape=diamond];
+    InputMes [label="MES", shape=parallelogram];
+    CalcTotAnu [label="TOTANU ← TOTANU + MES", shape=box];
+    
+    // Decisión Julio y Ventas > 3M
+    CheckSpecial [label="J = 7\nMES > 3 000 000", shape=diamond];
+    PrintSpecial [label="FABRICA", shape=note];
+    
+    IncJ [label="J ← J + 1", shape=box];
+    
+    // Fin Ciclo Interno y Procesos Finales de Fábrica
+    CheckMax [label="TOTANU > MAYPRO", shape=diamond];
+    UpdateMax [label="MAYPRO ← TOTANU\nCLAVE ← FABRICA", shape=box];
+    PrintAnnual [label="\"PRODUCCION ANUAL FABRICA:\",\nFABRICA, \":$\", TOTANU", shape=note];
+    
+    IncI [label="I ← I + 1", shape=box];
+    
+    // Fin del programa
+    PrintBest [label="\"FABRICA QUE MAS PRODUJO EN EL AÑO:\",\nCLAVE, \"PRODUCCIÓN: $\", MAYPRO", shape=note];
+    Fin [label="FIN", shape=ellipse];
+
+    // --- CONEXIONES ---
+
+    // Flujo inicial
+    Inicio -> InitMayPro;
+    InitMayPro -> InputN;
+    InputN -> CheckN;
+
+    // Validación N <= 100
+    CheckN -> ErrorMsg [label="No"];
+    ErrorMsg -> Fin;
+    CheckN -> InitI [label="Si"];
+
+    // Entrada al ciclo I
+    InitI -> CheckI;
+    
+    // Salida del ciclo I (Fin de todas las fábricas)
+    CheckI:e -> PrintBest [label="No"]; // Sale por la derecha para rodear
+    PrintBest -> Fin;
+
+    // Dentro del ciclo I (Procesar Fábrica)
+    CheckI -> InputFabrica [label="Si"];
+    InputFabrica -> InitInner;
+    InitInner -> CheckJ;
+
+    // Ciclo J (Meses)
+    CheckJ -> InputMes [label="Si"];
+    InputMes -> CalcTotAnu;
+    CalcTotAnu -> CheckSpecial;
+
+    // Condición Especial (Julio > 3M)
+    CheckSpecial -> PrintSpecial [label="Si"];
+    CheckSpecial -> IncJ [label="No"];
+    PrintSpecial -> IncJ;
+
+    // Retorno Ciclo J
+    IncJ -> CheckJ [constraint=false]; // constraint=false ayuda a que la flecha suba sin romper el layout
+
+    // Salida Ciclo J (Fin de meses de una fábrica)
+    CheckJ:e -> CheckMax [label="No"]; // Sale por la derecha
+    
+    // Chequear Máximo
+    CheckMax -> UpdateMax [label="Si"];
+    CheckMax -> PrintAnnual [label="No"];
+    UpdateMax -> PrintAnnual;
+
+    // Continuar con siguiente Fábrica
+    PrintAnnual -> IncI;
+    IncI -> CheckI [constraint=false]; // Regresa arriba al ciclo I
+}

@@ -1,0 +1,32 @@
+digraph DiagramaSueldo {
+    // Configuración general
+    rankdir=TB;
+    node [fontname="Arial", fontsize=12];
+    edge [fontsize=10];
+
+    // Nodos
+    Inicio [label="INICIO", shape=ellipse];
+    Entrada [label="SUE", shape=parallelogram];
+    Decision [label="SUE < 1000", shape=diamond];
+    
+    // Bloque de proceso con las dos operaciones
+    Proceso [label="AUM ← SUE * 0.15\nNSUE ← SUE + AUM", shape=box];
+    
+    // Salida (Forma de documento)
+    Salida [label="NSUE", shape=note];
+    
+    Fin [label="FIN", shape=ellipse];
+
+    // Conexiones
+    Inicio -> Entrada;
+    Entrada -> Decision;
+
+    // Camino del SÍ (Hacia abajo)
+    Decision -> Proceso [label="Si"];
+    Proceso -> Salida;
+    Salida -> Fin;
+
+    // Camino del NO (Por la derecha, saltándose el proceso y la salida)
+    // Usamos ':e' para forzar que la flecha salga por la derecha (este)
+    Decision:e -> Fin [label="No"]; 
+}

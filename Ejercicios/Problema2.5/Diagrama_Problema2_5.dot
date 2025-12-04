@@ -1,0 +1,38 @@
+digraph DiagramaPosNeg {
+    // Configuración general
+    rankdir=TB;
+    node [fontname="Arial", fontsize=12];
+    edge [fontsize=10];
+
+    // Nodos
+    Inicio [label="INICIO", shape=ellipse];
+    Entrada [label="NUM", shape=parallelogram];
+    
+    // Decisiones
+    Decision1 [label="NUM > 0", shape=diamond];
+    Decision2 [label="NUM = 0", shape=diamond];
+    
+    // Salidas
+    Positivo [label="\"POSITIVO\"", shape=note];
+    Nulo [label="\"NULO\"", shape=note];
+    Negativo [label="\"NEGATIVO\"", shape=note];
+    
+    Fin [label="FIN", shape=ellipse];
+
+    // Conexiones
+    Inicio -> Entrada;
+    Entrada -> Decision1;
+
+    // Primera decisión
+    Decision1 -> Positivo [label="Si"];
+    Decision1 -> Decision2 [label="No"];
+
+    // Segunda decisión
+    Decision2 -> Nulo [label="Si"];
+    Decision2 -> Negativo [label="No"];
+
+    // Uniones hacia el Fin
+    Positivo -> Fin;
+    Nulo -> Fin;
+    Negativo -> Fin;
+}

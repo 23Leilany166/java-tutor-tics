@@ -1,0 +1,27 @@
+digraph DiagramaFlujo {
+    // Configuración general (Top to Bottom)
+    rankdir=TB;
+    node [fontname="Arial", fontsize=12];
+    edge [fontsize=10];
+
+    // Definición de Nodos
+    // Elipse para Inicio y Fin
+    Inicio [label="INICIO", shape=ellipse];
+    
+    // Paralelogramo para la entrada
+    Entrada [label="NUM", shape=parallelogram];
+    
+    // Rectángulo para el proceso (usamos \n para salto de línea)
+    Proceso [label="CUA ← NUM * NUM\nCUB ← NUM ** 3", shape=box];
+    
+    // Forma de 'nota' o 'documento' para la salida
+    Salida [label="CUA, CUB", shape=note];
+    
+    Fin [label="FIN", shape=ellipse];
+
+    // Conexiones (Flechas)
+    Inicio -> Entrada;
+    Entrada -> Proceso;
+    Proceso -> Salida;
+    Salida -> Fin;
+}

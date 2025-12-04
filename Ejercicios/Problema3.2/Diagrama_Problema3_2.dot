@@ -1,0 +1,44 @@
+digraph DiagramaSerie {
+    // Configuración general
+    rankdir=TB;
+    node [fontname="Arial", fontsize=12];
+    edge [fontsize=10];
+
+    // Nodos
+    Inicio [label="INICIO", shape=ellipse];
+    Init [label="BAND ← 'T'\nSUMSER ← 0, I ← 2", shape=box];
+    Condition [label="I ≤ 1800", shape=diamond];
+    
+    // Cuerpo del ciclo
+    SumProcess [label="SUMSER ← SUMSER + I", shape=box];
+    ShowI [label="I", shape=note];
+    InnerDecision [label="BAND = 'T'", shape=diamond];
+    
+    BranchSi [label="BAND ← 'F'\nI ← I + 3", shape=box];
+    BranchNo [label="BAND ← 'T'\nI ← I + 2", shape=box];
+    
+    // Salida final
+    FinalOutput [label="SUMSER", shape=note];
+    Fin [label="FIN", shape=ellipse];
+
+    // Conexiones
+    Inicio -> Init;
+    Init -> Condition;
+    
+    // Ciclo Mientras
+    Condition -> SumProcess [label="Si"];
+    Condition:e -> FinalOutput [label="No"]; // Sale por la derecha
+    
+    SumProcess -> ShowI;
+    ShowI -> InnerDecision;
+    
+    // Decisión interna
+    InnerDecision -> BranchSi [label="Si"];
+    InnerDecision -> BranchNo [label="No"];
+    
+    // Retorno del ciclo (flechas que regresan arriba)
+    BranchSi -> Condition [constraint=false];
+    BranchNo -> Condition [constraint=false];
+    
+    FinalOutput -> Fin;
+}
