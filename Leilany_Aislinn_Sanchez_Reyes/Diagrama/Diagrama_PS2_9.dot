@@ -1,0 +1,50 @@
+digraph PS_2_9 {
+    graph  [rankdir=TB, bgcolor="transparent", dpi=300, margin="0.3", pad="0.5"];
+    node   [fontname="Arial", fontsize=11, style="filled", fillcolor="white",
+            width=3.0, height=0.6];
+    edge   [fontname="Arial", fontsize=10];
+
+    inicio   [shape=oval, label="INICIO"];
+
+    leer     [shape=parallelogram,
+              label="Leer A, N"];
+
+    condA    [shape=diamond,
+              label="A ≠ 0?"];
+
+    calc1    [shape=box,
+              label="L <- A^(-N + 1)"];
+
+    calc2    [shape=box,
+              label="R <- 1 / (A^N)"];
+
+    comp     [shape=diamond,
+              label="L = R?"];
+
+    impOK    [shape=egg,
+              label="\"La igualdad\nse cumple\""];
+
+    impNO    [shape=egg,
+              label="\"La igualdad\nNO se cumple\""];
+
+    impERR   [shape=egg,
+              label="\"Expresión no válida\n(A = 0)\""];
+
+    fin      [shape=oval, label="FIN"];
+
+    inicio -> leer;
+    leer   -> condA;
+
+    condA -> calc1 [label="Si"];
+    condA -> impERR [label="No"];
+
+    calc1 -> calc2;
+    calc2 -> comp;
+
+    comp  -> impOK [label="Si"];
+    comp  -> impNO [label="No"];
+
+    impOK  -> fin;
+    impNO  -> fin;
+    impERR -> fin;
+}

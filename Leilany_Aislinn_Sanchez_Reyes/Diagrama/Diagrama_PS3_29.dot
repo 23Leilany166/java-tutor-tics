@@ -1,0 +1,115 @@
+digraph Diagrama_PS3_29 {
+    graph  [rankdir=TB, bgcolor="transparent", dpi=300, margin="0.3", pad="0.5"];
+    node   [fontname="Arial", fontsize=11, style="filled", fillcolor="white",
+            width=3.2, height=0.6];
+    edge   [fontname="Arial", fontsize=10];
+
+    INI [shape=oval, label="INICIO"];
+
+    init [shape=box,
+          label="TOT <- 0\nMEX_DF <- 0\nG1 <- 0\nG2 <- 0\nG3 <- 0\nG4 <- 0"];
+
+    msgN  [shape=box,
+           label="\"Ingrese N (número de\nhuérfanos registrados)\""];
+    leerN [shape=parallelogram, label="N"];
+
+    I_ini [shape=box, label="I <- 1"];
+    condI [shape=diamond, label="I <= N"];
+
+    leerDatos [shape=parallelogram,
+               label="NOMBRE[I], SEXO[I],\nEDAD[I], ORFANATO[I],\nESTADO[I]"];
+
+    incTOT [shape=box, label="TOT <- TOT + 1"];
+
+    condEstado [shape=diamond,
+                label="ESTADO[I] = 'MÉXICO'\nó 'DF'"];
+    incMEXDF [shape=box, label="MEX_DF <- MEX_DF + 1"];
+
+    condG1 [shape=diamond, label="EDAD[I] < 1"];
+    condG2 [shape=diamond, label="1 <= EDAD[I] <= 3"];
+    condG3 [shape=diamond, label="4 <= EDAD[I] <= 6"];
+    // si no cumple ninguno, va a G4
+
+    incG1 [shape=box, label="G1 <- G1 + 1"];
+    incG2 [shape=box, label="G2 <- G2 + 1"];
+    incG3 [shape=box, label="G3 <- G3 + 1"];
+    incG4 [shape=box, label="G4 <- G4 + 1"];
+
+    I_inc [shape=box, label="I <- I + 1"];
+
+    // cálculo de porcentajes y mayor grupo
+    calcPorc [shape=box,
+              label="PORC_MEXDF <-\n(MEX_DF * 100.0) / TOT"];
+
+    mayor12 [shape=diamond,
+             label="G1 >= G2 y\nG1 >= G3 y\nG1 >= G4"];
+    mayor22 [shape=diamond,
+             label="G2 >= G3 y\nG2 >= G4"];
+    mayor32 [shape=diamond,
+             label="G3 >= G4"];
+
+    setG1 [shape=box, label="GRUPO_MAX <- 1"];
+    setG2 [shape=box, label="GRUPO_MAX <- 2"];
+    setG3 [shape=box, label="GRUPO_MAX <- 3"];
+    setG4 [shape=box, label="GRUPO_MAX <- 4"];
+
+    outRes [shape=egg,
+            label="\"% de huérfanos\nde Edo. Méx y DF:\", PORC_MEXDF\n\"Grupo 1 (<1 año):\", G1\n\"Grupo 2 (1-3):\", G2\n\"Grupo 3 (4-6):\", G3\n\"Grupo 4 (>6):\", G4\n\"Grupo con más huérfanos:\", GRUPO_MAX"];
+
+    FIN [shape=oval, label="FIN"];
+
+    // Flujo
+    INI  -> init;
+    init -> msgN;
+    msgN -> leerN;
+    leerN -> I_ini;
+    I_ini -> condI;
+
+    condI -> leerDatos [label="Si"];
+    condI -> calcPorc  [label="No"];
+
+    leerDatos -> incTOT;
+    incTOT    -> condEstado;
+
+    condEstado -> incMEXDF [label="Si"];
+    condEstado -> condG1   [label="No"];
+
+    incMEXDF -> condG1;
+
+    condG1 -> incG1 [label="Si"];
+    condG1 -> condG2 [label="No"];
+
+    incG1 -> I_inc;
+
+    condG2 -> incG2 [label="Si"];
+    condG2 -> condG3 [label="No"];
+
+    incG2 -> I_inc;
+
+    condG3 -> incG3 [label="Si"];
+    condG3 -> incG4 [label="No"];
+
+    incG3 -> I_inc;
+    incG4 -> I_inc;
+
+    I_inc -> condI;
+
+    // Selección del grupo con más huérfanos
+    calcPorc -> mayor12;
+
+    mayor12 -> setG1 [label="Si"];
+    mayor12 -> mayor22 [label="No"];
+
+    mayor22 -> setG2 [label="Si"];
+    mayor22 -> mayor32 [label="No"];
+
+    mayor32 -> setG3 [label="Si"];
+    mayor32 -> setG4 [label="No"];
+
+    setG1 -> outRes;
+    setG2 -> outRes;
+    setG3 -> outRes;
+    setG4 -> outRes;
+
+    outRes -> FIN;
+}

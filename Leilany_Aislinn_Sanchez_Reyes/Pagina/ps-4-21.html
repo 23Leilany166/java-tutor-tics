@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PS 4.21 – Ejercicios de Programación Estructurada en Java</title>
+  <link rel="stylesheet" href="./styles_desc.css">
+</head>
+  <div class="container">
+    <header class="page-header">
+      <h1>PS 4.21 – Temperaturas promedio de un año</h1>
+      <p class="subtitle">Ejercicio de Programación Estructurada en Java (arreglo bidimensional 12×31)</p>
+    </header>
+    <main id="main" class="exercises-main">
+      <article class="exercise-card" aria-labelledby="ps421-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Problemas Sugeridos</span>
+          <h2 id="ps421-title">PS 4.21 – Temperaturas diarias en la Ciudad de México</h2>
+          <p class="exercise-description">
+            En el arreglo <code>TEMP[1..12][1..31]</code> se guardan las temperaturas promedio diarias
+            del año anterior en la Ciudad de México (12 meses y hasta 31 días por mes).
+            A partir de esos datos se pide calcular:
+          </p>
+          <ul>
+            <li><strong>a)</strong> La temperatura más alta registrada en todo el año, indicando día y mes.</li>
+            <li><strong>b)</strong> El mes que tuvo el promedio de temperatura más alto.</li>
+            <li><strong>c)</strong> El promedio de temperatura de cada mes.</li>
+          </ul>
+        </header>
+
+        <div class="exercise-content">
+          <!-- =============================== -->
+          <!--        CONTENIDO PRINCIPAL      -->
+          <!-- =============================== -->
+          <section class="exercise-main">
+            <h3>Datos y variables</h3>
+            <ul>
+              <li>
+                <strong>Entrada:</strong>
+                <ul>
+                  <li><code>TEMP[1..12][1..31]</code>: arreglo bidimensional de tipo real.
+                      Cada renglón es un mes y cada columna es un día.</li>
+                </ul>
+              </li>
+              <li>
+                <strong>Salida:</strong>
+                <ul>
+                  <li><code>MAXT</code>: temperatura más alta del año.</li>
+                  <li><code>DIAMAX</code> y <code>MESMAX</code>: día y mes donde se presentó <code>MAXT</code>.</li>
+                  <li><code>PROM[1..12]</code>: promedio de temperaturas de cada mes.</li>
+                  <li><code>MESPMAX</code>: mes con el promedio más alto.</li>
+                </ul>
+              </li>
+            </ul>
+
+            <h3>Idea general del algoritmo</h3>
+            <ol>
+              <li>Recorrer toda la matriz para:
+                <ul>
+                  <li>Encontrar la temperatura máxima del año.</li>
+                  <li>Ir sumando las temperaturas de cada mes para luego sacar su promedio.</li>
+                </ul>
+              </li>
+              <li>Con los promedios de cada mes, buscar qué mes tiene el promedio más alto.</li>
+            </ol>
+
+            <!-- =============================== -->
+            <!--          DIAGRAMA MODAL        -->
+            <!-- =============================== -->
+            <div class="diagram-section">
+              <h3>Diagrama de flujo</h3>
+              <button class="diagram-button" onclick="openDiagram('diagram-ps421')">
+                📊 Ver Diagrama
+              </button>
+            </div>
+
+            <div id="diagram-ps421" class="diagram-modal">
+              <div class="diagram-modal-content">
+                <div class="diagram-modal-header">
+                  <h3>Diagrama de flujo – PS 4.21</h3>
+                  <button class="diagram-modal-close" onclick="closeDiagram('diagram-ps421')">✕</button>
+                </div>
+                <div class="diagram-modal-body">
+                  <figure>
+                    <img class="flowchart-img" loading="lazy"
+                         src="../Diagrama/diagrama_PS4_21.png"
+                         alt="Diagrama de flujo: PS 4.21 – Temperaturas diarias (12×31)">
+                    <figcaption>
+                      Figura: Diagrama de flujo del <strong>Problema Sugerido 4.21</strong>.
+                    </figcaption>
+                  </figure>
+                  <button class="diagram-return-btn" onclick="closeDiagram('diagram-ps421')">
+                    ← Volver al ejercicio
+                  </button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- =============================== -->
+          <!--             SIDEBAR             -->
+          <!-- =============================== -->
+          <aside class="exercise-sidebar">
+            <h3>Tips rápidos para 1er semestre</h3>
+            <ul>
+              <li><strong>Filas y columnas:</strong> la primera posición del índice es el
+                  <em>mes</em> y la segunda es el <em>día</em>: <code>TEMP[mes][día]</code>.</li>
+              <li><strong>Dos ciclos anidados:</strong> el ciclo de afuera recorre los 12 meses
+                  y el de adentro los 31 días.</li>
+              <li><strong>Máximo del año:</strong> cada vez que encuentres una temperatura mayor
+                  que la que tenías guardada, actualiza el valor y recuerda su día y mes.</li>
+              <li><strong>Promedio de un mes:</strong> suma todas las temperaturas del mes y al
+                  final divide entre 31.</li>
+              <li><strong>Mes más caliente:</strong> después de llenar el arreglo
+                  <code>PROM</code>, busca el valor más grande y guarda el número de mes.</li>
+              <li><strong>Orden de trabajo:</strong> primero llena la matriz, luego haces
+                  todos los cálculos en un solo recorrido, así el algoritmo es más sencillo.</li>
+            </ul>
+          </aside>
+        </div>
+      </article>
+    </main>
+
+    <footer class="page-footer">
+      <p class="note-text"><a href="./main_desc.html">← Volver al menú principal</a></p>
+    </footer>
+  </div>
+
+  <!-- =============================== -->
+  <!--         SCRIPT MODAL            -->
+  <!-- =============================== -->
+  <script>
+    function openDiagram(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeDiagram(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const modals = document.querySelectorAll('.diagram-modal');
+      modals.forEach(modal => {
+        modal.addEventListener('click', function (event) {
+          if (event.target === this) {
+            closeDiagram(this.id);
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

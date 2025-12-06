@@ -1,0 +1,78 @@
+digraph Diagrama_PS3_28 {
+    graph  [rankdir=TB, bgcolor="transparent", dpi=300, margin="0.3", pad="0.5"];
+    node   [fontname="Arial", fontsize=11, style="filled", fillcolor="white",
+            width=3.0, height=0.6];
+    edge   [fontname="Arial", fontsize=10];
+
+    INI [shape=oval, label="INICIO"];
+
+    init [shape=box,
+          label="NH <- 0\nNM <- 0\nM20K <- 0\nH40_40K <- 0\nMAY50 <- 0"];
+
+    msgN  [shape=box, label="\"Ingrese N (número de empleados)\""];
+    leerN [shape=parallelogram, label="N"];
+
+    I_ini [shape=box, label="I <- 1"];
+    condI [shape=diamond, label="I <= N"];
+
+    leerDatos [shape=parallelogram,
+               label="CLAVE[I], EDAD[I],\nSEXO[I], SUELDO[I]"];
+
+    condSexoH [shape=diamond, label="SEXO[I] = 'H'"];
+    condEdad50 [shape=diamond, label="EDAD[I] > 50"];
+
+    incNH [shape=box, label="NH <- NH + 1"];
+    incNM [shape=box, label="NM <- NM + 1"];
+
+    condM20K [shape=diamond, label="SEXO[I] = 'M'\ny SUELDO[I] > 20000"];
+    incM20K  [shape=box, label="M20K <- M20K + 1"];
+
+    condH40_40K [shape=diamond,
+                 label="SEXO[I] = 'H'\nEDAD[I] < 40\ny SUELDO[I] < 40000"];
+    incH40_40K [shape=box, label="H40_40K <- H40_40K + 1"];
+
+    incMAY50 [shape=box, label="MAY50 <- MAY50 + 1"];
+
+    I_inc [shape=box, label="I <- I + 1"];
+
+    outRes [shape=egg,
+            label="\"Hombres:\", NH\n\"Mujeres:\", NM\n\"Mujeres > $20,000:\", M20K\n\"Hombres <40 y < $40,000:\", H40_40K\n\"Empleados > 50 años:\", MAY50"];
+
+    FIN [shape=oval, label="FIN"];
+
+    // Flujo
+    INI  -> init;
+    init -> msgN;
+    msgN -> leerN;
+    leerN -> I_ini;
+    I_ini -> condI;
+
+    condI -> leerDatos [label="Si"];
+    condI -> outRes    [label="No"];
+
+    leerDatos -> condSexoH;
+
+    condSexoH -> incNH [label="Si"];
+    condSexoH -> incNM [label="No"];
+
+    incNH -> condM20K;
+    incNM -> condM20K;
+
+    condM20K -> incM20K  [label="Si"];
+    condM20K -> condH40_40K [label="No"];
+
+    incM20K -> condH40_40K;
+
+    condH40_40K -> incH40_40K [label="Si"];
+    condH40_40K -> condEdad50 [label="No"];
+
+    incH40_40K -> condEdad50;
+
+    condEdad50 -> incMAY50 [label="Si"];
+    condEdad50 -> I_inc   [label="No"];
+
+    incMAY50 -> I_inc;
+    I_inc    -> condI;
+
+    outRes -> FIN;
+}

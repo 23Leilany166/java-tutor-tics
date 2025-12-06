@@ -1,0 +1,63 @@
+digraph Diagrama5_4_D {
+    graph  [rankdir=TB, bgcolor="transparent", dpi=300, margin="0.3", pad="0.5"];
+    node   [fontname="Arial", fontsize=11, style="filled", fillcolor="white",
+            width=3.2, height=0.6];
+    edge   [fontname="Arial", fontsize=10];
+
+    D_in  [shape=hexagon, label="D"];
+
+    msg_menu [shape=box,
+      label="\"Información sobre un empleado (1)\",\n\"Empleado que más gana por dpto. (2)\",\n\"Alta de empleados (3)\",\n\"Terminar proceso (4)\""];
+
+    leer_opc [shape=parallelogram, label="OPCION"];
+
+    cond_opc [shape=diamond, label="(OPCION ≥ 1)\n∧ (OPCION ≤ 3)"];
+
+    // subdecisión para opcion 4
+    cond_4   [shape=diamond, label="OPCION = 4"];
+
+    // rumbos
+    opc1_d   [shape=box, label="OPCION"];
+    opc2_d   [shape=box, label="OPCION"];
+    opc3_d   [shape=box, label="OPCION"];
+
+    // etiquetas de módulos
+    Empleado  [shape=box, label="Empleado"];
+    MasSueldo [shape=box, label="MásSueldo"];
+    Altas     [shape=box, label="Altas"];
+
+    // conectores de salida
+    E_out [shape=hexagon, label="E"];   // para impresión final
+    F_out [shape=hexagon, label="F"];   // módulo Empleado
+    G_out [shape=hexagon, label="G"];   // parte final MásSueldo
+    H_out [shape=hexagon, label="H"];   // parte 1 Altas
+    I_out [shape=hexagon, label="I"];   // parte 2 Altas
+    J_out [shape=hexagon, label="J"];   // error Altas
+
+    D_in    -> msg_menu;
+    msg_menu -> leer_opc;
+    leer_opc -> cond_4;
+
+    cond_4 -> E_out   [label="Si"];  // terminar → ir a impresión final
+    cond_4 -> cond_opc [label="No"];
+
+    cond_opc -> opc1_d [label="Si"];
+    cond_opc -> leer_opc [label="No"]; // opción inválida: vuelve a pedir
+
+    // subramificación 1,2,3
+    opc1_d -> Empleado;
+    opc2_d -> MasSueldo;
+    opc3_d -> Altas;
+
+    // etiquetas numéricas (como en el libro)
+    Empleado  -> F_out   [xlabel="1"];
+    MasSueldo -> G_out   [xlabel="2"];
+    Altas     -> H_out   [xlabel="3"];
+
+    // bucle de regreso al menú después de cada módulo
+    F_out -> msg_menu;
+    G_out -> msg_menu;
+    H_out -> msg_menu;
+    I_out -> msg_menu;
+    J_out -> msg_menu;
+}

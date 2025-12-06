@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ejemplo 3.5 – Ejercicios de Programación Estructurada en Java</title>
+  <link rel="stylesheet" href="./styles_desc.css">
+</head>
+
+<body id="top">
+  <div class="container">
+
+    <header class="page-header">
+      <h1>Ejemplo 3.5 – Cubo de números positivos (finaliza con -1)</h1>
+      <p class="subtitle">Ejercicio de Programación Estructurada en Java</p>
+    </header>
+
+    <main id="main" class="exercises-main">
+      <article class="exercise-card" aria-labelledby="ex35-title">
+
+        <header class="exercise-header">
+          <span class="exercise-badge">Algoritmos</span>
+          <h2 id="ex35-title">Ejemplo 3.5 – Calcular el cubo de una lista de números</h2>
+          <p class="exercise-description">
+            En este ejercicio vamos a leer varios números positivos.
+            Por cada número ingresado, calcularemos su cubo.  
+            El proceso termina cuando el usuario escribe <code>-1</code>, lo cual indica el fin de la entrada.
+          </p>
+        </header>
+
+        <div class="exercise-content">
+
+          <!-- =============================== -->
+          <!--        CONTENIDO PRINCIPAL      -->
+          <!-- =============================== -->
+
+          <section class="exercise-main">
+
+            <!-- Botón de diagrama -->
+            <div class="diagram-section" style="margin-bottom: 20px;">
+              <button class="diagram-button" onclick="openDiagram('diagram-ej35')">
+                📊 Ver Diagrama
+              </button>
+            </div>
+
+            <h3>Datos y variables</h3>
+            <ul>
+              <li><strong>Entrada:</strong> una serie de números enteros positivos. El proceso termina cuando se ingresa <code>-1</code>.</li>
+              <li><strong>NUM:</strong> número leído (entero).</li>
+              <li><strong>CUB:</strong> cubo del número (entero).</li>
+              <li><strong>Salida:</strong> el valor de <code>NUM³</code> para cada número ingresado.</li>
+            </ul>
+
+            <h3>Explicación sencilla</h3>
+            <ul>
+              <li><strong>NUM:</strong> es el número que el usuario va escribiendo. Si vale <code>-1</code>, se acaba el ejercicio.</li>
+              <li><strong>CUB:</strong> es el cubo del número. Lo calculamos como <code>NUM * NUM * NUM</code>.</li>
+              <li>El ciclo se repite mientras <code>NUM != -1</code>.</li>
+            </ul>
+
+            <!-- Modal para el diagrama -->
+            <div id="diagram-ej35" class="diagram-modal">
+              <div class="diagram-modal-content">
+
+                <div class="diagram-modal-header">
+                  <h3>Diagrama de flujo – Ejemplo 3.5</h3>
+                  <button class="diagram-modal-close" onclick="closeDiagram('diagram-ej35')">✕</button>
+                </div>
+
+                <div class="diagram-modal-body">
+                  <figure>
+                    <img class="flowchart-img" loading="lazy"
+                         src="../Diagrama/Diagrama_Ejemplo3_5.png"
+                         alt="Diagrama de flujo: Ejemplo 3.5 – Cubo de números">
+                    <figcaption>Figura: Diagrama de flujo del <strong>Ejemplo 3.5</strong>.</figcaption>
+                  </figure>
+
+                  <button class="diagram-return-btn" onclick="closeDiagram('diagram-ej35')">
+                    ← Volver al ejercicio
+                  </button>
+                </div>
+
+              </div>
+            </div>
+
+            <h3>Tabla de corridas (resultados esperados)</h3>
+
+            <p>
+              Esta tabla muestra ejemplos de números ingresados y el resultado que debería imprimir tu programa.
+            </p>
+
+            <table class="table-default">
+              <thead>
+                <tr>
+                  <th>NUM</th>
+                  <th>CUB = NUM³</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>5</td><td>125</td></tr>
+                <tr><td>13</td><td>2197</td></tr>
+                <tr><td>7</td><td>343</td></tr>
+                <tr><td>48</td><td>110592</td></tr>
+                <tr><td>18</td><td>5832</td></tr>
+                <tr><td>27</td><td>19683</td></tr>
+                <tr><td>94</td><td>830584</td></tr>
+                <tr><td>62</td><td>238328</td></tr>
+                <tr><td>-1</td><td>Fin del ciclo</td></tr>
+              </tbody>
+            </table>
+
+          </section>
+
+          <!-- =============================== -->
+          <!--             SIDEBAR             -->
+          <!-- =============================== -->
+
+          <aside class="exercise-sidebar">
+            <h3>Tips rápidos para resolverlo</h3>
+
+            <p class="note-text">
+              Este ejercicio usa un ciclo que se detiene con un número especial llamado <strong>centinela</strong>.
+            </p>
+
+            <ul>
+              <li><strong>El centinela es -1:</strong> cuando aparece, el ciclo se detiene.</li>
+              <li><strong>Solo procesas números positivos:</strong> cada vez que leas uno, imprime su cubo.</li>
+              <li><strong>Fórmula:</strong> <code>CUB = NUM * NUM * NUM</code></li>
+              <li><strong>Mientras NUM ≠ -1</strong> → sigues leyendo e imprimiendo.</li>
+              <li><strong>Java estructurado:</strong> todo se hace dentro de <code>main</code> usando variables simples.</li>
+            </ul>
+
+            <div class="tip-box">
+              <p>
+                Piensa el algoritmo así:  
+                <strong>Leo un número → si no es -1, calculo el cubo → imprimo → vuelvo a leer.</strong>
+                Es un ciclo muy directo.
+              </p>
+            </div>
+          </aside>
+
+        </div>
+      </article>
+    </main>
+
+    <footer class="page-footer">
+      <p class="note-text">
+        <a href="./main_desc.html">← Volver al menú principal</a>
+      </p>
+    </footer>
+
+  </div>
+
+  <!-- Modal Script -->
+  <script>
+    function openDiagram(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeDiagram(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const modals = document.querySelectorAll('.diagram-modal');
+      modals.forEach(modal => {
+        modal.addEventListener('click', function(event) {
+          if (event.target === this) closeDiagram(this.id);
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>

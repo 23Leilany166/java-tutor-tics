@@ -1,0 +1,55 @@
+digraph PS4_5 {
+    graph  [rankdir=TB, bgcolor="transparent", splines=ortho,
+            dpi=300, margin="0.3", pad="0.5"];
+    node   [fontname="Arial", fontsize=11, style="filled",
+            fillcolor="white", width=2.8, height=0.6];
+    edge   [fontname="Arial", fontsize=10];
+
+    // ---------- NODOS PRINCIPALES ----------
+    INI      [shape=oval, label="INICIO"];
+
+    // Inicialización de frecuencias
+    initF    [shape=box,
+              label="Para i = 0..10\nF[i] ← 0"];
+
+    // Recorrido de calificaciones del arreglo ALU
+    i_init   [shape=box, label="I ← 1"];
+    cond_I   [shape=diamond, label="I ≤ 250"];
+    leer_ALU [shape=parallelogram, label="ALU[I]"];
+    set_CAL  [shape=box, label="CAL ← ALU[I]"];
+    inc_F    [shape=box, label="F[CAL] ← F[CAL] + 1"];
+    i_inc    [shape=box, label="I ← I + 1"];
+
+    // Impresión de tabla de frecuencias
+    k_init   [shape=box, label="K ← 0"];
+    cond_K   [shape=diamond, label="K ≤ 10"];
+
+    imprimir [shape=egg,
+              label="CALIFICACIÓN: K\nFRECUENCIA: F[K]"];
+
+    k_inc    [shape=box, label="K ← K + 1"];
+
+    FIN      [shape=oval, label="FIN"];
+
+    // ---------- FLUJO ----------
+    INI   -> initF;
+    initF -> i_init;
+    i_init -> cond_I;
+
+    // ciclo sobre los 250 alumnos
+    cond_I   -> leer_ALU [label="Si"];
+    cond_I   -> k_init   [label="No"];
+
+    leer_ALU -> set_CAL;
+    set_CAL  -> inc_F;
+    inc_F    -> i_inc;
+    i_inc    -> cond_I;
+
+    // ciclo de impresión 0..10
+    k_init -> cond_K;
+    cond_K -> imprimir [label="Si"];
+    cond_K -> FIN      [label="No"];
+
+    imprimir -> k_inc;
+    k_inc    -> cond_K;
+}

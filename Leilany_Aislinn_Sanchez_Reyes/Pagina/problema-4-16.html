@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Problema 4.16 – Ejercicios de Programación Estructurada en Java</title>
+  <link rel="stylesheet" href="./styles_desc.css">
+</head>
+
+<body id="top">
+  <div class="container">
+
+    <header class="page-header">
+      <h1>Problema 4.16 – Vector B a partir de la matriz A(M×N)</h1>
+      <p class="subtitle">Ejercicio de Programación Estructurada en Java</p>
+    </header>
+
+    <main id="main" class="exercises-main">
+      <article class="exercise-card" aria-labelledby="pr416-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Estructuras de datos: Arreglos</span>
+          <h2 id="pr416-title">
+            Problema 4.16 – Construir <code>B[j]</code> a partir de <code>A[i,j]</code>
+          </h2>
+          <p class="exercise-description">
+            Tenemos una matriz <code>A</code> de <code>M</code> renglones por <code>N</code> columnas.
+            En este ejercicio de Java estructurado queremos formar un vector <code>B</code>
+            que guarda un valor por cada columna de la matriz.
+            La regla es:
+          </p>
+          <ul>
+            <li>Si la columna <strong>j</strong> es impar, <code>B[j]</code> será la <strong>suma</strong>
+                de todos los elementos de esa columna.</li>
+            <li>Si la columna <strong>j</strong> es par, <code>B[j]</code> será la <strong>suma de los productos</strong>
+                entre la columna <code>j</code> y la columna <code>j − 1</code>, renglon por renglón.</li>
+          </ul>
+        </header>
+
+        <div class="exercise-content">
+
+          <!-- =============================== -->
+          <!--        CONTENIDO PRINCIPAL      -->
+          <!-- =============================== -->
+
+          <section class="exercise-main">
+
+            <!-- Botón para ver el diagrama -->
+            <div class="diagram-section" style="margin-bottom: 20px;">
+              <button class="diagram-button" onclick="openDiagram('diagram-pr416')">
+                📊 Ver Diagrama
+              </button>
+            </div>
+
+            <h3>Datos y variables</h3>
+            <ul>
+              <li>
+                <strong>Entrada:</strong>
+                <code>M</code>, <code>N</code> (enteros, por ejemplo
+                <code>1 ≤ M ≤ 30</code> y <code>1 ≤ N ≤ 20</code>),  
+                y la matriz <code>A[1..M, 1..N]</code> de tipo real.
+              </li>
+              <li>
+                <strong>Salida:</strong>
+                vector <code>B[1..N]</code> de tipo real, donde:
+                <ul>
+                  <li>
+                    Si <code>j</code> es impar:  
+                    <code>B[j] = Σ A[i,j]</code> para <code>i = 1..M</code>
+                    (suma de la columna <code>j</code>).
+                  </li>
+                  <li>
+                    Si <code>j</code> es par:  
+                    <code>B[j] = Σ (A[i,j] · A[i,j-1])</code> para <code>i = 1..M</code>
+                    (suma de productos entre la columna <code>j</code> y la anterior).
+                  </li>
+                </ul>
+              </li>
+            </ul>
+
+            <h3>Explicación sencilla de las variables</h3>
+            <ul>
+              <li><strong>M, N:</strong> variables enteras. Guardan el número de renglones y columnas de la matriz.</li>
+              <li><strong>I, J:</strong> variables enteras usadas como índices en los ciclos:
+                  <code>I</code> recorre renglones y <code>J</code> recorre columnas.</li>
+              <li><strong>A:</strong> arreglo bidimensional de tipo real.  
+                  <code>A[i,j]</code> es el dato en el renglón <code>i</code> y la columna <code>j</code>.</li>
+              <li><strong>B:</strong> arreglo unidimensional de tipo real.  
+                  <code>B[j]</code> guarda el resultado calculado para la columna <code>j</code>.</li>
+            </ul>
+
+            <!-- Modal para el diagrama -->
+            <div id="diagram-pr416" class="diagram-modal">
+              <div class="diagram-modal-content">
+                <div class="diagram-modal-header">
+                  <h3>Diagrama de flujo – Problema 4.16</h3>
+                  <button class="diagram-modal-close" onclick="closeDiagram('diagram-pr416')">✕</button>
+                </div>
+                <div class="diagram-modal-body">
+                  <figure>
+                    <img class="flowchart-img" loading="lazy"
+                         src="../Diagrama/diagrama_Problema4_16.png"
+                         alt="Diagrama de flujo: Problema 4.16">
+                    <figcaption>
+                      Figura: Diagrama de flujo del <strong>Problema 4.16</strong>.
+                    </figcaption>
+                  </figure>
+                  <button class="diagram-return-btn" onclick="closeDiagram('diagram-pr416')">
+                    ← Volver al ejercicio
+                  </button>
+                </div>
+              </div>
+            </div>
+
+          </section>
+
+          <!-- =============================== -->
+          <!--             SIDEBAR             -->
+          <!-- =============================== -->
+
+          <aside class="exercise-sidebar">
+            <h3>Tips rápidos para resolverlo</h3>
+
+            <p class="note-text">
+              Imagina que vas “barriendo” la matriz columna por columna.
+              En cada columna calculas un número y lo guardas en <code>B[j]</code>.
+            </p>
+
+            <ul>
+              <li>
+                <strong>Orden del recorrido:</strong> usa un ciclo para las columnas
+                (<code>J</code> de 1 a <code>N</code>) y dentro de él un ciclo para los renglones
+                (<code>I</code> de 1 a <code>M</code>).
+              </li>
+              <li>
+                <strong>Columnas impares:</strong> si <code>J % 2 != 0</code>,  
+                inicializa una variable acumuladora (por ejemplo <code>SUM</code>) en 0
+                y ve sumando <code>A[I,J]</code> en el ciclo de los renglones.  
+                Al final, asigna <code>B[J] = SUM</code>.
+              </li>
+              <li>
+                <strong>Columnas pares:</strong> si <code>J % 2 == 0</code>,  
+                necesitas también la columna <code>J - 1</code>.  
+                Para cada renglón <code>I</code> calcula
+                <code>A[I,J] * A[I,J-1]</code> y súmalo en la misma variable <code>SUM</code>.  
+                Al terminar el ciclo de renglones, <code>B[J] = SUM</code>.
+              </li>
+              <li>
+                <strong>Java y los índices:</strong> el libro usa índices desde 1,
+                pero en Java los arreglos empiezan en 0.  
+                Una forma sencilla es declarar la matriz como
+                <code>new double[M+1][N+1]</code> y usar los índices desde 1,
+                dejando la fila 0 y la columna 0 sin usar.
+              </li>
+              <li>
+                <strong>Tipo de datos:</strong> usa <code>double</code> para
+                <code>A</code> y <code>B</code> si quieres admitir decimales;
+                para puros enteros bastaría <code>int</code>.
+              </li>
+              <li>
+                <strong>Ejemplo rápido:</strong> para <code>M = 2</code>, <code>N = 3</code> y  
+                <code>A =</code>
+                <br>
+                fila 1: [1, 2, 3]  
+                fila 2: [4, 5, 6]
+                <ul>
+                  <li>Columna 1 (impar): <code>B[1] = 1 + 4 = 5</code></li>
+                  <li>Columna 2 (par): <code>B[2] = 2·1 + 5·4 = 2 + 20 = 22</code></li>
+                  <li>Columna 3 (impar): <code>B[3] = 3 + 6 = 9</code></li>
+                </ul>
+              </li>
+            </ul>
+
+            <div class="tip-box">
+              <p>
+                Resumen mental:  
+                <strong>recorro columnas → reviso si son pares o impares → según eso sumo valores o productos → guardo el resultado en B[j].</strong>
+              </p>
+            </div>
+          </aside>
+
+        </div>
+      </article>
+    </main>
+
+    <footer class="page-footer">
+      <p class="note-text">
+        <a href="./main_desc.html">← Volver al menú principal</a>
+      </p>
+    </footer>
+
+  </div>
+
+  <!-- =============================== -->
+  <!--         SCRIPT MODAL            -->
+  <!-- =============================== -->
+
+  <script>
+    function openDiagram(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeDiagram(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const modals = document.querySelectorAll('.diagram-modal');
+      modals.forEach(modal => {
+        modal.addEventListener('click', function(event) {
+          if (event.target === this) {
+            closeDiagram(this.id);
+          }
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>

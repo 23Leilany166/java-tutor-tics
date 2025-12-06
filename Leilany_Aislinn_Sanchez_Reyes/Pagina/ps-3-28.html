@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PS 3.28 – Ejercicios de Programación Estructurada en Java</title>
+  <link rel="stylesheet" href="./styles_desc.css">
+</head>
+<body id="top">
+    <header class="page-header">
+      <h1>PS 3.28 – Censo de empleados</h1>
+      <p class="subtitle">Ejercicio de Programación Estructurada en Java</p>
+    </header>
+    <main id="main" class="exercises-main">
+      <article class="exercise-card" aria-labelledby="ps328-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Problemas Sugeridos</span>
+          <h2 id="ps328-title">PS 3.28 – Censo de empleados</h2>
+          <p class="exercise-description">
+            Con N empleados y datos <code>CLAVEi</code>, <code>EDADi</code>, <code>SEXOi</code> (1=hombre, 0=mujer),
+            <code>SUELDOi</code>, calcule: (a) #hombres; (b) #mujeres; (c) #mujeres &gt; $20,000;
+            (d) #hombres &lt; 40 con sueldo &lt; $40,000; (e) #empleados &gt; 50 años.
+          </p>
+        </header>
+
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Datos y variables</h3>
+            <ul>
+              <li><strong>Entrada:</strong> <code>N</code>; arreglos paralelos de tamaño <code>N</code>:
+                <code>CLAVE[i]</code> (int), <code>EDAD[i]</code> (int), <code>SEXO[i]</code> (int: 1=hombre, 0=mujer),
+                <code>SUELDO[i]</code> (int o double).</li>
+              <li><strong>Salida:</strong> contadores
+                <code>h</code> (hombres), <code>m</code> (mujeres), <code>m20</code> (mujeres &gt; 20000),
+                <code>hMen40Men40k</code> (hombres &lt; 40 y sueldo &lt; 40000), <code>may50</code> (&gt; 50 años).</li>
+            </ul>
+            <div class="diagram-section">
+              <h3>Diagrama de flujo</h3>
+              <button class="diagram-button" onclick="openDiagram('diagram-ps328')">
+                📊 Ver Diagrama
+              </button>
+            </div>
+            
+            <!-- Modal para el diagrama -->
+            <div id="diagram-ps328" class="diagram-modal">
+              <div class="diagram-modal-content">
+                <div class="diagram-modal-header">
+                  <h3>Diagrama de flujo – PS 3.28</h3>
+                  <button class="diagram-modal-close" onclick="closeDiagram('diagram-ps328')">✕</button>
+                </div>
+                <div class="diagram-modal-body">
+                  <figure>
+                    <img class="flowchart-img" loading="lazy"
+                         src="../Diagrama/diagrama_PS3_28.png"
+                         alt="Diagrama de flujo: PS 3.28 – Censo de empleados">
+                    <figcaption>Figura: Diagrama de flujo de <strong>PS 3.28</strong>.</figcaption>
+                  </figure>
+                  <button class="diagram-return-btn" onclick="closeDiagram('diagram-ps328')">
+                    ← Volver al ejercicio
+                  </button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <aside class="exercise-sidebar">
+            <h3>Tips y datos</h3>
+            <ul>
+              <li><strong>Listas paralelas:</strong> Asegúrate de que todos los arreglos tengan el mismo tamaño y el índice <code>i</code> apunte al mismo empleado.</li>
+              <li><strong>Convención de sexo:</strong> Se usa <code>1 = hombre</code>, <code>0 = mujer</code>. Si tu fuente usa otra codificación, adapta las condiciones.</li>
+              <li><strong>Tipos numéricos:</strong> Si los sueldos pueden tener decimales, usa <code>double[] SUELDO</code> y compara con <code>20000.0</code> y <code>40000.0</code>.</li>
+              <li><strong>Orden no importa:</strong> Los conteos no dependen del orden de entrada; no es necesario ordenar.</li>
+              <li><strong>Validaciones básicas:</strong> Verifica que las edades y sueldos sean no negativos antes de contarlos; decide una política para datos inválidos (ignorar o registrar).</li>
+              <li><strong>Pruebas rápidas:</strong> Crea un caso pequeño (5–6 empleados) que cubra cada condición (mujer &gt; 20000, hombre &lt; 40 y &lt; 40000, &gt; 50 años).</li>
+            </ul>
+          </aside>
+        </div>
+      </article>
+    </main>
+
+    <footer class="page-footer">
+      <p class="note-text"><a href="./main_desc.html">← Volver al menú principal</a></p>
+    </footer>
+  </div>
+
+  <script>
+    function openDiagram(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeDiagram(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const modals = document.querySelectorAll('.diagram-modal');
+      modals.forEach(modal => {
+        modal.addEventListener('click', function(event) {
+          if (event.target === this) {
+            closeDiagram(this.id);
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

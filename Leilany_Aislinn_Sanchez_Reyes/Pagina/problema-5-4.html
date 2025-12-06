@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Problema 5.4 – Ejercicios de Programación Estructurada en Java</title>
+  <link rel="stylesheet" href="./styles_desc.css">
+</head>
+
+<body id="top">
+  <div class="container">
+    <header class="page-header">
+      <h1>Problema 5.4 – Empleados y Departamentos (búsqueda e inserción)</h1>
+      <p class="subtitle">Ejercicio de Programación Estructurada en Java (programación estructurada, sin POO)</p>
+    </header>
+
+    <main id="main" class="exercises-main">
+      <article class="exercise-card" aria-labelledby="pr54-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Registros</span>
+          <h2 id="pr54-title">Problema 5.4 – Empleados y Departamentos</h2>
+          <p class="exercise-description">
+            Se trabajan dos arreglos de registros:
+            <strong>EMPLE[1..NE]</strong>, con datos de los empleados
+            (<code>NOM, CLADEP, ANTI, SUE</code>), ordenado por el nombre del empleado;
+            y <strong>DEPA[1..ND]</strong>, con información de los departamentos
+            (<code>CLADEP, NOMDEP, NUMEMP, NOMJEF</code>), ordenado por la clave del departamento.
+            El algoritmo debe:
+          </p>
+          <ul>
+            <li>(a) Dado el <strong>nombre de un empleado</strong>, mostrar su sueldo, el nombre del departamento donde trabaja y el nombre de su jefe.</li>
+            <li>(b) Dado el nombre de un departamento, mostrar el <strong>empleado mejor pagado</strong> de ese departamento y su sueldo.</li>
+            <li>(c) Dar de alta un nuevo empleado, insertándolo en el arreglo <code>EMPLE</code> en el lugar correcto para que siga ordenado.</li>
+          </ul>
+        </header>
+
+        <div class="exercise-content">
+          <!-- =============================== -->
+          <!--        CONTENIDO PRINCIPAL      -->
+          <!-- =============================== -->
+          <section class="exercise-main">
+
+            <!-- Botones de diagramas arriba -->
+            <div class="diagram-section" style="margin-bottom: 20px;">
+              <h3>Ver diagramas de flujo</h3>
+              <p class="note-text">
+                Haz clic en el módulo que quieras revisar. Todos forman parte del mismo problema.
+              </p>
+              <div class="diagrams-grid">
+                <button class="diagram-button" onclick="openDiagram('diagram-pr54-principal')">
+                  📊 Módulo Principal
+                </button>
+                <button class="diagram-button" onclick="openDiagram('diagram-pr54-a')">
+                  📊 Módulo A (Departamentos)
+                </button>
+                <button class="diagram-button" onclick="openDiagram('diagram-pr54-d')">
+                  📊 Módulo D (Menú)
+                </button>
+                <button class="diagram-button" onclick="openDiagram('diagram-pr54-empleado')">
+                  📊 Módulo Empleado
+                </button>
+                <button class="diagram-button" onclick="openDiagram('diagram-pr54-massueldo')">
+                  📊 Módulo Más Sueldo
+                </button>
+                <button class="diagram-button" onclick="openDiagram('diagram-pr54-altas')">
+                  📊 Módulo Altas (nuevo empleado)
+                </button>
+                <button class="diagram-button" onclick="openDiagram('diagram-pr54-busca')">
+                  📊 Módulo Buscar Empleado
+                </button>
+              </div>
+            </div>
+
+            <h3>Datos y variables</h3>
+            <ul>
+              <li>
+                <strong>Entrada principal:</strong>
+                <ul>
+                  <li><code>NE</code>: número de empleados registrados.</li>
+                  <li><code>ND</code>: número de departamentos registrados.</li>
+                  <li><code>EMPLE[1..NE]</code>: arreglo de registros de empleados.<br>
+                    Cada empleado tiene:
+                    <ul>
+                      <li><code>NOM</code>: nombre del empleado (cadena).</li>
+                      <li><code>CLADEP</code>: clave del departamento donde trabaja (entero).</li>
+                      <li><code>ANTI</code>: antigüedad en años (entero).</li>
+                      <li><code>SUE</code>: sueldo (real).</li>
+                    </ul>
+                  </li>
+                  <li><code>DEPA[1..ND]</code>: arreglo de registros de departamentos.<br>
+                    Cada departamento tiene:
+                    <ul>
+                      <li><code>CLADEP</code>: clave del departamento (entero).</li>
+                      <li><code>NOMDEP</code>: nombre del departamento (cadena).</li>
+                      <li><code>NUMEMP</code>: número de empleados del departamento (entero).</li>
+                      <li><code>NOMJEF</code>: nombre del jefe (cadena).</li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+
+              <li>
+                <strong>Variables de trabajo típicas:</strong>
+                <ul>
+                  <li><code>OPCION</code>: indica qué inciso quiere ejecutar el usuario (a, b o c).</li>
+                  <li><code>NOMEMP</code>: nombre del empleado a buscar (inciso a o alta).</li>
+                  <li><code>DEPARTA</code>: nombre del departamento de interés (inciso b).</li>
+                  <li><code>POS, LUG</code>: posiciones dentro de los arreglos para insertar o encontrar registros.</li>
+                  <li><code>MAX</code>: guarda el sueldo máximo encontrado en un departamento.</li>
+                  <li><code>EMAX</code>: posición del empleado con sueldo máximo.</li>
+                </ul>
+              </li>
+            </ul>
+
+            <h3>Qué hace cada inciso</h3>
+            <ul>
+              <li><strong>Inciso (a):</strong> busca al empleado por su nombre en el arreglo <code>EMPLE</code>, usa su <code>CLADEP</code> para localizar el departamento en <code>DEPA</code>, y muestra sueldo, nombre del departamento y nombre del jefe.</li>
+              <li><strong>Inciso (b):</strong> busca el departamento por su nombre, toma su clave <code>CLADEP</code> y recorre los empleados de ese departamento para encontrar al que gana más.</li>
+              <li><strong>Inciso (c):</strong> pide los datos de un nuevo empleado y lo inserta en el arreglo <code>EMPLE</code> en la posición correcta según su nombre, moviendo una posición a la derecha los que siguen. También aumenta en 1 el campo <code>NUMEMP</code> de su departamento.</li>
+            </ul>
+
+            <!-- =============================== -->
+            <!--            MODALES              -->
+            <!-- =============================== -->
+
+            <div id="diagram-pr54-principal" class="diagram-modal">
+              <div class="diagram-modal-content">
+                <div class="diagram-modal-header">
+                  <h3>Módulo Principal</h3>
+                  <button class="diagram-modal-close" onclick="closeDiagram('diagram-pr54-principal')">✕</button>
+                </div>
+                <div class="diagram-modal-body">
+                  <figure>
+                    <img class="flowchart-img" loading="lazy"
+                         src="../Diagrama/diagrama_Problema5.4.png"
+                         alt="Diagrama de flujo: Problema 5.4 – Módulo principal">
+                    <figcaption>Figura: Diagrama de flujo del <strong>Módulo Principal</strong>.</figcaption>
+                  </figure>
+                  <button class="diagram-return-btn" onclick="closeDiagram('diagram-pr54-principal')">
+                    ← Volver al ejercicio
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div id="diagram-pr54-a" class="diagram-modal">
+              <div class="diagram-modal-content">
+                <div class="diagram-modal-header">
+                  <h3>Módulo A – Captura de departamentos</h3>
+                  <button class="diagram-modal-close" onclick="closeDiagram('diagram-pr54-a')">✕</button>
+                </div>
+                <div class="diagram-modal-body">
+                  <figure>
+                    <img class="flowchart-img" loading="lazy"
+                         src="../Diagrama/diagrama5.4_A.png"
+                         alt="Diagrama de flujo: Problema 5.4 – Módulo A">
+                    <figcaption>Figura: Diagrama de flujo del <strong>Módulo A</strong>.</figcaption>
+                  </figure>
+                  <button class="diagram-return-btn" onclick="closeDiagram('diagram-pr54-a')">
+                    ← Volver al ejercicio
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div id="diagram-pr54-d" class="diagram-modal">
+              <div class="diagram-modal-content">
+                <div class="diagram-modal-header">
+                  <h3>Módulo D – Menú de opciones</h3>
+                  <button class="diagram-modal-close" onclick="closeDiagram('diagram-pr54-d')">✕</button>
+                </div>
+                <div class="diagram-modal-body">
+                  <figure>
+                    <img class="flowchart-img" loading="lazy"
+                         src="../Diagrama/diagrama5.4_D.png"
+                         alt="Diagrama de flujo: Problema 5.4 – Módulo D">
+                    <figcaption>Figura: Diagrama de flujo del <strong>Módulo D</strong>.</figcaption>
+                  </figure>
+                  <button class="diagram-return-btn" onclick="closeDiagram('diagram-pr54-d')">
+                    ← Volver al ejercicio
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div id="diagram-pr54-empleado" class="diagram-modal">
+              <div class="diagram-modal-content">
+                <div class="diagram-modal-header">
+                  <h3>Módulo Empleado</h3>
+                  <button class="diagram-modal-close" onclick="closeDiagram('diagram-pr54-empleado')">✕</button>
+                </div>
+                <div class="diagram-modal-body">
+                  <figure>
+                    <img class="flowchart-img" loading="lazy"
+                         src="../Diagrama/diagrama5.4_Empleado.png"
+                         alt="Diagrama de flujo: Problema 5.4 – Módulo Empleado">
+                    <figcaption>Figura: Diagrama de flujo del <strong>Módulo Empleado</strong>.</figcaption>
+                  </figure>
+                  <button class="diagram-return-btn" onclick="closeDiagram('diagram-pr54-empleado')">
+                    ← Volver al ejercicio
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div id="diagram-pr54-massueldo" class="diagram-modal">
+              <div class="diagram-modal-content">
+                <div class="diagram-modal-header">
+                  <h3>Módulo Más Sueldo</h3>
+                  <button class="diagram-modal-close" onclick="closeDiagram('diagram-pr54-massueldo')">✕</button>
+                </div>
+                <div class="diagram-modal-body">
+                  <figure>
+                    <img class="flowchart-img" loading="lazy"
+                         src="../Diagrama/diagrama5.4_MasSueldo.png"
+                         alt="Diagrama de flujo: Problema 5.4 – Módulo Más Sueldo">
+                    <figcaption>Figura: Diagrama de flujo del <strong>Módulo Más Sueldo</strong>.</figcaption>
+                  </figure>
+                  <button class="diagram-return-btn" onclick="closeDiagram('diagram-pr54-massueldo')">
+                    ← Volver al ejercicio
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div id="diagram-pr54-altas" class="diagram-modal">
+              <div class="diagram-modal-content">
+                <div class="diagram-modal-header">
+                  <h3>Módulo Altas (nuevo empleado)</h3>
+                  <button class="diagram-modal-close" onclick="closeDiagram('diagram-pr54-altas')">✕</button>
+                </div>
+                <div class="diagram-modal-body">
+                  <figure>
+                    <img class="flowchart-img" loading="lazy"
+                         src="../Diagrama/diagrama5.4_Altas.png"
+                         alt="Diagrama de flujo: Problema 5.4 – Módulo Altas">
+                    <figcaption>Figura: Diagrama de flujo del <strong>Módulo Altas</strong>.</figcaption>
+                  </figure>
+                  <button class="diagram-return-btn" onclick="closeDiagram('diagram-pr54-altas')">
+                    ← Volver al ejercicio
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div id="diagram-pr54-busca" class="diagram-modal">
+              <div class="diagram-modal-content">
+                <div class="diagram-modal-header">
+                  <h3>Módulo Buscar Empleado</h3>
+                  <button class="diagram-modal-close" onclick="closeDiagram('diagram-pr54-busca')">✕</button>
+                </div>
+                <div class="diagram-modal-body">
+                  <figure>
+                    <img class="flowchart-img" loading="lazy"
+                         src="../Diagrama/diagrama5.4_BuscaEmp.png"
+                         alt="Diagrama de flujo: Problema 5.4 – Módulo Buscar Empleado">
+                    <figcaption>Figura: Diagrama de flujo del <strong>Módulo Buscar Empleado</strong>.</figcaption>
+                  </figure>
+                  <button class="diagram-return-btn" onclick="closeDiagram('diagram-pr54-busca')">
+                    ← Volver al ejercicio
+                  </button>
+                </div>
+              </div>
+            </div>
+
+          </section>
+
+          <!-- =============================== -->
+          <!--             SIDEBAR             -->
+          <!-- =============================== -->
+          <aside class="exercise-sidebar">
+            <h3>Tips rápidos para entenderlo</h3>
+
+            <p class="note-text">
+              Piensa en el problema como un mini-sistema de Recursos Humanos hecho con
+              <strong>Java estructurado</strong>: arreglos + ciclos + decisiones.
+            </p>
+
+            <ul>
+              <li><strong>Arreglo de empleados:</strong> está ordenado por nombre. Eso permite buscar más rápido (con búsqueda binaria) y también saber dónde insertar el nuevo empleado.</li>
+              <li><strong>Arreglo de departamentos:</strong> está ordenado por clave. Se usa para relacionar cada empleado con su área.</li>
+              <li><strong>Para el inciso (a):</strong>
+                <ol>
+                  <li>Busca el nombre del empleado en <code>EMPLE</code>.</li>
+                  <li>Con su <code>CLADEP</code> ubica el departamento en <code>DEPA</code>.</li>
+                  <li>Imprime sueldo, nombre del departamento y nombre del jefe.</li>
+                </ol>
+              </li>
+              <li><strong>Para el inciso (b):</strong>
+                <ol>
+                  <li>Busca el nombre del departamento en <code>DEPA</code>.</li>
+                  <li>Toma su <code>CLADEP</code> y recorre <code>EMPLE</code> buscando empleados con esa clave.</li>
+                  <li>Ve guardando el sueldo más grande y la posición del empleado.</li>
+                </ol>
+              </li>
+              <li><strong>Para el inciso (c):</strong>
+                <ol>
+                  <li>Pide los datos del nuevo empleado.</li>
+                  <li>Busca la posición donde debe ir (por orden alfabético de <code>NOM</code>).</li>
+                  <li>Recorre una posición a la derecha desde el final hasta dejar libre el lugar.</li>
+                  <li>Inserta el nuevo registro y suma 1 a <code>NUMEMP</code> del departamento.</li>
+                </ol>
+              </li>
+              <li>
+                <strong>Consejo:</strong> antes de programar, dibuja un pequeño ejemplo con
+                3 empleados y 2 departamentos; así verás más claro qué está pasando
+                cuando buscas o insertas.
+              </li>
+            </ul>
+
+            <div class="tip-box">
+              <p>
+                Idea resumen:  
+                <strong>buscar → relacionar empleado–departamento → mostrar o insertar datos manteniendo orden.</strong>
+              </p>
+            </div>
+          </aside>
+        </div>
+      </article>
+    </main>
+
+    <footer class="page-footer">
+      <p class="note-text">
+        <a href="./main_desc.html">← Volver al menú principal</a>
+      </p>
+    </footer>
+  </div>
+
+  <!-- =============================== -->
+  <!--         SCRIPT MODAL            -->
+  <!-- =============================== -->
+  <script>
+    function openDiagram(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeDiagram(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const modals = document.querySelectorAll('.diagram-modal');
+      modals.forEach(modal => {
+        modal.addEventListener('click', function(event) {
+          if (event.target === this) {
+            closeDiagram(this.id);
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

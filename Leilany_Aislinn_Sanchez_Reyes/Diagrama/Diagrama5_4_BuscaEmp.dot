@@ -1,0 +1,29 @@
+digraph Diagrama5_4_BuscaEmp {
+    graph  [rankdir=TB, bgcolor="transparent", dpi=300, margin="0.3", pad="0.5"];
+    node   [fontname="Arial", fontsize=11, style="filled", fillcolor="white",
+            width=2.8, height=0.6];
+    edge   [fontname="Arial", fontsize=10];
+
+    IN    [shape=box, label="BuscaEmp"];
+
+    I_init [shape=box, label="I ← 1"];
+    cond   [shape=diamond,
+            label="(I ≤ NE) ∧ (NOMEMP ≠ EMPLE[I]NOM)"];
+    I_inc  [shape=box, label="I ← I + 1"];
+
+    set_pos_ok  [shape=box, label="POS ← I"];
+    set_pos_fail[shape=box, label="POS ← -1"];
+
+    FIN   [shape=egg, label="FIN DEL MODULO\nBuscaEmp"];
+
+    IN -> I_init;
+    I_init -> cond;
+
+    cond -> I_inc       [label="Si"];
+    cond -> set_pos_ok  [label="No"];
+
+    I_inc -> cond;
+
+    set_pos_ok   -> FIN;
+    set_pos_fail -> FIN;
+}

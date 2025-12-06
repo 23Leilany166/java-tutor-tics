@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Problema 4.3 – Ejercicios de Programación Estructurada en Java</title>
+  <link rel="stylesheet" href="./styles_desc.css">
+</head>
+
+<body id="top">
+  <div class="container">
+
+    <header class="page-header">
+      <h1>Problema 4.3 – Conteo de votos con 12 candidatos</h1>
+      <p class="subtitle">Ejercicio de Programación Estructurada en Java</p>
+    </header>
+
+    <main id="main" class="exercises-main">
+      <article class="exercise-card" aria-labelledby="pr43-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Estructuras de datos: Arreglos</span>
+          <h2 id="pr43-title">Problema 4.3 – Conteo de votos con 12 candidatos</h2>
+          <p class="exercise-description">
+            En una elección hay 12 candidatos identificados con los números
+            del <code>1</code> al <code>12</code>.  
+            Los votos se capturan como una lista de números (uno por persona),
+            en cualquier orden.  
+            En este ejercicio de Java estructurado vamos a leer esa lista de votos,
+            contar cuántos obtuvo cada candidato y determinar:
+          </p>
+          <ul>
+            <li>El número de votos de cada candidato al final de la elección.</li>
+            <li>El candidato ganador, cuántos votos obtuvo y qué porcentaje
+              representa del total de votos.</li>
+          </ul>
+          <p class="exercise-description">
+            Los datos terminan cuando se escribe el valor <code>-1</code>,
+            que indica fin de la entrada de votos.
+          </p>
+        </header>
+
+        <div class="exercise-content">
+
+          <!-- =============================== -->
+          <!--        CONTENIDO PRINCIPAL      -->
+          <!-- =============================== -->
+
+          <section class="exercise-main">
+
+            <!-- Botón de diagrama -->
+            <div class="diagram-section" style="margin-bottom: 20px;">
+              <button class="diagram-button" onclick="openDiagram('diagram-pr43')">
+                📊 Ver Diagrama
+              </button>
+            </div>
+
+            <h3>Datos y variables</h3>
+            <ul>
+              <li>
+                <strong>Entrada:</strong> una secuencia de valores enteros:  
+                <code>VOTO₁, VOTO₂, …, VOTOₙ, -1</code>,  
+                donde cada <code>VOTOᵢ</code> es un número de candidato entre
+                <code>1</code> y <code>12</code>, y <code>-1</code> marca el final.
+              </li>
+              <li>
+                <strong>VOTOS[1..12]:</strong> arreglo de enteros.  
+                En la posición <code>k</code> se guarda el número de votos
+                del candidato <code>k</code>.
+              </li>
+              <li>
+                <strong>I:</strong> variable entera usada como índice en recorridos
+                del arreglo <code>VOTOS</code>.
+              </li>
+              <li>
+                <strong>CANDIDATO:</strong> valor entero leído en cada voto.
+                Indica por qué candidato votó la persona actual.
+              </li>
+              <li>
+                <strong>GANADOR:</strong> número de candidato que más votos obtuvo.
+              </li>
+              <li>
+                <strong>MAXVOT:</strong> total de votos del candidato ganador
+                (el máximo encontrado en el arreglo).
+              </li>
+              <li>
+                <strong>TOTALVOT:</strong> suma de todos los votos válidos.
+                Se usa para calcular el porcentaje del ganador.
+              </li>
+              <li>
+                <strong>PORC:</strong> porcentaje de votos que obtuvo el ganador
+                respecto al total (tipo <code>double</code>).
+              </li>
+            </ul>
+
+            <!-- Modal para el diagrama -->
+            <div id="diagram-pr43" class="diagram-modal">
+              <div class="diagram-modal-content">
+
+                <div class="diagram-modal-header">
+                  <h3>Diagrama de flujo – Problema 4.3</h3>
+                  <button class="diagram-modal-close" onclick="closeDiagram('diagram-pr43')">✕</button>
+                </div>
+
+                <div class="diagram-modal-body">
+                  <figure>
+                    <img class="flowchart-img" loading="lazy"
+                         src="../Diagrama/diagrama_Problema4_3.png"
+                         alt="Diagrama de flujo: Problema 4.3 – Conteo de votos">
+                    <figcaption>
+                      Figura: Diagrama de flujo del <strong>Problema 4.3</strong>.
+                    </figcaption>
+                  </figure>
+
+                  <button class="diagram-return-btn" onclick="closeDiagram('diagram-pr43')">
+                    ← Volver al ejercicio
+                  </button>
+                </div>
+
+              </div>
+            </div>
+
+          </section>
+
+          <!-- =============================== -->
+          <!--             SIDEBAR             -->
+          <!-- =============================== -->
+
+          <aside class="exercise-sidebar">
+            <h3>Tips rápidos para resolverlo</h3>
+
+            <p class="note-text">
+              Piensa en el problema como un marcador de goles, pero con 12 jugadores:
+              cada vez que llega un voto, solo le sumas 1 al candidato correspondiente.
+            </p>
+
+            <ul>
+              <li>
+                <strong>Inicializa el arreglo:</strong> pon todos los elementos de
+                <code>VOTOS[1..12]</code> en cero antes de empezar a leer votos.
+              </li>
+              <li>
+                <strong>Uso del centinela -1:</strong> repite el proceso de lectura
+                mientras <code>CANDIDATO != -1</code>.  
+                Cuando se escriba <code>-1</code>, ya no hay más votos.
+              </li>
+              <li>
+                <strong>Conteo de votos:</strong> cada vez que leas un
+                <code>CANDIDATO</code> entre 1 y 12, haz:  
+                <code>VOTOS[CANDIDATO] = VOTOS[CANDIDATO] + 1</code>.
+              </li>
+              <li>
+                <strong>Suma total:</strong> al final, recorre el arreglo
+                <code>VOTOS</code> para calcular <code>TOTALVOT</code> sumando
+                todos los elementos.
+              </li>
+              <li>
+                <strong>Encontrar al ganador:</strong> en el mismo recorrido,
+                ve comparando cada valor con <code>MAXVOT</code>.  
+                Si <code>VOTOS[I] &gt; MAXVOT</code>, actualiza:
+                <code>MAXVOT = VOTOS[I]</code> y <code>GANADOR = I</code>.
+              </li>
+              <li>
+                <strong>Porcentaje del ganador:</strong> usa  
+                <code>PORC = (MAXVOT * 100.0) / TOTALVOT</code>.
+              </li>
+              <li>
+                <strong>Suposición del problema:</strong> se indica que el ganador
+                no empata en votos con otro candidato, así que no necesitas
+                manejar empates especiales.
+              </li>
+            </ul>
+
+            <div class="tip-box">
+              <p>
+                Resumen mental:  
+                <strong>contar votos → sumar total → buscar máximo → calcular porcentaje.</strong>  
+                Todo se puede hacer con un solo arreglo y ciclo sencillos.
+              </p>
+            </div>
+          </aside>
+
+        </div>
+      </article>
+    </main>
+
+    <footer class="page-footer">
+      <p class="note-text">
+        <a href="./main_desc.html">← Volver al menú principal</a>
+      </p>
+    </footer>
+
+  </div>
+
+  <!-- =============================== -->
+  <!--         SCRIPT MODAL            -->
+  <!-- =============================== -->
+
+  <script>
+    function openDiagram(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeDiagram(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const modals = document.querySelectorAll('.diagram-modal');
+      modals.forEach(modal => {
+        modal.addEventListener('click', function(event) {
+          if (event.target === this) {
+            closeDiagram(this.id);
+          }
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>

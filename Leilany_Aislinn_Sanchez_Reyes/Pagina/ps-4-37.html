@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PS 4.37 – Ejercicios de Programación Estructurada en Java</title>
+  <link rel="stylesheet" href="./styles_desc.css">
+</head>
+  <div class="container">
+    <header class="page-header">
+      <h1>PS 4.37 – Centros turísticos y habitaciones</h1>
+      <p class="subtitle">Ejercicio de Programación Estructurada en Java</p>
+    </header>
+
+    <main id="main" class="exercises-main">
+      <article class="exercise-card" aria-labelledby="ps437-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Problemas Sugeridos</span>
+          <h2 id="ps437-title">PS 4.37 – Centros turísticos y habitaciones</h2>
+          <p class="exercise-description">
+            Se tienen 2 arreglos:
+          </p>
+          <ul>
+            <li><strong>CT[1..N]</strong>: guarda el <strong>nombre</strong> de cada centro turístico.</li>
+            <li><strong>HAB[1..2N]</strong>: guarda el número de habitaciones.  
+              Para el centro <code>i</code>:
+              <ul>
+                <li><code>HAB[2*i - 1]</code> → habitaciones <strong>simples</strong>.</li>
+                <li><code>HAB[2*i]</code> → habitaciones <strong>dobles</strong>.</li>
+              </ul>
+            </li>
+          </ul>
+          <p>
+            El programa debe realizar una operación según la letra que se lea en la variable
+            <code>CLAVE</code>:
+          </p>
+          <ul>
+            <li><code>L</code>: listar todos los centros turísticos.</li>
+            <li><code>R</code>: dado el nombre de un centro, mostrar cuántas habitaciones simples,
+              dobles y el total que tiene.</li>
+            <li><code>I</code>: insertar un nuevo centro turístico (al final del arreglo).</li>
+            <li><code>M</code>: encontrar el centro que tiene <strong>más habitaciones en total</strong>.</li>
+          </ul>
+        </header>
+
+        <div class="exercise-content">
+          <!-- Columna principal -->
+          <section class="exercise-main">
+            <h3>Datos y variables</h3>
+            <ul>
+              <li><strong>Entrada:</strong>
+                <ul>
+                  <li><code>N</code> → número de centros registrados.</li>
+                  <li><code>CT[1..N]</code> → nombres de centros turísticos.</li>
+                  <li><code>HAB[1..2N]</code> → números de habitaciones simples y dobles.</li>
+                  <li><code>CLAVE</code> → letra que indica la operación: L, R, I o M.</li>
+                </ul>
+              </li>
+              <li><strong>Salida:</strong> depende de la opción elegida:
+                lista de centros, reporte de un centro, centro con más habitaciones, etc.</li>
+            </ul>
+
+            <h3>Idea general del algoritmo</h3>
+            <p>Según el valor de <code>CLAVE</code> se hace lo siguiente:</p>
+
+            <div class="diagram-section">
+              <h3>Diagrama de flujo</h3>
+              <button class="diagram-button" onclick="openDiagram('diagram-ps437')">
+                📊 Ver Diagrama
+              </button>
+            </div>
+
+            <!-- Modal del diagrama -->
+            <div id="diagram-ps437" class="diagram-modal">
+              <div class="diagram-modal-content">
+                <div class="diagram-modal-header">
+                  <h3>Diagrama de flujo – PS 4.37</h3>
+                  <button class="diagram-modal-close" onclick="closeDiagram('diagram-ps437')">✕</button>
+                </div>
+                <div class="diagram-modal-body">
+                  <figure>
+                    <img class="flowchart-img" loading="lazy"
+                         src="../Diagrama/diagrama_PS4_37.png"
+                         alt="Diagrama de flujo: PS 4.37 – Centros turísticos y habitaciones">
+                    <figcaption>Figura: Diagrama de flujo de <strong>PS 4.37</strong>.</figcaption>
+                  </figure>
+                  <button class="diagram-return-btn" onclick="closeDiagram('diagram-ps437')">
+                    ← Volver al ejercicio
+                  </button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Columna lateral -->
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <ul>
+              <li><strong>Relación entre arreglos:</strong>  
+                Para el centro <code>i</code>:
+                <ul>
+                  <li><code>HAB[2*i - 1]</code> → simples</li>
+                  <li><code>HAB[2*i]</code> → dobles</li>
+                </ul>
+                Siempre usa la misma <code>i</code> para CT y HAB.</li>
+              <li><strong>Búsqueda sencilla:</strong>  
+                Para encontrar un centro por nombre recorre el arreglo CT desde 1 hasta N y compara.</li>
+              <li><strong>Nuevo centro:</strong>  
+                Para no complicar a primer semestre, se inserta al final (posición N+1).</li>
+              <li><strong>Habitaciones totales:</strong>  
+                <code>total = simples + dobles</code>.  
+                Esa suma se usa en las opciones R y M.</li>
+              <li><strong>Validación básica:</strong>  
+                Asegúrate de que las habitaciones no sean negativas y que N no supere el tamaño máximo del arreglo.</li>
+            </ul>
+          </aside>
+        </div>
+      </article>
+    </main>
+
+    <footer class="page-footer">
+      <p class="note-text"><a href="./main_desc.html">← Volver al menú principal</a></p>
+    </footer>
+  </div>
+
+  <script>
+    function openDiagram(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeDiagram(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const modals = document.querySelectorAll('.diagram-modal');
+      modals.forEach(modal => {
+        modal.addEventListener('click', function (event) {
+          if (event.target === this) {
+            closeDiagram(this.id);
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

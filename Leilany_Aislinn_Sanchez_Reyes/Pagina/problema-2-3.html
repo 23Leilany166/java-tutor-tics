@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Problema 2.3 – Ejercicios de Programación Estructurada en Java</title>
+  <link rel="stylesheet" href="./styles_desc.css">
+</head>
+
+<body id="top">
+  <div class="container">
+    <header class="page-header">
+      <h1>Problema 2.3 – Raíces reales de ax² + bx + c = 0</h1>
+      <p class="subtitle">Ejercicio de Programación Estructurada en Java</p>
+    </header>
+    <main id="main" class="exercises-main">
+      <article class="exercise-card" aria-labelledby="pr23-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Algoritmos</span>
+          <h2 id="pr23-title">
+            Problema 2.3 – Raíces reales de <code>ax<sup>2</sup> + bx + c = 0</code>
+          </h2>
+          <p class="exercise-description">
+            Construye un algoritmo que, dados los coeficientes
+            <code>A</code>, <code>B</code> y <code>C</code> de una
+            ecuación de segundo grado, calcule sus raíces reales si es posible.
+            Si no tiene raíces reales, debe indicarlo.
+          </p>
+        </header>
+
+        <div class="exercise-content">
+
+          <!-- =============================== -->
+          <!--        CONTENIDO PRINCIPAL      -->
+          <!-- =============================== -->
+
+          <section class="exercise-main">
+
+            <!-- Botón para ver el diagrama -->
+            <div class="diagram-section" style="margin-bottom: 20px;">
+              <button class="diagram-button" onclick="openDiagram('diagram-pr23')">
+                📊 Ver Diagrama
+              </button>
+            </div>
+
+            <h3>Datos y variables</h3>
+            <ul>
+              <li>
+                <strong>Entrada:</strong>
+                <code>A</code>, <code>B</code>, <code>C</code>  
+                (variables de tipo real). Son los coeficientes de la ecuación
+                <code>Ax² + Bx + C = 0</code>.
+              </li>
+              <li>
+                <strong>Variable auxiliar:</strong>
+                <code>DIS</code> (real). Guarda el discriminante
+                <code>B² - 4AC</code>.
+              </li>
+              <li>
+                <strong>Salida:</strong>
+                <code>X1</code> y <code>X2</code> (reales).  
+                Guardan las raíces reales de la ecuación cuando existen.
+              </li>
+              <li>
+                <strong>Condición:</strong> <code>A ≠ 0</code>, para que la
+                ecuación sea de segundo grado.
+              </li>
+            </ul>
+
+            <h3>Explicación de las variables</h3>
+            <ul>
+              <li><strong>A, B, C:</strong> variables de tipo real. Representan los coeficientes de la ecuación.</li>
+              <li><strong>DIS:</strong> variable de tipo real. Almacena el discriminante <code>DIS = B² - 4AC</code>.  
+                  Nos indica si hay raíces reales:
+                  <ul>
+                    <li>Si <code>DIS &gt;= 0</code>, sí hay raíces reales.</li>
+                    <li>Si <code>DIS &lt; 0</code>, no hay raíces reales.</li>
+                  </ul>
+              </li>
+              <li><strong>X1:</strong> primera raíz real de la ecuación (cuando <code>DIS ≥ 0</code>).</li>
+              <li><strong>X2:</strong> segunda raíz real de la ecuación (cuando <code>DIS ≥ 0</code>).</li>
+            </ul>
+
+            <h3>Fórmulas utilizadas</h3>
+            <pre><code class="code-block">DIS = B² - 4 · A · C
+
+Si DIS &gt;= 0 entonces:
+    X1 = (-B + √DIS) / (2 · A)
+    X2 = (-B - √DIS) / (2 · A)
+Si DIS &lt; 0:
+    No existen raíces reales.</code></pre>
+
+            <!-- Modal para el diagrama -->
+            <div id="diagram-pr23" class="diagram-modal">
+              <div class="diagram-modal-content">
+                <div class="diagram-modal-header">
+                  <h3>Diagrama de flujo – Problema 2.3</h3>
+                  <button class="diagram-modal-close" onclick="closeDiagram('diagram-pr23')">✕</button>
+                </div>
+                <div class="diagram-modal-body">
+                  <figure>
+                    <img class="flowchart-img" loading="lazy"
+                         src="../Diagrama/Diagrama2_3.png"
+                         alt="Diagrama de flujo: Problema 2.3 – Raíces de ecuación cuadrática">
+                    <figcaption>
+                      Figura: Diagrama de flujo del <strong>Problema 2.3</strong>.
+                    </figcaption>
+                  </figure>
+                </div>
+              </div>
+            </div>
+
+            <h3>TTabla de corridas(Resultados esperados)<</h3>
+            <!-- Tabla de corridas con estilo global -->
+            <table class="table-default">
+              <thead>
+                <tr>
+                  <th>Núm. corrida</th>
+                  <th>A</th>
+                  <th>B</th>
+                  <th>C</th>
+                  <th>DIS</th>
+                  <th>X1</th>
+                  <th>X2</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>3</td>
+                  <td>9</td>
+                  <td>1.5</td>
+                  <td>65</td>
+                  <td>-0.17</td>
+                  <td>-2.82</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>8</td>
+                  <td>4</td>
+                  <td>5</td>
+                  <td>-144</td>
+                  <td>—</td>
+                  <td>—</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>2.5</td>
+                  <td>-6</td>
+                  <td>-4</td>
+                  <td>76</td>
+                  <td>2.94</td>
+                  <td>-0.54</td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>-7.5</td>
+                  <td>3</td>
+                  <td>1</td>
+                  <td>39</td>
+                  <td>-0.21</td>
+                  <td>0.61</td>
+                </tr>
+                <tr>
+                  <td>5</td>
+                  <td>-4</td>
+                  <td>5</td>
+                  <td>-3</td>
+                  <td>-23</td>
+                  <td>—</td>
+                  <td>—</td>
+                </tr>
+              </tbody>
+            </table>
+
+          </section>
+
+          <!-- =============================== -->
+          <!--             SIDEBAR             -->
+          <!-- =============================== -->
+
+          <aside class="exercise-sidebar">
+            <h3>Tips rápidos para resolverlo</h3>
+
+            <p class="note-text">
+              Piensa en el algoritmo como una serie de preguntas:
+              “¿sí tiene raíces reales?” y, si la respuesta es sí,
+              “¿cuáles son?”.
+            </p>
+
+            <ul>
+              <li>
+                <strong>Paso 1:</strong> lee <code>A</code>, <code>B</code> y <code>C</code>.
+                Verifica que <code>A ≠ 0</code>.
+              </li>
+              <li>
+                <strong>Paso 2:</strong> calcula el discriminante  
+                <code>DIS = B * B - 4 * A * C</code>.
+              </li>
+              <li>
+                <strong>Paso 3:</strong> si <code>DIS &lt; 0</code>, muestra un mensaje como  
+                <code>"La ecuación no tiene raíces reales"</code> y termina.
+              </li>
+              <li>
+                <strong>Paso 4:</strong> si <code>DIS ≥ 0</code>, usa
+                <code>Math.sqrt(DIS)</code> para obtener la raíz cuadrada.
+              </li>
+              <li>
+                <strong>Paso 5:</strong> calcula las raíces:  
+                <code>X1 = (-B + Math.sqrt(DIS)) / (2 * A)</code>  
+                <code>X2 = (-B - Math.sqrt(DIS)) / (2 * A)</code>
+              </li>
+              <li>
+                <strong>Tipo de dato:</strong> usa <code>double</code> para
+                <code>A</code>, <code>B</code>, <code>C</code>, <code>DIS</code>,
+                <code>X1</code> y <code>X2</code>, así verás decimales.
+              </li>
+              <li>
+                <strong>Prueba:</strong> usa las 5 corridas de la tabla; en la 2 y 5
+                no debe imprimir raíces, solo el mensaje de “sin raíces reales”.
+              </li>
+            </ul>
+
+            <div class="tip-box">
+              <p>
+                Resumen mental:  
+                <strong>calcular DIS → revisar signo de DIS → (si se puede) calcular X1 y X2.</strong>
+              </p>
+            </div>
+          </aside>
+
+        </div>
+      </article>
+    </main>
+
+    <footer class="page-footer">
+      <p class="note-text">
+        <a href="./main_desc.html">← Volver al menú principal</a>
+      </p>
+    </footer>
+  </div>
+
+  <!-- =============================== -->
+  <!--         SCRIPT MODAL            -->
+  <!-- =============================== -->
+
+  <script>
+    function openDiagram(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeDiagram(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const modals = document.querySelectorAll('.diagram-modal');
+      modals.forEach(modal => {
+        modal.addEventListener('click', function(event) {
+          if (event.target === this) {
+            closeDiagram(this.id);
+          }
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>

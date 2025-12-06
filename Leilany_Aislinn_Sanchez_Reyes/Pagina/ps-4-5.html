@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PS 4.5 – Ejercicios de Programación Estructurada en Java</title>
+  <link rel="stylesheet" href="./styles_desc.css">
+</head>
+  <div class="container">
+    <header class="page-header">
+      <h1>PS 4.5 – Frecuencia de calificaciones (0 a 10)</h1>
+      <p class="subtitle">Ejercicio de Programación Estructurada en Java (arreglos unidimensionales)</p>
+    </header>
+
+    <!-- Navegación de retorno -->
+    <main id="main" class="exercises-main">
+      <article class="exercise-card" aria-labelledby="ps45-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Problemas Sugeridos</span>
+          <h2 id="ps45-title">PS 4.5 – Frecuencia de calificaciones</h2>
+          <p class="exercise-description">
+            En un arreglo se tienen guardadas las calificaciones (de 0 a 10) de un examen aplicado a
+            <strong>250 alumnos</strong>. El objetivo es contar cuántos alumnos obtuvieron cada calificación y mostrarlo
+            en forma de tabla.
+          </p>
+        </header>
+
+        <div class="exercise-content">
+          <!-- =============================== -->
+          <!--        CONTENIDO PRINCIPAL      -->
+          <!-- =============================== -->
+          <section class="exercise-main">
+            <h3>Datos y variables</h3>
+            <ul>
+              <li>
+                <strong>Entrada:</strong>
+                <ul>
+                  <li><code>ALU[1..250]</code>: arreglo de tipo entero. En cada posición está la calificación de un alumno (entre 0 y 10).</li>
+                </ul>
+              </li>
+              <li>
+                <strong>Salida:</strong>
+                <ul>
+                  <li><code>FREC[0..10]</code>: arreglo de enteros. En <code>FREC[k]</code> se guarda cuántos alumnos sacaron la calificación <code>k</code>.</li>
+                  <li>Una tabla con dos columnas: <em>calificación</em> y <em>frecuencia</em>, igual a la que aparece en el libro.</li>
+                </ul>
+              </li>
+            </ul>
+
+            <h3>¿Qué debe hacer el algoritmo?</h3>
+            <ol>
+              <li>Empezar con todas las frecuencias en cero.</li>
+              <li>Recorrer el arreglo <code>ALU</code> y, por cada calificación, aumentar en 1 la posición correspondiente de <code>FREC</code>.</li>
+              <li>Al final, imprimir la calificación (0, 1, 2, …, 10) junto con su frecuencia.</li>
+            </ol>
+            <!-- =============================== -->
+            <!--          DIAGRAMA MODAL        -->
+            <!-- =============================== -->
+            <div class="diagram-section">
+              <h3>Diagrama de flujo</h3>
+              <button class="diagram-button" onclick="openDiagram('diagram-ps45')">
+                📊 Ver Diagrama
+              </button>
+            </div>
+
+            <div id="diagram-ps45" class="diagram-modal">
+              <div class="diagram-modal-content">
+                <div class="diagram-modal-header">
+                  <h3>Diagrama de flujo – PS 4.5</h3>
+                  <button class="diagram-modal-close" onclick="closeDiagram('diagram-ps45')">✕</button>
+                </div>
+                <div class="diagram-modal-body">
+                  <figure>
+                    <img class="flowchart-img" loading="lazy"
+                         src="../Diagrama/diagrama_PS4_5.png"
+                         alt="Diagrama de flujo: PS 4.5 – Frecuencia de calificaciones (0..10)">
+                    <figcaption>
+                      Figura: Diagrama de flujo del <strong>Problema Sugerido 4.5</strong>.
+                    </figcaption>
+                  </figure>
+                  <button class="diagram-return-btn" onclick="closeDiagram('diagram-ps45')">
+                    ← Volver al ejercicio
+                  </button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- =============================== -->
+          <!--             SIDEBAR             -->
+          <!-- =============================== -->
+          <aside class="exercise-sidebar">
+            <h3>Tips rápidos para entenderlo</h3>
+            <ul>
+              <li>
+                <strong>Dos arreglos:</strong>
+                <code>ALU</code> guarda las calificaciones de los alumnos.<br>
+                <code>FREC</code> solo guarda conteos (cuántas veces aparece cada calificación).
+              </li>
+              <li>
+                <strong>Índice = calificación:</strong>
+                la casilla <code>FREC[7]</code> cuenta cuántos sacaron 7, <code>FREC[10]</code> cuántos sacaron 10, etc.
+              </li>
+              <li>
+                <strong>Inicializar es clave:</strong>
+                antes de contar, <code>FREC</code> debe estar todo en cero para no tener basura.
+              </li>
+              <li>
+                <strong>Un solo recorrido:</strong>
+                solo se necesita pasar una vez por el arreglo de alumnos para llenar todas las frecuencias.
+              </li>
+              <li>
+                <strong>Salida tipo tabla:</strong>
+                al imprimir en orden de 0 a 10, obtienes la misma tabla que muestra el libro
+                (calificación en una columna y frecuencia en la otra).
+              </li>
+            </ul>
+          </aside>
+        </div>
+      </article>
+    </main>
+
+    <footer class="page-footer">
+      <p class="note-text"><a href="./main_desc.html">← Volver al menú principal</a></p>
+    </footer>
+  </div>
+
+  <!-- =============================== -->
+  <!--         SCRIPT MODAL            -->
+  <!-- =============================== -->
+  <script>
+    function openDiagram(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeDiagram(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const modals = document.querySelectorAll('.diagram-modal');
+      modals.forEach(modal => {
+        modal.addEventListener('click', function (event) {
+          if (event.target === this) {
+            closeDiagram(this.id);
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

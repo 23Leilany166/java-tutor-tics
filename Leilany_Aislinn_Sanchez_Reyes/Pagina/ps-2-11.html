@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PS 2.11 – Ejercicios de Programación Estructurada en Java</title>
+  <link rel="stylesheet" href="./styles_desc.css">
+</head>
+
+  <div class="container">
+
+    <!-- Encabezado -->
+    <header class="page-header">
+      <h1>PS 2.11 – Cálculo de X según el valor de Y</h1>
+      <p class="subtitle">Ejercicio de Programación Estructurada en Java</p>
+    </header>
+
+    <main id="main" class="exercises-main">
+      <article class="exercise-card">
+
+        <header class="exercise-header">
+          <span class="exercise-badge">Problemas Sugeridos</span>
+          <h2>PS 2.11 – Función por tramos X(Y)</h2>
+
+          <!-- Botón del diagrama -->
+          <div class="diagram-section">
+            <button class="diagram-button" onclick="openDiagram('diagram-ps211')">
+              📊 Ver diagrama
+            </button>
+          </div>
+
+          <p class="exercise-description">
+            Este ejercicio calcula el valor de <code>X</code> usando una función por tramos,
+            según el valor que tenga <code>Y</code>.
+          </p>
+        </header>
+
+
+        <div class="exercise-content">
+
+          <!-- Sección principal -->
+          <section class="exercise-main">
+
+            <h3>Datos y variables</h3>
+            <ul>
+              <li><strong>Entrada:</strong> <code>Y</code> (entero).</li>
+              <li><strong>Salida:</strong> <code>X</code> calculado según estas reglas:</li>
+            </ul>
+
+            <pre><code class="code-block">
+Si  0 < Y ≤ 11     entonces  X = 3Y + 36
+Si 11 < Y ≤ 33     entonces  X = Y² – 10
+Si 33 < Y ≤ 64     entonces  X = Y³ + Y² – 1
+Para cualquier otro valor de Y → X = 0
+            </code></pre>
+
+            <!-- Modal -->
+            <div id="diagram-ps211" class="diagram-modal">
+              <div class="diagram-modal-content">
+
+                <div class="diagram-modal-header">
+                  <h3>Diagrama de flujo – PS 2.11</h3>
+                  <button class="diagram-modal-close" onclick="closeDiagram('diagram-ps211')">✕</button>
+                </div>
+
+                <div class="diagram-modal-body">
+                  <figure>
+                    <img class="flowchart-img"
+                         src="../Diagrama/diagrama_PS2_11.png"
+                         alt="Diagrama de flujo PS 2.11">
+                    <figcaption>Figura: Diagrama de flujo del PS 2.11.</figcaption>
+                  </figure>
+
+                  <button class="diagram-return-btn" onclick="closeDiagram('diagram-ps211')">
+                    ← Volver al ejercicio
+                  </button>
+                </div>
+
+              </div>
+            </div>
+
+          </section>
+
+
+          <!-- Barra lateral -->
+          <aside class="exercise-sidebar">
+            <h3>Tips para resolverlo</h3>
+            <ul>
+              <li>Esta función está dividida en tramos. Solo revisa en cuál intervalo cae Y.</li>
+              <li>No hay valores compartidos: un Y solo pertenece a un tramo.</li>
+              <li>Si Y no entra en ningún intervalo, el resultado es 0.</li>
+              <li>Recuerda: primero identificas el tramo → luego aplicas la fórmula.</li>
+              <li>Con Y negativos, X siempre será 0 porque no entran en ningún rango.</li>
+            </ul>
+          </aside>
+
+        </div>
+      </article>
+    </main>
+
+    <footer class="page-footer">
+      <p class="note-text"><a href="./main_desc.html">← Volver al menú principal</a></p>
+    </footer>
+
+  </div>
+
+
+  <!-- Script de modales -->
+  <script>
+    function openDiagram(id) {
+      document.getElementById(id).classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeDiagram(id) {
+      document.getElementById(id).classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.diagram-modal').forEach(modal => {
+        modal.addEventListener('click', e => {
+          if (e.target === modal) closeDiagram(modal.id);
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>

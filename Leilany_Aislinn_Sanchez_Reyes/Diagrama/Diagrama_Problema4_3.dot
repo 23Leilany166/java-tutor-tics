@@ -1,0 +1,89 @@
+digraph diagrama_votos {
+    rankdir=TB;
+    bgcolor="transparent";
+    splines=ortho;
+
+    // Para que no se pixelee ni se recorte
+    graph [
+        dpi=400,
+        margin=0.3
+    ];
+
+    node [
+        fontname="Arial",
+        fontsize=12,
+        style="filled",
+        fillcolor="white",
+        width=2.6,
+        height=0.6
+    ];
+
+    // -------- NODOS PRINCIPALES --------
+    inicio      [shape=oval, label="INICIO"];
+
+    // Inicialización del arreglo de votos
+    i_init1     [shape=box, label="I <- 1"];
+    cond_I1     [shape=diamond, label="I <= 12"];
+    init_votes  [shape=box, label="VOTOS[I] <- 0"];
+    i_inc1      [shape=box, label="I <- I + 1"];
+
+    // Lectura del primer voto
+    msg_primero [shape=box, label="\"Ingrese el primer voto\""];
+    leer_cand0  [shape=parallelogram, label="CANDIDATO"];
+
+    // Bucle de votos mientras CANDIDATO <> 0
+    cond_cand   [shape=diamond, label="CANDIDATO <> 0"];
+    act_voto    [shape=box, label="VOTOS[CANDIDATO] <- VOTOS[CANDIDATO] + 1"];
+    msg_sig     [shape=box, label="\"Siguiente voto?\""];
+    leer_cand   [shape=parallelogram, label="CANDIDATO"];
+
+    // Mensaje antes del reporte final
+    msg_total   [shape=box, label="\"Total de votos por candidato\""];
+
+    // Segundo ciclo con I para mostrar resultados
+    i_init2     [shape=box, label="I <- 1"];
+    cond_I2     [shape=diamond, label="I <= 12"];
+
+    // Impresión de resultados (forma de huevo)
+    imprimir    [shape=egg,
+                 label="\"Candidato\", I,\n\"total votos\", VOTOS[I]"];
+
+    i_inc2      [shape=box, label="I <- I + 1"];
+
+    // Conector A
+    con_A       [shape=hexagon, label="A"];
+
+    // -------- FLUJO --------
+    inicio   -> i_init1;
+    i_init1  -> cond_I1;
+
+    // Primer ciclo: poner VOTOS[I] en 0
+    cond_I1  -> init_votes [label="Si"];
+    init_votes -> i_inc1;
+    i_inc1   -> cond_I1;
+
+    cond_I1  -> msg_primero [label="No"];
+
+    // Lectura del primer voto
+    msg_primero -> leer_cand0;
+    leer_cand0  -> cond_cand;
+
+    // Bucle de votos
+    cond_cand  -> act_voto [label="Si"];
+    act_voto   -> msg_sig;
+    msg_sig    -> leer_cand;
+    leer_cand  -> cond_cand;
+
+    // Salida del bucle de votos
+    cond_cand  -> msg_total [label="No"];
+
+    // Segundo ciclo: reporte por candidato
+    msg_total  -> i_init2;
+    i_init2    -> cond_I2;
+
+    cond_I2    -> imprimir [label="Si"];
+    imprimir   -> i_inc2;
+    i_inc2     -> cond_I2;
+
+    cond_I2    -> con_A [label="No"];
+}

@@ -1,0 +1,58 @@
+digraph ejemplo_3_5 {
+    rankdir=TB;
+    bgcolor="transparent";
+    splines=ortho;
+    nodesep=0.6;
+    ranksep=0.9;
+
+    // Estilo general
+    node [
+        fontname="Arial",
+        fontsize=14,
+        style="filled",
+        fillcolor="white",
+        width=2.8,
+        height=0.8
+    ];
+
+    // Nodos principales
+    inicio      [shape=oval,          label="INICIO"];
+    num_inicial [shape=parallelogram, label="NUM"];
+    decision    [shape=diamond, width=3, height=1.2, label="NUM <> -1"];
+
+    cubo_calc   [shape=box, label="CUB <-- NUM**3"];
+    cubo_salida [shape=box, style="rounded,filled", label="CUB", width=2.3];
+    num_repetir [shape=parallelogram, label="NUM"];
+
+    fin         [shape=oval, label="FIN"];
+
+    // Puntos auxiliares para el marco del ciclo y la rama NO
+    loop_top    [shape=point, width=0.01, label=""];
+    loop_bottom [shape=point, width=0.01, label=""];
+    no_right    [shape=point, width=0.01, label=""];
+    no_bottom   [shape=point, width=0.01, label=""];
+
+    // ---------------- FLUJO PRINCIPAL ----------------
+    inicio      -> num_inicial;
+    num_inicial -> decision;
+
+    // ----- Rama SI -----
+    decision    -> cubo_calc   [label="Si", tailport=s, headport=n];
+    cubo_calc   -> cubo_salida [tailport=s, headport=n];
+    cubo_salida -> num_repetir [tailport=s, headport=n];
+
+    // Retorno ciclo mientras (lado izquierdo)
+    num_repetir -> loop_bottom [tailport=s, headport=n];
+    loop_bottom -> loop_top    [tailport=n, headport=s];
+    loop_top    -> decision    [tailport=n, headport=w];
+
+    // ----- Rama NO -----
+    decision -> no_right [
+        label="No",
+        tailport=e,
+        headport=w
+    ];
+
+    no_right  -> no_bottom [tailport=s, headport=n];
+    no_bottom -> fin       [tailport=s, headport=n];
+}

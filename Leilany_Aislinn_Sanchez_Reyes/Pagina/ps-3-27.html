@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PS 3.27 – Ejercicios de Programación Estructurada en Java</title>
+  <link rel="stylesheet" href="./styles_desc.css">
+</head>
+
+<body id="top">
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+
+  <div class="container">
+
+    <!-- Encabezado principal -->
+    <header class="page-header">
+      <h1>PS 3.27 – Estadística de alumnos</h1>
+      <p class="subtitle">Ejercicio de Programación Estructurada en Java (programación estructurada)</p>
+    </header>
+    <main id="main" class="exercises-main">
+      <article class="exercise-card" aria-labelledby="ps327-title">
+
+        <header class="exercise-header">
+          <span class="exercise-badge">Problemas sugeridos</span>
+
+          <h2 id="ps327-title">PS 3.27 – Estadística de un grupo de alumnos</h2>
+
+          <!-- Botón para ver el diagrama -->
+          <div class="diagram-section">
+            <button class="diagram-button" onclick="openDiagram('diagram-ps327')">
+              📊 Ver diagrama
+            </button>
+          </div>
+
+          <p class="exercise-description">
+            Tenemos los datos de varios alumnos: matrícula, sexo, semestre y promedio.
+            Con esa información se pide:
+          </p>
+          <ul>
+            <li><strong>a)</strong> Matrícula y mayor promedio de la población femenina.</li>
+            <li><strong>b)</strong> Matrícula y mayor promedio de la población masculina.</li>
+            <li><strong>c)</strong> Promedios de los alumnos de 1°, 3°, 5° y 7° semestre.</li>
+          </ul>
+        </header>
+
+
+        <div class="exercise-content">
+
+          <!-- ====================== -->
+          <!--      CONTENIDO MAIN    -->
+          <!-- ====================== -->
+          <section class="exercise-main">
+
+            <h3>Datos y variables</h3>
+            <ul>
+              <li>
+                <strong>Entrada:</strong>
+                <ul>
+                  <li><code>N</code>: número de alumnos del grupo (entero &gt; 0).</li>
+                  <li>Para cada alumno:
+                    <ul>
+                      <li><code>MAT</code>: matrícula (entero o cadena).</li>
+                      <li><code>SEX</code>: sexo del alumno (<code>'F'</code> = mujer, <code>'M'</code> = hombre).</li>
+                      <li><code>SEM</code>: semestre (entero, por ejemplo 1, 3, 5, 7).</li>
+                      <li><code>PRO</code>: promedio del alumno (real).</li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+
+              <li>
+                <strong>Salida:</strong>
+                <ul>
+                  <li>Matrícula y mayor promedio de mujeres: <code>MATF</code>, <code>MAXF</code>.</li>
+                  <li>Matrícula y mayor promedio de hombres: <code>MATM</code>, <code>MAXM</code>.</li>
+                  <li>Promedios por semestre:
+                    <code>PROM1</code> (1°), <code>PROM3</code> (3°),
+                    <code>PROM5</code> (5°) y <code>PROM7</code> (7°).</li>
+                </ul>
+              </li>
+            </ul>
+
+
+            <h3>Explicación sencilla del algoritmo</h3>
+            <ul>
+              <li>Vamos leyendo <strong>alumno por alumno</strong> dentro de un ciclo.</li>
+              <li>Si el alumno es mujer, revisamos si su promedio es el más alto entre las mujeres.</li>
+              <li>Si es hombre, hacemos lo mismo pero para los hombres.</li>
+              <li>Según el semestre (1, 3, 5 o 7) vamos:
+                <ul>
+                  <li>Sumando sus promedios.</li>
+                  <li>Contando cuántos alumnos hay en ese semestre.</li>
+                </ul>
+              </li>
+              <li>Al final dividimos: suma / cantidad para obtener el promedio de cada semestre.</li>
+            </ul>
+            <!-- Modal del diagrama -->
+            <div id="diagram-ps327" class="diagram-modal">
+              <div class="diagram-modal-content">
+
+                <div class="diagram-modal-header">
+                  <h3>Diagrama de flujo – PS 3.27</h3>
+                  <button class="diagram-modal-close" onclick="closeDiagram('diagram-ps327')">✕</button>
+                </div>
+
+                <div class="diagram-modal-body">
+                  <figure>
+                    <img class="flowchart-img" loading="lazy"
+                         src="../Diagrama/Diagrama_PS3_27.png"
+                         alt="Diagrama de flujo: PS 3.27 – Estadística de alumnos">
+                    <figcaption>Figura: Diagrama de flujo del <strong>PS 3.27</strong>.</figcaption>
+                  </figure>
+
+                  <button class="diagram-return-btn" onclick="closeDiagram('diagram-ps327')">
+                    ← Volver al ejercicio
+                  </button>
+                </div>
+
+              </div>
+            </div>
+
+          </section>
+
+
+          <!-- ====================== -->
+          <!--        SIDEBAR         -->
+          <!-- ====================== -->
+          <aside class="exercise-sidebar">
+            <h3>Tips rápidos para entenderlo</h3>
+            <ul>
+              <li><strong>Piensa en un recorrido:</strong> pasas alumno por alumno una sola vez.</li>
+              <li><strong>Dos cosas a la vez:</strong> dentro del mismo ciclo actualizas
+                  máximos (hombre/mujer) y sumas por semestre.</li>
+              <li><strong>Bandera de “no hay datos”:</strong> si un semestre no tiene alumnos,
+                  el contador queda en 0 y el promedio se deja en 0.</li>
+              <li><strong>Sexo como número:</strong> en el programa se usa
+                  <code>0 = mujer</code> y <code>1 = hombre</code> solo para simplificar las comparaciones.</li>
+              <li><strong>Orden recomendado:</strong> primero escribe el ciclo que solo lee e imprime;
+                  luego ve agregando las condiciones para máximos y sumas.</li>
+            </ul>
+          </aside>
+
+        </div>
+      </article>
+    </main>
+
+
+    <footer class="page-footer">
+      <p class="note-text">
+        <a href="./main_desc.html">← Volver al menú principal</a>
+      </p>
+    </footer>
+
+  </div>
+
+
+  <!-- ====================== -->
+  <!--   SCRIPT DE MODALES    -->
+  <!-- ====================== -->
+  <script>
+    function openDiagram(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeDiagram(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const modals = document.querySelectorAll('.diagram-modal');
+      modals.forEach(modal => {
+        modal.addEventListener('click', (event) => {
+          if (event.target === modal) {
+            closeDiagram(modal.id);
+          }
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>

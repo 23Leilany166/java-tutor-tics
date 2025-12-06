@@ -1,0 +1,137 @@
+digraph diagrama_3_25 {
+    rankdir=TB;
+    bgcolor="transparent";
+    splines=ortho;
+    nodesep=0.6;
+    ranksep=0.8;
+
+    // === Ajustes globales para que no se pixelee ni se recorte ===
+    graph [
+        dpi=400,          // más resolución del PNG
+        margin=0.3        // margen alrededor del diagrama (en pulgadas)
+    ];
+
+    node [
+        fontname="Arial",
+        fontsize=12,
+        style="filled",
+        fillcolor="white"
+    ];
+
+    // -------- NODOS PRINCIPALES --------
+    ini         [shape=oval, label="INICIO"];
+
+    init_tot    [shape=box,
+                 label="TIPO1 <- 0\nTIPO2 <- 0\nTIPO3 <- 0\nTIPO4 <- 0\nTIPO5 <- 0\nMCTIPO2 <- 0"];
+
+    leer_N      [shape=parallelogram, label="N"];
+
+    i_init      [shape=box, label="I <- 1"];
+    cond_I      [shape=diamond, label="I <= N"];
+
+    j_init      [shape=box, label="J <- 1\nTOTVIN <- 0"];
+    cond_J      [shape=diamond, label="J <= 5"];
+
+    leer_V      [shape=parallelogram, label="V"];
+
+    acum_TOT    [shape=box, label="TOTVIN <- TOTVIN + V"];
+
+    // Decisión según tipo J (1..5)
+    dec_J       [shape=diamond, label="J"];
+
+    // Actualizar acumuladores por tipo
+    tip1        [shape=box, label="TIPO1 <- TIPO1 + V"];
+    tip2        [shape=box, label="TIPO2 <- TIPO2 + V"];
+    tip3        [shape=box, label="TIPO3 <- TIPO3 + V"];
+    tip4        [shape=box, label="TIPO4 <- TIPO4 + V"];
+    tip5        [shape=box, label="TIPO5 <- TIPO5 + V"];
+
+    // Bloques especiales para tipo 2 y tipo 3
+    dec_mayor2  [shape=diamond, label="V > MCTIPO2"];
+    act_mayor2  [shape=box, label="MCTIPO2 <- V\nANIO <- I"];
+
+    dec_cero3   [shape=diamond, label="V = 0"];
+    msg_tipo3   [shape=box,
+                 label="\"El año:\", I,\n\"NO SE PRODUJO VINO TIPO 3\""];
+
+    j_inc       [shape=box, label="J <- J + 1"];
+
+    // Despliegue por año
+    mostrar_tot_anio [shape=box,
+                      label="\"TOTAL LITROS\nPRODUCIDOS POR AÑO:\", TOTVIN"];
+
+    i_inc       [shape=box, label="I <- I + 1"];
+
+    // Conector A hacia la segunda parte
+    con_A       [shape=hexagon, label="A"];
+
+    // -------- PARTE A (FINAL) --------
+    tot_tipos   [shape=box,
+                 label="\"TOTAL TIPO 1:\", TIPO1\n\"TOTAL TIPO 2:\", TIPO2\n\"TOTAL TIPO 3:\", TIPO3\n\"TOTAL TIPO 4:\", TIPO4\n\"TOTAL TIPO 5:\", TIPO5"];
+
+    mayor_tipo2 [shape=box,
+                 label="\"AÑO EN QUE SE PRODUJO\nMAYOR CANTIDAD VINO TIPO 2:\",\nANIO, \"LITROS:\", MCTIPO2"];
+
+    fin         [shape=oval, label="FIN"];
+
+    // -------- MISMO RANGO PARA DEC_J Y TIPOS (PARA QUE QUEDEN EN LÍNEA) --------
+    { rank=same; dec_J; tip1; tip2; tip3; tip4; tip5 }
+
+    // -------- FLUJO PRINCIPAL --------
+    ini      -> init_tot;
+    init_tot -> leer_N;
+    leer_N   -> i_init;
+    i_init   -> cond_I;
+
+    // Si I <= N entra al ciclo de años
+    cond_I   -> j_init   [label="Si"];
+    cond_I   -> con_A    [label="No"];
+
+    // Inicio del ciclo J
+    j_init   -> cond_J;
+
+    // Si J <= 5 lee V y procesa tipo
+    cond_J   -> leer_V   [label="Si"];
+    cond_J   -> mostrar_tot_anio [label="No"];
+
+    leer_V   -> acum_TOT;
+    acum_TOT -> dec_J;
+
+    // -------- DISTRIBUCIÓN POR TIPO J --------
+    dec_J -> tip1 [label="1"];
+    dec_J -> tip2 [label="2"];
+    dec_J -> tip3 [label="3"];
+    dec_J -> tip4 [label="4"];
+    dec_J -> tip5 [label="5"];
+
+    // Tipo 1: solo acumula
+    tip1 -> j_inc;
+
+    // Tipo 2: acumula y verifica máximo
+    tip2 -> dec_mayor2;
+    dec_mayor2 -> act_mayor2 [label="Si"];
+    dec_mayor2 -> j_inc      [label="No"];
+    act_mayor2  -> j_inc;
+
+    // Tipo 3: acumula y verifica V = 0
+    tip3 -> dec_cero3;
+    dec_cero3 -> msg_tipo3 [label="Si"];
+    dec_cero3 -> j_inc     [label="No"];
+    msg_tipo3  -> j_inc;
+
+    // Tipos 4 y 5: solo acumulan
+    tip4 -> j_inc;
+    tip5 -> j_inc;
+
+    // Incremento J y regreso al ciclo
+    j_inc -> cond_J;
+
+    // Fin del ciclo J: mostrar total por año y aumentar I
+    mostrar_tot_anio -> i_inc;
+    i_inc -> cond_I;
+
+    // -------- PARTE FINAL A --------
+    con_A -> tot_tipos;
+    tot_tipos -> mayor_tipo2;
+    mayor_tipo2 -> fin;
+}

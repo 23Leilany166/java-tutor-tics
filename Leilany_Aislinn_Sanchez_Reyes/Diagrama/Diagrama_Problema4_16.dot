@@ -1,0 +1,173 @@
+digraph diagrama_matriz_paridad {
+    rankdir=TB;
+    bgcolor="transparent";
+    splines=ortho;
+
+    graph [
+        dpi=300,          // más resolución al exportar
+        margin=0.2
+    ];
+
+    node [
+        fontname="Arial",
+        fontsize=12,
+        style="filled",
+        fillcolor="white",
+        width=3.0,
+        height=0.6
+    ];
+
+    // ====== PARTE 1: LECTURA DEL ARREGLO ======
+
+    inicio      [shape=oval, label="INICIO"];
+
+    msg_dim     [shape=box,
+                 label="\"Ingrese número de renglones\n y de columnas del arreglo\""];
+
+    leer_MN     [shape=parallelogram, label="M, N"];
+
+    cond_dim    [shape=diamond,
+                 label="(M ≥ 1) y (M ≤ 30)\n y (N ≥ 1) y (N ≤ 20)"];
+
+    error_datos [shape=box,
+                 label="\"Error en los\n datos\"",
+                 style="rounded,filled"];
+
+    // ciclos de lectura de A[I, J]
+    i1_init     [shape=box, label="I ← 1"];
+    cond_I1     [shape=diamond, label="I ≤ M"];
+
+    j1_init     [shape=box, label="J ← 1"];
+    cond_J1     [shape=diamond, label="J ≤ N"];
+
+    msg_ing     [shape=box, label="\"Ingrese datos\",\n I, J"];
+    leer_AIJ    [shape=parallelogram, label="A[I, J]"];
+
+    j1_inc      [shape=box, label="J ← J + 1"];
+    i1_inc      [shape=box, label="I ← I + 1"];
+
+    // conectores A y B
+    con_A       [shape=hexagon, label="A"];
+    con_B       [shape=hexagon, label="B"];
+
+    // --- flujo parte 1 ---
+    inicio  -> msg_dim;
+    msg_dim -> leer_MN;
+    leer_MN -> cond_dim;
+
+    cond_dim -> i1_init     [label="Si"];
+    cond_dim -> error_datos [label="No"];
+
+    // error va directo al conector B
+    error_datos -> con_B;
+
+    // ciclo externo sobre I
+    i1_init -> cond_I1;
+
+    cond_I1 -> j1_init [label="Si"];
+    cond_I1 -> con_A   [label="No"];
+
+    // ciclo interno sobre J
+    j1_init -> cond_J1;
+
+    cond_J1 -> msg_ing [label="Si"];
+    cond_J1 -> i1_inc  [label="No"];
+
+    msg_ing  -> leer_AIJ;
+    leer_AIJ -> j1_inc;
+    j1_inc   -> cond_J1;
+
+    i1_inc   -> cond_I1;
+
+    // ====== PARTE 2: PROCESAMIENTO (desde A y B) ======
+
+    // desde A
+    A_entry    [shape=point, width=0.01, label=""];
+    con_A -> A_entry;
+
+    // bucle general
+    i2_init    [shape=box, label="I ← 1"];
+    cond_I2    [shape=diamond, label="I ≤ M"];
+
+    cond_par   [shape=diamond, label="I MOD 2 = 0"];
+
+    // rama I par
+    B_par_init [shape=box, label="B[I] ← 0"];
+    j2e_init   [shape=box, label="J ← 1"];
+    cond_J2e   [shape=diamond, label="J ≤ N"];
+    upd_par    [shape=box, label="B[I] ← B[I] + A[I-1, J]"];
+    j2e_inc    [shape=box, label="J ← J + 1"];
+
+    // rama I impar
+    B_impar_init [shape=box, label="B[I] ← 0"];
+    j2o_init     [shape=box, label="J ← 1"];
+    cond_J2o     [shape=diamond, label="J ≤ N"];
+    upd_impar    [shape=box, label="B[I] ← B[I] + A[I, J]"];
+    j2o_inc      [shape=box, label="J ← J + 1"];
+
+    // unión de ramas para incrementar I
+    join_I      [shape=point, width=0.01, label=""];
+    i2_inc      [shape=box, label="I ← I + 1"];
+
+    // impresión del arreglo resultado
+    msg_res     [shape=box, label="\"Arreglo resultado\""];
+
+    i3_init     [shape=box, label="I ← 1"];
+    cond_I3     [shape=diamond, label="I ≤ M"];
+
+    print_BI    [shape=egg, label="B[I]"];   // <- impresión con shape=egg
+    i3_inc      [shape=box, label="I ← I + 1"];
+
+    fin         [shape=oval, label="FIN"];
+
+    // --- órdenes relativos para mantener estructura ---
+    { rank=same; cond_J2e; cond_J2o }
+    { rank=same; upd_par; upd_impar }
+
+    // --- flujo parte 2 ---
+
+    A_entry -> i2_init;
+    i2_init -> cond_I2;
+
+    cond_I2 -> cond_par [label="Si"];
+    cond_I2 -> msg_res  [label="No"];
+
+    // rama par
+    cond_par -> B_par_init   [label="Si"];
+    B_par_init -> j2e_init;
+    j2e_init   -> cond_J2e;
+
+    cond_J2e -> upd_par [label="Si"];
+    cond_J2e -> join_I  [label="No"];
+
+    upd_par  -> j2e_inc;
+    j2e_inc  -> cond_J2e;
+
+    // rama impar
+    cond_par -> B_impar_init [label="No"];
+    B_impar_init -> j2o_init;
+    j2o_init   -> cond_J2o;
+
+    cond_J2o -> upd_impar [label="Si"];
+    cond_J2o -> join_I    [label="No"];
+
+    upd_impar -> j2o_inc;
+    j2o_inc   -> cond_J2o;
+
+    // unión y aumento de I
+    join_I -> i2_inc;
+    i2_inc -> cond_I2;
+
+    // impresión final del arreglo
+    msg_res -> i3_init;
+    i3_init -> cond_I3;
+
+    cond_I3 -> print_BI [label="Si"];
+    cond_I3 -> fin      [label="No"];
+
+    print_BI -> i3_inc;
+    i3_inc  -> cond_I3;
+
+    // conector B viene directo al FIN
+    con_B -> fin;
+}

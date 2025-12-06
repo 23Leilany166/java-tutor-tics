@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PS 2.9 – Ejercicios de Programación Estructurada en Java</title>
+  <link rel="stylesheet" href="./styles_desc.css">
+</head>
+
+<body id="top">
+  <div class="container">
+
+    <header class="page-header">
+      <h1>PS 2.9 – Comprobar A⁻ᴺ = 1 / Aᴺ (A ≠ 0)</h1>
+      <p class="subtitle">Ejercicio de Programación Estructurada en Java</p>
+    </header>
+    <main id="main" class="exercises-main">
+      <article class="exercise-card" aria-labelledby="ps29-title">
+
+        <header class="exercise-header">
+          <span class="exercise-badge">Problemas sugeridos</span>
+          <h2 id="ps29-title">PS 2.9 – Verificar la igualdad <code>A<sup>-N</sup> = 1 / A<sup>N</sup></code></h2>
+
+          <p class="exercise-description">
+            El ejercicio consiste en comprobar si la expresión matemática 
+            <code>A<sup>-N</sup> = 1 / A<sup>N</sup></code> se cumple para un número <strong>A distinto de 0</strong> 
+            usando operaciones básicas en Java estructurado.
+          </p>
+        </header>
+
+        <div class="exercise-content">
+
+          <!-- ======================================= -->
+          <!--             CONTENIDO PRINCIPAL          -->
+          <!-- ======================================= -->
+          <section class="exercise-main">
+
+            <!-- BOTÓN DEL DIAGRAMA -->
+            <div class="diagram-section" style="margin-bottom: 20px;">
+              <button class="diagram-button" onclick="openDiagram('diagram-ps29')">
+                📊 Ver Diagrama
+              </button>
+            </div>
+
+            <h3>Datos y variables</h3>
+            <ul>
+              <li><strong>Entrada:</strong>
+                <ul>
+                  <li><code>A</code> → número real, distinto de 0.</li>
+                  <li><code>N</code> → número entero (exponente).</li>
+                </ul>
+              </li>
+              <li><strong>Salida:</strong> mensaje indicando si la identidad es verdadera o falsa.</li>
+            </ul>
+
+            <h3>Explicación fácil</h3>
+            <p>
+              Recordemos que una potencia negativa significa lo siguiente:
+            </p>
+
+            <p style="text-align:center; font-size:1.2rem;">
+              <code>A<sup>-N</sup> = 1 / A<sup>N</sup></code>
+            </p>
+
+            <p>
+              Entonces solo debemos calcular ambos lados y comparar si son prácticamente iguales 
+              (debido a que los decimales en computadora nunca son exactos).
+            </p>
+            <!-- DIAGRAMA -->
+            <div id="diagram-ps29" class="diagram-modal">
+              <div class="diagram-modal-content">
+                <div class="diagram-modal-header">
+                  <h3>Diagrama de flujo – PS 2.9</h3>
+                  <button class="diagram-modal-close" onclick="closeDiagram('diagram-ps29')">✕</button>
+                </div>
+
+                <div class="diagram-modal-body">
+                  <figure>
+                    <img class="flowchart-img"
+                         src="../Diagrama/diagrama_PS2_9.png"
+                         alt="Diagrama PS 2.9 – Comprobar igualdad de potencias">
+                    <figcaption>Figura: Diagrama del PS 2.9.</figcaption>
+                  </figure>
+
+                  <button class="diagram-return-btn" onclick="closeDiagram('diagram-ps29')">
+                    ← Volver al ejercicio
+                  </button>
+                </div>
+              </div>
+            </div>
+
+          </section>
+
+          <!-- ======================================= -->
+          <!--                SIDEBAR                   -->
+          <!-- ======================================= -->
+          <aside class="exercise-sidebar">
+            <h3>Tips rápidos</h3>
+
+            <ul>
+              <li><strong>Potencia negativa:</strong> invierte la base → <code>A⁻ᴺ = 1/Aᴺ</code>.</li>
+              <li><strong>Math.pow:</strong> así se calculan potencias en Java.</li>
+              <li><strong>No usar A = 0:</strong> produce división entre cero.</li>
+              <li><strong>Comparación con tolerancia:</strong>
+                evitar errores por decimales flotantes.</li>
+              <li><strong>Prueba rápida:</strong>
+                <ul>
+                  <li>A = 2, N = 3 → Iguales</li>
+                  <li>A = -2, N = 4 → Iguales</li>
+                  <li>A = 0 → No válido</li>
+                </ul>
+              </li>
+            </ul>
+
+            <div class="tip-box">
+              <p><strong>Resumen mental:</strong>  
+                Calcula ambos lados → compáralos → muestra el resultado.</p>
+            </div>
+          </aside>
+
+        </div>
+      </article>
+    </main>
+
+    <footer class="page-footer">
+      <p class="note-text"><a href="./main_desc.html">← Volver</a></p>
+    </footer>
+
+  </div>
+
+  <!-- Modal Script -->
+  <script>
+    function openDiagram(id) {
+      document.getElementById(id).classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeDiagram(id) {
+      document.getElementById(id).classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+  </script>
+
+</body>
+</html>

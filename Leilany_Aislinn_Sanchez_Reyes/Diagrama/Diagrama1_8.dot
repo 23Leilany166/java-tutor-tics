@@ -1,0 +1,35 @@
+digraph flujo_distancia {
+    rankdir=TB;
+    bgcolor="transparent";
+
+    // Estilos generales
+    node [fontname="Arial", fontsize=16, style="filled",
+          fillcolor="white", width=3, height=0.9];
+
+    // Nodos
+    inicio  [shape=oval, label="INICIO"];
+
+    lectura [shape=parallelogram, label="X1, Y1, X2, Y2"];
+
+    proceso [shape=box, width=7,
+        label="DIS <-- ((X1 - X2)**2 + (Y1 - Y2)**2) ** 0.5"];
+
+    // >>> AQUÍ LA FORMA DE “DOCUMENTO” QUE QUIERES <<<
+    salida  [
+        shape=egg,
+        label="DIS",
+        style="rounded,filled",
+        fillcolor="white",
+        height=1,
+        width=3,
+        skew=0.3   // esto dobla la parte inferior como en la imagen
+    ];
+
+    fin     [shape=oval, label="FIN"];
+
+    // Flechas
+    inicio  -> lectura  [minlen=2];
+    lectura -> proceso  [minlen=2];
+    proceso -> salida   [minlen=2];
+    salida  -> fin      [minlen=2];
+}

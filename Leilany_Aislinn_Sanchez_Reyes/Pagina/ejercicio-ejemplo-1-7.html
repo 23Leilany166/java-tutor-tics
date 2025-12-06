@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ejemplo 1.7 – Ejercicios de Programación Estructurada en Java</title>
+  <link rel="stylesheet" href="./styles_desc.css">
+</head>
+
+<body id="top">
+  <div class="container">
+
+    <header class="page-header">
+      <h1>Ejemplo 1.7 – Calcular (A + B)² / 3</h1>
+      <p class="subtitle">Ejercicio de Programación Estructurada en Java</p>
+    </header>
+
+    <main id="main" class="exercises-main">
+      <article class="exercise-card" aria-labelledby="ex17-title">
+
+        <header class="exercise-header">
+          <span class="exercise-badge">Algoritmos</span>
+          <h2 id="ex17-title">Ejemplo 1.7 – Calcular <code>(A + B)<sup>2</sup> / 3</code></h2>
+          <p class="exercise-description">
+            Construye un algoritmo que lea dos números enteros (<code>A</code> y <code>B</code>)
+            y calcule el resultado de la expresión <code>((A + B)^2) / 3</code>.  
+            Este ejercicio te ayuda a practicar operaciones aritméticas básicas, uso de variables
+            y escritura de expresiones en Java.
+          </p>
+        </header>
+
+        <div class="exercise-content">
+
+
+          <!-- =============================== -->
+          <!--        CONTENIDO PRINCIPAL      -->
+          <!-- =============================== -->
+
+          <section class="exercise-main">
+
+            <!-- ⭐ BOTÓN DE DIAGRAMA ⭐ -->
+            <div class="diagram-section" style="margin-bottom: 20px;">
+              <button class="diagram-button" onclick="openDiagram('diagram-ex17')">
+                📊 Ver Diagrama
+              </button>
+            </div>
+
+            <h3>Datos y variables</h3>
+            <ul>
+              <li><strong>Entrada:</strong> dos valores enteros: <code>A</code> y <code>B</code>.</li>
+              <li><strong>Salida:</strong> un número real llamado <code>RES</code> con el resultado de la operación.</li>
+            </ul>
+
+            <h3>Explicación de las variables</h3>
+            <ul>
+              <li><strong>A, B:</strong> variables de tipo entero. Guardan los números que el usuario escribe.</li>
+              <li><strong>RES:</strong> variable de tipo real (<code>double</code>).  
+                  Guarda el resultado de la expresión <code>((A + B)²) / 3</code>.</li>
+            </ul>
+
+
+            <!-- Modal del diagrama -->
+            <div id="diagram-ex17" class="diagram-modal">
+              <div class="diagram-modal-content">
+                <div class="diagram-modal-header">
+                  <h3>Diagrama de flujo – Ejemplo 1.7</h3>
+                  <button class="diagram-modal-close" onclick="closeDiagram('diagram-ex17')">✕</button>
+                </div>
+
+                <div class="diagram-modal-body">
+                  <figure>
+                    <img class="flowchart-img" loading="lazy"
+                         src="../Diagrama/Diagrama1_7.png"
+                         alt="Diagrama de flujo: Ejemplo 1.7 – (A+B)^2/3">
+                    <figcaption>Figura: Diagrama de flujo del <strong>Ejemplo 1.7</strong>.</figcaption>
+                  </figure>
+                </div>
+              </div>
+            </div>
+
+
+            <h3>Tabla de corridas(Resultados esperados)</h3>
+            <!-- ⭐ TABLA ACTUALIZADA Y DISEÑADA ⭐ -->
+            <table class="table-default">
+              <thead>
+                <tr>
+                  <th>Número de corrida</th>
+                  <th>A</th>
+                  <th>B</th>
+                  <th>RES esperado</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>1</td><td>5</td><td>6</td><td>40.33</td></tr>
+                <tr><td>2</td><td>7</td><td>10</td><td>96.33</td></tr>
+                <tr><td>3</td><td>0</td><td>3</td><td>3.00</td></tr>
+                <tr><td>4</td><td>12</td><td>2</td><td>65.33</td></tr>
+                <tr><td>5</td><td>14</td><td>-5</td><td>27.00</td></tr>
+              </tbody>
+            </table>
+
+          </section>
+
+
+          <!-- =============================== -->
+          <!--             SIDEBAR             -->
+          <!-- =============================== -->
+
+          <aside class="exercise-sidebar">
+            <h3>Tips rápidos para resolverlo</h3>
+
+            <p class="note-text">
+              Piensa en el problema como una receta: lees A y B, haces cuentas,
+              y al final guardas el resultado en <code>RES</code> y lo imprimes.
+            </p>
+
+            <ul>
+              <li><strong>Suma primero:</strong> calcula <code>S = A + B</code>.</li>
+              <li><strong>Luego el cuadrado:</strong> usa <code>S * S</code> o <code>Math.pow(S, 2)</code>.</li>
+              <li><strong>División con decimales:</strong> usa <code>3.0</code> para no perder decimales.</li>
+              <li><strong>RES debe ser double:</strong> así podrás ver resultados como <code>40.33</code>.</li>
+              <li><strong>Prueba tu programa:</strong> usa las cinco corridas de la tabla.</li>
+            </ul>
+
+            <div class="tip-box">
+              <p>
+              El orden importa.  
+              Hazlo así: primero suma, después saca el cuadrado y al final divide.
+              </p>
+            </div>
+          </aside>
+
+        </div>
+      </article>
+    </main>
+
+    <footer class="page-footer">
+      <p class="note-text">
+        <a href="./main_desc.html">← Volver al menú principal</a>
+      </p>
+    </footer>
+
+  </div>
+
+
+<!-- =============================== -->
+<!--         SCRIPT MODAL            -->
+<!-- =============================== -->
+
+<script>
+  function openDiagram(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  function closeDiagram(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+      modal.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    const modals = document.querySelectorAll('.diagram-modal');
+    modals.forEach(modal => {
+      modal.addEventListener('click', function(event) {
+        if (event.target === this) {
+          closeDiagram(this.id);
+        }
+      });
+    });
+  });
+</script>
+
+</body>
+</html>

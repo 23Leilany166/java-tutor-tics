@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PS 2.10 – Ejercicios de Programación Estructurada en Java</title>
+  <link rel="stylesheet" href="./styles_desc.css">
+</head>
+
+<body id="top">
+  <div class="container">
+
+    <header class="page-header">
+      <h1>PS 2.10 – Comprobar (A/B)<sup>N</sup> = A<sup>N</sup> / B<sup>N</sup></h1>
+      <p class="subtitle">Ejercicio de Programación Estructurada en Java</p>
+    </header>
+    <main id="main" class="exercises-main">
+      <article class="exercise-card" aria-labelledby="ps210-title">
+
+        <header class="exercise-header">
+          <span class="exercise-badge">Problemas sugeridos</span>
+          <h2 id="ps210-title">
+            PS 2.10 – Comprobar <code>(A/B)<sup>N</sup> = A<sup>N</sup> / B<sup>N</sup></code>
+          </h2>
+          <p class="exercise-description">
+            En este problema queremos verificar, con un programa en Java estructurado, 
+            que la igualdad <code>(A/B)<sup>N</sup> = A<sup>N</sup> / B<sup>N</sup></code> 
+            se cumple para ciertos valores de <code>A</code>, <code>B</code> y <code>N</code>.
+          </p>
+        </header>
+
+        <div class="exercise-content">
+
+          <!-- =============================== -->
+          <!--        CONTENIDO PRINCIPAL      -->
+          <!-- =============================== -->
+          <section class="exercise-main">
+
+            <!-- Botón para ver el diagrama -->
+            <div class="diagram-section" style="margin-bottom: 20px;">
+              <button class="diagram-button" onclick="openDiagram('diagram-ps210')">
+                📊 Ver Diagrama
+              </button>
+            </div>
+
+            <h3>Datos y variables</h3>
+            <ul>
+              <li><strong>Entrada:</strong>
+                <ul>
+                  <li><code>A</code> – número entero (numerador).</li>
+                  <li><code>B</code> – número entero (denominador, <strong>B ≠ 0</strong>).</li>
+                  <li><code>N</code> – número entero (exponente, normalmente N &gt;= 0).</li>
+                </ul>
+              </li>
+              <li><strong>Salida:</strong> mensaje que indica si las dos expresiones dan el mismo resultado.</li>
+            </ul>
+
+            <h3>Explicación sencilla</h3>
+            <p>
+              La igualdad dice que es lo mismo:
+            </p>
+
+            <p style="text-align:center; font-size:1.15rem;">
+              <code>(A / B)<sup>N</sup></code> que <code>A<sup>N</sup> / B<sup>N</sup></code>
+            </p>
+
+            <p>
+              El programa solo tiene que calcular ambos lados y comparar si son prácticamente iguales.
+              Usamos números reales (<code>double</code>) porque puede haber fracciones.
+            </p>
+            <!-- Modal para el diagrama -->
+            <div id="diagram-ps210" class="diagram-modal">
+              <div class="diagram-modal-content">
+                <div class="diagram-modal-header">
+                  <h3>Diagrama de flujo – PS 2.10</h3>
+                  <button class="diagram-modal-close" onclick="closeDiagram('diagram-ps210')">✕</button>
+                </div>
+                <div class="diagram-modal-body">
+                  <figure>
+                    <img class="flowchart-img" loading="lazy"
+                         src="../Diagrama/diagrama_PS2_10.png"
+                         alt="Diagrama de flujo: PS 2.10 – Comprobar (A/B)^N = A^N / B^N">
+                    <figcaption>Figura: Diagrama de flujo de <strong>PS 2.10</strong>.</figcaption>
+                  </figure>
+
+                  <button class="diagram-return-btn" onclick="closeDiagram('diagram-ps210')">
+                    ← Volver al ejercicio
+                  </button>
+                </div>
+              </div>
+            </div>
+
+          </section>
+
+          <!-- =============================== -->
+          <!--             SIDEBAR             -->
+          <!-- =============================== -->
+          <aside class="exercise-sidebar">
+            <h3>Tips rápidos para resolverlo</h3>
+
+            <ul>
+              <li><strong>Identidad:</strong> si <code>B ≠ 0</code>, debe cumplirse
+                <code>(A/B)<sup>N</sup> = A<sup>N</sup>/B<sup>N</sup></code>.</li>
+              <li><strong>Evita errores:</strong> nunca uses <code>B = 0</code>.</li>
+              <li><strong>Potencias:</strong> en Java se usa
+                <code>Math.pow(base, exponente)</code>.</li>
+              <li><strong>Tolerancia:</strong> comparamos con un margen pequeño
+                (<code>eps = 1e-9</code>) porque los <em>double</em> no son exactos.</li>
+              <li><strong>Casos de prueba rápidos:</strong>
+                <ul>
+                  <li>A = 2, B = 5, N = 3 → Iguales.</li>
+                  <li>A = 0, B = 3, N = 4 → Iguales (ambas expresiones dan 0).</li>
+                  <li>B = 0 → el programa avisa que no es válido.</li>
+                </ul>
+              </li>
+            </ul>
+
+            <div class="tip-box">
+              <p>
+                Resumen: lee A, B y N → revisa que B ≠ 0 → calcula
+                ambos lados → compara → imprime el resultado.
+              </p>
+            </div>
+          </aside>
+
+        </div>
+      </article>
+    </main>
+
+    <footer class="page-footer">
+      <p class="note-text">
+        <a href="./main_desc.html">← Volver al menú principal</a>
+      </p>
+    </footer>
+
+  </div>
+
+  <!-- =============================== -->
+  <!--         SCRIPT MODAL            -->
+  <!-- =============================== -->
+  <script>
+    function openDiagram(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeDiagram(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const modals = document.querySelectorAll('.diagram-modal');
+      modals.forEach(modal => {
+        modal.addEventListener('click', function (event) {
+          if (event.target === this) {
+            closeDiagram(this.id);
+          }
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>

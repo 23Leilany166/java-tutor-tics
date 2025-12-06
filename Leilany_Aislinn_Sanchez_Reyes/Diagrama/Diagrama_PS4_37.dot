@@ -1,0 +1,124 @@
+digraph PS4_37_CentrosTuristicos {
+    graph [
+        rankdir=TB,
+        bgcolor="transparent",
+        dpi=300,
+        margin="0.3",
+        pad="0.5",
+        splines=ortho
+    ];
+    node  [
+        fontname="Arial",
+        fontsize=11,
+        style="filled",
+        fillcolor="white",
+        width=2.8,
+        height=0.6
+    ];
+    edge  [fontname="Arial", fontsize=10];
+
+    // ---------------- INICIO Y CARGA DE DATOS ----------------
+    INI   [shape=oval, label="INICIO"];
+
+    leerN [shape=parallelogram,
+           label="Leer N\n(1 ≤ N ≤ 100)"];
+
+    leerArr [shape=parallelogram,
+             label="Leer CT[1..N]\nLeer HAB[1..2N]\n(nombres y habitaciones)"];
+
+    menuMsg [shape=egg,
+             label="\"CLAVE de operación:\nL=listar, R=reporte,\nI=insertar, M=mayor,\nF=fin\""];
+
+    leerCl [shape=parallelogram,
+            label="Leer CLAVE"];
+
+    decCl  [shape=diamond,
+            label="CLAVE"];
+
+    // ---------------- OPCIÓN L: LISTAR CENTROS ----------------
+    L_proc [shape=box,
+            label="Para i = 1..N\n  mostrar CT[i]"];
+
+    L_out  [shape=egg,
+            label="Lista de nombres\nde centros turísticos"];
+
+    // ---------------- OPCIÓN R: REPORTE DE UN CENTRO ---------
+    R_in   [shape=parallelogram,
+            label="Leer NOMBRE del centro"];
+
+    R_busca [shape=box,
+             label="Buscar NOMBRE en CT\n(búsqueda binaria)"];
+
+    R_encontrado [shape=diamond,
+                  label="¿Se encontró\nel centro?"];
+
+    R_ok   [shape=egg,
+            label="Simples, dobles\ny total de habitaciones"];
+
+    R_err  [shape=egg,
+            label="\"Centro no\nencontrado\""];
+
+    // ---------------- OPCIÓN I: INSERTAR NUEVO CENTRO --------
+    I_in   [shape=parallelogram,
+            label="Leer nombre nuevo,\n#simples, #dobles"];
+
+    I_pos  [shape=box,
+            label="Encontrar posición k\npara mantener CT ordenado"];
+
+    I_shift [shape=box,
+             label="Recorrer CT y HAB\nhacia abajo desde k"];
+
+    I_ins  [shape=box,
+            label="Insertar nuevo centro\nen posición k\nN ← N + 1"];
+
+    I_out  [shape=egg,
+            label="\"Centro insertado\ncorrectamente\""];
+
+    // ---------------- OPCIÓN M: MAYOR NÚMERO DE HABITACIONES --
+    M_proc [shape=box,
+            label="Recorrer todos los\ncentros, calcular\nsimples+dobles"];
+
+    M_out  [shape=egg,
+            label="Nombre del centro con\nmás habitaciones\ny total de cuartos"];
+
+    // ---------------- FIN --------------------------------------
+    FIN    [shape=oval, label="FIN"];
+
+    // ---------------- FLUJO PRINCIPAL ----------------
+    INI    -> leerN;
+    leerN  -> leerArr;
+    leerArr -> menuMsg;
+    menuMsg -> leerCl;
+    leerCl -> decCl;
+
+    // Rutas desde decisión de CLAVE
+    decCl  -> L_proc [label="L"];
+    decCl  -> R_in   [label="R"];
+    decCl  -> I_in   [label="I"];
+    decCl  -> M_proc [label="M"];
+    decCl  -> FIN    [label="F"];
+    decCl  -> menuMsg [label="Otro"];
+
+    // ----- L -----
+    L_proc -> L_out;
+    L_out  -> menuMsg;
+
+    // ----- R -----
+    R_in      -> R_busca;
+    R_busca   -> R_encontrado;
+    R_encontrado -> R_ok  [label="Si"];
+    R_encontrado -> R_err [label="No"];
+    R_ok   -> menuMsg;
+    R_err  -> menuMsg;
+
+    // ----- I -----
+    I_in   -> I_pos;
+    I_pos  -> I_shift;
+    I_shift -> I_ins;
+    I_ins  -> I_out;
+    I_out  -> menuMsg;
+
+    // ----- M -----
+    M_proc -> M_out;
+    M_out  -> menuMsg;
+}

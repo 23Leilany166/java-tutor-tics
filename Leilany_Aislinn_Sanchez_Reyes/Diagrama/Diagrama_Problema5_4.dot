@@ -1,0 +1,64 @@
+digraph Diagrama5_4_Principal {
+    graph  [rankdir=TB, bgcolor="transparent", dpi=300, margin="0.3", pad="0.5"];
+    node   [fontname="Arial", fontsize=11, style="filled", fillcolor="white",
+            width=2.8, height=0.6];
+    edge   [fontname="Arial", fontsize=10];
+
+    // --- Nodos principales ---
+    INI      [shape=oval, label="INICIO"];
+
+    msg_NE   [shape=box,
+              label="\"Ingrese número de\nempleados [1..1000]\""];
+    leer_NE  [shape=parallelogram, label="NE"];
+    cond_NE  [shape=diamond, label="1 ≤ NE ≤ 1000"];
+    err_NE   [shape=box, label="\"Error\""];
+
+    I1_init  [shape=box, label="I ← 1"];
+    cond_I1  [shape=diamond, label="I ≤ NE"];
+    msg_emp  [shape=box,
+              label="\"Ingrese nombre, clave\ndpto., antigüedad y sueldo\n del empleado\", I"];
+    cap_emp  [shape=parallelogram,
+              label="EMPLEDNOM[I], EMPLE[ ]CLADEP,\nEMPLE[I]ANTI, EMPLE[I]SUE"];
+    I1_inc   [shape=box, label="I ← I + 1"];
+
+    msg_ND   [shape=box,
+              label="\"Ingrese número de dpto. [1..20]\""];
+    leer_ND  [shape=parallelogram, label="ND"];
+    cond_ND  [shape=diamond, label="1 ≤ ND ≤ 20"];
+    err_ND   [shape=box, label="\"Error\""];
+
+    // conectores
+    A        [shape=hexagon, label="A"];
+    B        [shape=hexagon, label="B"];
+    C        [shape=hexagon, label="C"];
+
+    // --- Flujo ---
+    INI    -> msg_NE;
+    msg_NE -> leer_NE;
+    leer_NE -> cond_NE;
+
+    cond_NE -> I1_init [label="Si"];
+    cond_NE -> err_NE  [label="No"];
+
+    I1_init -> cond_I1;
+
+    cond_I1 -> msg_emp [label="Si"];
+    cond_I1 -> msg_ND  [label="No"];
+
+    msg_emp -> cap_emp;
+    cap_emp -> I1_inc;
+    I1_inc  -> cond_I1;
+
+    // después de capturar empleados
+    msg_ND  -> leer_ND;
+    leer_ND -> cond_ND;
+
+    cond_ND -> A      [label="Si"];
+    cond_ND -> err_ND [label="No"];
+
+    // desde err_NE y err_ND se iría a FIN del sistema,
+    // en el libro vuelven con conectores B y C a otros módulos:
+    // aquí simplemente dejamos los conectores
+    err_NE -> C;
+    err_ND -> B;
+}

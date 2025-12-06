@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PS 2.8 – Ejercicios de Programación Estructurada en Java</title>
+  <link rel="stylesheet" href="./styles_desc.css">
+</head>
+
+<body id="top">
+  <div class="container">
+
+    <header class="page-header">
+      <h1>PS 2.8 – ¿NUM1 es divisor de NUM2?</h1>
+      <p class="subtitle">
+        Ejercicio de Programación Estructurada en Java (Java estructurado, sin POO)
+      </p>
+    </header>
+
+    <main id="main" class="exercises-main">
+      <article class="exercise-card" aria-labelledby="ps28-title">
+
+        <header class="exercise-header">
+          <span class="exercise-badge">Problemas sugeridos</span>
+          <h2 id="ps28-title">PS 2.8 – Comprobar si un número es divisor de otro</h2>
+          <p class="exercise-description">
+            El objetivo es construir un algoritmo que, dados dos números enteros
+            <code>NUM1</code> y <code>NUM2</code>, determine si
+            <code>NUM1</code> es divisor exacto de <code>NUM2</code> utilizando
+            el operador módulo (<code>%</code> en Java).
+          </p>
+        </header>
+
+        <div class="exercise-content">
+          <!-- =============================== -->
+          <!--        CONTENIDO PRINCIPAL      -->
+          <!-- =============================== -->
+          <section class="exercise-main">
+
+            <!-- Botón de diagrama, cerca de la explicación -->
+            <div class="diagram-section" style="margin-bottom: 20px;">
+              <button class="diagram-button" onclick="openDiagram('diagram-ps28')">
+                📊 Ver diagrama de flujo
+              </button>
+            </div>
+
+            <h3>Datos y variables</h3>
+            <ul>
+              <li>
+                <strong>Entrada:</strong>
+                <code>NUM1</code>, <code>NUM2</code> (variables de tipo entero).
+              </li>
+              <li>
+                <strong>Salida:</strong>
+                un mensaje que indique si <code>NUM1</code> es divisor de
+                <code>NUM2</code>:
+                <ul>
+                  <li><em>“Sí es divisor”</em> si la división es exacta.</li>
+                  <li><em>“No es divisor”</em> si queda residuo.</li>
+                  <li><em>“Indefinido”</em> si <code>NUM1 = 0</code>, porque no se puede dividir entre cero.</li>
+                </ul>
+              </li>
+            </ul>
+
+            <h3>Idea del algoritmo</h3>
+            <ul>
+              <li>Usamos el operador <code>NUM2 % NUM1</code> para obtener el residuo.</li>
+              <li>Si el residuo es <code>0</code>, la división es exacta y
+                  <code>NUM1</code> es divisor de <code>NUM2</code>.</li>
+              <li>Antes de usar el módulo, revisamos que <code>NUM1 ≠ 0</code>.</li>
+            </ul>
+
+            <!-- Modal del diagrama -->
+            <div id="diagram-ps28" class="diagram-modal">
+              <div class="diagram-modal-content">
+                <div class="diagram-modal-header">
+                  <h3>Diagrama de flujo – PS 2.8</h3>
+                  <button class="diagram-modal-close" onclick="closeDiagram('diagram-ps28')">✕</button>
+                </div>
+                <div class="diagram-modal-body">
+                  <figure>
+                    <img class="flowchart-img" loading="lazy"
+                         src="../Diagrama/diagrama_PS2_8.png"
+                         alt="Diagrama de flujo: PS 2.8 – Comprobar si NUM1 es divisor de NUM2">
+                    <figcaption>
+                      Figura: diagrama de flujo del problema <strong>PS 2.8</strong>.
+                    </figcaption>
+                  </figure>
+                  <button class="diagram-return-btn" onclick="closeDiagram('diagram-ps28')">
+                    ← Volver al ejercicio
+                  </button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- =============================== -->
+          <!--             SIDEBAR             -->
+          <!-- =============================== -->
+          <aside class="exercise-sidebar">
+            <h3>Tips rápidos para resolverlo</h3>
+
+            <p class="note-text">
+              Piensa en este ejercicio como una pregunta de “sí o no”:
+              ¿la división deja residuo o no?
+            </p>
+
+            <ul>
+              <li><strong>Paso 1:</strong> lee <code>NUM1</code> y <code>NUM2</code>.</li>
+              <li><strong>Paso 2:</strong> si <code>NUM1 = 0</code>, muestra el mensaje de “indefinido” y termina.</li>
+              <li><strong>Paso 3:</strong> calcula <code>R = NUM2 % NUM1</code>.</li>
+              <li><strong>Paso 4:</strong>
+                <ul>
+                  <li>Si <code>R == 0</code> → “Sí es divisor”.</li>
+                  <li>Si <code>R != 0</code> → “No es divisor”.</li>
+                </ul>
+              </li>
+              <li><strong>Casos de prueba:</strong>
+                <ul>
+                  <li><code>NUM1 = 3, NUM2 = 15</code> → Sí es divisor.</li>
+                  <li><code>NUM1 = 4, NUM2 = 15</code> → No es divisor.</li>
+                  <li><code>NUM1 = 0, NUM2 = 10</code> → Indefinido.</li>
+                </ul>
+              </li>
+              <li>
+                Este tipo de ejercicios es típico de
+                <strong>programación estructurada en Java</strong>: solo usas
+                entrada, condición <code>if</code> y salida.
+              </li>
+            </ul>
+
+            <div class="tip-box">
+              <p>
+                Resumen mental:  
+                <strong>revisar NUM1 → calcular residuo → decidir mensaje.</strong>
+              </p>
+            </div>
+          </aside>
+        </div>
+      </article>
+    </main>
+
+    <footer class="page-footer">
+      <p class="note-text">
+        <a href="./main_desc.html">← Volver al menú principal</a>
+      </p>
+    </footer>
+
+  </div>
+
+  <!-- =============================== -->
+  <!--         SCRIPT MODAL            -->
+  <!-- =============================== -->
+  <script>
+    function openDiagram(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeDiagram(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const modals = document.querySelectorAll('.diagram-modal');
+      modals.forEach(modal => {
+        modal.addEventListener('click', function(event) {
+          if (event.target === this) {
+            closeDiagram(this.id);
+          }
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>

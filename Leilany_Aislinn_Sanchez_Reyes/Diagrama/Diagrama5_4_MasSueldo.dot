@@ -1,0 +1,69 @@
+digraph Diagrama5_4_MasSueldo {
+    graph  [rankdir=TB, bgcolor="transparent", dpi=300, margin="0.3", pad="0.5"];
+    node   [fontname="Arial", fontsize=11, style="filled", fillcolor="white",
+            width=3.3, height=0.6];
+    edge   [fontname="Arial", fontsize=10];
+
+    IN     [shape=box, label="MásSueldo"];
+
+    msg_dep [shape=box, label="\"Nombre del dpto.\""];
+    leer_dep [shape=parallelogram, label="DEPARTA"];
+
+    I_init  [shape=box, label="I ← 1"];
+    cond_busca [shape=diamond,
+      label="(I ≤ ND) ∧\n(DEPARTA ≠ DEPA[I]NOMDEP)"];
+
+    I_inc   [shape=box, label="I ← I + 1"];
+
+    msg_err [shape=box,
+      label="\"Error: Ese nombre de\n dpto. no está registrado\""];
+
+    MAX_init [shape=box, label="MAX ← -1\nK ← 1\nCLAVE ← DEPA[I]CLADEP"];
+
+    cond_K   [shape=diamond, label="K ≤ NE"];
+    cond_emp [shape=diamond,
+      label="EMPLE[K]CLADEP = CLAVE"];
+    cond_max [shape=diamond,
+      label="MAX < EMPLE[K]SUE"];
+
+    act_max  [shape=box,
+      label="MAX ← EMPLE[K]SUE\nEMAX ← K"];
+
+    K_inc    [shape=box, label="K ← K + 1"];
+
+    OUT_Gmsg [shape=egg,
+      label="\"Del dpto.\", DEPARTA,\n\"el empleado que más gana es\",\nEMPLE[EMAX]NOM,\n\"y su sueldo es\", MAX"];
+
+    G_out [shape=hexagon, label="G"];
+    F_out [shape=hexagon, label="F"];
+
+    IN -> msg_dep;
+    msg_dep -> leer_dep;
+    leer_dep -> I_init;
+    I_init   -> cond_busca;
+
+    cond_busca -> I_inc   [label="Si"];
+    cond_busca -> MAX_init[label="No"];
+
+    I_inc -> cond_busca;
+
+    // nombre de dpto. no encontrado
+    MAX_init -> cond_K;   // solo si sí existe
+
+    // caso de error de nombre
+    msg_err -> F_out;
+
+    cond_K -> cond_emp [label="Si"];
+    cond_K -> OUT_Gmsg [label="No"];
+
+    cond_emp -> cond_max [label="Si"];
+    cond_emp -> K_inc    [label="No"];
+
+    cond_max -> act_max  [label="Si"];
+    cond_max -> K_inc    [label="No"];
+
+    act_max -> K_inc;
+    K_inc   -> cond_K;
+
+    OUT_Gmsg -> G_out;
+}

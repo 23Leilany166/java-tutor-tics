@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PS 3.29 – Ejercicios de Programación Estructurada en Java</title>
+  <link rel="stylesheet" href="./styles_desc.css">
+</head>
+<body id="top">
+  <div class="container">
+    <header class="page-header">
+      <h1>PS 3.29 – Estadística UNICEF de orfanatos</h1>
+      <p class="subtitle">
+        Problema de <strong>programación estructurada en Java</strong> con ciclos y contadores.
+      </p>
+    </header>
+
+    <main id="main" class="exercises-main">
+      <article class="exercise-card" aria-labelledby="ps329-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Problemas Sugeridos</span>
+          <h2 id="ps329-title">PS 3.29 – Estadística de niños huérfanos</h2>
+          <p class="exercise-description">
+            La UNICEF quiere saber algunos datos sobre los niños huérfanos que viven en 
+            orfanatos de la República Mexicana.  
+            Por cada niño se captura, entre otros datos, el <strong>Estado</strong> donde está el
+            orfanato y la <strong>edad</strong> del niño.
+          </p>
+          <p class="exercise-description">
+            Con esa información se pide calcular:
+          </p>
+          <ul>
+            <li><strong>a)</strong> El porcentaje de huérfanos del <strong>Estado de México</strong> y del
+                <strong>DF / CDMX</strong> respecto al total del país.</li>
+            <li><strong>b)</strong> La cantidad de huérfanos en cada grupo de edad:
+              <ul>
+                <li>Grupo 1: edad menor de 1 año.</li>
+                <li>Grupo 2: edad entre 1 y 3 años (inclusive).</li>
+                <li>Grupo 3: edad entre 4 y 6 años (inclusive).</li>
+                <li>Grupo 4: edad mayor de 6 años.</li>
+              </ul>
+            </li>
+            <li><strong>c)</strong> Indicar qué grupo tiene la <strong>mayor cantidad</strong> de huérfanos.</li>
+          </ul>
+        </header>
+
+        <div class="exercise-content">
+          <!-- =============================== -->
+          <!--        CONTENIDO PRINCIPAL      -->
+          <!-- =============================== -->
+          <section class="exercise-main">
+            <h3>Datos y variables</h3>
+            <ul>
+              <li><strong>Entrada:</strong>
+                <ul>
+                  <li><code>N</code>: número total de niños registrados.</li>
+                  <li>Para cada niño <code>i</code>:
+                    <ul>
+                      <li><code>EST[i]</code>: Estado de la República donde está el orfanato
+                          (cadena de texto).</li>
+                      <li><code>EDAD[i]</code>: edad del niño en años (puede ser real, por ejemplo 0.8).</li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li><strong>Salida:</strong>
+                <ul>
+                  <li><code>PORC_MEX_DF</code>: porcentaje de niños del Estado de México o DF/CDMX.</li>
+                  <li><code>G1, G2, G3, G4</code>: cantidad de niños en cada grupo de edad.</li>
+                  <li><code>GRUPO_MAX</code>: número de grupo con más huérfanos (1, 2, 3 o 4).</li>
+                </ul>
+              </li>
+            </ul>
+            <div class="diagram-section">
+              <h3>Diagrama de flujo</h3>
+              <button class="diagram-button" onclick="openDiagram('diagram-ps329')">
+                📊 Ver Diagrama
+              </button>
+            </div>
+
+            <!-- Modal del diagrama -->
+            <div id="diagram-ps329" class="diagram-modal">
+              <div class="diagram-modal-content">
+                <div class="diagram-modal-header">
+                  <h3>Diagrama de flujo – PS 3.29</h3>
+                  <button class="diagram-modal-close" onclick="closeDiagram('diagram-ps329')">✕</button>
+                </div>
+                <div class="diagram-modal-body">
+                  <figure>
+                    <img class="flowchart-img" loading="lazy"
+                         src="../Diagrama/diagrama_PS3_29.png"
+                         alt="Diagrama de flujo: PS 3.29 – Estadísticas de niños huérfanos">
+                    <figcaption>Figura: Diagrama de flujo de <strong>PS 3.29</strong>.</figcaption>
+                  </figure>
+                  <button class="diagram-return-btn" onclick="closeDiagram('diagram-ps329')">
+                    ← Volver al ejercicio
+                  </button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- =============================== -->
+          <!--             SIDEBAR             -->
+          <!-- =============================== -->
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas para resolverlo</h3>
+            <ul>
+              <li><strong>Un recorrido, muchos contadores:</strong> en el mismo ciclo sobre los niños
+                  vas sumando al total, al contador del Edo. de México/DF y al grupo de edad.</li>
+              <li><strong>Porcentaje:</strong>  
+                  <code>porcentaje = (niños_MEX_DF / total_niños) * 100</code>.</li>
+              <li><strong>Grupos de edad:</strong>
+                <ul>
+                  <li>G1: &lt; 1 año</li>
+                  <li>G2: 1 a 3 años</li>
+                  <li>G3: 4 a 6 años</li>
+                  <li>G4: &gt; 6 años</li>
+                </ul>
+                Usa condiciones en orden, de menor a mayor.
+              </li>
+              <li><strong>Grupo con más niños:</strong> compara <code>G1, G2, G3, G4</code> y guarda
+                  el número del grupo que tenga el valor más grande.</li>
+              <li><strong>Java estructurado:</strong> puedes implementar este algoritmo con un
+                  <code>for</code> y solo variables simples (sin POO): arreglos para los datos
+                  y varios contadores.</li>
+              <li><strong>Tip para pruebas:</strong> inventa un ejemplo pequeño (5–6 niños),
+                  calcula todo a mano y verifica que tu programa dé lo mismo.</li>
+            </ul>
+          </aside>
+        </div>
+      </article>
+    </main>
+
+    <footer class="page-footer">
+      <p class="note-text"><a href="./main_desc.html">← Volver al menú principal</a></p>
+    </footer>
+  </div>
+
+  <!-- Script para los modales de diagramas -->
+  <script>
+    function openDiagram(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeDiagram(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const modals = document.querySelectorAll('.diagram-modal');
+      modals.forEach(modal => {
+        modal.addEventListener('click', function (event) {
+          if (event.target === this) {
+            closeDiagram(this.id);
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

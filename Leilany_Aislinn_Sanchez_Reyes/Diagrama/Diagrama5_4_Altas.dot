@@ -1,0 +1,68 @@
+digraph Diagrama5_4_Altas {
+    graph  [rankdir=TB, bgcolor="transparent", dpi=300, margin="0.3", pad="0.5"];
+    node   [fontname="Arial", fontsize=11, style="filled", fillcolor="white",
+            width=3.3, height=0.6];
+    edge   [fontname="Arial", fontsize=10];
+
+    IN   [shape=box, label="Altas"];
+
+    msg_nom [shape=box, label="\"Nombre del nuevo empleado\""];
+    leer_nom [shape=parallelogram, label="NOMEMP"];
+
+    BuscaEmp [shape=box, label="BuscaEmp"];
+    cond_POS [shape=diamond, label="POS > 0"];
+
+    msg_errYa [shape=box, label="\"Error: Ese nombre\n ya está registrado\""];
+
+    cond_NE1000 [shape=diamond, label="NE < 1000"];
+    msg_noEspacio [shape=box, label="\"Error: no hay\n espacio para altas\""];
+
+    POS_inc [shape=box, label="POS ← POS + 1"];
+    NE_inc  [shape=box, label="NE ← NE + 1"];
+    I_set   [shape=box, label="I ← NE"];
+
+    cond_shift [shape=diamond, label="I ≥ (POS + 1)"];
+    shift_emp  [shape=box, label="EMPLE[I] ← EMPLE[I-1]"];
+    I_dec      [shape=box, label="I ← I - 1"];
+
+    msg_nuevo [shape=box,
+      label="\"Ingrese clave dpto., antigüedad\ny sueldo del nuevo empleado\""];
+
+    cap_nuevo [shape=parallelogram,
+      label="EMPLE[POS]CLADEP,\nEMPLE[POS]ANTI,\nEMPLE[POS]SUE"];
+
+    asigna_nom [shape=box, label="EMPLE[POS]NOM ← NOMEMP"];
+
+    H_out [shape=hexagon, label="H"];
+    I_out [shape=hexagon, label="I"];
+    J_out [shape=hexagon, label="J"];
+
+    IN -> msg_nom;
+    msg_nom -> leer_nom;
+    leer_nom -> BuscaEmp;
+    BuscaEmp -> cond_POS;
+
+    cond_POS -> msg_errYa [label="Si"];
+    cond_POS -> cond_NE1000 [label="No"];
+
+    msg_errYa -> H_out;
+
+    cond_NE1000 -> POS_inc [label="Si"];
+    cond_NE1000 -> msg_noEspacio [label="No"];
+
+    msg_noEspacio -> J_out;
+
+    POS_inc -> NE_inc;
+    NE_inc  -> I_set;
+    I_set   -> cond_shift;
+
+    cond_shift -> shift_emp [label="Si"];
+    cond_shift -> msg_nuevo [label="No"];
+
+    shift_emp -> I_dec;
+    I_dec     -> cond_shift;
+
+    msg_nuevo -> cap_nuevo;
+    cap_nuevo -> asigna_nom;
+    asigna_nom -> I_out;
+}

@@ -1,0 +1,31 @@
+digraph flujo {
+    rankdir=TB;
+    bgcolor="transparent";
+
+    // Estilos generales
+    node [fontname="Arial", fontsize=16, style="rounded,filled", fillcolor="white", width=2.5, height=0.8];
+
+    // Nodos
+    inicio [shape=oval, label="INICIO"];
+
+    entrada [shape=parallelogram, label="A, B", width=3];
+
+    proceso [shape=box, label="RES = (A + B) * 2 / 3", width=4];
+
+    salida [shape=egg, label="RES", width=3];
+
+    fin [shape=oval, label="FIN"];
+
+    // Espaciado vertical entre nodos
+    {rank = same; inicio;}
+    {rank = same; entrada;}
+    {rank = same; proceso;}
+    {rank = same; salida;}
+    {rank = same; fin;}
+
+    // Flechas
+    inicio -> entrada [minlen=2];
+    entrada -> proceso [minlen=2];
+    proceso -> salida [minlen=2];
+    salida -> fin [minlen=2];
+}

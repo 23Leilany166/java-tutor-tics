@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Problema 3.16 – Ejercicios de Programación Estructurada en Java</title>
+  <link rel="stylesheet" href="./styles_desc.css">
+</head>
+
+<body id="top">
+  <div class="container">
+    <header class="page-header">
+      <h1>Problema 3.16 – Producción de vinos (5 tipos, N años)</h1>
+      <p class="subtitle">Ejercicio de Programación Estructurada en Java</p>
+    </header>
+
+    <main id="main" class="exercises-main">
+      <article class="exercise-card" aria-labelledby="pr316-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Algoritmos</span>
+          <h2 id="pr316-title">Problema 3.16 – Análisis de producción de vino</h2>
+          <p class="exercise-description">
+            En una bodega se registran, año con año, los litros producidos de 5 tipos de vino.
+            En este ejercicio de Java estructurado trabajarás con una tabla (matriz) donde cada
+            fila es un año y cada columna es un tipo de vino.
+            Con esos datos, el algoritmo debe:
+          </p>
+          <ul>
+            <li>Calcular el total producido de cada tipo de vino (tipos 1 a 5) en todos los años.</li>
+            <li>Calcular el total de litros producidos en cada año.</li>
+            <li>Encontrar el año con mayor producción del tipo de vino 2 y mostrar también esa cantidad.</li>
+            <li>Revisar si hubo algún año con producción igual a 0 del tipo de vino 3 y, si lo hubo, imprimir ese año.</li>
+          </ul>
+        </header>
+
+        <div class="exercise-content">
+
+          <!-- =============================== -->
+          <!--        CONTENIDO PRINCIPAL      -->
+          <!-- =============================== -->
+
+          <section class="exercise-main">
+
+            <!-- Botón para ver el diagrama -->
+            <div class="diagram-section" style="margin-bottom: 20px;">
+              <button class="diagram-button" onclick="openDiagram('diagram-pr316')">
+                📊 Ver Diagrama
+              </button>
+            </div>
+
+            <h3>Datos y variables</h3>
+            <ul>
+              <li>
+                <strong>Entrada:</strong>
+                <code>N</code> (entero &gt; 0)  
+                Número de años de los que se tienen datos.
+              </li>
+              <li>
+                <strong>Entrada:</strong>
+                <code>Vij</code> (real)  
+                Litros de vino del tipo <code>j</code> producidos en el año <code>i</code>,  
+                donde <code>1 ≤ i ≤ N</code> y <code>1 ≤ j ≤ 5</code>.
+              </li>
+              <li>
+                <strong>Salida principal:</strong>
+                <ul>
+                  <li>
+                    Totales por tipo: <code>TIPO1</code>, <code>TIPO2</code>,
+                    <code>TIPO3</code>, <code>TIPO4</code>, <code>TIPO5</code>.
+                  </li>
+                  <li>
+                    Totales por año: <code>TOTVIN</code> (se recalcula para cada año).
+                  </li>
+                  <li>
+                    Año con mayor producción del tipo 2: <code>ANIO</code>,
+                    y cantidad máxima: <code>MCTIPO2</code>.
+                  </li>
+                  <li>
+                    Años donde el tipo 3 tuvo producción 0 (se van imprimiendo al encontrarlos).
+                  </li>
+                </ul>
+              </li>
+            </ul>
+
+            <h3>Explicación sencilla de las variables</h3>
+            <ul>
+              <li><strong>N:</strong> cuántos años se van a leer.</li>
+              <li><strong>I:</strong> contador del ciclo externo (recorre los años).</li>
+              <li><strong>J:</strong> contador del ciclo interno (recorre los tipos de vino 1..5).</li>
+              <li>
+                <strong>TIPO1, TIPO2, TIPO3, TIPO4, TIPO5:</strong>  
+                acumulan el total de litros producidos para cada tipo de vino,
+                sumando todos los años.
+              </li>
+              <li>
+                <strong>MCTIPO2:</strong> guarda la mayor cantidad producida del
+                vino tipo 2 encontrada hasta el momento (un máximo).
+              </li>
+              <li>
+                <strong>ANIO:</strong> almacena en qué año se logró esa mayor producción
+                del vino tipo 2.
+              </li>
+              <li>
+                <strong>TOTVIN:</strong> total de litros producidos en un año determinado
+                (suma de los 5 tipos en ese año).
+              </li>
+              <li>
+                <strong>V:</strong> valor leído de la matriz, representa los litros de vino
+                del tipo <code>J</code> en el año <code>I</code>.
+              </li>
+            </ul>
+
+            <!-- Modal para el diagrama -->
+            <div id="diagram-pr316" class="diagram-modal">
+              <div class="diagram-modal-content">
+                <div class="diagram-modal-header">
+                  <h3>Diagrama de flujo – Problema 3.16</h3>
+                  <button class="diagram-modal-close" onclick="closeDiagram('diagram-pr316')">✕</button>
+                </div>
+                <div class="diagram-modal-body">
+                  <figure>
+                    <img class="flowchart-img" loading="lazy"
+                         src="../Diagrama/diagrama_Problema3_16_hd.png"
+                         alt="Diagrama de flujo: Problema 3.16 – Producción de vinos">
+                    <figcaption>
+                      Figura: Diagrama de flujo del <strong>Problema 3.16</strong>.
+                    </figcaption>
+                  </figure>
+                  <button class="diagram-return-btn" onclick="closeDiagram('diagram-pr316')">
+                    ← Volver al ejercicio
+                  </button>
+                </div>
+              </div>
+            </div>
+
+          </section>
+
+          <!-- =============================== -->
+          <!--             SIDEBAR             -->
+          <!-- =============================== -->
+
+          <aside class="exercise-sidebar">
+            <h3>Tips rápidos para entenderlo</h3>
+
+            <p class="note-text">
+              Imagina una tabla donde las filas son años y las columnas son tipos de vino.
+              Solo vas “barriendo” esa tabla con dos ciclos anidados.
+            </p>
+
+            <ul>
+              <li>
+                <strong>Recorrido:</strong> usa dos ciclos:  
+                uno para los años (<code>I</code>) y otro interno para los tipos (<code>J</code> de 1 a 5).
+              </li>
+              <li>
+                <strong>Totales por tipo:</strong> cada vez que leas un valor
+                <code>V</code>, súmalo al acumulador correspondiente  
+                (<code>TIPO1</code> si <code>J==1</code>, <code>TIPO2</code> si <code>J==2</code>, etc.).
+              </li>
+              <li>
+                <strong>Totales por año:</strong> dentro del ciclo de un año,
+                ve sumando en <code>TOTVIN</code>.  
+                Al terminar ese año, imprime el total y vuelve a poner
+                <code>TOTVIN = 0</code> para el siguiente año.
+              </li>
+              <li>
+                <strong>Máximo del tipo 2:</strong> cuando estés en la columna 2,
+                compara <code>V</code> con <code>MCTIPO2</code>.  
+                Si es mayor, actualiza <code>MCTIPO2</code> y guarda el año en <code>ANIO</code>.
+              </li>
+              <li>
+                <strong>Años con tipo 3 = 0:</strong> cuando estés en la columna 3,
+                si <code>V == 0</code>, imprime el número de año <code>I</code>.
+              </li>
+              <li>
+                <strong>Tipo de datos:</strong> usa <code>int</code> o <code>double</code>
+                para los litros, según como decidas manejar los valores,
+                pero sé consistente en todo el programa.
+              </li>
+            </ul>
+
+            <div class="tip-box">
+              <p>
+                Resúmelo así en tu mente:  
+                <strong>recorro la tabla → acumulo totales → guardo máximo del tipo 2 → marco los años con tipo 3 = 0.</strong>  
+                Es el mismo recorrido, solo sacas varios resultados a la vez.
+              </p>
+            </div>
+          </aside>
+
+        </div>
+      </article>
+    </main>
+
+    <footer class="page-footer">
+      <p class="note-text">
+        <a href="./main_desc.html">← Volver al menú principal</a>
+      </p>
+    </footer>
+  </div>
+
+  <!-- =============================== -->
+  <!--         SCRIPT MODAL            -->
+  <!-- =============================== -->
+
+  <script>
+    function openDiagram(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeDiagram(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const modals = document.querySelectorAll('.diagram-modal');
+      modals.forEach(modal => {
+        modal.addEventListener('click', function(event) {
+          if (event.target === this) {
+            closeDiagram(this.id);
+          }
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>

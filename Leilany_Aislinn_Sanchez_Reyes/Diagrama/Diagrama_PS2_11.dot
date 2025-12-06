@@ -1,0 +1,56 @@
+digraph PS_2_11 {
+    graph  [rankdir=TB, bgcolor="transparent", dpi=300, margin="0.3", pad="0.5"];
+    node   [fontname="Arial", fontsize=11, style="filled", fillcolor="white",
+            width=3.0, height=0.6];
+    edge   [fontname="Arial", fontsize=10];
+
+    inicio   [shape=oval, label="INICIO"];
+
+    leerY    [shape=parallelogram,
+              label="Leer Y"];
+
+    c1       [shape=diamond,
+              label="0 <= Y <= 11?"];
+
+    c2       [shape=diamond,
+              label="11 < Y <= 33?"];
+
+    c3       [shape=diamond,
+              label="33 < Y <= 64?"];
+
+    f1       [shape=box,
+              label="X <- 3*Y + 36"];
+
+    f2       [shape=box,
+              label="X <- Y^2 - 10"];
+
+    f3       [shape=box,
+              label="X <- Y^3 + Y^2 - 1"];
+
+    f4       [shape=box,
+              label="X <- 0"];
+
+    impXY    [shape=egg,
+              label="Imprimir X, Y"];
+
+    fin      [shape=oval, label="FIN"];
+
+    inicio -> leerY;
+    leerY  -> c1;
+
+    c1 -> f1 [label="Si"];
+    c1 -> c2 [label="No"];
+
+    c2 -> f2 [label="Si"];
+    c2 -> c3 [label="No"];
+
+    c3 -> f3 [label="Si"];
+    c3 -> f4 [label="No"];
+
+    f1 -> impXY;
+    f2 -> impXY;
+    f3 -> impXY;
+    f4 -> impXY;
+
+    impXY -> fin;
+}

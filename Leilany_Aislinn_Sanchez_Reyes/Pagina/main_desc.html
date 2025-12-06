@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ejercicios de Programación Estructurada en Java</title>
+  <link rel="stylesheet" href="../Pagina/styles_desc.css">
+
+  <!-- Estilo para los botones -->
+  <style>
+    /* ===== BOTONES DEL MENÚ PRINCIPAL Y TARJETAS ===== */
+    .button-link {
+      display: inline-block;
+      padding: 10px 18px;
+      background: linear-gradient(135deg, #3c8bff, #0051c9);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-align: center;
+      transition: 0.25s ease-in-out;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+    }
+
+    .button-link:hover {
+      background: linear-gradient(135deg, #559cff, #0066ff);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+    }
+
+    .button-link:active {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.20);
+    }
+
+    /* Para que los botones ocupen todo el ancho en tarjetas pequeñas */
+    .exercise-mini-card .button-link {
+      width: 100%;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body id="top">
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+
+  <div class="container">
+    <header class="page-header">
+      <h1>Ejercicios de Programación Estructurada en Java</h1>
+      <p class="subtitle">Menú principal de problemas y ejemplos.</p>
+    </header>
+    <main id="main" class="exercises-main">
+      <!-- ===================== BIENVENIDA / INTRO ===================== -->
+      <section class="exercise-card">
+        <header class="exercise-header">
+          <span class="exercise-badge">Bienvenida</span>
+          <h2>¿Qué vas a hacer en este sitio?</h2>
+          <p class="exercise-description">
+            Aquí encontrarás una colección de ejemplos y problemas de programación estructurada en Java.
+            La idea es que cada estudiante elija un ejercicio, analice el enunciado, escriba su solución
+            en código y luego la <strong>valide con pruebas automáticas (tests)</strong>.
+          </p>
+        </header>
+
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>¿Cómo trabajar con los ejercicios?</h3>
+            <ul>
+              <li><strong>1. Elige un ejercicio</strong> desde el menú de arriba o desde la lista de abajo.</li>
+              <li><strong>2. Lee el enunciado</strong>, el pseudocódigo, el diagrama de flujo y el código ejemplo.</li>
+              <li><strong>3. Programa tu solución</strong> en Java en tu proyecto de Maven/IDE.</li>
+              <li><strong>4. Corre los tests</strong> (JUnit) para comprobar si tu programa funciona correctamente.</li>
+              <li><strong>5. Si un test falla</strong>, revisa el algoritmo, corrige el código y vuelve a ejecutar las pruebas.</li>
+            </ul>
+
+            <p>
+              El objetivo no es solo que el programa “corra”, sino que aprendas a
+              <strong>pensar en pasos</strong>, usar variables, ciclos, decisiones y estructuras de datos
+              como vectores y matrices, y comprobar tu lógica con pruebas automáticas.
+            </p>
+          </section>
+
+          <aside class="exercise-sidebar">
+            <h3>Consejos rápidos</h3>
+            <ul>
+              <li>Empieza por los ejemplos (Ejemplo 1.7, Ejemplo 3.5) para calentar.</li>
+              <li>Continúa con problemas cortos (1.8, 2.3, PS 2.8–2.11).</li>
+              <li>Luego intenta ejercicios con arreglos y matrices (3.16, 4.3, 4.16, 4.21, 4.37, PS 4.5).</li>
+              <li>Al final, prueba los de estadística con listas de datos (PS 3.27, PS 3.28, PS 3.29).</li>
+            </ul>
+          </aside>
+        </div>
+      </section>
+
+      <!-- ===================== LISTA / TARJETAS RESUMEN ===================== -->
+      <section class="exercise-card">
+        <header class="exercise-header">
+          <span class="exercise-badge">Listado de ejercicios</span>
+          <h2>Selecciona un ejercicio</h2>
+          <p class="exercise-description">
+            Da clic en el nombre para ir a la página con el enunciado completo, pseudocódigo,
+            diagrama de flujo y código base en Java.
+          </p>
+        </header>
+
+        <div class="exercise-content exercise-list-grid">
+          <!-- Puedes ajustar los href si usas otros nombres de archivo -->
+          <article class="exercise-mini-card">
+            <h3>Ejemplo 1.7</h3>
+            <p>Operaciones aritméticas: cálculo de <code>(A + B)^2 / 3</code>.</p>
+            <a href="../Pagina/ejercicio-ejemplo-1-7.html" class="button-link">Abrir ejercicio</a>
+          </article>
+
+          <article class="exercise-mini-card">
+            <h3>Problema 1.8</h3>
+            <p>Distancia entre dos puntos en el plano.</p>
+            <a href="../Pagina/problema-1-8.html" class="button-link">Abrir ejercicio</a>
+          </article>
+
+          <article class="exercise-mini-card">
+            <h3>Problema 2.3</h3>
+            <p>Raíces reales de una ecuación cuadrática.</p>
+            <a href="../Pagina/problema-2-3.html" class="button-link">Abrir ejercicio</a>
+          </article>
+
+          <article class="exercise-mini-card">
+            <h3>Ejemplo 3.5</h3>
+            <p>Cubo de números positivos hasta ingresar -1 (centinela).</p>
+            <a href="../Pagina/ejercicio-ejemplo-3-5.html" class="button-link">Abrir ejercicio</a>
+          </article>
+
+          <article class="exercise-mini-card">
+            <h3>Problema 3.16</h3>
+            <p>Matriz de producción de vinos por año y tipo.</p>
+            <a href="../Pagina/problema-3-16.html" class="button-link">Abrir ejercicio</a>
+          </article>
+
+          <article class="exercise-mini-card">
+            <h3>Problema 4.3</h3>
+            <p>Conteo de votos para 12 candidatos.</p>
+            <a href="../Pagina/problema-4-3.html" class="button-link">Abrir ejercicio</a>
+          </article>
+
+          <article class="exercise-mini-card">
+            <h3>Problema 4.16</h3>
+            <p>Vector B calculado a partir de una matriz A(M×N).</p>
+            <a href="../Pagina/problema-4-16.html" class="button-link">Abrir ejercicio</a>
+          </article>
+
+          <article class="exercise-mini-card">
+            <h3>Problema 5.4</h3>
+            <p>Registros de empleados y departamentos.</p>
+            <a href="../Pagina/problema-5-4.html" class="button-link">Abrir ejercicio</a>
+          </article>
+
+          <article class="exercise-mini-card">
+            <h3>PS 2.8</h3>
+            <p>Comprobar si NUM1 es divisor de NUM2.</p>
+            <a href="../Pagina/ps-2-8.html" class="button-link">Abrir ejercicio</a>
+          </article>
+
+          <article class="exercise-mini-card">
+            <h3>PS 2.9</h3>
+            <p>Identidad de potencias: <code>A<sup>-N</sup> = 1 / A<sup>N</sup></code>.</p>
+            <a href="../Pagina/ps-2-9.html" class="button-link">Abrir ejercicio</a>
+          </article>
+
+          <article class="exercise-mini-card">
+            <h3>PS 2.10</h3>
+            <p>Identidad de potencias en un cociente.</p>
+            <a href="../Pagina/ps-2-10.html" class="button-link">Abrir ejercicio</a>
+          </article>
+
+          <article class="exercise-mini-card">
+            <h3>PS 2.11</h3>
+            <p>Función X(Y) definida por tramos.</p>
+            <a href="../Pagina/ps-2-11.html" class="button-link">Abrir ejercicio</a>
+          </article>
+
+          <article class="exercise-mini-card">
+            <h3>PS 3.27</h3>
+            <p>Estadística de alumnos por sexo y semestre.</p>
+            <a href="../Pagina/ps-3-27.html" class="button-link">Abrir ejercicio</a>
+          </article>
+
+          <article class="exercise-mini-card">
+            <h3>PS 3.28</h3>
+            <p>Censo de empleados: edad, sexo y sueldo.</p>
+            <a href="../Pagina/ps-3-28.html" class="button-link">Abrir ejercicio</a>
+          </article>
+
+          <article class="exercise-mini-card">
+            <h3>PS 3.29</h3>
+            <p>Niños en orfanatos: estados y grupos de edad.</p>
+            <a href="../Pagina/ps-3-29.html" class="button-link">Abrir ejercicio</a>
+          </article>
+
+          <article class="exercise-mini-card">
+            <h3>PS 4.5</h3>
+            <p>Frecuencia de calificaciones (0 a 10) en 250 alumnos.</p>
+            <a href="../Pagina/ps-4-5.html" class="button-link">Abrir ejercicio</a>
+          </article>
+
+<article class="exercise-mini-card">
+  <h3>PS 4.21</h3>
+  <p>Temperaturas diarias por mes en CDMX.</p>
+  <a href="../Pagina/ps-4-21.html" class="button-link">Abrir ejercicio</a>
+</article>
+
+
+          <article class="exercise-mini-card">
+            <h3>PS 4.37</h3>
+            <p>Centros turísticos y habitaciones simples/dobles.</p>
+            <a href="../Pagina/ps-4-37.html" class="button-link">Abrir ejercicio</a>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="page-footer">
+      <p class="note-text">
+        ¿Terminaste un ejercicio? Regresa al <a href="#top">inicio</a> y elige otro para seguir practicando.
+      </p>
+    </footer>
+  </div>
+</body>
+</html>

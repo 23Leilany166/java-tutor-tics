@@ -1,0 +1,39 @@
+digraph PS_2_8 {
+    graph  [rankdir=TB, bgcolor="transparent", dpi=300, margin="0.3", pad="0.5"];
+    node   [fontname="Arial", fontsize=11, style="filled", fillcolor="white",
+            width=2.6, height=0.6];
+    edge   [fontname="Arial", fontsize=10];
+
+    inicio   [shape=oval, label="INICIO"];
+
+    leer     [shape=parallelogram,
+              label="Leer NUM1, NUM2"];
+
+    d1       [shape=diamond,
+              label="NUM1 % NUM2 = 0?"];
+
+    d2       [shape=diamond,
+              label="NUM2 % NUM1 = 0?"];
+
+    imp1     [shape=egg,
+              label="\"NUM2 es divisor\nde NUM1\""];
+    imp2     [shape=egg,
+              label="\"NUM1 es divisor\nde NUM2\""];
+    impN     [shape=egg,
+              label="\"Ninguno es divisor\ndel otro\""];
+
+    fin      [shape=oval, label="FIN"];
+
+    inicio -> leer;
+    leer   -> d1;
+
+    d1 -> imp1 [label="Si"];
+    d1 -> d2   [label="No"];
+
+    d2 -> imp2 [label="Si"];
+    d2 -> impN [label="No"];
+
+    imp1 -> fin;
+    imp2 -> fin;
+    impN -> fin;
+}

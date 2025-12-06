@@ -1,0 +1,28 @@
+digraph Diagrama5_4_A {
+    graph  [rankdir=TB, bgcolor="transparent", dpi=300, margin="0.3", pad="0.5"];
+    node   [fontname="Arial", fontsize=11, style="filled", fillcolor="white",
+            width=2.8, height=0.6];
+    edge   [fontname="Arial", fontsize=10];
+
+    A_in   [shape=hexagon, label="A"];
+
+    I_init [shape=box, label="I ← 1"];
+    cond_I [shape=diamond, label="I ≤ ND"];
+    msg_dep [shape=box,
+             label="\"Ingrese clave, nombre,\ntotal de empleados y nombre\n del jefe del dpto.\", I"];
+    cap_dep [shape=parallelogram,
+             label="DEPA[I]CLADEP,\nDEPA[I]NOMDEP,\nDEPA[I]NUMEMP,\nDEPA[I]NOMJEF"];
+    I_inc  [shape=box, label="I ← I + 1"];
+
+    D_out  [shape=hexagon, label="D"];
+
+    A_in -> I_init;
+    I_init -> cond_I;
+
+    cond_I -> msg_dep [label="Si"];
+    cond_I -> D_out   [label="No"];
+
+    msg_dep -> cap_dep;
+    cap_dep -> I_inc;
+    I_inc   -> cond_I;
+}

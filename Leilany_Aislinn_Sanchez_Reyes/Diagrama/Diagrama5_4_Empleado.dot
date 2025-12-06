@@ -1,0 +1,52 @@
+digraph Diagrama5_4_Empleado {
+    graph  [rankdir=TB, bgcolor="transparent", dpi=300, margin="0.3", pad="0.5"];
+    node   [fontname="Arial", fontsize=11, style="filled", fillcolor="white",
+            width=3.2, height=0.6];
+    edge   [fontname="Arial", fontsize=10];
+
+    Emp_in   [shape=box, label="Empleado"];
+
+    msg_nom  [shape=box, label="\"Nombre del empleado?\""];
+    leer_nom [shape=parallelogram, label="NOMEMP"];
+
+    BuscaEmp [shape=box, label="BuscaEmp"];
+
+    cond_POS [shape=diamond, label="POS > 0"];
+
+    msg_err  [shape=box,
+              label="\"Error: Nombre de\nempleado no registrado\""];
+
+    BuscaDep [shape=box, label="BuscaDep"];
+    cond_LUG [shape=diamond, label="LUG > 0"];
+
+    msg_errDep [shape=box,
+                label="\"Error: CLADEP\nno registrada\""];
+
+    msg_ok  [shape=egg,
+             label="NOMBRE,\n\"trabaja en el dpto.\",\nDEPA[LUG]NOMDEP,\n\"y su jefe es\", DEPA[LUG]NOMJEF"];
+
+    FinEmp [shape=egg, label="FIN DEL MODULO\nEmpleado"];
+
+    // conectores para volver al menú
+    F_out [shape=hexagon, label="F"];
+
+    Emp_in   -> msg_nom;
+    msg_nom  -> leer_nom;
+    leer_nom -> BuscaEmp;
+    BuscaEmp -> cond_POS;
+
+    cond_POS -> BuscaDep [label="Si"];
+    cond_POS -> msg_err  [label="No"];
+
+    msg_err  -> FinEmp;
+
+    BuscaDep -> cond_LUG;
+
+    cond_LUG -> msg_ok      [label="Si"];
+    cond_LUG -> msg_errDep  [label="No"];
+
+    msg_ok     -> FinEmp;
+    msg_errDep -> FinEmp;
+
+    FinEmp -> F_out;
+}

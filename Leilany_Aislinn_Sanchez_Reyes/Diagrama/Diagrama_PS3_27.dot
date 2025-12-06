@@ -1,0 +1,93 @@
+digraph Diagrama_PS3_27 {
+    graph  [rankdir=TB, bgcolor="transparent", dpi=300, margin="0.3", pad="0.5"];
+    node   [fontname="Arial", fontsize=11, style="filled", fillcolor="white",
+            width=2.9, height=0.6];
+    edge   [fontname="Arial", fontsize=10];
+
+    // Nodos principales
+    INI   [shape=oval, label="INICIO"];
+
+    init  [shape=box,
+           label="FEM_CONT <- 0\nFEM_TOT <- 0\nFEM_MAX <- -1\nFEM_MAT <- 0\n\nMAS_CONT <- 0\nMAS_TOT <- 0\nMAS_MAX <- -1\nMAS_MAT <- 0\n\nSEM_CONT <- 0\nSEM_TOT <- 0"];
+
+    msgN  [shape=box, label="\"Ingrese N (número de alumnos)\""];
+    leerN [shape=parallelogram, label="N"];
+
+    I_ini [shape=box, label="I <- 1"];
+    condI [shape=diamond, label="I <= N"];
+
+    leerDatos [shape=parallelogram,
+               label="MAT[I], SEX[I],\nSEM[I], PRO[I]"];
+
+    condFem [shape=diamond, label="SEX[I] = 'F'"];
+    condMas [shape=diamond, label="SEX[I] = 'M'"];
+
+    acumFem [shape=box,
+             label="FEM_CONT <- FEM_CONT + 1\nFEM_TOT  <- FEM_TOT  + PRO[I]"];
+    maxFem  [shape=diamond, label="PRO[I] > FEM_MAX"];
+    actFem  [shape=box,
+             label="FEM_MAX <- PRO[I]\nFEM_MAT <- MAT[I]"];
+
+    acumMas [shape=box,
+             label="MAS_CONT <- MAS_CONT + 1\nMAS_TOT  <- MAS_TOT  + PRO[I]"];
+    maxMas  [shape=diamond, label="PRO[I] > MAS_MAX"];
+    actMas  [shape=box,
+             label="MAS_MAX <- PRO[I]\nMAS_MAT <- MAT[I]"];
+
+    condSem [shape=diamond, label="SEM[I] = 1\nó 3 ó 5 ó 7"];
+    acumSem [shape=box,
+             label="SEM_CONT <- SEM_CONT + 1\nSEM_TOT  <- SEM_TOT  + PRO[I]"];
+
+    I_inc [shape=box, label="I <- I + 1"];
+
+    calcProm [shape=box,
+              label="PROM_F <- FEM_TOT / FEM_CONT\nPROM_M <- MAS_TOT / MAS_CONT\nPROM_1357 <- SEM_TOT / SEM_CONT"];
+
+    outF [shape=egg,
+          label="\"Matrícula y mayor\npromedio femenino:\",\nFEM_MAT, FEM_MAX"];
+    outM [shape=egg,
+          label="\"Matrícula y mayor\npromedio masculino:\",\nMAS_MAT, MAS_MAX"];
+    outS [shape=egg,
+          label="\"Promedio alumnos\n1°,3°,5° y 7° sem:\",\nPROM_1357"];
+
+    FIN  [shape=oval, label="FIN"];
+
+    // Flujo
+    INI  -> init;
+    init -> msgN;
+    msgN -> leerN;
+    leerN -> I_ini;
+    I_ini -> condI;
+
+    condI -> leerDatos [label="Si"];
+    condI -> calcProm  [label="No"];
+
+    leerDatos -> condFem;
+
+    condFem -> acumFem [label="Si"];
+    condFem -> condMas [label="No"];
+
+    acumFem -> maxFem;
+    maxFem  -> actFem [label="Si"];
+    maxFem  -> condSem [label="No"];
+    actFem  -> condSem;
+
+    condMas -> acumMas [label="Si"];
+    condMas -> condSem [label="No"];
+
+    acumMas -> maxMas;
+    maxMas  -> actMas [label="Si"];
+    maxMas  -> condSem [label="No"];
+    actMas  -> condSem;
+
+    condSem -> acumSem [label="Si"];
+    condSem -> I_inc   [label="No"];
+
+    acumSem -> I_inc;
+    I_inc   -> condI;
+
+    calcProm -> outF;
+    outF -> outM;
+    outM -> outS;
+    outS -> FIN;
+}

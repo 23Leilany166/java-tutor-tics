@@ -1,0 +1,94 @@
+digraph PS4_21 {
+    graph  [rankdir=TB, bgcolor="transparent",
+            splines=ortho, dpi=300, margin="0.3", pad="0.5"];
+    node   [fontname="Arial", fontsize=11, style="filled",
+            fillcolor="white", width=2.8, height=0.6];
+    edge   [fontname="Arial", fontsize=10];
+
+    // -------- NODOS PRINCIPALES --------
+    INI   [shape=oval, label="INICIO"];
+
+    // Inicialización general
+    init  [shape=box,
+           label="MAXT ← TEMP[1,1]\nMESMAXT ← 1\nDIAMAXT ← 1\nMAXPROM ← -9999"];
+    M_init [shape=box, label="M ← 1"];
+
+    // Condición mes
+    cond_M [shape=diamond, label="M ≤ 12"];
+
+    // Inicialización por mes
+    SUM_init [shape=box, label="SUM ← 0\nD ← 1"];
+
+    // Condición día
+    cond_D [shape=diamond, label="D ≤ 31"];
+
+    // Lectura / toma de dato TEMP[M,D]
+    leer_T [shape=parallelogram, label="T ← TEMP[M,D]"];
+
+    acum_SUM [shape=box, label="SUM ← SUM + T"];
+
+    // Máxima temperatura del año
+    cond_MAXT [shape=diamond, label="T > MAXT"];
+    act_MAXT  [shape=box,
+               label="MAXT ← T\nMESMAXT ← M\nDIAMAXT ← D"];
+
+    D_inc [shape=box, label="D ← D + 1"];
+
+    // Al terminar el mes
+    prom_mes  [shape=box,
+               label="PROM ← SUM / 31\nPROMM[M] ← PROM"];
+
+    cond_MAXPROM [shape=diamond, label="PROM > MAXPROM"];
+    act_MAXPROM  [shape=box,
+                  label="MAXPROM ← PROM\nMESMAXPROM ← M"];
+
+    M_inc [shape=box, label="M ← M + 1"];
+
+    // -------- SALIDA (RESULTADOS) --------
+    res_a [shape=egg,
+           label="\"Temp. máxima:\", MAXT\n\"Mes:\", MESMAXT,\n\"Día:\", DIAMAXT"];
+
+    res_b [shape=egg,
+           label="\"Mes con promedio\nmás alto:\", MESMAXPROM,\n\"Promedio:\", MAXPROM"];
+
+    res_c [shape=egg,
+           label="\"Promedio mensual\n(1..12):\", PROMM[1..12]"];
+
+    FIN   [shape=oval, label="FIN"];
+
+    // -------- FLUJO --------
+    INI   -> init;
+    init  -> M_init;
+    M_init-> cond_M;
+
+    // ciclo por mes
+    cond_M    -> SUM_init [label="Si"];
+    cond_M    -> res_a    [label="No"];
+
+    SUM_init  -> cond_D;
+
+    // ciclo por día
+    cond_D    -> leer_T   [label="Si"];
+    cond_D    -> prom_mes [label="No"];
+
+    leer_T    -> acum_SUM;
+    acum_SUM  -> cond_MAXT;
+
+    cond_MAXT -> act_MAXT [label="Si"];
+    cond_MAXT -> D_inc    [label="No"];
+    act_MAXT  -> D_inc;
+
+    D_inc     -> cond_D;
+
+    // fin de mes
+    prom_mes      -> cond_MAXPROM;
+    cond_MAXPROM  -> act_MAXPROM [label="Si"];
+    cond_MAXPROM  -> M_inc       [label="No"];
+    act_MAXPROM   -> M_inc;
+    M_inc         -> cond_M;
+
+    // después de terminar todos los meses
+    res_a -> res_b;
+    res_b -> res_c;
+    res_c -> FIN;
+}
