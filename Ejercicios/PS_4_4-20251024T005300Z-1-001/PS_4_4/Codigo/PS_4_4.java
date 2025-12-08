@@ -1,45 +1,40 @@
-
 import java.util.Scanner;
 
-/**
- *
- * @author imac27
- */
 public class PS_4_4 {
-
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        Scanner leer = new Scanner(System.in);
 
-        System.out.print("Ingrese el tamaño de los vectores: ");
-        int N = scanner.nextInt();
+        int N;
+        int[] A = new int[50];
+        int[] B = new int[50];
+        int[] PROD = new int[50];
 
-        int[] A = new int[N];
-        int[] B = new int[N];
+        System.out.print("Ingrese el valor de N (max 50): ");
+        N = leer.nextInt();
 
-        System.out.println("Ingrese los elementos del vector A:");
-        for (int i = 0; i < N; i++) {
-            System.out.print("Elemento " + (i+1) + ": ");
-            A[i] = scanner.nextInt();
+        // Leer vector A
+        System.out.println("\nIngrese los valores del vector A:");
+        for (int i = 1; i <= N; i++) {
+            System.out.print("A[" + i + "]: ");
+            A[i] = leer.nextInt();
         }
 
-        System.out.println("Ingrese los elementos del vector B:");
-        for (int i = 0; i < N; i++) {
-            System.out.print("Elemento " + (i+1) + ": ");
-            B[i] = scanner.nextInt();
+        // Leer vector B
+        System.out.println("\nIngrese los valores del vector B:");
+        for (int i = 1; i <= N; i++) {
+            System.out.print("B[" + i + "]: ");
+            B[i] = leer.nextInt();
         }
 
-        int producto = calcularProducto(A, B, N);
+        // Calcular producto elemento a elemento
+        for (int i = 1; i <= N; i++) {
+            PROD[i] = A[i] * B[i];
+        }
 
-        System.out.println("El producto de los vectores es: " + producto);
+        // Imprimir resultado
+        System.out.println("\nProducto de los vectores A y B:");
+        for (int i = 1; i <= N; i++) {
+            System.out.println("PROD[" + i + "] = " + PROD[i]);
+        }
     }
-
-    public static int calcularProducto(int[] A, int[] B, int N) {
-        int producto = 0;
-
-        for (int i = 0; i < N; i++) {
-            producto += A[i] * B[i];
-        }
-
-        return producto;
-    }    
 }

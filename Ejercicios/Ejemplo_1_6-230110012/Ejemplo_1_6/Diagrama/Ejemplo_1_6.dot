@@ -1,38 +1,16 @@
+/* EJEMPLO 1.6 - Invertir orden de 4 números */
 digraph Ejemplo_1_6 {
-    // --- Configuración de Estilos ---
-    node [fontname="Arial", style="filled"];
-    edge [fontname="Arial"];
-
-    // --- Nodos del Diagrama ---
+    bgcolor=none
+    rankdir=TB
+    node [shape=box, style="filled", fillcolor="white", color="black", fontname="Arial"]
+    edge [color="black", fontname="Arial"]
     
-    Inicio [
-        shape=ellipse, 
-        label="Inicio", 
-        fillcolor="#40e0d0" // Color verde
-    ];
+    start [shape=ellipse, label="INICIO"]
+    input1 [shape=parallelogram, label="Leer A, B, C, D"]
+    output [shape=egg, label="D, C, B, A"]
+    end [shape=ellipse, label="FIN"]
     
-    Leer_Datos [
-        shape=parallelogram, 
-        label="Leer A, B, C, D", 
-        fillcolor="#DAF7A6" // Color amarillo-verde
-    ];
-    
-    Imprimir_Datos [
-        // La forma de "documento" se usa a menudo para la salida
-        shape=document, 
-        label="Imprimir D, C, B, A", 
-        fillcolor="#E6E6FA" // Color lavanda
-    ];
-    
-    Fin [
-        shape=ellipse, 
-        label="Fin", 
-        fillcolor="#FF6B6B" // Color rojo
-    ];
-
-    // --- Definición del Flujo (Secuencial) ---
-    
-    Inicio -> Leer_Datos;
-    Leer_Datos -> Imprimir_Datos;
-    Imprimir_Datos -> Fin;
+    start -> input1
+    input1 -> output
+    output -> end
 }

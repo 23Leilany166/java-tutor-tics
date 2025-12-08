@@ -1,58 +1,53 @@
-import java.util.ArrayList;
-import java.util.LinkedHashSet;
-import java.util.Scanner; // Importante para mantener el orden
-import java.util.Set;
+import java.util.Scanner;
 
 public class Problema_4_2 {
 
-    /**
-     * El método main ahora se enfoca solo en la entrada y salida.
-     */
     public static void main(String[] args) {
+
+        @SuppressWarnings("resource")
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("Ingrese el tamaño del vector (N <= 500):");
-        int N = sc.nextInt();
+        int N;
 
-        if (N < 1 || N > 500) {
-            System.out.println("Tamaño fuera de rango (1 <= N <= 500).");
-            sc.close(); // Cerrar scanner antes de salir
-            return;
-        }
+        System.out.print("Ingresa la cantidad de elementos (1-500): ");
+        N = sc.nextInt();
 
-        // Usar genéricos: ArrayList<Integer>
-        ArrayList<Integer> VEC = new ArrayList<>();
-        System.out.println("Ingrese los " + N + " elementos del vector:");
-        
+        int[] VEC = new int[N];
+        int[] SINREP = new int[N]; // arreglo para almacenar sin repeticiones
+
+        System.out.println("Ingresa los " + N + " valores:");
+
+        // Lectura del arreglo
         for (int i = 0; i < N; i++) {
-            System.out.print("Elemento " + (i + 1) + ": ");
-            VEC.add(sc.nextInt());
+            VEC[i] = sc.nextInt();
         }
-        sc.close(); // Cerrar el scanner
 
-        System.out.println("Vector original: " + VEC);
+        int nuevoTam = 0; // tamaño del arreglo sin repetidos
 
-        // --- Llamada al método de lógica ---
-        ArrayList<Integer> vecSinRepetir = eliminarDuplicados(VEC);
+        // Proceso para eliminar repetidos
+        for (int i = 0; i < N; i++) {
+            boolean repetido = false;
 
-        System.out.println("Vector sin repeticiones: " + vecSinRepetir);
-    }
+            // Buscar si ya se insertó antes
+            for (int k = 0; k < nuevoTam; k++) {
+                if (VEC[i] == SINREP[k]) {
+                    repetido = true;
+                    break;
+                }
+            }
 
-    /**
-     * Esta es la función de lógica que probaremos.
-     * Recibe una lista con duplicados y devuelve una lista sin duplicados,
-     * manteniendo el orden de la primera aparición.
-     *
-     * @param vec La lista original con duplicados.
-     * @return Una nueva ArrayList sin duplicados.
-     */
-    public static ArrayList<Integer> eliminarDuplicados(ArrayList<Integer> vec) {
-        // 1. Usar un LinkedHashSet para eliminar duplicados
-        //    LinkedHashSet mantiene el orden de inserción
-        //    Usamos genéricos: Set<Integer>
-        Set<Integer> setSinRepetir = new LinkedHashSet<>(vec);
+            // Si no se encontró repetido, se agrega
+            if (!repetido) {
+                SINREP[nuevoTam] = VEC[i];
+                nuevoTam++;
+            }
+        }
 
-        // 2. Convertir el set de vuelta a una lista
-        return new ArrayList<>(setSinRepetir);
+        // Mostrar resultado final
+        System.out.println("Vector sin repeticiones:");
+
+        for (int i = 0; i < nuevoTam; i++) {
+            System.out.print(SINREP[i] + " ");
+        }
     }
 }

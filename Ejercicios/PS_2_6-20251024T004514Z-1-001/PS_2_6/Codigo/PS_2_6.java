@@ -1,50 +1,32 @@
 import java.util.Scanner;
 
-/**
- *
- * @author imac27
- */
 public class PS_2_6 {
-
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        
-        System.out.print("Ingrese la distancia del viaje de ida (en km): ");
-        int distanciaIda = scanner.nextInt();
-        
-        System.out.print("Ingrese el tiempo de estancia (en días): ");
-        int tiempoEstancia = scanner.nextInt();
-        scanner.close();
-        
-        // Llamar a la lógica refactorizada
-        double precioFinal = calcularPrecioBillete(distanciaIda, tiempoEstancia);
-        
-        // Imprimir el resultado (usando printf para formato de moneda)
-        System.out.printf("El precio del billete de ida y vuelta es: $%.2f%n", precioFinal);
-    }
+        Scanner leer = new Scanner(System.in);
 
-    /**
-     * Calcula el precio del billete de ida y vuelta, aplicando descuentos si cumplen
-     * las condiciones.
-     * Esta es la lógica que probaremos.
-     *
-     * @param distanciaIda Distancia del viaje de ida (en km).
-     * @param tiempoEstancia Tiempo de estancia (en días).
-     * @return El precio final del billete.
-     */
-    public static double calcularPrecioBillete(int distanciaIda, int tiempoEstancia) {
-        int distanciaVuelta = distanciaIda;
-        int distanciaTotal = distanciaIda + distanciaVuelta; // o (distanciaIda * 2)
-        double precioPorKm = 0.23;
-        
-        double precioBillete = distanciaTotal * precioPorKm;
-        
-        // Lógica del descuento
-        if (tiempoEstancia > 7 && distanciaTotal > 800) {
-            // Aplicar descuento del 30% (es más eficiente multiplicar por 0.7)
-            precioBillete = precioBillete * 0.70;
+        int DIST, TIEM;
+        double precioKm = 0.23;
+        double distanciaTotal, precioNormal, precioFinal;
+
+        System.out.print("Ingrese la distancia de ida (km): ");
+        DIST = leer.nextInt();
+
+        System.out.print("Ingrese el tiempo de estancia (dias): ");
+        TIEM = leer.nextInt();
+
+        // Distancia total ida y vuelta
+        distanciaTotal = DIST * 2;
+
+        // Precio sin descuento
+        precioNormal = distanciaTotal * precioKm;
+
+        // Aplicar descuento del 30% si cumple condiciones
+        if (TIEM > 7 && distanciaTotal > 800) {
+            precioFinal = precioNormal * 0.70;  // Se paga solo el 70%
+        } else {
+            precioFinal = precioNormal;
         }
-        
-        return precioBillete;
+
+        System.out.println("El precio final del billete es: $" + precioFinal);
     }
 }

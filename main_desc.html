@@ -10,6 +10,134 @@
     .exercises-nav {
       position: static; /* Evita el comportamiento "sticky" o "fixed" */
     }
+    
+    .code-block {
+      text-decoration: none !important;
+    }
+    
+    pre {
+      text-decoration: none !important;
+    }
+
+    /* Estilos para botón y modal */
+    .flow-diagram-btn {
+      background: linear-gradient(135deg, #0066cc 0%, #0052a3 100%);
+      color: white;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 15px;
+      font-weight: 600;
+      margin-top: 15px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 4px 15px rgba(0, 102, 204, 0.3);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .flow-diagram-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.2);
+      transition: left 0.4s ease;
+    }
+
+    .flow-diagram-btn:hover {
+      background: linear-gradient(135deg, #0052a3 0%, #003d7a 100%);
+      box-shadow: 0 8px 25px rgba(0, 102, 204, 0.5);
+      transform: translateY(-2px);
+    }
+
+    .flow-diagram-btn:hover::before {
+      left: 100%;
+    }
+
+    .flow-diagram-btn:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 8px rgba(0, 102, 204, 0.3);
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    .modal-content {
+      background-color: #fefefe;
+      margin: 5% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      border-radius: 8px;
+      width: 90%;
+      max-width: 800px;
+      max-height: 80vh;
+      overflow-y: auto;
+      animation: slideIn 0.3s ease;
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateY(-50px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .modal-close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    .modal-close:hover,
+    .modal-close:focus {
+      color: #000;
+    }
+
+    .modal-diagram-img {
+      width: 100%;
+      max-width: 700px;
+      height: auto;
+      display: block;
+      margin: 20px auto;
+      border-radius: 5px;
+    }
+
+    .modal-title {
+      margin-top: 0;
+      color: #333;
+      border-bottom: 2px solid #0066cc;
+      padding-bottom: 10px;
+    }
   </style>
 </head>
 <body>
@@ -50,78 +178,70 @@
 
 
       
-      <article id="ejemplo_1_6" class="exercise-card" aria-labelledby="ejemplo_1_6-title">
-    <header class="exercise-header">
-      <span class="exercise-badge">Ejemplo 1.6</span>
-      <h2 id="ejemplo_1_6-title">Escribir números en orden inverso</h2>
-      
-      <p class="exercise-description">
-        Este programa lee cuatro números enteros (A, B, C y D) y los escribe
-        en la consola en orden inverso (D, C, B, A).
-      </p>
-    </header>
+      <article id="Ejemplo_1_6" class="exercise-card" aria-labelledby="ejemplo_1_6-title">
+  <header class="exercise-header">
+    <span class="exercise-badge">Ejemplo 1.6</span>
+    <h2 id="Ejemplo_1_6-title">Escribir números en orden inverso</h2>
+
+    <p class="exercise-description">
+      Lee cuatro números enteros ingresados por el usuario (A, B, C y D) y los imprime en la consola en orden inverso (D, C, B, A). Este es un programa secuencial simple que demuestra cómo usar variables y mostrar sus valores.
+    </p>
+    <button class="flow-diagram-btn" onclick="openModal('modal_ejemplo_1_6')">Ver Diagrama de Flujo</button>
+  </header>
+
+  <div class="exercise-content">
     
-    <div class="exercise-content">
-      <section class="exercise-main">
-        <h3>Requisitos</h3>
-        <ul>
-          <li>Leer cuatro variables de tipo entero: <code>A</code>, <code>B</code>, <code>C</code>, y <code>D</code>.</li>
-          <li>Usar la clase <code>Scanner</code> para la entrada de datos.</li>
-          <li>Imprimir los valores en la consola en el orden: D, C, B, A.</li>
-        </ul>
+    <!-- MAIN -->
+    <section class="exercise-main">
+      <h3>Requisitos</h3>
+      <ul>
+        <li>Leer 4 números enteros en variables A, B, C y D.</li>
+        <li>Mostrar los números en orden inverso: D, C, B, A.</li>
+      </ul>
 
-        <h3>Diagrama de Flujo</h3>
-        <p>Este diagrama ilustra el flujo secuencial simple del programa.</p>
-        <img 
-            src="imagesDiagrama/Ejemplo_1_6.png" 
-            alt="Diagrama de flujo del Ejemplo 1.6" 
-            style="width: 100%; max-width: 400px; display: block; margin: auto;"
-        >
-        <h3>Ejemplo de uso esperado</h3>
-        <pre><code class="code-block">import java.util.Scanner;
+      <h3>Ejemplo de uso esperado</h3>
+      <pre class="code-block"><code>
+--- Lectura de 4 números enteros ---
+Ingrese el valor A: 10
+Ingrese el valor B: 25
+Ingrese el valor C: 50
+Ingrese el valor D: 100
 
-public class Ejemplo_1_6 {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+--- Números en orden inverso ---
+Valor D: 100
+Valor C: 50
+Valor B: 25
+Valor A: 10</code></pre>
+    </section>
 
-        System.out.println("--- Lectura de 4 números enteros ---");
-        
-        System.out.print("Ingrese el valor A: ");
-        int A = sc.nextInt();
-        
-        System.out.print("Ingrese el valor B: ");
-        int B = sc.nextInt();
-        
-        System.out.print("Ingrese el valor C: ");
-        int C = sc.nextInt();
-        
-        System.out.print("Ingrese el valor D: ");
-        int D = sc.nextInt();
+    
+    <!-- ASIDE -->
+    <aside class="exercise-sidebar">
+      <h3>Notas rápidas</h3>
+      <p class="note-text">Este programa usa estructura secuencial simple:</p>
 
-        System.out.println("\n--- Números en orden inverso ---");
-        System.out.println("Valor D: " + D);
-        System.out.println("Valor C: " + C);
-        System.out.println("Valor B: " + B);
-        System.out.println("Valor A: " + A);
-    }
-}</code></pre>
-      </section>
-      
-      <aside class="exercise-sidebar">
-        <h3>Notas de Diagrama de Flujo</h3>
-        <p class="note-text">Este problema introduce los símbolos básicos del diagrama de flujo:</p>
-        <ul>
-          <li><strong>Inicio / Fin:</strong> Se usa un óvalo o cápsula.</li>
-          <li><strong>Lectura (Entrada):</strong> Se usa un paralelogramo (para leer A, B, C, D).</li>
-          <li><strong>Escritura (Salida):</strong> Se usa un símbolo de documento (para escribir D, C, B, A).</li>
-        </ul>
-        
-        <div class="tip-box">
-          <strong>Tip:</strong> Este es un algoritmo puramente secuencial. No requiere decisiones (<code>if</code>) ni bucles (<code>while</code>/<code>for</code>).
-        </div>
-      </aside>
-    </div>
+      <ul>
+        <li>No requiere bucles ni decisiones.</li>
+        <li>La entrada y salida son directas.</li>
+        <li>Solo se declaran 4 variables enteras.</li>
+        <li>Se imprime en orden inverso al que se lee.</li>
+      </ul>
+
+      <div class="tip-box">
+        <strong>Tip:</strong> Usa <code>System.out.println()</code> para mostrar cada número con su etiqueta.
+      </div>
+    </aside>
+
+  </div>
 </article>
+
+<div id="modal_ejemplo_1_6" class="modal">
+  <div class="modal-content">
+    <span class="modal-close" onclick="closeModal('modal_ejemplo_1_6')">&times;</span>
+    <h2 class="modal-title">Diagrama de Flujo - Ejemplo 1.6</h2>
+    <img src="imagesDiagrama/Ejemplo1.6.png" alt="Diagrama de Flujo - Ejemplo 1.6" class="modal-diagram-img">
+  </div>
+</div>
 
 
 
@@ -137,108 +257,71 @@ public class Ejemplo_1_6 {
 
 
     <article id="problema_1_7" class="exercise-card" aria-labelledby="problema_1_7-title">
-    <header class="exercise-header">
-      <span class="exercise-badge">Problema 1.7</span>
-      <h2 id="problema_1_7-title">Calcular el área de un triángulo (Fórmula de Herón)</h2>
-      
-      <p class="exercise-description">
-        Este programa calcula el área de un triángulo dados sus tres lados (L1, L2, L3),
-        aplicando la fórmula de Herón. El código incluye un <code>main</code> para uso interactivo
-        y un método <code>static</code> (<code>calcularAreaHeron</code>) que contiene la lógica pura.
-      </p>
-    </header>
+  <header class="exercise-header">
+    <span class="exercise-badge">Problema 1.7</span>
+    <h2 id="problema_1_7-title">Calcular el área de un triángulo (Fórmula de Herón)</h2>
     
-    <div class="exercise-content">
-      <section class="exercise-main">
-        <h3>Fórmulas a utilizar</h3>
-        <ol>
-          <li>Calcular el semiperímetro (S): <br> <code>S = (L1 + L2 + L3) / 2</code></li>
-          <li>Calcular el Área: <br> <code>Area = √(S * (S - L1) * (S - L2) * (S - L3))</code></li>
-        </ol>
+    <p class="exercise-description">
+      Lee los tres lados de un triángulo como números decimales y calcula su área usando la fórmula de Herón. Primero calcula el semiperímetro, luego aplica la fórmula matemática para obtener el área del triángulo.
+    </p>
+    <button class="flow-diagram-btn" onclick="openModal('modal_problema_1_7')">Ver Diagrama de Flujo</button>
+  </header>
 
-        <h3>Diagrama de Flujo</h3>
-        <p>Este diagrama ilustra el flujo secuencial del cálculo.</p>
-        <img 
-            src="imagesDiagrama/Problema_1_7.png" 
-            alt="Diagrama de flujo del Problema 1.7" 
-            style="width: 100%; max-width: 500px; display: block; margin: auto;"
-        >
-        <h3>Código Fuente</h3>
-        <pre><code class="code-block">import java.util.Locale;
-import java.util.Scanner;
-import java.lang.Math; // Para usar Math.sqrt()
+  <div class="exercise-content">
+    
+    <!-- MAIN -->
+    <section class="exercise-main">
+      <h3>Requisitos</h3>
+      <ul>
+        <li>Leer los 3 lados del triángulo (decimales: L1, L2, L3).</li>
+        <li>Calcular el semiperímetro: S = (L1 + L2 + L3) / 2.</li>
+        <li>Aplicar la fórmula de Herón: Área = √(S × (S - L1) × (S - L2) × (S - L3)).</li>
+        <li>Mostrar el área calculada.</li>
+      </ul>
 
-public class Problema_1_7 {
-
-    /**
-     * El método main maneja la interacción con el usuario.
-     */
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in).useLocale(Locale.US);
-
-        System.out.println("--- Calculadora de Área de Triángulo (Fórmula de Herón) ---");
-        
-        System.out.print("Ingrese la longitud del Lado 1 (L1): ");
-        double L1 = sc.nextDouble();
-        
-        System.out.print("Ingrese la longitud del Lado 2 (L2): ");
-        double L2 = sc.nextDouble();
-        
-        System.out.print("Ingrese la longitud del Lado 3 (L3): ");
-        double L3 = sc.nextDouble();
-        
-        sc.close();
-
-        // Llama al método de lógica
-        double AREA = calcularAreaHeron(L1, L2, L3);
-
-        if (AREA == -1.0) {
-            System.out.println("\nError: Los lados ingresados no forman un triángulo válido.");
-        } else {
-            // Calcular S solo para mostrarlo (la lógica ya lo hizo)
-            double S = (L1 + L2 + L3) / 2.0;
-            System.out.println("\n--- Resultados ---");
-            System.out.printf("Lados: L1=%.2f, L2=%.2f, L3=%.2f%n", L1, L2, L3);
-            System.out.printf("Semiperímetro (S): %.4f%n", S);
-            System.out.printf("Área del triángulo: %.4f%n", AREA);
-        }
-    }
+      <h3>Fórmulas a utilizar</h3>
+      <ol>
+        <li>Semiperímetro (S): <br><code>S = (L1 + L2 + L3) / 2</code></li>
+        <li>Área del triángulo: <br><code>Area = √(S * (S - L1) * (S - L2) * (S - L3))</code></li>
+      </ol>
 
     
-    /**
-     * Calcula el área usando la fórmula de Herón.
-     * Esta es la lógica que se prueba.
-     * @return El área, o -1.0 si los lados son inválidos.
-     */
-    public static double calcularAreaHeron(double L1, double L2, double L3) {
-        double S = (L1 + L2 + L3) / 2.0;
-        double radicando = S * (S - L1) * (S - L2) * (S - L3);
-        
-        if (radicando < 0) {
-            return -1.0; // Usamos -1.0 como señal de error (triángulo inválido)
-        } else {
-            return Math.sqrt(radicando); // Regresamos el área
-        }
-    }
-}</code></pre>
-      </section>
-      
-      <aside class="exercise-sidebar">
-        <h3>Notas rápidas</h3>
-        <p class="note-text">Puntos clave:</p>
-        <ul>
-          <li><strong>Separación de Lógica:</strong> El <code>main</code> se encarga de E/S. El método <code>calcularAreaHeron</code> se encarga del cálculo.</li>
-          <li>Los datos L1, L2, L3 deben ser de tipo <code>double</code>.</li>
-          <li>Se utiliza <code>Math.sqrt(valor)</code> para la raíz cuadrada.</li>
-          <li><strong>Manejo de Errores:</strong> El método <code>calcularAreaHeron</code> devuelve <code>-1.0</code> para indicar un error (triángulo inválido), y el <code>main</code> se encarga de interpretar ese valor y mostrar un mensaje amigable.</li>
-        </ul>
-        
-        <div class="tip-box">
-          <strong>Tip:</strong> Un triángulo es válido solo si la suma de dos de sus lados es siempre mayor que el tercero. Si no, el "radicando" (lo de adentro de la raíz) será negativo. Devolver <code>-1.0</code> es una forma simple de manejar este error sin "crashing".
-        </div>
-      </aside>
-    </div>
+
+      <h3>Ejemplo de uso esperado</h3>
+      <pre class="console-output"><code>--- Cálculo de área de un triángulo ---
+Ingresa Lado 1: 5
+Ingresa Lado 2: 6
+Ingresa Lado 3: 7
+El área del triángulo es: 14.696938456699069</code></pre>
+    </section>
+
+    <!-- ASIDE -->
+    <aside class="exercise-sidebar">
+      <h3>Notas rápidas</h3>
+      <p class="note-text">Puntos clave:</p>
+      <ul>
+        <li>Usa <code>double</code> para precisión en los cálculos.</li>
+        <li>Usa <code>Math.pow()</code> si es necesario o multiplica directamente.</li>
+        <li>Usa <code>Math.sqrt()</code> para la raíz cuadrada.</li>
+        <li>El resultado puede no ser un número entero.</li>
+      </ul>
+
+      <div class="tip-box">
+        <strong>Tip:</strong> Para un triángulo válido, la suma de dos lados debe ser mayor que el tercero.
+      </div>
+    </aside>
+
+  </div>
 </article>
+
+<div id="modal_problema_1_7" class="modal">
+  <div class="modal-content">
+    <span class="modal-close" onclick="closeModal('modal_problema_1_7')">&times;</span>
+    <h2 class="modal-title">Diagrama de Flujo - Problema 1.7</h2>
+    <img src="imagesDiagrama/Problema1.7.png" alt="Diagrama de Flujo - Problema 1.7" class="modal-diagram-img">
+  </div>
+</div>
+
 
 
 
@@ -254,172 +337,62 @@ public class Problema_1_7 {
 
       
       <article id="problema_2_2" class="exercise-card" aria-labelledby="problema_2_2-title">
-        <header class="exercise-header">
-          <span class="exercise-badge">Problema 2.2</span>
-          <h2 id="problema_2_2-title">Evaluar la expresión P³ + Q⁴ - 2*P² &lt; 680</h2>
-          
-          <p class="exercise-description">
-            Este programa solicita dos valores enteros, P y Q, y determina si satisfacen la expresión
-            <code>P³ + Q⁴ - 2*P² < 680</code>. Si la cumplen, imprime los valores de P y Q.
-          </p>
-        </header>
-        
-        <div class="exercise-content">
-          <section class="exercise-main">
-            <h3>Requisitos</h3>
-            <ul>
-              <li>Usar la clase <code>Scanner</code> para leer los enteros P y Q.</li>
-              <li>Calcular el resultado de la expresión: <code>P³ + Q⁴ - 2*P²</code>.</li>
-              <li>Usar una estructura condicional <code>if</code> para verificar si el resultado es menor que 680.</li>
-              <li>Si la condición se cumple, imprimir un mensaje afirmativo junto con los valores de P y Q.</li>
-              <li>Si no se cumple, indicar que no se satisface.</li>
-            </ul>
-            
-            <h3>Ejemplo de uso esperado</h3>
-            <pre><code class="code-block">import java.util.Scanner;
-import java.lang.Math; // Para usar Math.pow
+  <header class="exercise-header">
+    <span class="exercise-badge">Problema 2.2</span>
+    <h2 id="problema_2_2-title">Evaluar la expresión P⁵ + Q⁴ - 2·P² &lt; 680</h2>
 
-public class Problema_2_2 {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        
-        System.out.println("Ingrese el valor entero P:");
-        int P = sc.nextInt();
-        
-        System.out.println("Ingrese el valor entero Q:");
-        int Q = sc.nextInt();
-        
-        // Calcular la expresión. Usamos double porque Math.pow retorna double.
-        double resultado = Math.pow(P, 3) + Math.pow(Q, 4) - 2 * Math.pow(P, 2);
-        
-        System.out.println("Resultado de la expresión: " + resultado);
+    <p class="exercise-description">
+      Lee dos números enteros (P y Q), calcula la expresión P⁵ + Q⁴ - 2·P² y verifica si el resultado es menor que 680. Muestra los valores si la condición se cumple, de lo contrario indica que no se cumple.
+    </p>
+    <button class="flow-diagram-btn" onclick="openModal('modal_problema_2_2')">Ver Diagrama de Flujo</button>
+  </header>
 
-        // Evaluar la condición
-        if (resultado < 680) {
-            System.out.println("La expresión P³ + Q⁴ - 2*P² < 680 SÍ se cumple.");
-            System.out.println("Valor de P: " + P);
-            System.out.println("Valor de Q: " + Q);
-        } else {
-            System.out.println("La expresión P³ + Q⁴ - 2*P² < 680 NO se cumple.");
-        }
-    }
-}</code></pre>
-          </section>
-          
-          <aside class="exercise-sidebar">
-            <h3>Notas rápidas</h3>
-            <p class="note-text">Asegúrate de:</p>
-            <ul>
-              <li>Importar <code>java.util.Scanner</code> para la entrada de datos.</li>
-              <li>Usar <code>Math.pow(base, exponente)</code> para calcular las potencias.</li>
-              <li>Almacenar el resultado en una variable <code>double</code>, ya que <code>Math.pow</code> devuelve ese tipo.</li>
-              <li>Probar con valores que cumplan (ej. P=5, Q=3) y que no cumplan (ej. P=10, Q=10).</li>
-            </ul>
-            
-            <div class="tip-box">
-              <strong>Tip:</strong> El problema pide imprimir P y Q solo "en caso afirmativo", por lo que el bloque <code>else</code> es opcional, pero útil para la depuración.
-            </div>
-          </aside>
-        </div>
-      </article>
+  <div class="exercise-content">
+    <!-- MAIN -->
+    <section class="exercise-main">
+      <h3>Requisitos</h3>
+      <ul>
+        <li>Leer dos números enteros: P y Q.</li>
+        <li>Calcular: P⁵ + Q⁴ - 2·P² usando <code>Math.pow()</code>.</li>
+        <li>Verificar si el resultado es menor que 680.</li>
+        <li>Mostrar si la condición se cumple o no.</li>
+      </ul>
 
-
-
-
-
-
-
-
-
-
-
-
-
-     <article id="ejemplo_3_4" class="exercise-card" aria-labelledby="ejemplo_3_4-title">
-    <header class="exercise-header">
-      <span class="exercise-badge">Ejemplo 3.4</span>
-      <h2 id="ejemplo_3_4-title">Programa para obtener el total de gastos de un viaje</h2>
       
-      <p class="exercise-description">
-        Este programa calcula el total de gastos de un viaje. Se compone de dos partes:
-        1. Un método <strong><code>main</code></strong> que permite al usuario ingresar gastos interactivamente usando <code>Scanner</code> (finalizando con -1).
-        2. Un método <strong><code>calcularTotalGastos</code></strong> que toma un <code>ArrayList&lt;Double&gt;</code> y retorna la suma. Esta separación permite probar la lógica del cálculo automáticamente.
-      </p>
-    </header>
-    
-    <div class="exercise-content">
-      <section class="exercise-main">
-        <h3>Requisitos</h3>
-        <ul>
-          <li><strong>Método <code>main</code> (Parte Interactiva):</strong></li>
-          <ul>
-            <li>Usar <code>Scanner</code>.</li>
-            <li>Bucle <code>while</code> que finalice con <code>-1</code>.</li>
-            <li>Imprimir el total.</li>
-          </ul>
-          <li><strong>Método <code>calcularTotalGastos</code> (Parte Lógica):</strong></li>
-          <ul>
-            <li>Aceptar un <code>ArrayList&lt;Double&gt;</code>.</li>
-            <li>Devolver un <code>double</code> con la suma.</li>
-          </ul>
-        </ul>
 
-        <h3>Diagrama de Flujo (Método <code>main</code>)</h3>
-        <p>Este diagrama representa la lógica interactiva del método <code>main</code>.</p>
-        <img 
-            src="imagesDiagrama/Ejemplo_3_4.png" 
-            alt="Diagrama de flujo Ejemplo 3.4" 
-            style="width: 100%; max-width: 600px;"
-        >
-        
-        <h3>Código Fuente</h3>
-        <pre><code class="code-block">import java.util.ArrayList;
-import java.util.Scanner;
+      <h3>Ejemplo de uso esperado</h3>
+      <pre class="console-output"><code>Ingresa P: 5
+Ingresa Q: 3
+La expresión se cumple. Valores:
+P = 5
+Q = 3</code></pre>
+    </section>
 
-public class Ejemplo_3_4 {
+    <!-- ASIDE -->
+    <aside class="exercise-sidebar">
+      <h3>Notas rápidas</h3>
+      <p class="note-text">Consideraciones importantes:</p>
+      <ul>
+        <li>Usa <code>Math.pow()</code> para cada potencia.</li>
+        <li>Almacena el resultado en <code>double</code> porque <code>Math.pow()</code> devuelve ese tipo.</li>
+        <li>Usa <code>if-else</code> para mostrar el resultado de la evaluación.</li>
+        <li>Las potencias crecen rápidamente; valores grandes harán que el resultado supere 680.</li>
+      </ul>
 
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        double sumGas = 0;
-
-        System.out.println("Ingrese los gastos (ingrese -1 para finalizar):");
-        double gasto = sc.nextDouble();
-
-        while (gasto != -1) {
-            sumGas += gasto;
-            System.out.println("Ingrese los gastos (ingrese -1 para finalizar):");
-            gasto = sc.nextDouble();
-        }
-
-        System.out.println("El total de gastos del viaje es: " + sumGas);
-    }
-
-    public double calcularTotalGastos(ArrayList<Double> gastos) {
-        double total = 0.0;
-        for (double gasto : gastos) {
-            total += gasto;
-        }
-        return total;
-    }
-}</code></pre>
-      </section>
-      
-      <aside class="exercise-sidebar">
-        <h3>Notas rápidas</h3>
-        <p class="note-text">Asegúrate de:</p>
-        <ul>
-          <li>Probar la parte interactiva ejecutando el <code>main</code>.</li>
-          <li>El bucle <code>while</code> con valor centinela (<code>-1</code>) es ideal para la entrada manual.</li>
-          <li>El bucle <code>for-each</code> es perfecto para procesar la lista en el método de lógica.</li>
-        </ul>
-        
-        <div class="tip-box">
-          <strong>Tip (¡Importante!):</strong> Al separar la lógica (sumar una lista) de la entrada/salida (pedir números con <code>Scanner</code>), hacemos el código <strong>testeable</strong>. Las pruebas automáticas (JUnit) pueden llamar a <code>calcularTotalGastos</code> fácilmente, pero no pueden "escribir" en un <code>Scanner</code>.
-        </div>
-      </aside>
-    </div>
+      <div class="tip-box">
+        <strong>Tip:</strong> Prueba con P=5, Q=3 para ver la condición cumplida.
+      </div>
+    </aside>
+  </div>
 </article>
 
+<div id="modal_problema_2_2" class="modal">
+  <div class="modal-content">
+    <span class="modal-close" onclick="closeModal('modal_problema_2_2')">&times;</span>
+    <h2 class="modal-title">Diagrama de Flujo - Problema 2.2</h2>
+    <img src="imagesDiagrama/Problema2.2.png" alt="Diagrama de Flujo - Problema 2.2" class="modal-diagram-img">
+  </div>
+</div>
 
 
 
@@ -431,116 +404,73 @@ public class Ejemplo_3_4 {
 
 
 
-     <article id="problema_3_15" class="exercise-card" aria-labelledby="problema_3_15-title">
-    <header class="exercise-header">
-      <span class="exercise-badge">Problema 3.15</span>
-      <h2 id="problema_3_15-title">Calculadora de Costo de Llamadas (Clase de Lógica)</h2>
+
+
+
+
+  <article id="ejemplo_3_4" class="exercise-card" aria-labelledby="ejemplo_3_4-title">
+  <header class="exercise-header">
+    <span class="exercise-badge">Ejemplo 3.4</span>
+    <h2 id="ejemplo_3_4-title">Programa para obtener el total de gastos de un viaje</h2>
+
+    <p class="exercise-description">
+      Lee gastos de un viaje uno por uno (números decimales). El usuario ingresa cada gasto y cuando digita -1, el programa termina y muestra el total acumulado de todos los gastos ingresados.
+    </p>
+    <button class="flow-diagram-btn" onclick="openModal('modal_ejemplo_3_4')">Ver Diagrama de Flujo</button>
+  </header>
+
+  <div class="exercise-content">
+    <!-- MAIN -->
+    <section class="exercise-main">
+
+      <h3>Requisitos</h3>
+      <ul>
+        <li>Usar un ciclo <code>while</code> que continúe hasta que se ingrese -1.</li>
+        <li>Acumular cada gasto en una variable.</li>
+        <li>No contar el -1 en la suma.</li>
+        <li>Mostrar el total de gastos al finalizar.</li>
+      </ul>
+
       
-      <p class="exercise-description">
-        Esta es una clase de lógica (`problema_3_15`) diseñada para calcular el costo total de llamadas. 
-        No contiene un método <code>main</code> ni <code>Scanner</code>.
-        Mantiene un <strong>estado interno</strong> (el contador <code>cl</code> y la <code>cuenta</code> total) y procesa llamadas una por una
-        a través del método <code>procesarLlamada</code>.
-      </p>
-    </header>
-    
-    <div class="exercise-content">
-      <section class="exercise-main">
-        <h3>Lógica de Cálculo (Secuencial y Aditivo)</h3>
-        <p>
-          El costo de cada llamada se calcula sumando los resultados de <strong>tres bloques de reglas secuenciales</strong>:
-        </p>
-        <ol>
-          <li><strong>Bloque 1 (Costo base o 'H'):</strong> 
-            <ul>
-              <li>Si es 'H' y > 3 min: <code>$7.59 + ($3.03 * mins_extra)</code>.</li>
-              <li>En otro caso: <code>$7.59</code>.</li>
-            </ul>
-          </li>
-          <li><strong>Bloque 2 (Recargo 'L'):</strong>
-            <ul>
-              <li>Si es 'L': <code>cl++</code>.</li>
-              <li>Si <code>cl</code> es > 50: se añade <code>$0.60</code>.</li>
-            </ul>
-          </li>
-          <li><strong>Bloque 3 (Costo general por duración):</strong>
-            <ul>
-              <li>Si > 3 min: <code>$1.20 + ($0.48 * mins_extra)</code>.</li>
-              <li>Si 3 min o menos: <code>$1.20</code>.</li>
-            </ul>
-          </li>
-        </ol>
-        
-        <h3>Diagrama de Flujo</h3>
-        <p>Este diagrama representa la lógica de la clase <code>problema_3_15</code>.</p>
-        <img 
-            src="imagesDiagrama/Problema_3_15.png" 
-            alt="Diagrama de flujo del Problema 3.15" 
-            style="width: 100%; max-width: 600px; display: block; margin: auto;"
-        >
 
-        <h3>Código Fuente (Clase de Lógica)</h3>
-        <pre><code class="code-block">public class problema_3_15 {
-    
-    private int cl = 0;
-    private double cuenta = 0;
+      <h3>Ejemplo de uso esperado</h3>
+      <pre class="code-block"><code>
+Ingresa un gasto (-1 para terminar): 120
+Ingresa otro gasto (-1 para terminar): 350
+Ingresa otro gasto (-1 para terminar): 89.50
+Ingresa otro gasto (-1 para terminar): 45
+Ingresa otro gasto (-1 para terminar): -1
 
-    public void procesarLlamada(String tipo, int dur) {
-        
-        // --- Bloque 1 ---
-        if (tipo.equals("H") && dur > 3) {
-            double costo = 7.59 + ((dur - 3) * 3.03);
-            cuenta += costo;
-        } else {
-            double costo = 7.59;
-            cuenta += costo;
-        }
-        
-        // --- Bloque 2 ---
-        if (tipo.equals("L")) {
-            cl++;
-            if (cl > 50) {
-                cuenta += 0.60;
-            }
-        }
-        
-        // --- Bloque 3 ---
-        if (dur > 3) {
-            double costo = 1.20 + ((dur - 3) * 0.48);
-            cuenta += costo;
-        } else {
-            double costo = 1.20;
-            cuenta += costo;
-        }
-    }
+La suma total de los gastos es: 604.5
+      </code></pre>
 
-    public double getCuenta() {
-        return cuenta;
-    }
+    </section>
 
-    public int getCL() {
-        return cl;
-    }
-}</code></pre>
-      </section>
-      
-      <aside class="exercise-sidebar">
-        <h3>Notas rápidas</h3>
-        <p class="note-text">Puntos clave del diseño:</p>
-        <ul>
-          <li><strong>Clase Estatal (Stateful):</strong> <code>cl</code> y <code>cuenta</code> guardan su valor entre llamadas.</li>
-          <li><strong>Lógica Aditiva:</strong> El costo final es la suma de los 3 bloques.</li>
-          <li><strong>Diseño Testeable:</strong> El código está separado para ser probado.</li>
-          <li><strong>Getters:</strong> <code>getCuenta()</code> y <code>getCL()</code> son esenciales para que un test pueda verificar el estado.</li>
-        </ul>
-        
-        <div class="tip-box">
-          <strong>Tip:</strong> Este diseño es un ejemplo de <strong>Separación de Intereses</strong>. La clase <code>problema_3_15</code> se encarga *solo* de la lógica de negocio.
-        </div>
-      </aside>
-    </div>
+    <!-- ASIDE -->
+    <aside class="exercise-sidebar">
+      <h3>Notas rápidas</h3>
+      <p class="note-text">Puntos clave:</p>
+      <ul>
+        <li>El valor -1 es el centinela (señal de parada).</li>
+        <li>Lee cada gasto y valida que no sea -1 antes de sumarlo.</li>
+        <li>Inicializa el acumulador en 0.</li>
+        <li>Los gastos pueden ser números decimales.</li>
+      </ul>
+
+      <div class="tip-box">
+        <strong>Tip:</strong> Verifica que el gasto sea diferente de -1 dentro del <code>if</code> antes de sumar.
+      </div>
+    </aside>
+  </div>
 </article>
 
+<div id="modal_ejemplo_3_4" class="modal">
+  <div class="modal-content">
+    <span class="modal-close" onclick="closeModal('modal_ejemplo_3_4')">&times;</span>
+    <h2 class="modal-title">Diagrama de Flujo - Ejemplo 3.4</h2>
+    <img src="imagesDiagrama/Ejemplo3.4.png" alt="Diagrama de Flujo - Ejemplo 3.4" class="modal-diagram-img">
+  </div>
+</div>
 
 
 
@@ -549,16 +479,127 @@ public class Ejemplo_3_4 {
 
 
 
-      <article id="problema_4_2" class="exercise-card" aria-labelledby="problema_4_2-title">
+
+
+
+
+
+  <article id="problema_3_15" class="exercise-card" aria-labelledby="problema_3_15-title">
+  <header class="exercise-header">
+    <span class="exercise-badge">Problema 3.15</span>
+    <h2 id="problema_3_15-title">Calculadora de Costo de Llamadas</h2>
+
+    <p class="exercise-description">
+      Calcula el costo total de varias llamadas telefónicas según su tipo: Internacional (I), Nacional (N) o Local (L). Cada tipo tiene tarifas diferentes. El programa continúa pidiendo llamadas hasta que el usuario ingresa X, luego muestra el costo total y el número de llamadas locales realizadas.
+    </p>
+    <button class="flow-diagram-btn" onclick="openModal('modal_problema_3_15')">Ver Diagrama de Flujo</button>
+  </header>
+
+  <div class="exercise-content">
+    <section class="exercise-main">
+
+      <h3>Requisitos</h3>
+      <ul>
+        <li>Solicitar al usuario el tipo de llamada: <code>I</code> (Internacional), <code>N</code> (Nacional), <code>L</code> (Local) o <code>X</code> (terminar).</li>
+        <li>Para cada llamada distinta de <code>X</code>, solicitar la duración en minutos.</li>
+        <li>Aplicar las reglas de cobro:
+          <ul>
+            <li><strong>Internacional (I):</strong>
+              <ul>
+                <li>≤ 3 min → <code>$7.59</code></li>
+                <li>> 3 min → <code>$7.59 + 3.03 * (min - 3)</code></li>
+              </ul>
+            </li>
+            <li><strong>Nacional (N):</strong>
+              <ul>
+                <li>≤ 3 min → <code>$1.20</code></li>
+                <li>> 3 min → <code>$1.20 + 0.48 * (min - 3)</code></li>
+              </ul>
+            </li>
+            <li><strong>Local (L):</strong>
+              <ul>
+                <li>Las primeras 50 llamadas → <code>gratis</code></li>
+                <li>A partir de la llamada 51 → <code>$0.60</code> por llamada</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>Acumular el costo total y contar cuántas llamadas locales se realizaron.</li>
+        <li>Finalizar cuando se ingrese <code>X</code>.</li>
+        <li>Imprimir el costo total y el total de llamadas locales.</li>
+      </ul>
+
+    
+
+      <h3>Ejemplo de uso esperado</h3>
+      <pre class="code-block"><code>
+Ingresa el tipo de llamada (I/N/L/X para terminar): I
+Ingresa la duración en minutos: 5
+Costo de esta llamada: $13.65
+
+Ingresa el tipo de llamada (I/N/L/X para terminar): N
+Ingresa la duración en minutos: 2
+Costo de esta llamada: $1.2
+
+Ingresa el tipo de llamada (I/N/L/X para terminar): L
+Ingresa la duración en minutos: 10
+Costo de esta llamada: $0.0
+
+Ingresa el tipo de llamada (I/N/L/X para terminar): L
+Ingresa la duración en minutos: 15
+Costo de esta llamada: $0.0
+
+Ingresa el tipo de llamada (I/N/L/X para terminar): X
+
+Costo total a pagar: $14.85
+Total de llamadas locales: 2
+      </code></pre>
+
+    </section>
+
+    <aside class="exercise-sidebar">
+      <h3>Notas rápidas</h3>
+      <p class="note-text">Puntos clave:</p>
+      <ul>
+        <li>Usa un acumulador para guardar el costo total.</li>
+        <li>Usa un contador para las llamadas locales.</li>
+        <li>Convierte el tipo de llamada a mayúsculas con <code>toUpperCase()</code>.</li>
+        <li>Las primeras 50 llamadas locales son gratis; después cuestan $0.60 c/u.</li>
+        <li>Termina cuando se ingresa 'X'.</li>
+      </ul>
+
+      <div class="tip-box">
+        <strong>Tip:</strong> Usa <code>switch</code> o múltiples <code>if</code> para manejar los 3 tipos de llamadas.
+      </div>
+    </aside>
+  </div>
+</article>
+
+<div id="modal_problema_3_15" class="modal">
+  <div class="modal-content">
+    <span class="modal-close" onclick="closeModal('modal_problema_3_15')">&times;</span>
+    <h2 class="modal-title">Diagrama de Flujo - Problema 3.15</h2>
+    <img src="imagesDiagrama/Problema3.15.png" alt="Diagrama de Flujo - Problema 3.15" class="modal-diagram-img">
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+     <article id="problema_4_2" class="exercise-card" aria-labelledby="problema_4_2-title">
     <header class="exercise-header">
       <span class="exercise-badge">Problema 4.2</span>
       <h2 id="problema_4_2-title">Eliminar elementos repetidos de un arreglo</h2>
       
       <p class="exercise-description">
-        Este programa recibe un arreglo unidimensional (vector) de enteros desordenado, 
-        que puede contener valores repetidos (<code>VEC[1..N]</code>, con <code>N <= 500</code>). 
-        El objetivo es procesar este arreglo y obtener como salida el mismo vector, pero sin repeticiones.
+        Lee un arreglo de números enteros que puede contener valores duplicados y crea un nuevo arreglo sin repeticiones, manteniendo el orden de aparición de los elementos únicos.
       </p>
+      <button class="flow-diagram-btn" onclick="openModal('modal_problema_4_2')">Ver Diagrama de Flujo</button>
     </header>
     
     <div class="exercise-content">
@@ -568,94 +609,46 @@ public class Ejemplo_3_4 {
           <li>Leer <code>N</code> (número de elementos) en el <code>main</code>.</li>
           <li>Leer los <code>N</code> enteros en un <code>ArrayList</code> (<code>VEC</code>) en el <code>main</code>.</li>
           <li>La lógica de filtrado debe estar en un método <code>static ArrayList&lt;Integer&gt; eliminarDuplicados(ArrayList&lt;Integer&gt; vec)</code>.</li>
-          <li>El método <code>eliminarDuplicados</code> debe usar un <code>LinkedHashSet</code> para filtrar duplicados y mantener el orden de la primera aparición.</li>
+          <li>El método <code>eliminarDuplicados</code> debe usar un <code>LinkedHashSet</code> para eliminar duplicados y mantener el orden de aparición.</li>
           <li>El método <code>main</code> debe llamar a la lógica e imprimir la lista resultante.</li>
         </ul>
 
-        <h3>Diagrama de Flujo</h3>
-        <p>Este diagrama ilustra la lógica principal del programa.</p>
-        <img 
-            src="imagesDiagrama/Problema_4_2.png" 
-            alt="Diagrama de flujo del Problema 4.2" 
-            style="width: 100%; max-width: 600px; display: block; margin: auto;"
-        >
-        <h3>Código Fuente</h3>
-        <pre><code class="code-block">import java.util.ArrayList;
-import java.util.LinkedHashSet;
-import java.util.Scanner; // Importante para mantener el orden
-import java.util.Set;
+      
 
-public class Problema_4_2 {
-
-    /**
-     * El método main ahora se enfoca solo en la entrada y salida.
-     */
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-
-        System.out.println("Ingrese el tamaño del vector (N <= 500):");
-        int N = sc.nextInt();
-
-        if (N < 1 || N > 500) {
-            System.out.println("Tamaño fuera de rango (1 <= N <= 500).");
-            sc.close(); // Cerrar scanner antes de salir
-            return;
-        }
-
-        // Usar genéricos: ArrayList<Integer>
-        ArrayList<Integer> VEC = new ArrayList<>();
-        System.out.println("Ingrese los " + N + " elementos del vector:");
-        
-        for (int i = 0; i < N; i++) {
-            System.out.print("Elemento " + (i + 1) + ": ");
-            VEC.add(sc.nextInt());
-        }
-        sc.close(); // Cerrar el scanner
-
-        System.out.println("Vector original: " + VEC);
-
-        // --- Llamada al método de lógica ---
-        ArrayList<Integer> vecSinRepetir = eliminarDuplicados(VEC);
-
-        System.out.println("Vector sin repeticiones: " + vecSinRepetir);
-    }
-
-    /**
-     * Esta es la función de lógica que probaremos.
-     * Recibe una lista con duplicados y devuelve una lista sin duplicados,
-     * manteniendo el orden de la primera aparición.
-     *
-     * @param vec La lista original con duplicados.
-     * @return Una nueva ArrayList sin duplicados.
-     */
-    public static ArrayList<Integer> eliminarDuplicados(ArrayList<Integer> vec) {
-        // 1. Usar un LinkedHashSet para eliminar duplicados
-        //    LinkedHashSet mantiene el orden de inserción
-        Set<Integer> setSinRepetir = new LinkedHashSet<>(vec);
-
-        // 2. Convertir el set de vuelta a una lista
-        return new ArrayList<>(setSinRepetir);
-    }
-}</code></pre>
+        <h3>Ejemplo de uso esperado</h3>
+        <pre><code class="code-block">
+Ingresa la cantidad de elementos (1-500): 8
+Ingresa los 8 valores:
+5 3 5 7 3 9 7 10
+Vector sin repeticiones:
+[5, 3, 7, 9, 10]
+        </code></pre>
       </section>
       
       <aside class="exercise-sidebar">
         <h3>Notas rápidas</h3>
         <p class="note-text">Puntos clave:</p>
         <ul>
-          <li><strong>Separación de Lógica:</strong> El <code>main</code> maneja la E/S, mientras <code>eliminarDuplicados</code> maneja el procesamiento.</li>
-          <li>La forma más simple en Java de eliminar duplicados es usar un <code>Set</code>.</li>
-          <li>Se usa <strong><code>LinkedHashSet</code></strong> porque, a diferencia de <code>HashSet</code>, garantiza que se mantenga el orden de inserción (el orden en que apareció cada elemento por primera vez).</li>
-          <li><strong>Alternativa algorítmica:</strong> Se puede resolver sin <code>Set</code> usando bucles: crear un nuevo <code>ArrayList</code> (<code>vecSinRepetir</code>) e iterar sobre <code>VEC</code>. Por cada elemento, verificar si <code>vecSinRepetir.contains(elemento)</code> es <code>false</code> antes de agregarlo.</li>
+          <li>El <code>main</code> lee los datos y llama al método <code>eliminarDuplicados()</code>.</li>
+          <li>El método <code>eliminarDuplicados()</code> usa <code>LinkedHashSet</code> para remover duplicados y mantener orden.</li>
+          <li>Usa ArrayList para almacenar los datos.</li>
+          <li>Retorna el arreglo sin repeticiones.</li>
         </ul>
         
         <div class="tip-box">
-          <strong>Tip:</strong> Si el orden de los elementos no importara en la salida, se podría usar <code>HashSet</code>, que es ligeramente más rápido en algunas operaciones que <code>LinkedHashSet</code>.
+          <strong>Tip:</strong> <code>LinkedHashSet</code> mantiene el orden de aparición; si solo quisieras rapidez, usa <code>HashSet</code>.
         </div>
       </aside>
     </div>
 </article>
 
+<div id="modal_problema_4_2" class="modal">
+  <div class="modal-content">
+    <span class="modal-close" onclick="closeModal('modal_problema_4_2')">&times;</span>
+    <h2 class="modal-title">Diagrama de Flujo - Problema 4.2</h2>
+    <img src="imagesDiagrama/Problema4.2.png" alt="Diagrama de Flujo - Problema 4.2" class="modal-diagram-img">
+  </div>
+</div>
 
 
 
@@ -668,21 +661,22 @@ public class Problema_4_2 {
 
 
 
-      <article id="problema_4_15" class="exercise-card" aria-labelledby="problema_4_15-title">
+
+
+     <article id="problema_4_15" class="exercise-card" aria-labelledby="problema_4_15-title">
     <header class="exercise-header">
       <span class="exercise-badge">Problema 4.15</span>
       <h2 id="problema_4_15-title">Análisis de Ventas Anuales por Sucursal</h2>
       
       <p class="exercise-description">
-        Programa que analiza las ventas de <strong>N</strong> sucursales a lo largo de <strong>M</strong> años.
-        La lógica principal se ha movido del método <code>main</code>
-        a <strong>métodos estáticos (<code>static</code>)</strong> separados para cada cálculo (a, b, y c).
+        Lee ventas de N sucursales durante M años (almacenados en una matriz 2D) y realiza tres cálculos: identifica cuál sucursal tuvo más ventas totales, calcula el promedio de ventas por año, y determina cuál año tuvo el mayor promedio.
       </p>
+      <button class="flow-diagram-btn" onclick="openModal('modal_problema_4_15')">Ver Diagrama de Flujo</button>
     </header>
     
     <div class="exercise-content">
       <section class="exercise-main">
-        <h3>Requisitos y Datos</h3>
+        <h3>Requisitos</h3>
         <ul>
           <li>Leer <strong>M</strong> (años) y <strong>N</strong> (sucursales).</li>
           <li>Leer la matriz <code>MONTO[M][N]</code>.</li>
@@ -691,74 +685,65 @@ public class Problema_4_2 {
           <li><strong>c) Año con mayor promedio:</strong> Encontrar la fila con el promedio máximo.</li>
         </ul>
         
-        <h3>Diagrama de Flujo</h3>
-        <p>Este diagrama representa la lógica general del programa.</p>
-        <img 
-            src="imagesDiagrama/Problema_4_15.png" 
-            alt="Diagrama de flujo del Problema 4.15" 
-            style="width: 100%; max-width: 300px; display: block; margin: auto;"
-        >
         
-        <h3>Código Fuente</h3>
-        <pre><code class="code-block">import java.util.Scanner;
+        
+        <h3>Ejemplo de uso esperado</h3>
+        <pre><code class="code-block">
+Ingresa número de años (1-10): 3
+Ingresa número de sucursales (1-35): 4
 
-public class problema_4_15 {
+Año 1
+Monto vendido por la sucursal 1: 100
+Monto vendido por la sucursal 2: 200
+Monto vendido por la sucursal 3: 150
+Monto vendido por la sucursal 4: 80
 
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        // ... (lectura de M y N) ...
-        if (M <= 0 || N <= 0) {
-           // ... (error) ...
-            return;
-        }
-        double[][] MONTO = new double[M][N];
-        // ... (lectura de la matriz) ...
-        scanner.close(); 
+Año 2
+Monto vendido por la sucursal 1: 120
+Monto vendido por la sucursal 2: 180
+Monto vendido por la sucursal 3: 160
+Monto vendido por la sucursal 4: 100
 
-        int sucursalMasVendida = obtenerSucursalMasVendida(MONTO);
-        double[] promediosAnuales = calcularPromedioVentasAnuales(MONTO);
-        int añoMayorPromedioVentas = obtenerAñoMayorPromedioVentas(promediosAnuales);
+Año 3
+Monto vendido por la sucursal 1: 130
+Monto vendido por la sucursal 2: 210
+Monto vendido por la sucursal 3: 140
+Monto vendido por la sucursal 4: 90
 
-        // ... (impresión de resultados) ...
-    }
+Promedio del año 1: 132.5
+Promedio del año 2: 140.0
+Promedio del año 3: 142.5
 
-    static int obtenerSucursalMasVendida(double[][] montos) {
-        // ... (lógica para sumar columnas y encontrar max) ...
-        double maxVentas = 0;
-        // ... (cálculo robusto) ...
-        return sucursalMasVendida;
-    }
-
-    static double[] calcularPromedioVentasAnuales(double[][] montos) {
-        // ... (lógica para promediar filas) ...
-        return promediosAnuales;
-    }
-
-    static int obtenerAñoMayorPromedioVentas(double[] promediosAnuales) {
-        // ... (lógica para encontrar max en el array de promedios) ...
-        return añoMayorPromedioVentas;
-    }
-}</code></pre>
+Sucursal que más vendió en todos los años: 2
+Año con mayor promedio de ventas: 3
+        </code></pre>
       </section>
       
       <aside class="exercise-sidebar">
         <h3>Notas rápidas</h3>
         <p class="note-text">Puntos clave:</p>
         <ul>
-          <li>Ejercicio clásico de <strong>matrices (arreglos 2D)</strong>.</li>
-          <li><strong>Separación de Lógica:</strong> La lógica se movió del <code>main</code> a métodos <code>static</code>.</li>
-          <li>El <code>main</code> ahora "conduce" el programa: pide datos y llama a los métodos.</li>
-          <li>(a) Sumar <strong>columnas</strong>.</li>
-          <li>(b) Sumar <strong>filas</strong>.</li>
+          <li>Usa una matriz 2D: <code>MONTO[M][N]</code>.</li>
+          <li>Sucursal con más ventas: suma cada columna.</li>
+          <li>Promedio por año: suma cada fila y divide entre N.</li>
+          <li>Año con mayor promedio: busca el máximo de los promedios.</li>
+          <li>Usa métodos <code>static</code> para organizar la lógica.</li>
         </ul>
         
         <div class="tip-box">
-          <strong>Tip de Código Robusto:</strong> Los métodos para encontrar el 'máximo' son más robustos. Inicializan el 'máximo' con el <strong>valor del primer elemento</strong> (ej. <code>promediosAnuales[0]</code>) en lugar de <code>0</code>. Esto asegura que funcione bien incluso si todos los valores fueran negativos.
+          <strong>Tip:</strong> Inicializa el máximo con el primer valor, no con 0, para comparaciones correctas.
         </div>
       </aside>
     </div>
 </article>
 
+<div id="modal_problema_4_15" class="modal">
+  <div class="modal-content">
+    <span class="modal-close" onclick="closeModal('modal_problema_4_15')">&times;</span>
+    <h2 class="modal-title">Diagrama de Flujo - Problema 4.15</h2>
+    <img src="imagesDiagrama/Problema4.15.png" alt="Diagrama de Flujo - Problema 4.15" class="modal-diagram-img">
+  </div>
+</div>
 
 
 
@@ -771,113 +756,111 @@ public class problema_4_15 {
 
 
 
-     <article id="problema_5_3" class="exercise-card" aria-labelledby="Problema_5_3-title">
-    <header class="exercise-header">
-      <span class="exercise-badge">Problema 5.3</span>
-      <h2 id="Problema_5_3-title">Introducción a Objetos - Clase Domicilio</h2>
-      
-      <p class="exercise-description">
-        Programa que introduce el concepto de <strong>Programación Orientada a Objetos (POO)</strong>. 
-        El método <code>main</code> pide al usuario los datos de un domicilio (calle, número, etc.) y los 
-        utiliza para <strong>crear un objeto (instanciar)</strong> de la clase <code>Domicilio</code>. 
-        Finalmente, imprime los atributos del objeto creado.
-      </p>
-    </header>
-    
-    <div class="exercise-content">
-      <section class="exercise-main">
-        <h3>Requisitos</h3>
-        <ul>
-          <li>Definir una clase <code>Domicilio</code> para que actúe como un "molde" para los datos.</li>
-          <li>La clase <code>Domicilio</code> debe tener atributos para: <code>calle</code>, <code>numero</code>, <code>ciudad</code> y <code>pais</code>.</li>
-          <li>La clase <code>Domicilio</code> debe tener un <strong>constructor</strong> que acepte los cuatro datos y los asigne a los atributos.</li>
-          <li>El método <code>main</code> debe usar <code>Scanner</code> para leer los cuatro datos del usuario.</li>
-          <li>El <code>main</code> debe crear una <strong>instancia</strong> (objeto) de la clase <code>Domicilio</code> usando la palabra clave <code>new</code>.</li>
-          <li>El <code>main</code> debe imprimir los atributos del objeto creado para verificar que se guardaron correctamente.</li>
-        </ul>
+<article id="problema_5_3" class="exercise-card" aria-labelledby="Problema_5_3-title">
+  <header class="exercise-header">
+    <span class="exercise-badge">Problema 5.3</span>
+    <h2 id="Problema_5_3-title">Arreglos Paralelos - Registro de Profesores</h2>
 
-        <h3>Diagrama de Flujo (Método <code>main</code>)</h3>
-        <p>Este diagrama representa el flujo del método <code>main</code>, que lee los datos, crea el objeto y muestra los resultados.</p>
-        <img 
-            src="imagesDiagrama/Ejemplo_5_3.png" 
-            alt="Diagrama de flujo del Ejemplo 5.3" 
-            style="width: 100%; max-width: 100px; display: block; margin: auto;"
-        >
-        <h3>Código Fuente (Clase Domicilio)</h3>
-        <pre><code class="code-block">import java.util.Scanner;
+    <p class="exercise-description">
+      Captura información de N profesores (número, nombre, departamento, grado académico, nacionalidad y 12 salarios mensuales) usando arreglos paralelos. Luego ofrece un menú para consultar: profesor con mayor ganancia anual, totales por departamento, total pagado a extranjeros, y profesor mejor pagado por departamento.
+    </p>
+    <button class="flow-diagram-btn" onclick="openModal('modal_problema_5_3')">Ver Diagrama de Flujo</button>
+  </header>
 
-/**
- *
- * @author zenri
- */
-public class Ejemplo_5_3 {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Ingrese la calle: ");
-        String calle = scanner.nextLine();
-        System.out.print("Ingrese el número: ");
-        int numero = scanner.nextInt();
-        scanner.nextLine();
-        System.out.print("Ingrese la ciudad: ");
-        String ciudad = scanner.nextLine();
-        System.out.print("Ingrese el país: ");
-        String pais = scanner.nextLine();
-
-        // 2. Se crea la "instancia" u "objeto"
-        Domicilio domicilio = new Domicilio(calle, numero, ciudad, pais);
-
-        // 3. Se accede a los atributos del objeto
-        System.out.println("Calle: " + domicilio.calle);
-        System.out.println("Número: " + domicilio.numero);
-        System.out.println("Ciudad: " + domicilio.ciudad);
-        System.out.println("País: " + domicilio.pais);
-    }
-}
-
-// 1. Se define la "clase" o "molde"
-class Domicilio {
-
-    String calle;
-    int numero;
-    String ciudad;
-    String pais;
-
-    // Este es el "constructor". Se llama al usar 'new Domicilio(...)'
-    public Domicilio(String calle, int numero, String ciudad, String pais) {
-        this.calle = calle;
-        this.numero = numero;
-        this.ciudad = ciudad;
-        this.pais = pais;
-    }
-}</code></pre>
-      </section>
-      
-      <aside class="exercise-sidebar">
-        <h3>Notas rápidas</h3>
-        <p class="note-text">Puntos clave:</p>
-        <ul>
-          <li><strong>Clase:</strong> Es el molde o plantilla (<code>class Domicilio</code>).</li>
-          <li><strong>Objeto:</strong> Es la "cosa" real creada a partir del molde (la variable <code>domicilio</code> en el <code>main</code>).</li>
-          <li><strong>Constructor:</strong> Es el método especial que se llama con <code>new</code> para inicializar los atributos del objeto.</li>
-          <li><strong>Atributos:</strong> Son las variables *dentro* de la clase (<code>calle</code>, <code>numero</code>, etc.).</li>
-          <li>Recuerda usar <code>sc.nextLine();</code> después de <code>sc.nextInt();</code> para consumir el "Enter" y evitar errores al leer la siguiente cadena.</li>
-        </ul>
-        
-        <div class="tip-box">
-          <strong>Tip (<code>this</code>):</strong> La palabra clave <strong><code>this</code></strong> se usa dentro del constructor para desambiguar.
-          En <code>this.calle = calle;</code>:
+  <div class="exercise-content">
+    <section class="exercise-main">
+      <h3>Requisitos</h3>
+      <ul>
+        <li>Solicitar al usuario la cantidad de profesores (1–200).</li>
+        <li>Crear <strong>arreglos paralelos</strong> para guardar:
+          número, nombre, departamento, grado académico, nacionalidad y salarios mensuales.</li>
+        <li>Capturar los 12 salarios de cada profesor.</li>
+        <li>Implementar un menú con 5 opciones:
           <ul>
-            <li><code>this.calle</code> se refiere al <strong>atributo</strong> de la clase.</li>
-            <li><code>calle</code> (solo) se refiere al <strong>parámetro</strong> que llega al método.</li>
+            <li>1) Profesor que más ganó en el año.</li>
+            <li>2) Total pagado a un departamento.</li>
+            <li>3) Total pagado a profesores extranjeros.</li>
+            <li>4) Profesor que más ganó dentro de un departamento.</li>
+            <li>5) Salir.</li>
           </ul>
-        </div>
-      </aside>
-    </div>
+        </li>
+        <li>Usar ciclos anidados para calcular totales anuales.</li>
+        <li>Usar comparaciones para identificar máximos por departamento o globales.</li>
+      </ul>
+
+      
+
+      <h3>Ejemplo de uso esperado</h3>
+      <pre><code class="code-block">
+Ingrese el número de profesores (1-200): 2
+
+--- CAPTURA DE INFORMACIÓN ---
+
+Profesor 1
+Número de empleado: 101
+Nombre: Ana Torres
+Departamento: Sistemas
+Grado académico: Maestría
+Nacionalidad: México
+Ingrese los 12 salarios mensuales:
+Mes 1: 15000
+...
+Mes 12: 15000
+
+Profesor 2
+Número de empleado: 202
+Nombre: John Smith
+Departamento: Sistemas
+Grado académico: Doctorado
+Nacionalidad: Canadá
+Ingrese los 12 salarios mensuales:
+Mes 1: 20000
+...
+Mes 12: 20000
+
+------ MENÚ ------
+1) Profesor que más ganó en el año
+2) Total pagado al departamento X
+3) Total pagado a profesores extranjeros
+4) Profesor del departamento Y que más ganó
+5) Salir
+Seleccione una opción: 1
+
+--- Profesor que más ganó ---
+Número: 202
+Nombre: John Smith
+Nacionalidad: Canadá
+      </code></pre>
+    </section>
+
+    <aside class="exercise-sidebar">
+      <h3>Notas rápidas</h3>
+      <p class="note-text">Puntos clave:</p>
+      <ul>
+        <li>Usa arreglos paralelos: cada índice representa un profesor diferente.</li>
+        <li>Salarios en una matriz de 12 columnas (meses).</li>
+        <li>Para buscar máximo, suma los 12 salarios de cada profesor.</li>
+        <li>Extranjero = nacionalidad ≠ "México".</li>
+        <li>Un menú <code>while</code> repite las consultas.</li>
+      </ul>
+
+      <div class="tip-box">
+        <strong>Tip:</strong> Los arreglos paralelos requieren que todos los arreglos tengan el mismo tamaño y el mismo índice.
+      </div>
+    </aside>
+
+  </div>
 </article>
+
+<div id="modal_problema_5_3" class="modal">
+  <div class="modal-content">
+    <span class="modal-close" onclick="closeModal('modal_problema_5_3')">&times;</span>
+    <h2 class="modal-title">Diagrama de Flujo - Problema 5.3</h2>
+    <img src="imagesDiagrama/Problema5.3.png" alt="Diagrama de Flujo - Problema 5.3" class="modal-diagram-img">
+  </div>
+</div>
+
+
 
 
 
@@ -895,77 +878,56 @@ class Domicilio {
     <header class="exercise-header">
       <span class="exercise-badge">PS 2.4</span>
       <h2 id="ps_2_4-title">Calcular aumento de sueldo (15% o 12%)</h2>
-      
+
       <p class="exercise-description">
-        Programa que calcula un aumento de sueldo (15% si SUE < 1000, 12% si no).
-        La lógica del <code>if-else</code> se ha movido del método <code>main</code>
-        a un método estático separado (<code>calcularNuevoSueldo</code>).
+        Lee el sueldo de un trabajador y aplica un aumento condicional: si el sueldo es menor a 1000, se aumenta el 15%; si es 1000 o más, se aumenta el 12%. Luego muestra el nuevo sueldo calculado.
       </p>
+      <button class="flow-diagram-btn" onclick="openModal('modal_ps_2_4')">Ver Diagrama de Flujo</button>
     </header>
-    
+
     <div class="exercise-content">
       <section class="exercise-main">
         <h3>Requisitos</h3>
         <ul>
-          <li>Leer el sueldo del trabajador (<code>SUE</code>).</li>
-          <li>Separar la lógica en un método <code>static double calcularNuevoSueldo(double sueldo)</code>.</li>
-          <li>Dentro del método, si <code>sueldo < 1000</code>, el aumento es del 15%.</li>
-          <li>En caso contrario (<code>else</code>), el aumento es del 12%.</li>
-          <li>El método debe retornar el nuevo sueldo (<code>sueldo + aumento</code>).</li>
-          <li>El método <code>main</code> solo debe pedir el dato, llamar al método de lógica y mostrar el resultado.</li>
+          <li>Leer el sueldo del trabajador.</li>
+          <li>Si sueldo < 1000: aplicar aumento del 15%.</li>
+          <li>Si sueldo ≥ 1000: aplicar aumento del 12%.</li>
+          <li>Mostrar el nuevo sueldo.</li>
         </ul>
 
-        <h3>Diagrama de Flujo</h3>
-        <p>Este diagrama ilustra la lógica condicional del cálculo.</p>
-        <img 
-            src="imagesDiagrama/PS_2_4.png" 
-            alt="Diagrama de flujo del Problema PS 2.4" 
-            style="width: 100%; max-width: 500px; display: block; margin: auto;"
-        >
-        
-        <h3>Código Fuente</h3>
-        <pre><code class="code-block">import java.util.Scanner;
 
-public class PS_2_4 {
-
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Ingrese el sueldo del trabajador: $");
-        double sueldo = scanner.nextDouble();
-        scanner.close();
-        
-        double nuevoSueldo = calcularNuevoSueldo(sueldo);
-        
-        System.out.printf("El sueldo con el aumento incorporado es: $%.2f%n", nuevoSueldo);
-    }
-
-    public static double calcularNuevoSueldo(double sueldo) {
-        double aumento;
-        if (sueldo < 1000) {
-            aumento = sueldo * 0.15; // Aumento del 15%
-        } else {
-            aumento = sueldo * 0.12; // Aumento del 12%
-        }
-        return sueldo + aumento;
-    }
-}</code></pre>
+        <h3>Ejemplo de uso esperado</h3>
+        <pre><code class="code-block">
+Ingrese el sueldo del trabajador: 900
+El sueldo con aumento es: $1035.0
+        </code></pre>
       </section>
-      
+
       <aside class="exercise-sidebar">
         <h3>Notas rápidas</h3>
         <p class="note-text">Puntos clave:</p>
         <ul>
-          <li>Este es un problema de bifurcación simple <code>if-else</code>.</li>
-          <li><strong>Separación de Lógica:</strong> La lógica se movió a un método <code>static</code> para ser reutilizable y testeable.</li>
-          <li>El <code>main</code> ahora sigue el principio de <strong>Separación de Intereses</strong>: solo se preocupa de la E/S (Entrada/Salida).</li>
+          <li>Usa <code>if-else</code> para evaluar el sueldo.</li>
+          <li>Aumento = sueldo × 0.15 o sueldo × 0.12.</li>
+          <li>Nuevo sueldo = sueldo original + aumento.</li>
+          <li>O simplemente: sueldo * 1.15 o sueldo * 1.12.</li>
         </ul>
-        
+
         <div class="tip-box">
-          <strong>Tip:</strong> Mover la lógica de negocio (el "cómo" calcular) a su propio método (<code>calcularNuevoSueldo</code>) es una práctica excelente. Hace que el <code>main</code> sea fácil de leer y permite probar la lógica de cálculo de forma aislada.
+          <strong>Tip:</strong> Multiplica por 1.15 para obtener directamente el nuevo sueldo con aumento.
         </div>
       </aside>
     </div>
 </article>
+
+<div id="modal_ps_2_4" class="modal">
+  <div class="modal-content">
+    <span class="modal-close" onclick="closeModal('modal_ps_2_4')">&times;</span>
+    <h2 class="modal-title">Diagrama de Flujo - PS 2.4</h2>
+    <img src="imagesDiagrama/PS2.4.png" alt="Diagrama de Flujo - PS 2.4" class="modal-diagram-img">
+  </div>
+</div>
+
 
 
 
@@ -983,88 +945,59 @@ public class PS_2_4 {
      <article id="ps_2_5" class="exercise-card" aria-labelledby="ps_2_5-title">
     <header class="exercise-header">
       <span class="exercise-badge">PS 2.5</span>
-      <h2 id="ps_2_5-title">Calcular dos expresiones con Manejo de Excepciones</h2>
+      <h2 id="ps_2_5-title">Calcular expresión (A - C) / D con validación de división entre cero</h2>
       
       <p class="exercise-description">
-        Programa que calcula <code>(A-C)² / D</code> y <code>(A-B)³ / D</code>.
-        Utiliza <strong>manejo de excepciones</strong>.
-        La lógica de cálculo está en un método <code>static</code> que <strong>lanza (throws)</strong> una excepción si <code>D</code> es 0,
-        y el método <code>main</code> <strong>atrapa (catches)</strong> el error.
+        Lee cuatro números enteros y calcula la expresión (A - C) / D. Antes de realizar la división, valida que D no sea cero. Si D es cero, muestra un mensaje de error; si no, realiza el cálculo y muestra el resultado.
       </p>
+      <button class="flow-diagram-btn" onclick="openModal('modal_ps_2_5')">Ver Diagrama de Flujo</button>
     </header>
     
     <div class="exercise-content">
       <section class="exercise-main">
         <h3>Requisitos</h3>
         <ul>
-          <li>Leer cuatro valores enteros: A, B, C, y D.</li>
-          <li>La lógica debe estar en un método <code>static int[] calcularResultados(...)</code>.</li>
-          <li>Si <code>D == 0</code>, el método de lógica debe <strong>lanzar</strong> una <code>IllegalArgumentException</code>.</li>
-          <li>El método <code>main</code> debe llamar a la lógica dentro de un bloque <strong><code>try...catch</code></strong>.</li>
-          <li>Si se atrapa una excepción, <code>main</code> debe imprimir el mensaje de error.</li>
-          <li>Los cálculos deben realizarse usando <strong>división entera</strong> (<code>int</code>).</li>
+          <li>Leer 4 números enteros: A, B, C y D.</li>
+          <li>Validar que D ≠ 0 antes de dividir.</li>
+          <li>Si D = 0: mostrar un mensaje de error.</li>
+          <li>Si D ≠ 0: calcular (A - C) / D y mostrar el resultado.</li>
         </ul>
 
-        <h3>Diagrama de Flujo</h3>
-        <p>Este diagrama ilustra la lógica condicional del cálculo.</p>
-        <img 
-            src="imagesDiagrama/PS_2_5.png" 
-            alt="Diagrama de flujo del Problema PS 2.5" 
-            style="width: 100%; max-width: 500px; display: block; margin: auto;"
-        >
 
-        <h3>Código Fuente</h3>
-        <pre><code class="code-block">import java.util.Scanner;
-
-public class PS_2_5 {
-
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("Ingrese el valor de A:");
-        int A = scanner.nextInt();
-        // ... (resto de las lecturas)
-        System.out.println("Ingrese el valor de D:");
-        int D = scanner.nextInt();
-        scanner.close();
-
-        try {
-            int[] resultados = calcularResultados(A, B, C, D);
-            System.out.println("El resultado de (A - C)^2 / D es: " + resultados[0]);
-            System.out.println("El resultado de (A - B)^3 / D es: " + resultados[1]);
-        
-        } catch (IllegalArgumentException e) {
-            System.out.println("Error: " + e.getMessage());
-        }
-    }
-
-    public static int[] calcularResultados(int A, int B, int C, int D) {
-        if (D == 0) {
-            throw new IllegalArgumentException("D no puede ser igual a 0. No se puede calcular la expresión.");
-        }
-        int resultado1 = (A - C) * (A - C) / D;
-        int resultado2 = (A - B) * (A - B) * (A - B) / D;
-        return new int[]{resultado1, resultado2};
-    }
-}</code></pre>
+        <h3>Ejemplo de uso esperado</h3>
+        <pre><code class="code-block">
+Ingrese el valor de A: 10
+Ingrese el valor de B: 3
+Ingrese el valor de C: 2
+Ingrese el valor de D: 4
+El resultado de (A - C) / D es: 2.0
+        </code></pre>
       </section>
-      
+
       <aside class="exercise-sidebar">
         <h3>Notas rápidas</h3>
         <p class="note-text">Puntos clave:</p>
         <ul>
-          <li><strong>Manejo de Excepciones:</strong> El flujo <code>try...catch</code> reemplaza al <code>if...else</code> del <code>main</code>.</li>
-          <li><strong><code>throw</code>:</strong> Se usa para "lanzar" un error. Detiene la ejecución del método <code>calcularResultados</code> y pasa el control al bloque <code>catch</code>.</li>
-          <li><strong>División Entera:</strong> Este código usa <code>int</code>. <code>5 / 2</code> dará <code>2</code>.</li>
+          <li>Primero verifica que D ≠ 0.</li>
+          <li>La división de enteros entre enteros devuelve <code>double</code>.</li>
+          <li>Solo usa A, C y D; B no se usa en el cálculo.</li>
+          <li>Usa <code>if-else</code> para manejar la validación.</li>
         </ul>
         
         <div class="tip-box">
-          <strong>Tip:</strong> Usar <code>throw new IllegalArgumentException</code> es una forma estándar en Java de indicar que un argumento (como <code>D</code>) no es válido para un método. Obliga a quien llame al método (en este caso, <code>main</code>) a manejar el problema.
+          <strong>Tip:</strong> Siempre valida divisores antes de dividir para evitar errores.
         </div>
       </aside>
     </div>
 </article>
 
+<div id="modal_ps_2_5" class="modal">
+  <div class="modal-content">
+    <span class="modal-close" onclick="closeModal('modal_ps_2_5')">&times;</span>
+    <h2 class="modal-title">Diagrama de Flujo - PS 2.5</h2>
+    <img src="imagesDiagrama/PS2.5.png" alt="Diagrama de Flujo - PS 2.5" class="modal-diagram-img">
+  </div>
+</div>
 
 
 
@@ -1075,112 +1008,65 @@ public class PS_2_5 {
 
 
 
+    <article id="ps_2_6" class="exercise-card" aria-labelledby="ps_2_6-title">
+  <header class="exercise-header">
+    <span class="exercise-badge">PS 2.6</span>
+    <h2 id="ps_2_6-title">Calcular precio de billete de ferrocarril</h2>
+
+    <p class="exercise-description">
+      Calcula el precio de un billete de ida y vuelta. El precio base es distancia × $0.23. Si la estancia es mayor a 7 días Y la distancia total es mayor a 800 km, se aplica un descuento del 30%.
+    </p>
+    <button class="flow-diagram-btn" onclick="openModal('modal_ps_2_6')">Ver Diagrama de Flujo</button>
+  </header>
+
+  <div class="exercise-content">
+    <section class="exercise-main">
+      <h3>Requisitos</h3>
+      <ul>
+        <li>Leer la distancia de ida (<code>distanciaIda</code>) y el tiempo de estancia (<code>tiempoEstancia</code>) en <code>main</code>.</li>
+        <li>La lógica de cálculo debe estar en un método <code>static double calcularPrecioBillete(int, int)</code>.</li>
+        <li>El método debe calcular la distancia total (<code>distanciaIda * 2</code>).</li>
+        <li>El método debe calcular el precio base (<code>distanciaTotal * 0.23</code>).</li>
+        <li>El método debe aplicar la condición: <code>tiempoEstancia > 7 && distanciaTotal > 800</code>.</li>
+        <li>Si se cumple, aplicar descuento del 30% (multiplicando por <code>0.70</code>).</li>
+        <li>El método debe <strong>retornar</strong> el precio final.</li>
+        <li>El método <code>main</code> debe imprimir el resultado formateado.</li>
+      </ul>
 
 
+      <h3>Ejemplo de uso esperado</h3>
+      <pre><code class="code-block">
+Ingrese la distancia de ida (km): 500
+Ingrese el tiempo de estancia (días): 10
+El precio final del billete es: $161.0
+</code></pre>
+    </section>
 
-     <article id="ps_2_6" class="exercise-card" aria-labelledby="ps_2_6-title">
-    <header class="exercise-header">
-      <span class="exercise-badge">PS 2.6</span>
-      <h2 id="ps_2_6-title">Calcular precio de billete de ferrocarril</h2>
-      
-      <p class="exercise-description">
-        Calcula el precio de un billete de ida y vuelta con un descuento condicional.
-        Se aplica un descuento del 30% si la estancia es superior a 7 días <strong>y</strong> 
-        la distancia total (ida y vuelta) es superior a 800 km.
-      </p>
-    </header>
-    
-    <div class="exercise-content">
-      <section class="exercise-main">
-        <h3>Requisitos</h3>
-        <ul>
-          <li>Leer la distancia de ida (<code>distanciaIda</code>) y el tiempo de estancia (<code>tiempoEstancia</code>) en <code>main</code>.</li>
-          <li>La lógica de cálculo debe estar en un método <code>static double calcularPrecioBillete(int, int)</code>.</li>
-          <li>El método debe calcular la distancia total (<code>distanciaIda * 2</code>).</li>
-          <li>El método debe calcular el precio base (<code>distanciaTotal * 0.23</code>).</li>
-          <li>El método debe aplicar la condición: <code>tiempoEstancia > 7 && distanciaTotal > 800</code>.</li>
-          <li>Si se cumple, aplicar descuento del 30% (multiplicando por <code>0.70</code>).</li>
-          <li>El método debe <strong>retornar</strong> el precio final.</li>
-          <li>El método <code>main</code> debe imprimir el resultado formateado.</li>
-        </ul>
+    <aside class="exercise-sidebar">
+      <h3>Notas rápidas</h3>
+      <p class="note-text">Puntos clave:</p>
+      <ul>
+        <li>El <code>main</code> lee entrada y llama a <code>calcularPrecioBillete()</code>.</li>
+        <li>La función calcula distancia total = distancia × 2.</li>
+        <li>Precio base = distancia total × 0.23.</li>
+        <li>Usa <code>&&</code> para ambas condiciones de descuento.</li>
+        <li>Descuento = multiplicar por 0.70 (mantiene 70%).</li>
+      </ul>
 
-        <h3>Diagrama de Flujo</h3>
-        <p>Este diagrama ilustra la lógica condicional del cálculo del descuento.</p>
-        <img 
-            src="imagesDiagrama/PS_2_6.png" 
-            alt="Diagrama de flujo del Problema PS 2.6" 
-            style="width: 100%; max-width: 500px; display: block; margin: auto;"
-        >
-        <h3>Código Fuente</h3>
-        <pre><code class="code-block">import java.util.Scanner;
-
-/**
- *
- * @author imac27
- */
-public class PS_2_6 {
-
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        
-        System.out.print("Ingrese la distancia del viaje de ida (en km): ");
-        int distanciaIda = scanner.nextInt();
-        
-        System.out.print("Ingrese el tiempo de estancia (en días): ");
-        int tiempoEstancia = scanner.nextInt();
-        scanner.close();
-        
-        // Llamar a la lógica
-        double precioFinal = calcularPrecioBillete(distanciaIda, tiempoEstancia);
-        
-        // Imprimir el resultado (usando printf para formato de moneda)
-        System.out.printf("El precio del billete de ida y vuelta es: $%.2f%n", precioFinal);
-    }
-
-    /**
-     * Calcula el precio del billete de ida y vuelta, aplicando descuentos si cumplen
-     * las condiciones.
-     *
-     * @param distanciaIda Distancia del viaje de ida (en km).
-     * @param tiempoEstancia Tiempo de estancia (en días).
-     * @return El precio final del billete.
-     */
-    public static double calcularPrecioBillete(int distanciaIda, int tiempoEstancia) {
-        int distanciaVuelta = distanciaIda;
-        int distanciaTotal = distanciaIda + distanciaVuelta; // o (distanciaIda * 2)
-        double precioPorKm = 0.23;
-        
-        double precioBillete = distanciaTotal * precioPorKm;
-        
-        // Lógica del descuento
-        if (tiempoEstancia > 7 && distanciaTotal > 800) {
-            // Aplicar descuento del 30% (es más eficiente multiplicar por 0.7)
-            precioBillete = precioBillete * 0.70;
-        }
-        
-        return precioBillete;
-    }
-}</code></pre>
-      </section>
-      
-      <aside class="exercise-sidebar">
-        <h3>Notas rápidas</h3>
-        <p class="note-text">Puntos clave:</p>
-        <ul>
-          <li>El método <code>main</code> se encarga de la E/S (Entrada/Salida).</li>
-          <li>El método <code>calcularPrecioBillete</code> se encarga de la lógica.</li>
-          <li>El operador <code>&&</code> (AND lógico) es esencial para la condición de descuento.</li>
-          <li>El descuento (30%) se aplica multiplicando por el restante (70% o <code>0.70</code>).</li>
-          <li>Usar <code>double</code> es crucial para los cálculos de dinero.</li>
-        </ul>
-        
-        <div class="tip-box">
-          <strong>Tip:</strong> Mover la lógica a su propio método (<code>calcularPrecioBillete</code>) hace que el <code>main</code> sea mucho más fácil de leer.
-        </div>
-      </aside>
-    </div>
+      <div class="tip-box">
+        <strong>Tip:</strong> Separa la lógica del cálculo en un método para mantener el <code>main</code> limpio.
+      </div>
+    </aside>
+  </div>
 </article>
 
+<div id="modal_ps_2_6" class="modal">
+  <div class="modal-content">
+    <span class="modal-close" onclick="closeModal('modal_ps_2_6')">&times;</span>
+    <h2 class="modal-title">Diagrama de Flujo - PS 2.6</h2>
+    <img src="imagesDiagrama/PS2.6.png" alt="Diagrama de Flujo - PS 2.6" class="modal-diagram-img">
+  </div>
+</div>
 
 
 
@@ -1194,103 +1080,68 @@ public class PS_2_6 {
 
 
 
-      <article id="ps_2_7" class="exercise-card" aria-labelledby="ps_2_7-title">
-    <header class="exercise-header">
-      <span class="exercise-badge">PS 2.7</span>
-      <h2 id="ps_2_7-title">Calcular aumento de sueldo escalonado</h2>
-      
-      <p class="exercise-description">
-        Calcula un aumento de sueldo basado en rangos:
-        Si <code>SUELDO < $10,000</code>, aumento del 15%.
-        Si <code>$10,000 <= SUELDO <= $15,000</code>, aumento del 11%.
-        Si <code>SUELDO > $15,000</code>, aumento del 8%.
-      </p>
-    </header>
+
+
+    <article id="ps_2_7" class="exercise-card" aria-labelledby="ps_2_7-title"> 
+  <header class="exercise-header">
+    <span class="exercise-badge">PS 2.7</span>
+    <h2 id="ps_2_7-title">Calcular aumento de sueldo escalonado</h2>
     
-    <div class="exercise-content">
-      <section class="exercise-main">
-        <h3>Requisitos</h3>
-        <ul>
-          <li>Leer el sueldo (<code>sueldo</code>) en el método <code>main</code>.</li>
-          <li>La lógica de cálculo debe estar en un método <code>static double calcularNuevoSueldo(double sueldoActual)</code>.</li>
-          <li>El método debe usar <code>if-else if-else</code> para los rangos.</li>
-          <li>Si <code>sueldo < 10000</code>, retornar <code>sueldo * 1.15</code> (15%).</li>
-          <li>Si <code>sueldo < 15000</code>, retornar <code>sueldo * 1.11</code> (11%).</li>
-          <li>Si no, retornar <code>sueldo * 1.08</code> (8%).</li>
-          <li>El método <code>main</code> debe llamar a <code>calcularNuevoSueldo</code> e imprimir el resultado final.</li>
-        </ul>
+    <p class="exercise-description">
+      Lee el sueldo de un trabajador y aplica un aumento escalonado según el rango: si es menor a 10000, aumenta 15%; si está entre 10000 y 15000, aumenta 11%; si es 15000 o más, aumenta 8%. Muestra el nuevo sueldo.
+    </p>
+    <button class="flow-diagram-btn" onclick="openModal('modal_ps_2_7')">Ver Diagrama de Flujo</button>
+  </header>
+  
+  <div class="exercise-content">
+    <section class="exercise-main">
+      <h3>Requisitos</h3>
+      <ul>
+        <li>Leer el sueldo del trabajador en el método <code>main</code>.</li>
+        <li>Usar una estructura <code>if – else if – else</code> para determinar el porcentaje de aumento.</li>
+        <li>Si <code>SUELDO &lt; 10000</code>, aplicar aumento del <strong>15%</strong>: <code>sueldo * 1.15</code>.</li>
+        <li>Si <code>10000 ≤ SUELDO &lt; 15000</code>, aplicar aumento del <strong>11%</strong>: <code>sueldo * 1.11</code>.</li>
+        <li>Si <code>SUELDO ≥ 15000</code>, aplicar aumento del <strong>8%</strong>: <code>sueldo * 1.08</code>.</li>
+        <li>Imprimir el nuevo sueldo calculado.</li>
+      </ul>
 
-        <h3>Diagrama de Flujo</h3>
-        <p>Este diagrama ilustra la lógica condicional del cálculo.</p>
-        <img 
-            src="imagesDiagrama/PS_2_7.png" 
-            alt="Diagrama de flujo del Problema PS 2.7" 
-            style="width: 100%; max-width: 500px; display: block; margin: auto;"
-        >
-        <h3>Código Fuente</h3>
-        <pre><code class="code-block">import java.util.Scanner;
 
-/**
- *
- * @author DELL
- */
-public class PS_2_7 {
+      <h3>Ejemplo de uso esperado</h3>
+      <pre><code class="code-block">
+Ingrese el sueldo del trabajador: 12000
+El nuevo sueldo del trabajador es: $13320.0
+</code></pre>
+    </section>
 
-    /**
-     * Método principal que maneja la entrada y salida del usuario.
-     */
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-
-        System.out.print("Ingrese el sueldo del trabajador: ");
-        double sueldo = sc.nextDouble();
-        sc.close(); // Buena práctica cerrar el scanner
-
-        // Llama al método de lógica para obtener el resultado
-        double nuevoSueldo = calcularNuevoSueldo(sueldo);
-        
-        // Imprimir formateado a 2 decimales
-        System.out.printf("El nuevo sueldo del trabajador es: $%.2f%n", nuevoSueldo);
-    }
-
-    /**
-     * Calcula el nuevo sueldo basado en las reglas de aumento.
-     * Esta función SÍ es testeable.
-     *
-     * @param sueldoActual El sueldo ingresado.
-     * @return El nuevo sueldo calculado.
-     */
-    public static double calcularNuevoSueldo(double sueldoActual) {
-        if (sueldoActual < 10000) {
-            return sueldoActual * 1.15; // Aumento del 15%
-        } else if (sueldoActual < 15000) {
-            // Esto incluye sueldos >= 10000 Y < 15000
-            return sueldoActual * 1.11; // Aumento del 11%
-        } else {
-            // Esto incluye sueldos >= 15000
-            return sueldoActual * 1.08; // Aumento del 8%
-        }
-    }
-}</code></pre>
-      </section>
+    <aside class="exercise-sidebar">
+      <h3>Notas rápidas</h3>
+      <p class="note-text">Puntos clave:</p>
+      <ul>
+        <li>Usa <code>if-else if-else</code> para los 3 rangos.</li>
+        <li>Nuevo sueldo = sueldo × 1.15 (o 1.11 o 1.08 según el rango).</li>
+        <li>El orden de las condiciones importa; evalúa de menor a mayor.</li>
+        <li>Todo está en el <code>main</code> sin métodos adicionales.</li>
+      </ul>
       
-      <aside class="exercise-sidebar">
-        <h3>Notas rápidas</h3>
-        <p class="note-text">Puntos clave:</p>
-        <ul>
-          <li>Estructura <code>if-else if-else</code> para manejar múltiples rangos (escalonado).</li>
-          <li><strong>Separación de Lógica:</strong> El <code>main</code> maneja la E/S, y <code>calcularNuevoSueldo</code> maneja el cálculo.</li>
-          <li>El orden del <code>if</code> es importante. Al checar <code>< 10000</code> primero, el <code>else if</code> solo necesita checar <code>< 15000</code>.</li>
-          <li>El cálculo <code>sueldo * 1.15</code> es una forma directa de calcular el 15% de aumento (100% + 15%).</li>
-        </ul>
-        
-        <div class="tip-box">
-          <strong>Tip:</strong> Mover la lógica a su propio método (<code>calcularNuevoSueldo</code>) hace que el <code>main</code> sea mucho más fácil de leer y permite probar la lógica de cálculo de forma aislada.
-        </div>
-      </aside>
-    </div>
+      <div class="tip-box">
+        <strong>Tip:</strong> Evalúa primero los rangos menores para evitar lógica confusa.
+      </div>
+      </ul>
+      
+      <div class="tip-box">
+        <strong>Tip:</strong> Para programas más grandes, conviene mover la lógica de aumento a un método separado.
+      </div>
+    </aside>
+  </div>
 </article>
 
+<div id="modal_ps_2_7" class="modal">
+  <div class="modal-content">
+    <span class="modal-close" onclick="closeModal('modal_ps_2_7')">&times;</span>
+    <h2 class="modal-title">Diagrama de Flujo - PS 2.7</h2>
+    <img src="imagesDiagrama/PS2.7.png" alt="Diagrama de Flujo - PS 2.7" class="modal-diagram-img">
+  </div>
+</div>
 
 
 
@@ -1303,580 +1154,409 @@ public class PS_2_7 {
 
 
 
-      <article id="ps_3_26" class="exercise-card" aria-labelledby="ps_3_26-title">
+
+  <article id="ps_3_26" class="exercise-card" aria-labelledby="ps_3_26-title">
+  <header class="exercise-header">
+    <span class="exercise-badge">PS 3.26</span>
+    <h2 id="ps_3_26-title">Estadísticas de Alumnos por Sexo</h2>
+
+    <p class="exercise-description">
+      Lee datos de N alumnos (matrícula, sexo, semestre, promedio) y calcula estadísticas: el porcentaje de mujeres y hombres, el promedio de calificaciones por sexo, y el promedio general del grupo.
+    </p>
+    <button class="flow-diagram-btn" onclick="openModal('modal_ps_3_26')">Ver Diagrama de Flujo</button>
+  </header>
+
+  <div class="exercise-content">
+    <section class="exercise-main">
+
+      <h3>Requisitos</h3>
+      <ul>
+        <li>Leer el número total de alumnos <code>N</code>.</li>
+        <li>Para cada alumno:
+          <ul>
+            <li>Leer matrícula.</li>
+            <li>Leer sexo (0 = mujer, 1 = hombre).</li>
+            <li>Leer semestre.</li>
+            <li>Leer promedio.</li>
+          </ul>
+        </li>
+        <li>Acumular:
+          <ul>
+            <li>Total de mujeres y hombres.</li>
+            <li>Suma de promedios por sexo.</li>
+            <li>Suma total de promedios.</li>
+          </ul>
+        </li>
+        <li>Calcular:
+          <ul>
+            <li>Porcentaje de mujeres y de hombres.</li>
+            <li>Promedio de mujeres y de hombres.</li>
+            <li>Promedio general.</li>
+          </ul>
+        </li>
+        <li>Imprimir los resultados finales.</li>
+      </ul>
+
+      <h3>Ejemplo de uso esperado</h3>
+      <pre><code class="code-block">
+Ingrese el número de alumnos: 3
+
+Alumno 1
+Matrícula: 100
+Sexo (0 = mujer, 1 = hombre): 0
+Semestre: 3
+Promedio: 9.0
+
+Alumno 2
+Matrícula: 200
+Sexo (0 = mujer, 1 = hombre): 1
+Semestre: 4
+Promedio: 8.0
+
+Alumno 3
+Matrícula: 300
+Sexo (0 = mujer, 1 = hombre): 0
+Semestre: 2
+Promedio: 7.0
+
+--- Resultados ---
+Porcentaje mujeres: 66.66666666666666%
+Promedio mujeres: 8.0
+Porcentaje hombres: 33.33333333333333%
+Promedio hombres: 8.0
+Promedio general: 8.0
+</code></pre>
+
+    </section>
+
+    <aside class="exercise-sidebar">
+      <h3>Notas rápidas</h3>
+      <p class="note-text">Puntos clave:</p>
+      <ul>
+        <li>Usa contadores para mujeres (sexo=0) y hombres (sexo=1).</li>
+        <li>Usa acumuladores para suma de promedios por sexo.</li>
+        <li>Porcentaje = (contador / N) × 100.</li>
+        <li>Promedio por sexo = suma / contador.</li>
+        <li>Flujo: Lee → Acumula → Calcula → Imprime.</li>
+      </ul>
+
+      <div class="tip-box">
+        <strong>Tip:</strong> Valida que el contador no sea 0 antes de dividir.
+      </div>
+    </aside>
+
+  </div>
+</article>
+
+<div id="modal_ps_3_26" class="modal">
+  <div class="modal-content">
+    <span class="modal-close" onclick="closeModal('modal_ps_3_26')">&times;</span>
+    <h2 class="modal-title">Diagrama de Flujo - PS 3.26</h2>
+    <img src="imagesDiagrama/PS3.26.png" alt="Diagrama de Flujo - PS 3.26" class="modal-diagram-img">
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+ <article id="ps_4_4" class="exercise-card" aria-labelledby="ps_4_4-title">
+  <header class="exercise-header">
+    <span class="exercise-badge">PS 4.4</span>
+    <h2 id="ps_4_4-title">Producto elemento a elemento de dos vectores</h2>
+
+    <p class="exercise-description">
+      Lee dos vectores A y B de tamaño N y crea un tercer vector PROD donde cada elemento es el producto de los elementos correspondientes: PROD[i] = A[i] × B[i]. Luego imprime el vector resultante.
+    </p>
+    <button class="flow-diagram-btn" onclick="openModal('modal_ps_4_4')">Ver Diagrama de Flujo</button>
+  </header>
+
+  <div class="exercise-content">
+    <section class="exercise-main">
+
+      <h3>Requisitos</h3>
+      <ul>
+        <li>Leer el tamaño <code>N</code> (máximo 50).</li>
+        <li>Leer los <code>N</code> elementos del vector <code>A</code> (índices usados: 1 a N).</li>
+        <li>Leer los <code>N</code> elementos del vector <code>B</code> (índices usados: 1 a N).</li>
+        <li>Calcular un tercer vector <code>PROD</code> donde: <strong>PROD[i] = A[i] × B[i]</strong>.</li>
+        <li>Imprimir el vector resultante.</li>
+        <li>El ejercicio <strong>NO utiliza métodos adicionales</strong>; toda la lógica está en <code>main</code>.</li>
+      </ul>
+
+      <h3>Ejemplo de uso esperado</h3>
+      <pre><code class="code-block">
+Ingrese el valor de N (max 50): 3
+
+Ingrese los valores del vector A:
+A[1]: 2
+A[2]: 4
+A[3]: 6
+
+Ingrese los valores del vector B:
+B[1]: 3
+B[2]: 5
+B[3]: 7
+
+Producto de los vectores A y B:
+PROD[1] = 6
+PROD[2] = 20
+PROD[3] = 42
+</code></pre>
+
+    </section>
+
+    <aside class="exercise-sidebar">
+      <h3>Notas rápidas</h3>
+        <p class="note-text">Puntos clave:</p>
+
+        <ul>
+          <li>NO es producto punto (que sería una suma); aquí creas un vector resultado.</li>
+          <li>Los índices empiezan en 1 (usa arreglos desde 1 a N).</li>
+          <li>Itera desde i=1 hasta i=N.</li>
+          <li>Para cada i: PROD[i] = A[i] × B[i].</li>
+          <li>Imprime cada elemento del vector resultante.</li>
+        </ul>
+
+        <div class="tip-box">
+          <strong>Tip:</strong> Usa un ciclo <code>for</code> para multiplicar elemento a elemento.
+        </div>
+    </aside>
+  </div>
+</article>
+
+<div id="modal_ps_4_4" class="modal">
+  <div class="modal-content">
+    <span class="modal-close" onclick="closeModal('modal_ps_4_4')">&times;</span>
+    <h2 class="modal-title">Diagrama de Flujo - PS 4.4</h2>
+    <img src="imagesDiagrama/PS4.4.png" alt="Diagrama de Flujo - PS 4.4" class="modal-diagram-img">
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   <article id="ps_4_20" class="exercise-card" aria-labelledby="ps_4_20-title">
+  <header class="exercise-header">
+    <span class="exercise-badge">PS 4.20</span>
+    <h2 id="ps_4_20-title">Asignar valores a Matriz A(MxN) desde Vector B(N)</h2>
+
+    <p class="exercise-description">
+      Crea una matriz A de tamaño M×N usando un vector B de N elementos, aplicando estas reglas: si la fila es menor o igual a la columna, asigna B[i]; si la fila es mayor que la columna, asigna 0. El resultado es una matriz triangular superior.
+    </p>
+    <button class="flow-diagram-btn" onclick="openModal('modal_ps_4_20')">Ver Diagrama de Flujo</button>
+  </header>
+
+  <div class="exercise-content">
+    <section class="exercise-main">
+
+      <h3>Requisitos</h3>
+      <ul>
+        <li>Leer los valores <code>M</code> (filas) y <code>N</code> (columnas) en el <code>main</code>.</li>
+        <li>Leer el vector <code>B</code> de <code>N</code> elementos (índices de 1 a N).</li>
+        <li>Crear la matriz <code>A</code> de tamaño <code>M x N</code>.</li>
+        <li>Usar dos ciclos anidados: <code>i</code> para filas y <code>j</code> para columnas.</li>
+        <li>Asignar los valores en <code>A</code> siguiendo la lógica:
+          <ul>
+            <li>Si <code>i &lt; j</code> → <code>A[i][j] = B[i]</code></li>
+            <li>Si <code>i = j</code> → <code>A[i][j] = B[i]</code></li>
+            <li>Si <code>i &gt; j</code> → <code>A[i][j] = 0</code></li>
+          </ul>
+        </li>
+        <li>Imprimir la matriz resultante.</li>
+        <li>No se utiliza ningún método adicional; toda la lógica está en el <code>main</code>.</li>
+      </ul>
+
+      <h3>Ejemplo de uso esperado</h3>
+      <pre><code class="code-block">
+Ingrese el valor de M (max 30): 3
+Ingrese el valor de N (max 20): 4
+
+Ingrese los valores del vector B:
+B[1]: 5
+B[2]: 7
+B[3]: 9
+B[4]: 4
+
+Matriz A resultante:
+5   5   5   5
+0   7   7   7
+0   0   9   9
+</code></pre>
+
+    </section>
+
+    <aside class="exercise-sidebar">
+      <h3>Notas rápidas</h3>
+        <p class="note-text">Puntos clave:</p>
+
+        <ul>
+          <li>Índices desde 1 a M (filas) y 1 a N (columnas).</li>
+          <li>Si i ≤ j: A[i][j] = B[i].</li>
+          <li>Si i > j: A[i][j] = 0.</li>
+          <li>La diagonal también usa B[i].</li>
+          <li>La parte inferior es siempre 0.</li>
+        </ul>
+
+        <div class="tip-box">
+          <strong>Tip:</strong> Usa dos ciclos anidados: uno para filas y otro para columnas.
+        </div>
+    </aside>
+
+  </div>
+</article>
+
+<div id="modal_ps_4_20" class="modal">
+  <div class="modal-content">
+    <span class="modal-close" onclick="closeModal('modal_ps_4_20')">&times;</span>
+    <h2 class="modal-title">Diagrama de Flujo - PS 4.20</h2>
+    <img src="imagesDiagrama/PS4.20.png" alt="Diagrama de Flujo - PS 4.20" class="modal-diagram-img">
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <article id="ps_4_36" class="exercise-card" aria-labelledby="ps_4_36-title">
     <header class="exercise-header">
-      <span class="exercise-badge">PS 3.26</span>
-      <h2 id="ps_3_26-title">Estadísticas de Alumnos por Sexo (con Objetos)</h2>
+      <span class="exercise-badge">PS 4.36</span>
+      <h2 id="ps_4_36-title">Actualización de Inventario de Tienda</h2>
       
       <p class="exercise-description">
-        Programa que procesa los datos de <strong>N</strong> alumnos. Esta versión utiliza <strong>Programación Orientada a Objetos (POO)</strong>:
-        1. El <code>main</code> lee los datos y crea una <code>List&lt;Alumno&gt;</code>.
-        2. Un método <code>static</code> (<code>calcularEstadisticas</code>) recibe la lista y procesa los datos.
-        3. El método devuelve un objeto <code>Estadisticas</code> con todos los resultados.
+        Administra el inventario de una tienda con hasta 100 productos. Lee transacciones de compra (C) o venta (V). Para compras, suma la cantidad al producto existente o lo agrega como nuevo. Para ventas, valida que haya suficiente stock antes de restar. Termina cuando se ingresa X.
       </p>
+      <button class="flow-diagram-btn" onclick="openModal('modal_ps_4_36')">Ver Diagrama de Flujo</button>
     </header>
     
     <div class="exercise-content">
       <section class="exercise-main">
+
         <h3>Requisitos</h3>
         <ul>
-          <li>Definir una clase interna <code>Alumno</code> para almacenar el <code>sexo</code> y <code>promedio</code>.</li>
-          <li>Definir una clase interna <code>Estadisticas</code> para almacenar los 5 resultados calculados.</li>
-          <li>El <code>main</code> debe:
+          <li>Usar dos arreglos: <code>PRODUCTO[101]</code> y <code>CANTIDAD[101]</code>.</li>
+          <li>Leer el número inicial de productos <code>N</code> (máximo 100).</li>
+          <li>Leer las claves y cantidades iniciales.</li>
+          <li>Procesar transacciones hasta que el usuario ingrese: <code>X 0 0</code>.</li>
+          <li><strong>Compra (C):</strong>
             <ul>
-              <li>Leer <code>N</code>.</li>
-              <li>En un bucle <code>for</code>, leer los datos de cada alumno.</li>
-              <li>Crear un objeto <code>Alumno</code> por cada uno y guardarlo en una <code>ArrayList</code>.</li>
-              <li>Llamar al método <code>calcularEstadisticas</code> pasándole la lista.</li>
-              <li>Imprimir los resultados recibidos en el objeto <code>Estadisticas</code>.</li>
+              <li>Si la clave existe, se suma la cantidad.</li>
+              <li>Si no existe y hay espacio, se agrega como nuevo producto.</li>
+              <li>Si no hay espacio, se reporta error.</li>
             </ul>
           </li>
-          <li>El método <code>calcularEstadisticas</code> debe:
+          <li><strong>Venta (V):</strong>
             <ul>
-              <li>Recibir una <code>List&lt;Alumno&gt;</code>.</li>
-              <li>Iterar sobre la lista, acumulando y contando por sexo.</li>
-              <li>Calcular los promedios y porcentajes (validando la división por cero).</li>
-              <li>Retornar un <code>new Estadisticas(...)</code> con los resultados.</li>
+              <li>Si la clave no existe → error.</li>
+              <li>Si existe pero no hay suficiente stock → error.</li>
+              <li>Si hay stock suficiente → se descuenta.</li>
             </ul>
           </li>
+          <li>Al final, imprimir el inventario actualizado.</li>
         </ul>
 
-        <h3>Diagrama de Flujo</h3>
-        <p>Este diagrama ilustra la lógica general del procesamiento.</p>
-        <img 
-            src="imagesDiagrama/PS_3_26.png" 
-            alt="Diagrama de flujo del Problema PS 3.26" 
-            style="width: 100%; max-width: 600px; display: block; margin: auto;"
-        >
-        <h3>Código Fuente (POO)</h3>
-        <pre><code class="code-block">import java.util.ArrayList;
-import java.util.List; // Importar List
-import java.util.Scanner; // Importar ArrayList
 
-public class PS_3_26 {
+        <h3>Ejemplo de uso esperado</h3>
+        <pre><code class="code-block">
+Ingrese el número de productos actuales (max 100): 3
 
-    // --- 1. Clase interna para guardar los datos de un alumno ---
-    public static class Alumno {
-        int sexo;
-        double promedio;
-        public Alumno(int sexo, double promedio) { /*...*/ }
-        public int getSexo() { return sexo; }
-        public double getPromedio() { return promedio; }
-    }
+Ingrese las claves de los productos:
+PRODUCTO[1]: 10
+PRODUCTO[2]: 20
+PRODUCTO[3]: 30
 
-    // --- 2. Clase interna para guardar los resultados ---
-    public static class Estadisticas {
-        public final double porcentajeFemenino;
-        public final double promedioFemenino;
-        public final double porcentajeMasculino;
-        public final double promedioMasculino;
-        public final double promedioGeneral;
-        public Estadisticas(double porFem, double promFem, ...) { /*...*/ }
-    }
+Ingrese las cantidades existentes:
+CANTIDAD[1]: 5
+CANTIDAD[2]: 12
+CANTIDAD[3]: 7
 
-    // --- 3. El método main (ahora solo maneja I/O) ---
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        List<Alumno> listaAlumnos = new ArrayList<>();
+=== Ingrese transacciones: (C ó V), Clave, Cantidad ===
+Para terminar ingrese: X 0 0
 
-        System.out.print("Ingrese el número de alumnos: ");
-        int N = scanner.nextInt();
+Tipo de operación: C
+Clave del producto: 20
+Cantidad: 3
 
-        for (int i = 1; i <= N; i++) {
-            // ... (Lectura de datos: sexo, promedio, etc.) ...
-            
-            // Creamos y añadimos el alumno a la lista
-            listaAlumnos.add(new Alumno(sexo, promedio));
-        }
-        scanner.close();
+Tipo de operación: V
+Clave del producto: 10
+Cantidad: 2
 
-        // --- 4. Llamamos al método de lógica ---
-        Estadisticas stats = calcularEstadisticas(listaAlumnos);
+Tipo de operación: C
+Clave del producto: 40
+Cantidad: 8
 
-        // --- 5. Imprimimos los resultados ---
-        System.out.println("\nEstadísticas de la universidad:");
-        System.out.println("Porcentaje de población femenina: " + stats.porcentajeFemenino + "%");
-        System.out.println("Promedio de la población femenina: " + stats.promedioFemenino);
-        // ... (resto de impresiones) ...
-    }
+Tipo de operación: X
+Clave del producto: 0
+Cantidad: 0
 
-    // --- 6. El método de lógica (¡Este es el que probaremos!) ---
-    public static Estadisticas calcularEstadisticas(List<Alumno> alumnos) {
-        int N = alumnos.size();
-        int contadorFemenino = 0;
-        int contadorMasculino = 0;
-        double sumaFemenino = 0; 
-        double sumaMasculino = 0;
-        double sumaTotal = 0;
+=== PRODUCTOS ACTUALIZADOS ===
+Clave: 10  Cantidad: 3
+Clave: 20  Cantidad: 15
+Clave: 30  Cantidad: 7
+Clave: 40  Cantidad: 8
+        </code></pre>
 
-        // Iteramos sobre la lista de alumnos
-        for (Alumno alumno : alumnos) {
-            if (alumno.getSexo() == 0) {
-                contadorFemenino++;
-                sumaFemenino += alumno.getPromedio();
-            } else {
-                contadorMasculino++;
-                sumaMasculino += alumno.getPromedio();
-            }
-            sumaTotal += alumno.getPromedio();
-        }
-
-        // Hacemos los cálculos (con validación de división por cero)
-        double promedioFemenino = (contadorFemenino > 0) ? sumaFemenino / (double) contadorFemenino : 0;
-        double promedioMasculino = (contadorMasculino > 0) ? sumaMasculino / (double) contadorMasculino : 0;
-        double promedioGeneral = (N > 0) ? sumaTotal / (double) N : 0;
-        double porcentajeFemenino = (N > 0) ? (contadorFemenino / (double) N) * 100 : 0;
-        double porcentajeMasculino = (N > 0) ? (contadorMasculino / (double) N) * 100 : 0;
-        
-        // Devolvemos el objeto con todos los resultados
-        return new Estadisticas(porcentajeFemenino, promedioFemenino, porcentajeMasculino, promedioMasculino, promedioGeneral);
-    }
-}</code></pre>
       </section>
-      
+
       <aside class="exercise-sidebar">
         <h3>Notas rápidas</h3>
         <p class="note-text">Puntos clave:</p>
         <ul>
-          <li><strong>POO:</strong> Se usan clases (<code>Alumno</code>, <code>Estadisticas</code>) para organizar los datos, en lugar de variables sueltas.</li>
-          <li><strong>Separación de Lógica:</strong> El <code>main</code> solo maneja la E/S. El método <code>calcularEstadisticas</code> maneja la lógica de negocio.</li>
-          <li><strong>Colecciones:</strong> Se usa <code>List&lt;Alumno&gt;</code> para guardar los datos en memoria antes de procesarlos.</li>
-          <li><strong>Paso de Datos:</strong> El <code>main</code> le pasa la lista completa al método de lógica y este le devuelve un *único objeto* (<code>Estadisticas</code>) con todos los resultados.</li>
+          <li>Dos arreglos: PRODUCTO[] y CANTIDAD[].</li>
+          <li>Compra (C): suma cantidad a un producto existente o lo agrega.</li>
+          <li>Venta (V): valida stock suficiente antes de restar.</li>
+          <li>Búsqueda lineal para encontrar productos por clave.</li>
+          <li>Termina cuando se ingresa 'X 0 0'.</li>
         </ul>
         
         <div class="tip-box">
-          <strong>Tip (POO):</strong> Este patrón (Clase de Datos, Clase de Resultados, Método de Lógica) es extremadamente común, robusto y fácil de probar con JUnit.
+          <strong>Tip:</strong> Valida que haya espacio antes de agregar nuevos productos.
         </div>
       </aside>
+
     </div>
 </article>
 
-
-
-
-
-
-
-
-
-
-
-
-
-      
-      <article id="ps_4_4" class="exercise-card" aria-labelledby="ps_4_4-title">
-    <header class="exercise-header">
-      <span class="exercise-badge">PS 4.4</span>
-      <h2 id="ps_4_4-title">Calcular el producto de dos vectores</h2>
-      
-      <p class="exercise-description">
-        Programa que, dados dos vectores (arreglos unidimensionales) A y B de tipo entero
-        y de tamaño N, calcula el producto de dichos vectores.
-        (Se asume que "producto" se refiere al <strong>producto punto</strong> o producto escalar).
-      </p>
-    </header>
-    
-    <div class="exercise-content">
-      <section class="exercise-main">
-        <h3>Requisitos</h3>
-        <ul>
-          <li>Leer el tamaño <code>N</code> de los vectores en el <code>main</code>.</li>
-          <li>Leer los <code>N</code> elementos del vector <code>A</code> en el <code>main</code>.</li>
-          <li>Leer los <code>N</code> elementos del vector <code>B</code> en el <code>main</code>.</li>
-          <li>La lógica de cálculo debe estar en un método <code>static int calcularProducto(int[] A, int[] B, int N)</code>.</li>
-          <li>El método debe calcular el producto punto: $PROD = A_0 \times B_0 + \dots + A_{N-1} \times B_{N-1}$.</li>
-          <li>El método debe <strong>retornar</strong> el producto (un <code>int</code>).</li>
-          <li>El <code>main</code> debe imprimir el resultado.</li>
-        </ul>
-        
-        <h3>Diagrama de Flujo</h3>
-        <p>Este diagrama ilustra la lógica del cálculo del producto punto.</p>
-        <img 
-            src="imagesDiagrama/PS_4_4.png" 
-            alt="Diagrama de flujo del Problema PS 4.4" 
-            style="width: 100%; max-width: 400px; display: block; margin: auto;"
-        >
-        <h3>Código Fuente</h3>
-        <pre><code class="code-block">import java.util.Scanner;
-
-/**
- *
- * @author imac27
- */
-public class PS_4_4 {
-
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.print("Ingrese el tamaño de los vectores: ");
-        int N = scanner.nextInt();
-
-        int[] A = new int[N];
-        int[] B = new int[N];
-
-        System.out.println("Ingrese los elementos del vector A:");
-        for (int i = 0; i < N; i++) {
-            System.out.print("Elemento " + (i+1) + ": ");
-            A[i] = scanner.nextInt();
-        }
-
-        System.out.println("Ingrese los elementos del vector B:");
-        for (int i = 0; i < N; i++) {
-            System.out.print("Elemento " + (i+1) + ": ");
-            B[i] = scanner.nextInt();
-        }
-
-        // Se llama al método de lógica
-        int producto = calcularProducto(A, B, N);
-
-        System.out.println("El producto de los vectores es: " + producto);
-    }
-
-    /**
-     * Calcula el producto punto (escalar) de dos vectores.
-     * Esta es la lógica que se prueba.
-     */
-    public static int calcularProducto(int[] A, int[] B, int N) {
-        int producto = 0;
-
-        for (int i = 0; i < N; i++) {
-            producto += A[i] * B[i];
-        }
-
-        return producto;
-    }    
-}</code></pre>
-      </section>
-      
-      <aside class="exercise-sidebar">
-        <h3>Notas rápidas</h3>
-        <p class="note-text">Puntos clave:</p>
-        <ul>
-          <li>El "producto de vectores" se refiere al <strong>producto punto (escalar)</strong>, que resulta en un solo número (un escalar).</li>
-          <li>Se calcula sumando los productos de los elementos en la misma posición: $A[i] \times B[i]$.</li>
-          <li><strong>Separación de Lógica:</strong> El <code>main</code> se encarga de la E/S, y <code>calcularProducto</code> se encarga del cálculo.</li>
-          <li>Se necesita un <strong>acumulador</strong> (<code>producto</code>) inicializado en 0.</li>
-        </ul>
-        
-        <div class="tip-box">
-          <strong>Tip:</strong> Mover la lógica a su propio método (<code>calcularProducto</code>) hace que el <code>main</code> sea mucho más fácil de leer y permite probar la lógica de cálculo de forma aislada.
-        </div>
-      </aside>
-    </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-     <article id="ps_4_20" class="exercise-card" aria-labelledby="ps_4_20-title">
-    <header class="exercise-header">
-      <span class="exercise-badge">PS 4.20</span>
-      <h2 id="ps_4_20-title">Asignar valores a Matriz A(MxN) desde Vector B(N)</h2>
-      
-      <p class="exercise-description">
-        Programa que asigna valores a una matriz <strong>A</strong> (de M x N) a partir de un
-        vector <strong>B</strong> (de N elementos), usando los siguientes criterios:
-        <br>
-        a) <code>A[i, j] = B[j]</code> si <code>i <= j</code>
-        <br>
-        b) <code>A[i, j] = 0</code> si <code>i > j</code>
-      </p>
-    </header>
-    
-    <div class="exercise-content">
-      <section class="exercise-main">
-        <h3>Requisitos</h3>
-        <ul>
-          <li>Leer <code>M</code> (filas) y <code>N</code> (columnas) en el <code>main</code>.</li>
-          <li>Leer el vector <code>B</code> de <code>N</code> elementos en el <code>main</code>.</li>
-          <li>La lógica de generación debe estar en un método <code>static double[][] generarArregloA(int m, int n, double[] B)</code>.</li>
-          <li>El método debe crear la matriz <code>A</code> de <code>M x N</code>.</li>
-          <li>El método debe iterar (<code>i</code> para filas, <code>j</code> para columnas) y aplicar la lógica:
-            <ul>
-              <li>Si <code>i <= j</code>, asignar <code>A[i][j] = B[j]</code>.</li>
-              <li>Si <code>i > j</code>, asignar <code>A[i][j] = 0</code>.</li>
-            </ul>
-          </li>
-          <li>El método debe <strong>retornar</strong> la matriz <code>A</code> generada.</li>
-          <li>El <code>main</code> debe imprimir la matriz <code>A</code> resultante.</li>
-        </ul>
-
-        <h3>Diagrama de Flujo</h3>
-        <p>Este diagrama ilustra la lógica condicional para llenar la matriz.</p>
-        <img 
-            src="imagesDiagrama/PS_4_20.png" 
-            alt="Diagrama de flujo del Problema PS 4.20" 
-            style="width: 100%; max-width: 600px; display: block; margin: auto;"
-        >
-        <h3>Código Fuente</h3>
-        <pre><code class="code-block">import java.util.Scanner;
-import java.util.Arrays; // Útil para imprimir arreglos
-
-public class PS_4_20 {
-
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.print("Ingrese el numero de renglones (M) del arreglo A: ");
-        int m = scanner.nextInt();
-
-        System.out.print("Ingrese el numero de columnas (N) del arreglo A: ");
-        int n = scanner.nextInt();
-
-        double[] B = new double[n];
-
-        // Leer los valores del arreglo B
-        System.out.println("Ingrese los valores del arreglo B:");
-        for (int i = 0; i < n; i++) {
-            System.out.print("Ingrese el valor B[" + (i + 1) + "]: ");
-            B[i] = scanner.nextDouble();
-        }
-        scanner.close(); // Cerrar el scanner
-
-        // --- Llamada al método de lógica ---
-        double[][] A = generarArregloA(m, n, B);
-
-        // Imprimir el arreglo A
-        System.out.println("El arreglo A es:");
-        for (int i = 0; i < m; i++) {
-            // Usar Arrays.toString() es una forma limpia de imprimir cada fila
-            System.out.println(Arrays.toString(A[i]));
-        }
-    }
-
-    /**
-     * Genera la matriz A[m][n] basado en el vector B[n].
-     * Esta es la función que probaremos.
-     *
-     * @param m Renglones de A
-     * @param n Columnas de A (y tamaño de B)
-     * @param B El vector de entrada
-     * @return La matriz A generada
-     */
-    public static double[][] generarArregloA(int m, int n, double[] B) {
-        double[][] A = new double[m][n];
-
-        // Asignar valores a A según los criterios
-        for (int i = 0; i < m; i++) { // i = fila
-            for (int j = 0; j < n; j++) { // j = columna
-                if (i <= j) {
-                    A[i][j] = B[j];
-                } else {
-                    // i > j
-                    A[i][j] = 0;
-                }
-            }
-        }
-        return A;
-    }
-}</code></pre>
-      </section>
-      
-      <aside class="exercise-sidebar">
-        <h3>Notas rápidas</h3>
-        <p class="note-text">Puntos clave:</p>
-        <ul>
-          <li><strong>Separación de Lógica:</strong> El <code>main</code> maneja la E/S, y <code>generarArregloA</code> maneja el cálculo.</li>
-          <li>Esto genera una matriz donde la "parte triangular inferior" (debajo de la diagonal) es cero.</li>
-          <li>La diagonal principal (<code>i == j</code>) y la parte superior (<code>i < j</code>) toman valores del vector B.</li>
-          <li>El valor asignado <code>B[j]</code> depende del índice de la <strong>columna (j)</strong>.</li>
-        </ul>
-        
-        <div class="tip-box">
-          <strong>Tip:</strong> Mover la lógica de generación de la matriz a su propio método (<code>generarArregloA</code>) es una excelente práctica. Hace que el <code>main</code> sea limpio y que la lógica sea testeable.
-        </div>
-      </aside>
-    </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      <article id="ps_4_36" class="exercise-card" aria-labelledby="ps_4_36-title">
-    <header class="exercise-header">
-      <span class="exercise-badge">PS 4.36 (POO)</span>
-      <h2 id="ps_4_36-title">Actualización de Inventario de Tienda (con POO)</h2>
-      
-      <p class="exercise-description">
-        Programa que administra el inventario de una tienda (N <= 100 productos).
-        Esta versión usa <strong>POO</strong>:
-        1. Una clase <code>Inventario</code> almacena el estado (claves, cantidades).
-        2. El <code>main</code> maneja la E/S.
-        3. Métodos <code>static</code> (<code>procesarCompra</code>, <code>procesarVenta</code>) contienen la lógica
-           y modifican el objeto <code>Inventario</code>.
-      </p>
-    </header>
-    
-    <div class="exercise-content">
-      <section class="exercise-main">
-        <h3>Requisitos</h3>
-        <ul>
-          <li>Definir una clase <code>Inventario</code> para guardar los arreglos de <code>claves</code>, <code>cantidades</code>, el <code>numProductos</code> actual y el <code>MAX_PRODUCTOS</code>.</li>
-          <li>El <code>main</code> debe leer los productos iniciales y luego entrar en un bucle de transacciones.</li>
-          <li>El bucle termina si el tipo de operación es 'X'.</li>
-          <li>Implementar un método <code>buscarProducto</code> (búsqueda lineal) que retorna el índice o -1.</li>
-          <li>Implementar <code>procesarCompra(inv, clave, cant)</code>:
-            <ul>
-              <li>Si el producto existe, suma <code>cant</code> al stock.</li>
-              <li>Si no existe y hay espacio (<code>numProductos < MAX</code>), lo añade como nuevo producto.</li>
-              <li>Si no hay espacio, devuelve un error.</li>
-            </ul>
-          </li>
-          <li>Implementar <code>procesarVenta(inv, clave, cant)</code>:
-            <ul>
-              <li>Si el producto no existe, devuelve un error.</li>
-              <li>Si existe pero <code>stock < cant</code>, devuelve error de stock.</li>
-              <li>Si existe y hay stock, resta <code>cant</code>.</li>
-            </ul>
-          </li>
-          <li>El <code>main</code> imprime el inventario final.</li>
-        </ul>
-
-        <h3>Diagrama de Flujo</h3>
-        <p>Este diagrama ilustra la lógica principal del bucle de transacciones.</p>
-        <img 
-            src="imagesDiagrama/PS_4_36.png" 
-            alt="Diagrama de flujo del Problema PS 4.36" 
-            style="width: 100%; max-width: 600px; display: block; margin: auto;"
-        >
-        <h3>Código Fuente (POO)</h3>
-        <pre><code class="code-block">import java.util.Scanner;
-
-public class PS_4_36 {
-
-    // 1. Clase interna estática para guardar el estado del inventario
-    public static class Inventario {
-        public final int MAX_PRODUCTOS;
-        public int[] clavesProductos;
-        public int[] cantidadesProductos;
-        public int numProductos;
-        public Inventario(int max) { /*...*/ }
-    }
-
-    // 2. El método main (ahora solo maneja I/O)
-    public static void main(String[] args) {
-        Inventario inv = new Inventario(100); // MAX_PRODUCTOS = 100
-        Scanner scanner = new Scanner(System.in);
-
-        // ... (Lectura de N, claves iniciales y cantidades) ...
-
-        // Paso 3: Actualizar los arreglos según las transacciones
-        boolean finDatos = false;
-        while (!finDatos) {
-            System.out.println("Ingrese (Tipo, Clave, Cantidad) o (X, 0, 0):");
-            char tipoOperacion = scanner.next().charAt(0);
-            int claveProducto = scanner.nextInt();
-            int cantidad = scanner.nextInt();
-            
-            String resultadoOperacion = null; // Para guardar mensajes de error
-
-            switch (tipoOperacion) {
-                case 'C':
-                    resultadoOperacion = procesarCompra(inv, claveProducto, cantidad);
-                    break;
-                case 'V':
-                    resultadoOperacion = procesarVenta(inv, claveProducto, cantidad);
-                    break;
-                case 'X':
-                    finDatos = true;
-                    break;
-                default:
-                    resultadoOperacion = "Operación inválida.";
-            }
-            
-            if (resultadoOperacion != null) {
-                System.out.println(resultadoOperacion);
-            }
-        }
-
-        // ... (Impresión del inventario final) ...
-        scanner.close();
-    }
-
-    // --- 3. Métodos de Lógica (¡Esto es lo que probaremos!) ---
-
-    public static int buscarProducto(Inventario inv, int claveProducto) {
-        for (int i = 0; i < inv.numProductos; i++) {
-            if (inv.clavesProductos[i] == claveProducto) {
-                return i; // Se encontró
-            }
-        }
-        return -1; // No se encontró
-    }
-
-    public static String procesarCompra(Inventario inv, int claveProducto, int cantidad) {
-        int indice = buscarProducto(inv, claveProducto);
-        if (indice != -1) {
-            // Producto existe, sumar stock
-            inv.cantidadesProductos[indice] += cantidad;
-            return null; // Éxito
-        } else {
-            // Producto no existe, añadir nuevo
-            if (inv.numProductos < inv.MAX_PRODUCTOS) {
-                inv.clavesProductos[inv.numProductos] = claveProducto;
-                inv.cantidadesProductos[inv.numProductos] = cantidad;
-                inv.numProductos++;
-                return null; // Éxito
-            } else {
-                return "No se pueden agregar más productos. Capacidad máxima alcanzada.";
-            }
-        }
-    }
-
-    public static String procesarVenta(Inventario inv, int claveProducto, int cantidad) {
-        int indice = buscarProducto(inv, claveProducto);
-        if (indice != -1) {
-            // Producto existe
-            if (inv.cantidadesProductos[indice] >= cantidad) {
-                inv.cantidadesProductos[indice] -= cantidad;
-                return null; // Éxito
-            } else {
-                return "No hay suficiente cantidad del producto.";
-            }
-        } else {
-            return "El producto no existe.";
-        }
-    }
-}</code></pre>
-      </section>
-      
-      <aside class="exercise-sidebar">
-        <h3>Notas rápidas</h3>
-        <p class="note-text">Puntos clave:</p>
-        <ul>
-          <li><strong>POO:</strong> Se usa una clase <code>Inventario</code> para encapsular los datos. Los métodos <code>static</code> operan sobre esta clase.</li>
-          <li><strong>Búsqueda Lineal:</strong> El método <code>buscarProducto</code> usa un <code>for</code> simple. Esto significa que el arreglo de claves <strong>no necesita</strong> estar ordenado.</li>
-          <li><strong>Lógica de Compra:</strong> A diferencia del código anterior, este añade nuevos productos al inventario si no existen y hay espacio.</li>
-          <li><strong>Manejo de Errores:</strong> Los métodos de lógica devuelven <code>null</code> si todo va bien, o un <code>String</code> con el mensaje de error. El <code>main</code> se encarga de imprimir ese error.</li>
-        </ul>
-        
-        <div class="tip-box">
-          <strong>Tip:</strong> Pasar el objeto <code>Inventario</code> a cada método de lógica es un patrón común. Permite que todos los métodos trabajen sobre el mismo "estado" centralizado, modificándolo según sea necesario.
-        </div>
-      </aside>
-    </div>
-</article>
+<div id="modal_ps_4_36" class="modal">
+  <div class="modal-content">
+    <span class="modal-close" onclick="closeModal('modal_ps_4_36')">&times;</span>
+    <h2 class="modal-title">Diagrama de Flujo - PS 4.36</h2>
+    <img src="imagesDiagrama/PS4.36.png" alt="Diagrama de Flujo - PS 4.36" class="modal-diagram-img">
+  </div>
+</div>
 
 
 
@@ -1891,5 +1571,33 @@ public class PS_4_36 {
       <p class="note-text">Regresa al <a href="#top">menú</a> para elegir otro ejercicio.</p>
     </footer>
   </div>
+
+  <script>
+    // Función para abrir modal
+    function openModal(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        modal.style.display = "block";
+        document.body.style.overflow = "hidden"; // Evita scroll en el fondo
+      }
+    }
+
+    // Función para cerrar modal
+    function closeModal(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        modal.style.display = "none";
+        document.body.style.overflow = "auto"; // Restaura scroll
+      }
+    }
+
+    // Cerrar modal al hacer clic fuera del contenido
+    window.onclick = function(event) {
+      if (event.target.classList.contains('modal')) {
+        event.target.style.display = "none";
+        document.body.style.overflow = "auto";
+      }
+    }
+  </script>
 </body>
 </html>
