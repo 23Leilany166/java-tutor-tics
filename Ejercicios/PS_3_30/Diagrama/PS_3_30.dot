@@ -11,7 +11,7 @@ digraph PS_3_30 {
     BUCLE_DO [shape=invhouse, label="Inicio Bucle Do-While"];
     PROCESO_BUCLE [label="senX += termino\nnumTerminos++\ntermino *= -(X*X) / ((2*numTerminos)*(2*numTerminos+1))"];
     COND_WHILE [shape=diamond, label="abs(termino) > 0.01"];
-    IMPRIMIR [shape=note, label="Escribir senX,\nnumTerminos"];
+    IMPRIMIR [shape=egg, label="Escribir senX,\nnumTerminos"];
     FIN [shape=ellipse, label="FIN"];
 
     // Conexiones

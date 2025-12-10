@@ -7,27 +7,32 @@ digraph PS_4_22 {
     // Nodos
     INICIO [shape=ellipse, label="INICIO"];
     LEER_N [shape=parallelogram, label="Leer N"];
-    CREAR_ARREGLOS [label="Crear claves[N]\nCrear produccion[N][12]"];
+    CREAR_ARREGLOS [label="Crear clavesFabricas[N]\nCrear produccionFabricas[N][12]"];
     BUCLE_I_LEER [shape=diamond, label="Para i de 0 a N-1"];
-    LEER_CLAVE [shape=parallelogram, label="Leer claves[i]"];
+    LEER_CLAVE [shape=parallelogram, label="Leer clavesFabricas[i]"];
     BUCLE_J_LEER [shape=diamond, label="Para j de 0 a 11"];
-    LEER_PROD [shape=parallelogram, label="Leer produccion[i][j]"];
+    LEER_PROD [shape=parallelogram, label="Leer produccionFabricas[i][j]"];
     
     // Inciso A
-    INIT_A [label="maxProd = -1.0\nclaveMax = -1"];
+    INIT_A [label="maxProduccion = -1.0\nclaveMax = -1"];
     BUCLE_I_A [shape=diamond, label="Para i de 0 a N-1"];
     INIT_SUMA [label="sumaAnual = 0.0"];
     BUCLE_J_A [shape=diamond, label="Para j de 0 a 11"];
-    SUMAR_PROD [label="sumaAnual += produccion[i][j]"];
-    COND_MAX [shape=diamond, label="sumaAnual > maxProd"];
-    SET_MAX [label="maxProd = sumaAnual\nclaveMax = claves[i]"];
-    IMPRIMIR_A [shape=note, label="Escribir claveMax,\nmaxProd"];
+    SUMAR_PROD [label="sumaAnual += produccionFabricas[i][j]"];
+    COND_MAX [shape=diamond, label="sumaAnual > maxProduccion"];
+    SET_MAX [label="maxProduccion = sumaAnual\nclaveMax = clavesFabricas[i]"];
+    IMPRIMIR_A [shape=egg, label="Escribir claveMax,\nmaxProduccion"];
 
     // Inciso B
     LEER_MES [shape=parallelogram, label="Leer mesConsulta"];
+    CALC_INDICE [label="mesIndice = mesConsulta - 1\nencontradas = false"];
+    VALIDAR_MES [shape=diamond, label="mesIndice >= 0\n&& mesIndice < 12"];
     BUCLE_I_B [shape=diamond, label="Para i de 0 a N-1"];
-    COND_PROD_B [shape=diamond, label="produccion[i][mesConsulta-1] > 150000"];
-    IMPRIMIR_B [shape=note, label="Escribir claves[i]"];
+    COND_PROD_B [shape=diamond, label="produccionFabricas[i][mesIndice]\n> 150000"];
+    IMPRIMIR_B [shape=egg, label="Escribir clavesFabricas[i]"];
+    SET_ENCONTRADAS [label="encontradas = true"];
+    COND_ENCONTRADAS [shape=diamond, label="encontradas == false"];
+    IMPRIMIR_NO_ENC [shape=egg, label="Escribir 'Ninguna fábrica\nsuperó los 150,000'"];
     FIN [shape=ellipse, label="FIN"];
 
     // Conexiones
@@ -37,8 +42,14 @@ digraph PS_4_22 {
     COND_MAX -> SET_MAX [label="Si"]; 
     SET_MAX -> BUCLE_I_A;
     BUCLE_I_A -> IMPRIMIR_A [label="Fin"];
-    IMPRIMIR_A -> LEER_MES -> BUCLE_I_B -> COND_PROD_B -> BUCLE_I_B;
+    IMPRIMIR_A -> LEER_MES -> CALC_INDICE -> VALIDAR_MES;
+    VALIDAR_MES -> BUCLE_I_B [label="Si"];
+    VALIDAR_MES -> FIN [label="No"];
+    BUCLE_I_B -> COND_PROD_B -> BUCLE_I_B;
     COND_PROD_B -> IMPRIMIR_B [label="Si"]; 
-    IMPRIMIR_B -> BUCLE_I_B;
-    BUCLE_I_B -> FIN [label="Fin"];
+    IMPRIMIR_B -> SET_ENCONTRADAS -> BUCLE_I_B;
+    BUCLE_I_B -> COND_ENCONTRADAS [label="Fin"];
+    COND_ENCONTRADAS -> IMPRIMIR_NO_ENC [label="Si"];
+    COND_ENCONTRADAS -> FIN [label="No"];
+    IMPRIMIR_NO_ENC -> FIN;
 }

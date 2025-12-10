@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Problema 4.17 - Matriz Transpuesta</title>
+    <link rel="stylesheet" href="../../styles_desc.css">
+</head>
+
+<body>
+    <div class="container">
+        <header class="page-header">
+            <h1>Problema 4.17 - Matriz Transpuesta</h1>
+            <p class="subtitle">Problema pag 307</p>
+        </header>
+
+        <main class="exercises-main">
+            <article id="matriz-transpuesta" class="exercise-card" aria-labelledby="transpuesta-title">
+                <header class="exercise-header">
+                    <span class="exercise-badge">Problema 4.17 pag 307</span>
+                    <h2 id="transpuesta-title">Matriz Transpuesta (Java)</h2>
+                    <p class="exercise-description">
+                        Construya un <strong>programa en Java</strong> que, dada una matriz A(M x N) de tipo entero,
+                        calcule la transpuesta de dicha matriz. La transpuesta se obtiene al escribir
+                        las filas de la matriz A como columnas.
+                    </p>
+                </header>
+                <a href="./Diagrama/Problema_4_17.png" target="_blank" class="btn-view-diagram"
+                    style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; margin: 16px 0; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; text-decoration: none; font-weight: 600; font-size: 0.95rem; border-radius: 8px; box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3); transition: all 0.3s ease; border: none; cursor: pointer;">
+                    🗺️ Ver Diagrama de Flujo
+                </a>
+                <div class="exercise-content">
+                    <section class="exercise-main">
+
+                        <h3>Requisitos de Implementación (Java)</h3>
+                        <ul>
+                            <li>Usar <code>java.util.Scanner</code> para leer M y N.</li>
+                            <li>Declarar la matriz original: <code>int[][] A = new int[M][N];</code>.</li>
+                            <li>Usar bucles <code>for</code> anidados para leer los M × N elementos de A (fila por
+                                fila).</li>
+                            <li>Declarar la matriz transpuesta: <code>int[][] TA = new int[N][M];</code>.</li>
+                            <li>Usar bucles <code>for</code> anidados (<code>i</code> para filas de A, <code>j</code>
+                                para columnas de
+                                A).</li>
+                            <li>Asignar el valor transpuesto: <code>TA[j][i] = A[i][j];</code>.</li>
+                            <li>Usar bucles <code>for</code> anidados para imprimir la matriz transpuesta TA.</li>
+                        </ul>
+
+                        <h3>Ejemplo de uso esperado</h3>
+                        <pre><code class="code-block">Ingrese el número de filas (M): 3
+Ingrese el número de columnas (N): 4
+
+Ingrese los elementos de la matriz A:
+Ingrese fila 1 (4 elementos): -5 6 8 4
+Ingrese fila 2 (4 elementos): 2 5 7 9
+Ingrese fila 3 (4 elementos): 1 3 4 6
+
+--- Matriz Transpuesta (4x3) ---
+-5 2 1 
+6 5 3 
+8 7 4 
+4 9 6 </code></pre>
+                    </section>
+                    <aside class="exercise-sidebar">
+                        <h3>Notas rápidas (Java)</h3>
+                        <p class="note-text">Recuerda que:</p>
+                        <ul>
+                            <li>Este problema requiere arreglos bidimensionales (matrices).</li>
+                            <li>La dimensión de la matriz transpuesta es la inversa de la original. Si <code>A</code> es
+                                de
+                                <code>M x N</code>, entonces <code>T</code> debe ser de <code>N x M</code>.
+                            </li>
+                            <li>La clave del algoritmo está en intercambiar los índices: el elemento en la fila
+                                <code>i</code> y
+                                columna <code>j</code> de la matriz original va a la fila <code>j</code> y columna
+                                <code>i</code> de la
+                                transpuesta.
+                            </li>
+                        </ul>
+                        <div class="tip-box">
+                            <strong>Tip:</strong> Para imprimir la matriz con formato, usa
+                            <code>System.out.print(elemento + " ")</code> dentro del bucle interno para los elementos de
+                            una fila, y
+                            un <code>System.out.println()</code> vacío después de que termine el bucle interno para
+                            pasar a la
+                            siguiente línea.
+                        </div>
+                    </aside>
+                </div>
+            </article>
+        </main>
+    </div>
+</body>
+
+</html>

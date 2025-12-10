@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PS 4.6 - Fibonacci 100 Números</title>
+    <link rel="stylesheet" href="../../styles_desc.css">
+</head>
+
+<body>
+    <div class="container">
+        <header class="page-header">
+            <h1>PS 4.6 - Almacenar los 100 Primeros Números Fibonacci</h1>
+            <p class="subtitle">Problema Suplementario pag 442</p>
+        </header>
+
+        <main class="exercises-main">
+            <article id="fibonacci-100" class="exercise-card" aria-labelledby="fibonacci-title">
+                <header class="exercise-header">
+                    <span class="exercise-badge">PS 4.6 pag 442</span>
+                    <h2 id="fibonacci-title">Almacenar los 100 Primeros Números Fibonacci (Java)</h2>
+                    <p class="exercise-description">
+                        Construya un <strong>programa en Java</strong> para almacenar en un arreglo unidimensional
+                        los 100 primeros números Fibonacci. Imprima al final el arreglo correspondiente.
+                    </p>
+                </header>
+                <a href="./Diagrama/PS_4_6.png" target="_blank" class="btn-view-diagram"
+                    style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; margin: 16px 0; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; text-decoration: none; font-weight: 600; font-size: 0.95rem; border-radius: 8px; box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3); transition: all 0.3s ease; border: none; cursor: pointer;">
+                    🗺️ Ver Diagrama de Flujo
+                </a>
+                <div class="exercise-content">
+                    <section class="exercise-main">
+
+                        <h3>Requisitos de Implementación (Java)</h3>
+                        <ul>
+                            <li>Importar <code>java.math.BigInteger</code> y <code>java.util.Arrays</code>.</li>
+                            <li>Declarar un arreglo de 100: <code>BigInteger[] fibonacci = new BigInteger[100];</code>.
+                            </li>
+                            <li>Asignar los casos base:
+                                <ul>
+                                    <li><code>fibonacci[0] = BigInteger.ZERO;</code></li>
+                                    <li><code>fibonacci[1] = BigInteger.ONE;</code></li>
+                                </ul>
+                            </li>
+                            <li>Usar un bucle <code>for</code> que itere desde <code>i = 2</code> hasta <code>99</code>.
+                            </li>
+                            <li>Dentro del bucle, calcular el término actual:
+                                <code>fibonacci[i] = fibonacci[i-1].add(fibonacci[i-2]);</code>.
+                            </li>
+                            <li>Al finalizar el bucle, imprimir el arreglo usando
+                                <code>Arrays.toString(fibonacci)</code>.
+                            </li>
+                        </ul>
+
+                        <h3>Ejemplo de uso esperado</h3>
+                        <pre><code class="code-block">(Al ejecutar el programa, no se pide entrada)
+
+Los primeros 100 números Fibonacci son:
+[0, 1, 1, 2, 3, 5, 8, ..., 218922995834555169026, 354224848179261915075]</code></pre>
+                    </section>
+                    <aside class="exercise-sidebar">
+                        <h3>Notas rápidas (Java)</h3>
+
+                        <div class="tip-box"
+                            style="background: #fff3cd; border-left: 4px solid #ffc107; margin-bottom: 16px;">
+                            <strong>⚠️ IMPORTANTE: BigInteger es OBLIGATORIO</strong>
+                            <p style="margin-top: 8px; margin-bottom: 0;">Este ejercicio <strong>NO funcionará</strong>
+                                con tipos primitivos <code>int</code> o <code>long</code>.</p>
+                        </div>
+
+                        <p class="note-text"><strong>¿Por qué necesitamos BigInteger?</strong></p>
+                        <ul>
+                            <li><strong>Los tipos primitivos tienen límites:</strong>
+                                <ul style="margin-top: 4px;">
+                                    <li><code>int</code> máximo: 2,147,483,647</li>
+                                    <li><code>long</code> máximo: 9,223,372,036,854,775,807</li>
+                                </ul>
+                            </li>
+                            <li><strong>Fibonacci crece muy rápido:</strong>
+                                <ul style="margin-top: 4px;">
+                                    <li>Fibonacci(50) ya supera 12 mil millones</li>
+                                    <li>Fibonacci(100) = 354,224,848,179,261,915,075 (21 dígitos)</li>
+                                    <li>Esto causa <em>overflow</em> (desbordamiento) con tipos primitivos</li>
+                                </ul>
+                            </li>
+                            <li><strong>BigInteger no tiene límite:</strong> puede manejar números tan grandes como la
+                                memoria lo permita.</li>
+                        </ul>
+
+                        <p class="note-text"><strong>¿Cómo usar BigInteger?</strong></p>
+                        <ul>
+                            <li><strong>NO</strong> uses operadores: <code>+</code>, <code>-</code>, <code>*</code></li>
+                            <li><strong>SÍ</strong> usa métodos:
+                                <ul style="margin-top: 4px;">
+                                    <li><code>BigInteger.ZERO</code> para el valor 0</li>
+                                    <li><code>BigInteger.ONE</code> para el valor 1</li>
+                                    <li><code>.add(otro)</code> para sumar</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                        <p class="note-text"><strong>¿Qué son ZERO y ONE?</strong></p>
+                        <ul>
+                            <li><strong>Son constantes predefinidas</strong> de la clase BigInteger:
+                                <ul style="margin-top: 4px;">
+                                    <li><code>BigInteger.ZERO</code> = el número 0 como BigInteger</li>
+                                    <li><code>BigInteger.ONE</code> = el número 1 como BigInteger</li>
+                                </ul>
+                            </li>
+                            <li><strong>¿Por qué usarlas?</strong> No puedes escribir:
+                                <ul style="margin-top: 4px;">
+                                    <li><code>BigInteger num = 0;</code> ❌ (esto da error)</li>
+                                    <li><code>BigInteger num = BigInteger.ZERO;</code> ✅ (correcto)</li>
+                                </ul>
+                            </li>
+                            <li><strong>Alternativa:</strong> También podrías usar <code>new BigInteger("0")</code>,
+                                pero las constantes son más simples y eficientes.</li>
+                        </ul>
+
+                        <div class="tip-box">
+                            <strong>💡 Tip:</strong> Para imprimir el arreglo de forma legible, importa
+                            <code>java.util.Arrays</code> y
+                            usa <code>System.out.println(Arrays.toString(fibonacci));</code>.
+                        </div>
+                    </aside>
+                </div>
+            </article>
+        </main>
+    </div>
+</body>
+
+</html>

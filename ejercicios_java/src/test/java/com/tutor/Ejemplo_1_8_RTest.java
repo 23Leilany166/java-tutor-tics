@@ -54,7 +54,7 @@ public class Ejemplo_1_8_RTest {
         System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
 
         // Ejecutamos el método main
-        Ejemplo_1_8.main(new String[] {});
+        Ejemplo_1_8_R.main(new String[] {});
 
         // Verificamos la salida
         String output = outContent.toString();
@@ -69,7 +69,7 @@ public class Ejemplo_1_8_RTest {
         String simulatedInput = "99999\n10.0\n10.0\n10.0\n10.0\n10.0\n";
         System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
 
-        Ejemplo_1_8.main(new String[] {});
+        Ejemplo_1_8_R.main(new String[] {});
 
         String output = outContent.toString();
         assertTrue(output.contains("Matrícula del alumno: 99999"));
@@ -81,7 +81,7 @@ public class Ejemplo_1_8_RTest {
         String simulatedInput = "55555\n6.0\n7.0\n5.0\n4.0\n3.0\n";
         System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
 
-        Ejemplo_1_8.main(new String[] {});
+        Ejemplo_1_8_R.main(new String[] {});
 
         String output = outContent.toString();
         assertTrue(output.contains("Matrícula del alumno: 55555"));
@@ -93,7 +93,7 @@ public class Ejemplo_1_8_RTest {
         String simulatedInput = "11111\n0.0\n0.0\n0.0\n0.0\n0.0\n";
         System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
 
-        Ejemplo_1_8.main(new String[] {});
+        Ejemplo_1_8_R.main(new String[] {});
 
         String output = outContent.toString();
         assertTrue(output.contains("Matrícula del alumno: 11111"));
@@ -105,7 +105,7 @@ public class Ejemplo_1_8_RTest {
         String simulatedInput = "22222\n8.5\n9.3\n7.8\n8.2\n9.7\n";
         System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
 
-        Ejemplo_1_8.main(new String[] {});
+        Ejemplo_1_8_R.main(new String[] {});
 
         String output = outContent.toString();
         assertTrue(output.contains("Matrícula del alumno: 22222"));

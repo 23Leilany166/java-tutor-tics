@@ -6,9 +6,9 @@ digraph Ejemplo_2_1 {
 
     // Nodos
     INICIO [shape=ellipse, label="INICIO"];
-    LEER_CAL [shape=parallelogram, label="Leer CAL"];
-    CONDICION [shape=diamond, label="CAL > 8"];
-    IMPRIMIR_APROBADO [shape=note, label="Escribir 'Aprobado'"];
+    LEER_CAL [shape=parallelogram, label="Leer calificacion"];
+    CONDICION [shape=diamond, label="calificacion > 8"];
+    IMPRIMIR_APROBADO [shape=egg, label="Escribir 'Aprobado'"];
     FIN [shape=ellipse, label="FIN"];
 
     // Conexiones

@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PS 2.13 - Encontrar el Mayor de Tres Números</title>
+    <link rel="stylesheet" href="../../styles_desc.css">
+</head>
+
+<body>
+    <div class="container">
+        <header class="page-header">
+            <h1>PS 2.13 - Encontrar el Mayor de Tres Números</h1>
+            <p class="subtitle">Problema Suplementario pag 413</p>
+        </header>
+
+        <main class="exercises-main">
+            <article id="encontrar-mayor" class="exercise-card" aria-labelledby="mayor-title">
+                <header class="exercise-header">
+                    <span class="exercise-badge">PS 2.13 pag 413</span>
+                    <h2 id="mayor-title">Encontrar el Mayor de Tres Números (Java)</h2>
+                    <p class="exercise-description">
+                        Construya un <strong>programa en Java</strong> que, dados tres números reales A, B y C,
+                        identifique cuál es el mayor. Considere a fin de simplificar
+                        el problema que los números son diferentes.
+                    </p>
+                </header>
+                <a href="./Diagrama/PS_2_13.png" target="_blank" class="btn-view-diagram"
+                    style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; margin: 16px 0; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; text-decoration: none; font-weight: 600; font-size: 0.95rem; border-radius: 8px; box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3); transition: all 0.3s ease; border: none; cursor: pointer;">
+                    🗺️ Ver Diagrama de Flujo
+                </a>
+                <div class="exercise-content">
+                    <section class="exercise-main">
+
+                        <h3>Requisitos de Implementación (Java)</h3>
+                        <ul>
+                            <li>Usar la clase <code>java.util.Scanner</code> para leer los tres números.</li>
+                            <li>Solicitar al usuario el número A (<code>num1</code> y <code>num2</code>).</li>
+                            <li>Solicitar al usuario el número B (<code>num1</code> y <code>num2</code>).</li>
+                            <li>Solicitar al usuario el número C (<code>num1</code> y <code>num2</code>).</li>
+                            <li>Usar lógica condicional (<code>if-else if</code>) para comparar los números.</li>
+                            <li>Imprimir el valor del número mayor.</li>
+                        </ul>
+
+                        <h3>Ejemplo de uso esperado</h3>
+                        <pre><code class="code-block">Ingrese el numero A: 15.5
+Ingrese el numero B: 30.2
+Ingrese el numero C: 10.0
+--- Resultados ---
+El numero mayor es: 30.2</code></pre>
+                    </section>
+                    <aside class="exercise-sidebar">
+                        <h3>Notas rápidas (Java)</h3>
+                        <p class="note-text">Recuerda que:</p>
+                        <ul>
+                            <li>El problema asume que los tres números son <strong>diferentes</strong>, lo que
+                                simplificar la lógica
+                                (no hay empates).</li>
+                            <li>El operador lógico "Y" (<code>&&</code>) es perfecto para comprobar dos condiciones a la
+                                vez, como en
+                                <code>if (A > B && A > C)</code>.
+                            </li>
+                            <li>Una estructura <code>if-else if-else</code> también es una solución válida.</li>
+                        </ul>
+                    </aside>
+                </div>
+            </article>
+        </main>
+    </div>
+</body>
+
+</html>

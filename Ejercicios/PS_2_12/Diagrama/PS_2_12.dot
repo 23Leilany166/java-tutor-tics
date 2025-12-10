@@ -1,4 +1,4 @@
-digraph PS_1_1 {
+digraph PS_2_12 {
     // Configuración
     graph [bgcolor="transparent"];
     node [shape=rect, fontname="Arial", margin="0.1,0.1"];
@@ -6,14 +6,34 @@ digraph PS_1_1 {
 
     // Nodos
     INICIO [shape=ellipse, label="INICIO"];
-    LEER_NUMS [shape=parallelogram, label="Leer NUM1, NUM2"];
-    CALCULAR [label="SUMA = NUM1 + NUM2\nRESTA = NUM1 - NUM2\nMULT = NUM1 * NUM2"];
-    IMPRIMIR [shape=note, label="Escribir SUMA,\nRESTA, MULT"];
+    LEER_TEMP [shape=parallelogram, label="Leer temperatura"];
+    COND_85 [shape=diamond, label="temperatura > 85"];
+    COND_70 [shape=diamond, label="temperatura > 70"];
+    COND_32 [shape=diamond, label="temperatura > 32"];
+    COND_10 [shape=diamond, label="temperatura > 10"];
+    ASIGNAR_NATACION [label="deporte = 'Natación'"];
+    ASIGNAR_TENIS [label="deporte = 'Tenis'"];
+    ASIGNAR_GOLF [label="deporte = 'Golf'"];
+    ASIGNAR_ESQUI [label="deporte = 'Esquí'"];
+    ASIGNAR_MARCHA [label="deporte = 'Marcha'"];
+    IMPRIMIR [shape=egg, label="Escribir 'Deporte apropiado: ',\ndeporte"];
     FIN [shape=ellipse, label="FIN"];
 
     // Conexiones
-    INICIO -> LEER_NUMS;
-    LEER_NUMS -> CALCULAR;
-    CALCULAR -> IMPRIMIR;
+    INICIO -> LEER_TEMP;
+    LEER_TEMP -> COND_85;
+    COND_85 -> ASIGNAR_NATACION [label="Si"];
+    COND_85 -> COND_70 [label="No"];
+    COND_70 -> ASIGNAR_TENIS [label="Si"];
+    COND_70 -> COND_32 [label="No"];
+    COND_32 -> ASIGNAR_GOLF [label="Si"];
+    COND_32 -> COND_10 [label="No"];
+    COND_10 -> ASIGNAR_ESQUI [label="Si"];
+    COND_10 -> ASIGNAR_MARCHA [label="No"];
+    ASIGNAR_NATACION -> IMPRIMIR;
+    ASIGNAR_TENIS -> IMPRIMIR;
+    ASIGNAR_GOLF -> IMPRIMIR;
+    ASIGNAR_ESQUI -> IMPRIMIR;
+    ASIGNAR_MARCHA -> IMPRIMIR;
     IMPRIMIR -> FIN;
 }

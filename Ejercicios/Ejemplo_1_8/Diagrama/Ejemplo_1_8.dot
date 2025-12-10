@@ -6,14 +6,19 @@ digraph Ejemplo_1_8 {
 
     // Nodos
     INICIO [shape=ellipse, label="INICIO"];
-    LEER_DATOS [shape=parallelogram, label="Leer MAT, CAL1, CAL2,\nCAL3, CAL4, CAL5"];
-    CALCULAR_PROMEDIO [label="PROMEDIO = (CAL1 + CAL2 + CAL3\n+ CAL4 + CAL5) / 5.0"];
-    IMPRIMIR_RESULTADOS [shape=note, label="Escribir MAT,\nPROMEDIO"];
+    LEER_DATOS [shape=parallelogram, label="Leer matricula, c1, c2,\nc3, c4, c5"];
+    VALIDAR [shape=diamond, label="c1 < 0 || c2 < 0 || c3 < 0\n|| c4 < 0 || c5 < 0"];
+    ERROR [shape=egg, label="Escribir 'Error: Las calificaciones\nno pueden ser negativas'"];
+    CALCULAR_PROMEDIO [label="promedio = (c1 + c2 + c3\n+ c4 + c5) / 5.0"];
+    IMPRIMIR_RESULTADOS [shape=egg, label="Escribir matricula,\npromedio"];
     FIN [shape=ellipse, label="FIN"];
 
     // Conexiones
     INICIO -> LEER_DATOS;
-    LEER_DATOS -> CALCULAR_PROMEDIO;
+    LEER_DATOS -> VALIDAR;
+    VALIDAR -> ERROR [label="Si"];
+    VALIDAR -> CALCULAR_PROMEDIO [label="No"];
+    ERROR -> FIN;
     CALCULAR_PROMEDIO -> IMPRIMIR_RESULTADOS;
     IMPRIMIR_RESULTADOS -> FIN;
 }

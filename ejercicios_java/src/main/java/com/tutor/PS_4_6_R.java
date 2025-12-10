@@ -6,55 +6,36 @@ import java.util.Arrays; // Importamos Arrays para imprimir fácilmente
 /**
  * REFRACTORIZADO
  * Este código genera los primeros 'n' números Fibonacci.
- * La lógica está separada en un método para poder ser probada.
+ * Toda la lógica está contenida en el método main para principiantes.
  */
 public class PS_4_6_R { // El nombre del archivo debe ser PS_4_6R.java
 
     /**
-     * MÉTODO REFACTORIZADO: Esta es la lógica que vamos a probar.
-     * Genera un arreglo con los primeros 'n' números Fibonacci.
-     *
-     * @param n La cantidad de números Fibonacci a generar (ej. 100).
-     * @return Un arreglo de BigInteger[] con los 'n' primeros números.
+     * El método main contiene toda la lógica del programa.
      */
-    public BigInteger[] generarFibonacci(int n) {
-        if (n <= 0) {
-            return new BigInteger[0]; // Devolver arreglo vacío si n es 0 o negativo
-        }
+    public static void main(String[] args) {
+        int cantidad = 100;
 
-        BigInteger[] fibonacci = new BigInteger[n];
+        // Crear el arreglo para almacenar los números Fibonacci
+        BigInteger[] fibonacci = new BigInteger[cantidad];
 
         // Manejar el caso base n=1
-        if (n >= 1) {
+        if (cantidad >= 1) {
             fibonacci[0] = BigInteger.ZERO; // F(0) = 0
         }
         // Manejar el caso base n=2
-        if (n >= 2) {
+        if (cantidad >= 2) {
             fibonacci[1] = BigInteger.ONE; // F(1) = 1
         }
 
         // Bucle para calcular el resto (desde el 3er elemento, índice 2)
-        for (int i = 2; i < n; i++) {
+        for (int i = 2; i < cantidad; i++) {
             fibonacci[i] = fibonacci[i - 1].add(fibonacci[i - 2]);
         }
-
-        return fibonacci; // Devolver el arreglo lleno
-    }
-
-    /**
-     * El método main ahora solo maneja la entrada/salida
-     * y llama al método de lógica.
-     */
-    public static void main(String[] args) {
-        PS_4_6_R ejercicio = new PS_4_6_R(); // Instancia de la clase
-        int cantidad = 100;
-
-        // Llamamos al método lógico
-        BigInteger[] primerosCienFibonacci = ejercicio.generarFibonacci(cantidad);
 
         // Imprimimos los resultados
         System.out.println("Los primeros " + cantidad + " números Fibonacci son:");
         // Usamos Arrays.toString para una impresión limpia del arreglo
-        System.out.println(Arrays.toString(primerosCienFibonacci));
+        System.out.println(Arrays.toString(fibonacci));
     }
 }

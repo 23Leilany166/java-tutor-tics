@@ -16,7 +16,7 @@ digraph Problema_4_4 {
     COND_ESPRIMO_V [shape=diamond, label="esPrimo == true"];
     GUARDAR_PRIMO [label="primos[conteo] = num\nconteo++"];
     INC_NUM [label="num = num + 2"];
-    IMPRIMIR [shape=note, label="Escribir arreglo 'primos'"];
+    IMPRIMIR [shape=egg, label="Escribir arreglo 'primos'"];
     FIN [shape=ellipse, label="FIN"];
 
     // Conexiones

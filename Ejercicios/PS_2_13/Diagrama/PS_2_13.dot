@@ -9,9 +9,9 @@ digraph PS_2_13 {
     LEER_NUMS [shape=parallelogram, label="Leer A, B, C"];
     COND_A [shape=diamond, label="A > B Y A > C"];
     COND_B [shape=diamond, label="B > C"];
-    PRINT_A [shape=note, label="Escribir A"];
-    PRINT_B [shape=note, label="Escribir B"];
-    PRINT_C [shape=note, label="Escribir C"];
+    PRINT_A [shape=egg, label="Escribir A"];
+    PRINT_B [shape=egg, label="Escribir B"];
+    PRINT_C [shape=egg, label="Escribir C"];
     FIN [shape=ellipse, label="FIN"];
 
     // Conexiones

@@ -6,10 +6,10 @@ digraph PS_4_6 {
 
     // Nodos
     INICIO [shape=ellipse, label="INICIO"];
-    INICIALIZAR [label="CANTIDAD = 100\nfib = nuevo arreglo[CANTIDAD]\nfib[0] = 0\nfib[1] = 1"];
-    BUCLE_FOR [shape=diamond, label="Para i desde 2\nhasta CANTIDAD-1"];
-    CALCULAR_FIB [label="fib[i] = fib[i-1] + fib[i-2]"];
-    IMPRIMIR [shape=note, label="Escribir arreglo 'fib'"];
+    INICIALIZAR [label="cantidad = 100\nfibonacci = nuevo BigInteger[cantidad]\nfibonacci[0] = BigInteger.ZERO\nfibonacci[1] = BigInteger.ONE"];
+    BUCLE_FOR [shape=diamond, label="Para i desde 2\nhasta cantidad-1"];
+    CALCULAR_FIB [label="fibonacci[i] = fibonacci[i-1]\n+ fibonacci[i-2]"];
+    IMPRIMIR [shape=egg, label="Escribir arreglo 'fibonacci'"];
     FIN [shape=ellipse, label="FIN"];
 
     // Conexiones

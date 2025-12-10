@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PS 2.15 - Calculadora con Clave</title>
+    <link rel="stylesheet" href="../../styles_desc.css">
+</head>
+
+<body>
+    <div class="container">
+        <header class="page-header">
+            <h1>PS 2.15 - Calculadora con Clave</h1>
+            <p class="subtitle">Problema Suplementario pag 413</p>
+        </header>
+
+        <main class="exercises-main">
+            <article id="calculadora-clave" class="exercise-card" aria-labelledby="calculadora-title">
+                <header class="exercise-header">
+                    <span class="exercise-badge">PS 2.15 pag 413</span>
+                    <h2 id="calculadora-title">Calculadora con Clave (Java)</h2>
+                    <p class="exercise-description">
+                        Construya un <strong>programa en Java</strong> que funcione como una calculadora simple. Lea dos
+                        operandos (números reales) y una clave (caracter: +, -, *, /) que indique la operación a
+                        realizar. Imprima el resultado de la operación.
+                    </p>
+                </header>
+                <a href="./Diagrama/PS_2_15.png" target="_blank" class="btn-view-diagram"
+                    style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; margin: 16px 0; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; text-decoration: none; font-weight: 600; font-size: 0.95rem; border-radius: 8px; box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3); transition: all 0.3s ease; border: none; cursor: pointer;">
+                    🗺️ Ver Diagrama de Flujo
+                </a>
+                <div class="exercise-content">
+                    <section class="exercise-main">
+
+                        <h3>Requisitos de Implementación (Java)</h3>
+                        <ul>
+                            <li>Usar <code>java.util.Scanner</code> para leer los datos.</li>
+                            <li>Solicitar dos operandos (<code>oper1</code> y <code>oper2</code>, tipo
+                                <code>double</code>).
+                            </li>
+                            <li>Solicitar la clave de la operación (<code>clave</code>, tipo <code>char</code>).</li>
+                            <li>Tip: Para leer un <code>char</code>, usa <code>scanner.next().charAt(0)</code>.</li>
+                            <li>Usar una estructura <code>switch</code> o <code>if-else if</code> para manejar las
+                                cuatro operaciones.</li>
+                            <li><strong>Importante:</strong> Validar división por cero antes de realizar la operación de
+                                división.</li>
+                            <li>Imprimir el resultado o un mensaje de error si la operación es inválida.</li>
+                        </ul>
+
+                        <h3>Ejemplo de uso esperado</h3>
+                        <pre><code class="code-block">(Ejecución 1: Suma)
+Ingrese el primer operando: 10
+Ingrese el segundo operando: 5.5
+Ingrese la clave de la operación (+, -, *, /): +
+Clave ingresada: +
+10.0 + 5.5 = 15.5
+
+(Ejecución 2: División)
+Ingrese el primer operando: 20
+Ingrese el segundo operando: 4
+Ingrese la clave de la operación (+, -, *, /): /
+Clave ingresada: /
+20.0 / 4.0 = 5.0
+
+(Ejecución 3: División por cero)
+Ingrese el primer operando: 10
+Ingrese el segundo operando: 0
+Ingrese la clave de la operación (+, -, *, /): /
+Clave ingresada: /
+Error: No se puede dividir por cero</code></pre>
+                    </section>
+                    <aside class="exercise-sidebar">
+                        <h3>Notas rápidas (Java)</h3>
+                        <p class="note-text">Recuerda que:</p>
+                        <ul>
+                            <li>Para leer un solo carácter como clave, la forma más directa es
+                                <code>scanner.next().charAt(0)</code>.
+                            </li>
+                            <li>Una estructura <code>if-else if-else</code> es ideal para manejar las diferentes
+                                operaciones.</li>
+                            <li><strong>¡Importante!</strong> Siempre valida la división por cero antes de realizar la
+                                operación.</li>
+                        </ul>
+                    </aside>
+                </div>
+            </article>
+        </main>
+    </div>
+</body>
+
+</html>

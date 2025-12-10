@@ -6,23 +6,26 @@ digraph Problema_3_1 {
 
     // Nodos
     INICIO [shape=ellipse, label="INICIO"];
-    INICIALIZAR [label="SUMA_IMPARES = 0\nSUMA_PARES = 0\nCONTEO_PARES = 0"];
-    LEER_N [shape=parallelogram, label="Leer CANTIDAD_NUMEROS"];
-    BUCLE_FOR [shape=diamond, label="Para I desde 1\nhasta CANTIDAD_NUMEROS"];
-    LEER_NUM [shape=parallelogram, label="Leer NUMERO"];
-    COND_PAR [shape=diamond, label="NUMERO % 2 == 0"];
-    PROCESO_PAR [label="SUMA_PARES += NUMERO\nCONTEO_PARES++"];
-    PROCESO_IMPAR [label="SUMA_IMPARES += NUMERO"];
-    COND_DIV_CERO [shape=diamond, label="CONTEO_PARES > 0"];
-    CALC_PROM [label="PROMEDIO_PARES = SUMA_PARES / CONTEO_PARES"];
-    PROM_CERO [label="PROMEDIO_PARES = 0"];
-    IMPRIMIR [shape=note, label="Escribir SUMA_IMPARES,\nPROMEDIO_PARES"];
+    INICIALIZAR [label="sumaImpares = 0\nsumaPares = 0\nconteoPares = 0"];
+    LEER_N [shape=parallelogram, label="Leer cantidadNumeros"];
+    BUCLE_FOR [shape=diamond, label="Para i desde 0\nhasta cantidadNumeros-1"];
+    LEER_NUM [shape=parallelogram, label="Leer numero"];
+    COND_CERO [shape=diamond, label="numero != 0"];
+    COND_PAR [shape=diamond, label="numero % 2 == 0"];
+    PROCESO_PAR [label="sumaPares += numero\nconteoPares++"];
+    PROCESO_IMPAR [label="sumaImpares += numero"];
+    COND_DIV_CERO [shape=diamond, label="conteoPares > 0"];
+    CALC_PROM [label="promedioPares = sumaPares / conteoPares"];
+    PROM_CERO [label="promedioPares = 0"];
+    IMPRIMIR [shape=egg, label="Escribir sumaImpares,\npromedioPares"];
     FIN [shape=ellipse, label="FIN"];
 
     // Conexiones
     INICIO -> INICIALIZAR -> LEER_N -> BUCLE_FOR;
     BUCLE_FOR -> LEER_NUM [label="Repetir"];
-    LEER_NUM -> COND_PAR;
+    LEER_NUM -> COND_CERO;
+    COND_CERO -> BUCLE_FOR [label="No (es cero)"];
+    COND_CERO -> COND_PAR [label="Si"];
     COND_PAR -> PROCESO_PAR [label="Si"];
     COND_PAR -> PROCESO_IMPAR [label="No"];
     PROCESO_PAR -> BUCLE_FOR; 

@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PS 2.12 - Sugerir Deporte según Temperatura</title>
+    <link rel="stylesheet" href="../../styles_desc.css">
+</head>
+
+<body>
+    <div class="container">
+        <header class="page-header">
+            <h1>PS 2.12 - Sugerir Deporte según Temperatura</h1>
+            <p class="subtitle">Problema Suplementario pag 413</p>
+        </header>
+
+        <main class="exercises-main">
+            <article id="deporte-temperatura" class="exercise-card" aria-labelledby="deporte-title">
+                <header class="exercise-header">
+                    <span class="exercise-badge">PS 2.12 pag 413</span>
+                    <h2 id="deporte-title">Sugerir Deporte según Temperatura (Java)</h2>
+                    <p class="exercise-description">
+                        Construya un <strong>programa en Java</strong> que dado como dato una temperatura en grados
+                        Fahrenheit,
+                        determine el deporte que es apropiado practicar a esa temperatura,
+                        teniendo en cuenta una tabla de rangos.
+                    </p>
+                </header>
+                <a href="./Diagrama/PS_2_12.png" target="_blank" class="btn-view-diagram"
+                    style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; margin: 16px 0; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; text-decoration: none; font-weight: 600; font-size: 0.95rem; border-radius: 8px; box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3); transition: all 0.3s ease; border: none; cursor: pointer;">
+                    🗺️ Ver Diagrama de Flujo
+                </a>
+                <div class="exercise-content">
+                    <section class="exercise-main">
+
+                        <h3>Requisitos de Implementación (Java)</h3>
+                        <ul>
+                            <li>Usar la clase <code>java.util.Scanner</code> para leer la temperatura.</li>
+                            <li>Solicitar al usuario la temperatura (<code>temperatura</code>).</li>
+                            <li>Usar una cadena de <code>if-else if-else</code> para determinar el deporte:
+                                <ul>
+                                    <li><code>> 85</code>: Natación</li>
+                                    <li><code>> 70</code> y <code>&le; 85</code>: Tenis</li>
+                                    <li><code>> 32</code> y <code>&le; 70</code>: Golf</li>
+                                    <li><code>> 10</code> y <code>&le; 32</code>: Esquí</li>
+                                    <li><code>&le; 10</code>: Marcha</li>
+                                </ul>
+                            </li>
+                            <li>Imprimir el deporte recomendado.</li>
+                        </ul>
+
+                        <h3>Ejemplo de uso esperado</h3>
+                        <pre><code class="code-block">(Ejecución 1)
+Ingrese la temperatura en grados Fahrenheit: 90
+Deporte apropiado: Natación
+
+(Ejecución 2)
+Ingrese la temperatura en grados Fahrenheit: 85
+Deporte apropiado: Tenis
+
+(Ejecución 3)
+Ingrese la temperatura en grados Fahrenheit: 32
+Deporte apropiado: Esquí
+
+(Ejecución 4)
+Ingrese la temperatura en grados Fahrenheit: 5
+Deporte apropiado: Marcha</code></pre>
+                    </section>
+                    <aside class="exercise-sidebar">
+                        <h3>Notas rápidas (Java)</h3>
+                        <p class="note-text">Recuerda que:</p>
+                        <ul>
+                            <li>El orden de la cadena <code>if-else if</code> es importante.</li>
+                            <li>Al usar <code>if-else if</code>, si una condición es verdadera, las demás ya no se
+                                evalúan. Esto te
+                                permite simplificar la lógica. Por ejemplo, si la condición <code>TEMP > 85</code> es
+                                falsa, en el
+                                siguiente <code>else if</code> ya sabes que <code>temperatura</code> es menor o igual a
+                                85.</li>
+                            <li>Presta atención a los límites: "mayor que" (<code>></code>) es diferente de "mayor o
+                                igual que"
+                                (<code>>=</code>).</li>
+                        </ul>
+                    </aside>
+                </div>
+            </article>
+        </main>
+    </div>
+</body>
+
+</html>

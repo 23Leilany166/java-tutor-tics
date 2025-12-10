@@ -7,24 +7,30 @@ digraph Problema_4_17 {
     // Nodos
     INICIO [shape=ellipse, label="INICIO"];
     LEER_DIM [shape=parallelogram, label="Leer M, N"];
+    VALIDAR [shape=diamond, label="M >= 1 && M <= 50\n&& N >= 1 && N <= 30"];
+    ERROR [shape=egg, label="Escribir 'Error en los datos\n(M debe estar entre 1-50,\nN entre 1-30)'"];
     CREAR_A [label="Crear matriz A[M][N]"];
     BUCLE_I_LEER [shape=diamond, label="Para i desde 0 hasta M-1"];
     BUCLE_J_LEER [shape=diamond, label="Para j desde 0 hasta N-1"];
     LEER_A [shape=parallelogram, label="Leer A[i][j]"];
-    CREAR_T [label="Crear matriz T[N][M]"];
+    CREAR_TA [label="Crear matriz TA[N][M]"];
     BUCLE_I_CALC [shape=diamond, label="Para i desde 0 hasta M-1"];
     BUCLE_J_CALC [shape=diamond, label="Para j desde 0 hasta N-1"];
-    CALC_T [label="T[j][i] = A[i][j]"];
+    CALC_TA [label="TA[j][i] = A[i][j]"];
     BUCLE_I_IMP [shape=diamond, label="Para i desde 0 hasta N-1"];
     BUCLE_J_IMP [shape=diamond, label="Para j desde 0 hasta M-1"];
-    IMPRIMIR_T [shape=note, label="Escribir T[i][j]"];
+    IMPRIMIR_TA [shape=egg, label="Escribir TA[i][j]"];
     FIN [shape=ellipse, label="FIN"];
 
     // Conexiones
-    INICIO -> LEER_DIM -> CREAR_A -> BUCLE_I_LEER -> BUCLE_J_LEER -> LEER_A -> BUCLE_J_LEER -> BUCLE_I_LEER;
-    BUCLE_I_LEER -> CREAR_T [label="Fin"];
-    CREAR_T -> BUCLE_I_CALC -> BUCLE_J_CALC -> CALC_T -> BUCLE_J_CALC -> BUCLE_I_CALC;
+    INICIO -> LEER_DIM -> VALIDAR;
+    VALIDAR -> ERROR [label="No"];
+    VALIDAR -> CREAR_A [label="Si"];
+    ERROR -> FIN;
+    CREAR_A -> BUCLE_I_LEER -> BUCLE_J_LEER -> LEER_A -> BUCLE_J_LEER -> BUCLE_I_LEER;
+    BUCLE_I_LEER -> CREAR_TA [label="Fin"];
+    CREAR_TA -> BUCLE_I_CALC -> BUCLE_J_CALC -> CALC_TA -> BUCLE_J_CALC -> BUCLE_I_CALC;
     BUCLE_I_CALC -> BUCLE_I_IMP [label="Fin"];
-    BUCLE_I_IMP -> BUCLE_J_IMP -> IMPRIMIR_T -> BUCLE_J_IMP -> BUCLE_I_IMP;
+    BUCLE_I_IMP -> BUCLE_J_IMP -> IMPRIMIR_TA -> BUCLE_J_IMP -> BUCLE_I_IMP;
     BUCLE_I_IMP -> FIN [label="Fin"];
 }

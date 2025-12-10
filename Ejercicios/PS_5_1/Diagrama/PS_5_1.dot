@@ -13,36 +13,43 @@ digraph PS_5_1 {
     
     // Menú
     BUCLE_MENU [shape=diamond, label="Bucle Infinito"];
-    LEER_OPCION [shape=parallelogram, label="Leer OPCION"];
-    COND_SALIR [shape=diamond, label="OPCION == 'e'"];
-    LEER_CLAVE [shape=parallelogram, label="Leer CLAVE"];
-    BUSCAR_PROD [label="Buscar producto por CLAVE"];
-    COND_ENCONTRADO [shape=diamond, label="Producto encontrado?"];
-    PRINT_NO_ENC [shape=note, label="Escribir 'No encontrado'"];
+    LEER_OPCION [shape=parallelogram, label="Leer opcion"];
+    COND_SALIR [shape=diamond, label="opcion == 'e'"];
+    LEER_CLAVE [shape=parallelogram, label="Leer clave"];
+    BUSCAR_PROD [label="Buscar producto por clave"];
+    COND_ENCONTRADO [shape=diamond, label="productoEncontrado != null"];
+    PRINT_NO_ENC [shape=egg, label="Escribir 'Producto\nno encontrado'"];
     
     // Operaciones
-    COND_OP_A [shape=diamond, label="OPCION == 'a'"];
-    COND_OP_B [shape=diamond, label="OPCION == 'b'"];
-    COND_OP_C [shape=diamond, label="OPCION == 'c'"];
-    COND_OP_D [shape=diamond, label="OPCION == 'd'"];
-    PRINT_OP_INV [shape=note, label="Escribir 'Opción inválida'"];
+    COND_OP_A [shape=diamond, label="opcion == 'a'"];
+    COND_OP_B [shape=diamond, label="opcion == 'b'"];
+    COND_OP_C [shape=diamond, label="opcion == 'c'"];
+    COND_OP_D [shape=diamond, label="opcion == 'd'"];
+    PRINT_OP_INV [shape=egg, label="Escribir 'Opción inválida'"];
     
     // Venta (a)
-    LEER_CANT_A [shape=parallelogram, label="Leer CANTIDAD"];
-    COND_EXIST [shape=diamond, label="existencia >= CANTIDAD"];
-    PROC_VENTA [label="existencia -= CANTIDAD"];
-    PRINT_NO_EXIST [shape=note, label="Escribir 'No hay existencia'"];
+    LEER_CANT_A [shape=parallelogram, label="Leer cantidad"];
+    COND_EXIST [shape=diamond, label="existencia < cantidad"];
+    PROC_VENTA [label="existencia -= cantidad"];
+    PRINT_NO_EXIST [shape=egg, label="Escribir 'No hay suficiente\nexistencia'"];
+    PRINT_VENTA_OK [shape=egg, label="Escribir 'Venta realizada\ncorrectamente'"];
+    COND_MIN [shape=diamond, label="existencia < minExistencia"];
+    PRINT_WARNING [shape=egg, label="Escribir '¡Atención! Existencia\npor debajo del mínimo'"];
     
     // Reabastecer (b)
-    LEER_CANT_B [shape=parallelogram, label="Leer CANTIDAD"];
-    PROC_REAB [label="existencia += CANTIDAD"];
+    LEER_CANT_B [shape=parallelogram, label="Leer cantidad"];
+    VALIDAR_CANT_B [shape=diamond, label="cantidad <= 0"];
+    PRINT_CANT_INV [shape=egg, label="Escribir 'La cantidad debe\nser positiva'"];
+    PROC_REAB [label="existencia += cantidad"];
+    PRINT_REAB_OK [shape=egg, label="Escribir 'Reabastecimiento\nrealizado correctamente'"];
     
     // Actualizar (c)
-    LEER_PORC [shape=parallelogram, label="Leer PORCENTAJE"];
-    PROC_PRECIO [label="precio *= (1 + PORC/100)"];
+    LEER_PORC [shape=parallelogram, label="Leer porcentaje"];
+    PROC_PRECIO [label="precioUnitario *= (1 + porcentaje/100)"];
+    PRINT_PRECIO_OK [shape=egg, label="Escribir 'Precio actualizado\ncorrectamente'"];
     
     // Informar (d)
-    IMPRIMIR_INFO [shape=note, label="Escribir datos del producto"];
+    IMPRIMIR_INFO [shape=egg, label="Escribir datos del producto"];
     FIN [shape=ellipse, label="FIN"];
 
     // Conexiones
@@ -55,18 +62,34 @@ digraph PS_5_1 {
     COND_ENCONTRADO -> PRINT_NO_ENC [label="No"]; 
     PRINT_NO_ENC -> BUCLE_MENU;
     COND_ENCONTRADO -> COND_OP_A [label="Si"];
+    
+    // Venta
     COND_OP_A -> LEER_CANT_A [label="Si"]; 
     LEER_CANT_A -> COND_EXIST; 
-    COND_EXIST -> PROC_VENTA [label="Si"]; 
-    PROC_VENTA -> BUCLE_MENU; 
-    COND_EXIST -> PRINT_NO_EXIST [label="No"]; 
+    COND_EXIST -> PRINT_NO_EXIST [label="Si"]; 
+    COND_EXIST -> PROC_VENTA [label="No"];
+    PROC_VENTA -> PRINT_VENTA_OK;
+    PRINT_VENTA_OK -> COND_MIN;
+    COND_MIN -> PRINT_WARNING [label="Si"];
+    COND_MIN -> BUCLE_MENU [label="No"];
+    PRINT_WARNING -> BUCLE_MENU;
     PRINT_NO_EXIST -> BUCLE_MENU;
+    
+    // Reabastecer
     COND_OP_A -> COND_OP_B [label="No"];
     COND_OP_B -> LEER_CANT_B [label="Si"]; 
-    LEER_CANT_B -> PROC_REAB -> BUCLE_MENU;
+    LEER_CANT_B -> VALIDAR_CANT_B;
+    VALIDAR_CANT_B -> PRINT_CANT_INV [label="Si"];
+    VALIDAR_CANT_B -> PROC_REAB [label="No"];
+    PRINT_CANT_INV -> BUCLE_MENU;
+    PROC_REAB -> PRINT_REAB_OK -> BUCLE_MENU;
+    
+    // Actualizar
     COND_OP_B -> COND_OP_C [label="No"];
     COND_OP_C -> LEER_PORC [label="Si"]; 
-    LEER_PORC -> PROC_PRECIO -> BUCLE_MENU;
+    LEER_PORC -> PROC_PRECIO -> PRINT_PRECIO_OK -> BUCLE_MENU;
+    
+    // Informar
     COND_OP_C -> COND_OP_D [label="No"];
     COND_OP_D -> IMPRIMIR_INFO [label="Si"]; 
     IMPRIMIR_INFO -> BUCLE_MENU;

@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Problema 2.4 - Promedio y Aprobación</title>
+    <link rel="stylesheet" href="../../styles_desc.css">
+</head>
+
+<body>
+    <div class="container">
+        <header class="page-header">
+            <h1>Problema 2.4 - Promedio y Estado de Aprobación</h1>
+            <p class="subtitle">Problema pag 82</p>
+        </header>
+
+        <main class="exercises-main">
+            <article id="promedio-aprobado" class="exercise-card" aria-labelledby="promedio-aprobado-title">
+                <header class="exercise-header">
+                    <span class="exercise-badge">Problema 2.4 pag 82</span>
+                    <h2 id="promedio-aprobado-title">Promedio y Estado de Aprobación (Java)</h2>
+                    <p class="exercise-description">
+                        Construya un <strong>programa en Java</strong> que, dado como datos la matrícula y 5
+                        calificaciones
+                        de un alumno, imprima la matrícula, el promedio y la palabra "Aprobado"
+                        si el alumno tiene un promedio mayor o igual que 6, y la palabra "No Aprobado"
+                        en caso contrario.
+                    </p>
+                </header>
+                <a href="./Diagrama/Problema_2_4.png" target="_blank" class="btn-view-diagram"
+                    style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; margin: 16px 0; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; text-decoration: none; font-weight: 600; font-size: 0.95rem; border-radius: 8px; box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3); transition: all 0.3s ease; border: none; cursor: pointer;">
+                    🗺️ Ver Diagrama de Flujo
+                </a>
+                <div class="exercise-content">
+                    <section class="exercise-main">
+
+                        <h3>Requisitos de Implementación (Java)</h3>
+                        <ul>
+                            <li>Usar <code>java.util.Scanner</code> para leer la matrícula (<code>int</code>) y las 5
+                                calificaciones
+                                (<code>double</code>).</li>
+                            <li>Calcular el promedio (<code>double</code>).</li>
+                            <li>Utilizar una estructura condicional <code>if-else</code> para evaluar si
+                                <code>promedio</code> >= 6.
+                            </li>
+                            <li>Imprimir la matrícula y el promedio.</li>
+                            <li>Imprimir "Aprobado" si la condición es verdadera, o "No Aprobado" si es falsa.</li>
+                        </ul>
+
+                        <h3>Ejemplo de uso esperado</h3>
+                        <pre><code class="code-block">(Ejecución 1: Aprobado)
+Ingrese la matrícula: 123
+Ingrese calificación 1: 7.0
+Ingrese calificación 2: 8.0
+Ingrese calificación 3: 5.0
+Ingrese calificación 4: 6.0
+Ingrese calificación 5: 9.0
+--- Resultados ---
+Matrícula: 123
+Promedio: 7.0
+Aprobado
+
+(Ejecución 2: No Aprobado)
+Ingrese la matrícula: 456
+Ingrese calificación 1: 5.0
+Ingrese calificación 2: 4.0
+Ingrese calificación 3: 6.0
+Ingrese calificación 4: 5.5
+Ingrese calificación 5: 6.0
+--- Resultados ---
+Matrícula: 456
+Promedio: 5.3
+No Aprobado</code></pre>
+                    </section>
+                    <aside class="exercise-sidebar">
+                        <h3>Notas rápidas (Java)</h3>
+                        <p class="note-text">Recuerda que:</p>
+                        <ul>
+                            <li>Este problema combina el cálculo del Ejemplo 1.8 con una estructura condicional.</li>
+                            <li>A diferencia del Ejemplo 2.1, este usa una "Estructura Selectiva Doble"
+                                (<code>if-else</code>), ya que
+                                siempre hay una acción a realizar, sea cual sea el resultado de la condición.</li>
+                            <li>La condición es "mayor o igual que 6" (<code>>= 6</code>).</li>
+                        </ul>
+                        <div class="tip-box">
+                            <strong>Tip:</strong> Una buena práctica es separar la lógica de la impresión. Puedes usar
+                            una variable
+                            <code>String estado;</code>, asignarle "Aprobado" o "No Aprobado" dentro del
+                            <code>if-else</code>, y luego
+                            tener una sola línea <code>System.out.println(estado);</code> al final.
+                        </div>
+                    </aside>
+                </div>
+            </article>
+        </main>
+    </div>
+</body>
+
+</html>

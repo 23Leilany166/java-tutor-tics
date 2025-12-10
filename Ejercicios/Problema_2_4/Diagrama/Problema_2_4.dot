@@ -6,12 +6,12 @@ digraph Problema_2_4 {
 
     // Nodos
     INICIO [shape=ellipse, label="INICIO"];
-    LEER_DATOS [shape=parallelogram, label="Leer MAT, CAL1, CAL2,\nCAL3, CAL4, CAL5"];
-    CALCULAR_PROMEDIO [label="PROMEDIO = (CAL1 + ... + CAL5) / 5.0"];
-    IMPRIMIR_DATOS [shape=note, label="Escribir MAT,\nPROMEDIO"];
-    CONDICION [shape=diamond, label="PROMEDIO >= 6"];
-    IMPRIMIR_APROBADO [shape=note, label="Escribir 'Aprobado'"];
-    IMPRIMIR_NO_APROBADO [shape=note, label="Escribir 'No Aprobado'"];
+    LEER_DATOS [shape=parallelogram, label="Leer matricula, c1, c2,\nc3, c4, c5"];
+    CALCULAR_PROMEDIO [label="promedio = (c1 + c2 + c3 + c4 + c5) / 5.0"];
+    IMPRIMIR_DATOS [shape=egg, label="Escribir matricula,\npromedio"];
+    CONDICION [shape=diamond, label="promedio >= 6"];
+    IMPRIMIR_APROBADO [shape=egg, label="Escribir 'Aprobado'"];
+    IMPRIMIR_NO_APROBADO [shape=egg, label="Escribir 'No Aprobado'"];
     FIN [shape=ellipse, label="FIN"];
 
     // Conexiones

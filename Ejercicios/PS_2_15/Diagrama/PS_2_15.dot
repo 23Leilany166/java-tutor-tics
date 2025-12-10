@@ -6,38 +6,38 @@ digraph PS_2_15 {
 
     // Nodos
     INICIO [shape=ellipse, label="INICIO"];
-    LEER_DATOS [shape=parallelogram, label="Leer OP1, OP2, CLAVE"];
-    COND_SUMA [shape=diamond, label="CLAVE == '+'"];
-    COND_RESTA [shape=diamond, label="CLAVE == '-'"];
-    COND_MULT [shape=diamond, label="CLAVE == '*'"];
-    COND_DIV [shape=diamond, label="CLAVE == '/'"];
-    PROC_SUMA [label="RES = OP1 + OP2"];
-    PROC_RESTA [label="RES = OP1 - OP2"];
-    PROC_MULT [label="RES = OP1 * OP2"];
-    COND_DIV_CERO [shape=diamond, label="OP2 == 0"];
-    PROC_DIV [label="RES = OP1 / OP2"];
-    PRINT_ERROR_DIV [shape=note, label="Escribir 'Error: División por cero'"];
-    PRINT_ERROR_CLAVE [shape=note, label="Escribir 'Error: Clave inválida'"];
-    IMPRIMIR [shape=note, label="Escribir RES"];
+    LEER_DATOS [shape=parallelogram, label="Leer oper1, oper2, clave"];
+    COND_SUMA [shape=diamond, label="clave == '+'"];
+    COND_RESTA [shape=diamond, label="clave == '-'"];
+    COND_MULT [shape=diamond, label="clave == '*'"];
+    COND_DIV [shape=diamond, label="clave == '/'"];
+    PROC_SUMA [label="resultado = oper1 + oper2"];
+    PROC_RESTA [label="resultado = oper1 - oper2"];
+    PROC_MULT [label="resultado = oper1 * oper2"];
+    COND_DIV_CERO [shape=diamond, label="oper2 == 0"];
+    PROC_DIV [label="resultado = oper1 / oper2"];
+    PRINT_ERROR_DIV [shape=egg, label="Escribir 'Error: División por cero'"];
+    PRINT_ERROR_CLAVE [shape=egg, label="Escribir 'Error: Clave inválida'"];
+    IMPRIMIR [shape=egg, label="Escribir resultado"];
     FIN [shape=ellipse, label="FIN"];
 
     // Conexiones
     INICIO -> LEER_DATOS -> COND_SUMA;
-    COND_SUMA -> PROC_SUMA [label="Si"]; 
+    COND_SUMA -> PROC_SUMA [label="Si"];
     COND_SUMA -> COND_RESTA [label="No"];
-    COND_RESTA -> PROC_RESTA [label="Si"]; 
+    COND_RESTA -> PROC_RESTA [label="Si"];
     COND_RESTA -> COND_MULT [label="No"];
-    COND_MULT -> PROC_MULT [label="Si"]; 
+    COND_MULT -> PROC_MULT [label="Si"];
     COND_MULT -> COND_DIV [label="No"];
-    COND_DIV -> COND_DIV_CERO [label="Si"]; 
-    COND_DIV -> PRINT_ERROR_CLAVE [label="No"];
-    COND_DIV_CERO -> PRINT_ERROR_DIV [label="Si"]; 
+    COND_DIV -> COND_DIV_CERO [label="Si"];
+    COND_DIV_CERO -> PRINT_ERROR_DIV [label="Si"];
     COND_DIV_CERO -> PROC_DIV [label="No"];
+    PROC_DIV -> IMPRIMIR;
+    COND_DIV -> PRINT_ERROR_CLAVE [label="No"];
     PROC_SUMA -> IMPRIMIR;
     PROC_RESTA -> IMPRIMIR;
     PROC_MULT -> IMPRIMIR;
-    PROC_DIV -> IMPRIMIR;
-    IMPRIMIR -> FIN;
     PRINT_ERROR_DIV -> FIN;
     PRINT_ERROR_CLAVE -> FIN;
+    IMPRIMIR -> FIN;
 }

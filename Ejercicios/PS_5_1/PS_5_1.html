@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PS 5.1 - Gestión de Productos en Almacén</title>
+    <link rel="stylesheet" href="../../styles_desc.css">
+</head>
+
+<body>
+    <div class="container">
+        <header class="page-header">
+            <h1>PS 5.1 - Gestión de Productos en Almacén</h1>
+            <p class="subtitle">Problema Suplementario pag 457</p>
+        </header>
+
+        <main class="exercises-main">
+            <article id="gestion-productos" class="exercise-card" aria-labelledby="productos-title">
+                <header class="exercise-header">
+                    <span class="exercise-badge">PS 5.1 pag 457</span>
+                    <h2 id="productos-title">Gestión de Productos en Almacén (Java)</h2>
+
+                    <p class="exercise-description">
+                        Una compañía distribuye N productos (1 &le; N &le; 150) a distintos comercios.
+                        Se almacena en un arreglo toda la información relacionada a su mercancía.
+                        Construya un <strong>programa en Java</strong> que pueda llevar a cabo las
+                        siguientes operaciones: venta, reabastecimiento, actualización de precio e
+                        informe sobre un producto.
+                    </p>
+                </header>
+                <a href="./Diagrama/PS_5_1.png" target="_blank" class="btn-view-diagram"
+                    style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; margin: 16px 0; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; text-decoration: none; font-weight: 600; font-size: 0.95rem; border-radius: 8px; box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3); transition: all 0.3s ease; border: none; cursor: pointer;">
+                    🗺️ Ver Diagrama de Flujo
+                </a>
+                <div class="exercise-content">
+                    <section class="exercise-main">
+                        <h3>Estructura de Datos</h3>
+                        <ul>
+                            <li>Se recomienda definir una clase <code>Producto</code> con los siguientes atributos:
+                                <ul>
+                                    <li><code>int clave</code> (CLA)</li>
+                                    <li><code>String descripcion</code> (DES)</li>
+                                    <li><code>int existencia</code> (EXI)</li>
+                                    <li><code>int minimo</code> (MIN) - Mínimo a mantener en existencia.</li>
+                                    <li><code>double precioUnitario</code> (PU)</li>
+                                </ul>
+                            </li>
+                            <li>El programa principal manejará un arreglo de objetos:
+                                <code>Producto[] productos = new Producto[N];</code>
+                            </li>
+                            <li>Alternativamente, se podrían usar arreglos paralelos (uno para cada campo), aunque es
+                                menos práctico.
+                            </li>
+                        </ul>
+
+                        <h3>Operaciones Requeridas</h3>
+                        <ol type="a">
+                            <li><strong>Venta de un producto:</strong>
+                                <ul>
+                                    <li>Datos: clave del producto, cantidad vendida.</li>
+                                    <li>Buscar el producto por su clave en el arreglo.</li>
+                                    <li>Si se encuentra y hay existencia suficiente:
+                                        <ul>
+                                            <li>Actualizar la existencia (restar la cantidad vendida).</li>
+                                            <li>Verificar si la nueva existencia está por debajo del mínimo. Si es así,
+                                                mostrar una
+                                                advertencia.</li>
+                                        </ul>
+                                    </li>
+                                    <li>Si no se encuentra o no hay existencia suficiente, informar del error.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Reabastecimiento de un producto:</strong>
+                                <ul>
+                                    <li>Datos: clave del producto, cantidad comprada.</li>
+                                    <li>Buscar el producto por su clave.</li>
+                                    <li>Si se encuentra, actualizar la existencia (sumar la cantidad comprada).</li>
+                                    <li>Si no se encuentra, informar del error.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Actualizar el precio de un producto:</strong>
+                                <ul>
+                                    <li>Datos: clave del producto, porcentaje de aumento (ej. 10 para 10%).</li>
+                                    <li>Buscar el producto por su clave.</li>
+                                    <li>Si se encuentra, calcular el nuevo precio
+                                        (<code>precioActual * (1 + porcentaje / 100.0)</code>) y
+                                        actualizar el campo <code>precioUnitario</code>.</li>
+                                    <li>Si no se encuentra, informar del error.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Informar sobre un producto:</strong>
+                                <ul>
+                                    <li>Dato: clave del producto.</li>
+                                    <li>Buscar el producto por su clave.</li>
+                                    <li>Si se encuentra, imprimir todos sus datos (clave, descripción, existencia,
+                                        mínimo, precio).</li>
+                                    <li>Si no se encuentra, informar del error.</li>
+                                </ul>
+                            </li>
+                        </ol>
+
+                        <h3>Ejemplo de uso esperado (Conceptual)</h3>
+                        <pre><code class="code-block">(El programa podría tener un menú principal)
+
+Seleccione una operación:
+1. Venta
+2. Reabastecimiento
+3. Actualizar Precio
+4. Consultar Producto
+5. Salir
+Opción: 1
+
+Ingrese clave del producto: 101
+Ingrese cantidad vendida: 5
+Venta realizada. Existencia actual: 15
+**Advertencia: Existencia por debajo del mínimo (20)**
+
+Opción: 4
+Ingrese clave del producto: 101
+--- Datos del Producto ---
+Clave: 101
+Descripción: Martillo
+Existencia: 15
+Mínimo: 20
+Precio: 150.75
+</code></pre>
+                    </section>
+
+                    <aside class="exercise-sidebar">
+                        <h3>Notas rápidas (Java)</h3>
+                        <p class="note-text">Recuerda que:</p>
+                        <ul>
+                            <li>La implementación central es la <strong>búsqueda</strong> del producto por clave en el
+                                arreglo.</li>
+                            <li>Un bucle <code>while(true)</code> con una opción de salida (ej. 'e') es una forma común
+                                de implementar
+                                un menú que se repite.</li>
+                            <li>Usar una clase <code>Producto</code> para agrupar los datos es mucho más limpio que usar
+                                múltiples
+                                arreglos paralelos.</li>
+                        </ul>
+                        <div class="tip-box">
+                            <strong>Tip:</strong> Antes de procesar cualquier operación (venta, consulta, etc.), primero
+                            busca el
+                            producto en el arreglo. Si no lo encuentras, informa al usuario y sáltate el resto de la
+                            lógica para esa
+                            iteración del menú usando la palabra clave <code>continue;</code>.
+                        </div>
+                    </aside>
+                </div>
+            </article>
+        </main>
+    </div>
+</body>
+
+</html>

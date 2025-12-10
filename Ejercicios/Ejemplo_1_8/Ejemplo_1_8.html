@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ejemplo 1.8 - Promedio de Calificaciones</title>
+    <link rel="stylesheet" href="../../styles_desc.css">
+</head>
+
+<body>
+    <div class="container">
+        <header class="page-header">
+            <h1>Ejemplo 1.8 - Promedio de Calificaciones de Alumno</h1>
+            <p class="subtitle">Ejercicio pag 27</p>
+        </header>
+
+        <main class="exercises-main">
+            <article id="promedio-alumno" class="exercise-card" aria-labelledby="promedio-title">
+                <header class="exercise-header">
+                    <span class="exercise-badge">Ejemplo 1.8 pag 27</span>
+                    <h2 id="promedio-title">Promedio de Calificaciones de Alumno (Java)</h2>
+                    <p class="exercise-description">
+                        Dada la matrícula y 5 calificaciones de un alumno obtenidas a lo largo del semestre,
+                        construya un <strong>programa en Java</strong> que lea los datos desde la consola e imprima
+                        la matrícula del alumno y el promedio de sus calificaciones.
+                    </p>
+                </header>
+                <a href="./Diagrama/Ejemplo_1_8.png" target="_blank" class="btn-view-diagram"
+                    style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; margin: 16px 0; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; text-decoration: none; font-weight: 600; font-size: 0.95rem; border-radius: 8px; box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3); transition: all 0.3s ease; border: none; cursor: pointer;">
+                    🗺️ Ver Diagrama de Flujo
+                </a>
+                <div class="exercise-content">
+                    <section class="exercise-main">
+
+                        <h3>Requisitos de Implementación (Java)</h3>
+                        <ul>
+                            <li>Crear una clase principal (ej. <code>PromedioAlumno</code>).</li>
+                            <li>Usar la clase <code>java.util.Scanner</code> para leer los datos desde la consola.</li>
+                            <li>Solicitar al usuario la matrícula (<code>matricula</code>).</li>
+                            <li>Solicitar al usuario las 5 calificaciones (<code>c1</code> a <code>c5</code>).</li>
+                            <li><strong>Validar</strong> que las calificaciones no sean negativas usando una estructura
+                                <code>if</code>. Si alguna es negativa, mostrar error y no calcular el promedio.
+                            </li>
+                            <li>Calcular el promedio. La operación debe ser de punto flotante.</li>
+                            <li>Imprimir la matrícula (<code>matricula</code>) y el promedio (<code>promedio</code>) en
+                                la consola
+                                usando <code>System.out.println()</code>.</li>
+                        </ul>
+
+                        <h3>Ejemplo de uso esperado</h3>
+                        <pre><code class="code-block">(Al ejecutar el programa en la consola)
+
+Ingrese la matrícula: 12345
+Ingrese calificación 1: 10.0
+Ingrese calificación 2: 9.5
+Ingrese calificación 3: 8.0
+Ingrese calificación 4: 7.5
+Ingrese calificación 5: 9.0
+--- Resultados ---
+Matrícula: 12345
+Promedio: 8.8</code></pre>
+                    </section>
+
+                    <aside class="exercise-sidebar">
+                        <h3>Notas rápidas (Java)</h3>
+                        <p class="note-text">Recuerda que:</p>
+                        <ul>
+                            <li>La clase <code>Scanner</code> es fundamental para leer datos del teclado.</li>
+                            <li>Usa el tipo <code>double</code> para las calificaciones y el promedio para poder manejar
+                                decimales.
+                            </li>
+                            <li>El tipo <code>int</code> es suficiente para la matrícula.</li>
+                        </ul>
+
+                        <div class="tip-box">
+                            <strong>Tip: ¡No olvides cerrar el Scanner!</strong> Al final de tu programa, es una buena
+                            práctica cerrar el objeto <code>Scanner</code> usando <code>scanner.close()</code>. Esto
+                            libera los recursos del sistema que estaba utilizando para leer la entrada. Aunque en
+                            programas pequeños puede no parecer importante, es un hábito fundamental para evitar "fugas
+                            de recursos" (resource leaks) en aplicaciones más grandes.
+                        </div>
+                    </aside>
+                </div>
+            </article>
+        </main>
+    </div>
+</body>
+
+</html>

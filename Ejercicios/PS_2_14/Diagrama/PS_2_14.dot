@@ -6,16 +6,18 @@ digraph PS_2_14 {
 
     // Nodos
     INICIO [shape=ellipse, label="INICIO"];
-    LEER_X [shape=parallelogram, label="Leer X"];
-    CALC_MOD [label="MOD = X % 4"];
-    COND_0 [shape=diamond, label="MOD == 0"];
-    COND_1 [shape=diamond, label="MOD == 1"];
-    COND_2 [shape=diamond, label="MOD == 2"];
-    PROC_0 [label="RES = X^2"];
-    PROC_1 [label="RES = X / 6.0"];
-    PROC_2 [label="RES = sqrt(X)"];
-    PROC_3 [label="RES = X^3 + 5"];
-    IMPRIMIR [shape=note, label="Escribir RES"];
+    LEER_X [shape=parallelogram, label="Leer x"];
+    CALC_MOD [label="mod = x % 4"];
+    COND_0 [shape=diamond, label="mod == 0"];
+    COND_1 [shape=diamond, label="mod == 1"];
+    COND_2 [shape=diamond, label="mod == 2"];
+    COND_3 [shape=diamond, label="mod == 3"];
+    PROC_0 [label="resultado = x²"];
+    PROC_1 [label="resultado = x / 6.0"];
+    PROC_2 [label="resultado = √x"];
+    PROC_3 [label="resultado = x³ + 5"];
+    PROC_ELSE [label="resultado = 0\n(valor por defecto)"];
+    IMPRIMIR [shape=egg, label="Escribir resultado"];
     FIN [shape=ellipse, label="FIN"];
 
     // Conexiones
@@ -25,10 +27,13 @@ digraph PS_2_14 {
     COND_1 -> PROC_1 [label="Si"]; 
     COND_1 -> COND_2 [label="No"];
     COND_2 -> PROC_2 [label="Si"]; 
-    COND_2 -> PROC_3 [label="No"];
+    COND_2 -> COND_3 [label="No"];
+    COND_3 -> PROC_3 [label="Si"];
+    COND_3 -> PROC_ELSE [label="No"];
     PROC_0 -> IMPRIMIR;
     PROC_1 -> IMPRIMIR;
     PROC_2 -> IMPRIMIR;
     PROC_3 -> IMPRIMIR;
+    PROC_ELSE -> IMPRIMIR;
     IMPRIMIR -> FIN;
 }

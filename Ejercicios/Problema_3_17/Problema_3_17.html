@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Problema 3.17 - Contar Números Primos</title>
+    <link rel="stylesheet" href="../../styles_desc.css">
+</head>
+
+<body>
+    <div class="container">
+        <header class="page-header">
+            <h1>Problema 3.17 - Contar Números Primos</h1>
+            <p class="subtitle">Problema pag 164</p>
+        </header>
+
+        <main class="exercises-main">
+            <article id="contar-primos" class="exercise-card" aria-labelledby="contar-primos-title">
+                <header class="exercise-header">
+                    <span class="exercise-badge">Problema 3.17 pag 164</span>
+                    <h2 id="contar-primos-title">Contar Números Primos (Java)</h2>
+                    <p class="exercise-description">
+                        Se dice que un entero positivo N es un número primo si los únicos enteros positivos
+                        que lo dividen son exactamente 1 y N. Diseñe un <strong>programa en Java</strong> que lea
+                        un número M, y obtenga y cuente todos los números primos menores a M.
+                    </p>
+                </header>
+                <a href="./Diagrama/Problema_3_17.png" target="_blank" class="btn-view-diagram"
+                    style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; margin: 16px 0; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; text-decoration: none; font-weight: 600; font-size: 0.95rem; border-radius: 8px; box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3); transition: all 0.3s ease; border: none; cursor: pointer;">
+                    🗺️ Ver Diagrama de Flujo
+                </a>
+                <div class="exercise-content">
+                    <section class="exercise-main">
+
+                        <h3>Requisitos de Implementación (Java)</h3>
+                        <ul>
+                            <li>Usar <code>java.util.Scanner</code> para leer el entero <code>M</code>.</li>
+                            <li>Usar un bucle <code>for</code> (externo) para iterar <code>N</code> desde 2 hasta
+                                <code>M-1</code>.
+                            </li>
+                            <li>Para cada <code>N</code>, usar un bucle <code>for</code> (interno) para verificar si es
+                                primo.</li>
+                            <li>Usar una variable <code>boolean esPrimo = true;</code> como bandera para cada
+                                <code>N</code>.
+                            </li>
+                            <li>El bucle interno debe probar divisores desde 2 hasta la raíz cuadrada de <code>N</code>
+                                (<code>Math.sqrt(N)</code>).</li>
+                            <li>Si se encuentra un divisor (<code>N % divisor == 0</code>), cambiar <code>esPrimo</code>
+                                a
+                                <code>false</code> y romper el bucle interno.
+                            </li>
+                            <li>Después del bucle interno, si <code>esPrimo</code> sigue siendo <code>true</code>,
+                                imprimir
+                                <code>N</code> e incrementar un contador <code>conteoPrimos</code>.
+                            </li>
+                            <li>Al final del programa, imprimir el <code>conteoPrimos</code> total.</li>
+                        </ul>
+
+                        <h3>Ejemplo de uso esperado</h3>
+                        <pre><code class="code-block">Ingrese el número límite (M): 20
+Números primos menores que 20:
+2
+3
+5
+7
+11
+13
+17
+19
+--- Resultados ---
+Total de números primos encontrados: 8</code></pre>
+                    </section>
+                    <aside class="exercise-sidebar">
+                        <h3>Notas rápidas (Java)</h3>
+                        <p class="note-text">Recuerda que:</p>
+                        <ul>
+                            <li>Este problema requiere <strong>bucles anidados</strong>.</li>
+                            <li>El 1 <strong>no</strong> se considera un número primo. Tu bucle externo debe empezar en
+                                2.</li>
+                            <li>El 2 es el primer número primo y el único par.</li>
+                        </ul>
+                        <div class="tip-box">
+                            <strong>Tip de Optimización:</strong> Para verificar si un número <code>N</code> es primo,
+                            solo necesitas probar divisores hasta su raíz cuadrada (<code>Math.sqrt(N)</code>). Si no
+                            encuentras un divisor en ese rango, el número es primo. Esto hace tu programa mucho más
+                            rápido.
+                        </div>
+                    </aside>
+                </div>
+            </article>
+        </main>
+    </div>
+</body>
+
+</html>

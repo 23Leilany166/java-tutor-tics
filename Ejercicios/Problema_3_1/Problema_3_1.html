@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Problema 3.1 - Suma de Impares y Promedio de Pares</title>
+    <link rel="stylesheet" href="../../styles_desc.css">
+</head>
+
+<body>
+    <div class="container">
+        <header class="page-header">
+            <h1>Problema 3.1 - Suma de Impares y Promedio de Pares</h1>
+            <p class="subtitle">Problema pag 121</p>
+        </header>
+
+        <main class="exercises-main">
+            <article id="pares-impares" class="exercise-card" aria-labelledby="pares-impares-title">
+                <header class="exercise-header">
+                    <span class="exercise-badge">Problema 3.1 pag 121</span>
+                    <h2 id="pares-impares-title">Suma de Impares y Promedio de Pares (Java)</h2>
+                    <p class="exercise-description">
+                        Construya un <strong>programa en Java</strong> que, dado como datos 270 números enteros,
+                        obtenga la suma de los números impares y el promedio de los números pares.
+                    </p>
+                </header>
+                <a href="./Diagrama/Problema_3_1.png" target="_blank" class="btn-view-diagram"
+                    style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; margin: 16px 0; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; text-decoration: none; font-weight: 600; font-size: 0.95rem; border-radius: 8px; box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3); transition: all 0.3s ease; border: none; cursor: pointer;">
+                    🗺️ Ver Diagrama de Flujo
+                </a>
+                <div class="exercise-content">
+                    <section class="exercise-main">
+
+                        <h3>Requisitos de Implementación (Java)</h3>
+                        <ul>
+                            <li>Usar <code>java.util.Scanner</code> para leer los números.</li>
+                            <li>Usar un bucle <code>for</code> que se repita 270 veces.</li>
+                            <li>Declarar e inicializar variables acumuladoras:
+                                <ul>
+                                    <li><code>long sumaImpares = 0;</code></li>
+                                    <li><code>long sumaPares = 0;</code></li>
+                                    <li><code>int conteoPares = 0;</code></li>
+                                </ul>
+                            </li>
+                            <li>Dentro del bucle, leer un número (<code>int numero = scanner.nextInt();</code>).</li>
+                            <li>Usar el operador módulo (<code>%</code>) para verificar si <code>numero % 2 == 0</code>
+                                (par) o no
+                                (impar).</li>
+                            <li>Acumular los valores según corresponda.</li>
+                            <li>Después del bucle, calcular el promedio de los pares
+                                (<code>double promedioPares</code>).</li>
+                            <li><strong>Importante:</strong> Manejar el caso de división por cero si
+                                <code>conteoPares</code> es 0.
+                            </li>
+                        </ul>
+
+                        <h3>Ejemplo de uso esperado</h3>
+                        <pre><code class="code-block">(Simulación con 5 números en lugar de 270 para brevedad)
+
+Ingrese el número 1: 5
+Ingrese el número 2: 10
+Ingrese el número 3: 3
+Ingrese el número 4: 8
+Ingrese el número 5: 2
+--- Resultados ---
+Suma de Impares: 8
+Promedio de Pares: 6.666666666666667
+
+(Simulación donde no se ingresan pares)
+Ingrese el número 1: 1
+Ingrese el número 2: 3
+...
+--- Resultados ---
+Suma de Impares: 4
+Promedio de Pares: No se ingresaron números pares.</code></pre>
+                    </section>
+                    <aside class="exercise-sidebar">
+                        <h3>Notas rápidas (Java)</h3>
+                        <p class="note-text">Recuerda que:</p>
+                        <ul>
+                            <li>Este problema requiere una <strong>estructura repetitiva</strong> (bucle
+                                <code>for</code>).
+                            </li>
+                            <li>El operador módulo (<code>%</code>) es clave para determinar si un número es par
+                                (<code>num % 2 == 0</code>).</li>
+                            <li>Usa <code>long</code> para las sumas para evitar un posible desbordamiento (<em>integer
+                                    overflow</em>)
+                                si los números son muy grandes.</li>
+                        </ul>
+                        <div class="tip-box">
+                            <strong>Tip:</strong> ¡Cuidado con la división por cero! Antes de calcular
+                            <code>sumaPares / conteoPares</code>, siempre verifica que <code>conteoPares</code> sea
+                            mayor que 0. Si no
+                            lo es, el programa se detendrá con un error (<code>ArithmeticException</code>).
+                        </div>
+                    </aside>
+                </div>
+            </article>
+        </main>
+    </div>
+</body>
+
+</html>

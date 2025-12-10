@@ -19,7 +19,7 @@ digraph Problema_3_17 {
     COND_BAND_V [shape=diamond, label="BAND == true"];
     PROCESO_PRIMO [label="Escribir I\nCP = CP + 1"];
     INC_I [label="I = I + 2"];
-    IMPRIMIR_FINAL [shape=note, label="Escribir 'Total: ', CP"];
+    IMPRIMIR_FINAL [shape=egg, label="Escribir 'Total: ', CP"];
     FIN [shape=ellipse, label="FIN"];
 
     // Conexiones

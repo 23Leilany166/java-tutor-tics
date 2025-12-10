@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PS 4.22 - Análisis de Producción de Fábricas</title>
+    <link rel="stylesheet" href="../../styles_desc.css">
+</head>
+
+<body>
+    <div class="container">
+        <header class="page-header">
+            <h1>PS 4.22 - Análisis de Producción de Fábricas</h1>
+            <p class="subtitle">Problema Suplementario pag 448</p>
+        </header>
+
+        <main class="exercises-main">
+            <article id="produccion-fabricas" class="exercise-card" aria-labelledby="produccion-title">
+                <header class="exercise-header">
+                    <span class="exercise-badge">PS 4.22 pag 448</span>
+                    <h2 id="produccion-title">Análisis de Producción de Fábricas (Java)</h2>
+                    <p class="exercise-description">
+                        Construya un <strong>programa en Java</strong> que procese los datos de producción de N fábricas
+                        durante los 12 meses del año anterior y proporcione la siguiente información:
+                        <br>a) La clave de la fábrica que más produjo el año anterior y su producción total.
+                        <br>b) Dado un mes, las claves de las fábricas cuya producción en dicho mes fue superior a
+                        $150,000.
+                    </p>
+                </header>
+                <a href="./Diagrama/PS_4_22.png" target="_blank" class="btn-view-diagram"
+                    style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; margin: 16px 0; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; text-decoration: none; font-weight: 600; font-size: 0.95rem; border-radius: 8px; box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3); transition: all 0.3s ease; border: none; cursor: pointer;">
+                    🗺️ Ver Diagrama de Flujo
+                </a>
+                <div class="exercise-content">
+                    <section class="exercise-main">
+
+                        <h3>Requisitos de Implementación (Java)</h3>
+                        <ul>
+                            <li>Usar <code>java.util.Scanner</code> para leer los datos.</li>
+                            <li>Leer N.</li>
+                            <li>Declarar los arreglos <code>fabricas</code> y <code>produccion</code>.</li>
+                            <li>Usar un bucle <code>for</code> (de 0 a N-1) para leer los datos de cada fábrica:
+                                <ul>
+                                    <li>Leer la clave <code>fabricas[i]</code>.</li>
+                                    <li>Usar un bucle <code>for</code> anidado (de 0 a 11) para leer
+                                        <code>produccion[i][j]</code>.
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><strong>Inciso a):</strong>
+                                <ul>
+                                    <li>Inicializar <code>double maxProduccion = -1.0;</code> y
+                                        <code>int fabricaMax = -1;</code>.
+                                    </li>
+                                    <li>Usar un bucle <code>for</code> (de 0 a N-1) para cada fábrica:
+                                        <ul>
+                                            <li>Calcular <code>double totalAnual = 0;</code> sumando
+                                                <code>produccion[i][j]</code> para j de 0
+                                                a 11.
+                                            </li>
+                                            <li>Si <code>totalAnual > maxProduccion</code>, actualizar
+                                                <code>maxProduccion = totalAnual;</code> y
+                                                <code>fabricaMax = fabricas[i];</code>.
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>Imprimir <code>fabricaMax</code> y <code>maxProduccion</code>.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Inciso b):</strong>
+                                <ul>
+                                    <li>Leer <code>mesConsulta</code> (validar que esté entre 1 y 12).</li>
+                                    <li>Ajustar al índice del arreglo: <code>int indiceMes = mesConsulta - 1;</code>.
+                                    </li>
+                                    <li>Imprimir un encabezado para la salida del inciso b).</li>
+                                    <li>Usar un bucle <code>for</code> (de 0 a N-1) para cada fábrica:
+                                        <ul>
+                                            <li>Si <code>produccion[i][indiceMes] > 150000</code>, imprimir
+                                                <code>fabricas[i]</code>.
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                        <h3>Ejemplo de uso esperado</h3>
+                        <pre><code class="code-block">Ingrese el número de fábricas (N): 3
+
+Ingrese clave y producción mensual (12 valores) para fábrica 1:
+101 10000 20000 ... 15000
+Ingrese clave y producción mensual (12 valores) para fábrica 2:
+102 160000 50000 ... 60000
+Ingrese clave y producción mensual (12 valores) para fábrica 3:
+103 40000 170000 ... 90000
+
+Ingrese el mes para la consulta (1-12): 2
+
+--- Resultados ---
+Inciso a):
+Fábrica con mayor producción anual: 102
+Producción total: 1250000.0 (valor ejemplo)
+
+Inciso b):
+Fábricas con producción > 150000 en el mes 2:
+103
+</code></pre>
+                    </section>
+                    <aside class="exercise-sidebar">
+                        <h3>Notas rápidas (Java)</h3>
+                        <p class="note-text">Recuerda que:</p>
+                        <ul>
+                            <li>Este problema se puede resolver con <strong>arreglos paralelos</strong>: un arreglo para
+                                las claves
+                                (<code>fabricas</code>) y otro para los datos (<code>produccion</code>), donde el índice
+                                <code>i</code>
+                                conecta la clave de una fábrica con su fila de producción.
+                            </li>
+                            <li>Los meses van de 1 a 12, pero los índices del arreglo van de <strong>0 a 11</strong>.
+                                Ajusta al
+                                leer/consultar.</li>
+                            <li>Valida la entrada del mes de consulta.</li>
+                            <li>Inicializa correctamente las variables para encontrar el máximo.</li>
+                        </ul>
+                    </aside>
+                </div>
+            </article>
+        </main>
+    </div>
+</body>
+
+</html>
